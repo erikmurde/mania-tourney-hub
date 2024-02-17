@@ -1,0 +1,44 @@
+{
+    "me": {
+        "id": "0",
+        "playerId": 16819909,   
+        "name": "Arcaxio",
+        "rank": 80,
+        "country": "EST",
+        "discordUsername": "arcaxio_",
+        "timezone": 2,
+        "avatar": "https://a.ppy.sh/16819909?1642373525.jpeg",
+        "roles": [
+            {
+                "name": "host",
+                "canRegWithRole": false
+            }
+        ] 
+    },
+    "tournaments": [
+        {
+            "id": "0",
+            "name": "6K Autumn Showdown",
+            "code": "6KAST",
+            "description": "6K Autumn Showdown Tournament (6KAST) is an osu!mania Free for all 1v1 Double-Elimination tournament focused on the 6 key gamemode.This is one of the first ever 6 key focused tournament ever hosted on osu!mania. So we hope you enjoy your experience on the newest tourney keymode meta!",
+            "banner": "https://i.ppy.sh/b55ec5bff5d7e9228b8f731de19126376c6dddd0/68747470733a2f2f63646e2e646973636f72646170702e636f6d2f6174746163686d656e74732f313131343934313836353631363232303137312f313131363635313138383330323133353330382f415354364b5f42616e6e65725f52656374616e676c652e706e67",
+            "public": true,
+            "done": false,
+            "minTeamSize": 1,
+            "maxTeamSize": 1,
+            "minPlayerRank": 0,
+            "maxPlayerRank": 0,
+            "protects": true,
+            "warmups": true,
+            "regOpen": true,
+            "applicationOpen": true,
+            "regDeadline": "Wed, 10 Jul 2024 07:00:00 GMT",
+            "applicationDeadline": "Wed, 14 Jun 2017 07:00:00 GMT",
+            "discordLink": "",
+            "forumLink": "",
+            "challongeLink": "",
+            "discordRequired": true,
+            "countries": []
+        }
+    ]
+}

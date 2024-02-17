@@ -1,24 +1,114 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
+import './index.css';
+
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { ThemeProvider, createTheme } from '@mui/material';
+
+import Root from './routes/Root';
+import MapPool from './routes/tournament/mappool/MapPool';
+import TournamentHeader from './routes/tournament/TournamentHeader';
+import Home from './routes/Home';
+import Callback from './routes/Callback';
+import Information from './routes/tournament/information/Information';
+import Stages from './routes/tournament/stages/Stages';
+import Schedule from './routes/tournament/schedule/Schedule';
+import Players from './routes/tournament/players/Players';
+import Staff from './routes/tournament/staff/Staff';
+import Statistics from './routes/tournament/statistics/Statistics';
+
+const router = createBrowserRouter([
+	{
+		path: '/',
+		element: <Root/>,
+		children: [
+            {
+                path: '',
+                element: <Home/>
+            },
+            {
+                path: 'auth/callback',
+                element: <Callback/>
+            },
+            {
+                path: 'tournaments/:id/',
+                element: <TournamentHeader/>,
+                children: [
+                    {
+                        path: 'information',
+                        element: <Information/>
+                    },
+                    {
+                        path: 'stages',
+                        element: <Stages/>
+                    },
+                    {
+                        path: 'mappools',
+                        element: <MapPool/>
+                    },
+                    {
+                        path: 'schedule',
+                        element: <Schedule/>
+                    },
+                    {
+                        path: 'players',
+                        element: <Players/>
+                    },
+                    {
+                        path: 'staff',
+                        element: <Staff/>
+                    },
+                    {
+                        path: 'statistics',
+                        element: <Statistics/>
+                    }
+                ]
+            }
+        ]
+	}
+]);
+
+const white = '#F5F5F5';
+
+const appTheme = createTheme({
+    palette: {
+        mode: 'dark',
+        primary: {
+            main: '#64B5F6',
+            dark: '#2196F3'
+        },
+        secondary: {
+            main: '#F6A664',
+            dark: '#ED8F5E'
+        },
+        success: {
+            main: '#66BB6A'
+        },
+        error: {
+            main: '#EF5350'
+        },
+        text: {
+            primary: white
+        },
+        action: {
+            active: white
+        }
+    },
+    spacing: 10
+});
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  	document.getElementById('root') as HTMLElement
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+root.render(
+	<React.StrictMode>
+		<ThemeProvider theme={appTheme}>
+			<RouterProvider router={router}/>
+		</ThemeProvider>
+	</React.StrictMode>
+);
