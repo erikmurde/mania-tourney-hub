@@ -7,7 +7,7 @@ import './index.css';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import { ThemeProvider, createTheme } from '@mui/material';
+import { Shadows, ThemeProvider, createTheme } from '@mui/material';
 
 import Root from './routes/Root';
 import MapPool from './routes/tournament/mappool/MapPool';
@@ -48,7 +48,11 @@ const router = createBrowserRouter([
                     },
                     {
                         path: 'mappools',
-                        element: <MapPool/>
+                        element: <MapPool manage={false}/>
+                    },
+                    {
+                        path: 'mappools/manage',
+                        element: <MapPool manage={true}/>
                     },
                     {
                         path: 'schedule',
@@ -98,6 +102,7 @@ const appTheme = createTheme({
             active: white
         }
     },
+    shadows: Array(25).fill('none') as Shadows,
     spacing: 10
 });
 

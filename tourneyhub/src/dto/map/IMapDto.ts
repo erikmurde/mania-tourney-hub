@@ -1,0 +1,21 @@
+export interface IMapDto {
+    id: string,
+    stageId: string,
+    beatmapId: number,
+    inMappool: boolean,
+    title: string,
+    diff: string,
+    artist: string,
+    mapper: string,
+    suggestor: string,
+    cover: string,
+    download: string,
+    bpm: number,
+    drainTime: number,
+    sr: number,
+    hp: number,
+    od: number,
+    type: string,
+    index: number,
+    comment: string
+}

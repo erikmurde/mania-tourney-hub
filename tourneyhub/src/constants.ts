@@ -12,3 +12,6 @@ export const REFEREE = 'referee';
 export const STREAMER = 'streamer';
 export const COMMENTATOR = 'commentator';
 export const SHEETER = 'sheeter';
+
+//COLORS
+export const TERTIARY = '#9575CD'

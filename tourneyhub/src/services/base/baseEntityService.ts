@@ -1,6 +1,6 @@
-import { baseService } from './baseService';
+import { BaseService } from './baseService';
 
-export abstract class baseEntityService<TEntityDto> extends baseService {
+export abstract class BaseEntityService<TEntityDto> extends BaseService {
     protected baseUrl: string;
 
     constructor(baseUrl: string) {

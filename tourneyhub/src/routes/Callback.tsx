@@ -1,12 +1,12 @@
 import { useContext, useEffect } from 'react';
 import { AuthContext } from './Root';
 import { useNavigate } from 'react-router-dom';
-import { authService } from '../services/authService';
+import { AuthService } from '../services/authService';
 
 const Callback = () => {
     const { setUser } = useContext(AuthContext);
     const navigate = useNavigate();
-    const service = new authService();
+    const service = new AuthService();
 
     useEffect(() => {
         service.getUser()

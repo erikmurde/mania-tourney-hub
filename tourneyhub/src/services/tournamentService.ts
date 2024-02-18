@@ -1,7 +1,7 @@
 import { ITournamentDto } from '../dto/tournament/ITournamentDto';
-import { baseEntityService } from './base/baseEntityService';
+import { BaseEntityService } from './base/baseEntityService';
 
-export class tournamentService extends baseEntityService<ITournamentDto> {
+export class TournamentService extends BaseEntityService<ITournamentDto> {
     constructor() {
         super('tournaments');
     }

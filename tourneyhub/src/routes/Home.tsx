@@ -6,7 +6,7 @@ const Home = () => {
 
     return (  
         <Paper className='flex-center' elevation={2} sx={{ height: '100%' }}>
-            <Button variant='contained' size='large' onClick={() => navigate('/tournaments/0/mappools')}>
+            <Button variant='contained' size='large' onClick={() => navigate('/tournaments/0/information')}>
                 Go to 6KAST
             </Button>
         </Paper>

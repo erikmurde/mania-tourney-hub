@@ -1,14 +1,14 @@
 import { AppBar, Avatar, Box, Button, IconButton, Toolbar, Typography } from "@mui/material"
 import { useContext, useEffect } from 'react';
 import { AuthContext } from '../routes/Root';
-import { authService } from '../services/authService';
+import { AuthService } from '../services/authService';
 import { STORED_USER } from '../constants';
 import { Link, useNavigate } from 'react-router-dom';
 
 const Header = () => {
     const { user, setUser } = useContext(AuthContext);
     const navigate = useNavigate();
-    const service = new authService();
+    const service = new AuthService();
 
     useEffect(() => {
         if (user) {

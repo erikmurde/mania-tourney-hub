@@ -1,7 +1,7 @@
 import { AxiosInstance } from 'axios';
 import baseAxios from './baseAxios';
 
-export abstract class baseService {
+export abstract class BaseService {
     protected axios: AxiosInstance;
 
     constructor() {

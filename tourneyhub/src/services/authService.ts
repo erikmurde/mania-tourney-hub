@@ -1,7 +1,7 @@
 import { IUserDto } from '../dto/IUserDto';
-import { baseService } from './base/baseService';
+import { BaseService } from './base/baseService';
 
-export class authService extends baseService {
+export class AuthService extends BaseService {
     constructor() {
         super();
     }
