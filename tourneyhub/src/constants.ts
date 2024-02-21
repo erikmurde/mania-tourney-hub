@@ -1,7 +1,6 @@
 export const STORED_USER = 'user';
 
 // ROLES
-export const GUEST = 'guest';
 export const PLAYER = 'player';
 export const HOST = 'host';
 export const ADMIN = 'admin';

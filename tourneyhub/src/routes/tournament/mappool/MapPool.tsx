@@ -1,7 +1,7 @@
 import { Grid, Paper, Tab, Tabs, Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { ISimpleStageDto } from '../../../dto/stage/ISimpleStageDto';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import MapList from '../../../components/tournament/mappools/MapList';
 import { IMapDto } from '../../../dto/map/IMapDto';
 import { StageService } from '../../../services/stageService';
@@ -9,24 +9,35 @@ import { MapService } from '../../../services/mapService';
 import PoolButtons from '../../../components/tournament/mappools/PoolButtons';
 import MapManageList from '../../../components/tournament/mappools/MapManageList';
 
-const MapPool = (props: {manage: boolean}) => {
+const MapPool = ({manage}: {manage?: boolean}) => {
     const [stages, setStages] = useState([] as ISimpleStageDto[]);
+    const [stageId, setStageId] = useState(0);
     const [maps, setMaps] = useState([] as IMapDto[]);
-    const [value, setValue] = useState(0);
     const { id } = useParams();
-    const stageService = new StageService();
-    const mapService = new MapService();
+    const navigate = useNavigate();
 
     useEffect(() => {
-        stageService.getAllSimple(id!)
+        new StageService().getAllSimple(id!)
             .then(stages => setStages(stages))
-            .then(() => setValue(stages.length > 0 ? parseInt(stages[0].id) : 0));
+            .then(() => {
+                const stageId = stages.length > 0 ? parseInt(stages[0].id) : 0;
+
+                setStageId(stageId);
+                navigate(`#${stageId}`);
+            });
     }, [id]);
 
     useEffect(() => {
-        mapService.getAllStage(value.toString())
-            .then(maps => setMaps(maps));
-    }, [value]);
+        const service = new MapService();
+
+        if (manage) {
+            service.getAllStage(stageId.toString())
+                .then(maps => setMaps(maps));
+        } else {
+            service.getAllStageInMappool(stageId.toString())
+                .then(maps => setMaps(maps));
+        }
+    }, [stageId]);
 
     return (  
         <Paper elevation={2} sx={{ minHeight: 500, paddingBottom: 2 }}>
@@ -39,7 +50,7 @@ const MapPool = (props: {manage: boolean}) => {
                         marginLeft={5} 
                         lineHeight={2}>
 
-                        {props.manage ? 'Manage mappools' : 'Mappools'}
+                        {manage ? 'Manage mappools' : 'Mappools'}
                     </Typography>
                 </Grid>
                 <Grid container item direction='column' alignItems='center' 
@@ -49,19 +60,19 @@ const MapPool = (props: {manage: boolean}) => {
 
                     <Grid item>
                         <Tabs sx={{ width: 200, marginBottom: 2 }}
-                            value={value} 
+                            value={stageId}
                             orientation='vertical' 
-                            onChange={(e, value) => setValue(value)}>
+                            onChange={(e, value) => setStageId(value)}>
 
                             {stages.map(stage => 
-                                <Tab key={stage.id} label={stage.name} value={parseInt(stage.id)}/>
+                                <Tab key={stage.id} label={stage.name} value={parseInt(stage.id)} href={`#${stage.id}`}/>
                             )}
                         </Tabs>
                     </Grid>
-                    <PoolButtons manage={props.manage}/>
+                    <PoolButtons manage={manage}/>
                 </Grid>
                 <Grid item xs>
-                    {props.manage 
+                    {manage 
                     ?   <MapManageList maps={maps}/>
                     :   <MapList maps={maps.filter(map => map.inMappool)}/>}
                 </Grid>

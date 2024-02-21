@@ -14,9 +14,9 @@ const MapTypeBox = (props: {map: IMapDto}) => {
     ]);
 
     return (  
-        <Box className='flex-center map-type-box' bgcolor={bgMappings.get(props.map.type)}>
+        <Box className='flex-center map-type-box' bgcolor={bgMappings.get(props.map.mapType.name)}>
             <Typography fontSize={20} color={theme.palette.background.default}>
-                {`${props.map.type}${props.map.index > 0 ? props.map.index : ''}`}
+                {`${props.map.mapType.name}${props.map.index > 0 ? props.map.index : ''}`}
             </Typography>
         </Box>
     );

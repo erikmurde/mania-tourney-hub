@@ -9,7 +9,7 @@ const MapManageList = (props: {maps: IMapDto[]}) => {
     let accordions: JSX.Element[] = [];
 
     props.maps.forEach(map => {
-        let key = `${map.type}${map.index}`;
+        let key = `${map.mapType.name}${map.index}`;
 
         if (data.has(key)) {
             let tempList = data.get(key)!;
@@ -20,9 +20,9 @@ const MapManageList = (props: {maps: IMapDto[]}) => {
         }
     });
 
-    data.forEach((maps) => {
+    data.forEach((maps, index) => {
         accordions.push(
-            <Grid item xs={11}>
+            <Grid item xs={11} key={index}>
                 <Accordion elevation={6}>
                     <AccordionSummary expandIcon={<ExpandMore/>}>
                         <MapTypeBox map={maps[0]}/>
@@ -30,7 +30,7 @@ const MapManageList = (props: {maps: IMapDto[]}) => {
                     <AccordionDetails>
                         <Grid container rowSpacing={1}>
                             {maps.map(map => 
-                                <Grid item xs>
+                                <Grid item xs key={map.id}>
                                     <MapManageCard map={map}/>
                                 </Grid>
                             )}

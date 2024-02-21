@@ -1,23 +1,23 @@
-import { Edit, PlaylistAdd, Public, Publish } from '@mui/icons-material';
+import { Edit, Public, Publish } from '@mui/icons-material';
 import { Grid, Button } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+import MapSelectForm from './form/MapSelectForm';
 
-const PoolButtons = (props: {manage: boolean}) => {
+const PoolButtons = ({manage}: {manage?: boolean}) => {
     const navigate = useNavigate();
+    const location = useLocation();
 
-    if (props.manage) {
+    if (manage) {
         return (
-            <>
+            <>            
                 <Grid item>
-                    <Button variant='contained' startIcon={<PlaylistAdd/>} sx={{ width: 150 }}>
-                        Add Map
-                    </Button>
+                    <MapSelectForm/>
                 </Grid>
                 <Grid item>
                     <Button sx={{ width: 150 }}
                         variant='contained' 
                         startIcon={<Public/>}
-                        onClick={() => navigate('../mappools')}>
+                        onClick={() => navigate(`../mappools${location.hash}`)}>
                         Public View
                     </Button>
                 </Grid>
@@ -30,7 +30,7 @@ const PoolButtons = (props: {manage: boolean}) => {
                     <Button sx={{ width: 150 }} 
                         variant='contained' 
                         startIcon={<Edit/>}
-                        onClick={() => navigate('../mappools/manage')}>
+                        onClick={() => navigate(`../mappools/manage${location.hash}`)}>
                         Manage
                     </Button>
                 </Grid>

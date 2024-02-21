@@ -3,13 +3,14 @@ import { BaseEntityService } from './base/baseEntityService';
 
 export class MapService extends BaseEntityService<IMapDto> {
     constructor() {
-        super('maps');
+        super('maps', 'mapType');
     }
 
     async getAllStage(stageId: string): Promise<IMapDto[]> {
-        const response = await this.axios.get<IMapDto[]>(`${this.baseUrl}/stage/${stageId}`);
+        return (await this.axios.get<IMapDto[]>(`${this.baseUrl}${this.expand}&stageId=${stageId}`)).data;
+    }
 
-        console.log('getAllStage response: ', response);
-        return response.data;
+    async getAllStageInMappool(stageId: string): Promise<IMapDto[]> {
+        return (await this.getAllStage(stageId)).filter(map => map.inMappool);
     }
 }
