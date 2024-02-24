@@ -3,9 +3,6 @@ import { IUserDto } from '../dto/IUserDto';
 import { BaseService } from './base/baseService';
 
 export class AuthService extends BaseService {
-    constructor() {
-        super();
-    }
 
     isHost(user: IUserDto, tournamentId: string) {
         const roles = user.roles

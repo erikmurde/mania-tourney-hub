@@ -1,4 +1,4 @@
-import { Accordion, AccordionDetails, AccordionSummary, Box, Card, CardContent, CardMedia, Grid, Paper } from '@mui/material';
+import { Accordion, AccordionDetails, AccordionSummary, Grid } from '@mui/material';
 import { IMapDto } from '../../../dto/map/IMapDto';
 import { ExpandMore } from '@mui/icons-material';
 import MapTypeBox from '../../MapTypeBox';

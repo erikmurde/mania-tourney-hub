@@ -10,10 +10,9 @@ import HeaderTabs from '../../components/tournament/header/HeaderTabs';
 const TournamentHeader = () => {
     const [tourney, setTourney] = useState({} as ITournamentDto);
     const { id } = useParams();
-    const service = new TournamentService();
 
     useEffect(() => {
-        service.getEntity(id!)
+        new TournamentService().getEntity(id!)
             .then(tourney => setTourney(tourney));
     }, [id]);
 
@@ -22,7 +21,7 @@ const TournamentHeader = () => {
             <Grid item>
                 <Paper elevation={2} sx={{ height: 766 }}>
                     <Box height={400}>
-                        <img src={tourney.banner} id='tourney-banner' alt='Tournament banner image'/>
+                        <img src={tourney.banner} id='tourney-banner' alt='Tournament banner'/>
                     </Box>
                     <HeaderText name={tourney.name} description={tourney.description}/>
                     <HeaderButtons tourney={tourney}/>

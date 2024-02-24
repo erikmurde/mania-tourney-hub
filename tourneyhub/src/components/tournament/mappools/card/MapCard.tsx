@@ -1,4 +1,4 @@
-import { Card, Paper, CardMedia, CardContent, CardActions, Grid } from '@mui/material';
+import { Card, CardMedia, CardContent, CardActions, Grid } from '@mui/material';
 import MapInfo from './MapInfo';
 import MapParams from './MapParams';
 import MapText from './MapText';

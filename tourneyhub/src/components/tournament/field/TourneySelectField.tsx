@@ -1,4 +1,4 @@
-import { FormControl, FormHelperText, InputLabel, MenuItem, Select } from '@mui/material';
+import { FormControl, FormHelperText, InputLabel, Select } from '@mui/material';
 import { Field } from 'formik';
 
 interface IProps {
@@ -9,13 +9,15 @@ interface IProps {
 }
 
 const TourneySelectField = ({name, label, error, options}: IProps) => {
+    const isInvalid = error !== undefined;
+
     return (  
-        <FormControl fullWidth error={error !== undefined}>
+        <FormControl fullWidth error={isInvalid}>
             <InputLabel>{label}</InputLabel>
             <Field as={Select} name={name} label={label} defaultValue=''>
                 {options}
             </Field>
-            <FormHelperText>{error}</FormHelperText>
+            {isInvalid && <FormHelperText>{error}</FormHelperText>}
         </FormControl>
     );
 }

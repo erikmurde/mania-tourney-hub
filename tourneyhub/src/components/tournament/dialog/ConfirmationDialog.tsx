@@ -1,4 +1,4 @@
-import { Button, ButtonProps, Dialog, IconButton, SxProps } from '@mui/material';
+import { Button, ButtonProps, Dialog, IconButton } from '@mui/material';
 import TourneyDialogTitle from './TourneyDialogTitle';
 import { StyledDialogActions } from '../../styled/StyledDialogActions';
 import { useState } from 'react';

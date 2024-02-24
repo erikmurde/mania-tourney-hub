@@ -37,7 +37,7 @@ const MapPool = ({manage}: {manage?: boolean}) => {
             service.getAllStageInMappool(stageId.toString())
                 .then(maps => setMaps(maps));
         }
-    }, [stageId]);
+    }, [stageId, manage]);
 
     return (  
         <Paper elevation={2} sx={{ minHeight: 500, paddingBottom: 2 }}>

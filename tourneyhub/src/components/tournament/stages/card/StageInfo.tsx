@@ -1,8 +1,9 @@
 import { Grid, Typography } from '@mui/material';
 import { IStageDto } from '../../../../dto/stage/IStageDto';
+import dayjs from 'dayjs';
 
 const StageInfo = ({stage}: {stage: IStageDto}) => {
-    const type = stage.stageType.name;
+    const type = stage.stageType!.name;
 
     return (
         <Grid container direction='column' flexGrow={1}>
@@ -25,7 +26,7 @@ const StageInfo = ({stage}: {stage: IStageDto}) => {
                 </Grid>
                 <Grid item>
                     <Typography fontSize={14} height={30}>
-                        {`Scheduling deadline ${stage.schedulingDeadline}`}
+                        {`Scheduling deadline ${dayjs(stage.schedulingDeadline)}`}
                     </Typography>
                 </Grid>
                 </>

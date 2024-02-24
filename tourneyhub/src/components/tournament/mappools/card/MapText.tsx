@@ -1,4 +1,4 @@
-import { Box, Typography, useTheme } from '@mui/material';
+import { Typography, useTheme } from '@mui/material';
 import { IMapDto } from '../../../../dto/map/IMapDto';
 
 interface IProps {

@@ -37,7 +37,7 @@ const UnsubmittedMapCreateForm = ({open, onClose}: DialogProps) => {
 
     return (  
         <Dialog open={open} onClose={onClose} fullWidth maxWidth='md'>
-        <TourneyDialogTitle title='Add new unsubmitted map' onClose={onClose}/>
+            <TourneyDialogTitle title='Add new unsubmitted map' onClose={onClose}/>
             <StyledDialogContent>
                 <UnsubmittedMapFormView selectValues={mapTypes} onSubmit={onSubmit}/>
             </StyledDialogContent>
