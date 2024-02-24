@@ -11,14 +11,22 @@ export abstract class BaseEntityService<TEntityDto> extends BaseService {
     }
 
     async getAll(): Promise<TEntityDto[]> {
-        return (await this.axios.get<TEntityDto[]>(this.baseUrl + this.expand)).data;
+        const response = await this.axios.get<TEntityDto[]>(this.baseUrl + this.expand);
+
+        console.log('getAll response: ', response);
+        return response.data;
     }
 
     async getEntity(id: string): Promise<TEntityDto> {
-        return (await this.axios.get<TEntityDto>(`${this.baseUrl}/${id}${this.expand}`)).data;
+        const response = await this.axios.get<TEntityDto>(`${this.baseUrl}/${id}${this.expand}`);
+
+        console.log('getEntity response: ', response);
+        return response.data;
     }
 
     async create(entity: TEntityDto) {
-        await this.axios.post(this.baseUrl, entity);
+        const response = await this.axios.post(this.baseUrl, entity);
+
+        console.log('create response: ', response);
     }
 }

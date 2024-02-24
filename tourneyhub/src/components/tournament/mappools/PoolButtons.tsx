@@ -2,8 +2,15 @@ import { Edit, Public, Publish } from '@mui/icons-material';
 import { Grid, Button } from '@mui/material';
 import { useLocation, useNavigate } from 'react-router-dom';
 import MapSelectForm from './form/MapSelectForm';
+import ConfirmationDialog from '../dialog/ConfirmationDialog';
+import { ISimpleStageDto } from '../../../dto/stage/ISimpleStageDto';
 
-const PoolButtons = ({manage}: {manage?: boolean}) => {
+interface IProps {
+    stage: ISimpleStageDto,
+    manage?: boolean
+}
+
+const PoolButtons = ({stage, manage}: IProps) => {
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -18,7 +25,7 @@ const PoolButtons = ({manage}: {manage?: boolean}) => {
                         variant='contained' 
                         startIcon={<Public/>}
                         onClick={() => navigate(`../mappools${location.hash}`)}>
-                        Public View
+                        Public view
                     </Button>
                 </Grid>
             </>
@@ -34,11 +41,15 @@ const PoolButtons = ({manage}: {manage?: boolean}) => {
                         Manage
                     </Button>
                 </Grid>
-                <Grid item>
-                    <Button variant='contained' startIcon={<Publish/>} sx={{ width: 150 }}>
-                        Publish
-                    </Button>
-                </Grid>
+                {stage.mappoolPublic 
+                ?   <></>   
+                :   <Grid item>
+                    <ConfirmationDialog
+                        btnProps={{ startIcon: <Publish/>, title: 'Publish', sx: {width: 150}}}
+                        title='Are you sure you wish to publish this mappool?'
+                        actionTitle='Publish'
+                        action={() => console.log('...publishing')}/>
+                    </Grid>}
             </>
         );
     }

@@ -69,7 +69,9 @@ const MapPool = ({manage}: {manage?: boolean}) => {
                             )}
                         </Tabs>
                     </Grid>
-                    <PoolButtons manage={manage}/>
+                    <PoolButtons manage={manage} stage={
+                        stages.find(stage => stage.id === stageId.toString()) ?? {} as ISimpleStageDto
+                    }/>
                 </Grid>
                 <Grid item xs>
                     {manage 

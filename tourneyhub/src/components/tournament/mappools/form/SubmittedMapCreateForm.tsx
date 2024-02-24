@@ -5,7 +5,7 @@ import { Add } from '@mui/icons-material';
 import { StyledDialogContent } from '../../../styled/styledDialogContent';
 import { StyledDialogActions } from '../../../styled/StyledDialogActions';
 
-const SubmittedMapForm = ({open, onClose}: DialogProps) => {
+const SubmittedCreateMapForm = ({open, onClose}: DialogProps) => {
     return (  
         <Dialog open={open} onClose={onClose} fullWidth maxWidth='sm'>
             <TourneyDialogTitle title='Add new submitted map' onClose={onClose}/>
@@ -20,4 +20,4 @@ const SubmittedMapForm = ({open, onClose}: DialogProps) => {
     );
 }
 
-export default SubmittedMapForm;
+export default SubmittedCreateMapForm;

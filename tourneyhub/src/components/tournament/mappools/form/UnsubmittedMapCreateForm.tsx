@@ -13,7 +13,7 @@ import { AuthContext } from '../../../../routes/Root';
 import { MapService } from '../../../../services/mapService';
 import { useLocation } from 'react-router-dom';
 
-const UnsubmittedMapForm = ({open, onClose}: DialogProps) => {
+const UnsubmittedMapCreateForm = ({open, onClose}: DialogProps) => {
     const { user } = useContext(AuthContext);
     const [mapTypes, setMapTypes] = useState([] as MapTypeDto[]);
     const location = useLocation();
@@ -50,4 +50,4 @@ const UnsubmittedMapForm = ({open, onClose}: DialogProps) => {
     );
 }
 
-export default UnsubmittedMapForm;
+export default UnsubmittedMapCreateForm;

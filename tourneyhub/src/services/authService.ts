@@ -1,9 +1,18 @@
+import { HOST } from '../constants';
 import { IUserDto } from '../dto/IUserDto';
 import { BaseService } from './base/baseService';
 
 export class AuthService extends BaseService {
     constructor() {
         super();
+    }
+
+    isHost(user: IUserDto, tournamentId: string) {
+        const roles = user.roles
+            .filter(role => role.tournamentId === tournamentId)
+            .map(role => role.name);
+
+        return roles.includes(HOST);
     }
 
     async login() {

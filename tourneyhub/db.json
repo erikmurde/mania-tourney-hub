@@ -10,6 +10,7 @@
     "avatar": "https://a.ppy.sh/16819909?1642373525.jpeg",
     "roles": [
       {
+        "tournamentId": "0",
         "name": "host",
         "canRegWithRole": false
       }
@@ -21,7 +22,7 @@
       "name": "6K Autumn Showdown",
       "code": "6KAST",
       "description": "6K Autumn Showdown Tournament (6KAST) is an osu!mania Free for all 1v1 Double-Elimination tournament focused on the 6 key gamemode.This is one of the first ever 6 key focused tournament ever hosted on osu!mania. So we hope you enjoy your experience on the newest tourney keymode meta!",
-      "banner": "https://i.ppy.sh/b55ec5bff5d7e9228b8f731de19126376c6dddd0/68747470733a2f2f63646e2e646973636f72646170702e636f6d2f6174746163686d656e74732f313131343934313836353631363232303137312f313131363635313138383330323133353330382f415354364b5f42616e6e65725f52656374616e676c652e706e67",
+      "banner": "https://i.ppy.sh/333a6da130763d34fb218cd7d3dc9cd24bb25a35/68747470733a2f2f696d6775722d617263686976652e7070792e73682f646973636f72642f313131343934313836353631363232303137312d313131363635313138383330323133353330382d415354364b5f42616e6e65725f52656374616e676c652e706e67",
       "public": true,
       "done": false,
       "minTeamSize": 1,
@@ -41,46 +42,176 @@
       "countries": []
     }
   ],
-  "stagesSimple": [
+  "stages": [
     {
       "id": "0",
       "tournamentId": "0",
-      "name": "Qualifiers"
+      "stageTypeId": "1",
+      "name": "Qualifiers",
+      "bestOf": 0,
+      "lobbySize": 10,
+      "numAdvancing": 64,
+      "schedulingDeadline": "Wed, 10 Jul 2024 07:00:00 GMT",
+      "mappoolPublic": true,
+      "schedulePublic": true,
+      "statsPublic": false
     },
     {
       "id": "1",
       "tournamentId": "0",
-      "name": "Round of 64"
+      "stageTypeId": "0",
+      "name": "Round of 64",
+      "bestOf": 7,
+      "lobbySize": 0,
+      "numAdvancing": 0,
+      "schedulingDeadline": null,
+      "mappoolPublic": true,
+      "schedulePublic": true,
+      "statsPublic": true
     },
     {
       "id": "2",
       "tournamentId": "0",
-      "name": "Round of 32"
+      "stageTypeId": "0",
+      "name": "Round of 32",
+      "bestOf": 7,
+      "lobbySize": 0,
+      "numAdvancing": 0,
+      "schedulingDeadline": null,
+      "mappoolPublic": true,
+      "schedulePublic": true,
+      "statsPublic": true
     },
     {
       "id": "3",
       "tournamentId": "0",
-      "name": "Round of 16"
+      "stageTypeId": "0",
+      "name": "Round of 16",
+      "bestOf": 9,
+      "lobbySize": 0,
+      "numAdvancing": 0,
+      "schedulingDeadline": null,
+      "mappoolPublic": true,
+      "schedulePublic": true,
+      "statsPublic": true
     },
     {
       "id": "4",
       "tournamentId": "0",
-      "name": "QuarterFinals"
+      "stageTypeId": "0",
+      "name": "QuarterFinals",
+      "bestOf": 11,
+      "lobbySize": 0,
+      "numAdvancing": 0,
+      "schedulingDeadline": null,
+      "mappoolPublic": true,
+      "schedulePublic": true,
+      "statsPublic": false
     },
     {
       "id": "5",
       "tournamentId": "0",
-      "name": "SemiFinals"
+      "stageTypeId": "0",
+      "name": "SemiFinals",
+      "bestOf": 11,
+      "lobbySize": 0,
+      "numAdvancing": 0,
+      "schedulingDeadline": null,
+      "mappoolPublic": false,
+      "schedulePublic": false,
+      "statsPublic": false
     },
     {
       "id": "6",
       "tournamentId": "0",
-      "name": "Finals"
+      "stageTypeId": "0",
+      "name": "Finals",
+      "bestOf": 13,
+      "lobbySize": 0,
+      "numAdvancing": 0,
+      "schedulingDeadline": null,
+      "mappoolPublic": false,
+      "schedulePublic": false,
+      "statsPublic": false
     },
     {
       "id": "7",
       "tournamentId": "0",
-      "name": "Grand Finals"
+      "stageTypeId": "0",
+      "name": "Grand Finals",
+      "bestOf": 13,
+      "lobbySize": 0,
+      "numAdvancing": 0,
+      "schedulingDeadline": null,
+      "mappoolPublic": false,
+      "schedulePublic": false,
+      "statsPublic": false
+    }
+  ],
+  "stagesSimple": [
+    {
+      "id": "0",
+      "tournamentId": "0",
+      "name": "Qualifiers",
+      "mappoolPublic": true,
+      "schedulePublic": true,
+      "statsPublic": false
+    },
+    {
+      "id": "1",
+      "tournamentId": "0",
+      "name": "Round of 64",
+      "mappoolPublic": true,
+      "schedulePublic": true,
+      "statsPublic": true
+    },
+    {
+      "id": "2",
+      "tournamentId": "0",
+      "name": "Round of 32",
+      "mappoolPublic": true,
+      "schedulePublic": true,
+      "statsPublic": true
+    },
+    {
+      "id": "3",
+      "tournamentId": "0",
+      "name": "Round of 16",
+      "mappoolPublic": true,
+      "schedulePublic": true,
+      "statsPublic": true
+    },
+    {
+      "id": "4",
+      "tournamentId": "0",
+      "name": "QuarterFinals",
+      "mappoolPublic": true,
+      "schedulePublic": true,
+      "statsPublic": false
+    },
+    {
+      "id": "5",
+      "tournamentId": "0",
+      "name": "SemiFinals",
+      "mappoolPublic": false,
+      "schedulePublic": false,
+      "statsPublic": false
+    },
+    {
+      "id": "6",
+      "tournamentId": "0",
+      "name": "Finals",
+      "mappoolPublic": false,
+      "schedulePublic": false,
+      "statsPublic": false
+    },
+    {
+      "id": "7",
+      "tournamentId": "0",
+      "name": "Grand Finals",
+      "mappoolPublic": false,
+      "schedulePublic": false,
+      "statsPublic": false
     }
   ],
   "maps": [
@@ -174,7 +305,7 @@
       "beatmapId": 2999060,
       "inMappool": false,
       "title": "fffff op.2",
-      "diff": "Evening’s Extreme",
+      "diff": "Evening's Extreme",
       "artist": "Five Hammer",
       "mapper": "Evening",
       "suggestor": "U1d",
@@ -442,6 +573,16 @@
     {
       "id": "4",
       "name": "TB"
+    }
+  ],
+  "stageTypes": [
+    {
+      "id": "0",
+      "name": "standard"
+    },
+    {
+      "id": "1",
+      "name": "qualifier"
     }
   ]
 }

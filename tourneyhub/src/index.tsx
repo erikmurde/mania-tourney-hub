@@ -77,6 +77,7 @@ const router = createBrowserRouter([
 ]);
 
 const white = '#F5F5F5';
+const bg = '#121212';
 
 const appTheme = createTheme({
     palette: {
@@ -90,10 +91,12 @@ const appTheme = createTheme({
             dark: '#ED8F5E'
         },
         success: {
-            main: '#66BB6A'
+            main: '#66BB6A',
+            contrastText: bg
         },
         error: {
-            main: '#EF5350'
+            main: '#EF5350',
+            contrastText: bg
         },
         text: {
             primary: white

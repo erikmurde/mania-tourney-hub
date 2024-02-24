@@ -4,7 +4,7 @@ import { BaseEntityService } from './base/baseEntityService';
 
 export class StageService extends BaseEntityService<IStageDto> {
     constructor() {
-        super('stages');
+        super('stages', 'stageType');
     }
 
     async getAllSimple(tournamentId: string): Promise<ISimpleStageDto[]> {

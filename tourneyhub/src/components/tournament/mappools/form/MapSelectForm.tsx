@@ -1,7 +1,7 @@
 import { Button, Dialog } from '@mui/material';
 import { useState } from 'react';
-import SubmittedMapForm from './SubmittedMapForm';
-import UnsubmittedMapForm from './UnsubmittedMapForm';
+import SubmittedMapForm from './SubmittedMapCreateForm';
+import UnsubmittedMapForm from './UnsubmittedMapCreateForm';
 import TourneyDialogTitle from '../../dialog/TourneyDialogTitle';
 import { StyledDialogActions } from '../../../styled/StyledDialogActions';
 import { PlaylistAdd } from '@mui/icons-material';

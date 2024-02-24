@@ -5,13 +5,18 @@ import { MapTypeDto } from '../../../../../dto/mapType/MapTypeDto';
 import TourneySelectField from '../../../field/TourneySelectField';
 
 interface IProps {
+    initialValues?: IMapDto,
     selectValues: MapTypeDto[],
     onSubmit: (values: IMapDto) => void
 }
 
-const UnsubmittedMapFormView = ({selectValues, onSubmit}: IProps) => {
+const UnsubmittedMapFormView = ({initialValues, selectValues, onSubmit}: IProps) => {
     return (  
-        <Formik initialValues={{} as IMapDto} onSubmit={onSubmit}>
+        <Formik 
+            initialValues={initialValues ?? {} as IMapDto} 
+            onSubmit={onSubmit}
+            enableReinitialize
+            >
             <Form id='unsubmitted-map-form'>
                 <Grid container rowSpacing={2} columnSpacing={1}>
                     <Grid item xs={12} marginTop={1}>
