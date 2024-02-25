@@ -30,10 +30,18 @@ button {
   text-align: center;
 }
 
-.map-cover, #tourney-banner {
+.map-cover, .avatar, #tourney-banner, .flag {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.avatar {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.map-cover, #tourney-banner {
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
 }

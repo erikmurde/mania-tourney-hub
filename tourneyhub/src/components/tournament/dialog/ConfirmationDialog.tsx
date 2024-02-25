@@ -27,6 +27,7 @@ const ConfirmationDialog = ({btnProps, btnIcon, title, description, actionTitle,
                 :   <Button variant='contained' onClick={() => setOpen(true)} {...btnProps}>
                         {btnProps?.title ?? 'Missing title'}
                     </Button>}
+            {open && 
             <Dialog open={open} onClose={() => setOpen(false)}>
                 <TourneyDialogTitle 
                     title={title} 
@@ -44,7 +45,7 @@ const ConfirmationDialog = ({btnProps, btnIcon, title, description, actionTitle,
                         {actionTitle}
                     </Button>
                 </StyledDialogActions>
-            </Dialog>
+            </Dialog>}
         </>
     );
 }

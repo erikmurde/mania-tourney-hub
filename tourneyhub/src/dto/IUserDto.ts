@@ -1,13 +1,16 @@
-import { ITournamentRoleDto } from './ITournamentRoleDto';
+import { ICountryDto } from './ICountryDto';
+import { IRoleDto } from './IRoleDto';
+import { IStatDto } from './IStatDto';
 
 export interface IUserDto {
     id: number,
     playerId: number,
     name: string,
     rank: number,
-    country: string,
+    country: ICountryDto,
     discordUsername: string,
     timezone: number,
     avatar: string,
-    roles: ITournamentRoleDto[]
+    roles: IRoleDto[],
+    stats: IStatDto[]
 }

@@ -29,8 +29,25 @@ export class AuthService extends BaseService {
         window.location.assign(url);
     }
 
-    async getUser(): Promise<IUserDto> {
-        const response = await this.axios.get<IUserDto>('me');
+    async getStaff(tournamentId: string): Promise<IUserDto[]> {
+        const response = await this.axios.get<IUserDto[]>(`users`);
+
+        const staff = response.data
+            .filter(user => 
+                !user.roles.every(role => 
+                    role.tournamentId !== tournamentId || role.name === 'player'));
+
+        staff.forEach(user => 
+            user.roles = user.roles.filter(role => 
+                role.tournamentId === tournamentId));
+
+        console.log('getStaff response: ', staff);
+
+        return staff;
+    }
+
+    async getUser(id: string): Promise<IUserDto> {
+        const response = await this.axios.get<IUserDto>(`users/${id}?_embed=stats`);
 
         console.log('getUser response: ', response)
         return response.data;

@@ -7,10 +7,9 @@ import MapManageButtons from './MapManageButtons';
 const MapManageCard = ({map}: {map: IMapDto}) => {
     return (
         <Card elevation={12}>
-            <Box display='flex' flexDirection='row'>
+            <Box display='flex'>
                 <CardMedia 
                     sx={{ width: 300 }}
-                    className=''
                     image={map.cover}
                     title={`cover of ${map.title}`}/>
                 <CardContent sx={{ padding: 1, paddingBottom: '0 !important' }}>
