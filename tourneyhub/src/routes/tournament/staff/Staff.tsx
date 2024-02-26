@@ -5,36 +5,45 @@ import { AuthService } from '../../../services/authService';
 import { useParams } from 'react-router-dom';
 import StaffGroup from '../../../components/tournament/staff/StaffGroup';
 import { COMMENTATOR, GFX, HOST, MAPPER, MAPPOOLER, PLAYTESTER, REFEREE, SHEETER, STREAMER } from '../../../constants';
-import { Description, PersonAdd } from '@mui/icons-material';
+import { Description, List, PersonAdd } from '@mui/icons-material';
+import { StaffApplicationService } from '../../../services/staffApplicationService';
+import { StaffApplicationDto } from '../../../dto/staffApplication/StaffApplicationDto';
+import StaffApplicationCard from '../../../components/tournament/staff/StaffApplicationCard';
 
 const Staff = () => {
     const { id } = useParams();
+    const [list, setList] = useState(true);
     const [staff, setStaff] = useState([] as IUserDto[]);
+    const [applications, setApplications] = useState([] as StaffApplicationDto[]);
 
     useEffect(() => {
         if (id) {
             new AuthService()
                 .getStaff(id)
                 .then(staff => setStaff(staff));
+
+            new StaffApplicationService()
+                .getAll()
+                .then(applications => setApplications(applications));
         }
     }, [id]);
 
-    const getStaff = (role: string) => {
+    const filterStaff = (role: string) => {
         return staff.filter(user => 
             user.roles
                 .map(role => role.name)
                 .includes(role));
     }
 
-    const hosts = getStaff(HOST);
-    const mappoolers = getStaff(MAPPOOLER);
-    const mappers = getStaff(MAPPER);
-    const playtesters = getStaff(PLAYTESTER);
-    const referees = getStaff(REFEREE);
-    const streamers = getStaff(STREAMER);
-    const commentators = getStaff(COMMENTATOR);
-    const sheeters = getStaff(SHEETER);
-    const gfx = getStaff(GFX);
+    const hosts = filterStaff(HOST);
+    const mappoolers = filterStaff(MAPPOOLER);
+    const mappers = filterStaff(MAPPER);
+    const playtesters = filterStaff(PLAYTESTER);
+    const referees = filterStaff(REFEREE);
+    const streamers = filterStaff(STREAMER);
+    const commentators = filterStaff(COMMENTATOR);
+    const sheeters = filterStaff(SHEETER);
+    const gfx = filterStaff(GFX);
 
     return (
         <Grid container direction='column' rowSpacing={2}>
@@ -43,14 +52,41 @@ const Staff = () => {
                     <Typography variant='h3' fontSize={36} height={80} lineHeight={2}>
                         General
                     </Typography>
-                    <Button variant='contained' sx={{ marginRight: 1 }} startIcon={<Description/>}>
-                        Staff applications
+                    <Button variant='contained' sx={{ marginRight: 1 }} 
+                        startIcon={list ? <Description/> : <List/>} 
+                        onClick={() => setList(!list)}
+                        >
+                        {list ? 'Staff applications' : 'Staff list'}
                     </Button>
                     <Button variant='contained' startIcon={<PersonAdd/>}>
                         Invite staff
                     </Button>
                 </Paper>
             </Grid>
+            {!list && 
+            <Grid item>
+                <Paper elevation={2} sx={{ paddingBottom: 2 }}>
+                    <Typography 
+                        variant='h3' 
+                        fontSize={36} 
+                        height={80} 
+                        lineHeight={2} 
+                        marginLeft={5} 
+                        marginBottom={2}
+                        >
+                        Staff applications
+                    </Typography>
+                    <Grid container spacing={2} justifyContent='center'>
+                        {applications.map(application => 
+                            <Grid item key={application.id}>
+                                <StaffApplicationCard application={application}/>
+                            </Grid>
+                        )}
+                    </Grid>
+                </Paper>
+            </Grid>}
+            {list &&
+            <>
             {hosts.length > 0 && <StaffGroup name='Hosts' staff={hosts}/>}
             {mappoolers.length > 0 && <StaffGroup name='Mappoolers' staff={mappoolers}/>}
             {mappers.length > 0 && <StaffGroup name='Mappers' staff={mappers}/>}
@@ -60,6 +96,7 @@ const Staff = () => {
             {commentators.length > 0 && <StaffGroup name='Commentators' staff={commentators}/>}
             {sheeters.length > 0 && <StaffGroup name='Sheeters' staff={sheeters}/>}
             {gfx.length > 0 && <StaffGroup name='Graphic Designers' staff={gfx}/>}
+            </>}
         </Grid>
     );
 }

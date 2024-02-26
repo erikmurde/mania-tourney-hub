@@ -3,13 +3,16 @@ import { ICountryDto } from '../dto/ICountryDto';
 
 const Flag = ({country}: {country: ICountryDto}) => {
     return (  
-        <Grid item width={40} height={20}>
+        <>
+        {country && 
+        <Grid item width={30} height={20} xs='auto'>
             <img 
                 className='flag' 
                 src={`https://assets.ppy.sh/old-flags/${country.ISO2}.png`} 
                 alt={`Flag of ${country.name}`}/>
-        </Grid>
+        </Grid>}
+        </>
     );
 }
- 
+
 export default Flag;
