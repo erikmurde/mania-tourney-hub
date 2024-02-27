@@ -9,6 +9,7 @@ import { Description, List, PersonAdd } from '@mui/icons-material';
 import { StaffApplicationService } from '../../../services/staffApplicationService';
 import { StaffApplicationDto } from '../../../dto/staffApplication/StaffApplicationDto';
 import StaffApplicationCard from '../../../components/tournament/staff/StaffApplicationCard';
+import StaffInviteForm from '../../../components/tournament/staff/form/StaffInviteForm';
 
 const Staff = () => {
     const { id } = useParams();
@@ -58,9 +59,7 @@ const Staff = () => {
                         >
                         {list ? 'Staff applications' : 'Staff list'}
                     </Button>
-                    <Button variant='contained' startIcon={<PersonAdd/>}>
-                        Invite staff
-                    </Button>
+                    <StaffInviteForm/>
                 </Paper>
             </Grid>
             {!list && 

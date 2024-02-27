@@ -1,8 +1,11 @@
 import { HOST } from '../constants';
 import { IUserDto } from '../dto/IUserDto';
-import { BaseService } from './base/baseService';
+import { BaseEntityService } from './base/baseEntityService';
 
-export class AuthService extends BaseService {
+export class AuthService extends BaseEntityService<IUserDto> {
+    constructor() {
+        super('users');
+    }
 
     isHost(user: IUserDto, tournamentId: string) {
         const roles = user.roles

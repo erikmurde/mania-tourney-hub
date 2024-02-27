@@ -3,7 +3,7 @@ import { IRoleDto } from './IRoleDto';
 import { IStatDto } from './IStatDto';
 
 export interface IUserDto {
-    id: number,
+    id: string,
     playerId: number,
     name: string,
     rank: number,
