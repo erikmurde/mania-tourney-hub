@@ -40,13 +40,25 @@ export class AuthService extends BaseEntityService<IUserDto> {
                 !user.roles.every(role => 
                     role.tournamentId !== tournamentId || role.name === 'player'));
 
-        staff.forEach(user => 
-            user.roles = user.roles.filter(role => 
-                role.tournamentId === tournamentId));
+        this.filterUserRolesByTournament(staff, tournamentId);
 
         console.log('getStaff response: ', staff);
-
         return staff;
+    }
+
+    async getPlayers(tournamentId: string): Promise<IUserDto[]> {
+        const response = await this.axios.get<IUserDto[]>('users');
+
+        const players = response.data
+            .filter(user => 
+                !user.roles.every(role => 
+                    role.tournamentId !== tournamentId || role.name !== 'player'));
+
+        this.filterUserRolesByTournament(players, tournamentId);
+        this.filterUserStatsByTournament(players, tournamentId);
+
+        console.log('getPlayers response: ', players);
+        return players;
     }
 
     async getUser(id: string): Promise<IUserDto> {
@@ -54,5 +66,17 @@ export class AuthService extends BaseEntityService<IUserDto> {
 
         console.log('getUser response: ', response)
         return response.data;
+    }
+
+    private filterUserRolesByTournament(users: IUserDto[], tournamentId: string) {
+        users.forEach(user => 
+            user.roles = user.roles.filter(role => 
+                role.tournamentId === tournamentId));
+    }
+
+    private filterUserStatsByTournament(users: IUserDto[], tournamentId: string) {
+        users.forEach(user =>
+            user.stats = user.stats.filter(stat => 
+                stat.tournamentId === tournamentId));
     }
 }

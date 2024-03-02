@@ -1,8 +1,9 @@
-import { Button, ButtonProps, Dialog, IconButton } from '@mui/material';
+import { Button, ButtonProps, Dialog } from '@mui/material';
 import TourneyDialogTitle from './TourneyDialogTitle';
 import { StyledDialogActions } from '../../styled/StyledDialogActions';
 import { useState } from 'react';
 import { StyledDialogContent } from '../../styled/styledDialogContent';
+import { StyledIconButton } from '../../styled/StyledIconButton';
 
 interface IProps {
     btnProps?: ButtonProps,
@@ -19,11 +20,11 @@ const ConfirmationDialog = ({btnProps, btnIcon, title, description, actionTitle,
     return ( 
         <>
             {btnIcon
-                ?   <IconButton
+                ?   <StyledIconButton
                         onClick={() => setOpen(true)}
                         {...btnProps}>
                         {btnIcon}
-                    </IconButton>
+                    </StyledIconButton>
                 :   <Button variant='contained' onClick={() => setOpen(true)} {...btnProps}>
                         {btnProps?.title ?? 'Missing title'}
                     </Button>}
@@ -41,7 +42,11 @@ const ConfirmationDialog = ({btnProps, btnIcon, title, description, actionTitle,
                     <Button variant='contained' color='error' onClick={() => setOpen(false)}>
                         Cancel
                     </Button>
-                    <Button variant='contained' color='success' onClick={action}>
+                    <Button variant='contained' color='success' 
+                        onClick={() => {
+                            action();
+                            setOpen(false)
+                        }}>
                         {actionTitle}
                     </Button>
                 </StyledDialogActions>

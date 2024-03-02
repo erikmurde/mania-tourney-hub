@@ -1,39 +1,54 @@
 import { Button, Grid, Paper, Typography } from '@mui/material';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { IUserDto } from '../../../dto/IUserDto';
 import { AuthService } from '../../../services/authService';
 import { useParams } from 'react-router-dom';
 import StaffGroup from '../../../components/tournament/staff/StaffGroup';
 import { COMMENTATOR, GFX, HOST, MAPPER, MAPPOOLER, PLAYTESTER, REFEREE, SHEETER, STREAMER } from '../../../constants';
-import { Description, List, PersonAdd } from '@mui/icons-material';
+import { Description, List } from '@mui/icons-material';
 import { StaffApplicationService } from '../../../services/staffApplicationService';
 import { StaffApplicationDto } from '../../../dto/staffApplication/StaffApplicationDto';
 import StaffApplicationCard from '../../../components/tournament/staff/StaffApplicationCard';
 import StaffInviteForm from '../../../components/tournament/staff/form/StaffInviteForm';
+import { AuthContext } from '../../Root';
 
 const Staff = () => {
+    const { user } = useContext(AuthContext);
     const { id } = useParams();
     const [list, setList] = useState(true);
     const [staff, setStaff] = useState([] as IUserDto[]);
     const [applications, setApplications] = useState([] as StaffApplicationDto[]);
+    const service = new AuthService();
 
     useEffect(() => {
         if (id) {
-            new AuthService()
+            service
                 .getStaff(id)
                 .then(staff => setStaff(staff));
 
-            new StaffApplicationService()
-                .getAll()
-                .then(applications => setApplications(applications));
+            if (user && service.isHost(user, id)) {
+                new StaffApplicationService()
+                    .getAllPending()
+                    .then(applications => setApplications(applications));
+            }
         }
-    }, [id]);
+    }, [id, user]);
 
     const filterStaff = (role: string) => {
         return staff.filter(user => 
             user.roles
                 .map(role => role.name)
                 .includes(role));
+    }
+
+    const updateApplicationStatus = async(application: StaffApplicationDto, status: string) => {
+        application.status = status;
+
+        await new StaffApplicationService()
+            .edit(application.id, application);
+
+        setApplications(applications.filter(app => 
+            app.id !== application.id));
     }
 
     const hosts = filterStaff(HOST);
@@ -48,6 +63,7 @@ const Staff = () => {
 
     return (
         <Grid container direction='column' rowSpacing={2}>
+            {user && id && service.isHost(user, id) && 
             <Grid item>
                 <Paper elevation={2} sx={{ paddingBottom: 2, paddingLeft: 5 }}>
                     <Typography variant='h3' fontSize={36} height={80} lineHeight={2}>
@@ -61,7 +77,7 @@ const Staff = () => {
                     </Button>
                     <StaffInviteForm/>
                 </Paper>
-            </Grid>
+            </Grid>}
             {!list && 
             <Grid item>
                 <Paper elevation={2} sx={{ paddingBottom: 2 }}>
@@ -78,7 +94,9 @@ const Staff = () => {
                     <Grid container spacing={2} justifyContent='center'>
                         {applications.map(application => 
                             <Grid item key={application.id}>
-                                <StaffApplicationCard application={application}/>
+                                <StaffApplicationCard 
+                                    application={application} 
+                                    updateStatus={updateApplicationStatus}/>
                             </Grid>
                         )}
                     </Grid>

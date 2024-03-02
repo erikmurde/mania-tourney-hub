@@ -5,6 +5,7 @@ export interface ITournamentDto {
     description: string,
     banner: string,
     public: boolean,
+    playersPublic: boolean,
     done: boolean,
     minTeamSize: number,
     maxTeamSixe: number,
@@ -19,6 +20,5 @@ export interface ITournamentDto {
     discordLink: string,
     forumLink: string,
     challongeLink: string,
-    discordRequired: boolean,
     countries: string[]
 }

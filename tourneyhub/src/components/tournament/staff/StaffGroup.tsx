@@ -22,9 +22,9 @@ const StaffGroup = ({name, staff}: IProps) => {
                     {name}
                 </Typography>
                 <Grid container spacing={1} justifyContent='center'>
-                    {staff.map(user => 
-                        <Grid item key={user.id}>
-                            <StaffCard user={user}/>
+                    {staff.map(member => 
+                        <Grid item key={member.id}>
+                            <StaffCard staff={member}/>
                         </Grid>
                     )}
                 </Grid>

@@ -29,4 +29,10 @@ export abstract class BaseEntityService<TEntityDto> extends BaseService {
 
         console.log('create response: ', response);
     }
+
+    async edit(id: string, entity: TEntityDto) {
+        const response = await this.axios.put(`${this.baseUrl}/${id}`, entity);
+
+        console.log('edit response: ', response);
+    }
 }

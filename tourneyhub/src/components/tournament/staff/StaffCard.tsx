@@ -1,52 +1,59 @@
 import { Card, CardMedia, Grid, Typography, useTheme } from '@mui/material';
 import { IUserDto } from '../../../dto/IUserDto';
-import { StaffCardContent } from '../../styled/StaffCardContent';
 import { PersonRemove } from '@mui/icons-material';
 import ConfirmationDialog from '../dialog/ConfirmationDialog';
 import Flag from '../../Flag';
 import { AuthService } from '../../../services/authService';
 import { useParams } from 'react-router-dom';
+import { UserCardContent } from '../../styled/UserCardContent';
+import { useContext } from 'react';
+import { AuthContext } from '../../../routes/Root';
 
-const StaffCard = ({user}: {user: IUserDto}) => {
+const StaffCard = ({staff}: {staff: IUserDto}) => {
+    const { user } = useContext(AuthContext);
     const { id } = useParams();
     const theme = useTheme();
+    const service = new AuthService();
 
-    const isHost = new AuthService()
-        .isHost(user, id!);
+    const isHost = user 
+        ? service.isHost(user, id!) 
+        : false;
+
+    const isStaffHost = service.isHost(staff, id!);
 
     return (  
         <Card elevation={8} sx={{ display: 'flex', width: 320, height: 80 }}>
             <CardMedia
                 sx={{ width: 80, minWidth: 80 }}
                 className='avatar'
-                image={user.avatar} 
-                title={`Avatar of ${user.name}`}
+                image={staff.avatar} 
+                title={`Avatar of ${staff.name}`}
             />
-            <StaffCardContent sx={{ flexGrow: 1 }}>
+            <UserCardContent>
                 <Grid container columnSpacing={1}>
-                    <Grid item xs={isHost ? 12 : 9}>
+                    <Grid item xs={isStaffHost || !isHost ? 12 : 9} minHeight={30}>
                         <Typography fontSize={18}>
-                            {user.name}
+                            {staff.name}
                         </Typography>
                     </Grid>
-                    {!isHost && 
-                    <Grid item xs={3}>
+                    {!isStaffHost && isHost &&
+                    <Grid item xs={3} textAlign='end'>
                         <ConfirmationDialog 
                             btnIcon={<PersonRemove/>}
-                            btnProps={{ color: 'error' }}
+                            btnProps={{ color: 'error', sx: { padding: 0.5 }}}
                             title={'Are you sure you wish to remove this staff member?'} 
                             actionTitle={'Remove'} 
                             action={() => console.log('removing...')}
                         />
                     </Grid>}
-                    <Flag country={user.country}/>
+                    <Flag country={staff.country}/>
                     <Grid item>
                         <Typography lineHeight={1.7} fontSize={12} color={theme.palette.text.secondary}>
-                            {user.country.name}
+                            {staff.country.name}
                         </Typography>
                     </Grid>
                 </Grid>
-            </StaffCardContent>
+            </UserCardContent>
         </Card>
     );
 }

@@ -5,4 +5,12 @@ export class StaffApplicationService extends BaseEntityService<StaffApplicationD
     constructor() {
         super('staffApplications');
     }
+
+    async getAllPending(): Promise<StaffApplicationDto[]> {
+        const response = await this.axios.get<StaffApplicationDto[]>(this.baseUrl);
+
+        console.log('getAllPending response: ', response);
+        return response.data
+            .filter(application => application.status === 'pending');
+    }
 }

@@ -25,8 +25,8 @@ const StaffApplicationForm = ({applicationOpen}: {applicationOpen: boolean}) => 
 
     const initialValues: StaffApplicationDto = {
         id: '',
-        userId: user!.id,
-        tournamentId: id!,
+        userId: user?.id ?? '',
+        tournamentId: id ?? '',
         role: '',
         status: 'pending',
         experience: '',

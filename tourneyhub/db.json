@@ -15,8 +15,16 @@
       "roles": [
         {
           "tournamentId": "0",
-          "name": "player",
+          "name": "host",
           "canRegWithRole": false
+        }
+      ],
+      "stats": [
+        {
+          "tournamentId": "0",
+          "status": "active",
+          "seeding": 11,
+          "placement": 0
         }
       ]
     },
@@ -1199,6 +1207,874 @@
           "canRegWithRole": false
         }
       ]
+    },
+    {
+      "id": "56",
+      "playerId": 2071008,
+      "name": "yz1155",
+      "rank": 45,
+      "country": {
+        "name": "South Korea",
+        "ISO2": "KR"
+      },
+      "discordUsername": "Test",
+      "timezone": 0,
+      "avatar": "https://a.ppy.sh/2071008",
+      "roles": [
+        {
+          "tournamentId": "0",
+          "name": "player",
+          "canRegWithRole": false
+        }
+      ],
+      "stats": [
+        {
+          "tournamentId": "0",
+          "status": "active",
+          "seeding": 1,
+          "placement": 0
+        }
+      ]
+    },
+    {
+      "id": "57",
+      "playerId": 766374,
+      "name": "LostCool",
+      "rank": 8,
+      "country": {
+        "name": "Thailand",
+        "ISO2": "TH"
+      },
+      "discordUsername": "Test",
+      "timezone": 0,
+      "avatar": "https://a.ppy.sh/766374",
+      "roles": [
+        {
+          "tournamentId": "0",
+          "name": "player",
+          "canRegWithRole": false
+        }
+      ],
+      "stats": [
+        {
+          "tournamentId": "0",
+          "status": "active",
+          "seeding": 2,
+          "placement": 0
+        }
+      ]
+    },
+    {
+      "id": "58",
+      "playerId": 15314355,
+      "name": "UmmmMrMoo",
+      "rank": 55,
+      "country": {
+        "name": "Canada",
+        "ISO2": "CA"
+      },
+      "discordUsername": "Test",
+      "timezone": 0,
+      "avatar": "https://a.ppy.sh/15314355",
+      "roles": [
+        {
+          "tournamentId": "0",
+          "name": "player",
+          "canRegWithRole": false
+        }
+      ],
+      "stats": [
+        {
+          "tournamentId": "0",
+          "status": "active",
+          "seeding": 3,
+          "placement": 0
+        }
+      ]
+    },
+    {
+      "id": "59",
+      "playerId": 11420405,
+      "name": "Ojisan-",
+      "rank": 3,
+      "country": {
+        "name": "Philippines",
+        "ISO2": "PH"
+      },
+      "discordUsername": "Test",
+      "timezone": 0,
+      "avatar": "https://a.ppy.sh/11420405",
+      "roles": [
+        {
+          "tournamentId": "0",
+          "name": "player",
+          "canRegWithRole": false
+        }
+      ],
+      "stats": [
+        {
+          "tournamentId": "0",
+          "status": "active",
+          "seeding": 4,
+          "placement": 0
+        }
+      ]
+    },
+    {
+      "id": "60",
+      "playerId": 13967954,
+      "name": "Watch01",
+      "rank": 153,
+      "country": {
+        "name": "China",
+        "ISO2": "CN"
+      },
+      "discordUsername": "Test",
+      "timezone": 0,
+      "avatar": "https://a.ppy.sh/13967954",
+      "roles": [
+        {
+          "tournamentId": "0",
+          "name": "player",
+          "canRegWithRole": false
+        }
+      ],
+      "stats": [
+        {
+          "tournamentId": "0",
+          "status": "active",
+          "seeding": 5,
+          "placement": 0
+        }
+      ]
+    },
+    {
+      "id": "61",
+      "playerId": 3036686,
+      "name": "Sanni",
+      "rank": 57,
+      "country": {
+        "name": "Philippines",
+        "ISO2": "PH"
+      },
+      "discordUsername": "Test",
+      "timezone": 0,
+      "avatar": "https://a.ppy.sh/3036686",
+      "roles": [
+        {
+          "tournamentId": "0",
+          "name": "player",
+          "canRegWithRole": false
+        }
+      ],
+      "stats": [
+        {
+          "tournamentId": "0",
+          "status": "active",
+          "seeding": 6,
+          "placement": 0
+        }
+      ]
+    },
+    {
+      "id": "62",
+      "playerId": 2039089,
+      "name": "arcwinolivirus",
+      "rank": 332,
+      "country": {
+        "name": "Philippines",
+        "ISO2": "PH"
+      },
+      "discordUsername": "Test",
+      "timezone": 0,
+      "avatar": "https://a.ppy.sh/2039089",
+      "roles": [
+        {
+          "tournamentId": "0",
+          "name": "player",
+          "canRegWithRole": false
+        }
+      ],
+      "stats": [
+        {
+          "tournamentId": "0",
+          "status": "active",
+          "seeding": 7,
+          "placement": 0
+        }
+      ]
+    },
+    {
+      "id": "63",
+      "playerId": 89545,
+      "name": "VanWilder",
+      "rank": 42,
+      "country": {
+        "name": "China",
+        "ISO2": "CN"
+      },
+      "discordUsername": "Test",
+      "timezone": 0,
+      "avatar": "https://a.ppy.sh/89545",
+      "roles": [
+        {
+          "tournamentId": "0",
+          "name": "player",
+          "canRegWithRole": false
+        }
+      ],
+      "stats": [
+        {
+          "tournamentId": "0",
+          "status": "active",
+          "seeding": 8,
+          "placement": 0
+        }
+      ]
+    },
+    {
+      "id": "64",
+      "playerId": 29606773,
+      "name": "Shenzouz",
+      "rank": 383,
+      "country": {
+        "name": "China",
+        "ISO2": "CN"
+      },
+      "discordUsername": "Test",
+      "timezone": 0,
+      "avatar": "https://a.ppy.sh/29606773",
+      "roles": [
+        {
+          "tournamentId": "0",
+          "name": "player",
+          "canRegWithRole": false
+        }
+      ],
+      "stats": [
+        {
+          "tournamentId": "0",
+          "status": "active",
+          "seeding": 9,
+          "placement": 0
+        }
+      ]
+    },
+    {
+      "id": "65",
+      "playerId": 12598261,
+      "name": "TsukiyaWhiskers",
+      "rank": 46,
+      "country": {
+        "name": "Germany",
+        "ISO2": "DE"
+      },
+      "discordUsername": "Test",
+      "timezone": 0,
+      "avatar": "https://a.ppy.sh/12598261",
+      "roles": [
+        {
+          "tournamentId": "0",
+          "name": "player",
+          "canRegWithRole": false
+        }
+      ],
+      "stats": [
+        {
+          "tournamentId": "0",
+          "status": "active",
+          "seeding": 10,
+          "placement": 0
+        }
+      ]
+    },
+    {
+      "id": "66",
+      "playerId": 24675802,
+      "name": "Bunsen",
+      "rank": 25,
+      "country": {
+        "name": "United States",
+        "ISO2": "US"
+      },
+      "discordUsername": "Test",
+      "timezone": 0,
+      "avatar": "https://a.ppy.sh/24675802",
+      "roles": [
+        {
+          "tournamentId": "0",
+          "name": "player",
+          "canRegWithRole": false
+        }
+      ],
+      "stats": [
+        {
+          "tournamentId": "0",
+          "status": "active",
+          "seeding": 12,
+          "placement": 0
+        }
+      ]
+    },
+    {
+      "id": "67",
+      "playerId": 18338179,
+      "name": "bagjettka",
+      "rank": 98,
+      "country": {
+        "name": "Poland",
+        "ISO2": "PL"
+      },
+      "discordUsername": "Test",
+      "timezone": 0,
+      "avatar": "https://a.ppy.sh/18338179",
+      "roles": [
+        {
+          "tournamentId": "0",
+          "name": "player",
+          "canRegWithRole": false
+        }
+      ],
+      "stats": [
+        {
+          "tournamentId": "0",
+          "status": "active",
+          "seeding": 13,
+          "placement": 0
+        }
+      ]
+    },
+    {
+      "id": "68",
+      "playerId": 8291099,
+      "name": "Alter-",
+      "rank": 24,
+      "country": {
+        "name": "United States",
+        "ISO2": "US"
+      },
+      "discordUsername": "Test",
+      "timezone": 0,
+      "avatar": "https://a.ppy.sh/4980256",
+      "roles": [
+        {
+          "tournamentId": "0",
+          "name": "player",
+          "canRegWithRole": false
+        }
+      ],
+      "stats": [
+        {
+          "tournamentId": "0",
+          "status": "active",
+          "seeding": 14,
+          "placement": 0
+        }
+      ]
+    },
+    {
+      "id": "69",
+      "playerId": 12452291,
+      "name": "Krn_",
+      "rank": 169,
+      "country": {
+        "name": "China",
+        "ISO2": "CN"
+      },
+      "discordUsername": "Test",
+      "timezone": 0,
+      "avatar": "https://a.ppy.sh/12452291",
+      "roles": [
+        {
+          "tournamentId": "0",
+          "name": "player",
+          "canRegWithRole": false
+        }
+      ],
+      "stats": [
+        {
+          "tournamentId": "0",
+          "status": "active",
+          "seeding": 15,
+          "placement": 0
+        }
+      ]
+    },
+    {
+      "id": "70",
+      "playerId": 6264519,
+      "name": "Milla[Monkey]",
+      "rank": 221,
+      "country": {
+        "name": "France",
+        "ISO2": "FR"
+      },
+      "discordUsername": "Test",
+      "timezone": 0,
+      "avatar": "https://a.ppy.sh/6264519",
+      "roles": [
+        {
+          "tournamentId": "0",
+          "name": "player",
+          "canRegWithRole": false
+        }
+      ],
+      "stats": [
+        {
+          "tournamentId": "0",
+          "status": "eliminated",
+          "seeding": 16,
+          "placement": 27
+        }
+      ]
+    },
+    {
+      "id": "71",
+      "playerId": 18282863,
+      "name": "HxcQ777",
+      "rank": 48,
+      "country": {
+        "name": "China",
+        "ISO2": "CN"
+      },
+      "discordUsername": "Test",
+      "timezone": 0,
+      "avatar": "https://a.ppy.sh/18282863",
+      "roles": [
+        {
+          "tournamentId": "0",
+          "name": "player",
+          "canRegWithRole": false
+        }
+      ],
+      "stats": [
+        {
+          "tournamentId": "0",
+          "status": "active",
+          "seeding": 17,
+          "placement": 0
+        }
+      ]
+    },
+    {
+      "id": "72",
+      "playerId": 2225008,
+      "name": "Skalim",
+      "rank": 267,
+      "country": {
+        "name": "Chile",
+        "ISO2": "CL"
+      },
+      "discordUsername": "Test",
+      "timezone": 0,
+      "avatar": "https://a.ppy.sh/2225008",
+      "roles": [
+        {
+          "tournamentId": "0",
+          "name": "player",
+          "canRegWithRole": false
+        }
+      ],
+      "stats": [
+        {
+          "tournamentId": "0",
+          "status": "active",
+          "seeding": 18,
+          "placement": 0
+        }
+      ]
+    },
+    {
+      "id": "73",
+      "playerId": 12028216,
+      "name": "mashu",
+      "rank": 74,
+      "country": {
+        "name": "United States",
+        "ISO2": "US"
+      },
+      "discordUsername": "Test",
+      "timezone": 0,
+      "avatar": "https://a.ppy.sh/12028216",
+      "roles": [
+        {
+          "tournamentId": "0",
+          "name": "player",
+          "canRegWithRole": false
+        }
+      ],
+      "stats": [
+        {
+          "tournamentId": "0",
+          "status": "active",
+          "seeding": 19,
+          "placement": 0
+        }
+      ]
+    },
+    {
+      "id": "74",
+      "playerId": 18664411,
+      "name": "Potaterr",
+      "rank": 139,
+      "country": {
+        "name": "United States",
+        "ISO2": "US"
+      },
+      "discordUsername": "Test",
+      "timezone": 0,
+      "avatar": "https://a.ppy.sh/18664411",
+      "roles": [
+        {
+          "tournamentId": "0",
+          "name": "player",
+          "canRegWithRole": false
+        }
+      ],
+      "stats": [
+        {
+          "tournamentId": "0",
+          "status": "active",
+          "seeding": 20,
+          "placement": 0
+        }
+      ]
+    },
+    {
+      "id": "75",
+      "playerId": 3215366,
+      "name": "Matiias",
+      "rank": 703,
+      "country": {
+        "name": "Chile",
+        "ISO2": "CL"
+      },
+      "discordUsername": "Test",
+      "timezone": 0,
+      "avatar": "https://a.ppy.sh/3215366",
+      "roles": [
+        {
+          "tournamentId": "0",
+          "name": "player",
+          "canRegWithRole": false
+        }
+      ],
+      "stats": [
+        {
+          "tournamentId": "0",
+          "status": "eliminated",
+          "seeding": 21,
+          "placement": 28
+        }
+      ]
+    },
+    {
+      "id": "76",
+      "playerId": 9630674,
+      "name": "Freek",
+      "rank": 547,
+      "country": {
+        "name": "Netherlands",
+        "ISO2": "NL"
+      },
+      "discordUsername": "Test",
+      "timezone": 0,
+      "avatar": "https://a.ppy.sh/9630674",
+      "roles": [
+        {
+          "tournamentId": "0",
+          "name": "player",
+          "canRegWithRole": false
+        }
+      ],
+      "stats": [
+        {
+          "tournamentId": "0",
+          "status": "active",
+          "seeding": 22,
+          "placement": 0
+        }
+      ]
+    },
+    {
+      "id": "77",
+      "playerId": 17721836,
+      "name": "Natsurio",
+      "rank": 115,
+      "country": {
+        "name": "Thailand",
+        "ISO2": "TH"
+      },
+      "discordUsername": "Test",
+      "timezone": 0,
+      "avatar": "https://a.ppy.sh/17721836",
+      "roles": [
+        {
+          "tournamentId": "0",
+          "name": "player",
+          "canRegWithRole": false
+        }
+      ],
+      "stats": [
+        {
+          "tournamentId": "0",
+          "status": "active",
+          "seeding": 23,
+          "placement": 0
+        }
+      ]
+    },
+    {
+      "id": "78",
+      "playerId": 10351684,
+      "name": "AWMRone",
+      "rank": 146,
+      "country": {
+        "name": "China",
+        "ISO2": "CN"
+      },
+      "discordUsername": "Test",
+      "timezone": 0,
+      "avatar": "https://a.ppy.sh/10351684",
+      "roles": [
+        {
+          "tournamentId": "0",
+          "name": "player",
+          "canRegWithRole": false
+        }
+      ],
+      "stats": [
+        {
+          "tournamentId": "0",
+          "status": "active",
+          "seeding": 24,
+          "placement": 0
+        }
+      ]
+    },
+    {
+      "id": "79",
+      "playerId": 437945,
+      "name": "KenZ",
+      "rank": 181,
+      "country": {
+        "name": "Thailand",
+        "ISO2": "TH"
+      },
+      "discordUsername": "Test",
+      "timezone": 0,
+      "avatar": "https://a.ppy.sh/437945",
+      "roles": [
+        {
+          "tournamentId": "0",
+          "name": "player",
+          "canRegWithRole": false
+        }
+      ],
+      "stats": [
+        {
+          "tournamentId": "0",
+          "status": "active",
+          "seeding": 25,
+          "placement": 0
+        }
+      ]
+    },
+    {
+      "id": "80",
+      "playerId": 24140109,
+      "name": "- Kopi -",
+      "rank": 212,
+      "country": {
+        "name": "Mexico",
+        "ISO2": "MX"
+      },
+      "discordUsername": "Test",
+      "timezone": 0,
+      "avatar": "https://a.ppy.sh/24140109",
+      "roles": [
+        {
+          "tournamentId": "0",
+          "name": "player",
+          "canRegWithRole": false
+        }
+      ],
+      "stats": [
+        {
+          "tournamentId": "0",
+          "status": "eliminated",
+          "seeding": 26,
+          "placement": 32
+        }
+      ]
+    },
+    {
+      "id": "81",
+      "playerId": 8610776,
+      "name": "Lelloq",
+      "rank": 301,
+      "country": {
+        "name": "United Kingdom",
+        "ISO2": "GB"
+      },
+      "discordUsername": "Test",
+      "timezone": 0,
+      "avatar": "https://a.ppy.sh/8610776",
+      "roles": [
+        {
+          "tournamentId": "0",
+          "name": "player",
+          "canRegWithRole": false
+        }
+      ],
+      "stats": [
+        {
+          "tournamentId": "0",
+          "status": "active",
+          "seeding": 27,
+          "placement": 0
+        }
+      ]
+    },
+    {
+      "id": "82",
+      "playerId": 18834550,
+      "name": "RhymesWithMash",
+      "rank": 1068,
+      "country": {
+        "name": "United States",
+        "ISO2": "US"
+      },
+      "discordUsername": "Test",
+      "timezone": 0,
+      "avatar": "https://a.ppy.sh/18834550",
+      "roles": [
+        {
+          "tournamentId": "0",
+          "name": "player",
+          "canRegWithRole": false
+        }
+      ],
+      "stats": [
+        {
+          "tournamentId": "0",
+          "status": "eliminated",
+          "seeding": 28,
+          "placement": 29
+        }
+      ]
+    },
+    {
+      "id": "83",
+      "playerId": 13431947,
+      "name": "Jerem[Monkey]",
+      "rank": 282,
+      "country": {
+        "name": "France",
+        "ISO2": "FR"
+      },
+      "discordUsername": "Test",
+      "timezone": 0,
+      "avatar": "https://a.ppy.sh/13431947",
+      "roles": [
+        {
+          "tournamentId": "0",
+          "name": "player",
+          "canRegWithRole": false
+        }
+      ],
+      "stats": [
+        {
+          "tournamentId": "0",
+          "status": "active",
+          "seeding": 29,
+          "placement": 0
+        }
+      ]
+    },
+    {
+      "id": "84",
+      "playerId": 16870002,
+      "name": "sukidayo-",
+      "rank": 279,
+      "country": {
+        "name": "Singapore",
+        "ISO2": "SG"
+      },
+      "discordUsername": "Test",
+      "timezone": 0,
+      "avatar": "https://a.ppy.sh/16870002",
+      "roles": [
+        {
+          "tournamentId": "0",
+          "name": "player",
+          "canRegWithRole": false
+        }
+      ],
+      "stats": [
+        {
+          "tournamentId": "0",
+          "status": "eliminated",
+          "seeding": 30,
+          "placement": 31
+        }
+      ]
+    },
+    {
+      "id": "85",
+      "playerId": 18172498,
+      "name": "Tsunakko",
+      "rank": 121,
+      "country": {
+        "name": "United States",
+        "ISO2": "US"
+      },
+      "discordUsername": "Test",
+      "timezone": 0,
+      "avatar": "https://a.ppy.sh/18172498",
+      "roles": [
+        {
+          "tournamentId": "0",
+          "name": "player",
+          "canRegWithRole": false
+        }
+      ],
+      "stats": [
+        {
+          "tournamentId": "0",
+          "status": "eliminated",
+          "seeding": 31,
+          "placement": 30
+        }
+      ]
+    },
+    {
+      "id": "86",
+      "playerId": 11762834,
+      "name": "[TCJ]ScanL",
+      "rank": 6896,
+      "country": {
+        "name": "United States",
+        "ISO2": "US"
+      },
+      "discordUsername": "Test",
+      "timezone": 0,
+      "avatar": "https://a.ppy.sh/11762834",
+      "roles": [
+        {
+          "tournamentId": "0",
+          "name": "player",
+          "canRegWithRole": false
+        }
+      ],
+      "stats": [
+        {
+          "tournamentId": "0",
+          "status": "active",
+          "seeding": 32,
+          "placement": 0
+        }
+      ]
     }
   ],
   "roles": [
@@ -1808,7 +2684,7 @@
       "id": "0",
       "tournamentId": "0",
       "userId": "41",
-      "role": "commentator",
+      "role": "pending",
       "status": "pending",
       "experience": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
       "motivation": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
@@ -1841,6 +2717,5 @@
       "motivation": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
     }
   ],
-  "staffInvites": [
-  ]
+  "staffInvites": []
 }

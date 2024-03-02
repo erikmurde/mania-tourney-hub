@@ -7,7 +7,12 @@ import Flag from '../../Flag';
 import { StyledCardActions } from '../../styled/StyledCardActions';
 import ConfirmationDialog from '../dialog/ConfirmationDialog';
 
-const StaffApplicationCard = ({application}: {application: StaffApplicationDto}) => {
+interface IProps {
+    application: StaffApplicationDto,
+    updateStatus: (application: StaffApplicationDto, status: string) => void
+}
+
+const StaffApplicationCard = ({application, updateStatus}: IProps) => {
     const [user, setUser] = useState({} as IUserDto);
 
     useEffect(() => {
@@ -46,12 +51,12 @@ const StaffApplicationCard = ({application}: {application: StaffApplicationDto})
                     btnProps={{ color: 'success', title: 'Accept', sx: { height: 30 }}}
                     title={'Are you sure you wish to accept this application?'} 
                     actionTitle={'Accept'} 
-                    action={() => console.log('accepting')}/>
+                    action={() => updateStatus(application, 'accepted')}/>
                 <ConfirmationDialog 
                     btnProps={{ color: 'error', title: 'Reject', sx: { height: 30 }}}
                     title={'Are you sure you wish to reject this application?'} 
                     actionTitle={'Reject'} 
-                    action={() => console.log('rejecting')}/>
+                    action={() => updateStatus(application, 'rejected')}/>
             </StyledCardActions>
         </Card>
     );
