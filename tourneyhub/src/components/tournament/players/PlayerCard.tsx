@@ -9,7 +9,12 @@ import { useContext } from 'react';
 import { AuthContext } from '../../../routes/Root';
 import { useParams } from 'react-router-dom';
 
-const PlayerCard = ({player}: {player: IUserDto}) => {
+interface IProps {
+    player: IUserDto,
+    eliminatePlayer: (player: IUserDto) => void
+}
+
+const PlayerCard = ({player, eliminatePlayer}: IProps) => {
     const { user } = useContext(AuthContext);
     const { id } = useParams();
     const theme = useTheme();
@@ -70,7 +75,7 @@ const PlayerCard = ({player}: {player: IUserDto}) => {
                             btnProps={{ color: 'error', sx: { padding: 0.5, marginTop: 0.3 }}}
                             title={'Are you sure you wish to eliminate this player?'} 
                             actionTitle={'Eliminate'} 
-                            action={() => console.log('eliminating...')}
+                            action={() => eliminatePlayer(player)}
                         />}
                     </Grid>
                 </Grid>

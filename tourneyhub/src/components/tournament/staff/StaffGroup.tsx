@@ -4,10 +4,13 @@ import StaffCard from './StaffCard';
 
 interface IProps {
     name: string,
-    staff: IUserDto[]
+    groupRole: string,
+    staff: IUserDto[],
+    removeStaffRole: (member: IUserDto, groupRole: string) => void
 }
 
-const StaffGroup = ({name, staff}: IProps) => {
+const StaffGroup = ({name, groupRole, staff, removeStaffRole}: IProps) => {
+
     return (  
         <Grid item>
             <Paper elevation={2} sx={{ paddingBottom: 2 }}>
@@ -24,7 +27,9 @@ const StaffGroup = ({name, staff}: IProps) => {
                 <Grid container spacing={1} justifyContent='center'>
                     {staff.map(member => 
                         <Grid item key={member.id}>
-                            <StaffCard staff={member}/>
+                            <StaffCard 
+                                staff={member} 
+                                removeStaff={() => removeStaffRole(member, groupRole)}/>
                         </Grid>
                     )}
                 </Grid>

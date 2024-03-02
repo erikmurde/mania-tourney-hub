@@ -30,9 +30,11 @@ const Players = () => {
                     </Typography>
                 </Grid>
                 <Grid item>
-                    <PlayerList players={players.sort((a, b) => 
-                        a.stats[0].seeding - b.stats[0].seeding
-                    )}/>
+                    <PlayerList 
+                        players={players.sort((a, b) => 
+                            a.stats[0].seeding - b.stats[0].seeding
+                        )}
+                        setPlayers={setPlayers}/>
                 </Grid>
             </Grid>
         </Paper>

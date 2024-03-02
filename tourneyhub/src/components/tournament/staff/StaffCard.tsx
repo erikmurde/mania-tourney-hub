@@ -9,17 +9,19 @@ import { UserCardContent } from '../../styled/UserCardContent';
 import { useContext } from 'react';
 import { AuthContext } from '../../../routes/Root';
 
-const StaffCard = ({staff}: {staff: IUserDto}) => {
+interface IProps {
+    staff: IUserDto,
+    removeStaff: (staff: IUserDto) => void
+}
+
+const StaffCard = ({staff, removeStaff}: IProps) => {
     const { user } = useContext(AuthContext);
     const { id } = useParams();
     const theme = useTheme();
     const service = new AuthService();
 
-    const isHost = user 
-        ? service.isHost(user, id!) 
-        : false;
-
-    const isStaffHost = service.isHost(staff, id!);
+    const isHost = user && id && service.isHost(user, id);
+    const isStaffHost = id && service.isHost(staff, id);
 
     return (  
         <Card elevation={8} sx={{ display: 'flex', width: 320, height: 80 }}>
@@ -43,7 +45,7 @@ const StaffCard = ({staff}: {staff: IUserDto}) => {
                             btnProps={{ color: 'error', sx: { padding: 0.5 }}}
                             title={'Are you sure you wish to remove this staff member?'} 
                             actionTitle={'Remove'} 
-                            action={() => console.log('removing...')}
+                            action={() => removeStaff(staff)}
                         />
                     </Grid>}
                     <Flag country={staff.country}/>
