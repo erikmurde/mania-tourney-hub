@@ -36,6 +36,8 @@ const MapManageCard = ({map, addToPool, removeFromPool}: IProps) => {
                 <Grid container justifyContent='end' paddingRight={1}>
                     <Grid item>
                         <Button 
+                            sx={{ width: 90 }}
+                            variant='outlined'
                             color={map.inMappool ? 'error' : 'success'} 
                             onClick={() => map.inMappool 
                                 ? removeFromPool(map) 

@@ -5,6 +5,7 @@ import { StyledDialogActions } from '../../../styled/StyledDialogActions';
 import { StyledDialogContent } from '../../../styled/styledDialogContent';
 import TourneyDialogTitle from '../../dialog/TourneyDialogTitle';
 import StageCreateForm from './StageCreateForm';
+import { QUALIFIER, STANDARD } from '../../../../constants';
 
 const StageSelectForm = () => {
     const [open, setOpen] = useState(false);
@@ -28,10 +29,10 @@ const StageSelectForm = () => {
                 <TourneyDialogTitle title='Add new stage' onClose={() => setOpen(false)}/>
                 <StyledDialogContent/>
                 <StyledDialogActions>
-                    <Button variant='contained' onClick={() => chooseType('0')}>
+                    <Button variant='contained' onClick={() => chooseType(STANDARD)}>
                         Standard
                     </Button>
-                    <Button variant='contained' color='secondary' onClick={() => chooseType('1')}>
+                    <Button variant='contained' color='secondary' onClick={() => chooseType(QUALIFIER)}>
                         Qualifier
                     </Button>
                 </StyledDialogActions>

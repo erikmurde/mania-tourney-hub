@@ -2,6 +2,7 @@ import { FormControl, FormHelperText } from '@mui/material';
 import { FieldInputProps, useFormikContext } from 'formik';
 import { DatePicker } from '@mui/x-date-pickers';
 import dayjs from 'dayjs';
+import { useState } from 'react';
 
 interface IProps {
     label: string,
@@ -16,11 +17,16 @@ const TourneyDateField = ({label, error, field}: IProps) => {
     return (  
         <FormControl fullWidth error={isInvalid}>
             <DatePicker
+                disablePast
                 label={label}
                 {...field}
                 value={dayjs(field.value)}
                 onChange={(value) => setFieldValue(field.name, value)}
-                />
+                slotProps={{
+                    textField: {
+                        error: isInvalid
+                    }
+                }}/>
             {isInvalid && <FormHelperText>{error}</FormHelperText>}
         </FormControl>
     );

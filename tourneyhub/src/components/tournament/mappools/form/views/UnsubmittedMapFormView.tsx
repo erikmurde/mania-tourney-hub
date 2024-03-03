@@ -15,6 +15,7 @@ const UnsubmittedMapFormView = ({initialValues, selectValues, onSubmit}: IProps)
         <Formik 
             initialValues={initialValues} 
             onSubmit={onSubmit}
+            validateOnChange={false}
             enableReinitialize
             >
             <Form id='unsubmitted-map-form'>

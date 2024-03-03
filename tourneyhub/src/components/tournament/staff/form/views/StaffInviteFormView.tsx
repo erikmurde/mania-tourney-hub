@@ -19,7 +19,9 @@ const StaffInviteFormView = ({initialValues, selectValues, onSubmit}: IProps) =>
     return (  
         <Formik 
             initialValues={initialValues}
-            onSubmit={onSubmit}>
+            onSubmit={onSubmit}
+            validateOnChange={false}
+            >
             {({ setFieldValue }) => (
                 <Form id='staff-invite-form'>
                     <Grid container direction='column' rowSpacing={2} marginTop={1}>

@@ -14,7 +14,9 @@ const StaffApplicationFormView = ({initialValues, selectValues, onSubmit}: IProp
     return (  
         <Formik 
             initialValues={initialValues}
-            onSubmit={onSubmit}>
+            onSubmit={onSubmit}
+            validateOnChange={false}
+            >
             <Form id='staff-application-form'>
                 <Grid container rowSpacing={2} marginTop={1}>
                     <Grid item xs={6}>

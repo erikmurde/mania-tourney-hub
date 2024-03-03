@@ -13,5 +13,12 @@ export const COMMENTATOR = 'commentator';
 export const SHEETER = 'sheeter';
 export const GFX = 'gfx';
 
-//COLORS
-export const TERTIARY = '#9575CD'
+// COLORS
+export const TERTIARY = '#9575CD';
+
+// FORM VALIDATION
+export const REQUIRED = 'Required';
+
+// STAGE TYPES
+export const STANDARD = 'standard';
+export const QUALIFIER = 'qualifier';

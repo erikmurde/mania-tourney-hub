@@ -1,9 +1,10 @@
 import { Grid, Typography } from '@mui/material';
 import { IStageDto } from '../../../../dto/stage/IStageDto';
 import dayjs from 'dayjs';
+import { QUALIFIER } from '../../../../constants';
 
 const StageInfo = ({stage}: {stage: IStageDto}) => {
-    const type = stage.stageType!.name;
+    const type = stage.stageType;
 
     return (
         <Grid container direction='column' flexGrow={1}>
@@ -12,7 +13,7 @@ const StageInfo = ({stage}: {stage: IStageDto}) => {
                     {`${type[0].toUpperCase() + type.slice(1)} stage`}
                 </Typography>
             </Grid>
-            {type === 'qualifier' 
+            {type === QUALIFIER
             ?   <>
                 <Grid item>
                     <Typography fontSize={14} height={30}>

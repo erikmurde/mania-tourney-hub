@@ -9,6 +9,8 @@ import StageEditFormView from './views/StageEditFormView';
 import dayjs from 'dayjs';
 import { UpdateContext } from '../../../../routes/Root';
 import { StageService } from '../../../../services/stageService';
+import { Schema, object, string, number, date } from 'yup';
+import { REQUIRED, STANDARD } from '../../../../constants';
 
 const StageEditForm = ({initialValues}: {initialValues: IStageDto}) => {
     const { stageUpdate, setStageUpdate } = useContext(UpdateContext);
@@ -20,6 +22,24 @@ const StageEditForm = ({initialValues}: {initialValues: IStageDto}) => {
         setOpen(false);
     }
 
+    const type = initialValues.stageType;
+    const validationSchema: Schema = object({
+        name: string()
+            .required(REQUIRED),
+        bestOf: number()
+            .required(REQUIRED)
+            .min(type === STANDARD ? 1 : 0, 'Must be above 0'),
+        lobbySize: number()
+            .required(REQUIRED)
+            .min(type === STANDARD ? 0 : 1, 'Must be above 0'),
+        numAdvancing: number()
+            .required(REQUIRED)
+            .min(type === STANDARD ? 0 : 1, 'Must be above 0'),
+        schedulingDeadline: date()
+            .typeError('Invalid date format')
+            .required(REQUIRED)
+    });
+
     return (  
         <>
             <IconButton color='primary' onClick={() => setOpen(true)}>
@@ -30,7 +50,8 @@ const StageEditForm = ({initialValues}: {initialValues: IStageDto}) => {
                 <TourneyDialogTitle title='Edit stage' onClose={() => setOpen(false)}/>
                 <StyledDialogContent>
                     <StageEditFormView
-                        initialValues={{...initialValues, schedulingDeadline: dayjs(initialValues.schedulingDeadline)}} 
+                        initialValues={{...initialValues, schedulingDeadline: dayjs(initialValues.schedulingDeadline)}}
+                        validationSchema={validationSchema}
                         onSubmit={onSubmit}
                     />
                 </StyledDialogContent>

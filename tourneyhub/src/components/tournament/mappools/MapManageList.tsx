@@ -51,7 +51,7 @@ const MapManageList = ({maps}: {maps: IMapDto[]}) => {
     data.forEach((maps, index) => {
         accordions.push(
             <Grid item xs={11} key={index}>
-                <Accordion elevation={6}>
+                <Accordion elevation={6} defaultExpanded>
                     <AccordionSummary expandIcon={<ExpandMore/>}>
                         <MapTypeBox map={maps[0]}/>
                     </AccordionSummary>

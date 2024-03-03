@@ -21,7 +21,9 @@
       ],
       "stats": [
         {
+          "id": "0",
           "tournamentId": "0",
+          "userId": "0",
           "status": "active",
           "seeding": 11,
           "placement": 0
@@ -2119,7 +2121,7 @@
     {
       "id": "0",
       "tournamentId": "0",
-      "stageTypeId": "1",
+      "stageType": "qualifier",
       "name": "Qualifiers",
       "bestOf": 0,
       "lobbySize": 10,
@@ -2127,16 +2129,12 @@
       "schedulingDeadline": "2024-07-17T07:00:00.000Z",
       "mappoolPublic": true,
       "schedulePublic": true,
-      "statsPublic": false,
-      "stageType": {
-        "id": "1",
-        "name": "qualifier"
-      }
+      "statsPublic": false
     },
     {
       "id": "1",
       "tournamentId": "0",
-      "stageTypeId": "0",
+      "stageType": "standard",
       "name": "Round of 64",
       "bestOf": 7,
       "lobbySize": 0,
@@ -2149,7 +2147,7 @@
     {
       "id": "2",
       "tournamentId": "0",
-      "stageTypeId": "0",
+      "stageType": "standard",
       "name": "Round of 32",
       "bestOf": 7,
       "lobbySize": 0,
@@ -2162,7 +2160,7 @@
     {
       "id": "3",
       "tournamentId": "0",
-      "stageTypeId": "0",
+      "stageType": "standard",
       "name": "Round of 16",
       "bestOf": 9,
       "lobbySize": 0,
@@ -2175,7 +2173,7 @@
     {
       "id": "4",
       "tournamentId": "0",
-      "stageTypeId": "0",
+      "stageType": "standard",
       "name": "QuarterFinals",
       "bestOf": 11,
       "lobbySize": 0,
@@ -2183,16 +2181,12 @@
       "schedulingDeadline": null,
       "mappoolPublic": true,
       "schedulePublic": true,
-      "statsPublic": false,
-      "stageType": {
-        "id": "0",
-        "name": "standard"
-      }
+      "statsPublic": false
     },
     {
       "id": "5",
       "tournamentId": "0",
-      "stageTypeId": "0",
+      "stageType": "standard",
       "name": "SemiFinals",
       "bestOf": 11,
       "lobbySize": 0,
@@ -2205,7 +2199,7 @@
     {
       "id": "6",
       "tournamentId": "0",
-      "stageTypeId": "0",
+      "stageType": "standard",
       "name": "Finals",
       "bestOf": 13,
       "lobbySize": 0,
@@ -2217,83 +2211,13 @@
     },
     {
       "id": "9jNY2bh",
-      "stageTypeId": "0",
       "tournamentId": "0",
+      "stageType": "standard",
       "name": "Grand Finals",
       "bestOf": 13,
       "lobbySize": 0,
       "numAdvancing": 0,
       "schedulingDeadline": "2024-03-03T14:11:05.100Z",
-      "mappoolPublic": false,
-      "schedulePublic": false,
-      "statsPublic": false,
-      "stageType": {
-        "id": "0",
-        "name": "standard"
-      }
-    }
-  ],
-  "stagesSimple": [
-    {
-      "id": "0",
-      "tournamentId": "0",
-      "name": "Qualifiers",
-      "mappoolPublic": true,
-      "schedulePublic": true,
-      "statsPublic": false
-    },
-    {
-      "id": "1",
-      "tournamentId": "0",
-      "name": "Round of 64",
-      "mappoolPublic": true,
-      "schedulePublic": true,
-      "statsPublic": true
-    },
-    {
-      "id": "2",
-      "tournamentId": "0",
-      "name": "Round of 32",
-      "mappoolPublic": true,
-      "schedulePublic": true,
-      "statsPublic": true
-    },
-    {
-      "id": "3",
-      "tournamentId": "0",
-      "name": "Round of 16",
-      "mappoolPublic": true,
-      "schedulePublic": true,
-      "statsPublic": true
-    },
-    {
-      "id": "4",
-      "tournamentId": "0",
-      "name": "QuarterFinals",
-      "mappoolPublic": true,
-      "schedulePublic": true,
-      "statsPublic": false
-    },
-    {
-      "id": "5",
-      "tournamentId": "0",
-      "name": "SemiFinals",
-      "mappoolPublic": false,
-      "schedulePublic": false,
-      "statsPublic": false
-    },
-    {
-      "id": "6",
-      "tournamentId": "0",
-      "name": "Finals",
-      "mappoolPublic": false,
-      "schedulePublic": false,
-      "statsPublic": false
-    },
-    {
-      "id": "7",
-      "tournamentId": "0",
-      "name": "Grand Finals",
       "mappoolPublic": false,
       "schedulePublic": false,
       "statsPublic": false
@@ -2392,7 +2316,7 @@
       "id": "14",
       "stageId": "4",
       "beatmapId": 2999060,
-      "inMappool": true,
+      "inMappool": false,
       "title": "fffff op.2",
       "diff": "Evening's Extreme",
       "artist": "Five Hammer",
@@ -2649,7 +2573,7 @@
         "id": "0",
         "name": "RC"
       },
-      "inMappool": false
+      "inMappool": true
     },
     {
       "id": "uudqwCQ",
@@ -2699,16 +2623,6 @@
       "name": "TB"
     }
   ],
-  "stageTypes": [
-    {
-      "id": "0",
-      "name": "standard"
-    },
-    {
-      "id": "1",
-      "name": "qualifier"
-    }
-  ],
   "staffApplications": [
     {
       "id": "0",
@@ -2745,6 +2659,15 @@
       "status": "pending",
       "experience": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
       "motivation": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+    },
+    {
+      "id": "MhTWkaO",
+      "userId": "0",
+      "tournamentId": "0",
+      "role": "referee",
+      "status": "accepted",
+      "experience": "ffffffffffffsdfsd",
+      "motivation": "ffffffffffffffffffffffffff"
     }
   ],
   "staffInvites": []
