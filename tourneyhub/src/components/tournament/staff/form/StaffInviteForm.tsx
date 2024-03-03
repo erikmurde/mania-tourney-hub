@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from 'react';
 import { StyledDialogActions } from '../../../styled/StyledDialogActions';
 import { StyledDialogContent } from '../../../styled/styledDialogContent';
 import TourneyDialogTitle from '../../dialog/TourneyDialogTitle';
-import { HOST, ADMIN, MAPPOOLER, MAPPER, PLAYTESTER, REFEREE, STREAMER, COMMENTATOR, SHEETER, GFX } from '../../../../constants';
+import { HOST, ADMIN, MAPPOOLER, MAPPER, PLAYTESTER, REFEREE, STREAMER, COMMENTATOR, SHEETER, GFX, REQUIRED } from '../../../../constants';
 import { AuthService } from '../../../../services/authService';
 import { IUserDto } from '../../../../dto/IUserDto';
 import StaffInviteFormView from './views/StaffInviteFormView';
@@ -12,6 +12,7 @@ import { StaffInviteDto } from '../../../../dto/staffInvite/StaffInviteDto';
 import { useParams } from 'react-router-dom';
 import { AuthContext } from '../../../../routes/Root';
 import { StaffInviteService } from '../../../../services/staffInviteService';
+import { Schema, object, string } from 'yup';
 
 const StaffInviteForm = () => {
     const { id } = useParams();
@@ -23,16 +24,27 @@ const StaffInviteForm = () => {
     });
 
     useEffect(() => {
-        new AuthService()
-            .getAll()
-            .then(users => setSelectValues({...selectValues, users: users}));
-    }, []);
+        if (user) {
+            new AuthService()
+                .getAll()
+                .then(users => setSelectValues({
+                    ...selectValues, 
+                    users: users.filter(option => option.id !== user.id)
+                }));
+        }
+    }, [user]);
 
     const onSubmit = async(values: StaffInviteDto) => {
         await new StaffInviteService().create(values);
-
         setOpen(false);
     }
+
+    const validationSchema: Schema = object({
+        recipientId: string()
+            .required(REQUIRED),
+        role: string()
+            .required(REQUIRED)
+    })
 
     const initialValues: StaffInviteDto = {
         id: '',
@@ -55,7 +67,8 @@ const StaffInviteForm = () => {
             <StyledDialogContent>
                 <StaffInviteFormView 
                     initialValues={initialValues} 
-                    selectValues={selectValues} 
+                    selectValues={selectValues}
+                    validationSchema={validationSchema}
                     onSubmit={onSubmit}/>
             </StyledDialogContent>
             <StyledDialogActions>

@@ -8,20 +8,41 @@ import { AuthContext } from '../../../../routes/Root';
 import { AuthService } from '../../../../services/authService';
 import { StaffApplicationDto } from '../../../../dto/staffApplication/StaffApplicationDto';
 import { useParams } from 'react-router-dom';
-import { HOST, ADMIN, MAPPOOLER, MAPPER, PLAYTESTER, REFEREE, STREAMER, COMMENTATOR, SHEETER, GFX } from '../../../../constants';
+import { ADMIN, MAPPOOLER, MAPPER, PLAYTESTER, REFEREE, STREAMER, COMMENTATOR, SHEETER, GFX, REQUIRED } from '../../../../constants';
 import { StaffApplicationService } from '../../../../services/staffApplicationService';
+import { Schema, object, string } from 'yup';
 
 const StaffApplicationForm = ({applicationOpen}: {applicationOpen: boolean}) => {
     const { user } = useContext(AuthContext);
     const { id } = useParams();
     const [open, setOpen] = useState(false);
-    const roles = [HOST, ADMIN, MAPPOOLER, MAPPER, PLAYTESTER, REFEREE, STREAMER, COMMENTATOR, SHEETER, GFX];
+    const roles = [ADMIN, MAPPOOLER, MAPPER, PLAYTESTER, REFEREE, STREAMER, COMMENTATOR, SHEETER, GFX];
+
+    const filterRoles = () => {
+        if (!user) {
+            return [];
+        }
+        const userRoles = user.roles
+            .filter(role => role.tournamentId === id);
+    
+        return roles.filter(role => 
+            userRoles.every(userRole => userRole.name !== role));
+    }
 
     const onSubmit = async(values: StaffApplicationDto) => {
         await new StaffApplicationService().create(values);
 
         setOpen(false);
     }
+
+    const validationSchema: Schema = object({
+        role: string()
+            .required(REQUIRED),
+        experience: string()
+            .required(REQUIRED),
+        motivation: string()
+            .required(REQUIRED)
+    })
 
     const initialValues: StaffApplicationDto = {
         id: '',
@@ -47,7 +68,8 @@ const StaffApplicationForm = ({applicationOpen}: {applicationOpen: boolean}) => 
             <StyledDialogContent>
                 <StaffApplicationFormView 
                     initialValues={initialValues} 
-                    selectValues={roles} 
+                    selectValues={filterRoles()} 
+                    validationSchema={validationSchema}
                     onSubmit={onSubmit}/>
             </StyledDialogContent>
             <StyledDialogActions>

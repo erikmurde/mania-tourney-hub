@@ -27,7 +27,7 @@ const StageCreateFormView = ({initialValues, validationSchema, onSubmit}: IProps
                             <Field fullWidth as={TextField} 
                                 name='name' 
                                 label='Name' 
-                                error={errors.name} 
+                                error={errors.name !== undefined} 
                                 helperText={errors.name}/> 
                         </Grid>
                         {type === STANDARD && 
@@ -36,7 +36,7 @@ const StageCreateFormView = ({initialValues, validationSchema, onSubmit}: IProps
                                 name='bestOf' 
                                 label='Best of' 
                                 type='number'
-                                error={errors.bestOf}
+                                error={errors.bestOf !== undefined}
                                 helperText={errors.bestOf}/>
                         </Grid>}
                         {type === QUALIFIER &&
@@ -52,7 +52,7 @@ const StageCreateFormView = ({initialValues, validationSchema, onSubmit}: IProps
                                 name='lobbySize' 
                                 label='Lobby size'
                                 type='number'
-                                error={errors.lobbySize}
+                                error={errors.lobbySize !== undefined}
                                 helperText={errors.lobbySize}/>
                         </Grid>
                         <Grid item xs={6}>
@@ -60,7 +60,7 @@ const StageCreateFormView = ({initialValues, validationSchema, onSubmit}: IProps
                                 name='numAdvancing' 
                                 label='Advancing players' 
                                 type='number'
-                                error={errors.numAdvancing}
+                                error={errors.numAdvancing !== undefined}
                                 helperText={errors.numAdvancing}/>
                         </Grid>
                         </>}

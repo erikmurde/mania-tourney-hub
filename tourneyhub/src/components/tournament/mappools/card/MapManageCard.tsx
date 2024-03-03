@@ -3,6 +3,9 @@ import MapParams from './MapParams';
 import MapText from './MapText';
 import { IMapDto } from '../../../../dto/map/IMapDto';
 import MapManageButtons from './MapManageButtons';
+import { useContext } from 'react';
+import { AuthContext } from '../../../../routes/Root';
+import { ADMIN, HOST, MAPPOOLER } from '../../../../constants';
 
 interface IProps {
     map: IMapDto,
@@ -11,8 +14,12 @@ interface IProps {
 }
 
 const MapManageCard = ({map, addToPool, removeFromPool}: IProps) => {
+    const { user } = useContext(AuthContext);
     const theme = useTheme();
  
+    const canAddToPool = user && user.roles
+        .some(role => [HOST, ADMIN, MAPPOOLER].includes(role.name));
+
     return (
         <Card 
             elevation={12}
@@ -31,8 +38,11 @@ const MapManageCard = ({map, addToPool, removeFromPool}: IProps) => {
             </CardContent>
             <Grid item xs/>
             <CardActions sx={{ alignItems: 'start', flexDirection: 'column' }}>
-                <MapManageButtons map={map}/>
-                <Grid container flexGrow={1}/>
+                <MapManageButtons map={map}
+                />
+                <Grid container flexGrow={1}
+                />
+                {canAddToPool && 
                 <Grid container justifyContent='end' paddingRight={1}>
                     <Grid item>
                         <Button 
@@ -45,7 +55,7 @@ const MapManageCard = ({map, addToPool, removeFromPool}: IProps) => {
                             {map.inMappool ? 'Remove' : 'Add'}
                         </Button>
                     </Grid>
-                </Grid>
+                </Grid>}
             </CardActions>
         </Card>
     );

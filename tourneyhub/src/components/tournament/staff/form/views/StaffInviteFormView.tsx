@@ -5,24 +5,27 @@ import { IUserDto } from '../../../../../dto/IUserDto';
 import { SyntheticEvent } from 'react';
 import TourneySelectField from '../../../field/TourneySelectField';
 import Flag from '../../../../Flag';
+import { Schema } from 'yup';
 
 interface IProps {
     initialValues: StaffInviteDto,
     selectValues: {
         users: IUserDto[],
         roles: string[]
-    }
+    },
+    validationSchema: Schema,
     onSubmit: (values: StaffInviteDto) => void
 }
 
-const StaffInviteFormView = ({initialValues, selectValues, onSubmit}: IProps) => {
+const StaffInviteFormView = ({initialValues, selectValues, validationSchema, onSubmit}: IProps) => {
     return (  
         <Formik 
             initialValues={initialValues}
             onSubmit={onSubmit}
+            validationSchema={validationSchema}
             validateOnChange={false}
             >
-            {({ setFieldValue }) => (
+            {({ errors, setFieldValue }) => (
                 <Form id='staff-invite-form'>
                     <Grid container direction='column' rowSpacing={2} marginTop={1}>
                         <Grid item>
@@ -41,11 +44,16 @@ const StaffInviteFormView = ({initialValues, selectValues, onSubmit}: IProps) =>
                                     </Box>
                                 )}
                                 renderInput={(props: any) => (
-                                    <Field component={TextField} name='recipientId' label='Player' {...props}/>
+                                    <Field 
+                                        component={TextField} 
+                                        error={errors.recipientId !== undefined} 
+                                        helperText={errors.recipientId} 
+                                        name='recipientId' 
+                                        label='Player' {...props}/>
                                 )}/>
                         </Grid>
                         <Grid item>
-                            <TourneySelectField name='role' label='Staff role' 
+                            <TourneySelectField name='role' label='Staff role' error={errors.role}
                                 options={selectValues.roles.map(role => 
                                     <MenuItem key={role} value={role}>{role}</MenuItem>
                                 )}/>

@@ -3,6 +3,11 @@ import { Grid, Button } from '@mui/material';
 import MapSelectForm from './form/MapSelectForm';
 import ConfirmationDialog from '../dialog/ConfirmationDialog';
 import { ISimpleStageDto } from '../../../dto/stage/ISimpleStageDto';
+import { useContext } from 'react';
+import { AuthContext } from '../../../routes/Root';
+import { HOST, ADMIN, MAPPER, MAPPOOLER, PLAYTESTER } from '../../../constants';
+import { AuthService } from '../../../services/authService';
+import { useParams } from 'react-router-dom';
 
 interface IProps {
     stage: ISimpleStageDto,
@@ -11,6 +16,15 @@ interface IProps {
 }
 
 const PoolButtons = ({stage, manage, setManage}: IProps) => {
+    const { id } = useParams();
+    const { user } = useContext(AuthContext);
+
+    const isHost = user && id && new AuthService()
+        .isHost(user, id);
+        
+    const canManage = user && user.roles
+        .some(role => [HOST, ADMIN, MAPPER, MAPPOOLER, PLAYTESTER].includes(role.name));
+
     return (
         <>            
             {manage && 
@@ -27,7 +41,7 @@ const PoolButtons = ({stage, manage, setManage}: IProps) => {
                 </Button>
             </Grid>
             </>}
-            {!manage &&
+            {!manage && canManage &&
             <Grid item>
                 <Button sx={{ width: 150 }} 
                     variant='contained' 
@@ -36,7 +50,7 @@ const PoolButtons = ({stage, manage, setManage}: IProps) => {
                     Manage
                 </Button>
             </Grid>}
-            {!manage && !stage.mappoolPublic && 
+            {!manage && !stage.mappoolPublic && isHost &&
             <Grid item>
                 <ConfirmationDialog
                     btnProps={{ startIcon: <Publish/>, title: 'Publish', sx: {width: 150}}}

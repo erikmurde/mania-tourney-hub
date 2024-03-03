@@ -2316,7 +2316,7 @@
       "id": "14",
       "stageId": "4",
       "beatmapId": 2999060,
-      "inMappool": false,
+      "inMappool": true,
       "title": "fffff op.2",
       "diff": "Evening's Extreme",
       "artist": "Five Hammer",
@@ -2573,7 +2573,7 @@
         "id": "0",
         "name": "RC"
       },
-      "inMappool": true
+      "inMappool": false
     },
     {
       "id": "uudqwCQ",
@@ -2669,6 +2669,5 @@
       "experience": "ffffffffffffsdfsd",
       "motivation": "ffffffffffffffffffffffffff"
     }
-  ],
-  "staffInvites": []
+  ]
 }
