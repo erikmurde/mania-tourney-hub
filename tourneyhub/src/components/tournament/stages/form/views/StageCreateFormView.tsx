@@ -17,7 +17,7 @@ const StageCreateFormView = ({initialValues, onSubmit}: IProps) => {
             onSubmit={onSubmit}
             >
             <Form id='stage-create-form'>
-                <Grid container rowSpacing={2} columnSpacing={1}>
+                <Grid container rowSpacing={2} columnSpacing={1} marginTop={0.5}>
                     <Grid item xs={12}>
                         <Field as={TextField} name='name' label='Name' fullWidth/> 
                     </Grid>

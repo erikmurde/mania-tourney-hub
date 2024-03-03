@@ -1,4 +1,0 @@
-{
-    "/stages/simple": "/stagesSimple",
-    "/stages/simple/:id": "/stagesSimple?tournamentId=:id"
-}

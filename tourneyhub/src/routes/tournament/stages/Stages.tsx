@@ -3,13 +3,14 @@ import StageList from '../../../components/tournament/stages/StageList';
 import { IStageDto } from '../../../dto/stage/IStageDto';
 import { useContext, useEffect, useState } from 'react';
 import { StageService } from '../../../services/stageService';
-import { AuthContext } from '../../Root';
+import { AuthContext, UpdateContext } from '../../Root';
 import { useParams } from 'react-router-dom';
 import { AuthService } from '../../../services/authService';
 import StageSelectForm from '../../../components/tournament/stages/form/StageSelectForm';
 import NoPermission from '../../NoPermission';
 
 const Stages = () => {
+    const { stageUpdate } = useContext(UpdateContext);
     const { user } = useContext(AuthContext);
     const { id } = useParams();
     const [stages, setStages] = useState([] as IStageDto[]);
@@ -23,7 +24,7 @@ const Stages = () => {
                 .getAll()
                 .then(stages => setStages(stages));
         }
-    }, [user, id]);
+    }, [valid, stageUpdate]);
 
     if (!valid) {
         return <NoPermission/>

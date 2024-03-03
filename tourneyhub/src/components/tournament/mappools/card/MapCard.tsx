@@ -4,22 +4,22 @@ import MapParams from './MapParams';
 import MapText from './MapText';
 import { IMapDto } from '../../../../dto/map/IMapDto';
 
-const MapCard = (props: {map: IMapDto}) => {
+const MapCard = ({map}: {map: IMapDto}) => {
     return (  
         <Card sx={{ display: 'flex', flexDirection: 'column', height: 350, width: 300 }} 
             elevation={8}>
             <CardMedia 
                 sx={{ height: 120 }}
                 className='map-cover'
-                image={props.map.cover}
-                title={`cover of ${props.map.title}`}/>
+                image={map.cover}
+                title={`cover of ${map.title}`}/>
             <CardContent sx={{ padding: 1 }}>
-                <MapInfo map={props.map}/>
-                <MapText map={props.map} manage={false}/>
+                <MapInfo map={map}/>
+                <MapText map={map} manage={false}/>
             </CardContent>
             <Grid item xs/>
             <CardActions sx={{ paddingBottom: 0 }}>
-                <MapParams map={props.map}/>
+                <MapParams map={map}/>
             </CardActions>
         </Card>
     );

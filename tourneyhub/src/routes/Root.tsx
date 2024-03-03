@@ -7,15 +7,29 @@ import { STORED_USER } from '../constants';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 
-interface IAuthContext {
+interface AuthContext {
     user: IUserDto | null,
     setUser: (user: IUserDto | null) => void
 }
 
-export const AuthContext = createContext<IAuthContext>({
+interface UpdateContext {
+    stageUpdate: number,
+    setStageUpdate: (count: number) => void,
+    mapPoolUpdate: number,
+    setMapPoolUpdate: (count: number) => void
+}
+
+export const AuthContext = createContext<AuthContext>({
     user: null,
     setUser: () => {}
 });
+
+export const UpdateContext = createContext<UpdateContext>({
+    stageUpdate: 0,
+    setStageUpdate: () => {},
+    mapPoolUpdate: 0,
+    setMapPoolUpdate: () => {}
+})
 
 const Root = () => {
     const stored = localStorage.getItem(STORED_USER);
@@ -24,18 +38,23 @@ const Root = () => {
         (stored !== 'undefined' ? JSON.parse(stored!) : null) as IUserDto | null
     );
 
+    const [stageUpdate, setStageUpdate] = useState(0);
+    const [mapPoolUpdate, setMapPoolUpdate] = useState(0);
+
     return (
         <AuthContext.Provider value={{ user, setUser }}>
-            <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <Grid container minHeight='100vh' direction='column' alignItems='center'>
-                    <Grid item width={1}>
-                        <Header />
+            <UpdateContext.Provider value={{ stageUpdate, setStageUpdate, mapPoolUpdate, setMapPoolUpdate }}>
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                    <Grid container minHeight='100vh' direction='column' alignItems='center'>
+                        <Grid item width={1}>
+                            <Header />
+                        </Grid>
+                        <Grid item xs paddingTop={2} paddingBottom={4} width={1} sx={{ maxWidth: '1400px !important' }}>
+                            <Outlet />
+                        </Grid>
                     </Grid>
-                    <Grid item xs paddingTop={2} paddingBottom={4} width={1} sx={{ maxWidth: '1400px !important' }}>
-                        <Outlet />
-                    </Grid>
-                </Grid>
-            </LocalizationProvider>
+                </LocalizationProvider>
+            </UpdateContext.Provider>
         </AuthContext.Provider>
     );
 }

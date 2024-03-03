@@ -6,8 +6,18 @@ import { StyledCardContent } from '../../../styled/StyledCardContent';
 import StageInfo from './StageInfo';
 import ConfirmationDialog from '../../dialog/ConfirmationDialog';
 import StageEditForm from '../form/StageEditForm';
+import { useContext } from 'react';
+import { UpdateContext } from '../../../../routes/Root';
+import { StageService } from '../../../../services/stageService';
 
 const StageCard = ({stage}: {stage: IStageDto}) => {
+    const { stageUpdate, setStageUpdate } = useContext(UpdateContext);
+
+    const onDelete = async() => {
+        await new StageService().delete(stage.id);
+        setStageUpdate(stageUpdate + 1);
+    }
+
     return (  
         <Card elevation={8} sx={{ 
                 width: 400, 
@@ -23,15 +33,16 @@ const StageCard = ({stage}: {stage: IStageDto}) => {
                             {stage.name}
                         </Typography>
                     </Grid>
-                    <Grid item xs={3}>
+                    <Grid item xs='auto'>
                         <CardActions sx={{ padding: 0 }}>
                             <StageEditForm initialValues={stage}/>
+                            {!stage.mappoolPublic && !stage.schedulePublic && !stage.statsPublic &&
                             <ConfirmationDialog 
                                 btnProps={{ color: 'error' }} 
                                 btnIcon={<Delete/>}
                                 title='Are you sure you wish to delete this stage?'
                                 actionTitle='Delete'
-                                action={() => console.log('deleting...')}/>
+                                action={() => onDelete()}/>}
                         </CardActions>
                     </Grid>
                 </Grid>

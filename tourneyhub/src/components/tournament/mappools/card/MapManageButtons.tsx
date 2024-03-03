@@ -4,9 +4,18 @@ import MapEditForm from '../form/MapEditForm';
 import { IMapDto } from '../../../../dto/map/IMapDto';
 import ConfirmationDialog from '../../dialog/ConfirmationDialog';
 import { StyledIconButton } from '../../../styled/StyledIconButton';
+import { useContext } from 'react';
+import { UpdateContext } from '../../../../routes/Root';
+import { MapService } from '../../../../services/mapService';
 
 const MapManageButtons = ({map}: {map: IMapDto}) => {
+    const { mapPoolUpdate, setMapPoolUpdate } = useContext(UpdateContext);
     const theme = useTheme();
+
+    const onDelete = async() => {
+        await new MapService().delete(map.id);
+        setMapPoolUpdate(mapPoolUpdate + 1);
+    }
 
     return (  
         <Grid container justifyContent='end'>
@@ -20,7 +29,7 @@ const MapManageButtons = ({map}: {map: IMapDto}) => {
                     btnIcon={<Delete/>}
                     title='Are you sure you wish to delete this map?'
                     actionTitle='Delete'
-                    action={() => console.log('deleting...')}/>}
+                    action={() => onDelete()}/>}
             </Grid>
             <Grid item>
                 <StyledIconButton 

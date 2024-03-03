@@ -6,9 +6,11 @@ import TourneyDialogTitle from '../../dialog/TourneyDialogTitle';
 import { DialogProps } from '../../../../props/DialogProps';
 import UnsubmittedMapFormView from './views/UnsubmittedMapFormView';
 import { IMapDto } from '../../../../dto/map/IMapDto';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { MapTypeService } from '../../../../services/mapTypeService';
 import { MapTypeDto } from '../../../../dto/mapType/MapTypeDto';
+import { UpdateContext } from '../../../../routes/Root';
+import { MapService } from '../../../../services/mapService';
 
 interface IProps {
     dialogProps: DialogProps,
@@ -16,6 +18,7 @@ interface IProps {
 }
 
 const ManualMapEditForm = ({dialogProps, initialValues}: IProps) => {
+    const { mapPoolUpdate, setMapPoolUpdate } = useContext(UpdateContext);
     const [mapTypes, setMapTypes] = useState([] as MapTypeDto[]);
 
     useEffect(() => {
@@ -24,8 +27,13 @@ const ManualMapEditForm = ({dialogProps, initialValues}: IProps) => {
             .then(types => setMapTypes(types));
     }, []);
 
-    const onSubmit = (values: IMapDto) => {
-        console.log('Manual edit', values);
+    const onSubmit = async(values: IMapDto) => {
+        if (initialValues.index !== values.index || initialValues.mapTypeId !== values.mapTypeId) {
+            values.inMappool = false;
+        }
+        await new MapService().edit(values.id, values);
+        setMapPoolUpdate(mapPoolUpdate + 1);
+        dialogProps.onClose();
     }
 
     return (  

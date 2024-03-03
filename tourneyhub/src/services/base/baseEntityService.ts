@@ -35,4 +35,10 @@ export abstract class BaseEntityService<TEntityDto> extends BaseService {
 
         console.log('edit response: ', response);
     }
+    
+    async delete(id: string) {
+        const response = await this.axios.delete(`${this.baseUrl}/${id}`);
+
+        console.log('delete response: ', response);
+    }
 }

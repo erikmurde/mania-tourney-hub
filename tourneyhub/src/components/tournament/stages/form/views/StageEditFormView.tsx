@@ -50,7 +50,7 @@ const StageEditFormView = ({initialValues, onSubmit}: IProps) => {
                         control={<Checkbox/>}/>
                     </Grid>
                     <Grid item xs={12}>
-                        <Field name='statisticsPublic' label='Publish statistics' type='checkbox'
+                        <Field name='statsPublic' label='Publish statistics' type='checkbox'
                         as={FormControlLabel} 
                         control={<Checkbox/>}/>
                     </Grid>

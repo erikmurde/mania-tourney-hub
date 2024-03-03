@@ -1,20 +1,15 @@
 import { Grid } from '@mui/material';
 import { IMapDto } from '../../../dto/map/IMapDto';
 import MapCard from './card/MapCard';
+import { MapService } from '../../../services/mapService';
 
 const MapList = (props: {maps: IMapDto[]}) => {
-    const weights = new Map<string, number>([
-        ['RC', 0], ['LN', 10], ['HB', 20], ['SV', 30], ['TB', 40]
-    ])
-
-    const getWeight = (map: IMapDto): number => {
-        return (weights.get(map.mapType.name) ?? 0) + map.index;
-    }
+    const service = new MapService();
 
     return (  
         <Grid container spacing={2} justifyContent='center'>
             {props.maps
-                .sort((a, b) => getWeight(a) - getWeight(b))
+                .sort((a, b) => service.getWeight(a) - service.getWeight(b))
                 .map(map => 
                     <Grid item key={map.id}>
                         <MapCard map={map}/>

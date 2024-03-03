@@ -2078,29 +2078,7 @@
       ]
     }
   ],
-  "roles": [
-    {
-      "id": "0",
-      "tournamentId": "0",
-      "userId": "0",
-      "name": "host",
-      "canRegWithRole": false
-    },
-    {
-      "id": "0",
-      "tournamentId": "2",
-      "userId": "0",
-      "name": "host",
-      "canRegWithRole": false
-    },
-    {
-      "id": "1",
-      "tournamentId": "0",
-      "userId": "1",
-      "name": "mapper",
-      "canRegWithRole": false
-    }
-  ],
+  "roles": [],
   "stats": [
     {
       "id": "0",
@@ -2146,10 +2124,14 @@
       "bestOf": 0,
       "lobbySize": 10,
       "numAdvancing": 64,
-      "schedulingDeadline": "Wed, 10 Jul 2024 07:00:00 GMT",
+      "schedulingDeadline": "2024-07-17T07:00:00.000Z",
       "mappoolPublic": true,
       "schedulePublic": true,
-      "statsPublic": false
+      "statsPublic": false,
+      "stageType": {
+        "id": "1",
+        "name": "qualifier"
+      }
     },
     {
       "id": "1",
@@ -2201,7 +2183,11 @@
       "schedulingDeadline": null,
       "mappoolPublic": true,
       "schedulePublic": true,
-      "statsPublic": false
+      "statsPublic": false,
+      "stageType": {
+        "id": "0",
+        "name": "standard"
+      }
     },
     {
       "id": "5",
@@ -2230,17 +2216,21 @@
       "statsPublic": false
     },
     {
-      "id": "7",
-      "tournamentId": "0",
+      "id": "9jNY2bh",
       "stageTypeId": "0",
+      "tournamentId": "0",
       "name": "Grand Finals",
       "bestOf": 13,
       "lobbySize": 0,
       "numAdvancing": 0,
-      "schedulingDeadline": null,
+      "schedulingDeadline": "2024-03-03T14:11:05.100Z",
       "mappoolPublic": false,
       "schedulePublic": false,
-      "statsPublic": false
+      "statsPublic": false,
+      "stageType": {
+        "id": "0",
+        "name": "standard"
+      }
     }
   ],
   "stagesSimple": [
@@ -2402,7 +2392,7 @@
       "id": "14",
       "stageId": "4",
       "beatmapId": 2999060,
-      "inMappool": false,
+      "inMappool": true,
       "title": "fffff op.2",
       "diff": "Evening's Extreme",
       "artist": "Five Hammer",
@@ -2574,7 +2564,7 @@
       "id": "11",
       "stageId": "4",
       "beatmapId": 4368284,
-      "inMappool": true,
+      "inMappool": false,
       "title": "PhantasmalWar",
       "diff": "Blood moon",
       "artist": "SunsetRay",
@@ -2589,7 +2579,11 @@
       "od": 6,
       "mapTypeId": "2",
       "index": 2,
-      "comment": "Test comment"
+      "comment": "Test comment",
+      "mapType": {
+        "id": "2",
+        "name": "HB"
+      }
     },
     {
       "id": "12",
@@ -2634,32 +2628,6 @@
       "comment": "Test comment"
     },
     {
-      "id": "VGA8W0L",
-      "stageId": "5",
-      "beatmapId": 0,
-      "inMappool": true,
-      "title": "paroxysm",
-      "diff": "emotion",
-      "artist": "Camellia",
-      "mapper": "AHHHHHHHHHHHHHH",
-      "suggestor": "Arcaxio",
-      "cover": "https://assets.ppy.sh/beatmaps/2093101/covers/cover.jpg",
-      "download": "https://osu.ppy.sh/beatmapsets/2093101#mania/4388426/download",
-      "bpm": 132,
-      "drainTime": 357,
-      "sr": 4.7,
-      "hp": 9,
-      "od": 7.7,
-      "type": "",
-      "index": 2,
-      "comment": "Test",
-      "mapTypeId": "1",
-      "mapType": {
-        "id": "1",
-        "name": "LN"
-      }
-    },
-    {
       "title": "Clinozoisite",
       "diff": "Epidosis",
       "artist": "Ludicin",
@@ -2681,7 +2649,32 @@
         "id": "0",
         "name": "RC"
       },
-      "inMappool": true
+      "inMappool": false
+    },
+    {
+      "id": "uudqwCQ",
+      "stageId": "4",
+      "beatmapId": 0,
+      "mapTypeId": "2",
+      "inMappool": true,
+      "title": "oddloop",
+      "diff": "Oddities",
+      "artist": "Frederic",
+      "mapper": "White Hare",
+      "suggestor": "Arcaxio",
+      "cover": "https://assets.ppy.sh/beatmaps/2034766/covers/card.jpg",
+      "download": "https://osu.ppy.sh/beatmapsets/2034766#mania/4256390",
+      "bpm": 172,
+      "drainTime": 243,
+      "sr": 3.9,
+      "hp": 8,
+      "od": 7.5,
+      "index": 2,
+      "comment": "dfsdfzfsdfdsfsd sdfds fsd fsda fsd fsdafds",
+      "mapType": {
+        "id": "2",
+        "name": "HB"
+      }
     }
   ],
   "mapTypes": [

@@ -4,19 +4,19 @@ import { ExpandMore } from '@mui/icons-material';
 import MapTypeBox from '../../MapTypeBox';
 import MapManageCard from './card/MapManageCard';
 import { MapService } from '../../../services/mapService';
+import { useContext } from 'react';
+import { UpdateContext } from '../../../routes/Root';
 
-interface IProps {
-    maps: IMapDto[],
-    setMaps: (maps: IMapDto[]) => void
-}
-
-const MapManageList = ({maps, setMaps}: IProps) => {
+const MapManageList = ({maps}: {maps: IMapDto[]}) => {
+    const { mapPoolUpdate, setMapPoolUpdate } = useContext(UpdateContext);
     const service = new MapService();
 
     let data = new Map<string, IMapDto[]>();
     let accordions: JSX.Element[] = [];
 
-    maps.forEach(map => {
+    maps
+    .sort((a, b) => service.getWeight(a) - service.getWeight(b))
+    .forEach(map => {
         let key = `${map.mapType.name}${map.index}`;
 
         if (data.has(key)) {
@@ -35,23 +35,17 @@ const MapManageList = ({maps, setMaps}: IProps) => {
         const toRemove = mapGroup.find(map => map.inMappool);
 
         if (toAdd) {
-            toAdd.inMappool = true;
-            await service.edit(toAdd.id, toAdd);
-            setMaps(maps.map(map => map.id === id ? toAdd : map));
-
-            if (toRemove) {
-                toRemove.inMappool = false;
-                await service.edit(toRemove.id, toRemove);
-                setMaps(maps.map(map => map.id === toRemove.id ? toRemove : map));
-            }
+            await service.edit(toAdd.id, {...toAdd, inMappool: true});
         }
+        if (toRemove) {
+            await service.edit(toRemove.id, {...toRemove, inMappool: false});
+        }
+        setMapPoolUpdate(mapPoolUpdate + 1);
     }
 
     const removeFromPool = async(toRemove: IMapDto) => {
-        toRemove.inMappool = false;
-
-        await new MapService().edit(toRemove.id, toRemove);
-        setMaps(maps.map(map => map.id === toRemove.id ? toRemove : map));
+        await new MapService().edit(toRemove.id, {...toRemove, inMappool: false});
+        setMapPoolUpdate(mapPoolUpdate + 1);
     }
 
     data.forEach((maps, index) => {

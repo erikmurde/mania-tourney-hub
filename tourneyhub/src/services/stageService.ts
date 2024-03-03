@@ -1,4 +1,3 @@
-import { ISimpleStageDto } from '../dto/stage/ISimpleStageDto';
 import { IStageDto } from '../dto/stage/IStageDto';
 import { BaseEntityService } from './base/baseEntityService';
 
@@ -7,10 +6,10 @@ export class StageService extends BaseEntityService<IStageDto> {
         super('stages', 'stageType');
     }
 
-    async getAllSimple(tournamentId: string): Promise<ISimpleStageDto[]> {
-        const response = await this.axios.get<ISimpleStageDto[]>(`${this.baseUrl}/simple/${tournamentId}`);
+    async getAllTourney(tournamentId: string): Promise<IStageDto[]> {
+        const response = await this.axios.get<IStageDto[]>(`${this.baseUrl}?tournamentId=${tournamentId}`);
 
-        console.log('getAllSimple response: ', response);
+        console.log('getAllTourney response: ', response);
         return response.data;
     }
 }

@@ -3,16 +3,20 @@ import { IconButton, Dialog, Button } from '@mui/material';
 import { StyledDialogActions } from '../../../styled/StyledDialogActions';
 import { StyledDialogContent } from '../../../styled/styledDialogContent';
 import TourneyDialogTitle from '../../dialog/TourneyDialogTitle';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { IStageDto } from '../../../../dto/stage/IStageDto';
 import StageEditFormView from './views/StageEditFormView';
 import dayjs from 'dayjs';
+import { UpdateContext } from '../../../../routes/Root';
+import { StageService } from '../../../../services/stageService';
 
 const StageEditForm = ({initialValues}: {initialValues: IStageDto}) => {
+    const { stageUpdate, setStageUpdate } = useContext(UpdateContext);
     const [open, setOpen] = useState(false);
 
-    const onSubmit = (values: IStageDto) => {
-        console.log('editing: ', values);
+    const onSubmit = async(values: IStageDto) => {
+        await new StageService().edit(values.id, values);
+        setStageUpdate(stageUpdate + 1);
         setOpen(false);
     }
 

@@ -7,6 +7,9 @@ import { IStageDto } from '../../../../dto/stage/IStageDto';
 import StageCreateFormView from './views/StageCreateFormView';
 import dayjs from 'dayjs';
 import { useParams } from 'react-router-dom';
+import { useContext } from 'react';
+import { UpdateContext } from '../../../../routes/Root';
+import { StageService } from '../../../../services/stageService';
 
 interface IProps {
     stageType: string,
@@ -15,10 +18,12 @@ interface IProps {
 }
 
 const StageCreateForm = ({stageType, open, onClose}: IProps) => {
+    const { stageUpdate, setStageUpdate } = useContext(UpdateContext);
     const { id } = useParams();
 
-    const onSubmit = (values: IStageDto) => {
-        console.log('creating: ', values);
+    const onSubmit = async(values: IStageDto) => {
+        await new StageService().create(values);
+        setStageUpdate(stageUpdate + 1);
         onClose();
     }
 

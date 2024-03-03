@@ -1,5 +1,5 @@
 import { Grid, Paper, Tab, Tabs, Typography } from '@mui/material';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { ISimpleStageDto } from '../../../dto/stage/ISimpleStageDto';
 import { useNavigate, useParams } from 'react-router-dom';
 import MapList from '../../../components/tournament/mappools/MapList';
@@ -8,8 +8,10 @@ import { StageService } from '../../../services/stageService';
 import { MapService } from '../../../services/mapService';
 import PoolButtons from '../../../components/tournament/mappools/PoolButtons';
 import MapManageList from '../../../components/tournament/mappools/MapManageList';
+import { UpdateContext } from '../../Root';
 
 const MapPool = () => {
+    const { mapPoolUpdate } = useContext(UpdateContext);
     const [isManage, setIsManage] = useState(false);
     const [stages, setStages] = useState([] as ISimpleStageDto[]);
     const [stageId, setStageId] = useState(0);
@@ -18,14 +20,16 @@ const MapPool = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        new StageService().getAllSimple(id!)
-            .then(stages => setStages(stages))
-            .then(() => {
-                const stageId = stages.length > 0 ? parseInt(stages[0].id) : 0;
+        if (id) {
+            new StageService().getAllTourney(id)
+                .then(stages => setStages(stages))
+                .then(() => {
+                    const stageId = stages.length > 0 ? parseInt(stages[0].id) : 0;
 
-                setStageId(stageId);
-                navigate(`#${stageId}`);
-            });
+                    setStageId(stageId);
+                    navigate(`#${stageId}`);
+                });
+        }
     }, [id]);
 
     useEffect(() => {
@@ -38,7 +42,7 @@ const MapPool = () => {
             service.getAllStageInMappool(stageId.toString())
                 .then(maps => setMaps(maps));
         }
-    }, [stageId, isManage]);
+    }, [stageId, isManage, mapPoolUpdate]);
 
     return (  
         <Paper elevation={2} sx={{ minHeight: 500, paddingBottom: 2 }}>
@@ -79,7 +83,7 @@ const MapPool = () => {
                 </Grid>
                 <Grid item xs>
                     {isManage 
-                    ?   <MapManageList maps={maps} setMaps={setMaps}/>
+                    ?   <MapManageList maps={maps}/>
                     :   <MapList maps={maps.filter(map => map.inMappool)}/>}
                 </Grid>
             </Grid>

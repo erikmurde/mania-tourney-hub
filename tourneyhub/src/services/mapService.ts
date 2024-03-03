@@ -6,6 +6,14 @@ export class MapService extends BaseEntityService<IMapDto> {
         super('maps', 'mapType');
     }
 
+    weights = new Map<string, number>([
+        ['RC', 0], ['LN', 10], ['HB', 20], ['SV', 30], ['TB', 40]
+    ])
+
+    getWeight(map: IMapDto): number {
+        return (this.weights.get(map.mapType.name) ?? 0) + map.index;
+    }
+
     async getAllStage(stageId: string): Promise<IMapDto[]> {
         return (await this.axios.get<IMapDto[]>(`${this.baseUrl}${this.expand}&stageId=${stageId}`)).data;
     }
