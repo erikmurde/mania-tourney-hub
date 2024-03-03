@@ -7,6 +7,7 @@ import ManualMapEditForm from './ManualMapEditForm';
 import AutoMapEditFormView from './views/AutoMapEditFormView';
 import { IMapDto } from '../../../../dto/map/IMapDto';
 import { StyledDialogContent } from '../../../styled/styledDialogContent';
+import { StyledIconButton } from '../../../styled/StyledIconButton';
 
 const MapEditForm = ({map}: {map: IMapDto}) => {
     const theme = useTheme();
@@ -19,11 +20,11 @@ const MapEditForm = ({map}: {map: IMapDto}) => {
 
     return (  
         <>
-            <IconButton
+            <StyledIconButton
                 sx={{ color: theme.palette.primary.main}} 
                 onClick={() => setOpen(true)}>
                 <Edit/>
-            </IconButton>
+            </StyledIconButton>
             {open 
             ?   <Dialog open={open} onClose={() => setOpen(false)} fullWidth maxWidth='xs'>
                     <TourneyDialogTitle title='Edit map' onClose={() => setOpen(false)}/>

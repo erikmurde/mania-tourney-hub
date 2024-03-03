@@ -51,10 +51,6 @@ const router = createBrowserRouter([
                         element: <MapPool/>
                     },
                     {
-                        path: 'mappools/manage',
-                        element: <MapPool manage/>
-                    },
-                    {
                         path: 'schedule',
                         element: <Schedule/>
                     },

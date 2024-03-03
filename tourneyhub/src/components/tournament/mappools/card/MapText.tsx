@@ -6,42 +6,40 @@ interface IProps {
     manage: boolean
 }
 
-const MapText = (props: IProps) => {
+const MapText = ({map, manage}: IProps) => {
     const theme = useTheme();
 
-    if (props.manage){
-        return (  
+    return (
+        <>
+            {manage &&
             <>
-                <Typography marginBottom={0.5}>
-                    {props.map.artist} - {`${props.map.title} [${props.map.diff}]`}
-                </Typography>
-                <Typography variant='body2' color={theme.palette.text.secondary} marginBottom={0.5}>
-                    <span style={{ marginRight: 30 }}>
-                        {`Mapped by ${props.map.mapper}`}
-                    </span>
-                    {`Suggested by ${props.map.suggestor}`}
-                </Typography>
-                <Typography variant='body2' marginBottom={1}>
-                    {props.map.comment}
-                </Typography>
-            </>
-        );
-    } else {
-        return (
+            <Typography marginBottom={0.5}>
+                {map.artist} - {`${map.title} [${map.diff}]`}
+            </Typography>
+            <Typography variant='body2' color={theme.palette.text.secondary} marginBottom={0.5}>
+                <span style={{ marginRight: 30 }}>
+                    {`Mapped by ${map.mapper}`}
+                </span>
+                {`Suggested by ${map.suggestor}`}
+            </Typography>
+            <Typography variant='body2' marginBottom={1}>
+                {map.comment}
+            </Typography>
+            </>}
+            {!manage &&
             <>
-                <Typography marginBottom={0.5}>
-                    {`${props.map.title} [${props.map.diff}]`}
-                </Typography>
-                <Typography variant='body2' color={theme.palette.text.secondary} marginBottom={0.5}>
-                    {props.map.artist}
-                </Typography>
-                <Typography variant='body2' color={theme.palette.text.secondary}>
-                    {`Mapped by ${props.map.mapper}`}
-                </Typography>
-            </>
-        );
-    }
-
+            <Typography marginBottom={0.5}>
+                {`${map.title} [${map.diff}]`}
+            </Typography>
+            <Typography variant='body2' color={theme.palette.text.secondary} marginBottom={0.5}>
+                {map.artist}
+            </Typography>
+            <Typography variant='body2' color={theme.palette.text.secondary}>
+                {`Mapped by ${map.mapper}`}
+            </Typography>
+            </>}
+        </>
+    )
 }
- 
+
 export default MapText;

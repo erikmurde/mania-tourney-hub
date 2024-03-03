@@ -2377,7 +2377,7 @@
       "id": "3",
       "stageId": "4",
       "beatmapId": 4368168,
-      "inMappool": true,
+      "inMappool": false,
       "title": "A Dichroic Glass Snafu",
       "diff": "Broken",
       "artist": "Blitz Lunar",
@@ -2392,7 +2392,11 @@
       "od": 8,
       "mapTypeId": "0",
       "index": 4,
-      "comment": "Test comment"
+      "comment": "Test comment",
+      "mapType": {
+        "id": "0",
+        "name": "RC"
+      }
     },
     {
       "id": "14",
@@ -2413,7 +2417,11 @@
       "od": 8.5,
       "mapTypeId": "0",
       "index": 4,
-      "comment": "Test comment"
+      "comment": "Test comment",
+      "mapType": {
+        "id": "0",
+        "name": "RC"
+      }
     },
     {
       "id": "4",
@@ -2629,7 +2637,7 @@
       "id": "VGA8W0L",
       "stageId": "5",
       "beatmapId": 0,
-      "inMappool": false,
+      "inMappool": true,
       "title": "paroxysm",
       "diff": "emotion",
       "artist": "Camellia",
@@ -2645,7 +2653,35 @@
       "type": "",
       "index": 2,
       "comment": "Test",
-      "mapTypeId": "1"
+      "mapTypeId": "1",
+      "mapType": {
+        "id": "1",
+        "name": "LN"
+      }
+    },
+    {
+      "title": "Clinozoisite",
+      "diff": "Epidosis",
+      "artist": "Ludicin",
+      "mapper": "BKwind",
+      "cover": "https://assets.ppy.sh/beatmaps/2120625/covers/card.jpg",
+      "download": "https://osu.ppy.sh/beatmapsets/2120625#mania/4455483",
+      "sr": 6.31,
+      "bpm": 175,
+      "drainTime": 329,
+      "hp": 8,
+      "od": 8,
+      "mapTypeId": "0",
+      "index": 4,
+      "comment": "Test map",
+      "suggestor": "Arcaxio",
+      "stageId": "4",
+      "id": "FER7PAf",
+      "mapType": {
+        "id": "0",
+        "name": "RC"
+      },
+      "inMappool": true
     }
   ],
   "mapTypes": [

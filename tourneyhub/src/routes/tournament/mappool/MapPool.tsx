@@ -9,7 +9,8 @@ import { MapService } from '../../../services/mapService';
 import PoolButtons from '../../../components/tournament/mappools/PoolButtons';
 import MapManageList from '../../../components/tournament/mappools/MapManageList';
 
-const MapPool = ({manage}: {manage?: boolean}) => {
+const MapPool = () => {
+    const [isManage, setIsManage] = useState(false);
     const [stages, setStages] = useState([] as ISimpleStageDto[]);
     const [stageId, setStageId] = useState(0);
     const [maps, setMaps] = useState([] as IMapDto[]);
@@ -30,14 +31,14 @@ const MapPool = ({manage}: {manage?: boolean}) => {
     useEffect(() => {
         const service = new MapService();
 
-        if (manage) {
+        if (isManage) {
             service.getAllStage(stageId.toString())
                 .then(maps => setMaps(maps));
         } else {
             service.getAllStageInMappool(stageId.toString())
                 .then(maps => setMaps(maps));
         }
-    }, [stageId, manage]);
+    }, [stageId, isManage]);
 
     return (  
         <Paper elevation={2} sx={{ minHeight: 500, paddingBottom: 2 }}>
@@ -50,14 +51,14 @@ const MapPool = ({manage}: {manage?: boolean}) => {
                         marginLeft={5} 
                         lineHeight={2}>
 
-                        {manage ? 'Manage mappools' : 'Mappools'}
+                        {isManage ? 'Manage mappools' : 'Mappools'}
                     </Typography>
                 </Grid>
                 <Grid container item direction='column' alignItems='center' 
                     width={200} 
                     marginLeft={5} 
-                    rowSpacing={1}>
-
+                    rowSpacing={1}
+                    >
                     <Grid item>
                         <Tabs sx={{ width: 200, marginBottom: 2 }}
                             value={stageId}
@@ -69,13 +70,16 @@ const MapPool = ({manage}: {manage?: boolean}) => {
                             )}
                         </Tabs>
                     </Grid>
-                    <PoolButtons manage={manage} stage={
-                        stages.find(stage => stage.id === stageId.toString()) ?? {} as ISimpleStageDto
-                    }/>
+                    <PoolButtons 
+                        manage={isManage}
+                        setManage={setIsManage}
+                        stage={
+                            stages.find(stage => stage.id === stageId.toString()) ?? {} as ISimpleStageDto
+                        }/>
                 </Grid>
                 <Grid item xs>
-                    {manage 
-                    ?   <MapManageList maps={maps}/>
+                    {isManage 
+                    ?   <MapManageList maps={maps} setMaps={setMaps}/>
                     :   <MapList maps={maps.filter(map => map.inMappool)}/>}
                 </Grid>
             </Grid>

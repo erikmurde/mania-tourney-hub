@@ -41,6 +41,10 @@ button {
   border-bottom-left-radius: 5px;
 }
 
+.map-manage-cover {
+  border-radius: 5px;
+}
+
 .map-cover, #tourney-banner {
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
