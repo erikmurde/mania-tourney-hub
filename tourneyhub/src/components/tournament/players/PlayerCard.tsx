@@ -8,6 +8,7 @@ import { AuthService } from '../../../services/authService';
 import { useContext } from 'react';
 import { AuthContext } from '../../../routes/Root';
 import { useParams } from 'react-router-dom';
+import { SUFFIX_MAP } from '../../../constants';
 
 interface IProps {
     player: IUserDto,
@@ -28,10 +29,6 @@ const PlayerCard = ({player, eliminatePlayer}: IProps) => {
         ['registered', theme.palette.primary.main]
     ])
 
-    const suffixMap = new Map<number, string>([
-        [1, 'st'], [2, 'nd'], [3, 'rd']
-    ])
-
     return (  
         <Card elevation={8} sx={{ display: 'flex', width: 400, height: 90 }}>
             <CardMedia
@@ -42,7 +39,7 @@ const PlayerCard = ({player, eliminatePlayer}: IProps) => {
             />
             <UserCardContent>
                 <Grid container columnSpacing={1} alignItems='center'>
-                    <Grid item xs={8} marginBottom={0.2}>
+                    <Grid item xs={8}>
                         <Typography>
                             {player.name} #{player.rank}
                         </Typography>
@@ -53,7 +50,7 @@ const PlayerCard = ({player, eliminatePlayer}: IProps) => {
                         </Typography>
                     </Grid>
                     <Flag country={player.country}/>
-                    <Grid item xs={8}>
+                    <Grid item xs={8} marginTop={0.5}>
                         <Typography lineHeight={1.7} fontSize={12} color={theme.palette.text.secondary}>
                             {player.country.name}
                         </Typography>
@@ -67,7 +64,7 @@ const PlayerCard = ({player, eliminatePlayer}: IProps) => {
                     <Grid item xs={isHost ? 6 : 12} textAlign={'end'} height={30}>
                         {stats.placement > 0 &&
                         <Typography fontSize={14} marginTop={1}>
-                            {stats.placement}{suffixMap.get(stats.placement % 10) ?? 'th'} place
+                            {stats.placement}{SUFFIX_MAP.get(stats.placement % 10) ?? 'th'} place
                         </Typography>}
                         {stats.placement === 0 && isHost &&
                         <ConfirmationDialog 

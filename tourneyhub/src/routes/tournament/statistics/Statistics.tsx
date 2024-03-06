@@ -1,9 +1,12 @@
-import { Paper } from '@mui/material';
+import { Grid, Paper } from '@mui/material';
+import SectionTitle from '../../../components/tournament/SectionTitle';
 
 const Statistics = () => {
     return (  
-        <Paper className='flex-center' elevation={2} sx={{ height: 500 }}>
-            STATISTICS
+        <Paper elevation={2} sx={{ minHeight: 500, paddingBottom: 2 }}>
+            <Grid container marginBottom={5}>
+                <SectionTitle title='Statistics'/>
+            </Grid>
         </Paper>
     );
 }

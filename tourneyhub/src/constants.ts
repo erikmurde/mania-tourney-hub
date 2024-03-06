@@ -22,3 +22,8 @@ export const REQUIRED = 'Required';
 // STAGE TYPES
 export const STANDARD = 'standard';
 export const QUALIFIER = 'qualifier';
+
+// TOURNAMENT PLACEMENT
+export const SUFFIX_MAP = new Map<number, string>([
+    [1, 'st'], [2, 'nd'], [3, 'rd']
+])

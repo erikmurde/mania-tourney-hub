@@ -2,22 +2,30 @@ import { Edit, Public, Publish } from '@mui/icons-material';
 import { Grid, Button } from '@mui/material';
 import MapSelectForm from './form/MapSelectForm';
 import ConfirmationDialog from '../dialog/ConfirmationDialog';
-import { ISimpleStageDto } from '../../../dto/stage/ISimpleStageDto';
 import { useContext } from 'react';
-import { AuthContext } from '../../../routes/Root';
+import { AuthContext, UpdateContext } from '../../../routes/Root';
 import { HOST, ADMIN, MAPPER, MAPPOOLER, PLAYTESTER } from '../../../constants';
 import { AuthService } from '../../../services/authService';
 import { useParams } from 'react-router-dom';
+import { StageService } from '../../../services/stageService';
+import { IStageDto } from '../../../dto/stage/IStageDto';
 
 interface IProps {
-    stage: ISimpleStageDto,
+    stage: IStageDto,
     manage: boolean,
     setManage: (manage: boolean) => void
 }
 
 const PoolButtons = ({stage, manage, setManage}: IProps) => {
+    const { mapPoolUpdate, setMapPoolUpdate } = useContext(UpdateContext);
     const { id } = useParams();
     const { user } = useContext(AuthContext);
+
+    const publishMappool = async() => {
+        stage.mappoolPublic = true;
+        await new StageService().edit(stage.id, stage);
+        setMapPoolUpdate(mapPoolUpdate + 1);
+    }
 
     const isHost = user && id && new AuthService()
         .isHost(user, id);
@@ -56,7 +64,7 @@ const PoolButtons = ({stage, manage, setManage}: IProps) => {
                     btnProps={{ startIcon: <Publish/>, title: 'Publish', sx: {width: 150}}}
                     title='Are you sure you wish to publish this mappool?'
                     actionTitle='Publish'
-                    action={() => console.log('...publishing')}/>
+                    action={() => publishMappool()}/>
             </Grid>}
         </>
     );

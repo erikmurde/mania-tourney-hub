@@ -6,5 +6,5 @@ export interface IStageDto extends ISimpleStageDto {
     bestOf: number,
     lobbySize: number,
     numAdvancing: number,
-    schedulingDeadline?: Dayjs
+    schedulingDeadline: Dayjs
 }

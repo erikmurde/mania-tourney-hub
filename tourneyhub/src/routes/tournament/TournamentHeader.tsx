@@ -25,7 +25,7 @@ const TournamentHeader = () => {
                     </Box>
                     <HeaderText name={tourney.name} description={tourney.description}/>
                     <HeaderButtons tourney={tourney}/>
-                    <HeaderTabs/>
+                    <HeaderTabs tourney={tourney}/>
                 </Paper>
             </Grid>
             <Grid item>

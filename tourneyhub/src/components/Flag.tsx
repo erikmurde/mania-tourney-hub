@@ -5,7 +5,7 @@ const Flag = ({country}: {country: ICountryDto}) => {
     return (  
         <>
         {country && 
-        <Grid item width={30} height={20} xs='auto'>
+        <Grid item width={30} height={20} xs='auto' marginTop={0.5}>
             <img 
                 className='flag' 
                 src={`https://assets.ppy.sh/old-flags/${country.ISO2}.png`} 

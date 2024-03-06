@@ -1,6 +1,5 @@
 import { Grid, Paper, Tab, Tabs, Typography } from '@mui/material';
 import { useContext, useEffect, useState } from 'react';
-import { ISimpleStageDto } from '../../../dto/stage/ISimpleStageDto';
 import { useNavigate, useParams } from 'react-router-dom';
 import MapList from '../../../components/tournament/mappools/MapList';
 import { IMapDto } from '../../../dto/map/IMapDto';
@@ -9,11 +8,13 @@ import { MapService } from '../../../services/mapService';
 import PoolButtons from '../../../components/tournament/mappools/PoolButtons';
 import MapManageList from '../../../components/tournament/mappools/MapManageList';
 import { UpdateContext } from '../../Root';
+import { IStageDto } from '../../../dto/stage/IStageDto';
+import SectionTitle from '../../../components/tournament/SectionTitle';
 
 const MapPool = () => {
     const { mapPoolUpdate } = useContext(UpdateContext);
     const [isManage, setIsManage] = useState(false);
-    const [stages, setStages] = useState([] as ISimpleStageDto[]);
+    const [stages, setStages] = useState([] as IStageDto[]);
     const [stageId, setStageId] = useState(0);
     const [maps, setMaps] = useState([] as IMapDto[]);
     const { id } = useParams();
@@ -47,17 +48,7 @@ const MapPool = () => {
     return (  
         <Paper elevation={2} sx={{ minHeight: 500, paddingBottom: 2 }}>
             <Grid container>
-                <Grid item xs={12}>
-                    <Typography variant='h2' 
-                        height={100} 
-                        fontSize={46} 
-                        fontWeight={400} 
-                        marginLeft={5} 
-                        lineHeight={2}>
-
-                        {isManage ? 'Manage mappools' : 'Mappools'}
-                    </Typography>
-                </Grid>
+                <SectionTitle title={isManage ? 'Manage mappools' : 'Mappools'}/>
                 <Grid container item direction='column' alignItems='center' 
                     width={200} 
                     marginLeft={5} 
@@ -78,7 +69,7 @@ const MapPool = () => {
                         manage={isManage}
                         setManage={setIsManage}
                         stage={
-                            stages.find(stage => stage.id === stageId.toString()) ?? {} as ISimpleStageDto
+                            stages.find(stage => stage.id === stageId.toString()) ?? {} as IStageDto
                         }/>
                 </Grid>
                 <Grid item xs>

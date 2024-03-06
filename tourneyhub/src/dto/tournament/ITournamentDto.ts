@@ -8,7 +8,7 @@ export interface ITournamentDto {
     playersPublic: boolean,
     done: boolean,
     minTeamSize: number,
-    maxTeamSixe: number,
+    maxTeamSize: number,
     minRank: number,
     maxRank: number,
     protects: boolean,

@@ -33,7 +33,7 @@ const StaffCard = ({staff, removeStaff}: IProps) => {
             />
             <UserCardContent>
                 <Grid container columnSpacing={1}>
-                    <Grid item xs={isStaffHost || !isHost ? 12 : 9} minHeight={30}>
+                    <Grid item xs={isStaffHost || !isHost ? 12 : 9}>
                         <Typography fontSize={18}>
                             {staff.name}
                         </Typography>
@@ -49,7 +49,7 @@ const StaffCard = ({staff, removeStaff}: IProps) => {
                         />
                     </Grid>}
                     <Flag country={staff.country}/>
-                    <Grid item>
+                    <Grid item marginTop={0.5}>
                         <Typography lineHeight={1.7} fontSize={12} color={theme.palette.text.secondary}>
                             {staff.country.name}
                         </Typography>

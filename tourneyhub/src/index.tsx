@@ -20,6 +20,7 @@ import Schedule from './routes/tournament/schedule/Schedule';
 import Players from './routes/tournament/players/Players';
 import Staff from './routes/tournament/staff/Staff';
 import Statistics from './routes/tournament/statistics/Statistics';
+import Teams from './routes/tournament/players/Teams';
 
 const router = createBrowserRouter([
 	{
@@ -57,6 +58,10 @@ const router = createBrowserRouter([
                     {
                         path: 'players',
                         element: <Players/>
+                    },
+                    {
+                        path: 'teams',
+                        element: <Teams/>
                     },
                     {
                         path: 'staff',
