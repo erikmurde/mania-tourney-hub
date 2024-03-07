@@ -3,9 +3,9 @@ import { useContext, useState } from 'react';
 import TourneyTab from '../TourneyTab';
 import { AuthContext } from '../../../routes/Root';
 import { HOST } from '../../../constants';
-import { ITournamentDto } from '../../../dto/tournament/ITournamentDto';
+import { TournamentDto } from '../../../dto/tournament/TournamentDto';
 
-const HeaderTabs = ({tourney}: {tourney: ITournamentDto}) => {
+const HeaderTabs = ({tourney}: {tourney: TournamentDto}) => {
     const [value, setValue] = useState(0);
     const { user } = useContext(AuthContext);
 

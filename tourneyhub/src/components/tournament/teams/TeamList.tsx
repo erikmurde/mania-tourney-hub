@@ -4,18 +4,19 @@ import TeamCard from './TeamCard';
 import { TeamService } from '../../../services/teamService';
 
 interface IProps {
+    teamsPublic: boolean,
     teams: TeamDto[],
     setTeams: (teams: TeamDto[]) => void
 }
 
-const TeamList = ({teams, setTeams}: IProps) => {
+const TeamList = ({teamsPublic, teams, setTeams}: IProps) => {
 
     const eliminateTeam = async(team: TeamDto) => {
         const activeTeams = teams
             .filter(team => team.status === 'active');
 
-        team.status = 'eliminated';
-        team.placement = activeTeams.length;
+        team.status = teamsPublic ? 'eliminated' : 'disqualified';
+        team.placement = teamsPublic ? activeTeams.length : 0;
 
         await new TeamService().edit(team.id, team);
         setTeams(teams.map(existing => 
@@ -27,7 +28,7 @@ const TeamList = ({teams, setTeams}: IProps) => {
         <Grid container spacing={2} justifyContent='center'>
             {teams.map(team => 
                 <Grid item key={team.id}>
-                    <TeamCard team={team} eliminateTeam={eliminateTeam}/>
+                    <TeamCard teamsPublic={teamsPublic} team={team} eliminateTeam={eliminateTeam}/>
                 </Grid>
             )}
         </Grid>

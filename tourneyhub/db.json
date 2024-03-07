@@ -1350,7 +1350,7 @@
       "stats": [
         {
           "tournamentId": "0",
-          "status": "active",
+          "status": "disqualified",
           "seeding": 5,
           "placement": 0
         }
@@ -1406,9 +1406,9 @@
       "stats": [
         {
           "tournamentId": "0",
-          "status": "active",
+          "status": "eliminated",
           "seeding": 7,
-          "placement": 0
+          "placement": 31
         }
       ]
     },
@@ -1602,9 +1602,9 @@
       "stats": [
         {
           "tournamentId": "0",
-          "status": "active",
+          "status": "eliminated",
           "seeding": 15,
-          "placement": 0
+          "placement": 29
         }
       ]
     },
@@ -1630,9 +1630,9 @@
       "stats": [
         {
           "tournamentId": "0",
-          "status": "eliminated",
+          "status": "active",
           "seeding": 16,
-          "placement": 27
+          "placement": 0
         }
       ]
     },
@@ -1770,9 +1770,9 @@
       "stats": [
         {
           "tournamentId": "0",
-          "status": "eliminated",
+          "status": "active",
           "seeding": 21,
-          "placement": 28
+          "placement": 0
         }
       ]
     },
@@ -1912,7 +1912,7 @@
           "tournamentId": "0",
           "status": "eliminated",
           "seeding": 26,
-          "placement": 32
+          "placement": 30
         }
       ]
     },
@@ -1966,9 +1966,9 @@
       "stats": [
         {
           "tournamentId": "0",
-          "status": "eliminated",
+          "status": "active",
           "seeding": 28,
-          "placement": 29
+          "placement": 0
         }
       ]
     },
@@ -2022,9 +2022,9 @@
       "stats": [
         {
           "tournamentId": "0",
-          "status": "eliminated",
+          "status": "active",
           "seeding": 30,
-          "placement": 31
+          "placement": 0
         }
       ]
     },
@@ -2050,9 +2050,9 @@
       "stats": [
         {
           "tournamentId": "0",
-          "status": "eliminated",
+          "status": "active",
           "seeding": 31,
-          "placement": 30
+          "placement": 0
         }
       ]
     },
@@ -3099,10 +3099,10 @@
       "tournamentId": "1",
       "name": "Team United States",
       "logo": "https://assets.ppy.sh/old-flags/US.png",
-      "status": "active",
+      "status": "eliminated",
       "availability": "We are available whenever.",
       "seeding": 2,
-      "placement": 0,
+      "placement": 6,
       "players": [
         {
           "id": "87",
@@ -4219,6 +4219,7 @@
       "description": "6K Autumn Showdown Tournament (6KAST) is an osu!mania Free for all 1v1 Double-Elimination tournament focused on the 6 key gamemode.This is one of the first ever 6 key focused tournament ever hosted on osu!mania. So we hope you enjoy your experience on the newest tourney keymode meta!",
       "banner": "https://i.ppy.sh/333a6da130763d34fb218cd7d3dc9cd24bb25a35/68747470733a2f2f696d6775722d617263686976652e7070792e73682f646973636f72642f313131343934313836353631363232303137312d313131363635313138383330323133353330382d415354364b5f42616e6e65725f52656374616e676c652e706e67",
       "public": true,
+      "participantsPublic": true,
       "done": false,
       "minTeamSize": 1,
       "maxTeamSize": 1,
@@ -4242,6 +4243,7 @@
       "description": "The osu!mania 4K World Cup 2023 (MWC 4K 2023) was a country-based osu!mania tournament hosted by the osu! team. It was the seventh installment of the osu!mania 4K World Cup.",
       "banner": "https://assets.ppy.sh/tournament-banners/official/mwc4k2023.jpg",
       "public": true,
+      "participantsPublic": true,
       "done": false,
       "minTeamSize": 4,
       "maxTeamSize": 6,
@@ -4458,7 +4460,7 @@
       "id": "14",
       "stageId": "4",
       "beatmapId": 2999060,
-      "inMappool": false,
+      "inMappool": true,
       "title": "fffff op.2",
       "diff": "Evening's Extreme",
       "artist": "Five Hammer",
@@ -4715,7 +4717,7 @@
         "id": "0",
         "name": "RC"
       },
-      "inMappool": true
+      "inMappool": false
     },
     {
       "id": "uudqwCQ",

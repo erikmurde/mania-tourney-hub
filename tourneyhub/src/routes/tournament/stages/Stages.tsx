@@ -21,7 +21,7 @@ const Stages = () => {
     useEffect(() => {
         if (valid) {
             new StageService()
-                .getAll()
+                .getAllTourney(id)
                 .then(stages => setStages(stages));
         }
     }, [valid, stageUpdate]);

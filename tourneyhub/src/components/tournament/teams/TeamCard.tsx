@@ -5,35 +5,41 @@ import { Edit, GroupRemove } from '@mui/icons-material';
 import { StyledIconButton } from '../../styled/StyledIconButton';
 import { useContext } from 'react';
 import { AuthContext } from '../../../routes/Root';
-import { AuthService } from '../../../services/authService';
 import { useParams } from 'react-router-dom';
 import TeamPlayerCard from './TeamPlayerCard';
-import { SUFFIX_MAP } from '../../../constants';
+import { ACTIVE, ADMIN, DISQUALIFIED, ELIMINATED, HOST, REGISTERED, SUFFIX_MAP } from '../../../constants';
 import ConfirmationDialog from '../dialog/ConfirmationDialog';
 
 interface IProps {
+    teamsPublic: boolean,
     team: TeamDto,
     eliminateTeam: (team: TeamDto) => void
 }
 
-const TeamCard = ({team, eliminateTeam}: IProps) => {
+const TeamCard = ({teamsPublic, team, eliminateTeam}: IProps) => {
     const { id } = useParams();
     const { user } = useContext(AuthContext);
+    const validRoles = [HOST, ADMIN];
     const theme = useTheme();
 
     const colorMap = new Map<string, string>([
-        ['active', theme.palette.success.main],
-        ['eliminated', theme.palette.error.main],
-        ['registered', theme.palette.primary.main]
+        [ACTIVE, theme.palette.success.main],
+        [ELIMINATED, theme.palette.error.main],
+        [DISQUALIFIED, theme.palette.error.main],
+        [REGISTERED, theme.palette.primary.main]
     ])
 
-    const isHost = id && user && new AuthService().isHost(user, id);
-    const eliminated = team.status === 'eliminated';
+    const isValid = user && user.roles
+        .filter(role => role.tournamentId === id)
+        .some(role => validRoles.includes(role.name));
+
+    const eliminated = team.status === ELIMINATED;
+    const disqualified = team.status === DISQUALIFIED;
 
     return (  
         <Card elevation={6} sx={{ width: 400 }}>
             <StyledCardContent>
-                <Grid container alignItems='center' marginBottom={isHost ? 1 : 2}>
+                <Grid container alignItems='center' marginBottom={isValid ? 1 : 2}>
                     <Grid item width={60} height={40} xs='auto' marginRight={1}>
                         <img 
                             className='flag' 
@@ -50,20 +56,20 @@ const TeamCard = ({team, eliminateTeam}: IProps) => {
                             Seed {team.seeding}
                         </Typography>
                     </Grid>
-                    {isHost &&
+                    {isValid &&
                     <>
                     <Grid item xs={9} marginTop={0.5}>
                         <Typography color={colorMap.get(team.status)} fontWeight={700}>
                             {team.status.toUpperCase()}
                         </Typography>
                     </Grid>
-                    {!eliminated &&
+                    {!eliminated && !disqualified &&
                     <Grid item xs={3} textAlign='end'>
                         <ConfirmationDialog 
                             btnIcon={<GroupRemove/>}
                             btnProps={{ color: 'error' }}
-                            title='Are you sure you wish to eliminate this team?' 
-                            actionTitle='Eliminate' 
+                            title={`Are you sure you wish to ${teamsPublic ? 'eliminate' : 'disqualify'} this team?`}
+                            actionTitle={teamsPublic ? 'Eliminate' : 'Disqualify'} 
                             action={() => eliminateTeam(team)}
                             />
                         <StyledIconButton color='primary'>

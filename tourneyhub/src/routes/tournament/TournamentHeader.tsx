@@ -1,6 +1,6 @@
 import { Box, Grid, Paper } from '@mui/material';
 import { Outlet, useParams } from 'react-router-dom';
-import { ITournamentDto } from '../../dto/tournament/ITournamentDto';
+import { TournamentDto } from '../../dto/tournament/TournamentDto';
 import { useEffect, useState } from 'react';
 import { TournamentService } from '../../services/tournamentService';
 import HeaderText from '../../components/tournament/header/HeaderText';
@@ -8,7 +8,7 @@ import HeaderButtons from '../../components/tournament/header/HeaderButtons';
 import HeaderTabs from '../../components/tournament/header/HeaderTabs';
 
 const TournamentHeader = () => {
-    const [tourney, setTourney] = useState({} as ITournamentDto);
+    const [tourney, setTourney] = useState({} as TournamentDto);
     const { id } = useParams();
 
     useEffect(() => {

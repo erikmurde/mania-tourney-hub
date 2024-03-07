@@ -29,7 +29,7 @@ const Staff = () => {
 
             if (user && authService.isHost(user, id)) {
                 staffApplicationService
-                    .getAllPending()
+                    .getAllPending(id)
                     .then(applications => setApplications(applications));
             }
         }

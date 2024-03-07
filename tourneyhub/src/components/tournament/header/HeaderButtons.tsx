@@ -1,12 +1,12 @@
 import { useContext } from 'react';
 import { AuthContext } from '../../../routes/Root';
-import { ITournamentDto } from '../../../dto/tournament/ITournamentDto';
+import { TournamentDto } from '../../../dto/tournament/TournamentDto';
 import { Button, Grid } from '@mui/material';
 import { Done, Edit, KeyboardArrowDown, Publish } from '@mui/icons-material';
 import { HOST } from '../../../constants';
 import StaffApplicationForm from '../staff/form/StaffApplicationForm';
 
-const HeaderButtons = ({tourney}: {tourney: ITournamentDto}) => {
+const HeaderButtons = ({tourney}: {tourney: TournamentDto}) => {
     const { user } = useContext(AuthContext);
 
     const roles = user?.roles ?? [];

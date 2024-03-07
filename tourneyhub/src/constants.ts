@@ -27,3 +27,9 @@ export const QUALIFIER = 'qualifier';
 export const SUFFIX_MAP = new Map<number, string>([
     [1, 'st'], [2, 'nd'], [3, 'rd']
 ])
+
+// STATUSES
+export const ACTIVE = 'active';
+export const ELIMINATED = 'eliminated';
+export const DISQUALIFIED = 'disqualified';
+export const REGISTERED = 'registered';

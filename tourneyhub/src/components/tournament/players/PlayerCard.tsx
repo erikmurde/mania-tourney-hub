@@ -8,25 +8,28 @@ import { AuthService } from '../../../services/authService';
 import { useContext } from 'react';
 import { AuthContext } from '../../../routes/Root';
 import { useParams } from 'react-router-dom';
-import { SUFFIX_MAP } from '../../../constants';
+import { ACTIVE, DISQUALIFIED, ELIMINATED, REGISTERED, SUFFIX_MAP } from '../../../constants';
 
 interface IProps {
+    playersPublic: boolean,
     player: IUserDto,
     eliminatePlayer: (player: IUserDto) => void
 }
 
-const PlayerCard = ({player, eliminatePlayer}: IProps) => {
+const PlayerCard = ({playersPublic, player, eliminatePlayer}: IProps) => {
     const { user } = useContext(AuthContext);
     const { id } = useParams();
     const theme = useTheme();
     const stats = player.stats[0];
 
     const isHost = user && id && new AuthService().isHost(user, id);
+    const disqualified = player.stats[0].status === DISQUALIFIED;
 
     const colorMap = new Map<string, string>([
-        ['active', theme.palette.success.main],
-        ['eliminated', theme.palette.error.main],
-        ['registered', theme.palette.primary.main]
+        [ACTIVE, theme.palette.success.main],
+        [ELIMINATED, theme.palette.error.main],
+        [DISQUALIFIED, theme.palette.error.main],
+        [REGISTERED, theme.palette.primary.main]
     ])
 
     return (  
@@ -39,18 +42,19 @@ const PlayerCard = ({player, eliminatePlayer}: IProps) => {
             />
             <UserCardContent>
                 <Grid container columnSpacing={1} alignItems='center'>
-                    <Grid item xs={8}>
+                    <Grid item xs={playersPublic ? 9 : 12}>
                         <Typography>
                             {player.name} #{player.rank}
                         </Typography>
                     </Grid>
-                    <Grid item xs={4}>
+                    {playersPublic && 
+                    <Grid item xs={3}>
                         <Typography fontSize={14} textAlign='end'>
                             Seed {stats.seeding}
                         </Typography>
-                    </Grid>
+                    </Grid>}
                     <Flag country={player.country}/>
-                    <Grid item xs={8} marginTop={0.5}>
+                    <Grid item xs={10} marginTop={0.5}>
                         <Typography lineHeight={1.7} fontSize={12} color={theme.palette.text.secondary}>
                             {player.country.name}
                         </Typography>
@@ -66,12 +70,12 @@ const PlayerCard = ({player, eliminatePlayer}: IProps) => {
                         <Typography fontSize={14} marginTop={1}>
                             {stats.placement}{SUFFIX_MAP.get(stats.placement % 10) ?? 'th'} place
                         </Typography>}
-                        {stats.placement === 0 && isHost &&
+                        {stats.placement === 0 && isHost && !disqualified &&
                         <ConfirmationDialog 
                             btnIcon={<PersonRemove/>}
                             btnProps={{ color: 'error', sx: { padding: 0.5, marginTop: 0.3 }}}
-                            title={'Are you sure you wish to eliminate this player?'} 
-                            actionTitle={'Eliminate'} 
+                            title={`Are you sure you wish to ${playersPublic ? 'eliminate' : 'disqualify'} this player?`} 
+                            actionTitle={playersPublic ? 'Eliminate' : 'Disqualify'} 
                             action={() => eliminatePlayer(player)}
                         />}
                     </Grid>

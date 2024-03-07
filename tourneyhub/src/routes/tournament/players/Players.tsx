@@ -1,29 +1,83 @@
-import { Grid, Paper, Typography } from '@mui/material';
+import { Grid, Paper } from '@mui/material';
 import PlayerList from '../../../components/tournament/players/PlayerList';
 import { IUserDto } from '../../../dto/IUserDto';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { AuthService } from '../../../services/authService';
 import { useParams } from 'react-router-dom';
 import SectionTitle from '../../../components/tournament/SectionTitle';
+import ConfirmationDialog from '../../../components/tournament/dialog/ConfirmationDialog';
+import { Publish } from '@mui/icons-material';
+import { TournamentService } from '../../../services/tournamentService';
+import { TournamentDto } from '../../../dto/tournament/TournamentDto';
+import { DISQUALIFIED, ACTIVE, ADMIN, HOST } from '../../../constants';
+import { AuthContext } from '../../Root';
 
 const Players = () => {
     const { id } = useParams();
+    const { user } = useContext(AuthContext);
     const [players, setPlayers] = useState([] as IUserDto[]);
+    const [tourney, setTourney] = useState({} as TournamentDto);
+    const validRoles = [HOST, ADMIN];
+    const tourneyService = new TournamentService();
+    const authService = new AuthService();
+
+    const isValid = user && user.roles
+        .filter(role => role.tournamentId === id)
+        .some(role => validRoles.includes(role.name));
 
     useEffect(() => {
         if (id) {
-            new AuthService()
+            tourneyService
+                .getEntity(id)
+                .then(tourney => setTourney(tourney));
+
+            authService
                 .getPlayers(id)
-                .then(players => setPlayers(players));
+                .then(players => setPlayers(isValid 
+                    ? players 
+                    : players.filter(player => player.stats[0].status !== DISQUALIFIED))
+                );
         }
     }, [id]);
+
+    const publishPlayers = async() => {
+        if (!id) {
+            return;
+        }
+        const newPlayers = [...players];
+        tourney.participantsPublic = true;
+
+        for (const player of newPlayers) {
+            let stats = player.stats[0];
+
+            if (stats.status !== DISQUALIFIED) {
+                stats.status = ACTIVE;
+                await authService.edit(player.id, player);
+            }
+        }
+        await tourneyService.edit(id, tourney);
+        setPlayers(newPlayers);
+    }
 
     return (  
         <Paper elevation={2} sx={{ minHeight: 500, paddingBottom: 2 }}>
             <Grid container marginBottom={5}>
                 <SectionTitle title='Players'/>
+                {!tourney.participantsPublic && 
+                <Grid item xs={12} margin={5} marginTop={2}>
+                    <ConfirmationDialog
+                        btnProps={{ 
+                            title: 'Publish', 
+                            startIcon: <Publish/>, 
+                            sx: { width: 150 }
+                        }}
+                        title={'Are you sure you wish to publish the players list?'} 
+                        actionTitle={'Publish'} 
+                        action={() => publishPlayers()}/>
+                </Grid>}
                 <Grid item>
                     <PlayerList 
+                        playersPublic={tourney.participantsPublic}
                         players={players.sort((a, b) => 
                             a.stats[0].seeding - b.stats[0].seeding
                         )}

@@ -6,8 +6,8 @@ export class StaffApplicationService extends BaseEntityService<StaffApplicationD
         super('staffApplications');
     }
 
-    async getAllPending(): Promise<StaffApplicationDto[]> {
-        const response = await this.axios.get<StaffApplicationDto[]>(this.baseUrl);
+    async getAllPending(tournamentId: string): Promise<StaffApplicationDto[]> {
+        const response = await this.axios.get<StaffApplicationDto[]>(`${this.baseUrl}?tournamentId=${tournamentId}`);
 
         console.log('getAllPending response: ', response);
         return response.data

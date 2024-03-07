@@ -1,11 +1,11 @@
-export interface ITournamentDto {
+export interface TournamentDto {
     id: string,
     name: string,
     code: string,
     description: string,
     banner: string,
     public: boolean,
-    playersPublic: boolean,
+    participantsPublic: boolean,
     done: boolean,
     minTeamSize: number,
     maxTeamSize: number,
