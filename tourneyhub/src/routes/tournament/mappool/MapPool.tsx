@@ -1,4 +1,4 @@
-import { Grid, Paper, Tab, Tabs, Typography } from '@mui/material';
+import { Grid, Paper } from '@mui/material';
 import { useContext, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import MapList from '../../../components/tournament/mappools/MapList';
@@ -10,6 +10,7 @@ import MapManageList from '../../../components/tournament/mappools/MapManageList
 import { UpdateContext } from '../../Root';
 import { IStageDto } from '../../../dto/stage/IStageDto';
 import SectionTitle from '../../../components/tournament/SectionTitle';
+import StageTabs from '../../../components/tournament/StageTabs';
 
 const MapPool = () => {
     const { mapPoolUpdate } = useContext(UpdateContext);
@@ -49,29 +50,16 @@ const MapPool = () => {
         <Paper elevation={2} sx={{ minHeight: 500, paddingBottom: 2 }}>
             <Grid container>
                 <SectionTitle title={isManage ? 'Manage mappools' : 'Mappools'}/>
-                <Grid container item direction='column' alignItems='center' 
-                    width={200} 
-                    marginLeft={5} 
-                    rowSpacing={1}
-                    >
-                    <Grid item>
-                        <Tabs sx={{ width: 200, marginBottom: 2 }}
-                            value={stageId}
-                            orientation='vertical' 
-                            onChange={(e, value) => setStageId(value)}>
-
-                            {stages.map(stage => 
-                                <Tab key={stage.id} label={stage.name} value={parseInt(stage.id)} href={`#${stage.id}`}/>
-                            )}
-                        </Tabs>
-                    </Grid>
+                <StageTabs 
+                    stages={stages} 
+                    stageId={stageId} 
+                    setStageId={setStageId}
+                    buttons={
                     <PoolButtons 
                         manage={isManage}
                         setManage={setIsManage}
-                        stage={
-                            stages.find(stage => stage.id === stageId.toString()) ?? {} as IStageDto
-                        }/>
-                </Grid>
+                        stage={stages.find(stage => stage.id === stageId.toString()) ?? {} as IStageDto}
+                    />}/>
                 <Grid item xs>
                     {isManage 
                     ?   <MapManageList maps={maps}/>

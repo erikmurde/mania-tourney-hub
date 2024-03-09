@@ -15,7 +15,10 @@ export class MapService extends BaseEntityService<IMapDto> {
     }
 
     async getAllStage(stageId: string): Promise<IMapDto[]> {
-        return (await this.axios.get<IMapDto[]>(`${this.baseUrl}${this.expand}&stageId=${stageId}`)).data;
+        const response = await this.axios.get<IMapDto[]>(`${this.baseUrl}${this.expand}&stageId=${stageId}`);
+
+        console.log('getAllStage response: ', response);
+        return response.data;
     }
 
     async getAllStageInMappool(stageId: string): Promise<IMapDto[]> {

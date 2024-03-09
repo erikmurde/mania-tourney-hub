@@ -55,21 +55,6 @@
         },
         {
           "tournamentId": "0",
-          "name": "referee",
-          "canRegWithRole": false
-        },
-        {
-          "tournamentId": "0",
-          "name": "streamer",
-          "canRegWithRole": true
-        },
-        {
-          "tournamentId": "0",
-          "name": "commentator",
-          "canRegWithRole": true
-        },
-        {
-          "tournamentId": "0",
           "name": "sheeter",
           "canRegWithRole": false
         }
@@ -4337,7 +4322,7 @@
       "numAdvancing": 0,
       "schedulingDeadline": "2024-03-03T14:11:05.100Z",
       "mappoolPublic": false,
-      "schedulePublic": false,
+      "schedulePublic": true,
       "statsPublic": false
     },
     {
@@ -4350,7 +4335,7 @@
       "numAdvancing": 0,
       "schedulingDeadline": "2024-03-03T14:11:05.100Z",
       "mappoolPublic": false,
-      "schedulePublic": false,
+      "schedulePublic": true,
       "statsPublic": false
     },
     {
@@ -4812,6 +4797,805 @@
       "status": "accepted",
       "experience": "ffffffffffffsdfsd",
       "motivation": "ffffffffffffffffffffffffff"
+    }
+  ],
+  "matches": [
+    {
+      "id": "0",
+      "stageId": "4",
+      "code": "98",
+      "time": "2023-11-10, 13:00",
+      "mpLink": "https://osu.ppy.sh/community/matches/111240607",
+      "score1": 6,
+      "score2": 1,
+      "isDone": true,
+      "player1": {
+        "name": "Shenzouz",
+        "country": {
+          "name": "China",
+          "ISO2": "CN"
+        }
+      },
+      "player2": {
+        "name": "7581Eason",
+        "country": {
+          "name": "China",
+          "ISO2": "CN"
+        }
+      },
+      "referee": "TheHunter1",
+      "streamer": "EpsilonMaiagare",
+      "commentators": []
+    },
+    {
+      "id": "1",
+      "stageId": "4",
+      "code": "103",
+      "time": "2023-11-11, 08:00",
+      "mpLink": "",
+      "score1": 0,
+      "score2": -1,
+      "isDone": true,
+      "player1": {
+        "name": "Alter-",
+        "country": {
+          "name": "United States",
+          "ISO2": "US"
+        }
+      },
+      "player2": {
+        "name": "Old Pigeon",
+        "country": {
+          "name": "China",
+          "ISO2": "CN"
+        }
+      },
+      "referee": "",
+      "streamer": "",
+      "commentators": []
+    },
+    {
+      "id": "2",
+      "stageId": "4",
+      "code": "110",
+      "time": "2023-11-11, 12:00",
+      "mpLink": "",
+      "score1": 0,
+      "score2": -1,
+      "isDone": true,
+      "player1": {
+        "name": "- Kura -",
+        "country": {
+          "name": "Philippines",
+          "ISO2": "PH"
+        }
+      },
+      "player2": {
+        "name": "Watch01",
+        "country": {
+          "name": "China",
+          "ISO2": "CN"
+        }
+      },
+      "referee": "TheHunter1",
+      "streamer": "",
+      "commentators": []
+    },
+    {
+      "id": "3",
+      "stageId": "4",
+      "code": "99",
+      "time": "2023-11-11, 12:00",
+      "mpLink": "",
+      "score1": 1,
+      "score2": 6,
+      "isDone": true,
+      "player1": {
+        "name": "bagjettka",
+        "country": {
+          "name": "Poland",
+          "ISO2": "PL"
+        }
+      },
+      "player2": {
+        "name": "mashu",
+        "country": {
+          "name": "United States",
+          "ISO2": "US"
+        }
+      },
+      "referee": "TheHunter1",
+      "streamer": "",
+      "commentators": []
+    },
+    {
+      "id": "4",
+      "stageId": "4",
+      "code": "100",
+      "time": "2023-11-11, 14:00",
+      "mpLink": "",
+      "score1": 0,
+      "score2": -1,
+      "isDone": true,
+      "player1": {
+        "name": "bunsen",
+        "country": {
+          "name": "United States",
+          "ISO2": "US"
+        }
+      },
+      "player2": {
+        "name": "yz1155",
+        "country": {
+          "name": "South Korea",
+          "ISO2": "KR"
+        }
+      },
+      "referee": "",
+      "streamer": "",
+      "commentators": []
+    },
+    {
+      "id": "5",
+      "stageId": "4",
+      "code": "102",
+      "time": "2023-11-11, 14:00",
+      "mpLink": "",
+      "score1": 6,
+      "score2": 1,
+      "isDone": true,
+      "player1": {
+        "name": "arcwinolivirus",
+        "country": {
+          "name": "Philippines",
+          "ISO2": "PH"
+        }
+      },
+      "player2": {
+        "name": "AWMRone",
+        "country": {
+          "name": "China",
+          "ISO2": "CN"
+        }
+      },
+      "referee": "Poity",
+      "streamer": "[GB]Rush_FTK",
+      "commentators": []
+    },
+    {
+      "id": "6",
+      "stageId": "4",
+      "code": "112",
+      "time": "2023-11-11, 15:00",
+      "mpLink": "",
+      "score1": 6,
+      "score2": 3,
+      "isDone": true,
+      "player1": {
+        "name": "UmmmMrMoo",
+        "country": {
+          "name": "Canada",
+          "ISO2": "CA"
+        }
+      },
+      "player2": {
+        "name": "Sanni",
+        "country": {
+          "name": "Philippines",
+          "ISO2": "PH"
+        }
+      },
+      "referee": "Poity",
+      "streamer": "[GB]Rush_FTK",
+      "commentators": []
+    },
+    {
+      "id": "7",
+      "stageId": "4",
+      "code": "97",
+      "time": "2023-11-11, 21:00",
+      "mpLink": "",
+      "score1": 1,
+      "score2": 6,
+      "isDone": true,
+      "player1": {
+        "name": "[TCJ]ScanL",
+        "country": {
+          "name": "United States",
+          "ISO2": "US"
+        }
+      },
+      "player2": {
+        "name": "Skalim",
+        "country": {
+          "name": "Chile",
+          "ISO2": "CL"
+        }
+      },
+      "referee": "walmart5193",
+      "streamer": "EpsilonMaiagare",
+      "commentators": []
+    },
+    {
+      "id": "8",
+      "stageId": "4",
+      "code": "101",
+      "time": "2023-11-12, 03:00",
+      "mpLink": "",
+      "score1": 1,
+      "score2": 6,
+      "isDone": true,
+      "player1": {
+        "name": "Krn_",
+        "country": {
+          "name": "China",
+          "ISO2": "CN"
+        }
+      },
+      "player2": {
+        "name": "HxcQ777",
+        "country": {
+          "name": "China",
+          "ISO2": "CN"
+        }
+      },
+      "referee": "akace100",
+      "streamer": "EpsilonMaiagare",
+      "commentators": [
+        "Sparky"
+      ]
+    },
+    {
+      "id": "9",
+      "stageId": "4",
+      "code": "104",
+      "time": "2023-11-12, 07:30",
+      "mpLink": "",
+      "score1": 0,
+      "score2": 0,
+      "isDone": false,
+      "player1": {
+        "name": "Arcaxio",
+        "country": {
+          "name": "Estonia",
+          "ISO2": "EE"
+        }
+      },
+      "player2": {
+        "name": "RhymesWithMash",
+        "country": {
+          "name": "United States",
+          "ISO2": "US"
+        }
+      },
+      "referee": "TheHunter1",
+      "streamer": "",
+      "commentators": [
+        "Sparky"
+      ]
+    },
+    {
+      "id": "10",
+      "stageId": "4",
+      "code": "106d",
+      "time": "2023-11-12, 08:00",
+      "mpLink": "",
+      "score1": 0,
+      "score2": 0,
+      "isDone": false,
+      "player1": {
+        "name": "yz1155",
+        "country": {
+          "name": "South Korea",
+          "ISO2": "KR"
+        }
+      },
+      "player2": {
+        "name": "mashu",
+        "country": {
+          "name": "United States",
+          "ISO2": "US"
+        }
+      },
+      "referee": "Poity",
+      "streamer": "",
+      "commentators": []
+    },
+    {
+      "id": "11",
+      "stageId": "4",
+      "code": "109",
+      "time": "2023-11-12, 08:00",
+      "mpLink": "",
+      "score1": 0,
+      "score2": 0,
+      "isDone": false,
+      "player1": {
+        "name": "Milla[Monkey]",
+        "country": {
+          "name": "France",
+          "ISO2": "FR"
+        }
+      },
+      "player2": {
+        "name": "VanWilder",
+        "country": {
+          "name": "China",
+          "ISO2": "CN"
+        }
+      },
+      "referee": "TheHunter1",
+      "streamer": "[GB]Rush_FTK",
+      "commentators": []
+    },
+    {
+      "id": "12",
+      "stageId": "4",
+      "code": "108b",
+      "time": "2023-11-12, 12:00",
+      "mpLink": "",
+      "score1": 0,
+      "score2": 0,
+      "isDone": false,
+      "player1": {
+        "name": "Arcaxio",
+        "country": {
+          "name": "Estonia",
+          "ISO2": "EE"
+        }
+      },
+      "player2": {
+        "name": "Old Pigeon",
+        "country": {
+          "name": "China",
+          "ISO2": "CN"
+        }
+      },
+      "referee": "TheHunter1",
+      "streamer": "",
+      "commentators": []
+    },
+    {
+      "id": "13",
+      "stageId": "4",
+      "code": "107b",
+      "time": "2023-11-12, 13:00",
+      "mpLink": "",
+      "score1": 0,
+      "score2": 0,
+      "isDone": false,
+      "player1": {
+        "name": "arcwinolivirus",
+        "country": {
+          "name": "Philippines",
+          "ISO2": "PH"
+        }
+      },
+      "player2": {
+        "name": "HxcQ777",
+        "country": {
+          "name": "China",
+          "ISO2": "CN"
+        }
+      },
+      "referee": "rock-on",
+      "streamer": "[GB]Rush_FTK",
+      "commentators": []
+    },
+    {
+      "id": "14",
+      "stageId": "4",
+      "code": "111",
+      "time": "2023-11-12, 15:00",
+      "mpLink": "",
+      "score1": 0,
+      "score2": 0,
+      "isDone": false,
+      "player1": {
+        "name": "LostCool",
+        "country": {
+          "name": "Thailand",
+          "ISO2": "TH"
+        }
+      },
+      "player2": {
+        "name": "TsukiyaWhiskers",
+        "country": {
+          "name": "Germany",
+          "ISO2": "DE"
+        }
+      },
+      "referee": "Poity",
+      "streamer": "EpsilonMaiagare",
+      "commentators": []
+    },
+    {
+      "id": "15",
+      "stageId": "4",
+      "code": "105b",
+      "time": "2023-11-12, 16:00",
+      "mpLink": "",
+      "score1": 0,
+      "score2": 0,
+      "isDone": false,
+      "player1": {
+        "name": "Shenzouz",
+        "country": {
+          "name": "China",
+          "ISO2": "CN"
+        }
+      },
+      "player2": {
+        "name": "Skalim",
+        "country": {
+          "name": "Chile",
+          "ISO2": "CL"
+        }
+      },
+      "referee": "Poity",
+      "streamer": "EpsilonMaiagare",
+      "commentators": [
+        "Sparky"
+      ]
+    }
+  ],
+  "lobbies": [
+    {
+      "id": "0",
+      "stageId": "0",
+      "code": "Q25",
+      "time": "2023-10-12, 15:00",
+      "mpLink": "https://osu.ppy.sh/home",
+      "isDone": true,
+      "players": [
+        "Watch01"
+      ],
+      "referee": "Albionthegreat"
+    },
+    {
+      "id": "1",
+      "stageId": "0",
+      "code": "Q26",
+      "time": "2023-10-13, 13:00",
+      "mpLink": "https://osu.ppy.sh/home",
+      "isDone": true,
+      "players": [
+        "-XxbluezaperxX-"
+      ],
+      "referee": "TheFunk"
+    },
+    {
+      "id": "2",
+      "stageId": "0",
+      "code": "Q01",
+      "time": "2023-10-14, 00:00",
+      "mpLink": "",
+      "isDone": true,
+      "players": [],
+      "referee": "walmart5193"
+    },
+    {
+      "id": "3",
+      "stageId": "0",
+      "code": "Q02",
+      "time": "2023-10-14, 02:00",
+      "mpLink": "https://osu.ppy.sh/home",
+      "isDone": true,
+      "players": [
+        "Sparky"
+      ],
+      "referee": "walmart5193"
+    },
+    {
+      "id": "4",
+      "stageId": "0",
+      "code": "Q03",
+      "time": "2023-10-14, 04:00",
+      "mpLink": "",
+      "isDone": true,
+      "players": [],
+      "referee": ""
+    },
+    {
+      "id": "5",
+      "stageId": "0",
+      "code": "Q04",
+      "time": "2023-10-14, 06:00",
+      "mpLink": "",
+      "isDone": true,
+      "players": [],
+      "referee": "ERA Xuste"
+    },
+    {
+      "id": "6",
+      "stageId": "0",
+      "code": "Q05",
+      "time": "2023-10-14, 08:00",
+      "mpLink": "https://osu.ppy.sh/home",
+      "isDone": true,
+      "players": [
+        "HxcQ777",
+        "Kuiiiiteeee",
+        "7581Eason",
+        "Lasen-"
+      ],
+      "referee": "TheHunter1"
+    },
+    {
+      "id": "7",
+      "stageId": "0",
+      "code": "Q06",
+      "time": "2023-10-14, 10:00",
+      "mpLink": "",
+      "isDone": true,
+      "players": [],
+      "referee": "rock-on"
+    },
+    {
+      "id": "8",
+      "stageId": "0",
+      "code": "Q07",
+      "time": "2023-10-14, 12:00",
+      "mpLink": "https://osu.ppy.sh/home",
+      "isDone": true,
+      "players": [
+        "AomDCO",
+        "--Pavin--",
+        "LostCool",
+        "KenZ",
+        "- Kura -",
+        "arcwinolivirus"
+      ],
+      "referee": "[GB]Rush_FTK"
+    },
+    {
+      "id": "9",
+      "stageId": "0",
+      "code": "Q08",
+      "time": "2023-10-14, 14:00",
+      "mpLink": "https://osu.ppy.sh/home",
+      "isDone": true,
+      "players": [
+        "-Beajek-"
+      ],
+      "referee": "Poity"
+    },
+    {
+      "id": "10",
+      "stageId": "0",
+      "code": "Q09",
+      "time": "2023-10-14, 16:00",
+      "mpLink": "https://osu.ppy.sh/home",
+      "isDone": true,
+      "players": [
+        "TsukiyaWhiskers",
+        "Kings",
+        "sukidayo-",
+        "[-Yuuki-]"
+      ],
+      "referee": "Poity"
+    },
+    {
+      "id": "11",
+      "stageId": "0",
+      "code": "Q10",
+      "time": "2023-10-14, 18:00",
+      "mpLink": "https://osu.ppy.sh/home",
+      "isDone": true,
+      "players": [
+        "- Kopi -",
+        "Zmor0133"
+      ],
+      "referee": "ERA Xuste"
+    },
+    {
+      "id": "12",
+      "stageId": "0",
+      "code": "Q11",
+      "time": "2023-10-14, 20:00",
+      "mpLink": "https://osu.ppy.sh/home",
+      "isDone": true,
+      "players": [
+        "TWyvernT",
+        "mashu",
+        "Lelloq",
+        "Leototo",
+        "Freek"
+      ],
+      "referee": "walmart5193"
+    },
+    {
+      "id": "13",
+      "stageId": "0",
+      "code": "Q12",
+      "time": "2023-10-14, 22:00",
+      "mpLink": "https://osu.ppy.sh/home",
+      "isDone": true,
+      "players": [
+        "[TK]Martin_22",
+        "Plasticpea",
+        "Alter-"
+      ],
+      "referee": "SunApple"
+    },
+    {
+      "id": "14",
+      "stageId": "0",
+      "code": "Q13",
+      "time": "2023-10-15, 00:00",
+      "mpLink": "https://osu.ppy.sh/home",
+      "isDone": true,
+      "players": [
+        "UmmmMrMoo",
+        "Matiias",
+        "babypotaterrx3"
+      ],
+      "referee": "EpsilonMaiagare"
+    },
+    {
+      "id": "15",
+      "stageId": "0",
+      "code": "Q14",
+      "time": "2023-10-15, 02:00",
+      "mpLink": "",
+      "isDone": false,
+      "players": [
+        "JimmyEpic",
+        "Mechafinch",
+        "Shenzouz"
+      ],
+      "referee": "ERA Xuste"
+    },
+    {
+      "id": "16",
+      "stageId": "0",
+      "code": "Q15",
+      "time": "2023-10-15, 04:00",
+      "mpLink": "",
+      "isDone": false,
+      "players": [
+        "zero2snow",
+        "RhymesWithMash"
+      ],
+      "referee": "Auxesiaa"
+    },
+    {
+      "id": "17",
+      "stageId": "0",
+      "code": "Q16",
+      "time": "2023-10-15, 06:00",
+      "mpLink": "",
+      "isDone": false,
+      "players": [
+        "TPColor",
+        "cheeweee10",
+        "AWMRone"
+      ],
+      "referee": "TheHunter1"
+    },
+    {
+      "id": "18",
+      "stageId": "0",
+      "code": "Q17",
+      "time": "2023-10-15, 08:00",
+      "mpLink": "",
+      "isDone": false,
+      "players": [],
+      "referee": "Poity"
+    },
+    {
+      "id": "19",
+      "stageId": "0",
+      "code": "Q18",
+      "time": "2023-10-15, 10:00",
+      "mpLink": "",
+      "isDone": false,
+      "players": [
+        "konkawe",
+        "Natsurio",
+        "Zoobin4",
+        "Baguette2Pain",
+        "reilyy"
+      ],
+      "referee": "shizehao"
+    },
+    {
+      "id": "20",
+      "stageId": "0",
+      "code": "Q19",
+      "time": "2023-10-15, 12:00",
+      "mpLink": "",
+      "isDone": false,
+      "players": [
+        "Old Pigeon",
+        "ATTrance",
+        "BossMadWolf",
+        "AdrianLazer",
+        "RiceSS",
+        "[Paw]Flood",
+        "Sanni",
+        "yz1155",
+        "NeonDrakon"
+      ],
+      "referee": "[GB]Rush_FTK"
+    },
+    {
+      "id": "21",
+      "stageId": "0",
+      "code": "Q20",
+      "time": "2023-10-15, 14:00",
+      "mpLink": "",
+      "isDone": false,
+      "players": [
+        "Milla[Monkey]",
+        "Raon2007",
+        "Jerem[Monkey]",
+        "poketoine",
+        "VanWilder",
+        "[LS]Tenshi",
+        "Krn_",
+        "[SBW]Deltune",
+        "kyudomaster",
+        "ERA Adam"
+      ],
+      "referee": "Poity"
+    },
+    {
+      "id": "22",
+      "stageId": "0",
+      "code": "Q21",
+      "time": "2023-10-15, 16:00",
+      "mpLink": "",
+      "isDone": false,
+      "players": [
+        "CANsionXD122",
+        "bagjettka"
+      ],
+      "referee": "ERA Xuste"
+    },
+    {
+      "id": "23",
+      "stageId": "0",
+      "code": "Q22",
+      "time": "2023-10-15, 18:00",
+      "mpLink": "",
+      "isDone": false,
+      "players": [
+        "MiniEgg_23"
+      ],
+      "referee": "ERA Xuste"
+    },
+    {
+      "id": "24",
+      "stageId": "0",
+      "code": "Q23",
+      "time": "2023-10-15, 20:00",
+      "mpLink": "",
+      "isDone": false,
+      "players": [
+        "[TCJ]ScanL",
+        "Skalim",
+        "Bunsen",
+        "-Mandy"
+      ],
+      "referee": "EpsilonMaiagare"
+    },
+    {
+      "id": "25",
+      "stageId": "0",
+      "code": "Q24",
+      "time": "2023-10-15, 22:00",
+      "mpLink": "",
+      "isDone": false,
+      "players": [
+        "NeonPhoenix99",
+        "-GuarDiaN-",
+        "Tsunakko",
+        "xSoiFan",
+        "ERA Jungle",
+        "DealerOfMelons"
+      ],
+      "referee": "walmart5193"
     }
   ]
 }

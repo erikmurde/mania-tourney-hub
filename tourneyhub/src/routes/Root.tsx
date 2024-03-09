@@ -16,7 +16,9 @@ interface UpdateContext {
     stageUpdate: number,
     setStageUpdate: (count: number) => void,
     mapPoolUpdate: number,
-    setMapPoolUpdate: (count: number) => void
+    setMapPoolUpdate: (count: number) => void,
+    scheduleUpdate: number,
+    setScheduleUpdate: (cound: number) => void
 }
 
 export const AuthContext = createContext<AuthContext>({
@@ -28,7 +30,9 @@ export const UpdateContext = createContext<UpdateContext>({
     stageUpdate: 0,
     setStageUpdate: () => {},
     mapPoolUpdate: 0,
-    setMapPoolUpdate: () => {}
+    setMapPoolUpdate: () => {},
+    scheduleUpdate: 0,
+    setScheduleUpdate: () => {}
 })
 
 const Root = () => {
@@ -40,10 +44,13 @@ const Root = () => {
 
     const [stageUpdate, setStageUpdate] = useState(0);
     const [mapPoolUpdate, setMapPoolUpdate] = useState(0);
+    const [scheduleUpdate, setScheduleUpdate] = useState(0);
 
     return (
         <AuthContext.Provider value={{ user, setUser }}>
-            <UpdateContext.Provider value={{ stageUpdate, setStageUpdate, mapPoolUpdate, setMapPoolUpdate }}>
+            <UpdateContext.Provider value={{ 
+                stageUpdate, setStageUpdate, mapPoolUpdate, setMapPoolUpdate, scheduleUpdate, setScheduleUpdate 
+            }}>
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
                     <Grid container minHeight='100vh' direction='column' alignItems='center'>
                         <Grid item width={1}>
