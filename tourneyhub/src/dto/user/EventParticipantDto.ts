@@ -1,4 +1,4 @@
-import { ICountryDto } from './ICountryDto';
+import { ICountryDto } from '../ICountryDto';
 
 export interface EventParticipantDto {
     name: string,

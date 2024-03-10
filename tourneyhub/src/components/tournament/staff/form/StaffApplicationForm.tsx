@@ -1,7 +1,3 @@
-import { Button, Dialog } from '@mui/material';
-import { StyledDialogActions } from '../../../styled/StyledDialogActions';
-import { StyledDialogContent } from '../../../styled/styledDialogContent';
-import TourneyDialogTitle from '../../dialog/TourneyDialogTitle';
 import StaffApplicationFormView from './views/StaffApplicationFormView';
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../../../routes/Root';
@@ -11,6 +7,7 @@ import { useParams } from 'react-router-dom';
 import { ADMIN, MAPPOOLER, MAPPER, PLAYTESTER, REFEREE, STREAMER, COMMENTATOR, SHEETER, GFX, REQUIRED } from '../../../../constants';
 import { StaffApplicationService } from '../../../../services/staffApplicationService';
 import { Schema, object, string } from 'yup';
+import FormDialogBase from '../../dialog/FormDialogBase';
 
 const StaffApplicationForm = ({applicationOpen}: {applicationOpen: boolean}) => {
     const { user } = useContext(AuthContext);
@@ -55,30 +52,24 @@ const StaffApplicationForm = ({applicationOpen}: {applicationOpen: boolean}) => 
     }
 
     return (  
-        <>
-        <Button variant='contained' disabled={!applicationOpen} 
-            onClick={() => {
-                user ? setOpen(true) : new AuthService().login()
-            }}>
-            {applicationOpen ? 'apply for staff' : 'applications closed'}
-        </Button>
-        {open &&
-        <Dialog open={open} onClose={() => setOpen(false)} fullWidth maxWidth='sm'>
-            <TourneyDialogTitle title='Apply for staff' onClose={() => setOpen(false)}/>
-            <StyledDialogContent>
+        <FormDialogBase 
+            title={'Apply for staff'} 
+            submitActionName={'Apply'}
+            formName={'staff-application-form'} 
+            open={open}
+            setOpen={setOpen}
+            btnProps={{
+                onClick: () => user ? setOpen(true) : new AuthService().login(),
+                title: applicationOpen ? 'Apply for staff' : 'Staff applications closed',
+                disabled: !applicationOpen
+            }}
+            form={
                 <StaffApplicationFormView 
                     initialValues={initialValues} 
                     selectValues={filterRoles()} 
                     validationSchema={validationSchema}
                     onSubmit={onSubmit}/>
-            </StyledDialogContent>
-            <StyledDialogActions>
-                <Button variant='contained' type='submit' form='staff-application-form'>
-                    Apply
-                </Button>
-            </StyledDialogActions>
-        </Dialog>}
-        </>
+            }/>
     );
 }
  

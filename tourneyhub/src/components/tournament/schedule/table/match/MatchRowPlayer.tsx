@@ -1,7 +1,7 @@
 
 import { Grid, useTheme } from '@mui/material';
 import { SchedTableCell } from '../../../../styled/SchedTableCell';
-import { EventParticipantDto } from '../../../../../dto/EventParticipantDto';
+import { EventParticipantDto } from '../../../../../dto/user/EventParticipantDto';
 import Flag from '../../../../Flag';
 
 interface IProps {

@@ -1,4 +1,4 @@
-import { PlaylistAdd, Publish } from '@mui/icons-material';
+import { Publish } from '@mui/icons-material';
 import { Grid, Button } from '@mui/material';
 import { IStageDto } from '../../../dto/stage/IStageDto';
 import { StageService } from '../../../services/stageService';
@@ -17,8 +17,8 @@ const ScheduleButtons = ({stage}: {stage: IStageDto}) => {
         <>
             <Grid item>
                 {stage.stageType === QUALIFIER 
-                ?   <LobbyCreateForm/> 
-                :   <MatchCreateForm/>}
+                ?   <LobbyCreateForm stageId={stage.id}/> 
+                :   <MatchCreateForm stageId={stage.id}/>}
             </Grid>
             {!stage.schedulePublic &&
             <Grid item>

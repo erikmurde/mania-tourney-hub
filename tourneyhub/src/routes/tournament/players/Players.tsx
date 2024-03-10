@@ -1,6 +1,6 @@
 import { Grid, Paper } from '@mui/material';
 import PlayerList from '../../../components/tournament/players/PlayerList';
-import { IUserDto } from '../../../dto/IUserDto';
+import { IUserDto } from '../../../dto/user/IUserDto';
 import { useContext, useEffect, useState } from 'react';
 import { AuthService } from '../../../services/authService';
 import { useParams } from 'react-router-dom';

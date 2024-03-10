@@ -18,7 +18,8 @@ const Schedule = () => {
 
     useEffect(() => {
         if (id) {
-            new StageService().getAllTourney(id)
+            new StageService()
+                .getAllTourney(id)
                 .then(stages => setStages(stages))
                 .then(() => {
                     const stageId = stages.length > 0 ? parseInt(stages[0].id) : 0;

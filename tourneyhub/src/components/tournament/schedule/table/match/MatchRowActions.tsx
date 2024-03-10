@@ -10,6 +10,7 @@ import ConfirmationDialog from '../../../dialog/ConfirmationDialog';
 import { MatchService } from '../../../../../services/matchService';
 import MatchActionMenu from './MatchActionMenu';
 import { Tooltip } from '@mui/material';
+import MatchEditForm from '../../form/MatchEditForm';
 
 const MatchRowActions = ({match}: {match: MatchDto}) => {
     const { id } = useParams();
@@ -72,9 +73,7 @@ const MatchRowActions = ({match}: {match: MatchDto}) => {
             </Tooltip>}
             {isHost && !match.isDone &&
             <>
-            <StyledIconButton color='primary'>
-                <Edit/>
-            </StyledIconButton>
+            <MatchEditForm match={match}/>
             <ConfirmationDialog
                 btnIcon={<Delete/>}
                 btnProps={{ color: 'error' }}

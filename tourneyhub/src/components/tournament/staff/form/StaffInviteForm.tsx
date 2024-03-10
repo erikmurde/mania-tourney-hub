@@ -5,7 +5,7 @@ import { StyledDialogContent } from '../../../styled/styledDialogContent';
 import TourneyDialogTitle from '../../dialog/TourneyDialogTitle';
 import { HOST, ADMIN, MAPPOOLER, MAPPER, PLAYTESTER, REFEREE, STREAMER, COMMENTATOR, SHEETER, GFX, REQUIRED } from '../../../../constants';
 import { AuthService } from '../../../../services/authService';
-import { IUserDto } from '../../../../dto/IUserDto';
+import { IUserDto } from '../../../../dto/user/IUserDto';
 import StaffInviteFormView from './views/StaffInviteFormView';
 import { PersonAdd } from '@mui/icons-material';
 import { StaffInviteDto } from '../../../../dto/staffInvite/StaffInviteDto';

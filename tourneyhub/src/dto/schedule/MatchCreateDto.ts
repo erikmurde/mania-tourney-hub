@@ -1,7 +1,6 @@
 import { Dayjs } from 'dayjs';
-import { EventParticipantDto } from '../user/EventParticipantDto';
 
-export interface MatchDto {
+export interface MatchCreateDto {
     id: string,
     stageId: string,
     code: string,
@@ -10,8 +9,8 @@ export interface MatchDto {
     score1: number,
     score2: number,
     isDone: boolean,
-    player1: EventParticipantDto,
-    player2: EventParticipantDto,
+    player1: string,
+    player2: string,
     referee: string,
     streamer: string,
     commentators: string[]

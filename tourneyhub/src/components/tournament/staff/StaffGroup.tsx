@@ -1,5 +1,5 @@
 import { Grid, Paper, Typography } from '@mui/material';
-import { IUserDto } from '../../../dto/IUserDto';
+import { IUserDto } from '../../../dto/user/IUserDto';
 import StaffCard from './StaffCard';
 
 interface IProps {

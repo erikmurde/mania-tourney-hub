@@ -2,7 +2,7 @@ import { Grid } from '@mui/material';
 import { Outlet } from 'react-router-dom';
 import Header from '../components/Header';
 import { createContext, useState } from 'react';
-import { IUserDto } from '../dto/IUserDto';
+import { IUserDto } from '../dto/user/IUserDto';
 import { STORED_USER } from '../constants';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';

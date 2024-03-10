@@ -1,5 +1,5 @@
 import { Card, CardMedia, Grid, Typography, useTheme } from '@mui/material';
-import { IUserDto } from '../../../dto/IUserDto';
+import { IUserDto } from '../../../dto/user/IUserDto';
 import Flag from '../../Flag';
 import { PersonRemove } from '@mui/icons-material';
 import ConfirmationDialog from '../dialog/ConfirmationDialog';

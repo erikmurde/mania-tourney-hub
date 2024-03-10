@@ -1,7 +1,7 @@
 import { FormControl, FormHelperText } from '@mui/material';
-import { FieldInputProps, useFormikContext } from 'formik';
-import { DatePicker } from '@mui/x-date-pickers';
 import dayjs from 'dayjs';
+import { FieldInputProps, useFormikContext } from 'formik';
+import { StyledDateTimePicker } from '../../styled/StyledDateTimePicker';
 
 interface IProps {
     label: string,
@@ -9,17 +9,18 @@ interface IProps {
     field: FieldInputProps<any>
 }
 
-const TourneyDateField = ({label, error, field}: IProps) => {
+const TourneyDateTimeField = ({label, error, field}: IProps) => {
     const { setFieldValue } = useFormikContext();
     const isInvalid = error !== undefined;
 
     return (  
         <FormControl fullWidth error={isInvalid}>
-            <DatePicker
+            <StyledDateTimePicker
                 disablePast
+                ampm={false}
                 label={label}
                 {...field}
-                value={dayjs(field.value)}
+                value={dayjs.utc(field.value)}
                 onChange={(value) => setFieldValue(field.name, value)}
                 slotProps={{
                     textField: {
@@ -31,4 +32,4 @@ const TourneyDateField = ({label, error, field}: IProps) => {
     );
 }
 
-export default TourneyDateField;
+export default TourneyDateTimeField;

@@ -1,5 +1,5 @@
 import { HOST } from '../constants';
-import { IUserDto } from '../dto/IUserDto';
+import { IUserDto } from '../dto/user/IUserDto';
 import { BaseEntityService } from './base/baseEntityService';
 
 export class AuthService extends BaseEntityService<IUserDto> {
@@ -35,15 +35,30 @@ export class AuthService extends BaseEntityService<IUserDto> {
     async getStaff(tournamentId: string): Promise<IUserDto[]> {
         const response = await this.axios.get<IUserDto[]>(`users`);
 
-        const staff = response.data
+        let staff = response.data
             .filter(user => 
                 !user.roles.every(role => 
                     role.tournamentId !== tournamentId || role.name === 'player'));
-
+    
         this.filterUserRolesByTournament(staff, tournamentId);
 
         console.log('getStaff response: ', staff);
         return staff;
+    }
+
+    async getRoles(tournamentId: string, roles: string[]): Promise<IUserDto[]> {
+        const response = await this.axios.get<IUserDto[]>(`users`);
+
+        let users = response.data;
+        this.filterUserRolesByTournament(users, tournamentId);
+        this.filterUserStatsByTournament(users, tournamentId);
+
+        users = users.filter(user => 
+            user.roles.some(userRole => roles.includes(userRole.name))
+        );
+
+        console.log('getRoles response: ', users);
+        return users;
     }
 
     async getPlayers(tournamentId: string): Promise<IUserDto[]> {
@@ -76,7 +91,7 @@ export class AuthService extends BaseEntityService<IUserDto> {
 
     private filterUserStatsByTournament(users: IUserDto[], tournamentId: string) {
         users.forEach(user =>
-            user.stats = user.stats.filter(stat => 
+            user.stats = user.stats?.filter(stat => 
                 stat.tournamentId === tournamentId));
     }
 }

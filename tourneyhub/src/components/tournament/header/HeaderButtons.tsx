@@ -5,12 +5,14 @@ import { Button, Grid } from '@mui/material';
 import { Done, Edit, KeyboardArrowDown, Publish } from '@mui/icons-material';
 import { HOST } from '../../../constants';
 import StaffApplicationForm from '../staff/form/StaffApplicationForm';
+import { useParams } from 'react-router-dom';
 
 const HeaderButtons = ({tourney}: {tourney: TournamentDto}) => {
+    const { id } = useParams();
     const { user } = useContext(AuthContext);
 
     const roles = user?.roles ?? [];
-    const isHost = roles.filter(role => role.name === HOST).length > 0;
+    const isHost = roles.some(role => role.tournamentId === id && role.name === HOST);
 
     return (  
         <Grid container columnSpacing={1} height={56} justifyContent='center'>

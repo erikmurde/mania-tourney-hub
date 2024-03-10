@@ -8,6 +8,7 @@ import { LobbyService } from '../../../../../services/lobbyService';
 import { useContext } from 'react';
 import { AuthContext, UpdateContext } from '../../../../../routes/Root';
 import { Tooltip } from '@mui/material';
+import LobbyEditForm from '../../form/LobbyEditForm';
 
 interface IProps {
     lobby: LobbyDto,
@@ -87,9 +88,7 @@ const LobbyRowActions = ({lobby, isHost, canReg, hasRefRole}: IProps) => {
             </Tooltip>}
             {isHost && !lobby.isDone &&
             <>
-            <StyledIconButton color='primary'>
-                <Edit/>
-            </StyledIconButton>
+            <LobbyEditForm lobby={lobby}/>
             <ConfirmationDialog
                 btnIcon={<Delete/>}
                 btnProps={{ color: 'error' }}

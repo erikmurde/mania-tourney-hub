@@ -2,7 +2,7 @@ import { Card, CardContent, Divider, Grid, Typography } from '@mui/material';
 import { StaffApplicationDto } from '../../../dto/staffApplication/StaffApplicationDto';
 import { useEffect, useState } from 'react';
 import { AuthService } from '../../../services/authService';
-import { IUserDto } from '../../../dto/IUserDto';
+import { IUserDto } from '../../../dto/user/IUserDto';
 import Flag from '../../Flag';
 import { StyledCardActions } from '../../styled/StyledCardActions';
 import ConfirmationDialog from '../dialog/ConfirmationDialog';

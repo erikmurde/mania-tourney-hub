@@ -1,4 +1,4 @@
-import { TableContainer, Table, TableBody, TableHead } from '@mui/material';
+import { TableContainer, Table, TableBody, TableHead, TableRow } from '@mui/material';
 import { LobbyDto } from '../../../../../dto/schedule/LobbyDto';
 import { SchedTableCell } from '../../../../styled/SchedTableCell';
 import { IStageDto } from '../../../../../dto/stage/IStageDto';
@@ -17,7 +17,7 @@ const LobbyTable = ({stage}: {stage: IStageDto}) => {
         new LobbyService()
             .getAllStage(stage.id)
             .then(lobbies => setLobbies(
-                lobbies.sort((a, b) => a.time > b.time ? 1 : -1)
+                lobbies.sort((a, b) => dayjs(a.time) > dayjs(b.time) ? 1 : -1)
             ));
     }, [stage.id, scheduleUpdate]);
 
@@ -31,11 +31,13 @@ const LobbyTable = ({stage}: {stage: IStageDto}) => {
         <TableContainer>
             <Table>
                 <TableHead sx={{ height: 50 }}>
-                    <SchedTableCell width={65}>Lobby ID</SchedTableCell>
-                    <SchedTableCell width={140}>Lobby Time (UTC)</SchedTableCell>
-                    <SchedTableCell width={160}>Referee</SchedTableCell>
-                    <SchedTableCell>Players</SchedTableCell>
-                    <SchedTableCell align='center' width={110}>Actions</SchedTableCell>
+                    <TableRow>
+                        <SchedTableCell width={65}>Lobby ID</SchedTableCell>
+                        <SchedTableCell width={140}>Lobby Time (UTC)</SchedTableCell>
+                        <SchedTableCell width={160}>Referee</SchedTableCell>
+                        <SchedTableCell>Players</SchedTableCell>
+                        <SchedTableCell align='center' width={110}>Actions</SchedTableCell>
+                    </TableRow>
                 </TableHead>
                 <TableBody>
                     {lobbies.map(lobby =>

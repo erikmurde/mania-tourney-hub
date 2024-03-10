@@ -1,5 +1,5 @@
 import { Grid } from '@mui/material';
-import { IUserDto } from '../../../dto/IUserDto';
+import { IUserDto } from '../../../dto/user/IUserDto';
 import PlayerCard from './PlayerCard';
 import { AuthService } from '../../../services/authService';
 import { ACTIVE, DISQUALIFIED, ELIMINATED } from '../../../constants';

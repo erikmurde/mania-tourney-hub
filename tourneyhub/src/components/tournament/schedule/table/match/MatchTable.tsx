@@ -6,6 +6,7 @@ import { IStageDto } from '../../../../../dto/stage/IStageDto';
 import MatchTableHead from './MatchTableHead';
 import MatchTableRow from './MatchTableRow';
 import { UpdateContext } from '../../../../../routes/Root';
+import dayjs from 'dayjs';
 
 const MatchTable = ({stage}: {stage: IStageDto}) => {
     const { scheduleUpdate } = useContext(UpdateContext);
@@ -15,7 +16,7 @@ const MatchTable = ({stage}: {stage: IStageDto}) => {
         new MatchService()
             .getAllStage(stage.id)
             .then(matches => setMatches(
-                matches.sort((a, b) => a.time > b.time ? 1 : -1)
+                matches.sort((a, b) => dayjs(a.time) > dayjs(b.time) ? 1 : -1)
             ));
     }, [stage.id, scheduleUpdate]);
 

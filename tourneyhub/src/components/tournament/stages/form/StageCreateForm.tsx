@@ -6,6 +6,7 @@ import TourneyDialogTitle from '../../dialog/TourneyDialogTitle';
 import { IStageDto } from '../../../../dto/stage/IStageDto';
 import StageCreateFormView from './views/StageCreateFormView';
 import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
 import { useParams } from 'react-router-dom';
 import { useContext } from 'react';
 import { UpdateContext } from '../../../../routes/Root';
@@ -22,6 +23,7 @@ interface IProps {
 const StageCreateForm = ({stageType, open, onClose}: IProps) => {
     const { stageUpdate, setStageUpdate } = useContext(UpdateContext);
     const { id } = useParams();
+    dayjs.extend(utc);
 
     const onSubmit = async(values: IStageDto) => {
         await new StageService().create(values);
@@ -44,6 +46,7 @@ const StageCreateForm = ({stageType, open, onClose}: IProps) => {
         schedulingDeadline: date()
             .typeError('Invalid date format')
             .required(REQUIRED)
+            .min(dayjs(), 'Must be in the future')
     });
 
     const initialValues: IStageDto = {
@@ -54,7 +57,7 @@ const StageCreateForm = ({stageType, open, onClose}: IProps) => {
         bestOf: 0,
         lobbySize: 0,
         numAdvancing: 0,
-        schedulingDeadline: dayjs(),
+        schedulingDeadline: dayjs.utc(),
         mappoolPublic: false,
         schedulePublic: false,
         statsPublic: false

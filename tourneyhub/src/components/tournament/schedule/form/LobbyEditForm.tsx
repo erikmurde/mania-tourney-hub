@@ -1,26 +1,22 @@
-import { PlaylistAdd } from '@mui/icons-material';
+import { Edit } from '@mui/icons-material';
 import FormDialogBase from '../../dialog/FormDialogBase';
-import { useContext, useEffect, useState } from 'react';
 import LobbyCreateFormView from './views/LobbyCreateFormView';
-import { EventParticipantDto } from '../../../../dto/user/EventParticipantDto';
-import { AuthService } from '../../../../services/authService';
-import { useParams } from 'react-router-dom';
-import { ADMIN, HOST, REFEREE, REQUIRED } from '../../../../constants';
+import { useContext, useEffect, useState } from 'react';
 import { LobbyDto } from '../../../../dto/schedule/LobbyDto';
-import { LobbyService } from '../../../../services/lobbyService';
-import { Schema, date, object } from 'yup';
-import { UpdateContext } from '../../../../routes/Root';
+import { EventParticipantDto } from '../../../../dto/user/EventParticipantDto';
+import { useParams } from 'react-router-dom';
+import { AuthService } from '../../../../services/authService';
+import { ADMIN, HOST, REFEREE, REQUIRED } from '../../../../constants';
 import dayjs from 'dayjs';
-import utc from 'dayjs/plugin/utc';
+import { Schema, object, date } from 'yup';
+import { LobbyService } from '../../../../services/lobbyService';
+import { UpdateContext } from '../../../../routes/Root';
 
-const LobbyCreateForm = ({stageId}: {stageId: string}) => {
+const LobbyEditForm = ({lobby}: {lobby: LobbyDto}) => {
     const { id } = useParams();
     const { scheduleUpdate, setScheduleUpdate } = useContext(UpdateContext);
-    const [selectValues, setSelectValues] = useState([] as EventParticipantDto[]);
-    const [lobbies, setLobbies] = useState([] as LobbyDto[]);
     const [open, setOpen] = useState(false);
-    const service = new LobbyService();
-    dayjs.extend(utc);
+    const [selectValues, setSelectValues] = useState([] as EventParticipantDto[]);
 
     useEffect(() => {
         if (id && open) {
@@ -28,17 +24,12 @@ const LobbyCreateForm = ({stageId}: {stageId: string}) => {
                 .getRoles(id, [HOST, ADMIN, REFEREE])
                 .then(staff => setSelectValues(
                     staff.map(user => ({ name: user.name, country: user.country }))
-            ));
-            service
-                .getAllStage(stageId)
-                .then(lobbies => {
-                    setLobbies(lobbies);
-            });
+                ));
         }
     }, [id, open]);
 
     const onSubmit = async(values: LobbyDto) => {
-        await service.create(values);
+        await new LobbyService().edit(values.id, values);
         setScheduleUpdate(scheduleUpdate + 1);
         setOpen(false);
     }
@@ -50,33 +41,19 @@ const LobbyCreateForm = ({stageId}: {stageId: string}) => {
             .min(dayjs.utc(), 'Must be in the future')
     })
 
-    const initialValues: LobbyDto = {
-        id: '',
-        stageId: stageId,
-        code: `Q${(lobbies.length + 1).toString().padStart(2, '0')}`,
-        time: dayjs.utc(),
-        mpLink: '',
-        isDone: false,
-        players: [],
-        referee: ''
-    }
-
     return (  
         <FormDialogBase 
-            title={'Schedule new lobby'} 
+            title={'Edit lobby'} 
             formName={'lobby-create-form'} 
-            btnProps={{ 
-                title: 'Add lobby', 
-                startIcon: <PlaylistAdd/>, 
-                sx: { width: 150 }
-            }} 
-            submitActionName={'Schedule'}
+            btnIcon={<Edit/>}
+            btnProps={{ color: 'primary' }}
+            submitActionName={'Edit'}
             size='xs'
             open={open} 
             setOpen={setOpen}
             form={
                 <LobbyCreateFormView 
-                    initialValues={initialValues} 
+                    initialValues={lobby} 
                     selectValues={selectValues} 
                     validationSchema={validationSchema} 
                     onSubmit={onSubmit}/>
@@ -84,4 +61,4 @@ const LobbyCreateForm = ({stageId}: {stageId: string}) => {
     );
 }
 
-export default LobbyCreateForm;
+export default LobbyEditForm;

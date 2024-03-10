@@ -7,6 +7,7 @@ import { useContext, useState } from 'react';
 import { IStageDto } from '../../../../dto/stage/IStageDto';
 import StageEditFormView from './views/StageEditFormView';
 import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
 import { UpdateContext } from '../../../../routes/Root';
 import { StageService } from '../../../../services/stageService';
 import { Schema, object, string, number, date } from 'yup';
@@ -15,6 +16,7 @@ import { REQUIRED, STANDARD } from '../../../../constants';
 const StageEditForm = ({initialValues}: {initialValues: IStageDto}) => {
     const { stageUpdate, setStageUpdate } = useContext(UpdateContext);
     const [open, setOpen] = useState(false);
+    dayjs.extend(utc);
 
     const onSubmit = async(values: IStageDto) => {
         await new StageService().edit(values.id, values);
@@ -38,6 +40,7 @@ const StageEditForm = ({initialValues}: {initialValues: IStageDto}) => {
         schedulingDeadline: date()
             .typeError('Invalid date format')
             .required(REQUIRED)
+            .min(dayjs.utc(), 'Must be in the future')
     });
 
     return (  
@@ -50,7 +53,7 @@ const StageEditForm = ({initialValues}: {initialValues: IStageDto}) => {
                 <TourneyDialogTitle title='Edit stage' onClose={() => setOpen(false)}/>
                 <StyledDialogContent>
                     <StageEditFormView
-                        initialValues={{...initialValues, schedulingDeadline: dayjs(initialValues.schedulingDeadline)}}
+                        initialValues={{...initialValues, schedulingDeadline: dayjs.utc(initialValues.schedulingDeadline)}}
                         validationSchema={validationSchema}
                         onSubmit={onSubmit}
                     />

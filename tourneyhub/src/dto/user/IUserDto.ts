@@ -1,6 +1,6 @@
-import { ICountryDto } from './ICountryDto';
-import { IRoleDto } from './IRoleDto';
-import { IStatDto } from './IStatDto';
+import { ICountryDto } from '../ICountryDto';
+import { IRoleDto } from '../IRoleDto';
+import { IStatDto } from '../IStatDto';
 
 export interface IUserDto {
     id: string,

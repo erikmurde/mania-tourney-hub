@@ -1,5 +1,6 @@
 import { TableRow } from '@mui/material';
 import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
 import { MatchDto } from '../../../../../dto/schedule/MatchDto';
 import { SchedTableCell } from '../../../../styled/SchedTableCell';
 import MatchRowActions from './MatchRowActions';
@@ -7,6 +8,7 @@ import MatchTableScore from './MatchRowScore';
 import MatchRowPlayer from './MatchRowPlayer';
 
 const MatchTableRow = ({match}: {match: MatchDto}) => {
+    dayjs.extend(utc);
 
     const p1Winner = match.isDone 
         ? match.score1 < 0 || match.score1 > match.score2 && match.score2 > 0 
@@ -20,7 +22,7 @@ const MatchTableRow = ({match}: {match: MatchDto}) => {
                 {match.code}
             </SchedTableCell>
             <SchedTableCell>
-                {dayjs(match.time).format('ddd, MMM DD, HH:mm')}
+                {dayjs.utc(match.time).format('ddd, MMM DD, HH:mm')}
             </SchedTableCell>
             <MatchRowPlayer
                 player={match.player1} 

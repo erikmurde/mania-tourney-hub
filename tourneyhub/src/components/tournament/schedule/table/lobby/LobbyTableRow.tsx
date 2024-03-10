@@ -1,5 +1,6 @@
 import { TableRow } from '@mui/material';
 import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
 import { LobbyDto } from '../../../../../dto/schedule/LobbyDto';
 import { SchedTableCell } from '../../../../styled/SchedTableCell';
 import { useContext } from 'react';
@@ -18,6 +19,7 @@ interface IProps {
 const LobbyTableRow = ({lobby, lobbySize, isRegistered, deadlinePassed}: IProps) => {
     const { id } = useParams();
     const { user } = useContext(AuthContext);
+    dayjs.extend(utc);
 
     const getRights = (roles: string[]): boolean => {
         if (!user) {
@@ -36,7 +38,7 @@ const LobbyTableRow = ({lobby, lobbySize, isRegistered, deadlinePassed}: IProps)
         <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 }, height: 50 }}>
             <SchedTableCell>{lobby.code}</SchedTableCell>
             <SchedTableCell>
-                {dayjs(lobby.time).format('ddd, MMM DD, HH:mm')}
+                {dayjs.utc(lobby.time).format('ddd, MMM DD, HH:mm')}
             </SchedTableCell>
             <SchedTableCell>{lobby.referee}</SchedTableCell>
             <SchedTableCell>
