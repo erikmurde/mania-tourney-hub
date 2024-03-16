@@ -1,4 +1,4 @@
-import { Table, TableBody, TableContainer } from '@mui/material';
+import { Paper, Table, TableBody, TableContainer } from '@mui/material';
 import { MatchDto } from '../../../../../dto/schedule/MatchDto';
 import { useContext, useEffect, useState } from 'react';
 import { MatchService } from '../../../../../services/matchService';
@@ -7,6 +7,7 @@ import MatchTableHead from './MatchTableHead';
 import MatchTableRow from './MatchTableRow';
 import { UpdateContext } from '../../../../../routes/Root';
 import dayjs from 'dayjs';
+import NoItems from '../../../NoItems';
 
 const MatchTable = ({stage}: {stage: IStageDto}) => {
     const { scheduleUpdate } = useContext(UpdateContext);
@@ -21,19 +22,25 @@ const MatchTable = ({stage}: {stage: IStageDto}) => {
     }, [stage.id, scheduleUpdate]);
 
     return (  
-        <TableContainer>
-            <Table>
-                <MatchTableHead/>
-                <TableBody>
-                    {matches.map(match =>
-                        <MatchTableRow 
-                            key={match.id} 
-                            match={match} 
-                        />
-                    )}
-                </TableBody>
-            </Table>
-        </TableContainer>
+        <>     
+        {matches.length > 0 
+        ?   <Paper elevation={6} sx={{ height: 1, paddingLeft: 1, paddingRight: 1 }}>   
+                <TableContainer>
+                    <Table>
+                        <MatchTableHead/>
+                        <TableBody>
+                            {matches.map(match =>
+                                <MatchTableRow 
+                                    key={match.id} 
+                                    match={match} 
+                                />
+                            )}
+                        </TableBody>
+                    </Table>
+                </TableContainer>
+            </Paper>
+        :   <NoItems name='matches'/>}
+        </>
     );
 }
 

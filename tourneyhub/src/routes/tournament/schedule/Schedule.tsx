@@ -2,18 +2,22 @@ import { Grid, Paper } from '@mui/material';
 import SectionTitle from '../../../components/tournament/SectionTitle';
 import { useNavigate, useParams } from 'react-router-dom';
 import { IStageDto } from '../../../dto/stage/IStageDto';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { StageService } from '../../../services/stageService';
 import StageTabs from '../../../components/tournament/StageTabs';
 import ScheduleButtons from '../../../components/tournament/schedule/ScheduleButtons';
 import { QUALIFIER } from '../../../constants';
 import LobbyTable from '../../../components/tournament/schedule/table/lobby/LobbyTable';
 import MatchTable from '../../../components/tournament/schedule/table/match/MatchTable';
+import NoItems from '../../../components/tournament/NoItems';
+import { AuthContext } from '../../Root';
+import { AuthService } from '../../../services/authService';
 
 const Schedule = () => {
     const { id } = useParams();
+    const { user } = useContext(AuthContext);
     const [stages, setStages] = useState([] as IStageDto[]);
-    const [stageId, setStageId] = useState(0);
+    const [stageId, setStageId] = useState('');
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -22,7 +26,7 @@ const Schedule = () => {
                 .getAllTourney(id)
                 .then(stages => setStages(stages))
                 .then(() => {
-                    const stageId = stages.length > 0 ? parseInt(stages[0].id) : 0;
+                    const stageId = stages.length > 0 ? stages[0].id : '';
 
                     setStageId(stageId);
                     navigate(`#${stageId}`);
@@ -34,6 +38,8 @@ const Schedule = () => {
         stage.id === stageId.toString()
     ) ?? {} as IStageDto;
 
+    const isHost = id && user && new AuthService().isHost(user, id);
+
     return (  
         <Paper elevation={2} sx={{ minHeight: 500, paddingBottom: 2 }}>
             <Grid container>
@@ -43,14 +49,16 @@ const Schedule = () => {
                     stageId={stageId} 
                     setStageId={setStageId}
                     buttons={
-                        <ScheduleButtons stage={stage}/>
+                        isHost ? <ScheduleButtons stage={stage}/> : <></>
                     }/>
                 <Grid item xs marginLeft={2} marginRight={2}>
-                    <Paper elevation={6} sx={{ height: 1, paddingLeft: 1, paddingRight: 1 }}>
-                        {stage.stageType === QUALIFIER 
-                        ?   <LobbyTable stage={stage}/> 
-                        :   <MatchTable stage={stage}/>}
-                    </Paper>
+                    {stage.schedulePublic || isHost
+                    ?   <>
+                            {stage.stageType === QUALIFIER 
+                            ?   <LobbyTable stage={stage}/> 
+                            :   <MatchTable stage={stage}/>}
+                        </>
+                    :   <NoItems name={stage.stageType === QUALIFIER ? 'lobbies' : 'matches'}/>}
                 </Grid>
             </Grid>
         </Paper>

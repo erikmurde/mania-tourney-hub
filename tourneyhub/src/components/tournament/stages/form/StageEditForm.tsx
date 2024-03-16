@@ -11,7 +11,8 @@ import utc from 'dayjs/plugin/utc';
 import { UpdateContext } from '../../../../routes/Root';
 import { StageService } from '../../../../services/stageService';
 import { Schema, object, string, number, date } from 'yup';
-import { REQUIRED, STANDARD } from '../../../../constants';
+import * as Yup from 'yup';
+import { QUALIFIER, REQUIRED, STANDARD } from '../../../../constants';
 
 const StageEditForm = ({initialValues}: {initialValues: IStageDto}) => {
     const { stageUpdate, setStageUpdate } = useContext(UpdateContext);
@@ -19,6 +20,7 @@ const StageEditForm = ({initialValues}: {initialValues: IStageDto}) => {
     dayjs.extend(utc);
 
     const onSubmit = async(values: IStageDto) => {
+        console.log('editing')
         await new StageService().edit(values.id, values);
         setStageUpdate(stageUpdate + 1);
         setOpen(false);
@@ -38,9 +40,15 @@ const StageEditForm = ({initialValues}: {initialValues: IStageDto}) => {
             .required(REQUIRED)
             .min(type === STANDARD ? 0 : 1, 'Must be above 0'),
         schedulingDeadline: date()
-            .typeError('Invalid date format')
-            .required(REQUIRED)
-            .min(dayjs.utc(), 'Must be in the future')
+            .when(([], schema) => {
+                if (type === QUALIFIER) {
+                    return schema
+                        .typeError('Invalid date format')
+                        .required(REQUIRED)
+                        .min(dayjs.utc(), 'Must be in the future');
+                }
+                return schema.notRequired()
+            }),
     });
 
     return (  

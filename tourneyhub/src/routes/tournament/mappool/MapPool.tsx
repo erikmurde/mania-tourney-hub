@@ -16,7 +16,7 @@ const MapPool = () => {
     const { mapPoolUpdate } = useContext(UpdateContext);
     const [isManage, setIsManage] = useState(false);
     const [stages, setStages] = useState([] as IStageDto[]);
-    const [stageId, setStageId] = useState(0);
+    const [stageId, setStageId] = useState('');
     const [maps, setMaps] = useState([] as IMapDto[]);
     const { id } = useParams();
     const navigate = useNavigate();
@@ -26,7 +26,7 @@ const MapPool = () => {
             new StageService().getAllTourney(id)
                 .then(stages => setStages(stages))
                 .then(() => {
-                    const stageId = stages.length > 0 ? parseInt(stages[0].id) : 0;
+                    const stageId = stages.length > 0 ? stages[0].id : '';
 
                     setStageId(stageId);
                     navigate(`#${stageId}`);

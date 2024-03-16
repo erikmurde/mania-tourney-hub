@@ -4258,7 +4258,7 @@
       "schedulingDeadline": "2024-07-17T07:00:00.000Z",
       "mappoolPublic": true,
       "schedulePublic": true,
-      "statsPublic": false
+      "statsPublic": true
     },
     {
       "id": "1",
@@ -4268,7 +4268,7 @@
       "bestOf": 7,
       "lobbySize": 0,
       "numAdvancing": 0,
-      "schedulingDeadline": "2024-03-03T14:11:05.100Z",
+      "schedulingDeadline": "2023-07-17T07:00:00.000Z",
       "mappoolPublic": true,
       "schedulePublic": true,
       "statsPublic": true
@@ -4281,7 +4281,7 @@
       "bestOf": 7,
       "lobbySize": 0,
       "numAdvancing": 0,
-      "schedulingDeadline": "2024-03-03T14:11:05.100Z",
+      "schedulingDeadline": "2024-07-17T07:00:00.000Z",
       "mappoolPublic": true,
       "schedulePublic": true,
       "statsPublic": true
@@ -4294,7 +4294,7 @@
       "bestOf": 9,
       "lobbySize": 0,
       "numAdvancing": 0,
-      "schedulingDeadline": "2024-03-03T14:11:05.100Z",
+      "schedulingDeadline": "2024-07-17T07:00:00.000Z",
       "mappoolPublic": true,
       "schedulePublic": true,
       "statsPublic": true
@@ -4307,7 +4307,7 @@
       "bestOf": 11,
       "lobbySize": 0,
       "numAdvancing": 0,
-      "schedulingDeadline": "2024-03-03T14:11:05.100Z",
+      "schedulingDeadline": "2024-07-17T07:00:00.000Z",
       "mappoolPublic": true,
       "schedulePublic": true,
       "statsPublic": false
@@ -4320,7 +4320,7 @@
       "bestOf": 11,
       "lobbySize": 0,
       "numAdvancing": 0,
-      "schedulingDeadline": "2024-03-03T14:11:05.100Z",
+      "schedulingDeadline": "2024-07-17T07:00:00.000Z",
       "mappoolPublic": false,
       "schedulePublic": false,
       "statsPublic": false
@@ -4333,20 +4333,20 @@
       "bestOf": 13,
       "lobbySize": 0,
       "numAdvancing": 0,
-      "schedulingDeadline": "2024-03-03T14:11:05.100Z",
+      "schedulingDeadline": "2024-07-17T07:00:00.000Z",
       "mappoolPublic": false,
       "schedulePublic": false,
       "statsPublic": false
     },
     {
-      "id": "9jNY2bh",
+      "id": "7",
       "tournamentId": "0",
       "stageType": "standard",
       "name": "Grand Finals",
       "bestOf": 13,
       "lobbySize": 0,
       "numAdvancing": 0,
-      "schedulingDeadline": "2024-03-03T14:11:05.100Z",
+      "schedulingDeadline": "2024-07-17T07:00:00.000Z",
       "mappoolPublic": false,
       "schedulePublic": false,
       "statsPublic": false
@@ -5236,6 +5236,35 @@
       "streamer": "EpsilonMaiagare",
       "commentators": [
         "Sparky"
+      ]
+    },
+    {
+      "id": "IcIZMnZ",
+      "stageId": "7",
+      "code": "345",
+      "time": "2024-03-16T14:53:53.616Z",
+      "mpLink": "",
+      "score1": 0,
+      "score2": 0,
+      "isDone": false,
+      "player1": {
+        "name": "LostCool",
+        "country": {
+          "name": "Thailand",
+          "ISO2": "TH"
+        }
+      },
+      "player2": {
+        "name": "UmmmMrMoo",
+        "country": {
+          "name": "Canada",
+          "ISO2": "CA"
+        }
+      },
+      "referee": "EpsilonMaiagare",
+      "streamer": "SunApple",
+      "commentators": [
+        "ERA Adam"
       ]
     }
   ],
