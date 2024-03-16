@@ -12,7 +12,7 @@ import { useContext } from 'react';
 import { UpdateContext } from '../../../../routes/Root';
 import { StageService } from '../../../../services/stageService';
 import { Schema, date, number, object, string } from 'yup';
-import { REQUIRED, STANDARD } from '../../../../constants';
+import { QUALIFIER, REQUIRED, STANDARD } from '../../../../constants';
 
 interface IProps {
     stageType: string,
@@ -44,9 +44,15 @@ const StageCreateForm = ({stageType, open, onClose}: IProps) => {
             .required(REQUIRED)
             .min(stageType === STANDARD ? 0 : 1, 'Must be above 0'),
         schedulingDeadline: date()
-            .typeError('Invalid date format')
-            .required(REQUIRED)
-            .min(dayjs(), 'Must be in the future')
+            .when(([], schema) => {
+                if (stageType === QUALIFIER) {
+                    return schema
+                        .typeError('Invalid date format')
+                        .required(REQUIRED)
+                        .min(dayjs.utc(), 'Must be in the future');
+                }
+                return schema.notRequired()
+            }),
     });
 
     const initialValues: IStageDto = {

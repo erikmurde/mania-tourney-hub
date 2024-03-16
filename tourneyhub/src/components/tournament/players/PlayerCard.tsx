@@ -67,7 +67,7 @@ const PlayerCard = ({playersPublic, player, eliminatePlayer}: IProps) => {
                     </Grid>}
                     <Grid item xs={isHost ? 6 : 12} textAlign={'end'} height={30}>
                         {stats.placement > 0 &&
-                        <Typography fontSize={14} marginTop={1}>
+                        <Typography fontSize={14} marginTop={1} color='secondary'>
                             {stats.placement}{SUFFIX_MAP.get(stats.placement % 10) ?? 'th'} place
                         </Typography>}
                         {stats.placement === 0 && isHost && !disqualified &&

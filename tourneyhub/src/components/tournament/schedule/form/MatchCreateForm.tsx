@@ -64,7 +64,13 @@ const MatchCreateForm = ({stageId}: {stageId: string}) => {
         player1: string()
             .required(REQUIRED),
         player2: string()
-            .required(REQUIRED),
+            .required(REQUIRED)
+            .when('player1', (player1, schema) => {
+                return schema.test({
+                    test: player2 => player1.toString() !== player2,
+                    message: 'Players must be different'
+                })
+            }),
         time: date()
             .typeError('Invalid date format')
             .required(REQUIRED)

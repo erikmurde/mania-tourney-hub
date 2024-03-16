@@ -17,12 +17,12 @@ const StageTabs = ({stages, stageId, buttons, setStageId} : IProps) => {
             >
             <Grid item>
                 <Tabs sx={{ width: 200, marginBottom: 2 }}
-                    value={stageId}
+                    value={stageId === '' ? false : stageId}
                     orientation='vertical' 
-                    onChange={(e, value) => setStageId(value)}>
+                    onChange={(_, value) => setStageId(value)}>
 
                     {stages.map(stage => 
-                        <Tab key={stage.id} label={stage.name} value={parseInt(stage.id)} href={`#${stage.id}`}/>
+                        <Tab key={stage.id} label={stage.name} value={stage.id} href={`#${stage.id}`}/>
                     )}
                 </Tabs>
             </Grid>
