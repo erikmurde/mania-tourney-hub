@@ -5646,12 +5646,8 @@
               "ISO2": "TH"
             }
           },
-          "scores": [
-            {
-              "score": 980550,
-              "accuracy": 99.40
-            }
-          ]
+          "score": 980550,
+          "accuracy": 99.40
         },
         {
           "player": {
@@ -5661,12 +5657,8 @@
               "ISO2": "KR"
             }
           },
-          "scores": [
-            {
-              "score": 969947,
-              "accuracy": 99.07
-            }
-          ]
+          "score": 969947,
+          "accuracy": 99.07
         },
         {
           "player": {
@@ -5676,16 +5668,19 @@
               "ISO2": "PH"
             }
           },
-          "scores": [
-            {
-              "score": 966766,
-              "accuracy": 99.02
-            },
-            {
-              "score": 950918,
-              "accuracy": 98.91
+          "score": 966766,
+          "accuracy": 99.02
+        },
+        {
+          "player": {
+            "name": "arcwinolivirus",
+            "country": {
+              "name": "Philippines",
+              "ISO2": "PH"
             }
-          ]
+          },
+          "score": 950918,
+          "accuracy": 98.91
         },
         {
           "player": {
@@ -5695,12 +5690,8 @@
               "ISO2": "CN"
             }
           },
-          "scores": [
-            {
-              "score": 961370,
-              "accuracy": 98.81
-            }
-          ]
+          "score": 961370,
+          "accuracy": 98.81
         },
         {
           "player": {
@@ -5710,12 +5701,8 @@
               "ISO2": "CN"
             }
           },
-          "scores": [
-            {
-              "score": 959448,
-              "accuracy": 99.04
-            }
-          ]
+          "score": 959448,
+          "accuracy": 99.04
         },
         {
           "player": {
@@ -5725,12 +5712,8 @@
               "ISO2": "US"
             }
           },
-          "scores": [
-            {
-              "score": 953015,
-              "accuracy": 99.00
-            }
-          ]
+          "score": 953015,
+          "accuracy": 99.00
         },
         {
           "player": {
@@ -5740,12 +5723,8 @@
               "ISO2": "DE"
             }
           },
-          "scores": [
-            {
-              "score": 944850,
-              "accuracy": 98.67
-            }
-          ]
+          "score": 944850,
+          "accuracy": 98.67
         },
         {
           "player": {
@@ -5755,12 +5734,8 @@
               "ISO2": "CN"
             }
           },
-          "scores": [
-            {
-              "score": 942653,
-              "accuracy": 98.65
-            }
-          ]
+          "score": 942653,
+          "accuracy": 98.65
         },
         {
           "player": {
@@ -5770,12 +5745,8 @@
               "ISO2": "EE"
             }
           },
-          "scores": [
-            {
-              "score": 925070,
-              "accuracy": 98.43
-            }
-          ]
+          "score": 925070,
+          "accuracy": 98.43
         },
         {
           "player": {
@@ -5785,12 +5756,8 @@
               "ISO2": "CL"
             }
           },
-          "scores": [
-            {
-              "score": 914393,
-              "accuracy": 97.95
-            }
-          ]
+          "score": 914393,
+          "accuracy": 97.95
         },
         {
           "player": {
@@ -5800,12 +5767,8 @@
               "ISO2": "US"
             }
           },
-          "scores": [
-            {
-              "score": 846379,
-              "accuracy": 96.35
-            }
-          ]
+          "score": 846379,
+          "accuracy": 96.35
         },
         {
           "player": {
@@ -5815,12 +5778,8 @@
               "ISO2": "US"
             }
           },
-          "scores": [
-            {
-              "score": 827828,
-              "accuracy": 95.97
-            }
-          ]
+          "score": 827828,
+          "accuracy": 95.97
         },
         {
           "player": {
@@ -5830,12 +5789,8 @@
               "ISO2": "FR"
             }
           },
-          "scores": [
-            {
-              "score": 824988,
-              "accuracy": 95.40
-            }
-          ]
+          "score": 824988,
+          "accuracy": 95.40
         }
       ]
     },
@@ -5857,12 +5812,8 @@
               "ISO2": "TH"
             }
           },
-          "scores": [
-            {
-              "score": 988424,
-              "accuracy": 99.64
-            }
-          ]
+          "score": 988424,
+          "accuracy": 99.64
         },
         {
           "player": {
@@ -5872,16 +5823,19 @@
               "ISO2": "CL"
             }
           },
-          "scores": [
-            {
-              "score": 987396,
-              "accuracy": 99.61
-            },
-            {
-              "score": 962068,
-              "accuracy": 99.19
+          "score": 987396,
+          "accuracy": 99.61
+        },
+        {
+          "player": {
+            "name": "Skalim",
+            "country": {
+              "name": "Chile",
+              "ISO2": "CL"
             }
-          ]
+          },
+          "score": 962068,
+          "accuracy": 99.19
         },
         {
           "player": {
@@ -5891,12 +5845,8 @@
               "ISO2": "CA"
             }
           },
-          "scores": [
-            {
-              "score": 987219,
-              "accuracy": 99.60
-            }
-          ]
+          "score": 987219,
+          "accuracy": 99.60
         },
         {
           "player": {
@@ -5906,12 +5856,8 @@
               "ISO2": "PH"
             }
           },
-          "scores": [
-            {
-              "score": 979503,
-              "accuracy": 99.50
-            }
-          ]
+          "score": 979503,
+          "accuracy": 99.50
         },
         {
           "player": {
@@ -5921,12 +5867,8 @@
               "ISO2": "PH"
             }
           },
-          "scores": [
-            {
-              "score": 971391,
-              "accuracy": 99.26
-            }
-          ]
+          "score": 971391,
+          "accuracy": 99.26
         },
         {
           "player": {
@@ -5936,12 +5878,8 @@
               "ISO2": "CN"
             }
           },
-          "scores": [
-            {
-              "score": 963518,
-              "accuracy": 99.02
-            }
-          ]
+          "score": 963518,
+          "accuracy": 99.02
         },
         {
           "player": {
@@ -5951,12 +5889,8 @@
               "ISO2": "CN"
             }
           },
-          "scores": [
-            {
-              "score": 946504,
-              "accuracy": 98.98
-            }
-          ]
+          "score": 946504,
+          "accuracy": 98.98
         },
         {
           "player": {
@@ -5966,12 +5900,8 @@
               "ISO2": "DE"
             }
           },
-          "scores": [
-            {
-              "score": 935543,
-              "accuracy": 98.62
-            }
-          ]
+          "score": 935543,
+          "accuracy": 98.62
         },
         {
           "player": {
@@ -5981,12 +5911,8 @@
               "ISO2": "US"
             }
           },
-          "scores": [
-            {
-              "score": 930899,
-              "accuracy": 98.58
-            }
-          ]
+          "score": 930899,
+          "accuracy": 98.58
         },
         {
           "player": {
@@ -5996,12 +5922,8 @@
               "ISO2": "CN"
             }
           },
-          "scores": [
-            {
-              "score": 910477,
-              "accuracy": 98.16
-            }
-          ]
+          "score": 910477,
+          "accuracy": 98.16
         },
         {
           "player": {
@@ -6011,12 +5933,8 @@
               "ISO2": "FR"
             }
           },
-          "scores": [
-            {
-              "score": 808966,
-              "accuracy": 95.20
-            }
-          ]
+          "score": 808966,
+          "accuracy": 95.20
         },
         {
           "player": {
@@ -6026,12 +5944,8 @@
               "ISO2": "US"
             }
           },
-          "scores": [
-            {
-              "score": 681620,
-              "accuracy": 91.41
-            }
-          ]
+          "score": 681620,
+          "accuracy": 91.41
         },
         {
           "player": {
@@ -6041,12 +5955,8 @@
               "ISO2": "PL"
             }
           },
-          "scores": [
-            {
-              "score": 429394,
-              "accuracy": 75.58
-            }
-          ]
+          "score": 429394,
+          "accuracy": 75.58
         }
       ]
     },
@@ -6068,12 +5978,8 @@
               "ISO2": "CA"
             }
           },
-          "scores": [
-            {
-              "score": 974769,
-              "accuracy": 99.53
-            }
-          ]
+          "score": 974769,
+          "accuracy": 99.53
         },
         {
           "player": {
@@ -6083,16 +5989,19 @@
               "ISO2": "CL"
             }
           },
-          "scores": [
-            {
-              "score": 971713,
-              "accuracy": 99.28
-            },
-            {
-              "score": 862868,
-              "accuracy": 96.28
+          "score": 971713,
+          "accuracy": 99.28
+        },
+        {
+          "player": {
+            "name": "Skalim",
+            "country": {
+              "name": "Chile",
+              "ISO2": "CL"
             }
-          ]
+          },
+          "score": 862868,
+          "accuracy": 96.28
         },
         {
           "player": {
@@ -6102,12 +6011,8 @@
               "ISO2": "PH"
             }
           },
-          "scores": [
-            {
-              "score": 968715,
-              "accuracy": 99.05
-            }
-          ]
+          "score": 968715,
+          "accuracy": 99.05
         },
         {
           "player": {
@@ -6117,12 +6022,8 @@
               "ISO2": "US"
             }
           },
-          "scores": [
-            {
-              "score": 968516,
-              "accuracy": 99.34
-            }
-          ]
+          "score": 968516,
+          "accuracy": 99.34
         },
         {
           "player": {
@@ -6132,12 +6033,8 @@
               "ISO2": "PH"
             }
           },
-          "scores": [
-            {
-              "score": 964862,
-              "accuracy": 99.14
-            }
-          ]
+          "score": 964862,
+          "accuracy": 99.14
         },
         {
           "player": {
@@ -6147,12 +6044,8 @@
               "ISO2": "CN"
             }
           },
-          "scores": [
-            {
-              "score": 956929,
-              "accuracy": 99.05
-            }
-          ]
+          "score": 956929,
+          "accuracy": 99.05
         },
         {
           "player": {
@@ -6162,12 +6055,8 @@
               "ISO2": "CN"
             }
           },
-          "scores": [
-            {
-              "score": 956785,
-              "accuracy": 98.84
-            }
-          ]
+          "score": 956785,
+          "accuracy": 98.84
         },
         {
           "player": {
@@ -6177,12 +6066,8 @@
               "ISO2": "CN"
             }
           },
-          "scores": [
-            {
-              "score": 943884,
-              "accuracy": 98.79
-            }
-          ]
+          "score": 943884,
+          "accuracy": 98.79
         },
         {
           "player": {
@@ -6192,12 +6077,8 @@
               "ISO2": "PL"
             }
           },
-          "scores": [
-            {
-              "score": 942508,
-              "accuracy": 98.79
-            }
-          ]
+          "score": 942508,
+          "accuracy": 98.79
         },
         {
           "player": {
@@ -6207,12 +6088,8 @@
               "ISO2": "CN"
             }
           },
-          "scores": [
-            {
-              "score": 940964,
-              "accuracy": 98.75
-            }
-          ]
+          "score": 940964,
+          "accuracy": 98.75
         },
         {
           "player": {
@@ -6222,12 +6099,8 @@
               "ISO2": "US"
             }
           },
-          "scores": [
-            {
-              "score": 864853,
-              "accuracy": 97.05
-            }
-          ]
+          "score": 864853,
+          "accuracy": 97.05
         }
       ]
     },
@@ -6249,12 +6122,8 @@
               "ISO2": "KR"
             }
           },
-          "scores": [
-            {
-              "score": 981803,
-              "accuracy": 99.44
-            }
-          ]
+          "score": 981803,
+          "accuracy": 99.44
         },
         {
           "player": {
@@ -6264,12 +6133,8 @@
               "ISO2": "US"
             }
           },
-          "scores": [
-            {
-              "score": 952558,
-              "accuracy": 99.09
-            }
-          ]
+          "score": 952558,
+          "accuracy": 99.09
         },
         {
           "player": {
@@ -6279,12 +6144,8 @@
               "ISO2": "PH"
             }
           },
-          "scores": [
-            {
-              "score": 934180,
-              "accuracy": 98.17
-            }
-          ]
+          "score": 934180,
+          "accuracy": 98.17
         },
         {
           "player": {
@@ -6294,12 +6155,8 @@
               "ISO2": "CN"
             }
           },
-          "scores": [
-            {
-              "score": 933735,
-              "accuracy": 98.84
-            }
-          ]
+          "score": 933735,
+          "accuracy": 98.84
         },
         {
           "player": {
@@ -6309,12 +6166,8 @@
               "ISO2": "CN"
             }
           },
-          "scores": [
-            {
-              "score": 933426,
-              "accuracy": 98.66
-            }
-          ]
+          "score": 933426,
+          "accuracy": 98.66
         },
         {
           "player": {
@@ -6324,12 +6177,8 @@
               "ISO2": "CL"
             }
           },
-          "scores": [
-            {
-              "score": 932958,
-              "accuracy": 98.26
-            }
-          ]
+          "score": 932958,
+          "accuracy": 98.26
         },
         {
           "player": {
@@ -6339,12 +6188,8 @@
               "ISO2": "US"
             }
           },
-          "scores": [
-            {
-              "score": 839049,
-              "accuracy": 96.79
-            }
-          ]
+          "score": 839049,
+          "accuracy": 96.79
         },
         {
           "player": {
@@ -6354,12 +6199,8 @@
               "ISO2": "CN"
             }
           },
-          "scores": [
-            {
-              "score": 779338,
-              "accuracy": 95.08
-            }
-          ]
+          "score": 779338,
+          "accuracy": 95.08
         }
       ]
     },
@@ -6381,12 +6222,8 @@
               "ISO2": "CL"
             }
           },
-          "scores": [
-            {
-              "score": 968094,
-              "accuracy": 99.02
-            }
-          ]
+          "score": 968094,
+          "accuracy": 99.02
         },
         {
           "player": {
@@ -6396,16 +6233,19 @@
               "ISO2": "PH"
             }
           },
-          "scores": [
-            {
-              "score": 967188,
-              "accuracy": 99.09
-            },
-            {
-              "score": 964319,
-              "accuracy": 99.10
+          "score": 967188,
+          "accuracy": 99.09
+        },
+        {
+          "player": {
+            "name": "arcwinolivirus",
+            "country": {
+              "name": "Philippines",
+              "ISO2": "PH"
             }
-          ]
+          },
+          "score": 964319,
+          "accuracy": 99.10
         },
         {
           "player": {
@@ -6415,12 +6255,8 @@
               "ISO2": "PL"
             }
           },
-          "scores": [
-            {
-              "score": 963664,
-              "accuracy": 99.09
-            }
-          ]
+          "score": 963664,
+          "accuracy": 99.09
         },
         {
           "player": {
@@ -6430,12 +6266,8 @@
               "ISO2": "US"
             }
           },
-          "scores": [
-            {
-              "score": 963019,
-              "accuracy": 99.23
-            }
-          ]
+          "score": 963019,
+          "accuracy": 99.23
         },
         {
           "player": {
@@ -6445,12 +6277,8 @@
               "ISO2": "CN"
             }
           },
-          "scores": [
-            {
-              "score": 950667,
-              "accuracy": 98.75
-            }
-          ]
+          "score": 950667,
+          "accuracy": 98.75
         },
         {
           "player": {
@@ -6460,12 +6288,8 @@
               "ISO2": "CN"
             }
           },
-          "scores": [
-            {
-              "score": 945596,
-              "accuracy": 98.63
-            }
-          ]
+          "score": 945596,
+          "accuracy": 98.63
         },
         {
           "player": {
@@ -6475,12 +6299,8 @@
               "ISO2": "CN"
             }
           },
-          "scores": [
-            {
-              "score": 940193,
-              "accuracy": 98.82
-            }
-          ]
+          "score": 940193,
+          "accuracy": 98.82
         }
       ]
     },
@@ -6502,12 +6322,8 @@
               "ISO2": "TH"
             }
           },
-          "scores": [
-            {
-              "score": 986511,
-              "accuracy": 99.75
-            }
-          ]
+          "score": 986511,
+          "accuracy": 99.75
         },
         {
           "player": {
@@ -6517,16 +6333,19 @@
               "ISO2": "CL"
             }
           },
-          "scores": [
-            {
-              "score": 983207,
-              "accuracy": 99.63
-            },
-            {
-              "score": 958737,
-              "accuracy": 99.24
+          "score": 983207,
+          "accuracy": 99.63
+        },
+        {
+          "player": {
+            "name": "Skalim",
+            "country": {
+              "name": "Chile",
+              "ISO2": "CL"
             }
-          ]
+          },
+          "score": 958737,
+          "accuracy": 99.24
         },
         {
           "player": {
@@ -6536,12 +6355,8 @@
               "ISO2": "KR"
             }
           },
-          "scores": [
-            {
-              "score": 980226,
-              "accuracy": 99.69
-            }
-          ]
+          "score": 980226,
+          "accuracy": 99.69
         },
         {
           "player": {
@@ -6551,12 +6366,8 @@
               "ISO2": "US"
             }
           },
-          "scores": [
-            {
-              "score": 980072,
-              "accuracy": 99.68
-            }
-          ]
+          "score": 980072,
+          "accuracy": 99.68
         },
         {
           "player": {
@@ -6566,12 +6377,8 @@
               "ISO2": "CN"
             }
           },
-          "scores": [
-            {
-              "score": 958897,
-              "accuracy": 99.40
-            }
-          ]
+          "score": 958897,
+          "accuracy": 99.40
         },
         {
           "player": {
@@ -6581,16 +6388,19 @@
               "ISO2": "PH"
             }
           },
-          "scores": [
-            {
-              "score": 954816,
-              "accuracy": 98.92
-            },
-            {
-              "score": 952576,
-              "accuracy": 98.78
+          "score": 954816,
+          "accuracy": 98.92
+        },
+        {
+          "player": {
+            "name": "arcwinolivirus",
+            "country": {
+              "name": "Philippines",
+              "ISO2": "PH"
             }
-          ]
+          },
+          "score": 952576,
+          "accuracy": 98.78
         },
         {
           "player": {
@@ -6600,12 +6410,8 @@
               "ISO2": "DE"
             }
           },
-          "scores": [
-            {
-              "score": 931541,
-              "accuracy": 98.46
-            }
-          ]
+          "score": 931541,
+          "accuracy": 98.46
         },
         {
           "player": {
@@ -6615,12 +6421,8 @@
               "ISO2": "CN"
             }
           },
-          "scores": [
-            {
-              "score": 926948,
-              "accuracy": 98.32
-            }
-          ]
+          "score": 926948,
+          "accuracy": 98.32
         },
         {
           "player": {
@@ -6630,12 +6432,8 @@
               "ISO2": "CN"
             }
           },
-          "scores": [
-            {
-              "score": 912766,
-              "accuracy": 98.03
-            }
-          ]
+          "score": 912766,
+          "accuracy": 98.03
         },
         {
           "player": {
@@ -6645,12 +6443,8 @@
               "ISO2": "US"
             }
           },
-          "scores": [
-            {
-              "score": 889851,
-              "accuracy": 97.67
-            }
-          ]
+          "score": 889851,
+          "accuracy": 97.67
         }
       ]
     },
@@ -6672,12 +6466,8 @@
               "ISO2": "TH"
             }
           },
-          "scores": [
-            {
-              "score": 982556,
-              "accuracy": 99.58
-            }
-          ]
+          "score": 982556,
+          "accuracy": 99.58
         },
         {
           "player": {
@@ -6687,12 +6477,8 @@
               "ISO2": "CA"
             }
           },
-          "scores": [
-            {
-              "score": 980953,
-              "accuracy": 99.51
-            }
-          ]
+          "score": 980953,
+          "accuracy": 99.51
         }
       ]
     },
@@ -6714,12 +6500,8 @@
               "ISO2": "TH"
             }
           },
-          "scores": [
-            {
-              "score": 983241,
-              "accuracy": 99.58
-            }
-          ]
+          "score": 983241,
+          "accuracy": 99.58
         },
         {
           "player": {
@@ -6729,12 +6511,8 @@
               "ISO2": "CN"
             }
           },
-          "scores": [
-            {
-              "score": 981649,
-              "accuracy": 99.43
-            }
-          ]
+          "score": 981649,
+          "accuracy": 99.43
         }
       ]
     },
@@ -6756,12 +6534,8 @@
               "ISO2": "PH"
             }
           },
-          "scores": [
-            {
-              "score": 987255,
-              "accuracy": 99.61
-            }
-          ]
+          "score": 987255,
+          "accuracy": 99.61
         },
         {
           "player": {
@@ -6771,12 +6545,8 @@
               "ISO2": "CN"
             }
           },
-          "scores": [
-            {
-              "score": 987157,
-              "accuracy": 99.60
-            }
-          ]
+          "score": 987157,
+          "accuracy": 99.60
         }
       ]
     },
@@ -6798,12 +6568,8 @@
               "ISO2": "PH"
             }
           },
-          "scores": [
-            {
-              "score": 985713,
-              "accuracy": 99.56
-            }
-          ]
+          "score": 985713,
+          "accuracy": 99.56
         },
         {
           "player": {
@@ -6813,12 +6579,8 @@
               "ISO2": "CA"
             }
           },
-          "scores": [
-            {
-              "score": 983446,
-              "accuracy": 99.62
-            }
-          ]
+          "score": 983446,
+          "accuracy": 99.62
         }
       ]
     },
@@ -6840,12 +6602,8 @@
               "ISO2": "KR"
             }
           },
-          "scores": [
-            {
-              "score": 979305,
-              "accuracy": 99.51
-            }
-          ]
+          "score": 979305,
+          "accuracy": 99.51
         },
         {
           "player": {
@@ -6855,12 +6613,8 @@
               "ISO2": "PH"
             }
           },
-          "scores": [
-            {
-              "score": 969934,
-              "accuracy": 99.07
-            }
-          ]
+          "score": 969934,
+          "accuracy": 99.07
         }
       ]
     },
@@ -6882,12 +6636,8 @@
               "ISO2": "KR"
             }
           },
-          "scores": [
-            {
-              "score": 984088,
-              "accuracy": 99.51
-            }
-          ]
+          "score": 984088,
+          "accuracy": 99.51
         },
         {
           "player": {
@@ -6897,12 +6647,8 @@
               "ISO2": "TH"
             }
           },
-          "scores": [
-            {
-              "score": 983512,
-              "accuracy": 99.49
-            }
-          ]
+          "score": 983512,
+          "accuracy": 99.49
         }
       ]
     },
@@ -6924,12 +6670,8 @@
               "ISO2": "CN"
             }
           },
-          "scores": [
-            {
-              "score": 974426,
-              "accuracy": 99.31
-            }
-          ]
+          "score": 974426,
+          "accuracy": 99.31
         },
         {
           "player": {
@@ -6939,12 +6681,8 @@
               "ISO2": "CN"
             }
           },
-          "scores": [
-            {
-              "score": 967498,
-              "accuracy": 99.10
-            }
-          ]
+          "score": 967498,
+          "accuracy": 99.10
         }
       ]
     },
@@ -6966,12 +6704,8 @@
               "ISO2": "TH"
             }
           },
-          "scores": [
-            {
-              "score": 979203,
-              "accuracy": 99.53
-            }
-          ]
+          "score": 979203,
+          "accuracy": 99.53
         },
         {
           "player": {
@@ -6981,12 +6715,8 @@
               "ISO2": "DE"
             }
           },
-          "scores": [
-            {
-              "score": 922116,
-              "accuracy": 98.29
-            }
-          ]
+          "score": 922116,
+          "accuracy": 98.29
         }
       ]
     }

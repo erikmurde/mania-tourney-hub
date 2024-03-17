@@ -30,12 +30,9 @@ const StatsTableRow = ({map, tourney, stageType}: IProps) => {
 
     const hightestScore = Math.max(...allScores);
 
-    const bestPlayer = (map.scores as PlayerScoreDto[])
-        .find(playerScore => 
-            playerScore.scores.map(score => score.score).includes(hightestScore)
-        );
-    const bestPlayerScore = bestPlayer?.scores
-        .find(playerScore => playerScore.score === hightestScore);
+    const bestPlayer = (map.scores as PlayerScoreDto[]).find(
+        playerScore => playerScore.score === hightestScore
+    );
 
     return (  
         <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 }, height: 50 }}>
@@ -58,10 +55,10 @@ const StatsTableRow = ({map, tourney, stageType}: IProps) => {
                 </Grid>
             </SchedTableCell>
             <SchedTableCell>
-                {bestPlayerScore ? bestPlayerScore.score.toLocaleString() : ''}
+                {bestPlayer ? bestPlayer.score.toLocaleString() : ''}
             </SchedTableCell>
             <SchedTableCell>
-                {bestPlayerScore ? bestPlayerScore.accuracy.toFixed(2) + '%' : ''}
+                {bestPlayer ? bestPlayer.accuracy.toFixed(2) + '%' : ''}
             </SchedTableCell>
             <SchedTableCell>{avgScore.toLocaleString()}</SchedTableCell>
             <SchedTableCell>{avgAcc ? `${avgAcc}%` : ''}</SchedTableCell>

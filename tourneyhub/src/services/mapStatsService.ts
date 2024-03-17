@@ -15,16 +15,10 @@ export class MapStatsService extends BaseEntityService<MapStatsDto> {
     }
 
     getAllScores(mapStats: MapStatsDto): number[] {
-        return (mapStats.scores as PlayerScoreDto[])
-        .map(playerScore => 
-            playerScore.scores.map(score => score.score))
-        .flat();
+        return (mapStats.scores as PlayerScoreDto[]).map(playerScore => playerScore.score);
     }
 
     getAllAccs(mapStats: MapStatsDto): number[] {
-        return (mapStats.scores as PlayerScoreDto[])
-        .map(playerScore =>
-            playerScore.scores.map(score => score.accuracy))
-        .flat();
+        return (mapStats.scores as PlayerScoreDto[]).map(playerScore => playerScore.accuracy);
     }
 }

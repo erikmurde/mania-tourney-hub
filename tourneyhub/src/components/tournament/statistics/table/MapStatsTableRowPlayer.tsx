@@ -10,26 +10,21 @@ interface IProps {
 
 const MapStatsTableRowPlayer = ({index, playerScore}: IProps) => {
     const player = playerScore.player;
-    const scores = playerScore.scores;
 
     return (  
-        <>
-        {scores.map((score, currentIndex) =>
-            <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 }, height: 50 }}>
-                <SchedTableCell>{index + currentIndex}</SchedTableCell>
-                <SchedTableCell>
-                    <Grid container justifyContent='start' alignItems='center'>
-                        <Flag country={player.country} marginTop={0}/>
-                        <Grid item marginLeft={0.5}>
-                            {player.name}
-                        </Grid>
+        <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 }, height: 50 }}>
+            <SchedTableCell>{index}</SchedTableCell>
+            <SchedTableCell>
+                <Grid container justifyContent='start' alignItems='center'>
+                    <Flag country={player.country} marginTop={0}/>
+                    <Grid item marginLeft={0.5}>
+                        {player.name}
                     </Grid>
-                </SchedTableCell>
-                <SchedTableCell>{score.score.toLocaleString()}</SchedTableCell>
-                <SchedTableCell>{score.accuracy.toFixed(2)}%</SchedTableCell>
-            </TableRow> 
-        )}
-        </>
+                </Grid>
+            </SchedTableCell>
+            <SchedTableCell>{playerScore.score.toLocaleString()}</SchedTableCell>
+            <SchedTableCell>{playerScore.accuracy.toFixed(2)}%</SchedTableCell>
+        </TableRow> 
     );
 }
  

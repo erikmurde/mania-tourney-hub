@@ -1,4 +1,4 @@
-import { Grid, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
+import { Grid, Paper, Table, TableBody, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
 import { MapStatsDto } from '../../../dto/statistics/MapStatsDto';
 import { MapStatsService } from '../../../services/mapStatsService';
 import MapStatsTableRowPlayer from './table/MapStatsTableRowPlayer';
@@ -18,6 +18,9 @@ const MapStats = ({map}: {map: MapStatsDto}) => {
     const avgAcc = allScores.length > 0 
         ? (allAccs.reduce((elem, sum) => sum + elem, 0) / allScores.length).toFixed(2)
         : '';
+
+    const sortedScores = (map.scores as PlayerScoreDto[])
+        .sort((a, b) => b.score - a.score);
 
     return (  
         <Paper elevation={6} sx={{ height: 1, paddingLeft: 1, paddingRight: 1, width: 540 }}>
@@ -45,9 +48,9 @@ const MapStats = ({map}: {map: MapStatsDto}) => {
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                {(map.scores as PlayerScoreDto[]).map((playerScore, index) => 
+                                {sortedScores.map((playerScore, index) => 
                                     <MapStatsTableRowPlayer
-                                        key={playerScore.player.name}
+                                        key={index}
                                         index={index + 1}
                                         playerScore={playerScore}
                                     />
