@@ -5626,5 +5626,1369 @@
       "referee": "walmart5193"
     }
   ],
-  "staffInvites": []
+  "staffInvites": [],
+  "mapStats": [
+    {
+      "id": "0",
+      "stageId": "4",
+      "title": "void feat. Hiroko - world devoid of you (fairydust radio edit) [Silent Sky]",
+      "type": "RC",
+      "index": 1,
+      "picked": 8,
+      "banned": 3,
+      "protected": 2,
+      "scores": [
+        {
+          "player": {
+            "name": "LostCool",
+            "country": {
+              "name": "Thailand",
+              "ISO2": "TH"
+            }
+          },
+          "scores": [
+            {
+              "score": 980550,
+              "accuracy": 99.40
+            }
+          ]
+        },
+        {
+          "player": {
+            "name": "yz1155",
+            "country": {
+              "name": "South Korea",
+              "ISO2": "KR"
+            }
+          },
+          "scores": [
+            {
+              "score": 969947,
+              "accuracy": 99.07
+            }
+          ]
+        },
+        {
+          "player": {
+            "name": "arcwinolivirus",
+            "country": {
+              "name": "Philippines",
+              "ISO2": "PH"
+            }
+          },
+          "scores": [
+            {
+              "score": 966766,
+              "accuracy": 99.02
+            },
+            {
+              "score": 950918,
+              "accuracy": 98.91
+            }
+          ]
+        },
+        {
+          "player": {
+            "name": "VanWilder",
+            "country": {
+              "name": "China",
+              "ISO2": "CN"
+            }
+          },
+          "scores": [
+            {
+              "score": 961370,
+              "accuracy": 98.81
+            }
+          ]
+        },
+        {
+          "player": {
+            "name": "HxcQ777",
+            "country": {
+              "name": "China",
+              "ISO2": "CN"
+            }
+          },
+          "scores": [
+            {
+              "score": 959448,
+              "accuracy": 99.04
+            }
+          ]
+        },
+        {
+          "player": {
+            "name": "mashu",
+            "country": {
+              "name": "United States",
+              "ISO2": "US"
+            }
+          },
+          "scores": [
+            {
+              "score": 953015,
+              "accuracy": 99.00
+            }
+          ]
+        },
+        {
+          "player": {
+            "name": "TsukiyaWhiskers",
+            "country": {
+              "name": "Germany",
+              "ISO2": "DE"
+            }
+          },
+          "scores": [
+            {
+              "score": 944850,
+              "accuracy": 98.67
+            }
+          ]
+        },
+        {
+          "player": {
+            "name": "AWMRone",
+            "country": {
+              "name": "China",
+              "ISO2": "CN"
+            }
+          },
+          "scores": [
+            {
+              "score": 942653,
+              "accuracy": 98.65
+            }
+          ]
+        },
+        {
+          "player": {
+            "name": "Arcaxio",
+            "country": {
+              "name": "Estonia",
+              "ISO2": "EE"
+            }
+          },
+          "scores": [
+            {
+              "score": 925070,
+              "accuracy": 98.43
+            }
+          ]
+        },
+        {
+          "player": {
+            "name": "Skalim",
+            "country": {
+              "name": "Chile",
+              "ISO2": "CL"
+            }
+          },
+          "scores": [
+            {
+              "score": 914393,
+              "accuracy": 97.95
+            }
+          ]
+        },
+        {
+          "player": {
+            "name": "[TCJ]ScanL",
+            "country": {
+              "name": "United States",
+              "ISO2": "US"
+            }
+          },
+          "scores": [
+            {
+              "score": 846379,
+              "accuracy": 96.35
+            }
+          ]
+        },
+        {
+          "player": {
+            "name": "RhymesWithMash",
+            "country": {
+              "name": "United States",
+              "ISO2": "US"
+            }
+          },
+          "scores": [
+            {
+              "score": 827828,
+              "accuracy": 95.97
+            }
+          ]
+        },
+        {
+          "player": {
+            "name": "Milla[Monkey]",
+            "country": {
+              "name": "France",
+              "ISO2": "FR"
+            }
+          },
+          "scores": [
+            {
+              "score": 824988,
+              "accuracy": 95.40
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "1",
+      "stageId": "4",
+      "title": "Yooh - Decoy [Yoced]",
+      "type": "RC",
+      "index": 2,
+      "picked": 7,
+      "banned": 2,
+      "protected": 3,
+      "scores": [
+        {
+          "player": {
+            "name": "LostCool",
+            "country": {
+              "name": "Thailand",
+              "ISO2": "TH"
+            }
+          },
+          "scores": [
+            {
+              "score": 988424,
+              "accuracy": 99.64
+            }
+          ]
+        },
+        {
+          "player": {
+            "name": "Skalim",
+            "country": {
+              "name": "Chile",
+              "ISO2": "CL"
+            }
+          },
+          "scores": [
+            {
+              "score": 987396,
+              "accuracy": 99.61
+            },
+            {
+              "score": 962068,
+              "accuracy": 99.19
+            }
+          ]
+        },
+        {
+          "player": {
+            "name": "UmmmMrMoo",
+            "country": {
+              "name": "Canada",
+              "ISO2": "CA"
+            }
+          },
+          "scores": [
+            {
+              "score": 987219,
+              "accuracy": 99.60
+            }
+          ]
+        },
+        {
+          "player": {
+            "name": "Sanni",
+            "country": {
+              "name": "Philippines",
+              "ISO2": "PH"
+            }
+          },
+          "scores": [
+            {
+              "score": 979503,
+              "accuracy": 99.50
+            }
+          ]
+        },
+        {
+          "player": {
+            "name": "arcwinolivirus",
+            "country": {
+              "name": "Philippines",
+              "ISO2": "PH"
+            }
+          },
+          "scores": [
+            {
+              "score": 971391,
+              "accuracy": 99.26
+            }
+          ]
+        },
+        {
+          "player": {
+            "name": "VanWilder",
+            "country": {
+              "name": "China",
+              "ISO2": "CN"
+            }
+          },
+          "scores": [
+            {
+              "score": 963518,
+              "accuracy": 99.02
+            }
+          ]
+        },
+        {
+          "player": {
+            "name": "AWMRone",
+            "country": {
+              "name": "China",
+              "ISO2": "CN"
+            }
+          },
+          "scores": [
+            {
+              "score": 946504,
+              "accuracy": 98.98
+            }
+          ]
+        },
+        {
+          "player": {
+            "name": "TsukiyaWhiskers",
+            "country": {
+              "name": "Germany",
+              "ISO2": "DE"
+            }
+          },
+          "scores": [
+            {
+              "score": 935543,
+              "accuracy": 98.62
+            }
+          ]
+        },
+        {
+          "player": {
+            "name": "mashu",
+            "country": {
+              "name": "United States",
+              "ISO2": "US"
+            }
+          },
+          "scores": [
+            {
+              "score": 930899,
+              "accuracy": 98.58
+            }
+          ]
+        },
+        {
+          "player": {
+            "name": "Shenzouz",
+            "country": {
+              "name": "China",
+              "ISO2": "CN"
+            }
+          },
+          "scores": [
+            {
+              "score": 910477,
+              "accuracy": 98.16
+            }
+          ]
+        },
+        {
+          "player": {
+            "name": "Milla[Monkey]",
+            "country": {
+              "name": "France",
+              "ISO2": "FR"
+            }
+          },
+          "scores": [
+            {
+              "score": 808966,
+              "accuracy": 95.20
+            }
+          ]
+        },
+        {
+          "player": {
+            "name": "[TCJ]ScanL",
+            "country": {
+              "name": "United States",
+              "ISO2": "US"
+            }
+          },
+          "scores": [
+            {
+              "score": 681620,
+              "accuracy": 91.41
+            }
+          ]
+        },
+        {
+          "player": {
+            "name": "bagjettka",
+            "country": {
+              "name": "Poland",
+              "ISO2": "PL"
+            }
+          },
+          "scores": [
+            {
+              "score": 429394,
+              "accuracy": 75.58
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "stageId": "4",
+      "title": "Silentroom - 9876734123 (\"Hyperprime\" Full Version) [1.05x For AST]",
+      "type": "RC",
+      "index": 3,
+      "picked": 6,
+      "banned": 1,
+      "protected": 0,
+      "scores": [
+        {
+          "player": {
+            "name": "UmmmMrMoo",
+            "country": {
+              "name": "Canada",
+              "ISO2": "CA"
+            }
+          },
+          "scores": [
+            {
+              "score": 974769,
+              "accuracy": 99.53
+            }
+          ]
+        },
+        {
+          "player": {
+            "name": "Skalim",
+            "country": {
+              "name": "Chile",
+              "ISO2": "CL"
+            }
+          },
+          "scores": [
+            {
+              "score": 971713,
+              "accuracy": 99.28
+            },
+            {
+              "score": 862868,
+              "accuracy": 96.28
+            }
+          ]
+        },
+        {
+          "player": {
+            "name": "Sanni",
+            "country": {
+              "name": "Philippines",
+              "ISO2": "PH"
+            }
+          },
+          "scores": [
+            {
+              "score": 968715,
+              "accuracy": 99.05
+            }
+          ]
+        },
+        {
+          "player": {
+            "name": "mashu",
+            "country": {
+              "name": "United States",
+              "ISO2": "US"
+            }
+          },
+          "scores": [
+            {
+              "score": 968516,
+              "accuracy": 99.34
+            }
+          ]
+        },
+        {
+          "player": {
+            "name": "arcwinolivirus",
+            "country": {
+              "name": "Philippines",
+              "ISO2": "PH"
+            }
+          },
+          "scores": [
+            {
+              "score": 964862,
+              "accuracy": 99.14
+            }
+          ]
+        },
+        {
+          "player": {
+            "name": "AWMRone",
+            "country": {
+              "name": "China",
+              "ISO2": "CN"
+            }
+          },
+          "scores": [
+            {
+              "score": 956929,
+              "accuracy": 99.05
+            }
+          ]
+        },
+        {
+          "player": {
+            "name": "HxcQ777",
+            "country": {
+              "name": "China",
+              "ISO2": "CN"
+            }
+          },
+          "scores": [
+            {
+              "score": 956785,
+              "accuracy": 98.84
+            }
+          ]
+        },
+        {
+          "player": {
+            "name": "Shenzouz",
+            "country": {
+              "name": "China",
+              "ISO2": "CN"
+            }
+          },
+          "scores": [
+            {
+              "score": 943884,
+              "accuracy": 98.79
+            }
+          ]
+        },
+        {
+          "player": {
+            "name": "bagjettka",
+            "country": {
+              "name": "Poland",
+              "ISO2": "PL"
+            }
+          },
+          "scores": [
+            {
+              "score": 942508,
+              "accuracy": 98.79
+            }
+          ]
+        },
+        {
+          "player": {
+            "name": "Krn_",
+            "country": {
+              "name": "China",
+              "ISO2": "CN"
+            }
+          },
+          "scores": [
+            {
+              "score": 940964,
+              "accuracy": 98.75
+            }
+          ]
+        },
+        {
+          "player": {
+            "name": "[TCJ]ScanL",
+            "country": {
+              "name": "United States",
+              "ISO2": "US"
+            }
+          },
+          "scores": [
+            {
+              "score": 864853,
+              "accuracy": 97.05
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "stageId": "4",
+      "title": "Blitz Lunar - A Dichroic Glass Snafu [Broken]",
+      "type": "RC",
+      "index": 4,
+      "picked": 5,
+      "banned": 5,
+      "protected": 0,
+      "scores": [
+        {
+          "player": {
+            "name": "yz1155",
+            "country": {
+              "name": "South Korea",
+              "ISO2": "KR"
+            }
+          },
+          "scores": [
+            {
+              "score": 981803,
+              "accuracy": 99.44
+            }
+          ]
+        },
+        {
+          "player": {
+            "name": "mashu",
+            "country": {
+              "name": "United States",
+              "ISO2": "US"
+            }
+          },
+          "scores": [
+            {
+              "score": 952558,
+              "accuracy": 99.09
+            }
+          ]
+        },
+        {
+          "player": {
+            "name": "arcwinolivirus",
+            "country": {
+              "name": "Philippines",
+              "ISO2": "PH"
+            }
+          },
+          "scores": [
+            {
+              "score": 934180,
+              "accuracy": 98.17
+            }
+          ]
+        },
+        {
+          "player": {
+            "name": "HxcQ777",
+            "country": {
+              "name": "China",
+              "ISO2": "CN"
+            }
+          },
+          "scores": [
+            {
+              "score": 933735,
+              "accuracy": 98.84
+            }
+          ]
+        },
+        {
+          "player": {
+            "name": "Shenzouz",
+            "country": {
+              "name": "China",
+              "ISO2": "CN"
+            }
+          },
+          "scores": [
+            {
+              "score": 933426,
+              "accuracy": 98.66
+            }
+          ]
+        },
+        {
+          "player": {
+            "name": "Skalim",
+            "country": {
+              "name": "Chile",
+              "ISO2": "CL"
+            }
+          },
+          "scores": [
+            {
+              "score": 932958,
+              "accuracy": 98.26
+            }
+          ]
+        },
+        {
+          "player": {
+            "name": "[TCJ]ScanL",
+            "country": {
+              "name": "United States",
+              "ISO2": "US"
+            }
+          },
+          "scores": [
+            {
+              "score": 839049,
+              "accuracy": 96.79
+            }
+          ]
+        },
+        {
+          "player": {
+            "name": "7581yx",
+            "country": {
+              "name": "China",
+              "ISO2": "CN"
+            }
+          },
+          "scores": [
+            {
+              "score": 779338,
+              "accuracy": 95.08
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "stageId": "4",
+      "title": "ZUN - Hiroari Shoots a Strange Bird ~ Till When [Perfect Cherry Blossom]",
+      "type": "RC",
+      "index": 5,
+      "picked": 4,
+      "banned": 3,
+      "protected": 1,
+      "scores": [
+        {
+          "player": {
+            "name": "Skalim",
+            "country": {
+              "name": "Chile",
+              "ISO2": "CL"
+            }
+          },
+          "scores": [
+            {
+              "score": 968094,
+              "accuracy": 99.02
+            }
+          ]
+        },
+        {
+          "player": {
+            "name": "arcwinolivirus",
+            "country": {
+              "name": "Philippines",
+              "ISO2": "PH"
+            }
+          },
+          "scores": [
+            {
+              "score": 967188,
+              "accuracy": 99.09
+            },
+            {
+              "score": 964319,
+              "accuracy": 99.10
+            }
+          ]
+        },
+        {
+          "player": {
+            "name": "bagjettka",
+            "country": {
+              "name": "Poland",
+              "ISO2": "PL"
+            }
+          },
+          "scores": [
+            {
+              "score": 963664,
+              "accuracy": 99.09
+            }
+          ]
+        },
+        {
+          "player": {
+            "name": "mashu",
+            "country": {
+              "name": "United States",
+              "ISO2": "US"
+            }
+          },
+          "scores": [
+            {
+              "score": 963019,
+              "accuracy": 99.23
+            }
+          ]
+        },
+        {
+          "player": {
+            "name": "AWMRone",
+            "country": {
+              "name": "China",
+              "ISO2": "CN"
+            }
+          },
+          "scores": [
+            {
+              "score": 950667,
+              "accuracy": 98.75
+            }
+          ]
+        },
+        {
+          "player": {
+            "name": "Shenzouz",
+            "country": {
+              "name": "China",
+              "ISO2": "CN"
+            }
+          },
+          "scores": [
+            {
+              "score": 945596,
+              "accuracy": 98.63
+            }
+          ]
+        },
+        {
+          "player": {
+            "name": "HxcQ777",
+            "country": {
+              "name": "China",
+              "ISO2": "CN"
+            }
+          },
+          "scores": [
+            {
+              "score": 940193,
+              "accuracy": 98.82
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "stageId": "4",
+      "title": "Lia - Light Colors [The Color of Oblivion]",
+      "type": "RC",
+      "index": 6,
+      "picked": 7,
+      "banned": 4,
+      "protected": 3,
+      "scores": [
+        {
+          "player": {
+            "name": "LostCool",
+            "country": {
+              "name": "Thailand",
+              "ISO2": "TH"
+            }
+          },
+          "scores": [
+            {
+              "score": 986511,
+              "accuracy": 99.75
+            }
+          ]
+        },
+        {
+          "player": {
+            "name": "Skalim",
+            "country": {
+              "name": "Chile",
+              "ISO2": "CL"
+            }
+          },
+          "scores": [
+            {
+              "score": 983207,
+              "accuracy": 99.63
+            },
+            {
+              "score": 958737,
+              "accuracy": 99.24
+            }
+          ]
+        },
+        {
+          "player": {
+            "name": "yz1155",
+            "country": {
+              "name": "South Korea",
+              "ISO2": "KR"
+            }
+          },
+          "scores": [
+            {
+              "score": 980226,
+              "accuracy": 99.69
+            }
+          ]
+        },
+        {
+          "player": {
+            "name": "mashu",
+            "country": {
+              "name": "United States",
+              "ISO2": "US"
+            }
+          },
+          "scores": [
+            {
+              "score": 980072,
+              "accuracy": 99.68
+            }
+          ]
+        },
+        {
+          "player": {
+            "name": "Shenzouz",
+            "country": {
+              "name": "China",
+              "ISO2": "CN"
+            }
+          },
+          "scores": [
+            {
+              "score": 958897,
+              "accuracy": 99.40
+            }
+          ]
+        },
+        {
+          "player": {
+            "name": "arcwinolivirus",
+            "country": {
+              "name": "Philippines",
+              "ISO2": "PH"
+            }
+          },
+          "scores": [
+            {
+              "score": 954816,
+              "accuracy": 98.92
+            },
+            {
+              "score": 952576,
+              "accuracy": 98.78
+            }
+          ]
+        },
+        {
+          "player": {
+            "name": "TsukiyaWhiskers",
+            "country": {
+              "name": "Germany",
+              "ISO2": "DE"
+            }
+          },
+          "scores": [
+            {
+              "score": 931541,
+              "accuracy": 98.46
+            }
+          ]
+        },
+        {
+          "player": {
+            "name": "HxcQ777",
+            "country": {
+              "name": "China",
+              "ISO2": "CN"
+            }
+          },
+          "scores": [
+            {
+              "score": 926948,
+              "accuracy": 98.32
+            }
+          ]
+        },
+        {
+          "player": {
+            "name": "AWMRone",
+            "country": {
+              "name": "China",
+              "ISO2": "CN"
+            }
+          },
+          "scores": [
+            {
+              "score": 912766,
+              "accuracy": 98.03
+            }
+          ]
+        },
+        {
+          "player": {
+            "name": "[TCJ]ScanL",
+            "country": {
+              "name": "United States",
+              "ISO2": "US"
+            }
+          },
+          "scores": [
+            {
+              "score": 889851,
+              "accuracy": 97.67
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "stageId": "4",
+      "title": "Hoshimachi Suisei - phony [Master]",
+      "type": "LN",
+      "index": 1,
+      "picked": 10,
+      "banned": 2,
+      "protected": 5,
+      "scores": [
+        {
+          "player": {
+            "name": "LostCool",
+            "country": {
+              "name": "Thailand",
+              "ISO2": "TH"
+            }
+          },
+          "scores": [
+            {
+              "score": 982556,
+              "accuracy": 99.58
+            }
+          ]
+        },
+        {
+          "player": {
+            "name": "UmmmMrMoo",
+            "country": {
+              "name": "Canada",
+              "ISO2": "CA"
+            }
+          },
+          "scores": [
+            {
+              "score": 980953,
+              "accuracy": 99.51
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "stageId": "4",
+      "title": "Xi feat. Sta - Tiferet [MeLady]",
+      "type": "LN",
+      "index": 2,
+      "picked": 6,
+      "banned": 1,
+      "protected": 1,
+      "scores": [
+        {
+          "player": {
+            "name": "LostCool",
+            "country": {
+              "name": "Thailand",
+              "ISO2": "TH"
+            }
+          },
+          "scores": [
+            {
+              "score": 983241,
+              "accuracy": 99.58
+            }
+          ]
+        },
+        {
+          "player": {
+            "name": "VanWilder",
+            "country": {
+              "name": "China",
+              "ISO2": "CN"
+            }
+          },
+          "scores": [
+            {
+              "score": 981649,
+              "accuracy": 99.43
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "stageId": "4",
+      "title": "-45 - G e n g a o z o [void (AST Edit)]",
+      "type": "LN",
+      "index": 3,
+      "picked": 10,
+      "banned": 1,
+      "protected": 5,
+      "scores": [
+        {
+          "player": {
+            "name": "Sanni",
+            "country": {
+              "name": "Philippines",
+              "ISO2": "PH"
+            }
+          },
+          "scores": [
+            {
+              "score": 987255,
+              "accuracy": 99.61
+            }
+          ]
+        },
+        {
+          "player": {
+            "name": "VanWilder",
+            "country": {
+              "name": "China",
+              "ISO2": "CN"
+            }
+          },
+          "scores": [
+            {
+              "score": 987157,
+              "accuracy": 99.60
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "9",
+      "stageId": "4",
+      "title": "Mili - Cerebrite [iya]",
+      "type": "LN",
+      "index": 4,
+      "picked": 7,
+      "banned": 3,
+      "protected": 2,
+      "scores": [
+        {
+          "player": {
+            "name": "Sanni",
+            "country": {
+              "name": "Philippines",
+              "ISO2": "PH"
+            }
+          },
+          "scores": [
+            {
+              "score": 985713,
+              "accuracy": 99.56
+            }
+          ]
+        },
+        {
+          "player": {
+            "name": "UmmmMrMoo",
+            "country": {
+              "name": "Canada",
+              "ISO2": "CA"
+            }
+          },
+          "scores": [
+            {
+              "score": 983446,
+              "accuracy": 99.62
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "stageId": "4",
+      "title": "HiTECH NINJA vs Cranky - BREaK! BREaK! BREaK! [Break it all up]",
+      "type": "HB",
+      "index": 1,
+      "picked": 9,
+      "banned": 1,
+      "protected": 3,
+      "scores": [
+        {
+          "player": {
+            "name": "yz1155",
+            "country": {
+              "name": "South Korea",
+              "ISO2": "KR"
+            }
+          },
+          "scores": [
+            {
+              "score": 979305,
+              "accuracy": 99.51
+            }
+          ]
+        },
+        {
+          "player": {
+            "name": "arcwinolivirus",
+            "country": {
+              "name": "Philippines",
+              "ISO2": "PH"
+            }
+          },
+          "scores": [
+            {
+              "score": 969934,
+              "accuracy": 99.07
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "11",
+      "stageId": "4",
+      "title": "SunsetRay - PhantasmalWar [Blood moon]",
+      "type": "HB",
+      "index": 2,
+      "picked": 11,
+      "banned": 0,
+      "protected": 0,
+      "scores": [
+        {
+          "player": {
+            "name": "yz1155",
+            "country": {
+              "name": "South Korea",
+              "ISO2": "KR"
+            }
+          },
+          "scores": [
+            {
+              "score": 984088,
+              "accuracy": 99.51
+            }
+          ]
+        },
+        {
+          "player": {
+            "name": "LostCool",
+            "country": {
+              "name": "Thailand",
+              "ISO2": "TH"
+            }
+          },
+          "scores": [
+            {
+              "score": 983512,
+              "accuracy": 99.49
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "12",
+      "stageId": "4",
+      "title": "Juggernaut. - Catastrophe [Apocalypse]",
+      "type": "HB",
+      "index": 3,
+      "picked": 6,
+      "banned": 0,
+      "protected": 1,
+      "scores": [
+        {
+          "player": {
+            "name": "VanWilder",
+            "country": {
+              "name": "China",
+              "ISO2": "CN"
+            }
+          },
+          "scores": [
+            {
+              "score": 974426,
+              "accuracy": 99.31
+            }
+          ]
+        },
+        {
+          "player": {
+            "name": "HxcQ777",
+            "country": {
+              "name": "China",
+              "ISO2": "CN"
+            }
+          },
+          "scores": [
+            {
+              "score": 967498,
+              "accuracy": 99.10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "13",
+      "stageId": "4",
+      "title": "Dragonforce - Heroes of our time [The Epic]",
+      "type": "TB",
+      "index": 0,
+      "picked": 1,
+      "banned": 0,
+      "protected": 0,
+      "scores": [
+        {
+          "player": {
+            "name": "LostCool",
+            "country": {
+              "name": "Thailand",
+              "ISO2": "TH"
+            }
+          },
+          "scores": [
+            {
+              "score": 979203,
+              "accuracy": 99.53
+            }
+          ]
+        },
+        {
+          "player": {
+            "name": "TsukiyaWhiskers",
+            "country": {
+              "name": "Germany",
+              "ISO2": "DE"
+            }
+          },
+          "scores": [
+            {
+              "score": 922116,
+              "accuracy": 98.29
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }

@@ -11,7 +11,7 @@ const Flag = ({country, marginTop}: IProps) => {
         <>
         {country && 
         <Grid item width={30} height={20} xs='auto' marginTop={marginTop ?? 0.5}>
-            <img 
+            <img
                 className='flag' 
                 src={`https://assets.ppy.sh/old-flags/${country.ISO2}.png`} 
                 alt={`Flag of ${country.name}`}/>

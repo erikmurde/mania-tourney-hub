@@ -23,7 +23,7 @@ const MatchRowPlayer = ({player, winner, matchDone, right}: IProps) => {
             >
             <Grid container justifyContent={right ? 'start' : 'end'}>
                 {right && <Flag country={player.country} marginTop={0}/>}
-                <Grid item 
+                <Grid item
                     marginRight={right ? 0 : 0.5} 
                     marginLeft={right ? 0.5 : 0}
                     sx={{ fontWeight: winner ? 700 : 400}}

@@ -1,8 +1,13 @@
 import { Grid, Typography } from '@mui/material';
 
-const SectionTitle = ({title}: {title: string}) => {
+interface IProps {
+    title: string,
+    xsAuto?: boolean
+}
+
+const SectionTitle = ({title, xsAuto}: IProps) => {
     return (  
-        <Grid marginLeft={5} item xs={12}>
+        <Grid item xs={xsAuto ? 'auto' : 12} paddingLeft={5}>
             <Typography variant='h2' 
                 height={100} 
                 fontSize={46} 

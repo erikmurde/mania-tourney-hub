@@ -53,7 +53,7 @@ const MapManageList = ({maps}: {maps: IMapDto[]}) => {
             <Grid item xs={11} key={index}>
                 <Accordion elevation={6} defaultExpanded>
                     <AccordionSummary expandIcon={<ExpandMore/>}>
-                        <MapTypeBox map={maps[0]}/>
+                        <MapTypeBox mapType={maps[0].mapType.name} index={maps[0].index}/>
                     </AccordionSummary>
                     <AccordionDetails>
                         <Grid container rowSpacing={1} direction='column'>
