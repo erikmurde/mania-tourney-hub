@@ -6,10 +6,11 @@ interface IProps {
     index: number,
     height?: number,
     width?: number,
-    fontSize?: number
+    fontSize?: number,
+    isQualifier?: boolean
 }
 
-const MapTypeBox = ({mapType, index, height, width, fontSize}: IProps) => {
+const MapTypeBox = ({mapType, index, height, width, fontSize, isQualifier}: IProps) => {
     const theme = useTheme();
 
     const bgMappings = new Map<string, string>([
@@ -30,7 +31,7 @@ const MapTypeBox = ({mapType, index, height, width, fontSize}: IProps) => {
                 borderRadius: '3px'
             }}>
             <Typography fontSize={fontSize ?? 20} fontWeight={500} color={theme.palette.background.default}>
-                {`${mapType}${index > 0 ? index : ''}`}
+                {`${isQualifier ? 'S' : mapType}${index > 0 ? index : ''}`}
             </Typography>
         </Box>
     );

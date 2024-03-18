@@ -24,8 +24,8 @@ const MapStatsTableRowPlayer = ({index, playerScore}: IProps) => {
             </SchedTableCell>
             <SchedTableCell>{playerScore.score.toLocaleString()}</SchedTableCell>
             <SchedTableCell>{playerScore.accuracy.toFixed(2)}%</SchedTableCell>
-        </TableRow> 
+        </TableRow>
     );
 }
- 
+
 export default MapStatsTableRowPlayer;

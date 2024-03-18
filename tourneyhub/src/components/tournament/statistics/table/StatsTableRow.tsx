@@ -1,4 +1,4 @@
-import { Grid, TableRow, Typography } from '@mui/material';
+import { Grid, TableRow } from '@mui/material';
 import { MapStatsDto } from '../../../../dto/statistics/MapStatsDto';
 import { SchedTableCell } from '../../../styled/SchedTableCell';
 import MapTypeBox from '../../../MapTypeBox';
@@ -6,7 +6,7 @@ import { TournamentDto } from '../../../../dto/tournament/TournamentDto';
 import { PlayerScoreDto } from '../../../../dto/score/PlayerScoreDto';
 import Flag from '../../../Flag';
 import { MapStatsService } from '../../../../services/mapStatsService';
-import { STANDARD } from '../../../../constants';
+import { QUALIFIER, STANDARD } from '../../../../constants';
 
 interface IProps {
     map: MapStatsDto,
@@ -36,13 +36,14 @@ const StatsTableRow = ({map, tourney, stageType}: IProps) => {
 
     return (  
         <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 }, height: 50 }}>
-            <SchedTableCell>
+            <SchedTableCell width={40} sx={{ paddingRight: 1 }}>
                 <MapTypeBox 
                     mapType={map.type} 
                     index={map.index} 
                     height={25} 
                     width={40}
                     fontSize={14}
+                    isQualifier={stageType === QUALIFIER}
                 />
             </SchedTableCell>
             <SchedTableCell>{map.title}</SchedTableCell>

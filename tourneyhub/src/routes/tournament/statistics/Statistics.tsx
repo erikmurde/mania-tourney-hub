@@ -13,6 +13,8 @@ import StatsTabs from '../../../components/tournament/statistics/StatsTabs';
 import { MapStatsService } from '../../../services/mapStatsService';
 import { MapStatsDto } from '../../../dto/statistics/MapStatsDto';
 import MapStats from '../../../components/tournament/statistics/MapStats';
+import { QUALIFIER } from '../../../constants';
+import SeedingStats from '../../../components/tournament/statistics/SeedingStats';
 
 const Statistics = () => {
     const { id } = useParams();
@@ -47,8 +49,7 @@ const Statistics = () => {
                 .getAllStage(stage.id)
                 .then(stats => setMapStats(stats))
                 .then(() => {
-                    const mapId = mapStats.length > 0 ? mapStats[0].id : '';
-                    setMapId(mapId);
+                    setMapId(stage.stageType === QUALIFIER ? QUALIFIER : '');
                 });
         }
     }, [stage.id]);
@@ -56,15 +57,19 @@ const Statistics = () => {
     const isHost = id && user && new AuthService().isHost(user, id);
     const map = mapStats.find(map => map.id === mapId);
 
+    const statsVisible = (stage.statsPublic || isHost) && mapStats.length > 0; 
+
     return (  
         <Paper elevation={2} sx={{ minHeight: 500, paddingBottom: 2 }}>
             <Grid container>
                 <SectionTitle title='Statistics' xsAuto/>
+                {statsVisible && 
                 <StatsTabs
                     maps={mapStats}
                     mapId={mapId}
+                    stageType={stage.stageType}
                     setMapId={setMapId}
-                />
+                />}
             </Grid>
             <Grid container>
                 <StageTabs 
@@ -77,14 +82,20 @@ const Statistics = () => {
                 <Grid item xs
                     marginLeft={map ? 0 : 2} 
                     marginRight={map ? 0 : 2} 
-                    container={map !== undefined} 
+                    container={map !== undefined || mapId === QUALIFIER} 
                     justifyContent='center'
                     >
-                    {map
-                    ?   <MapStats map={map}/>
-                    :   (stage.statsPublic || isHost) && stage.id
-                    ?   <StageStats stage={stage} mapStats={mapStats}/>
-                    :   <NoItems name={'statistics'}/>}
+                    {map && 
+                    <MapStats map={map}/>} 
+                    {mapId === QUALIFIER && (stage.statsPublic || isHost) && 
+                    <SeedingStats 
+                        mapStats={mapStats}
+                        numAdvancing={stage.numAdvancing}
+                    />}
+                    {(stage.statsPublic || isHost) && stage.id && mapId === '' && mapStats.length > 0 &&
+                    <StageStats stage={stage} mapStats={mapStats}
+                    />}
+                    {!statsVisible && <NoItems name={'statistics'}/>}
                 </Grid>
             </Grid>
         </Paper>

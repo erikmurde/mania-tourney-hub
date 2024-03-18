@@ -6,7 +6,7 @@ const StatsTableHead = ({stageType}: {stageType: string}) => {
     return (  
         <TableHead>
             <TableRow>
-                <SchedTableCell align='center'>Map</SchedTableCell>
+                <SchedTableCell align='center' sx={{ paddingRight: 1 }}>Map</SchedTableCell>
                 <SchedTableCell>Artist and title</SchedTableCell>
                 <SchedTableCell>Best player</SchedTableCell>
                 <SchedTableCell width={60}>Score</SchedTableCell>

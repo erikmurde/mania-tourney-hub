@@ -23,7 +23,7 @@ const MapStats = ({map}: {map: MapStatsDto}) => {
         .sort((a, b) => b.score - a.score);
 
     return (  
-        <Paper elevation={6} sx={{ height: 1, paddingLeft: 1, paddingRight: 1, width: 540 }}>
+        <Paper elevation={6} sx={{ paddingLeft: 1, paddingRight: 1, width: 540 }}>
             <Grid container justifyContent='center'>
                 <Grid item xs={12} marginTop={2} marginBottom={2}>
                     <Typography textAlign='center'>

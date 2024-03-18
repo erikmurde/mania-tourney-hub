@@ -4254,7 +4254,7 @@
       "name": "Qualifiers",
       "bestOf": 0,
       "lobbySize": 10,
-      "numAdvancing": 64,
+      "numAdvancing": 5,
       "schedulingDeadline": "2024-07-17T07:00:00.000Z",
       "mappoolPublic": true,
       "schedulePublic": true,
@@ -6717,6 +6717,1125 @@
           },
           "score": 922116,
           "accuracy": 98.29
+        }
+      ]
+    },
+    {
+      "id": "14",
+      "stageId": "0",
+      "title": "lapix - HiTECH Bass Loops Vol.1 [Stage 1: Erraticity]",
+      "type": "RC",
+      "index": 1,
+      "picked": 0,
+      "banned": 0,
+      "protected": 0,
+      "scores": [
+        {
+          "player": {
+            "name": "yz1155",
+            "country": {
+              "name": "South Korea",
+              "ISO2": "KR"
+            }
+          },
+          "score": 992423,
+          "accuracy": 99.76
+        },
+        {
+          "player": {
+            "name": "yz1155",
+            "country": {
+              "name": "South Korea",
+              "ISO2": "KR"
+            }
+          },
+          "score": 991779,
+          "accuracy": 99.74
+        },
+        {
+          "player": {
+            "name": "UmmmMrMoo",
+            "country": {
+              "name": "Canada",
+              "ISO2": "CA"
+            }
+          },
+          "score": 984720,
+          "accuracy": 99.53
+        },
+        {
+          "player": {
+            "name": "LostCool",
+            "country": {
+              "name": "Thailand",
+              "ISO2": "TH"
+            }
+          },
+          "score": 982333,
+          "accuracy": 99.45
+        },
+        {
+          "player": {
+            "name": "LostCool",
+            "country": {
+              "name": "Thailand",
+              "ISO2": "TH"
+            }
+          },
+          "score": 972103,
+          "accuracy": 99.14
+        },
+        {
+          "player": {
+            "name": "bagjettka",
+            "country": {
+              "name": "Poland",
+              "ISO2": "PL"
+            }
+          },
+          "score": 981437,
+          "accuracy": 99.43
+        },
+        {
+          "player": {
+            "name": "bagjettka",
+            "country": {
+              "name": "Poland",
+              "ISO2": "PL"
+            }
+          },
+          "score": 974036,
+          "accuracy": 99.34
+        },
+        {
+          "player": {
+            "name": "arcwinolivirus",
+            "country": {
+              "name": "Philippines",
+              "ISO2": "PH"
+            }
+          },
+          "score": 976519,
+          "accuracy": 99.27
+        },
+        {
+          "player": {
+            "name": "arcwinolivirus",
+            "country": {
+              "name": "Philippines",
+              "ISO2": "PH"
+            }
+          },
+          "score": 967029,
+          "accuracy": 99.18
+        },
+        {
+          "player": {
+            "name": "Shenzouz",
+            "country": {
+              "name": "China",
+              "ISO2": "CN"
+            }
+          },
+          "score": 971678,
+          "accuracy": 99.12
+        },
+        {
+          "player": {
+            "name": "Shenzouz",
+            "country": {
+              "name": "China",
+              "ISO2": "CN"
+            }
+          },
+          "score": 960001,
+          "accuracy": 98.99
+        },
+        {
+          "player": {
+            "name": "Watch01",
+            "country": {
+              "name": "China",
+              "ISO2": "CN"
+            }
+          },
+          "score": 967566,
+          "accuracy": 99.41
+        },
+        {
+          "player": {
+            "name": "Watch01",
+            "country": {
+              "name": "China",
+              "ISO2": "CN"
+            }
+          },
+          "score": 965167,
+          "accuracy": 99.33
+        },
+        {
+          "player": {
+            "name": "- Kura -",
+            "country": {
+              "name": "Philippines",
+              "ISO2": "PH"
+            }
+          },
+          "score": 963863,
+          "accuracy": 99.34
+        },
+        {
+          "player": {
+            "name": "Sanni",
+            "country": {
+              "name": "Philippines",
+              "ISO2": "PH"
+            }
+          },
+          "score": 957826,
+          "accuracy": 98.91
+        },
+        {
+          "player": {
+            "name": "Sanni",
+            "country": {
+              "name": "Philippines",
+              "ISO2": "PH"
+            }
+          },
+          "score": 950854,
+          "accuracy": 98.80
+        },
+        {
+          "player": {
+            "name": "Matiias",
+            "country": {
+              "name": "Chile",
+              "ISO2": "CL"
+            }
+          },
+          "score": 950003,
+          "accuracy": 98.84
+        }
+      ]
+    },
+    {
+      "id": "15",
+      "stageId": "0",
+      "title": "Uetsu Shi - Firmament Castle \"Velier\" [Stage 2: Welkin]",
+      "type": "RC",
+      "index": 2,
+      "picked": 0,
+      "banned": 0,
+      "protected": 0,
+      "scores": [
+        {
+          "player": {
+            "name": "yz1155",
+            "country": {
+              "name": "South Korea",
+              "ISO2": "KR"
+            }
+          },
+          "score": 995395,
+          "accuracy": 99.86
+        },
+        {
+          "player": {
+            "name": "Watch01",
+            "country": {
+              "name": "China",
+              "ISO2": "CN"
+            }
+          },
+          "score": 992181,
+          "accuracy": 99.76
+        },
+        {
+          "player": {
+            "name": "LostCool",
+            "country": {
+              "name": "Thailand",
+              "ISO2": "TH"
+            }
+          },
+          "score": 988398,
+          "accuracy": 99.64
+        },
+        {
+          "player": {
+            "name": "arcwinolivirus",
+            "country": {
+              "name": "Philippines",
+              "ISO2": "PH"
+            }
+          },
+          "score": 987914,
+          "accuracy": 99.62
+        },
+        {
+          "player": {
+            "name": "UmmmMrMoo",
+            "country": {
+              "name": "Canada",
+              "ISO2": "CA"
+            }
+          },
+          "score": 981810,
+          "accuracy": 99.62
+        },
+        {
+          "player": {
+            "name": "arcwinolivirus",
+            "country": {
+              "name": "Philippines",
+              "ISO2": "PH"
+            }
+          },
+          "score": 981482,
+          "accuracy": 99.43
+        },
+        {
+          "player": {
+            "name": "Watch01",
+            "country": {
+              "name": "China",
+              "ISO2": "CN"
+            }
+          },
+          "score": 981058,
+          "accuracy": 99.56
+        },
+        {
+          "player": {
+            "name": "- Kura -",
+            "country": {
+              "name": "Philippines",
+              "ISO2": "PH"
+            }
+          },
+          "score": 976521,
+          "accuracy": 99.46
+        },
+        {
+          "player": {
+            "name": "LostCool",
+            "country": {
+              "name": "Thailand",
+              "ISO2": "TH"
+            }
+          },
+          "score": 976239,
+          "accuracy": 99.57
+        },
+        {
+          "player": {
+            "name": "bagjettka",
+            "country": {
+              "name": "Poland",
+              "ISO2": "PL"
+            }
+          },
+          "score": 974559,
+          "accuracy": 99.40
+        },
+        {
+          "player": {
+            "name": "Sanni",
+            "country": {
+              "name": "Philippines",
+              "ISO2": "PH"
+            }
+          },
+          "score": 974053,
+          "accuracy": 99.20
+        },
+        {
+          "player": {
+            "name": "bagjettka",
+            "country": {
+              "name": "Poland",
+              "ISO2": "PL"
+            }
+          },
+          "score": 972687,
+          "accuracy": 99.34
+        },
+        {
+          "player": {
+            "name": "Shenzouz",
+            "country": {
+              "name": "China",
+              "ISO2": "CN"
+            }
+          },
+          "score": 972507,
+          "accuracy": 99.15
+        },
+        {
+          "player": {
+            "name": "Matiias",
+            "country": {
+              "name": "Chile",
+              "ISO2": "CL"
+            }
+          },
+          "score": 970216,
+          "accuracy": 99.27
+        },
+        {
+          "player": {
+            "name": "Sanni",
+            "country": {
+              "name": "Philippines",
+              "ISO2": "PH"
+            }
+          },
+          "score": 939546,
+          "accuracy": 98.31
+        },
+        {
+          "player": {
+            "name": "Shenzouz",
+            "country": {
+              "name": "China",
+              "ISO2": "CN"
+            }
+          },
+          "score": 965488,
+          "accuracy": 98.94
+        }
+      ]
+    },
+    {
+      "id": "16",
+      "stageId": "0",
+      "title": "Warak - Jikai ~ Paganelope [Stage 3: Lust]",
+      "type": "HB",
+      "index": 3,
+      "picked": 0,
+      "banned": 0,
+      "protected": 0,
+      "scores": [
+        {
+          "player": {
+            "name": "yz1155",
+            "country": {
+              "name": "South Korea",
+              "ISO2": "KR"
+            }
+          },
+          "score": 989814,
+          "accuracy": 99.69
+        },
+        {
+          "player": {
+            "name": "UmmmMrMoo",
+            "country": {
+              "name": "Canada",
+              "ISO2": "CA"
+            }
+          },
+          "score": 989046,
+          "accuracy": 99.66
+        },
+        {
+          "player": {
+            "name": "- Kura -",
+            "country": {
+              "name": "Philippines",
+              "ISO2": "PH"
+            }
+          },
+          "score": 988896,
+          "accuracy": 99.66
+        },
+        {
+          "player": {
+            "name": "LostCool",
+            "country": {
+              "name": "Thailand",
+              "ISO2": "TH"
+            }
+          },
+          "score": 987616,
+          "accuracy": 99.62
+        },
+        {
+          "player": {
+            "name": "arcwinolivirus",
+            "country": {
+              "name": "Philippines",
+              "ISO2": "PH"
+            }
+          },
+          "score": 974642,
+          "accuracy": 99.22
+        },
+        {
+          "player": {
+            "name": "Watch01",
+            "country": {
+              "name": "China",
+              "ISO2": "CN"
+            }
+          },
+          "score": 973538,
+          "accuracy": 99.19
+        },
+        {
+          "player": {
+            "name": "Sanni",
+            "country": {
+              "name": "Philippines",
+              "ISO2": "PH"
+            }
+          },
+          "score": 972487,
+          "accuracy": 99.19
+        },
+        {
+          "player": {
+            "name": "Shenzouz",
+            "country": {
+              "name": "China",
+              "ISO2": "CN"
+            }
+          },
+          "score": 967148,
+          "accuracy": 99.11
+        },
+        {
+          "player": {
+            "name": "Matiias",
+            "country": {
+              "name": "Chile",
+              "ISO2": "CL"
+            }
+          },
+          "score": 958449,
+          "accuracy": 98.96
+        },
+        {
+          "player": {
+            "name": "bagjettka",
+            "country": {
+              "name": "Poland",
+              "ISO2": "PL"
+            }
+          },
+          "score": 953603,
+          "accuracy": 98.96
+        }
+      ]
+    },
+    {
+      "id": "17",
+      "stageId": "0",
+      "title": "Aethoro - Woodfairies [Stage 4: Yearning]",
+      "type": "LN",
+      "index": 4,
+      "picked": 0,
+      "banned": 0,
+      "protected": 0,
+      "scores": [
+        {
+          "player": {
+            "name": "Watch01",
+            "country": {
+              "name": "China",
+              "ISO2": "CN"
+            }
+          },
+          "score": 990648,
+          "accuracy": 99.71
+        },
+        {
+          "player": {
+            "name": "UmmmMrMoo",
+            "country": {
+              "name": "Canada",
+              "ISO2": "CA"
+            }
+          },
+          "score": 990124,
+          "accuracy": 99.70
+        },
+        {
+          "player": {
+            "name": "LostCool",
+            "country": {
+              "name": "Thailand",
+              "ISO2": "TH"
+            }
+          },
+          "score": 989531,
+          "accuracy": 99.68
+        },
+        {
+          "player": {
+            "name": "yz1155",
+            "country": {
+              "name": "South Korea",
+              "ISO2": "KR"
+            }
+          },
+          "score": 985627,
+          "accuracy": 99.56
+        },
+        {
+          "player": {
+            "name": "- Kura -",
+            "country": {
+              "name": "Philippines",
+              "ISO2": "PH"
+            }
+          },
+          "score": 985344,
+          "accuracy": 99.54
+        },
+        {
+          "player": {
+            "name": "Sanni",
+            "country": {
+              "name": "Philippines",
+              "ISO2": "PH"
+            }
+          },
+          "score": 972186,
+          "accuracy": 99.32
+        },
+        {
+          "player": {
+            "name": "Shenzouz",
+            "country": {
+              "name": "China",
+              "ISO2": "CN"
+            }
+          },
+          "score": 943923,
+          "accuracy": 98.50
+        },
+        {
+          "player": {
+            "name": "Matiias",
+            "country": {
+              "name": "Chile",
+              "ISO2": "CL"
+            }
+          },
+          "score": 898330,
+          "accuracy": 98.16
+        },
+        {
+          "player": {
+            "name": "bagjettka",
+            "country": {
+              "name": "Poland",
+              "ISO2": "PL"
+            }
+          },
+          "score": 886232,
+          "accuracy": 97.66
+        },
+        {
+          "player": {
+            "name": "arcwinolivirus",
+            "country": {
+              "name": "Philippines",
+              "ISO2": "PH"
+            }
+          },
+          "score": 900014,
+          "accuracy": 97.47
+        }
+      ]
+    },
+    {
+      "id": "18",
+      "stageId": "0",
+      "title": "Silentroom - Nhelv [Stage 5: NERVE]",
+      "type": "RC",
+      "index": 5,
+      "picked": 0,
+      "banned": 0,
+      "protected": 0,
+      "scores": [
+        {
+          "player": {
+            "name": "yz1155",
+            "country": {
+              "name": "South Korea",
+              "ISO2": "KR"
+            }
+          },
+          "score": 995291,
+          "accuracy": 99.85
+        },
+        {
+          "player": {
+            "name": "UmmmMrMoo",
+            "country": {
+              "name": "Canada",
+              "ISO2": "CA"
+            }
+          },
+          "score": 990709,
+          "accuracy": 99.71
+        },
+        {
+          "player": {
+            "name": "LostCool",
+            "country": {
+              "name": "Thailand",
+              "ISO2": "TH"
+            }
+          },
+          "score": 987045,
+          "accuracy": 99.60
+        },
+        {
+          "player": {
+            "name": "Watch01",
+            "country": {
+              "name": "China",
+              "ISO2": "CN"
+            }
+          },
+          "score": 984623,
+          "accuracy": 99.70
+        },
+        {
+          "player": {
+            "name": "- Kura -",
+            "country": {
+              "name": "Philippines",
+              "ISO2": "PH"
+            }
+          },
+          "score": 983787,
+          "accuracy": 99.67
+        },
+        {
+          "player": {
+            "name": "arcwinolivirus",
+            "country": {
+              "name": "Philippines",
+              "ISO2": "PH"
+            }
+          },
+          "score": 982557,
+          "accuracy": 99.46
+        },
+        {
+          "player": {
+            "name": "bagjettka",
+            "country": {
+              "name": "Poland",
+              "ISO2": "PL"
+            }
+          },
+          "score": 970918,
+          "accuracy": 99.28
+        },
+        {
+          "player": {
+            "name": "Sanni",
+            "country": {
+              "name": "Chile",
+              "ISO2": "CL"
+            }
+          },
+          "score": 958449,
+          "accuracy": 98.96
+        },
+        {
+          "player": {
+            "name": "Shenzouz",
+            "country": {
+              "name": "China",
+              "ISO2": "CA"
+            }
+          },
+          "score": 959597,
+          "accuracy": 99.09
+        },
+        {
+          "player": {
+            "name": "Matiias",
+            "country": {
+              "name": "Chile",
+              "ISO2": "CL"
+            }
+          },
+          "score": 926515,
+          "accuracy": 98.49
+        }
+      ]
+    },
+    {
+      "id": "19",
+      "stageId": "0",
+      "title": "dj TAKA - ELPIS [Stage 6: Hope]",
+      "type": "RC",
+      "index": 6,
+      "picked": 0,
+      "banned": 0,
+      "protected": 0,
+      "scores": [
+        {
+          "player": {
+            "name": "yz1155",
+            "country": {
+              "name": "South Korea",
+              "ISO2": "KR"
+            }
+          },
+          "score": 996824,
+          "accuracy": 99.90
+        },
+        {
+          "player": {
+            "name": "- Kura -",
+            "country": {
+              "name": "Philippines",
+              "ISO2": "PH"
+            }
+          },
+          "score": 994783,
+          "accuracy": 99.84
+        },
+        {
+          "player": {
+            "name": "UmmmMrMoo",
+            "country": {
+              "name": "Canada",
+              "ISO2": "CA"
+            }
+          },
+          "score": 993288,
+          "accuracy": 99.79
+        },
+        {
+          "player": {
+            "name": "LostCool",
+            "country": {
+              "name": "Thailand",
+              "ISO2": "TH"
+            }
+          },
+          "score": 993182,
+          "accuracy": 99.79
+        },
+        {
+          "player": {
+            "name": "Watch01",
+            "country": {
+              "name": "China",
+              "ISO2": "CN"
+            }
+          },
+          "score": 992839,
+          "accuracy": 99.78
+        },
+        {
+          "player": {
+            "name": "arcwinolivirus",
+            "country": {
+              "name": "Philippines",
+              "ISO2": "PH"
+            }
+          },
+          "score": 988471,
+          "accuracy": 99.64
+        },
+        {
+          "player": {
+            "name": "Sanni",
+            "country": {
+              "name": "Philippines",
+              "ISO2": "PH"
+            }
+          },
+          "score": 983330,
+          "accuracy": 99.48
+        },
+        {
+          "player": {
+            "name": "Matiias",
+            "country": {
+              "name": "Chile",
+              "ISO2": "CL"
+            }
+          },
+          "score": 975857,
+          "accuracy": 99.44
+        },
+        {
+          "player": {
+            "name": "Shenzouz",
+            "country": {
+              "name": "China",
+              "ISO2": "CN"
+            }
+          },
+          "score": 970611,
+          "accuracy": 99.28
+        },
+        {
+          "player": {
+            "name": "bagjettka",
+            "country": {
+              "name": "Poland",
+              "ISO2": "PL"
+            }
+          },
+          "score": 966979,
+          "accuracy": 99.17
+        }
+      ]
+    },
+    {
+      "id": "20",
+      "stageId": "0",
+      "title": "Tsukino - Debiru Janai Mon [Stage 7: Zakozako]",
+      "type": "LN",
+      "index": 7,
+      "picked": 0,
+      "banned": 0,
+      "protected": 0,
+      "scores": [
+        {
+          "player": {
+            "name": "LostCool",
+            "country": {
+              "name": "Thailand",
+              "ISO2": "TH"
+            }
+          },
+          "score": 990773,
+          "accuracy": 99.71
+        },
+        {
+          "player": {
+            "name": "yz1155",
+            "country": {
+              "name": "South Korea",
+              "ISO2": "KR"
+            }
+          },
+          "score": 989790,
+          "accuracy": 99.68
+        },
+        {
+          "player": {
+            "name": "UmmmMrMoo",
+            "country": {
+              "name": "Canada",
+              "ISO2": "CA"
+            }
+          },
+          "score": 985997,
+          "accuracy": 99.57
+        },
+        {
+          "player": {
+            "name": "Sanni",
+            "country": {
+              "name": "Philippines",
+              "ISO2": "PH"
+            }
+          },
+          "score": 979924,
+          "accuracy": 99.38
+        },
+        {
+          "player": {
+            "name": "- Kura -",
+            "country": {
+              "name": "Philippines",
+              "ISO2": "PH"
+            }
+          },
+          "score": 979003,
+          "accuracy": 99.46
+        },
+        {
+          "player": {
+            "name": "Watch01",
+            "country": {
+              "name": "China",
+              "ISO2": "CN"
+            }
+          },
+          "score": 976099,
+          "accuracy": 99.27
+        },
+        {
+          "player": {
+            "name": "Shenzouz",
+            "country": {
+              "name": "China",
+              "ISO2": "CN"
+            }
+          },
+          "score": 968538,
+          "accuracy": 99.03
+        },
+        {
+          "player": {
+            "name": "bagjettka",
+            "country": {
+              "name": "Poland",
+              "ISO2": "PL"
+            }
+          },
+          "score": 962291,
+          "accuracy": 98.95
+        },
+        {
+          "player": {
+            "name": "arcwinolivirus",
+            "country": {
+              "name": "Philippines",
+              "ISO2": "PH"
+            }
+          },
+          "score": 951239,
+          "accuracy": 98.67
+        },
+        {
+          "player": {
+            "name": "Matiias",
+            "country": {
+              "name": "Chile",
+              "ISO2": "CL"
+            }
+          },
+          "score": 948039,
+          "accuracy": 98.84
+        }
+      ]
+    },
+    {
+      "id": "21",
+      "stageId": "0",
+      "title": "sakuzyo - Strange Love [Stage 8: Affliction]",
+      "type": "HB",
+      "index": 8,
+      "picked": 0,
+      "banned": 0,
+      "protected": 0,
+      "scores": [
+        {
+          "player": {
+            "name": "yz1155",
+            "country": {
+              "name": "South Korea",
+              "ISO2": "KR"
+            }
+          },
+          "score": 985583,
+          "accuracy": 99.59
+        },
+        {
+          "player": {
+            "name": "UmmmMrMoo",
+            "country": {
+              "name": "Canada",
+              "ISO2": "CA"
+            }
+          },
+          "score": 983950,
+          "accuracy": 99.50
+        },
+        {
+          "player": {
+            "name": "- Kura -",
+            "country": {
+              "name": "Philippines",
+              "ISO2": "PH"
+            }
+          },
+          "score": 981740,
+          "accuracy": 99.44
+        },
+        {
+          "player": {
+            "name": "LostCool",
+            "country": {
+              "name": "Thailand",
+              "ISO2": "TH"
+            }
+          },
+          "score": 981703,
+          "accuracy": 99.55
+        },
+        {
+          "player": {
+            "name": "Watch01",
+            "country": {
+              "name": "China",
+              "ISO2": "CN"
+            }
+          },
+          "score": 968086,
+          "accuracy": 99.31
+        },
+        {
+          "player": {
+            "name": "Sanni",
+            "country": {
+              "name": "Philippines",
+              "ISO2": "PH"
+            }
+          },
+          "score": 963593,
+          "accuracy": 98.88
+        },
+        {
+          "player": {
+            "name": "arcwinolivirus",
+            "country": {
+              "name": "Philippines",
+              "ISO2": "PH"
+            }
+          },
+          "score": 933597,
+          "accuracy": 98.50
+        },
+        {
+          "player": {
+            "name": "bagjettka",
+            "country": {
+              "name": "Poland",
+              "ISO2": "PL"
+            }
+          },
+          "score": 932628,
+          "accuracy": 98.47
+        },
+        {
+          "player": {
+            "name": "Shenzouz",
+            "country": {
+              "name": "China",
+              "ISO2": "CN"
+            }
+          },
+          "score": 921581,
+          "accuracy": 98.44
+        },
+        {
+          "player": {
+            "name": "Matiias",
+            "country": {
+              "name": "Chile",
+              "ISO2": "CL"
+            }
+          },
+          "score": 908553,
+          "accuracy": 97.87
         }
       ]
     }
