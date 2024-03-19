@@ -1,6 +1,6 @@
 import { Grid, Tab, Tabs } from '@mui/material';
-import { MapStatsDto } from '../../../dto/statistics/MapStatsDto';
-import { QUALIFIER } from '../../../constants';
+import { MapStatsDto } from '../../../../dto/statistics/MapStatsDto';
+import { QUALIFIER } from '../../../../constants';
 
 interface IProps {
     maps: MapStatsDto[],
@@ -23,9 +23,9 @@ const StatsTabs = ({maps, mapId, stageType, setMapId}: IProps) => {
                 onChange={(_, value) => setMapId(value)}
                 >
                 {stageType === QUALIFIER && 
-                <Tab label='seeding' value={QUALIFIER} onClick={() => setMapId(QUALIFIER)}/>
+                <Tab label='seeding' value={QUALIFIER}/>
                 }
-                <Tab label='mappool' value='' onClick={() => setMapId('')}/>
+                <Tab label='mappool' value=''/>
                 {maps.map(map => 
                     <Tab 
                         key={map.id} 

@@ -5,11 +5,11 @@ import Flag from '../../../Flag';
 
 interface IProps {
     index: number,
-    playerScore: PlayerScoreDto
+    stats: PlayerScoreDto
 }
 
-const MapStatsTableRowPlayer = ({index, playerScore}: IProps) => {
-    const player = playerScore.player;
+const MapStatsTableRowPlayer = ({index, stats}: IProps) => {
+    const player = stats.player;
 
     return (  
         <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 }, height: 50 }}>
@@ -22,8 +22,8 @@ const MapStatsTableRowPlayer = ({index, playerScore}: IProps) => {
                     </Grid>
                 </Grid>
             </SchedTableCell>
-            <SchedTableCell>{playerScore.score.toLocaleString()}</SchedTableCell>
-            <SchedTableCell>{playerScore.accuracy.toFixed(2)}%</SchedTableCell>
+            <SchedTableCell>{stats.score.toLocaleString()}</SchedTableCell>
+            <SchedTableCell>{stats.accuracy.toFixed(2)}%</SchedTableCell>
         </TableRow>
     );
 }

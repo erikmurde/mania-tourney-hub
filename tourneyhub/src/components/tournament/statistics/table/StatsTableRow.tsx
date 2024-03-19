@@ -1,38 +1,68 @@
-import { Grid, TableRow } from '@mui/material';
+import { TableRow } from '@mui/material';
 import { MapStatsDto } from '../../../../dto/statistics/MapStatsDto';
 import { SchedTableCell } from '../../../styled/SchedTableCell';
 import MapTypeBox from '../../../MapTypeBox';
-import { TournamentDto } from '../../../../dto/tournament/TournamentDto';
 import { PlayerScoreDto } from '../../../../dto/score/PlayerScoreDto';
-import Flag from '../../../Flag';
 import { MapStatsService } from '../../../../services/mapStatsService';
 import { QUALIFIER, STANDARD } from '../../../../constants';
+import { TeamScoreDto } from '../../../../dto/score/TeamScoreDto';
+import { useEffect, useState } from 'react';
+import StatsTableMvp from './StatsTableMvp';
 
 interface IProps {
     map: MapStatsDto,
-    tourney: TournamentDto,
-    stageType: string
+    stageType: string,
+    teamTourney: boolean,
+    showTeams: boolean
 }
 
-const StatsTableRow = ({map, tourney, stageType}: IProps) => {
+const StatsTableRow = ({map, stageType, teamTourney, showTeams}: IProps) => {
     const service = new MapStatsService();
 
-    const allScores = service.getAllScores(map);
-    const allAccs = service.getAllAccs(map);
+    const [state, setState] = useState({
+        avgScore: 0,
+        avgAcc: 0,
+        bestTeam: null as TeamScoreDto | null,
+        bestPlayer: null as PlayerScoreDto | null
+    });
 
-    const avgScore = allScores.length > 0 
-        ? Math.round(allScores.reduce((elem, sum) => sum + elem, 0) / allScores.length)
-        : '';
+    const getBestPlayer = (hightestScore: number) => {
+        if (teamTourney) {
+            const team = (map.scores as TeamScoreDto[]).find(team => 
+                service.getPlayerScores(team).includes(hightestScore)
+            );
+            return team?.players.find(player => player.score === hightestScore) || null;
+        } else {
+            return (map.scores as PlayerScoreDto[]).find(
+                player => player.score === hightestScore
+            ) || null;
+        }
+    }
 
-    const avgAcc = allScores.length > 0 
-        ? (allAccs.reduce((elem, sum) => sum + elem, 0) / allScores.length).toFixed(2)
-        : '';
+    const getBestTeam = (hightestScore: number) => {
+        return (map.scores as TeamScoreDto[]).find(team => 
+            service.getTeamScore(team) === hightestScore
+        ) || null;
+    }
 
-    const hightestScore = Math.max(...allScores);
+    const getAverage = (items: number[], round: boolean) => {
+        const average = items.reduce((elem, sum) => sum + elem, 0) / items.length || 0;
+        return round ? Math.round(average) : average;
+    }
 
-    const bestPlayer = (map.scores as PlayerScoreDto[]).find(
-        playerScore => playerScore.score === hightestScore
-    );
+    useEffect(() => {
+        const allScores = service.getAllScores(map, teamTourney, showTeams);
+        const allAccs = service.getAllAccs(map, teamTourney, showTeams);
+        const hightestScore = Math.max(...allScores);
+
+        const isTeam = teamTourney && showTeams;
+        setState({
+            avgScore: getAverage(allScores, true),
+            avgAcc: getAverage(allAccs, false),
+            bestTeam: isTeam ? getBestTeam(hightestScore) : null,
+            bestPlayer: !isTeam ? getBestPlayer(hightestScore) : null
+        });
+    }, [teamTourney, showTeams]);
 
     return (  
         <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 }, height: 50 }}>
@@ -47,22 +77,16 @@ const StatsTableRow = ({map, tourney, stageType}: IProps) => {
                 />
             </SchedTableCell>
             <SchedTableCell>{map.title}</SchedTableCell>
-            <SchedTableCell sx={{ minWidth: 150 }}>
-                <Grid container justifyContent='start' alignItems='center'>
-                    {bestPlayer && <Flag country={bestPlayer.player.country} marginTop={0}/>}
-                    <Grid item marginLeft={0.5}>
-                        {bestPlayer ? bestPlayer.player.name : ''}
-                    </Grid>
-                </Grid>
+            <StatsTableMvp 
+                bestPlayer={state.bestPlayer} 
+                bestTeam={state.bestTeam}
+            />
+            <SchedTableCell>
+                {state.avgScore ? state.avgScore.toLocaleString() : ''}
             </SchedTableCell>
             <SchedTableCell>
-                {bestPlayer ? bestPlayer.score.toLocaleString() : ''}
+                {state.avgAcc ? `${state.avgAcc.toFixed(2)}%` : ''}
             </SchedTableCell>
-            <SchedTableCell>
-                {bestPlayer ? bestPlayer.accuracy.toFixed(2) + '%' : ''}
-            </SchedTableCell>
-            <SchedTableCell>{avgScore.toLocaleString()}</SchedTableCell>
-            <SchedTableCell>{avgAcc ? `${avgAcc}%` : ''}</SchedTableCell>
             {stageType === STANDARD && 
             <>
             <SchedTableCell>{map.picked}</SchedTableCell>

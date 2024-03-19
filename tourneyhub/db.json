@@ -4350,6 +4350,19 @@
       "mappoolPublic": false,
       "schedulePublic": false,
       "statsPublic": false
+    },
+    {
+      "id": "8",
+      "tournamentId": "1",
+      "stageType": "standard",
+      "name": "QuarterFinals",
+      "bestOf": 13,
+      "lobbySize": 0,
+      "numAdvancing": 0,
+      "schedulingDeadline": "2024-07-17T07:00:00.000Z",
+      "mappoolPublic": false,
+      "schedulePublic": false,
+      "statsPublic": false
     }
   ],
   "maps": [
@@ -7838,6 +7851,1277 @@
           "accuracy": 97.87
         }
       ]
+    },
+    {
+      "id": "22",
+      "stageId": "8",
+      "title": "linear ring with RNAcid - Gypsophila (MyZterioN-) [blossom 1.1x (166bpm)]",
+      "type": "RC",
+      "index": 1,
+      "picked": 10,
+      "banned": 4,
+      "protected": 1,
+      "scores": [
+        {
+          "name": "United States",
+          "logo": "https://assets.ppy.sh/old-flags/US.png",
+          "players": [
+            {
+              "player": {
+                "name": "[LS]Dev",
+                "country": {
+                  "name": "United States",
+                  "ISO2": "US"
+                }
+              },
+              "score": 997880,
+              "accuracy": 99.93
+            },
+            {
+              "player": {
+                "name": "Nepijin",
+                "country": {
+                  "name": "United States",
+                  "ISO2": "US"
+                }
+              },
+              "score": 997315,
+              "accuracy": 99.92
+            },
+            {
+              "player": {
+                "name": "Hello_Son",
+                "country": {
+                  "name": "United States",
+                  "ISO2": "US"
+                }
+              },
+              "score": 996097,
+              "accuracy": 99.88
+            }
+          ]
+        },
+        {
+          "name": "Brazil",
+          "logo": "https://assets.ppy.sh/old-flags/BR.png",
+          "players": [
+            {
+              "player": {
+                "name": "LeMarcinho",
+                "country": {
+                  "name": "Brazil",
+                  "ISO2": "BR"
+                }
+              },
+              "score": 996075,
+              "accuracy": 99.88
+            },
+            {
+              "player": {
+                "name": "DemiFiendSMT",
+                "country": {
+                  "name": "Brazil",
+                  "ISO2": "BR"
+                }
+              },
+              "score": 995821,
+              "accuracy": 99.87
+            },
+            {
+              "player": {
+                "name": "SillyFangirl",
+                "country": {
+                  "name": "Brazil",
+                  "ISO2": "BR"
+                }
+              },
+              "score": 994583,
+              "accuracy": 99.83
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "23",
+      "stageId": "8",
+      "title": "seatrus - Cosmo Station (Blessia) [Orbis x1.1]",
+      "type": "RC",
+      "index": 2,
+      "picked": 2,
+      "banned": 6,
+      "protected": 1,
+      "scores": [
+        {
+          "name": "Canada",
+          "logo": "https://assets.ppy.sh/old-flags/CA.png",
+          "players": [
+            {
+              "player": {
+                "name": "mae0149",
+                "country": {
+                  "name": "Canada",
+                  "ISO2": "CA"
+                }
+              },
+              "score": 997415,
+              "accuracy": 99.92
+            },
+            {
+              "player": {
+                "name": "GDMem",
+                "country": {
+                  "name": "Canada",
+                  "ISO2": "CA"
+                }
+              },
+              "score": 995233,
+              "accuracy": 99.85
+            },
+            {
+              "player": {
+                "name": "Piggy",
+                "country": {
+                  "name": "Canada",
+                  "ISO2": "CA"
+                }
+              },
+              "score": 993594,
+              "accuracy": 99.80
+            }
+          ]
+        },
+        {
+          "name": "Singapore",
+          "logo": "https://assets.ppy.sh/old-flags/SG.png",
+          "players": [
+            {
+              "player": {
+                "name": "Neon-Hooray",
+                "country": {
+                  "name": "Singapore",
+                  "ISO2": "SG"
+                }
+              },
+              "score": 987191,
+              "accuracy": 99.60
+            },
+            {
+              "player": {
+                "name": "sukidayo-",
+                "country": {
+                  "name": "Singapore",
+                  "ISO2": "SG"
+                }
+              },
+              "score": 984698,
+              "accuracy": 99.74
+            },
+            {
+              "player": {
+                "name": "-Aishiteru-",
+                "country": {
+                  "name": "Singapore",
+                  "ISO2": "SG"
+                }
+              },
+              "score": 983788,
+              "accuracy": 99.67
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "24",
+      "stageId": "8",
+      "title": "EvOke - Edison (Miaurichesu) [Challenge (Edit) 1.1x (146bpm)]",
+      "type": "RC",
+      "index": 3,
+      "picked": 8,
+      "banned": 0,
+      "protected": 4,
+      "scores": [
+        {
+          "name": "United States",
+          "logo": "https://assets.ppy.sh/old-flags/US.png",
+          "players": [
+            {
+              "player": {
+                "name": "[LS]Dev",
+                "country": {
+                  "name": "United States",
+                  "ISO2": "US"
+                }
+              },
+              "score": 999339,
+              "accuracy": 99.98
+            },
+            {
+              "player": {
+                "name": "Nepijin",
+                "country": {
+                  "name": "United States",
+                  "ISO2": "US"
+                }
+              },
+              "score": 998938,
+              "accuracy": 99.97
+            },
+            {
+              "player": {
+                "name": "cafesito",
+                "country": {
+                  "name": "United States",
+                  "ISO2": "US"
+                }
+              },
+              "score": 997241,
+              "accuracy": 99.91
+            }
+          ]
+        },
+        {
+          "name": "Vietnam",
+          "logo": "https://assets.ppy.sh/old-flags/VN.png",
+          "players": [
+            {
+              "player": {
+                "name": "TriDoanGaming",
+                "country": {
+                  "name": "Vietnam",
+                  "ISO2": "VN"
+                }
+              },
+              "score": 998930,
+              "accuracy": 99.97
+            },
+            {
+              "player": {
+                "name": "[LS]Vixile",
+                "country": {
+                  "name": "Vietnam",
+                  "ISO2": "VN"
+                }
+              },
+              "score": 994727,
+              "accuracy": 99.83
+            },
+            {
+              "player": {
+                "name": "Lott",
+                "country": {
+                  "name": "Vietnam",
+                  "ISO2": "VN"
+                }
+              },
+              "score": 993649,
+              "accuracy": 99.80
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "25",
+      "stageId": "8",
+      "title": "Camellia - Break The Silence (0DZ0) [Challenge]",
+      "type": "RC",
+      "index": 4,
+      "picked": 8,
+      "banned": 0,
+      "protected": 2,
+      "scores": [
+        {
+          "name": "Indonesia",
+          "logo": "https://assets.ppy.sh/old-flags/ID.png",
+          "players": [
+            {
+              "player": {
+                "name": "adihza",
+                "country": {
+                  "name": "Indonesia",
+                  "ISO2": "ID"
+                }
+              },
+              "score": 996155,
+              "accuracy": 99.88
+            },
+            {
+              "player": {
+                "name": "bad hd player",
+                "country": {
+                  "name": "Indonesia",
+                  "ISO2": "ID"
+                }
+              },
+              "score": 995431,
+              "accuracy": 99.86
+            },
+            {
+              "player": {
+                "name": "[Albert]",
+                "country": {
+                  "name": "Indonesia",
+                  "ISO2": "ID"
+                }
+              },
+              "score": 993412,
+              "accuracy": 99.79
+            }
+          ]
+        },
+        {
+          "name": "Thailand",
+          "logo": "https://assets.ppy.sh/old-flags/TH.png",
+          "players": [
+            {
+              "player": {
+                "name": "konkawe",
+                "country": {
+                  "name": "Thailand",
+                  "ISO2": "TH"
+                }
+              },
+              "score": 997246,
+              "accuracy": 99.91
+            },
+            {
+              "player": {
+                "name": "--Pavin--",
+                "country": {
+                  "name": "Thailand",
+                  "ISO2": "TH"
+                }
+              },
+              "score": 995355,
+              "accuracy": 99.85
+            },
+            {
+              "player": {
+                "name": "parponger",
+                "country": {
+                  "name": "Thailand",
+                  "ISO2": "TH"
+                }
+              },
+              "score": 990561,
+              "accuracy": 99.71
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "26",
+      "stageId": "8",
+      "title": "Kazuma Kiryu (CV: Takaya Kuroda) - Baka Mitai (elexire) [Ska's n no. . (edit)]",
+      "type": "RC",
+      "index": 5,
+      "picked": 12,
+      "banned": 0,
+      "protected": 1,
+      "scores": [
+        {
+          "name": "South Korea",
+          "logo": "https://assets.ppy.sh/old-flags/KR.png",
+          "players": [
+            {
+              "player": {
+                "name": "Poca",
+                "country": {
+                  "name": "South Korea",
+                  "ISO2": "KR"
+                }
+              },
+              "score": 995713,
+              "accuracy": 99.87
+            },
+            {
+              "player": {
+                "name": "gaesol",
+                "country": {
+                  "name": "South Korea",
+                  "ISO2": "KR"
+                }
+              },
+              "score": 994519,
+              "accuracy": 99.83
+            },
+            {
+              "player": {
+                "name": "yeonho7028",
+                "country": {
+                  "name": "South Korea",
+                  "ISO2": "KR"
+                }
+              },
+              "score": 994383,
+              "accuracy": 99.82
+            }
+          ]
+        },
+        {
+          "name": "Thailand",
+          "logo": "https://assets.ppy.sh/old-flags/TH.png",
+          "players": [
+            {
+              "player": {
+                "name": "konkawe",
+                "country": {
+                  "name": "Thailand",
+                  "ISO2": "TH"
+                }
+              },
+              "score": 997193,
+              "accuracy": 99.91
+            },
+            {
+              "player": {
+                "name": "--Pavin--",
+                "country": {
+                  "name": "Thailand",
+                  "ISO2": "TH"
+                }
+              },
+              "score": 996936,
+              "accuracy": 99.90
+            },
+            {
+              "player": {
+                "name": "parponger",
+                "country": {
+                  "name": "Thailand",
+                  "ISO2": "TH"
+                }
+              },
+              "score": 990414,
+              "accuracy": 99.70
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "27",
+      "stageId": "8",
+      "title": "Frums - Nisemono (Pizza69) [Impostor (cut 1.05x)]",
+      "type": "RC",
+      "index": 6,
+      "picked": 8,
+      "banned": 4,
+      "protected": 1,
+      "scores": [
+        {
+          "name": "United States",
+          "logo": "https://assets.ppy.sh/old-flags/US.png",
+          "players": [
+            {
+              "player": {
+                "name": "[LS]Dev",
+                "country": {
+                  "name": "United States",
+                  "ISO2": "US"
+                }
+              },
+              "score": 997522,
+              "accuracy": 99.92
+            },
+            {
+              "player": {
+                "name": "TristanJacob11",
+                "country": {
+                  "name": "United States",
+                  "ISO2": "US"
+                }
+              },
+              "score": 991805,
+              "accuracy": 99.75
+            },
+            {
+              "player": {
+                "name": "Nepijin",
+                "country": {
+                  "name": "United States",
+                  "ISO2": "US"
+                }
+              },
+              "score": 987243,
+              "accuracy": 99.77
+            }
+          ]
+        },
+        {
+          "name": "Thailand",
+          "logo": "https://assets.ppy.sh/old-flags/TH.png",
+          "players": [
+            {
+              "player": {
+                "name": "konkawe",
+                "country": {
+                  "name": "Thailand",
+                  "ISO2": "TH"
+                }
+              },
+              "score": 997769,
+              "accuracy": 99.93
+            },
+            {
+              "player": {
+                "name": "--Pavin--",
+                "country": {
+                  "name": "Thailand",
+                  "ISO2": "TH"
+                }
+              },
+              "score": 978546,
+              "accuracy": 99.78
+            },
+            {
+              "player": {
+                "name": "parponger",
+                "country": {
+                  "name": "Thailand",
+                  "ISO2": "TH"
+                }
+              },
+              "score": 988286,
+              "accuracy": 99.64
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "28",
+      "stageId": "8",
+      "title": "MisoilePunch -Forever- - Bloomin' (guden) [Flowerin']",
+      "type": "HB",
+      "index": 1,
+      "picked": 10,
+      "banned": 1,
+      "protected": 2,
+      "scores": [
+        {
+          "name": "Brazil",
+          "logo": "https://assets.ppy.sh/old-flags/BR.png",
+          "players": [
+            {
+              "player": {
+                "name": "LeMarcinho",
+                "country": {
+                  "name": "Brazil",
+                  "ISO2": "BR"
+                }
+              },
+              "score": 993693,
+              "accuracy": 99.80
+            },
+            {
+              "player": {
+                "name": "DemiFiendSMT",
+                "country": {
+                  "name": "Brazil",
+                  "ISO2": "BR"
+                }
+              },
+              "score": 993687,
+              "accuracy": 99.81
+            },
+            {
+              "player": {
+                "name": "SillyFangirl",
+                "country": {
+                  "name": "Brazil",
+                  "ISO2": "BR"
+                }
+              },
+              "score": 991845,
+              "accuracy": 99.75
+            }
+          ]
+        },
+        {
+          "name": "United States",
+          "logo": "https://assets.ppy.sh/old-flags/US.png",
+          "players": [
+            {
+              "player": {
+                "name": "Nepijin",
+                "country": {
+                  "name": "United States",
+                  "ISO2": "US"
+                }
+              },
+              "score": 995618,
+              "accuracy": 99.86
+            },
+            {
+              "player": {
+                "name": "Hello_Son",
+                "country": {
+                  "name": "United States",
+                  "ISO2": "US"
+                }
+              },
+              "score": 993740,
+              "accuracy": 99.81
+            },
+            {
+              "player": {
+                "name": "cafesito",
+                "country": {
+                  "name": "United States",
+                  "ISO2": "US"
+                }
+              },
+              "score": 985843,
+              "accuracy": 99.57
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "29",
+      "stageId": "8",
+      "title": "Camellia - Upload Your Mind :: Download My Soul (Cut Ver.) (-mint-) [Multidimensional]",
+      "type": "HB",
+      "index": 2,
+      "picked": 11,
+      "banned": 0,
+      "protected": 1,
+      "scores": [
+        {
+          "name": "Brazil",
+          "logo": "https://assets.ppy.sh/old-flags/BR.png",
+          "players": [
+            {
+              "player": {
+                "name": "LeMarcinho",
+                "country": {
+                  "name": "Brazil",
+                  "ISO2": "BR"
+                }
+              },
+              "score": 994925,
+              "accuracy": 99.84
+            },
+            {
+              "player": {
+                "name": "DemiFiendSMT",
+                "country": {
+                  "name": "Brazil",
+                  "ISO2": "BR"
+                }
+              },
+              "score": 993144,
+              "accuracy": 99.79
+            },
+            {
+              "player": {
+                "name": "SillyFangirl",
+                "country": {
+                  "name": "Brazil",
+                  "ISO2": "BR"
+                }
+              },
+              "score": 993103,
+              "accuracy": 99.79
+            }
+          ]
+        },
+        {
+          "name": "Japan",
+          "logo": "https://assets.ppy.sh/old-flags/JP.png",
+          "players": [
+            {
+              "player": {
+                "name": "ICECAKE",
+                "country": {
+                  "name": "Japan",
+                  "ISO2": "JP"
+                }
+              },
+              "score": 993555,
+              "accuracy": 99.80
+            },
+            {
+              "player": {
+                "name": "CrewK",
+                "country": {
+                  "name": "Japan",
+                  "ISO2": "JP"
+                }
+              },
+              "score": 991535,
+              "accuracy": 99.74
+            },
+            {
+              "player": {
+                "name": "9990_y",
+                "country": {
+                  "name": "Japan",
+                  "ISO2": "JP"
+                }
+              },
+              "score": 987916,
+              "accuracy": 99.73
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "30",
+      "stageId": "8",
+      "title": "M-O-T-U - Calculator ([Crz]FolAH1217) [.857142]",
+      "type": "HB",
+      "index": 3,
+      "picked": 9,
+      "banned": 0,
+      "protected": 0,
+      "scores": [
+        {
+          "name": "Brazil",
+          "logo": "https://assets.ppy.sh/old-flags/BR.png",
+          "players": [
+            {
+              "player": {
+                "name": "LeMarcinho",
+                "country": {
+                  "name": "Brazil",
+                  "ISO2": "BR"
+                }
+              },
+              "score": 993463,
+              "accuracy": 99.80
+            },
+            {
+              "player": {
+                "name": "DemiFiendSMT",
+                "country": {
+                  "name": "Brazil",
+                  "ISO2": "BR"
+                }
+              },
+              "score": 995264,
+              "accuracy": 99.85
+            },
+            {
+              "player": {
+                "name": "SillyFangirl",
+                "country": {
+                  "name": "Brazil",
+                  "ISO2": "BR"
+                }
+              },
+              "score": 985994,
+              "accuracy": 99.62
+            }
+          ]
+        },
+        {
+          "name": "South Korea",
+          "logo": "https://assets.ppy.sh/old-flags/KR.png",
+          "players": [
+            {
+              "player": {
+                "name": "Poca",
+                "country": {
+                  "name": "South Korea",
+                  "ISO2": "KR"
+                }
+              },
+              "score": 993783,
+              "accuracy": 99.81
+            },
+            {
+              "player": {
+                "name": "gaesol",
+                "country": {
+                  "name": "South Korea",
+                  "ISO2": "KR"
+                }
+              },
+              "score": 989843,
+              "accuracy": 99.69
+            },
+            {
+              "player": {
+                "name": "yz1155",
+                "country": {
+                  "name": "South Korea",
+                  "ISO2": "KR"
+                }
+              },
+              "score": 990959,
+              "accuracy": 99.72
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "31",
+      "stageId": "8",
+      "title": "paraoka - Astra Walkthrough ([Crz]Crysarlene) [Faded Stars]",
+      "type": "LN",
+      "index": 1,
+      "picked": 11,
+      "banned": 1,
+      "protected": 3,
+      "scores": [
+        {
+          "name": "South Korea",
+          "logo": "https://assets.ppy.sh/old-flags/KR.png",
+          "players": [
+            {
+              "player": {
+                "name": "Poca",
+                "country": {
+                  "name": "South Korea",
+                  "ISO2": "KR"
+                }
+              },
+              "score": 993443,
+              "accuracy": 99.79
+            },
+            {
+              "player": {
+                "name": "gaesol",
+                "country": {
+                  "name": "South Korea",
+                  "ISO2": "KR"
+                }
+              },
+              "score": 990532,
+              "accuracy": 99.70
+            },
+            {
+              "player": {
+                "name": "VanillaLatte",
+                "country": {
+                  "name": "South Korea",
+                  "ISO2": "KR"
+                }
+              },
+              "score": 986343,
+              "accuracy": 99.57
+            }
+          ]
+        },
+        {
+          "name": "Philippines",
+          "logo": "https://assets.ppy.sh/old-flags/PH.png",
+          "players": [
+            {
+              "player": {
+                "name": "Apol-",
+                "country": {
+                  "name": "Philippines",
+                  "ISO2": "PH"
+                }
+              },
+              "score": 993569,
+              "accuracy": 99.80
+            },
+            {
+              "player": {
+                "name": "Silhoueska Elze",
+                "country": {
+                  "name": "Philippines",
+                  "ISO2": "PH"
+                }
+              },
+              "score": 993133,
+              "accuracy": 99.78
+            },
+            {
+              "player": {
+                "name": "[KN]CuB-03",
+                "country": {
+                  "name": "Philippines",
+                  "ISO2": "PH"
+                }
+              },
+              "score": 981855,
+              "accuracy": 99.57
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "32",
+      "stageId": "8",
+      "title": "Helblinde - Heaven's Fall (guden) [Firmaments]",
+      "type": "LN",
+      "index": 2,
+      "picked": 12,
+      "banned": 1,
+      "protected": 2,
+      "scores": [
+        {
+          "name": "Brazil",
+          "logo": "https://assets.ppy.sh/old-flags/BR.png",
+          "players": [
+            {
+              "player": {
+                "name": "LeMarcinho",
+                "country": {
+                  "name": "Brazil",
+                  "ISO2": "BR"
+                }
+              },
+              "score": 993873,
+              "accuracy": 99.81
+            },
+            {
+              "player": {
+                "name": "DemiFiendSMT",
+                "country": {
+                  "name": "Brazil",
+                  "ISO2": "BR"
+                }
+              },
+              "score": 995394,
+              "accuracy": 99.86
+            },
+            {
+              "player": {
+                "name": "SillyFangirl",
+                "country": {
+                  "name": "Brazil",
+                  "ISO2": "BR"
+                }
+              },
+              "score": 989929,
+              "accuracy": 99.69
+            }
+          ]
+        },
+        {
+          "name": "Japan",
+          "logo": "https://assets.ppy.sh/old-flags/JP.png",
+          "players": [
+            {
+              "player": {
+                "name": "ICECAKE",
+                "country": {
+                  "name": "Japan",
+                  "ISO2": "JP"
+                }
+              },
+              "score": 990529,
+              "accuracy": 99.80
+            },
+            {
+              "player": {
+                "name": "CrewK",
+                "country": {
+                  "name": "Japan",
+                  "ISO2": "JP"
+                }
+              },
+              "score": 992575,
+              "accuracy": 99.77
+            },
+            {
+              "player": {
+                "name": "9990_y",
+                "country": {
+                  "name": "Japan",
+                  "ISO2": "JP"
+                }
+              },
+              "score": 990096,
+              "accuracy": 99.69
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "33",
+      "stageId": "8",
+      "title": "Toromaru - Erinyes (Toaph Daddy) [Enigma]",
+      "type": "LN",
+      "index": 3,
+      "picked": 5,
+      "banned": 3,
+      "protected": 2,
+      "scores": [
+        {
+          "name": "Japan",
+          "logo": "https://assets.ppy.sh/old-flags/JP.png",
+          "players": [
+            {
+              "player": {
+                "name": "ICECAKE",
+                "country": {
+                  "name": "Japan",
+                  "ISO2": "JP"
+                }
+              },
+              "score": 989926,
+              "accuracy": 99.69
+            },
+            {
+              "player": {
+                "name": "CrewK",
+                "country": {
+                  "name": "Japan",
+                  "ISO2": "JP"
+                }
+              },
+              "score": 989839,
+              "accuracy": 99.68
+            },
+            {
+              "player": {
+                "name": "jhleetgirl",
+                "country": {
+                  "name": "Japan",
+                  "ISO2": "JP"
+                }
+              },
+              "score": 987115,
+              "accuracy": 99.63
+            }
+          ]
+        },
+        {
+          "name": "Vietnam",
+          "logo": "https://assets.ppy.sh/old-flags/VN.png",
+          "players": [
+            {
+              "player": {
+                "name": "TriDoanGaming",
+                "country": {
+                  "name": "Vietnam",
+                  "ISO2": "VN"
+                }
+              },
+              "score": 985237,
+              "accuracy": 99.65
+            },
+            {
+              "player": {
+                "name": "CPT_Sivelia",
+                "country": {
+                  "name": "Vietnam",
+                  "ISO2": "VN"
+                }
+              },
+              "score": 987015,
+              "accuracy": 99.60
+            },
+            {
+              "player": {
+                "name": "Lott",
+                "country": {
+                  "name": "Vietnam",
+                  "ISO2": "VN"
+                }
+              },
+              "score": 987103,
+              "accuracy": 99.71
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "34",
+      "stageId": "8",
+      "title": "AltVoid - Sample enSemble (Tidek) [SV asSemble]",
+      "type": "SV",
+      "index": 1,
+      "picked": 4,
+      "banned": 8,
+      "protected": 5,
+      "scores": [
+        {
+          "name": "Japan",
+          "logo": "https://assets.ppy.sh/old-flags/JP.png",
+          "players": [
+            {
+              "player": {
+                "name": "ICECAKE",
+                "country": {
+                  "name": "Japan",
+                  "ISO2": "JP"
+                }
+              },
+              "score": 995737,
+              "accuracy": 99.87
+            },
+            {
+              "player": {
+                "name": "CrewK",
+                "country": {
+                  "name": "Japan",
+                  "ISO2": "JP"
+                }
+              },
+              "score": 995724,
+              "accuracy": 99.87
+            },
+            {
+              "player": {
+                "name": "gyoza_goki",
+                "country": {
+                  "name": "Japan",
+                  "ISO2": "JP"
+                }
+              },
+              "score": 982414,
+              "accuracy": 99.76
+            }
+          ]
+        },
+        {
+          "name": "China",
+          "logo": "https://assets.ppy.sh/old-flags/CN.png",
+          "players": [
+            {
+              "player": {
+                "name": "[GB]Mafufu",
+                "country": {
+                  "name": "China",
+                  "ISO2": "CN"
+                }
+              },
+              "score": 979790,
+              "accuracy": 99.38
+            },
+            {
+              "player": {
+                "name": "[Crz]sunnyxxy",
+                "country": {
+                  "name": "China",
+                  "ISO2": "CN"
+                }
+              },
+              "score": 963191,
+              "accuracy": 99.19
+            },
+            {
+              "player": {
+                "name": "[Crz]Caicium",
+                "country": {
+                  "name": "China",
+                  "ISO2": "CN"
+                }
+              },
+              "score": 932402,
+              "accuracy": 98.48
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "35",
+      "stageId": "8",
+      "title": "EZFG - Cyber Thunder Cider (zero2snow) [??]",
+      "type": "SV",
+      "index": 2,
+      "picked": 11,
+      "banned": 4,
+      "protected": 7,
+      "scores": [
+        {
+          "name": "Philippines",
+          "logo": "https://assets.ppy.sh/old-flags/PH.png",
+          "players": [
+            {
+              "player": {
+                "name": "Apol-",
+                "country": {
+                  "name": "Philippines",
+                  "ISO2": "PH"
+                }
+              },
+              "score": 991438,
+              "accuracy": 99.74
+            },
+            {
+              "player": {
+                "name": "Silhoueska Elze",
+                "country": {
+                  "name": "Philippines",
+                  "ISO2": "PH"
+                }
+              },
+              "score": 990486,
+              "accuracy": 99.71
+            },
+            {
+              "player": {
+                "name": "[KN]CuB-03",
+                "country": {
+                  "name": "Philippines",
+                  "ISO2": "PH"
+                }
+              },
+              "score": 993116,
+              "accuracy": 99.79
+            }
+          ]
+        },
+        {
+          "name": "Canada",
+          "logo": "https://assets.ppy.sh/old-flags/CA.png",
+          "players": [
+            {
+              "player": {
+                "name": "mae0149",
+                "country": {
+                  "name": "Canada",
+                  "ISO2": "CA"
+                }
+              },
+              "score": 990903,
+              "accuracy": 99.72
+            },
+            {
+              "player": {
+                "name": "Dale940",
+                "country": {
+                  "name": "Canada",
+                  "ISO2": "CA"
+                }
+              },
+              "score": 988767,
+              "accuracy": 99.66
+            },
+            {
+              "player": {
+                "name": "Piggy",
+                "country": {
+                  "name": "Canada",
+                  "ISO2": "CA"
+                }
+              },
+              "score": 994348,
+              "accuracy": 99.83
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "36",
+      "stageId": "8",
+      "title": "Camellia feat. Ninomae Ina'nis - Drenched in Air (elexire) [Submerge]",
+      "type": "TB",
+      "index": 0,
+      "picked": 0,
+      "banned": 0,
+      "protected": 0,
+      "scores": []
     }
   ]
 }

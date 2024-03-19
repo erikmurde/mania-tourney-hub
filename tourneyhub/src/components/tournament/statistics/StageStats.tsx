@@ -1,49 +1,53 @@
-import { Paper, Table, TableBody, TableContainer } from '@mui/material';
+import { Grid, Paper, Tab, Table, TableBody, TableContainer, Tabs } from '@mui/material';
 import { IStageDto } from '../../../dto/stage/IStageDto';
 import StatsTableHead from './table/StatsTableHead';
 import { useEffect, useState } from 'react';
 import StatsTableRow from './table/StatsTableRow';
 import { MapStatsDto } from '../../../dto/statistics/MapStatsDto';
-import { useParams } from 'react-router-dom';
 import { TournamentDto } from '../../../dto/tournament/TournamentDto';
-import { TournamentService } from '../../../services/tournamentService';
+import StatTypeTabs from './tabs/StatTypeTabs';
 
 interface IProps {
     stage: IStageDto,
-    mapStats: MapStatsDto[]
+    mapStats: MapStatsDto[],
+    tourney: TournamentDto
 }
 
-const StageStats = ({stage, mapStats}: IProps) => {
-    const { id } = useParams();
-    const [tourney, setTourney] = useState({} as TournamentDto);
+const StageStats = ({stage, mapStats, tourney}: IProps) => {
+    const [showTeams, setShowTeams] = useState(false);
 
     useEffect(() => {
-        if (id && !tourney) {
-            new TournamentService()
-                .getEntity(id!)
-                .then(tourney => setTourney(tourney));
-        }
-    }, [id, tourney, stage.id]);
+        setShowTeams(tourney.minTeamSize > 1);
+    }, [tourney.id]);
 
     return (  
-        <Paper elevation={6} sx={{ height: 1, paddingLeft: 1, paddingRight: 1 }}>
-            <TableContainer>
-                <Table>
-                    <StatsTableHead stageType={stage.stageType}/>
-                    {tourney &&
-                    <TableBody>
-                        {mapStats.map(map => 
-                            <StatsTableRow 
-                                key={map.id} 
-                                map={map} 
-                                tourney={tourney} 
-                                stageType={stage.stageType}
-                            />
-                        )}
-                    </TableBody>}
-                </Table>
-            </TableContainer>
-        </Paper>
+        <Grid container direction='column' alignItems='center'>
+            <StatTypeTabs
+                teamTourney={tourney.minTeamSize > 1}
+                showTeams={showTeams}
+                setShowTeams={setShowTeams}
+            />
+            <Grid item>
+                <Paper elevation={6} sx={{ height: 1, paddingLeft: 1, paddingRight: 1 }}>
+                {tourney.id && 
+                <TableContainer>
+                    <Table>
+                        <StatsTableHead stageType={stage.stageType} showTeams={showTeams}/>
+                        <TableBody>
+                            {mapStats.map(map => 
+                                <StatsTableRow 
+                                    key={map.id} 
+                                    map={map} 
+                                    stageType={stage.stageType}
+                                    teamTourney={tourney.minTeamSize > 1}
+                                    showTeams={showTeams}/>
+                            )}
+                        </TableBody>
+                    </Table>
+                </TableContainer>}
+                </Paper>
+            </Grid>
+        </Grid>
     );
 }
 
