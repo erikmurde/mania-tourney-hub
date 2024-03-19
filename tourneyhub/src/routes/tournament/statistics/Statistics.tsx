@@ -99,6 +99,7 @@ const Statistics = () => {
                     <SeedingStats 
                         mapStats={mapStats}
                         numAdvancing={stage.numAdvancing}
+                        teamTourney={tourney.minTeamSize > 1}
                     />}
                     {(stage.statsPublic || isHost) && stage.id && mapId === '' && mapStats.length > 0 &&
                     <StageStats stage={stage} mapStats={mapStats} tourney={tourney}

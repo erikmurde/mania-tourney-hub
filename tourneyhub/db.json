@@ -4363,6 +4363,19 @@
       "mappoolPublic": false,
       "schedulePublic": false,
       "statsPublic": false
+    },
+    {
+      "id": "9",
+      "tournamentId": "1",
+      "stageType": "qualifier",
+      "name": "Qualifiers",
+      "bestOf": 0,
+      "lobbySize": 10,
+      "numAdvancing": 3,
+      "schedulingDeadline": "2024-07-17T07:00:00.000Z",
+      "mappoolPublic": true,
+      "schedulePublic": true,
+      "statsPublic": true
     }
   ],
   "maps": [
@@ -9122,6 +9135,1701 @@
       "banned": 0,
       "protected": 0,
       "scores": []
+    },
+    {
+      "id": "37",
+      "stageId": "9",
+      "title": "sakuraburst - sha (Cut Ver.) [Stage 1: blake]",
+      "type": "SV",
+      "index": 1,
+      "picked": 0,
+      "banned": 0,
+      "protected": 0,
+      "scores": [
+        {
+          "name": "Japan",
+          "logo": "https://assets.ppy.sh/old-flags/JP.png",
+          "players": [
+            {
+              "player": {
+                "name": "ICECAKE",
+                "country": {
+                  "name": "Japan",
+                  "ISO2": "JP"
+                }
+              },
+              "score": 994823,
+              "accuracy": 99.84
+            },
+            {
+              "player": {
+                "name": "CrewK",
+                "country": {
+                  "name": "Japan",
+                  "ISO2": "JP"
+                }
+              },
+              "score": 995604,
+              "accuracy": 99.86
+            },
+            {
+              "player": {
+                "name": "gyoza_goki",
+                "country": {
+                  "name": "Japan",
+                  "ISO2": "JP"
+                }
+              },
+              "score": 995272,
+              "accuracy": 99.85
+            }
+          ]
+        },
+        {
+          "name": "Japan",
+          "logo": "https://assets.ppy.sh/old-flags/JP.png",
+          "players": [
+            {
+              "player": {
+                "name": "ICECAKE",
+                "country": {
+                  "name": "Japan",
+                  "ISO2": "JP"
+                }
+              },
+              "score": 992418,
+              "accuracy": 99.76
+            },
+            {
+              "player": {
+                "name": "CrewK",
+                "country": {
+                  "name": "Japan",
+                  "ISO2": "JP"
+                }
+              },
+              "score": 994149,
+              "accuracy": 99.82
+            },
+            {
+              "player": {
+                "name": "gyoza_goki",
+                "country": {
+                  "name": "Japan",
+                  "ISO2": "JP"
+                }
+              },
+              "score": 996545,
+              "accuracy": 99.89
+            }
+          ]
+        },
+        {
+          "name": "Philippines",
+          "logo": "https://assets.ppy.sh/old-flags/PH.png",
+          "players": [
+            {
+              "player": {
+                "name": "Apol-",
+                "country": {
+                  "name": "Philippines",
+                  "ISO2": "PH"
+                }
+              },
+              "score": 993734,
+              "accuracy": 99.80
+            },
+            {
+              "player": {
+                "name": "Silhoueska Elze",
+                "country": {
+                  "name": "Philippines",
+                  "ISO2": "PH"
+                }
+              },
+              "score": 988496,
+              "accuracy": 99.64
+            },
+            {
+              "player": {
+                "name": "[KN]CuB-03",
+                "country": {
+                  "name": "Philippines",
+                  "ISO2": "PH"
+                }
+              },
+              "score": 995856,
+              "accuracy": 99.87
+            }
+          ]
+        },
+        {
+          "name": "Brazil",
+          "logo": "https://assets.ppy.sh/old-flags/BR.png",
+          "players": [
+            {
+              "player": {
+                "name": "LeMarcinho",
+                "country": {
+                  "name": "Brazil",
+                  "ISO2": "BR"
+                }
+              },
+              "score": 985469,
+              "accuracy": 99.55
+            },
+            {
+              "player": {
+                "name": "DemiFiendSMT",
+                "country": {
+                  "name": "Brazil",
+                  "ISO2": "BR"
+                }
+              },
+              "score": 989481,
+              "accuracy": 99.67
+            },
+            {
+              "player": {
+                "name": "Zergh",
+                "country": {
+                  "name": "Brazil",
+                  "ISO2": "BR"
+                }
+              },
+              "score": 955699,
+              "accuracy": 98.63
+            }
+          ]
+        },
+        {
+          "name": "South Korea",
+          "logo": "https://assets.ppy.sh/old-flags/KR.png",
+          "players": [
+            {
+              "player": {
+                "name": "Poca",
+                "country": {
+                  "name": "South Korea",
+                  "ISO2": "KR"
+                }
+              },
+              "score": 995145,
+              "accuracy": 99.85
+            },
+            {
+              "player": {
+                "name": "gaesol",
+                "country": {
+                  "name": "South Korea",
+                  "ISO2": "KR"
+                }
+              },
+              "score": 974320,
+              "accuracy": 99.21
+            },
+            {
+              "player": {
+                "name": "PocaFanboy",
+                "country": {
+                  "name": "South Korea",
+                  "ISO2": "KR"
+                }
+              },
+              "score": 991654,
+              "accuracy": 99.74
+            }
+          ]
+        },
+        {
+          "name": "United States",
+          "logo": "https://assets.ppy.sh/old-flags/US.png",
+          "players": [
+            {
+              "player": {
+                "name": "[LS]Dev",
+                "country": {
+                  "name": "United States",
+                  "ISO2": "US"
+                }
+              },
+              "score": 982288,
+              "accuracy": 99.46
+            },
+            {
+              "player": {
+                "name": "TristanJacob11",
+                "country": {
+                  "name": "United States",
+                  "ISO2": "US"
+                }
+              },
+              "score": 988007,
+              "accuracy": 99.62
+            },
+            {
+              "player": {
+                "name": "cafesito",
+                "country": {
+                  "name": "United States",
+                  "ISO2": "US"
+                }
+              },
+              "score": 993791,
+              "accuracy": 99.81
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "38",
+      "stageId": "9",
+      "title": "Frums - ultra-blazures (Cut Ver.) [Stage 2: amalgam]",
+      "type": "RC",
+      "index": 1,
+      "picked": 0,
+      "banned": 0,
+      "protected": 0,
+      "scores": [
+        {
+          "name": "United States",
+          "logo": "https://assets.ppy.sh/old-flags/US.png",
+          "players": [
+            {
+              "player": {
+                "name": "[LS]Dev",
+                "country": {
+                  "name": "United States",
+                  "ISO2": "US"
+                }
+              },
+              "score": 998019,
+              "accuracy": 99.94
+            },
+            {
+              "player": {
+                "name": "Hello_Son",
+                "country": {
+                  "name": "United States",
+                  "ISO2": "US"
+                }
+              },
+              "score": 997264,
+              "accuracy": 99.91
+            },
+            {
+              "player": {
+                "name": "Nepijin",
+                "country": {
+                  "name": "United States",
+                  "ISO2": "US"
+                }
+              },
+              "score": 997264,
+              "accuracy": 99.91
+            }
+          ]
+        },
+        {
+          "name": "South Korea",
+          "logo": "https://assets.ppy.sh/old-flags/KR.png",
+          "players": [
+            {
+              "player": {
+                "name": "Poca",
+                "country": {
+                  "name": "South Korea",
+                  "ISO2": "KR"
+                }
+              },
+              "score": 997508,
+              "accuracy": 99.92
+            },
+            {
+              "player": {
+                "name": "yeonho7028",
+                "country": {
+                  "name": "South Korea",
+                  "ISO2": "KR"
+                }
+              },
+              "score": 996043,
+              "accuracy": 99.88
+            },
+            {
+              "player": {
+                "name": "gaesol",
+                "country": {
+                  "name": "South Korea",
+                  "ISO2": "KR"
+                }
+              },
+              "score": 994404,
+              "accuracy": 99.82
+            }
+          ]
+        },
+        {
+          "name": "Brazil",
+          "logo": "https://assets.ppy.sh/old-flags/BR.png",
+          "players": [
+            {
+              "player": {
+                "name": "LeMarcinho",
+                "country": {
+                  "name": "Brazil",
+                  "ISO2": "BR"
+                }
+              },
+              "score": 993755,
+              "accuracy": 99.81
+            },
+            {
+              "player": {
+                "name": "DemiFiendSMT",
+                "country": {
+                  "name": "Brazil",
+                  "ISO2": "BR"
+                }
+              },
+              "score": 997841,
+              "accuracy": 99.93
+            },
+            {
+              "player": {
+                "name": "SillyFangirl",
+                "country": {
+                  "name": "Brazil",
+                  "ISO2": "BR"
+                }
+              },
+              "score": 995666,
+              "accuracy": 99.86
+            }
+          ]
+        },
+        {
+          "name": "Philippines",
+          "logo": "https://assets.ppy.sh/old-flags/PH.png",
+          "players": [
+            {
+              "player": {
+                "name": "bojii",
+                "country": {
+                  "name": "Philippines",
+                  "ISO2": "PH"
+                }
+              },
+              "score": 998130,
+              "accuracy": 99.94
+            },
+            {
+              "player": {
+                "name": "Vulpsi",
+                "country": {
+                  "name": "Philippines",
+                  "ISO2": "PH"
+                }
+              },
+              "score": 994736,
+              "accuracy": 99.83
+            },
+            {
+              "player": {
+                "name": "7Kenn",
+                "country": {
+                  "name": "Philippines",
+                  "ISO2": "PH"
+                }
+              },
+              "score": 993011,
+              "accuracy": 99.78
+            }
+          ]
+        },
+        {
+          "name": "Japan",
+          "logo": "https://assets.ppy.sh/old-flags/JP.png",
+          "players": [
+            {
+              "player": {
+                "name": "ICECAKE",
+                "country": {
+                  "name": "Japan",
+                  "ISO2": "JP"
+                }
+              },
+              "score": 990384,
+              "accuracy": 99.70
+            },
+            {
+              "player": {
+                "name": "AMDuskia1996",
+                "country": {
+                  "name": "Japan",
+                  "ISO2": "JP"
+                }
+              },
+              "score": 995792,
+              "accuracy": 99.87
+            },
+            {
+              "player": {
+                "name": "9990_y",
+                "country": {
+                  "name": "Japan",
+                  "ISO2": "JP"
+                }
+              },
+              "score": 992582,
+              "accuracy": 99.77
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "39",
+      "stageId": "9",
+      "title": "xi - Tenimuhou (Cut Ver.) [Stage 3: Absolute]",
+      "type": "HB",
+      "index": 1,
+      "picked": 0,
+      "banned": 0,
+      "protected": 0,
+      "scores": [
+        {
+          "name": "United States",
+          "logo": "https://assets.ppy.sh/old-flags/US.png",
+          "players": [
+            {
+              "player": {
+                "name": "PeachMarrow",
+                "country": {
+                  "name": "United States",
+                  "ISO2": "US"
+                }
+              },
+              "score": 991590,
+              "accuracy": 99.74
+            },
+            {
+              "player": {
+                "name": "Hello_Son",
+                "country": {
+                  "name": "United States",
+                  "ISO2": "US"
+                }
+              },
+              "score": 990634,
+              "accuracy": 99.85
+            },
+            {
+              "player": {
+                "name": "Nepijin",
+                "country": {
+                  "name": "United States",
+                  "ISO2": "US"
+                }
+              },
+              "score": 997774,
+              "accuracy": 99.93
+            }
+          ]
+        },
+        {
+          "name": "South Korea",
+          "logo": "https://assets.ppy.sh/old-flags/KR.png",
+          "players": [
+            {
+              "player": {
+                "name": "Poca",
+                "country": {
+                  "name": "South Korea",
+                  "ISO2": "KR"
+                }
+              },
+              "score": 997637,
+              "accuracy": 99.93
+            },
+            {
+              "player": {
+                "name": "VanillaLatte",
+                "country": {
+                  "name": "South Korea",
+                  "ISO2": "KR"
+                }
+              },
+              "score": 993789,
+              "accuracy": 99.81
+            },
+            {
+              "player": {
+                "name": "gaesol",
+                "country": {
+                  "name": "South Korea",
+                  "ISO2": "KR"
+                }
+              },
+              "score": 994707,
+              "accuracy": 99.84
+            }
+          ]
+        },
+        {
+          "name": "Brazil",
+          "logo": "https://assets.ppy.sh/old-flags/BR.png",
+          "players": [
+            {
+              "player": {
+                "name": "Netroo",
+                "country": {
+                  "name": "Brazil",
+                  "ISO2": "BR"
+                }
+              },
+              "score": 986884,
+              "accuracy": 99.73
+            },
+            {
+              "player": {
+                "name": "DemiFiendSMT",
+                "country": {
+                  "name": "Brazil",
+                  "ISO2": "BR"
+                }
+              },
+              "score": 997988,
+              "accuracy": 99.94
+            },
+            {
+              "player": {
+                "name": "SillyFangirl",
+                "country": {
+                  "name": "Brazil",
+                  "ISO2": "BR"
+                }
+              },
+              "score": 989226,
+              "accuracy": 99.80
+            }
+          ]
+        },
+        {
+          "name": "Philippines",
+          "logo": "https://assets.ppy.sh/old-flags/PH.png",
+          "players": [
+            {
+              "player": {
+                "name": "Apol-",
+                "country": {
+                  "name": "Philippines",
+                  "ISO2": "PH"
+                }
+              },
+              "score": 996787,
+              "accuracy": 99.90
+            },
+            {
+              "player": {
+                "name": "Silhoueska Elze",
+                "country": {
+                  "name": "Philippines",
+                  "ISO2": "PH"
+                }
+              },
+              "score": 995488,
+              "accuracy": 99.86
+            },
+            {
+              "player": {
+                "name": "[KN]CuB-03",
+                "country": {
+                  "name": "Philippines",
+                  "ISO2": "PH"
+                }
+              },
+              "score": 994138,
+              "accuracy": 99.82
+            }
+          ]
+        },
+        {
+          "name": "Japan",
+          "logo": "https://assets.ppy.sh/old-flags/JP.png",
+          "players": [
+            {
+              "player": {
+                "name": "ICECAKE",
+                "country": {
+                  "name": "Japan",
+                  "ISO2": "JP"
+                }
+              },
+              "score": 997214,
+              "accuracy": 99.91
+            },
+            {
+              "player": {
+                "name": "CrewK",
+                "country": {
+                  "name": "Japan",
+                  "ISO2": "JP"
+                }
+              },
+              "score": 994816,
+              "accuracy": 99.84
+            },
+            {
+              "player": {
+                "name": "9990_y",
+                "country": {
+                  "name": "Japan",
+                  "ISO2": "JP"
+                }
+              },
+              "score": 996162,
+              "accuracy": 99.88
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "40",
+      "stageId": "9",
+      "title": "technoplanet feat. Haruno - End of Fairytale [Stage 4: Parable]",
+      "type": "LN",
+      "index": 1,
+      "picked": 0,
+      "banned": 0,
+      "protected": 0,
+      "scores": [
+        {
+          "name": "United States",
+          "logo": "https://assets.ppy.sh/old-flags/US.png",
+          "players": [
+            {
+              "player": {
+                "name": "PeachMarrow",
+                "country": {
+                  "name": "United States",
+                  "ISO2": "US"
+                }
+              },
+              "score": 983178,
+              "accuracy": 99.48
+            },
+            {
+              "player": {
+                "name": "Hello_Son",
+                "country": {
+                  "name": "United States",
+                  "ISO2": "US"
+                }
+              },
+              "score": 990644,
+              "accuracy": 99.71
+            },
+            {
+              "player": {
+                "name": "Nepijin",
+                "country": {
+                  "name": "United States",
+                  "ISO2": "US"
+                }
+              },
+              "score": 994384,
+              "accuracy": 99.83
+            }
+          ]
+        },
+        {
+          "name": "South Korea",
+          "logo": "https://assets.ppy.sh/old-flags/KR.png",
+          "players": [
+            {
+              "player": {
+                "name": "Poca",
+                "country": {
+                  "name": "South Korea",
+                  "ISO2": "KR"
+                }
+              },
+              "score": 994534,
+              "accuracy": 99.83
+            },
+            {
+              "player": {
+                "name": "yz1155",
+                "country": {
+                  "name": "South Korea",
+                  "ISO2": "KR"
+                }
+              },
+              "score": 979550,
+              "accuracy": 99.37
+            },
+            {
+              "player": {
+                "name": "gaesol",
+                "country": {
+                  "name": "South Korea",
+                  "ISO2": "KR"
+                }
+              },
+              "score": 986007,
+              "accuracy": 99.57
+            }
+          ]
+        },
+        {
+          "name": "Brazil",
+          "logo": "https://assets.ppy.sh/old-flags/BR.png",
+          "players": [
+            {
+              "player": {
+                "name": "LeMarcinho",
+                "country": {
+                  "name": "Brazil",
+                  "ISO2": "BR"
+                }
+              },
+              "score": 988083,
+              "accuracy": 99.63
+            },
+            {
+              "player": {
+                "name": "DemiFiendSMT",
+                "country": {
+                  "name": "Brazil",
+                  "ISO2": "BR"
+                }
+              },
+              "score": 996072,
+              "accuracy": 99.88
+            },
+            {
+              "player": {
+                "name": "SillyFangirl",
+                "country": {
+                  "name": "Brazil",
+                  "ISO2": "BR"
+                }
+              },
+              "score": 988944,
+              "accuracy": 99.63
+            }
+          ]
+        },
+        {
+          "name": "Philippines",
+          "logo": "https://assets.ppy.sh/old-flags/PH.png",
+          "players": [
+            {
+              "player": {
+                "name": "Apol-",
+                "country": {
+                  "name": "Philippines",
+                  "ISO2": "PH"
+                }
+              },
+              "score": 981035,
+              "accuracy": 99.64
+            },
+            {
+              "player": {
+                "name": "Silhoueska Elze",
+                "country": {
+                  "name": "Philippines",
+                  "ISO2": "PH"
+                }
+              },
+              "score": 985127,
+              "accuracy": 99.65
+            },
+            {
+              "player": {
+                "name": "[KN]CuB-03",
+                "country": {
+                  "name": "Philippines",
+                  "ISO2": "PH"
+                }
+              },
+              "score": 982042,
+              "accuracy": 99.55
+            }
+          ]
+        },
+        {
+          "name": "Japan",
+          "logo": "https://assets.ppy.sh/old-flags/JP.png",
+          "players": [
+            {
+              "player": {
+                "name": "ICECAKE",
+                "country": {
+                  "name": "Japan",
+                  "ISO2": "JP"
+                }
+              },
+              "score": 983119,
+              "accuracy": 99.59
+            },
+            {
+              "player": {
+                "name": "CrewK",
+                "country": {
+                  "name": "Japan",
+                  "ISO2": "JP"
+                }
+              },
+              "score": 990366,
+              "accuracy": 99.70
+            },
+            {
+              "player": {
+                "name": "9990_y",
+                "country": {
+                  "name": "Japan",
+                  "ISO2": "JP"
+                }
+              },
+              "score": 987641,
+              "accuracy": 99.62
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "41",
+      "stageId": "9",
+      "title": "Hino Isuka vs. Umeboshi Chazuke - Ultra Happy Miracle Bazoooooka!! [Stage 5: Overjoy]",
+      "type": "LN",
+      "index": 2,
+      "picked": 0,
+      "banned": 0,
+      "protected": 0,
+      "scores": [
+        {
+          "name": "United States",
+          "logo": "https://assets.ppy.sh/old-flags/US.png",
+          "players": [
+            {
+              "player": {
+                "name": "PeachMarrow",
+                "country": {
+                  "name": "United States",
+                  "ISO2": "US"
+                }
+              },
+              "score": 991602,
+              "accuracy": 99.74
+            },
+            {
+              "player": {
+                "name": "Hello_Son",
+                "country": {
+                  "name": "United States",
+                  "ISO2": "US"
+                }
+              },
+              "score": 993015,
+              "accuracy": 99.78
+            },
+            {
+              "player": {
+                "name": "Nepijin",
+                "country": {
+                  "name": "United States",
+                  "ISO2": "US"
+                }
+              },
+              "score": 997134,
+              "accuracy": 99.91
+            }
+          ]
+        },
+        {
+          "name": "South Korea",
+          "logo": "https://assets.ppy.sh/old-flags/KR.png",
+          "players": [
+            {
+              "player": {
+                "name": "Poca",
+                "country": {
+                  "name": "South Korea",
+                  "ISO2": "KR"
+                }
+              },
+              "score": 997293,
+              "accuracy": 99.92
+            },
+            {
+              "player": {
+                "name": "yz1155",
+                "country": {
+                  "name": "South Korea",
+                  "ISO2": "KR"
+                }
+              },
+              "score": 995247,
+              "accuracy": 99.85
+            },
+            {
+              "player": {
+                "name": "gaesol",
+                "country": {
+                  "name": "South Korea",
+                  "ISO2": "KR"
+                }
+              },
+              "score": 994335,
+              "accuracy": 99.82
+            }
+          ]
+        },
+        {
+          "name": "Brazil",
+          "logo": "https://assets.ppy.sh/old-flags/BR.png",
+          "players": [
+            {
+              "player": {
+                "name": "LeMarcinho",
+                "country": {
+                  "name": "Brazil",
+                  "ISO2": "BR"
+                }
+              },
+              "score": 990817,
+              "accuracy": 99.72
+            },
+            {
+              "player": {
+                "name": "DemiFiendSMT",
+                "country": {
+                  "name": "Brazil",
+                  "ISO2": "BR"
+                }
+              },
+              "score": 998603,
+              "accuracy": 99.96
+            },
+            {
+              "player": {
+                "name": "SillyFangirl",
+                "country": {
+                  "name": "Brazil",
+                  "ISO2": "BR"
+                }
+              },
+              "score": 994231,
+              "accuracy": 99.82
+            }
+          ]
+        },
+        {
+          "name": "Philippines",
+          "logo": "https://assets.ppy.sh/old-flags/PH.png",
+          "players": [
+            {
+              "player": {
+                "name": "Apol-",
+                "country": {
+                  "name": "Philippines",
+                  "ISO2": "PH"
+                }
+              },
+              "score": 981730,
+              "accuracy": 99.67
+            },
+            {
+              "player": {
+                "name": "Silhoueska Elze",
+                "country": {
+                  "name": "Philippines",
+                  "ISO2": "PH"
+                }
+              },
+              "score": 994475,
+              "accuracy": 99.83
+            },
+            {
+              "player": {
+                "name": "[KN]CuB-03",
+                "country": {
+                  "name": "Philippines",
+                  "ISO2": "PH"
+                }
+              },
+              "score": 993360,
+              "accuracy": 99.79
+            }
+          ]
+        },
+        {
+          "name": "Japan",
+          "logo": "https://assets.ppy.sh/old-flags/JP.png",
+          "players": [
+            {
+              "player": {
+                "name": "ICECAKE",
+                "country": {
+                  "name": "Japan",
+                  "ISO2": "JP"
+                }
+              },
+              "score": 995354,
+              "accuracy": 99.85
+            },
+            {
+              "player": {
+                "name": "CrewK",
+                "country": {
+                  "name": "Japan",
+                  "ISO2": "JP"
+                }
+              },
+              "score": 995396,
+              "accuracy": 99.86
+            },
+            {
+              "player": {
+                "name": "9990_y",
+                "country": {
+                  "name": "Japan",
+                  "ISO2": "JP"
+                }
+              },
+              "score": 991903,
+              "accuracy": 99.75
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "42",
+      "stageId": "9",
+      "title": "Camellia - onslaught -Retaliation of Bahamut- [Stage 6: Massacre]",
+      "type": "HB",
+      "index": 2,
+      "picked": 0,
+      "banned": 0,
+      "protected": 0,
+      "scores": [
+        {
+          "name": "United States",
+          "logo": "https://assets.ppy.sh/old-flags/US.png",
+          "players": [
+            {
+              "player": {
+                "name": "cafesito",
+                "country": {
+                  "name": "United States",
+                  "ISO2": "US"
+                }
+              },
+              "score": 993255,
+              "accuracy": 99.79
+            },
+            {
+              "player": {
+                "name": "Hello_Son",
+                "country": {
+                  "name": "United States",
+                  "ISO2": "US"
+                }
+              },
+              "score": 993683,
+              "accuracy": 99.80
+            },
+            {
+              "player": {
+                "name": "Nepijin",
+                "country": {
+                  "name": "United States",
+                  "ISO2": "US"
+                }
+              },
+              "score": 996490,
+              "accuracy": 99.89
+            }
+          ]
+        },
+        {
+          "name": "South Korea",
+          "logo": "https://assets.ppy.sh/old-flags/KR.png",
+          "players": [
+            {
+              "player": {
+                "name": "Poca",
+                "country": {
+                  "name": "South Korea",
+                  "ISO2": "KR"
+                }
+              },
+              "score": 994762,
+              "accuracy": 99.84
+            },
+            {
+              "player": {
+                "name": "VanillaLatte",
+                "country": {
+                  "name": "South Korea",
+                  "ISO2": "KR"
+                }
+              },
+              "score": 989222,
+              "accuracy": 99.67
+            },
+            {
+              "player": {
+                "name": "yz1155",
+                "country": {
+                  "name": "South Korea",
+                  "ISO2": "KR"
+                }
+              },
+              "score": 991663,
+              "accuracy": 99.74
+            }
+          ]
+        },
+        {
+          "name": "Brazil",
+          "logo": "https://assets.ppy.sh/old-flags/BR.png",
+          "players": [
+            {
+              "player": {
+                "name": "LeMarcinho",
+                "country": {
+                  "name": "Brazil",
+                  "ISO2": "BR"
+                }
+              },
+              "score": 991035,
+              "accuracy": 99.72
+            },
+            {
+              "player": {
+                "name": "DemiFiendSMT",
+                "country": {
+                  "name": "Brazil",
+                  "ISO2": "BR"
+                }
+              },
+              "score": 989523,
+              "accuracy": 99.83
+            },
+            {
+              "player": {
+                "name": "SillyFangirl",
+                "country": {
+                  "name": "Brazil",
+                  "ISO2": "BR"
+                }
+              },
+              "score": 993123,
+              "accuracy": 99.79
+            }
+          ]
+        },
+        {
+          "name": "Philippines",
+          "logo": "https://assets.ppy.sh/old-flags/PH.png",
+          "players": [
+            {
+              "player": {
+                "name": "bojii",
+                "country": {
+                  "name": "Philippines",
+                  "ISO2": "PH"
+                }
+              },
+              "score": 995639,
+              "accuracy": 99.87
+            },
+            {
+              "player": {
+                "name": "Silhoueska Elze",
+                "country": {
+                  "name": "Philippines",
+                  "ISO2": "PH"
+                }
+              },
+              "score": 991269,
+              "accuracy": 99.73
+            },
+            {
+              "player": {
+                "name": "7Kenn",
+                "country": {
+                  "name": "Philippines",
+                  "ISO2": "PH"
+                }
+              },
+              "score": 965908,
+              "accuracy": 99.34
+            }
+          ]
+        },
+        {
+          "name": "Japan",
+          "logo": "https://assets.ppy.sh/old-flags/JP.png",
+          "players": [
+            {
+              "player": {
+                "name": "jhleetgirl",
+                "country": {
+                  "name": "Japan",
+                  "ISO2": "JP"
+                }
+              },
+              "score": 991444,
+              "accuracy": 99.73
+            },
+            {
+              "player": {
+                "name": "CrewK",
+                "country": {
+                  "name": "Japan",
+                  "ISO2": "JP"
+                }
+              },
+              "score": 992162,
+              "accuracy": 99.76
+            },
+            {
+              "player": {
+                "name": "9990_y",
+                "country": {
+                  "name": "Japan",
+                  "ISO2": "JP"
+                }
+              },
+              "score": 984186,
+              "accuracy": 99.66
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "43",
+      "stageId": "9",
+      "title": "katagiri - AMEN KATAGIRI GENERATION [Stage 7: Revival]",
+      "type": "RC",
+      "index": 2,
+      "picked": 0,
+      "banned": 0,
+      "protected": 0,
+      "scores": [
+        {
+          "name": "United States",
+          "logo": "https://assets.ppy.sh/old-flags/US.png",
+          "players": [
+            {
+              "player": {
+                "name": "[LS]Dev",
+                "country": {
+                  "name": "United States",
+                  "ISO2": "US"
+                }
+              },
+              "score": 997147,
+              "accuracy": 99.91
+            },
+            {
+              "player": {
+                "name": "cafesito",
+                "country": {
+                  "name": "United States",
+                  "ISO2": "US"
+                }
+              },
+              "score": 995443,
+              "accuracy": 99.86
+            },
+            {
+              "player": {
+                "name": "Nepijin",
+                "country": {
+                  "name": "United States",
+                  "ISO2": "US"
+                }
+              },
+              "score": 991493,
+              "accuracy": 99.86
+            }
+          ]
+        },
+        {
+          "name": "South Korea",
+          "logo": "https://assets.ppy.sh/old-flags/KR.png",
+          "players": [
+            {
+              "player": {
+                "name": "Poca",
+                "country": {
+                  "name": "South Korea",
+                  "ISO2": "KR"
+                }
+              },
+              "score": 997092,
+              "accuracy": 99.91
+            },
+            {
+              "player": {
+                "name": "yeonho7028",
+                "country": {
+                  "name": "South Korea",
+                  "ISO2": "KR"
+                }
+              },
+              "score": 996763,
+              "accuracy": 99.90
+            },
+            {
+              "player": {
+                "name": "gaesol",
+                "country": {
+                  "name": "South Korea",
+                  "ISO2": "KR"
+                }
+              },
+              "score": 993227,
+              "accuracy": 99.79
+            }
+          ]
+        },
+        {
+          "name": "Brazil",
+          "logo": "https://assets.ppy.sh/old-flags/BR.png",
+          "players": [
+            {
+              "player": {
+                "name": "LeMarcinho",
+                "country": {
+                  "name": "Brazil",
+                  "ISO2": "BR"
+                }
+              },
+              "score": 983565,
+              "accuracy": 99.61
+            },
+            {
+              "player": {
+                "name": "DemiFiendSMT",
+                "country": {
+                  "name": "Brazil",
+                  "ISO2": "BR"
+                }
+              },
+              "score": 997328,
+              "accuracy": 99.92
+            },
+            {
+              "player": {
+                "name": "SillyFangirl",
+                "country": {
+                  "name": "Brazil",
+                  "ISO2": "BR"
+                }
+              },
+              "score": 993976,
+              "accuracy": 99.81
+            }
+          ]
+        },
+        {
+          "name": "Philippines",
+          "logo": "https://assets.ppy.sh/old-flags/PH.png",
+          "players": [
+            {
+              "player": {
+                "name": "bojii",
+                "country": {
+                  "name": "Philippines",
+                  "ISO2": "PH"
+                }
+              },
+              "score": 998245,
+              "accuracy": 99.95
+            },
+            {
+              "player": {
+                "name": "7Kenn",
+                "country": {
+                  "name": "Philippines",
+                  "ISO2": "PH"
+                }
+              },
+              "score": 994204,
+              "accuracy": 99.82
+            },
+            {
+              "player": {
+                "name": "Vulpsi",
+                "country": {
+                  "name": "Philippines",
+                  "ISO2": "PH"
+                }
+              },
+              "score": 993564,
+              "accuracy": 99.80
+            }
+          ]
+        },
+        {
+          "name": "Japan",
+          "logo": "https://assets.ppy.sh/old-flags/JP.png",
+          "players": [
+            {
+              "player": {
+                "name": "AMDuskia1996",
+                "country": {
+                  "name": "Japan",
+                  "ISO2": "JP"
+                }
+              },
+              "score": 994813,
+              "accuracy": 99.84
+            },
+            {
+              "player": {
+                "name": "CrewK",
+                "country": {
+                  "name": "Japan",
+                  "ISO2": "JP"
+                }
+              },
+              "score": 995328,
+              "accuracy": 99.85
+            },
+            {
+              "player": {
+                "name": "jhleetgirl",
+                "country": {
+                  "name": "Japan",
+                  "ISO2": "JP"
+                }
+              },
+              "score": 989035,
+              "accuracy": 99.78
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "44",
+      "stageId": "9",
+      "title": "Kou! - Xuasar Charge [Stage 8: A Sea of Stars]",
+      "type": "RC",
+      "index": 3,
+      "picked": 0,
+      "banned": 0,
+      "protected": 0,
+      "scores": [
+        {
+          "name": "United States",
+          "logo": "https://assets.ppy.sh/old-flags/US.png",
+          "players": [
+            {
+              "player": {
+                "name": "[LS]Dev",
+                "country": {
+                  "name": "United States",
+                  "ISO2": "US"
+                }
+              },
+              "score": 997480,
+              "accuracy": 99.92
+            },
+            {
+              "player": {
+                "name": "TristanJacob11",
+                "country": {
+                  "name": "United States",
+                  "ISO2": "US"
+                }
+              },
+              "score": 991767,
+              "accuracy": 99.74
+            },
+            {
+              "player": {
+                "name": "Nepijin",
+                "country": {
+                  "name": "United States",
+                  "ISO2": "US"
+                }
+              },
+              "score": 997955,
+              "accuracy": 99.94
+            }
+          ]
+        },
+        {
+          "name": "South Korea",
+          "logo": "https://assets.ppy.sh/old-flags/KR.png",
+          "players": [
+            {
+              "player": {
+                "name": "Poca",
+                "country": {
+                  "name": "South Korea",
+                  "ISO2": "KR"
+                }
+              },
+              "score": 993308,
+              "accuracy": 99.79
+            },
+            {
+              "player": {
+                "name": "yz1155",
+                "country": {
+                  "name": "South Korea",
+                  "ISO2": "KR"
+                }
+              },
+              "score": 993163,
+              "accuracy": 99.79
+            },
+            {
+              "player": {
+                "name": "yeonho7028",
+                "country": {
+                  "name": "South Korea",
+                  "ISO2": "KR"
+                }
+              },
+              "score": 996056,
+              "accuracy": 99.88
+            }
+          ]
+        },
+        {
+          "name": "Brazil",
+          "logo": "https://assets.ppy.sh/old-flags/BR.png",
+          "players": [
+            {
+              "player": {
+                "name": "LeMarcinho",
+                "country": {
+                  "name": "Brazil",
+                  "ISO2": "BR"
+                }
+              },
+              "score": 986068,
+              "accuracy": 99.66
+            },
+            {
+              "player": {
+                "name": "DemiFiendSMT",
+                "country": {
+                  "name": "Brazil",
+                  "ISO2": "BR"
+                }
+              },
+              "score": 985987,
+              "accuracy": 99.64
+            },
+            {
+              "player": {
+                "name": "SillyFangirl",
+                "country": {
+                  "name": "Brazil",
+                  "ISO2": "BR"
+                }
+              },
+              "score": 993908,
+              "accuracy": 99.81
+            }
+          ]
+        },
+        {
+          "name": "Philippines",
+          "logo": "https://assets.ppy.sh/old-flags/PH.png",
+          "players": [
+            {
+              "player": {
+                "name": "bojii",
+                "country": {
+                  "name": "Philippines",
+                  "ISO2": "PH"
+                }
+              },
+              "score": 992568,
+              "accuracy": 99.90
+            },
+            {
+              "player": {
+                "name": "Vulpsi",
+                "country": {
+                  "name": "Philippines",
+                  "ISO2": "PH"
+                }
+              },
+              "score": 991961,
+              "accuracy": 99.75
+            },
+            {
+              "player": {
+                "name": "7Kenn",
+                "country": {
+                  "name": "Philippines",
+                  "ISO2": "PH"
+                }
+              },
+              "score": 982808,
+              "accuracy": 99.60
+            }
+          ]
+        },
+        {
+          "name": "Japan",
+          "logo": "https://assets.ppy.sh/old-flags/JP.png",
+          "players": [
+            {
+              "player": {
+                "name": "AMDuskia1996",
+                "country": {
+                  "name": "Japan",
+                  "ISO2": "JP"
+                }
+              },
+              "score": 993929,
+              "accuracy": 99.81
+            },
+            {
+              "player": {
+                "name": "CrewK",
+                "country": {
+                  "name": "Japan",
+                  "ISO2": "JP"
+                }
+              },
+              "score": 987637,
+              "accuracy": 99.75
+            },
+            {
+              "player": {
+                "name": "jhleetgirl",
+                "country": {
+                  "name": "Japan",
+                  "ISO2": "JP"
+                }
+              },
+              "score": 986722,
+              "accuracy": 99.72
+            }
+          ]
+        }
+      ]
     }
   ]
 }

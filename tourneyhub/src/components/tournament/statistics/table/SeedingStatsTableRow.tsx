@@ -6,16 +6,19 @@ import Flag from '../../../Flag';
 interface IProps {
     index: number,
     numAdvancing: number,
-    playerStats: {
-        player: EventParticipantDto,
+    stats: {
+        player?: EventParticipantDto,
+        team?: {name: string, logo: string},
         rankSum: number,
         avgScore: number
     }
 }
 
-const SeedingStatsTableRowPlayer = ({index, numAdvancing, playerStats}: IProps) => {
+const SeedingStatsTableRow = ({index, numAdvancing, stats}: IProps) => {
     const theme = useTheme();
-    const player = playerStats.player;
+
+    const player = stats.player;
+    const team = stats.team;
     const qualified = index <= numAdvancing;
     const lastQualified = index === numAdvancing;
 
@@ -41,26 +44,34 @@ const SeedingStatsTableRowPlayer = ({index, numAdvancing, playerStats}: IProps) 
             </SchedTableCell>
             <SchedTableCell sx={{ borderBottom: border }}>
                 <Grid container justifyContent='start' alignItems='center'>
-                    <Flag country={player.country} marginTop={0}/>
+                    {player && 
+                    <Flag country={player.country} marginTop={0}/>}
+                    {team &&
+                    <Grid item width={30} height={20} xs='auto'>
+                        <img 
+                            className='flag' 
+                            src={team.logo} 
+                            alt={`Logo of ${team.name}`}/>
+                    </Grid>}
                     <Grid item marginLeft={0.5}>
                         <Typography fontSize={14} color={color}>
-                            {player.name}
+                            {player?.name}{team?.name}
                         </Typography>
                     </Grid>
                 </Grid>
             </SchedTableCell>
             <SchedTableCell sx={{ borderBottom: border }}>
                 <Typography fontSize={14} color={color}>
-                    {playerStats.rankSum}
+                    {stats.rankSum}
                 </Typography>
             </SchedTableCell>
             <SchedTableCell sx={{ borderBottom: border }}>
                 <Typography fontSize={14} color={color}>
-                    {playerStats.avgScore.toLocaleString()}
+                    {stats.avgScore.toLocaleString()}
                 </Typography>
             </SchedTableCell>
         </TableRow>
     );
 }
  
-export default SeedingStatsTableRowPlayer;
+export default SeedingStatsTableRow;

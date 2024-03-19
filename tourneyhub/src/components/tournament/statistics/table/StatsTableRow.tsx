@@ -73,7 +73,6 @@ const StatsTableRow = ({map, stageType, teamTourney, showTeams}: IProps) => {
                     height={25} 
                     width={40}
                     fontSize={14}
-                    isQualifier={stageType === QUALIFIER}
                 />
             </SchedTableCell>
             <SchedTableCell>{map.title}</SchedTableCell>

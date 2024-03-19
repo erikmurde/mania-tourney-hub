@@ -29,7 +29,7 @@ const StatsTabs = ({maps, mapId, stageType, setMapId}: IProps) => {
                 {maps.map(map => 
                     <Tab 
                         key={map.id} 
-                        label={`${stageType === QUALIFIER ? 'S' : map.type}${map.index > 0 ? map.index : ''}`}
+                        label={`${map.type}${map.index > 0 ? map.index : ''}`}
                         value={map.id} onClick={() => setMapId(map.id)}
                     />
                 )}
