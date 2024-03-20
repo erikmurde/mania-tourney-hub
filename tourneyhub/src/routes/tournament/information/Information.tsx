@@ -1,12 +1,15 @@
 import { Button, Grid, Paper } from '@mui/material';
 import SectionTitle from '../../../components/tournament/SectionTitle';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import ReactQuill, { Value } from 'react-quill';
 import { useParams } from 'react-router-dom';
 import { TournamentService } from '../../../services/tournamentService';
 import { ChevronLeft, Edit } from '@mui/icons-material';
 import { TournamentDto } from '../../../dto/tournament/TournamentDto';
+import { AuthContext } from '../../Root';
 import 'react-quill/dist/quill.snow.css';
+import { AuthService } from '../../../services/authService';
+import NoItems from '../../../components/tournament/NoItems';
 
 const COLORS = [
     "#000000", "#e60000", "#ff9900", "#ffff00", "#008a00", "#0066cc", "#9933ff",
@@ -18,6 +21,7 @@ const COLORS = [
 
 const Information = () => {
     const { id } = useParams();
+    const { user } = useContext(AuthContext);
     const [value, setValue] = useState({} as Value);
     const [tourney, setTourney] = useState({} as TournamentDto);
     const [edit, setEdit] = useState(false);
@@ -83,11 +87,14 @@ const Information = () => {
         setEdit(false);
     }
 
+    const isHost = id && user && new AuthService().isHost(user, id);
+
     return (  
         <Paper elevation={2} sx={{ minHeight: 500, paddingBottom: 2 }}>
             <Grid container alignItems='center'>
                 <SectionTitle title={edit ? 'Edit information' : 'Information'} xsAuto/>
                 <Grid item xs textAlign='end' marginRight={5}>
+                    {isHost &&
                     <Button 
                         sx={{ width: 100 }}
                         variant='contained' 
@@ -95,7 +102,7 @@ const Information = () => {
                         onClick={() => edit ? goBack() : setEdit(true)}
                         >
                         {edit ? 'Back' : 'Edit'}
-                    </Button>
+                    </Button>}
                     {edit && 
                     <Button 
                         sx={{ marginLeft: 1, width: 100 }} 
@@ -107,10 +114,11 @@ const Information = () => {
                     </Button>}
                 </Grid>
                 <Grid item xs={12} marginLeft={5} marginRight={5}>
+                    {!edit && !value && <NoItems name='information'/>}
                     <ReactQuill
                         className={edit ? 'quill-edit' : 'quill-view'}
                         theme='snow'
-                        placeholder='Write about your tournament here...'
+                        placeholder={edit ? 'Write about your tournament here...' : ''}
                         readOnly={!edit}
                         formats={formats}
                         modules={modules}
