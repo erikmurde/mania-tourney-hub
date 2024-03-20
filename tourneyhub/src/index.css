@@ -1,5 +1,8 @@
 :root {
   --background-default: #121212;
+  --primary-main: #64B5F6;
+  --primary-dark: #2196F3;
+  --text-primary: #F5F5F5;
 }
 
 body {
@@ -59,4 +62,103 @@ button {
   background-color: var(--background-default);
   background-image: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2));
   height: 1px;
+}
+
+.ql-picker-label:hover {
+  color: var(--primary-main) !important;
+}
+
+.ql-picker-item:hover, .ql-picker-item:hover .ql-stroke {
+  color: var(--primary-dark) !important;
+  stroke: var(--primary-dark) !important;
+}
+
+.ql-picker-item {
+  color: var(--background-default) !important;
+}
+
+.ql-picker-label.ql-active {
+  color: var(--primary-main) !important;
+}
+
+.ql-picker-label.ql-active .ql-stroke {
+  stroke: var(--primary-main) !important;
+}
+
+.ql-toolbar .ql-stroke {
+  fill: none;
+  stroke: var(--text-primary) !important;
+}
+
+.ql-picker-options .ql-stroke {
+  stroke: var(--background-default) !important;
+}
+
+.ql-toolbar .ql-fill {
+  fill: var(--text-primary) !important;
+  stroke: none;
+}
+
+.ql-toolbar .ql-picker {
+  color: var(--text-primary) !important;
+}
+
+button:hover .ql-stroke,
+.ql-picker-label:hover .ql-stroke, 
+button.ql-active .ql-stroke {
+  fill: none;
+  stroke: var(--primary-main) !important;
+}
+
+button:hover .ql-fill,
+.ql-picker-label:hover .ql-fill {
+  fill: var(--primary-main) !important;
+  stroke: none;
+}
+
+.ql-active .ql-fill {
+  fill: var(--primary-main) !important;
+}
+
+.ql-container {
+  font-size: 16px !important;
+  font-family: 'Roboto' !important;
+  height: auto;
+}
+
+.quill-view {
+  .ql-editor {
+    padding: 0;
+  }
+  .ql-toolbar, .ql-container {
+    border: 0 !important;
+  }
+  .ql-toolbar {
+    display: none;
+  }
+}
+
+.quill-edit {
+  .ql-toolbar {
+    border: 0 !important;
+  }
+  .ql-container {
+    border: 0 !important;
+    border-top: 1px solid rgb(245, 245, 245, 0.5) !important;
+  }
+  .ql-editor {
+    min-height: 300px !important;
+    max-height: 600px !important;
+    overflow-y: scroll;
+  }
+  background-color: var(--background-default);
+  background-image: linear-gradient(rgba(255, 255, 255, 0.11), rgba(255, 255, 255, 0.11));
+}
+
+.quill {
+  border-radius: 3px !important;
+}
+
+.ql-snow a {
+  color: var(--primary-main) !important;
 }

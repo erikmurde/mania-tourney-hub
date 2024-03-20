@@ -4219,7 +4219,537 @@
       "discordLink": "",
       "forumLink": "",
       "challongeLink": "",
-      "countries": []
+      "countries": [],
+      "information": {
+        "ops": [
+          {
+            "attributes": {
+              "size": "huge"
+            },
+            "insert": "Schedule"
+          },
+          {
+            "insert": "\n\n"
+          },
+          {
+            "attributes": {
+              "bold": true
+            },
+            "insert": " Registration Phase"
+          },
+          {
+            "insert": "  -  8 September to 22 September"
+          },
+          {
+            "attributes": {
+              "list": "bullet"
+            },
+            "insert": "\n"
+          },
+          {
+            "attributes": {
+              "bold": true
+            },
+            "insert": " Screening Phase"
+          },
+          {
+            "insert": "  -  22 September to 7 October"
+          },
+          {
+            "attributes": {
+              "list": "bullet"
+            },
+            "insert": "\n"
+          },
+          {
+            "attributes": {
+              "bold": true
+            },
+            "insert": " Qualifiers Showcase"
+          },
+          {
+            "insert": "  -  October 8/9"
+          },
+          {
+            "attributes": {
+              "list": "bullet"
+            },
+            "insert": "\n"
+          },
+          {
+            "attributes": {
+              "bold": true
+            },
+            "insert": " Qualifiers + Qualifiers Result + RO64 Showcase"
+          },
+          {
+            "insert": "  -  October 14 to 16"
+          },
+          {
+            "attributes": {
+              "list": "bullet"
+            },
+            "insert": "\n"
+          },
+          {
+            "attributes": {
+              "bold": true
+            },
+            "insert": " RO64 + RO32 Showcase"
+          },
+          {
+            "insert": "  -  October 21 to 23"
+          },
+          {
+            "attributes": {
+              "list": "bullet"
+            },
+            "insert": "\n"
+          },
+          {
+            "attributes": {
+              "bold": true
+            },
+            "insert": " RO32 + RO16 Showcase"
+          },
+          {
+            "insert": "  -  October 28 to 30"
+          },
+          {
+            "attributes": {
+              "list": "bullet"
+            },
+            "insert": "\n"
+          },
+          {
+            "attributes": {
+              "bold": true
+            },
+            "insert": " RO16 + Quarterfinals Showcase"
+          },
+          {
+            "insert": "  -  November 4 to 6"
+          },
+          {
+            "attributes": {
+              "list": "bullet"
+            },
+            "insert": "\n"
+          },
+          {
+            "attributes": {
+              "bold": true
+            },
+            "insert": " Quarterfinals + Semifinals Showcase"
+          },
+          {
+            "insert": "  -  November 11 to 13"
+          },
+          {
+            "attributes": {
+              "list": "bullet"
+            },
+            "insert": "\n"
+          },
+          {
+            "attributes": {
+              "bold": true
+            },
+            "insert": " Semifinals + Finals Showcase"
+          },
+          {
+            "insert": "  -  November 18 to 20"
+          },
+          {
+            "attributes": {
+              "list": "bullet"
+            },
+            "insert": "\n"
+          },
+          {
+            "attributes": {
+              "bold": true
+            },
+            "insert": " Finals + Grand Finals Showcase"
+          },
+          {
+            "insert": "  -  November 25 to 26"
+          },
+          {
+            "attributes": {
+              "list": "bullet"
+            },
+            "insert": "\n"
+          },
+          {
+            "attributes": {
+              "bold": true
+            },
+            "insert": " Grand Finals + Conclusion"
+          },
+          {
+            "insert": "  -  December 2 to 3"
+          },
+          {
+            "attributes": {
+              "list": "bullet"
+            },
+            "insert": "\n"
+          },
+          {
+            "insert": "\n"
+          },
+          {
+            "attributes": {
+              "size": "huge"
+            },
+            "insert": "Registrations"
+          },
+          {
+            "insert": "\n\n"
+          },
+          {
+            "attributes": {
+              "color": "#f6a664",
+              "size": "large"
+            },
+            "insert": "To play in the tournament, you must follow these rules:"
+          },
+          {
+            "insert": "\n\nYou must be in the 6K Autumn Showdown Tournament Discord Server"
+          },
+          {
+            "attributes": {
+              "list": "ordered"
+            },
+            "insert": "\n"
+          },
+          {
+            "insert": "Registered for the tournament by clicking the register button on the home page."
+          },
+          {
+            "attributes": {
+              "list": "ordered"
+            },
+            "insert": "\n"
+          },
+          {
+            "insert": "Have not violated the community guidelines over the past 12 months."
+          },
+          {
+            "attributes": {
+              "list": "ordered"
+            },
+            "insert": "\n"
+          },
+          {
+            "insert": "\n"
+          },
+          {
+            "attributes": {
+              "size": "large",
+              "color": "#f6a664"
+            },
+            "insert": "To staff for the tournament:"
+          },
+          {
+            "insert": "\n\nYou must be in the 6K Autumn Showdown Tournament Discord Server"
+          },
+          {
+            "attributes": {
+              "list": "ordered"
+            },
+            "insert": "\n"
+          },
+          {
+            "insert": "Completed and submitted a staff application with the requested role(s)."
+          },
+          {
+            "attributes": {
+              "list": "ordered"
+            },
+            "insert": "\n"
+          },
+          {
+            "insert": "You may not play in the tournament unless you're exclusively going to help as a streamer and/or commentator."
+          },
+          {
+            "attributes": {
+              "list": "ordered"
+            },
+            "insert": "\n"
+          },
+          {
+            "insert": "Once eliminated, you may apply as a playtester or referee."
+          },
+          {
+            "attributes": {
+              "list": "ordered"
+            },
+            "insert": "\n"
+          },
+          {
+            "insert": "\n"
+          },
+          {
+            "attributes": {
+              "size": "huge"
+            },
+            "insert": "Rules"
+          },
+          {
+            "insert": "\n\n"
+          },
+          {
+            "attributes": {
+              "size": "large",
+              "color": "#f6a664"
+            },
+            "insert": "During the match:"
+          },
+          {
+            "insert": "\n\n- In advance, players will send their warmups (if they have) to the referees in-charge of their match. Warmups must be 6K and be below the 4:00 drain time.\n- After warmup has concluded, both players will run the !roll command in the lobby chat. The player with the higher roll will be able to choose whether to go first or second.\n- The protect/ban phase will be as followed: As an example, if Player A goes first...\nPlayer A: Protect -> Player B: Protect -> Player B: Ban -> Player A: Ban -> Player A: Pick\n- During the match, both the players will alternate in picks depending on who picked first, and play the picked map together. The player with the higher score will obtain a point.\n\n"
+          },
+          {
+            "attributes": {
+              "size": "large",
+              "color": "#f6a664"
+            },
+            "insert": "Additional Rules:"
+          },
+          {
+            "insert": "\n\n"
+          },
+          {
+            "attributes": {
+              "color": "#ed8f5e"
+            },
+            "insert": "Mod settings:"
+          },
+          {
+            "insert": "\n\n- The score system on all matches will be on Score V2\n- All maps are played with FreeMod turned ON. Visual mods such as Mirror, Hidden, Fade-In, Flashlight, and any combination of these mods are allowed. NoFail is allowed too.\n\n"
+          },
+          {
+            "attributes": {
+              "color": "#ed8f5e"
+            },
+            "insert": "Punctuality:"
+          },
+          {
+            "insert": "\n\n- Players are required to be present before their match time. If one player isn't present during the match time, a 10 minute grace period will start by the referee.\n- If the player fails to arrive before the 10 minute grace period, the match will be considered as a Win By Default to the present player.\n\n"
+          },
+          {
+            "attributes": {
+              "color": "#ed8f5e"
+            },
+            "insert": "Protect/Ban/Pick Procedures:"
+          },
+          {
+            "insert": "\n\n- Players will be given 2 minutes to protect and ban a map from their choosing. Later on, players will have 2 minutes to pick a map and get ready for the map.\n- Any player that fails to Protect/Ban/Pick during the given time, the referee will choose a map at random to be picked in behalf of the player by using the !roll command.\n\n"
+          },
+          {
+            "attributes": {
+              "color": "#ed8f5e"
+            },
+            "insert": "Disconnection:"
+          },
+          {
+            "insert": "\n\n- If any player gets disconnected from a map during the first 30 seconds of the gameplay, they can ask for the map to be aborted and replayed. \nThis is only available once per match for each player, any subsequent disconnects will award the other player a point.\n- If any player gets disconnected from a map after the first 30 seconds of the gameplay, the point will be awarded to the other player.\n- If any player is unable to return to the lobby within 10 minutes, the match will be considered a win for the other player.\n- If both players are disconnected, the player that comes back will be saved from losing. If the other player comes back before their grace period ends, the match will continue. \nThis will only be available once. If subsequent cases happen, the player that joins back will be considered the winner of the match.\n- If both players are unable to reconnect to the lobby in time, the current standing will determine the winner of the match. \nIn the case of a tie, the higher seeded player will be awarded the win.\n- The hosts reserve the right to be more or less lenient at their sole discretion.\n\n"
+          },
+          {
+            "attributes": {
+              "size": "huge"
+            },
+            "insert": "Structure"
+          },
+          {
+            "insert": "\n\n"
+          },
+          {
+            "attributes": {
+              "size": "large",
+              "color": "#f6a664"
+            },
+            "insert": "Qualifiers"
+          },
+          {
+            "insert": "\n\n"
+          },
+          {
+            "attributes": {
+              "bold": true
+            },
+            "insert": "The Qualifiers Stage"
+          },
+          {
+            "insert": " will happen in the first week of the tournament play. All of the registered players who were not screened out during screening are eligible to \nparticipate in the Qualifiers. Each player can play the Qualifiers in sequence up to 2 times (Players may choose to not play a 2nd time).\n\n"
+          },
+          {
+            "attributes": {
+              "bold": true
+            },
+            "insert": "The Qualifiers Pool format"
+          },
+          {
+            "insert": " will have "
+          },
+          {
+            "attributes": {
+              "bold": true
+            },
+            "insert": "8 stages"
+          },
+          {
+            "insert": ", and they are as followed:\nStage 1: Accuracy/Tech\nStage 2: Speed/Delay\nStage 3: Early Mixed Hybrid\nStage 4: LN Release\nStage 5: Mixed Rice\nStage 6: Chordstream\nStage 7: LN Density\nStage 8: Complex Mixed Hybrid\n\n"
+          },
+          {
+            "attributes": {
+              "bold": true
+            },
+            "insert": "The Seeding Calculation"
+          },
+          {
+            "insert": " will start after Qualifiers concluded. If you played the Qualifiers twice, the higher score for each map will be taken. \nThis will determine the player's seed and decide whether they will proceed on to the next stage.\nEach player's seed is determined by how well they perform at each map. The 8 maps will be averaged out and any players that performed well for all of the maps \nwill get a higher seeding. Only the Top 64 seed will proceed on to the bracket stage, while the lower seeds will be eliminated.\n\n"
+          },
+          {
+            "attributes": {
+              "size": "large",
+              "color": "#f6a664"
+            },
+            "insert": "Bracket Stages"
+          },
+          {
+            "insert": "\n\n"
+          },
+          {
+            "attributes": {
+              "bold": true
+            },
+            "insert": "Bracket Matches"
+          },
+          {
+            "insert": " will arrange all the players into a standard Double Elimination Bracket, where 1st seed will face against 64th seed, 2nd seed will face against 63rd seed, \nand so on.\n\n"
+          },
+          {
+            "attributes": {
+              "bold": true
+            },
+            "insert": "The Mappool format"
+          },
+          {
+            "insert": " for the bracket stages will be as followed:\nRound of 64: 10 Maps (Best of 7)\nRound of 32: 12 Maps (Best of 9)\nRound of 16: 12 Maps (Best of 9)\nQuarterfinals: 14 Maps (Best of 11)\nSemifinals: 14 Maps (Best of 11)\nFinals: 16 Maps (Best of 13)\nGrand Finals: 16 Maps (Best of 13)\n\n"
+          },
+          {
+            "attributes": {
+              "size": "huge"
+            },
+            "insert": "Prizes"
+          },
+          {
+            "insert": "\n"
+          },
+          {
+            "attributes": {
+              "size": "large",
+              "bold": true
+            },
+            "insert": "1st Place "
+          },
+          {
+            "attributes": {
+              "size": "large"
+            },
+            "insert": "- Six Month osu! Supporter [First Place Badge]"
+          },
+          {
+            "attributes": {
+              "align": "center"
+            },
+            "insert": "\n"
+          },
+          {
+            "attributes": {
+              "size": "large",
+              "bold": true
+            },
+            "insert": "2nd Place"
+          },
+          {
+            "attributes": {
+              "size": "large"
+            },
+            "insert": " - Four Month osu! Supporter"
+          },
+          {
+            "attributes": {
+              "align": "center"
+            },
+            "insert": "\n"
+          },
+          {
+            "attributes": {
+              "size": "large",
+              "bold": true
+            },
+            "insert": "3rd Place"
+          },
+          {
+            "attributes": {
+              "size": "large"
+            },
+            "insert": " - Two Month osu! Supporter"
+          },
+          {
+            "attributes": {
+              "align": "center"
+            },
+            "insert": "\n"
+          },
+          {
+            "attributes": {
+              "size": "large",
+              "bold": true
+            },
+            "insert": "4th to 6th"
+          },
+          {
+            "attributes": {
+              "size": "large"
+            },
+            "insert": " - One Month osu! Supporter"
+          },
+          {
+            "attributes": {
+              "align": "center"
+            },
+            "insert": "\n\n"
+          },
+          {
+            "insert": "To submit a formal complaint to the Official Tournament Committee about 6KAST, "
+          },
+          {
+            "attributes": {
+              "align": "center"
+            },
+            "insert": "\n"
+          },
+          {
+            "insert": "please access the link below: "
+          },
+          {
+            "attributes": {
+              "link": "https://pif.ephemeral.ink/tournament-reports"
+            },
+            "insert": "https://pif.ephemeral.ink/tournament-reports"
+          },
+          {
+            "attributes": {
+              "align": "center"
+            },
+            "insert": "\n"
+          }
+        ]
+      }
     },
     {
       "id": "1",
@@ -5673,7 +6203,7 @@
             }
           },
           "score": 980550,
-          "accuracy": 99.40
+          "accuracy": 99.4
         },
         {
           "player": {
@@ -5739,7 +6269,7 @@
             }
           },
           "score": 953015,
-          "accuracy": 99.00
+          "accuracy": 99
         },
         {
           "player": {
@@ -5816,7 +6346,7 @@
             }
           },
           "score": 824988,
-          "accuracy": 95.40
+          "accuracy": 95.4
         }
       ]
     },
@@ -5872,7 +6402,7 @@
             }
           },
           "score": 987219,
-          "accuracy": 99.60
+          "accuracy": 99.6
         },
         {
           "player": {
@@ -5883,7 +6413,7 @@
             }
           },
           "score": 979503,
-          "accuracy": 99.50
+          "accuracy": 99.5
         },
         {
           "player": {
@@ -5960,7 +6490,7 @@
             }
           },
           "score": 808966,
-          "accuracy": 95.20
+          "accuracy": 95.2
         },
         {
           "player": {
@@ -6271,7 +6801,7 @@
             }
           },
           "score": 964319,
-          "accuracy": 99.10
+          "accuracy": 99.1
         },
         {
           "player": {
@@ -6404,7 +6934,7 @@
             }
           },
           "score": 958897,
-          "accuracy": 99.40
+          "accuracy": 99.4
         },
         {
           "player": {
@@ -6572,7 +7102,7 @@
             }
           },
           "score": 987157,
-          "accuracy": 99.60
+          "accuracy": 99.6
         }
       ]
     },
@@ -6708,7 +7238,7 @@
             }
           },
           "score": 967498,
-          "accuracy": 99.10
+          "accuracy": 99.1
         }
       ]
     },
@@ -6930,7 +7460,7 @@
             }
           },
           "score": 950854,
-          "accuracy": 98.80
+          "accuracy": 98.8
         },
         {
           "player": {
@@ -7063,7 +7593,7 @@
             }
           },
           "score": 974559,
-          "accuracy": 99.40
+          "accuracy": 99.4
         },
         {
           "player": {
@@ -7074,7 +7604,7 @@
             }
           },
           "score": 974053,
-          "accuracy": 99.20
+          "accuracy": 99.2
         },
         {
           "player": {
@@ -7285,7 +7815,7 @@
             }
           },
           "score": 990124,
-          "accuracy": 99.70
+          "accuracy": 99.7
         },
         {
           "player": {
@@ -7340,7 +7870,7 @@
             }
           },
           "score": 943923,
-          "accuracy": 98.50
+          "accuracy": 98.5
         },
         {
           "player": {
@@ -7418,7 +7948,7 @@
             }
           },
           "score": 987045,
-          "accuracy": 99.60
+          "accuracy": 99.6
         },
         {
           "player": {
@@ -7429,7 +7959,7 @@
             }
           },
           "score": 984623,
-          "accuracy": 99.70
+          "accuracy": 99.7
         },
         {
           "player": {
@@ -7518,7 +8048,7 @@
             }
           },
           "score": 996824,
-          "accuracy": 99.90
+          "accuracy": 99.9
         },
         {
           "player": {
@@ -7773,7 +8303,7 @@
             }
           },
           "score": 983950,
-          "accuracy": 99.50
+          "accuracy": 99.5
         },
         {
           "player": {
@@ -7828,7 +8358,7 @@
             }
           },
           "score": 933597,
-          "accuracy": 98.50
+          "accuracy": 98.5
         },
         {
           "player": {
@@ -8000,7 +8530,7 @@
                 }
               },
               "score": 993594,
-              "accuracy": 99.80
+              "accuracy": 99.8
             }
           ]
         },
@@ -8017,7 +8547,7 @@
                 }
               },
               "score": 987191,
-              "accuracy": 99.60
+              "accuracy": 99.6
             },
             {
               "player": {
@@ -8129,7 +8659,7 @@
                 }
               },
               "score": 993649,
-              "accuracy": 99.80
+              "accuracy": 99.8
             }
           ]
         }
@@ -8298,7 +8828,7 @@
                 }
               },
               "score": 996936,
-              "accuracy": 99.90
+              "accuracy": 99.9
             },
             {
               "player": {
@@ -8309,7 +8839,7 @@
                 }
               },
               "score": 990414,
-              "accuracy": 99.70
+              "accuracy": 99.7
             }
           ]
         }
@@ -8428,7 +8958,7 @@
                 }
               },
               "score": 993693,
-              "accuracy": 99.80
+              "accuracy": 99.8
             },
             {
               "player": {
@@ -8557,7 +9087,7 @@
                 }
               },
               "score": 993555,
-              "accuracy": 99.80
+              "accuracy": 99.8
             },
             {
               "player": {
@@ -8608,7 +9138,7 @@
                 }
               },
               "score": 993463,
-              "accuracy": 99.80
+              "accuracy": 99.8
             },
             {
               "player": {
@@ -8709,7 +9239,7 @@
                 }
               },
               "score": 990532,
-              "accuracy": 99.70
+              "accuracy": 99.7
             },
             {
               "player": {
@@ -8737,7 +9267,7 @@
                 }
               },
               "score": 993569,
-              "accuracy": 99.80
+              "accuracy": 99.8
             },
             {
               "player": {
@@ -8827,7 +9357,7 @@
                 }
               },
               "score": 990529,
-              "accuracy": 99.80
+              "accuracy": 99.8
             },
             {
               "player": {
@@ -8928,7 +9458,7 @@
                 }
               },
               "score": 987015,
-              "accuracy": 99.60
+              "accuracy": 99.6
             },
             {
               "player": {
@@ -9237,7 +9767,7 @@
                 }
               },
               "score": 993734,
-              "accuracy": 99.80
+              "accuracy": 99.8
             },
             {
               "player": {
@@ -9561,7 +10091,7 @@
                 }
               },
               "score": 990384,
-              "accuracy": 99.70
+              "accuracy": 99.7
             },
             {
               "player": {
@@ -9712,7 +10242,7 @@
                 }
               },
               "score": 989226,
-              "accuracy": 99.80
+              "accuracy": 99.8
             }
           ]
         },
@@ -9729,7 +10259,7 @@
                 }
               },
               "score": 996787,
-              "accuracy": 99.90
+              "accuracy": 99.9
             },
             {
               "player": {
@@ -9986,7 +10516,7 @@
                 }
               },
               "score": 990366,
-              "accuracy": 99.70
+              "accuracy": 99.7
             },
             {
               "player": {
@@ -10244,7 +10774,7 @@
                 }
               },
               "score": 993683,
-              "accuracy": 99.80
+              "accuracy": 99.8
             },
             {
               "player": {
@@ -10490,7 +11020,7 @@
                 }
               },
               "score": 996763,
-              "accuracy": 99.90
+              "accuracy": 99.9
             },
             {
               "player": {
@@ -10579,7 +11109,7 @@
                 }
               },
               "score": 993564,
-              "accuracy": 99.80
+              "accuracy": 99.8
             }
           ]
         },
@@ -10764,7 +11294,7 @@
                 }
               },
               "score": 992568,
-              "accuracy": 99.90
+              "accuracy": 99.9
             },
             {
               "player": {
@@ -10786,7 +11316,7 @@
                 }
               },
               "score": 982808,
-              "accuracy": 99.60
+              "accuracy": 99.6
             }
           ]
         },
@@ -10830,6 +11360,40 @@
           ]
         }
       ]
+    }
+  ],
+  "tourneyInfo": [
+    {
+      "tournamentId": "0",
+      "value": {
+        "ops": [
+          {
+            "insert": "trdf"
+          },
+          {
+            "attributes": {
+              "color": "#e60000"
+            },
+            "insert": "gdfgdf"
+          },
+          {
+            "insert": "sdfdsf"
+          },
+          {
+            "attributes": {
+              "underline": true
+            },
+            "insert": "455 "
+          },
+          {
+            "attributes": {
+              "align": "right"
+            },
+            "insert": "\n"
+          }
+        ]
+      },
+      "id": 1
     }
   ]
 }

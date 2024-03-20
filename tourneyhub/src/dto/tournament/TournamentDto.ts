@@ -1,3 +1,5 @@
+import { Value } from 'react-quill';
+
 export interface TournamentDto {
     id: string,
     name: string,
@@ -20,5 +22,6 @@ export interface TournamentDto {
     discordLink: string,
     forumLink: string,
     challongeLink: string,
-    countries: string[]
+    countries: string[],
+    information: Value
 }
