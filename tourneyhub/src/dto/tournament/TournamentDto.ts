@@ -9,6 +9,7 @@ export interface TournamentDto {
     public: boolean,
     participantsPublic: boolean,
     done: boolean,
+    keys: number,
     minTeamSize: number,
     maxTeamSize: number,
     minRank: number,

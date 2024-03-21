@@ -4206,6 +4206,7 @@
       "public": true,
       "participantsPublic": true,
       "done": false,
+      "keys": 6,
       "minTeamSize": 1,
       "maxTeamSize": 1,
       "minPlayerRank": 0,
@@ -4759,7 +4760,8 @@
       "banner": "https://assets.ppy.sh/tournament-banners/official/mwc4k2023.jpg",
       "public": true,
       "participantsPublic": true,
-      "done": false,
+      "done": true,
+      "keys": 4,
       "minTeamSize": 4,
       "maxTeamSize": 6,
       "minPlayerRank": 0,
@@ -5002,7 +5004,7 @@
       "id": "14",
       "stageId": "4",
       "beatmapId": 2999060,
-      "inMappool": true,
+      "inMappool": false,
       "title": "fffff op.2",
       "diff": "Evening's Extreme",
       "artist": "Five Hammer",
@@ -5259,7 +5261,7 @@
         "id": "0",
         "name": "RC"
       },
-      "inMappool": false
+      "inMappool": true
     },
     {
       "id": "uudqwCQ",

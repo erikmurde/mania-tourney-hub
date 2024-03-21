@@ -21,6 +21,13 @@ button {
   align-items: center;
 }
 
+.home-banner {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://assets.ppy.sh/beatmaps/1452883/covers/cover.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 5px;
+}
+
 .map-param {
   width: 24px;
   margin-right: 5px !important;
