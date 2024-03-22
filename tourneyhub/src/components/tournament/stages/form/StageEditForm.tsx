@@ -11,7 +11,6 @@ import utc from 'dayjs/plugin/utc';
 import { UpdateContext } from '../../../../routes/Root';
 import { StageService } from '../../../../services/stageService';
 import { Schema, object, string, number, date } from 'yup';
-import * as Yup from 'yup';
 import { QUALIFIER, REQUIRED, STANDARD } from '../../../../constants';
 
 const StageEditForm = ({initialValues}: {initialValues: IStageDto}) => {

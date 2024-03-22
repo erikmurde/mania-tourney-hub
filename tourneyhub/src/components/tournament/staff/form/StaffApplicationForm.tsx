@@ -9,16 +9,22 @@ import { StaffApplicationService } from '../../../../services/staffApplicationSe
 import { Schema, object, string } from 'yup';
 import FormDialogBase from '../../dialog/FormDialogBase';
 
-const StaffApplicationForm = ({applicationOpen}: {applicationOpen: boolean}) => {
+interface IProps {
+    applicationOpen: boolean,
+    tourneyName: string
+}
+
+const StaffApplicationForm = ({applicationOpen, tourneyName}: IProps) => {
     const { user } = useContext(AuthContext);
     const { id } = useParams();
     const [open, setOpen] = useState(false);
     const roles = [ADMIN, MAPPOOLER, MAPPER, PLAYTESTER, REFEREE, STREAMER, COMMENTATOR, SHEETER, GFX];
 
+    if (!user || !id) {
+        return <></>;
+    }
+
     const filterRoles = () => {
-        if (!user) {
-            return [];
-        }
         const userRoles = user.roles
             .filter(role => role.tournamentId === id);
     
@@ -43,8 +49,9 @@ const StaffApplicationForm = ({applicationOpen}: {applicationOpen: boolean}) => 
 
     const initialValues: StaffApplicationDto = {
         id: '',
-        userId: user?.id ?? '',
-        tournamentId: id ?? '',
+        userId: user.id,
+        tournamentId: id,
+        tournament: tourneyName,
         role: '',
         status: 'pending',
         experience: '',

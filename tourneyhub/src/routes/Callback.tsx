@@ -9,7 +9,7 @@ const Callback = () => {
     const service = new AuthService();
 
     useEffect(() => {
-        service.getUser('0')
+        service.getEntity('0')
             .then(user => setUser(user))
             .then(() => navigate('/'));
     });

@@ -6,6 +6,7 @@ import { IUserDto } from '../../../dto/user/IUserDto';
 import Flag from '../../Flag';
 import { StyledCardActions } from '../../styled/StyledCardActions';
 import ConfirmationDialog from '../dialog/ConfirmationDialog';
+import { GFX } from '../../../constants';
 
 interface IProps {
     application: StaffApplicationDto,
@@ -21,6 +22,10 @@ const StaffApplicationCard = ({application, updateStatus}: IProps) => {
             .then(user => setUser(user));
     }, []);
 
+    const role = application.role === GFX 
+        ? 'Graphics designer' 
+        : application.role[0].toUpperCase() + application.role.slice(1);
+
     return (  
         <Card elevation={8} sx={{ width: 600 }}>
             <CardContent>
@@ -28,7 +33,7 @@ const StaffApplicationCard = ({application, updateStatus}: IProps) => {
                     <Flag country={user.country}/>
                     <Grid item xs>
                         <Typography fontWeight={700}>
-                        {user.name} - {application.role} role
+                        {user.name} - {role} role
                         </Typography>
                     </Grid>
                 </Grid>

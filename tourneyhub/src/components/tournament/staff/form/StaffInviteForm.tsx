@@ -13,11 +13,14 @@ import { useParams } from 'react-router-dom';
 import { AuthContext } from '../../../../routes/Root';
 import { StaffInviteService } from '../../../../services/staffInviteService';
 import { Schema, object, string } from 'yup';
+import { TournamentDto } from '../../../../dto/tournament/TournamentDto';
+import { TournamentService } from '../../../../services/tournamentService';
 
 const StaffInviteForm = () => {
     const { id } = useParams();
     const { user } = useContext(AuthContext);
     const [open, setOpen] = useState(false);
+    const [tourney, setTourney] = useState({} as TournamentDto);
     const [selectValues, setSelectValues] = useState({
         users: [] as IUserDto[],
         roles: [HOST, ADMIN, MAPPOOLER, MAPPER, PLAYTESTER, REFEREE, STREAMER, COMMENTATOR, SHEETER, GFX]
@@ -31,6 +34,11 @@ const StaffInviteForm = () => {
                     ...selectValues, 
                     users: users.filter(option => option.id !== user.id)
                 }));
+        }
+        if (id) {
+            new TournamentService()
+                .getEntity(id)
+                .then(tourney => setTourney(tourney));
         }
     }, [user]);
 
@@ -48,9 +56,10 @@ const StaffInviteForm = () => {
 
     const initialValues: StaffInviteDto = {
         id: '',
+        tournament: tourney.name,
         tournamentId: id!,
-        senderId: user!.id,
-        recipientId: null,
+        sender: user!.name,
+        recipientId: '',
         role: '',
         status: 'pending',
         reason: ''

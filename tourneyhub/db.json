@@ -19,6 +19,16 @@
           "canRegWithRole": false
         },
         {
+          "tournamentId": "0",
+          "name": "mapper",
+          "canRegWithRole": false
+        },
+        {
+          "tournamentId": "0",
+          "name": "player",
+          "canRegWithRole": false
+        },
+        {
           "tournamentId": "1",
           "name": "host",
           "canRegWithRole": false
@@ -26,9 +36,7 @@
       ],
       "stats": [
         {
-          "id": "0",
           "tournamentId": "0",
-          "userId": "0",
           "status": "active",
           "seeding": 11,
           "placement": 0
@@ -5315,6 +5323,7 @@
     {
       "id": "0",
       "tournamentId": "0",
+      "tournament": "6K Autumn Showdown",
       "userId": "41",
       "role": "commentator",
       "status": "pending",
@@ -5324,6 +5333,7 @@
     {
       "id": "1",
       "tournamentId": "0",
+      "tournament": "6K Autumn Showdown",
       "userId": "14",
       "role": "mapper",
       "status": "pending",
@@ -5333,6 +5343,7 @@
     {
       "id": "2",
       "tournamentId": "0",
+      "tournament": "6K Autumn Showdown",
       "userId": "42",
       "role": "referee",
       "status": "pending",
@@ -5342,6 +5353,7 @@
     {
       "id": "3",
       "tournamentId": "0",
+      "tournament": "6K Autumn Showdown",
       "userId": "24",
       "role": "mapper",
       "status": "pending",
@@ -5349,13 +5361,34 @@
       "motivation": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
     },
     {
-      "id": "MhTWkaO",
-      "userId": "0",
+      "id": "4",
       "tournamentId": "0",
-      "role": "referee",
+      "tournament": "6K Autumn Showdown",
+      "userId": "0",
+      "role": "mapper",
+      "status": "pending",
+      "experience": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "motivation": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+    },
+    {
+      "id": "5",
+      "tournamentId": "0",
+      "tournament": "6K Autumn Showdown",
+      "userId": "0",
+      "role": "gfx",
       "status": "accepted",
-      "experience": "ffffffffffffsdfsd",
-      "motivation": "ffffffffffffffffffffffffff"
+      "experience": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "motivation": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+    },
+    {
+      "id": "6",
+      "tournamentId": "0",
+      "tournament": "6K Autumn Showdown",
+      "userId": "0",
+      "role": "sheeter",
+      "status": "rejected",
+      "experience": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "motivation": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
     }
   ],
   "matches": [
@@ -6185,7 +6218,18 @@
       "referee": "walmart5193"
     }
   ],
-  "staffInvites": [],
+  "staffInvites": [
+    {
+      "id": "0",
+      "tournament": "6K Autumn Showdown",
+      "tournamentId": "0",
+      "sender": "TheFunk",
+      "recipientId": "0",
+      "role": "commentator",
+      "status": "pending",
+      "reason": "Come join my tournament as a commentator because of reasons."
+    }
+  ],
   "mapStats": [
     {
       "id": "0",

@@ -13,6 +13,21 @@ export const COMMENTATOR = 'commentator';
 export const SHEETER = 'sheeter';
 export const GFX = 'gfx';
 
+// ROLE REG
+export const ROLE_REG = new Map<string, boolean>([
+    [PLAYER, false],
+    [HOST, false],
+    [ADMIN, false],
+    [MAPPOOLER, false],
+    [MAPPER, false],
+    [PLAYTESTER, false],
+    [REFEREE, false],
+    [STREAMER, true],
+    [COMMENTATOR, true],
+    [SHEETER, false],
+    [GFX, false]
+])
+
 // COLORS
 export const TERTIARY = '#9575CD';
 
@@ -33,3 +48,9 @@ export const ACTIVE = 'active';
 export const ELIMINATED = 'eliminated';
 export const DISQUALIFIED = 'disqualified';
 export const REGISTERED = 'registered';
+
+// TIMEZONES
+
+export const TIMEZONES = [
+    -11, -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12
+]

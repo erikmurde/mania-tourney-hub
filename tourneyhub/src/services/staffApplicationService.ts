@@ -13,4 +13,13 @@ export class StaffApplicationService extends BaseEntityService<StaffApplicationD
         return response.data
             .filter(application => application.status === 'pending');
     }
+
+    async getAllUser(userId: string): Promise<StaffApplicationDto[]> {
+        const response = await this.axios.get<StaffApplicationDto[]>(`${this.baseUrl}?userId=${userId}`);
+
+        console.log('getAllUser response: ', response);
+        return response.data.filter(application => 
+            ['pending', 'accepted', 'rejected'].includes(application.status)
+        );
+    }
 }

@@ -8,13 +8,23 @@ interface IProps {
     options: JSX.Element[]
 }
 
+const ITEM_HEIGHT = 36;
+const ITEM_COUNT = 6;
+const PADDING = 8;
+
 const TourneySelectField = ({name, label, error, options}: IProps) => {
     const isInvalid = error !== undefined;
 
     return (  
         <FormControl fullWidth error={isInvalid}>
             <InputLabel>{label}</InputLabel>
-            <Field as={Select} name={name} label={label} defaultValue=''>
+            <Field
+                MenuProps={{ PaperProps: { sx: { maxHeight: ITEM_HEIGHT * ITEM_COUNT + PADDING }}}}
+                as={Select} 
+                name={name} 
+                label={label} 
+                defaultValue=''
+                >
                 {options}
             </Field>
             {isInvalid && <FormHelperText>{error}</FormHelperText>}

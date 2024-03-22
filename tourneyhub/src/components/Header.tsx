@@ -1,12 +1,16 @@
-import { AppBar, Avatar, Box, Button, IconButton, Toolbar, Typography } from "@mui/material"
-import { useContext, useEffect } from 'react';
+import { AppBar, Avatar, Box, Button, IconButton, Menu, MenuItem, Toolbar, Typography } from "@mui/material"
+import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../routes/Root';
 import { AuthService } from '../services/authService';
 import { STORED_USER } from '../constants';
 import { Link, useNavigate } from 'react-router-dom';
+import Profile from '../routes/profile/Profile';
 
 const Header = () => {
     const { user, setUser } = useContext(AuthContext);
+    const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+    const [profileOpen, setProfileOpen] = useState(false);
+    const open = Boolean(anchorEl);
     const navigate = useNavigate();
     const service = new AuthService();
 
@@ -17,12 +21,14 @@ const Header = () => {
     }, [user]);
 
     const logout = () => {
+        setAnchorEl(null);
         setUser(null);
         localStorage.removeItem(STORED_USER);
         navigate('/');
     }
 
     return (
+        <>
         <AppBar sx={{ height: 70 }} position='static' elevation={2}>
             <Toolbar>
                 <Typography sx={{ textDecoration: 'none', color: 'inherit' }}
@@ -34,7 +40,7 @@ const Header = () => {
                 <Box flexGrow={1}></Box>
                 <Box>
                     {user 
-                    ?   <IconButton onClick={logout}>
+                    ?   <IconButton onClick={(e) => setAnchorEl(e.currentTarget)}>
                             <Avatar sx={{ height: 50, width: 50 }}
                                 alt='User profile'
                                 src={user.avatar}/>
@@ -45,6 +51,19 @@ const Header = () => {
                 </Box>
             </Toolbar>
         </AppBar>
+        <Menu anchorEl={anchorEl} open={open} onClose={() => setAnchorEl(null)}>
+            <MenuItem onClick={() => {
+                setProfileOpen(true); 
+                setAnchorEl(null)
+            }}>
+                Profile
+            </MenuItem>
+            <MenuItem onClick={logout}>
+                Logout
+            </MenuItem>
+        </Menu>
+        <Profile open={profileOpen} setOpen={setProfileOpen}/>
+        </>
     );
 }
 
