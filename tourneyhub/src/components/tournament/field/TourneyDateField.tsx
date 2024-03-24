@@ -19,7 +19,7 @@ const TourneyDateField = ({label, error, field}: IProps) => {
                 disablePast
                 label={label}
                 {...field}
-                value={dayjs(field.value)}
+                value={!field.value ? null : dayjs(field.value)}
                 onChange={(value) => setFieldValue(field.name, value)}
                 slotProps={{
                     textField: {

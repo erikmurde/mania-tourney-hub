@@ -1,6 +1,8 @@
 import { Button, Grid, Typography, useTheme } from '@mui/material'
+import TournamentCreateForm from './tournament/form/TournamentCreateForm';
+import { AuthService } from '../services/authService';
 
-const Hero = () => {
+const Hero = ({isLoggedIn}: {isLoggedIn: boolean}) => {
     const theme = useTheme();
 
     return (  
@@ -14,7 +16,7 @@ const Hero = () => {
                     Welcome to the osu!mania tournament hub
                 </Typography>
             </Grid>
-            <Grid item width={0.6} marginBottom={2}>
+            <Grid item width={0.6} marginBottom={3}>
                 <Typography 
                     color={theme.palette.text.primary} 
                     textAlign='center'
@@ -26,9 +28,14 @@ const Hero = () => {
                 </Typography>
             </Grid>
             <Grid item>
-                <Button variant='contained' sx={{ boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)' }}>
-                    Create new tournament
-                </Button>
+                {isLoggedIn 
+                ?   <TournamentCreateForm/>
+                :   <Button variant='contained' 
+                        sx={{ boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)' }}
+                        onClick={() => new AuthService().login()}
+                        >
+                        Login to get started
+                    </Button>}
             </Grid>
         </Grid>
     );

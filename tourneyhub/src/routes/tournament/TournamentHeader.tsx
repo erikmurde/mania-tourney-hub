@@ -9,12 +9,21 @@ import HeaderTabs from '../../components/tournament/header/HeaderTabs';
 
 const TournamentHeader = () => {
     const [tourney, setTourney] = useState({} as TournamentDto);
+    const [tourneyUpdate, setTourneyUpdate] = useState(0);
     const { id } = useParams();
 
     useEffect(() => {
-        new TournamentService().getEntity(id!)
-            .then(tourney => setTourney(tourney));
-    }, [id]);
+        if (id) {
+            new TournamentService()
+                .getEntity(id)
+                .then(tourney => setTourney(tourney));
+            window.scrollTo(0, 0);
+        }
+    }, [id, tourneyUpdate]);
+
+    const updateTourney = () => {
+        setTourneyUpdate(tourneyUpdate + 1);
+    }
 
     return (
         <Grid container direction='column' rowSpacing={2}>
@@ -24,7 +33,7 @@ const TournamentHeader = () => {
                         <img src={tourney.banner} id='tourney-banner' alt='Tournament banner'/>
                     </Box>
                     <HeaderText name={tourney.name} description={tourney.description}/>
-                    <HeaderButtons tourney={tourney}/>
+                    <HeaderButtons tourney={tourney} updateTourney={updateTourney}/>
                     <HeaderTabs tourney={tourney}/>
                 </Paper>
             </Grid>

@@ -2,17 +2,23 @@ import { useContext } from 'react';
 import { AuthContext } from '../../../routes/Root';
 import { TournamentDto } from '../../../dto/tournament/TournamentDto';
 import { Button, Grid } from '@mui/material';
-import { Done, Edit, KeyboardArrowDown, Publish } from '@mui/icons-material';
+import { Done, KeyboardArrowDown, Publish } from '@mui/icons-material';
 import { HOST } from '../../../constants';
 import StaffApplicationForm from '../staff/form/StaffApplicationForm';
 import { useParams } from 'react-router-dom';
+import TournamentEditForm from '../form/TournamentEditForm';
 
-const HeaderButtons = ({tourney}: {tourney: TournamentDto}) => {
+interface IProps {
+    tourney: TournamentDto,
+    updateTourney: () => void
+}
+
+const HeaderButtons = ({tourney, updateTourney}: IProps) => {
     const { id } = useParams();
     const { user } = useContext(AuthContext);
 
-    const roles = user?.roles ?? [];
-    const isHost = roles.some(role => role.tournamentId === id && role.name === HOST);
+    const roles = user ? user.roles : [];
+    const isHost = user && roles.some(role => role.tournamentId === id && role.name === HOST);
 
     return (  
         <Grid container columnSpacing={1} height={56} justifyContent='center'>
@@ -31,9 +37,7 @@ const HeaderButtons = ({tourney}: {tourney: TournamentDto}) => {
             </Grid>}
             {isHost && !tourney.done &&
             <Grid item>
-                <Button variant='contained' startIcon={<Edit/>}>
-                    Edit
-                </Button>
+                <TournamentEditForm tourney={tourney} user={user} updateTourney={updateTourney}/>
             </Grid>}
             {isHost && !tourney.public &&
             <Grid item>

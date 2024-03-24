@@ -24,10 +24,11 @@ export abstract class BaseEntityService<TEntityDto> extends BaseService {
         return response.data;
     }
 
-    async create(entity: TEntityDto) {
+    async create(entity: TEntityDto): Promise<TEntityDto> {
         const response = await this.axios.post(this.baseUrl, entity);
 
         console.log('create response: ', response);
+        return response.data;
     }
 
     async edit(id: string, entity: TEntityDto) {

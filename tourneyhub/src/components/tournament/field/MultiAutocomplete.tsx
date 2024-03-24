@@ -3,18 +3,20 @@ import Flag from '../../Flag';
 import { FieldInputProps, FormikProps } from 'formik';
 import { EventParticipantDto } from '../../../dto/user/EventParticipantDto';
 import { IUserDto } from '../../../dto/user/IUserDto';
+import { ICountryDto } from '../../../dto/ICountryDto';
 
-type IOption = IUserDto | EventParticipantDto
+type IOption = IUserDto | EventParticipantDto | ICountryDto
 
 interface IProps {
     field: FieldInputProps<any>,
     form: FormikProps<any>,
     label: string,
     error: string,
+    country?: boolean,
     options: IOption[]
 }
 
-const MultiAutocomplete = ({field, form, label, error, options}: IProps) => {
+const MultiAutocomplete = ({field, form, label, error, country, options}: IProps) => {
 
     const initialValue = options.filter(option => 
         form.values[field.name].includes(option.name)
@@ -23,6 +25,7 @@ const MultiAutocomplete = ({field, form, label, error, options}: IProps) => {
     return (  
         <Autocomplete
             multiple
+            disableCloseOnSelect
             options={options}
             getOptionLabel={option => option.name}
             isOptionEqualToValue={(option, value) => option.name === value.name}
@@ -32,7 +35,9 @@ const MultiAutocomplete = ({field, form, label, error, options}: IProps) => {
             }
             renderOption={(props, option) => (
                 <li {...props}>
-                    <Flag country={option.country}/>
+                    <Flag country={country 
+                        ? option as ICountryDto 
+                        : (option as IUserDto | EventParticipantDto).country}/>
                     <Typography marginLeft={1}>
                         {option.name}
                     </Typography>

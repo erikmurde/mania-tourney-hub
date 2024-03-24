@@ -1,14 +1,17 @@
 import { ExpandMore, FilterAlt } from '@mui/icons-material';
 import { Accordion, AccordionActions, AccordionDetails, AccordionSummary, Button, Grid, Typography } from '@mui/material';
 import { TournamentDto } from '../dto/tournament/TournamentDto';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { TournamentService } from '../services/tournamentService';
 import TournamentBlock from '../components/tournament/list/TournamentBlock';
 import TournamentFilters from '../components/tournament/list/TournamentFilters';
 import { TourneyFilters } from '../domain/TourneyFilters';
 import Hero from '../components/Hero';
+import { AuthContext } from './Root';
+import { AuthService } from '../services/authService';
 
 const Home = () => {
+    const { user } = useContext(AuthContext);
     const [tourneys, setTourneys] = useState([] as TournamentDto[])
     const [filteredTourneys, setFilteredTourneys] = useState([] as TournamentDto[]);
     const [filters, setFilters] = useState({
@@ -20,6 +23,7 @@ const Home = () => {
         minRank: '',
         maxRank: ''
     } as TourneyFilters);
+    const authService = new AuthService();
 
     useEffect(() => {
         new TournamentService()
@@ -44,9 +48,13 @@ const Home = () => {
         );
     }
 
+    const canDisplayTourney = (tourney: TournamentDto, done: boolean) => {
+        return tourney.done === done && ((user && authService.isStaff(user, tourney.id)) || tourney.public);
+    }
+
     return (  
         <Grid container direction='column' rowGap={2}>
-            <Hero/>
+            <Hero isLoggedIn={user !== null}/>
             <Grid item>
                 <Accordion elevation={2} defaultExpanded>
                     <AccordionSummary expandIcon={<ExpandMore/>} sx={{ paddingLeft: 5 }}>
@@ -73,12 +81,12 @@ const Home = () => {
             <Grid item>
                 <TournamentBlock 
                     name='Ongoing tournaments'
-                    tourneys={filteredTourneys.filter(tourney => !tourney.done)}/>
+                    tourneys={filteredTourneys.filter(tourney => canDisplayTourney(tourney, false))}/>
             </Grid>
             <Grid item>
                 <TournamentBlock 
                     name='Past tournaments'
-                    tourneys={filteredTourneys.filter(tourney => tourney.done)}/>
+                    tourneys={filteredTourneys.filter(tourney => canDisplayTourney(tourney, true))}/>
             </Grid>
         </Grid>
 

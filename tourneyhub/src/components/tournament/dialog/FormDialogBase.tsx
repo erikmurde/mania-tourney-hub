@@ -39,7 +39,8 @@ const FormDialogBase = ({title, formName, btnIcon, submitActionName, btnProps, f
         {open &&
         <Dialog open={open} onClose={() => setOpen(false)} fullWidth maxWidth={size ?? 'sm'}>
             <TourneyDialogTitle title={title} onClose={() => setOpen(false)}/>
-            <StyledDialogContent>
+            <StyledDialogContent sx={{ '&::-webkit-scrollbar': {display: 'none'} }}>
+                <Divider/>
                 {form}
             </StyledDialogContent>
             <StyledDialogActions>

@@ -5,7 +5,6 @@ import TourneyDateTimeField from '../../../field/TourneyDateTimeField';
 import { Schema } from 'yup';
 import { EventParticipantDto } from '../../../../../dto/user/EventParticipantDto';
 import { MatchCreateDto } from '../../../../../dto/schedule/MatchCreateDto';
-import TestAutocomplete from '../../../field/MultiAutocomplete';
 import MultiAutocomplete from '../../../field/MultiAutocomplete';
 
 interface IProps {

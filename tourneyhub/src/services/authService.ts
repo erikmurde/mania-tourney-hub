@@ -1,4 +1,4 @@
-import { HOST } from '../constants';
+import { ADMIN, COMMENTATOR, GFX, HOST, MAPPER, MAPPOOLER, PLAYTESTER, REFEREE, SHEETER, STREAMER } from '../constants';
 import { IUserDto } from '../dto/user/IUserDto';
 import { BaseEntityService } from './base/baseEntityService';
 
@@ -13,6 +13,16 @@ export class AuthService extends BaseEntityService<IUserDto> {
             .map(role => role.name);
 
         return roles.includes(HOST);
+    }
+
+    isStaff(user: IUserDto, tournamentId: string) {
+        const staffRoles = [HOST, ADMIN, MAPPOOLER, MAPPER, PLAYTESTER, REFEREE, STREAMER, COMMENTATOR, SHEETER, GFX];
+
+        const userRoles = user.roles
+            .filter(role => role.tournamentId === tournamentId)
+            .map(role => role.name);
+
+        return staffRoles.some(staffRole => userRoles.includes(staffRole));
     }
 
     async login() {
