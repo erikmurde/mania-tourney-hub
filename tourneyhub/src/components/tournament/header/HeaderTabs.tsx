@@ -2,15 +2,14 @@ import { Grid, Tabs } from '@mui/material';
 import { useContext, useState } from 'react';
 import TourneyTab from '../TourneyTab';
 import { AuthContext } from '../../../routes/Root';
-import { HOST } from '../../../constants';
 import { TournamentDto } from '../../../dto/tournament/TournamentDto';
+import { AuthService } from '../../../services/authService';
 
 const HeaderTabs = ({tourney}: {tourney: TournamentDto}) => {
     const [value, setValue] = useState(0);
     const { user } = useContext(AuthContext);
 
-    const roles = user?.roles ?? [];
-    const isHost = roles.filter(role => role.name === HOST).length > 0;
+    const isHost = user && new AuthService().isHost(user, tourney.id);
     const tourneyType = tourney.maxTeamSize > 1 ? 'teams' : 'players';
 
     return ( 

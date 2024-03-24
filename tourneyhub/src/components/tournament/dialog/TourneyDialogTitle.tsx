@@ -11,7 +11,7 @@ const TourneyDialogTitle = ({title, fontSize, onClose}: IProps) => {
     return (  
         <DialogTitle>
             <Box display='flex' alignItems='center'>
-                <Typography variant='h4' flexGrow={1} fontSize={fontSize ?? 26}>
+                <Typography flexGrow={1} fontSize={fontSize ?? 26} fontWeight={500}>
                     {title}
                 </Typography>
                 <Box marginLeft={3}>

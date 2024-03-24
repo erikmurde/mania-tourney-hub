@@ -72,6 +72,21 @@ const Information = () => {
         }
     };
 
+    const hasNoContent = (delta: any) => {
+        if (!delta.ops) {
+            return true;
+        }
+        if (delta.ops.length === 0) {
+            return true;
+        }
+        for (let i = 0; i < delta.ops.length; i++) {
+            if (delta.ops[i].insert.trim() !== '') {
+                return false;
+            }
+        }
+        return true;
+    }
+
     const editInfo = async() => {
         if (id) {
             const tourney = await service.getEntity(id);
@@ -114,7 +129,8 @@ const Information = () => {
                     </Button>}
                 </Grid>
                 <Grid item xs={12} marginLeft={5} marginRight={5}>
-                    {!edit && !value && <NoItems name='information'/>}
+                    {!edit && hasNoContent(value) && 
+                    <NoItems name='information'/>}
                     <ReactQuill
                         className={edit ? 'quill-edit' : 'quill-view'}
                         theme='snow'

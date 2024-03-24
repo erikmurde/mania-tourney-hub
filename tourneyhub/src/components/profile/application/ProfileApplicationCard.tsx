@@ -67,7 +67,7 @@ const ProfileApplicationCard = ({application, navLink, applicationUpdate, setApp
                     title={'Are you sure you wish to retract this application?'} 
                     actionTitle={'Retract'} 
                     action={onRetract}
-                    btnProps={{ color: 'error', title: 'Retract', sx: { height: 30 }}}/>
+                    btnProps={{ color: 'error', title: 'Retract' }}/>
             </StyledCardActions>}
         </Card>
     );

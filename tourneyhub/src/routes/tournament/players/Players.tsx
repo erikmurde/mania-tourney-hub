@@ -63,7 +63,7 @@ const Players = () => {
         <Paper elevation={2} sx={{ minHeight: 500, paddingBottom: 2 }}>
             <Grid container marginBottom={5}>
                 <SectionTitle title='Players'/>
-                {!tourney.participantsPublic && 
+                {isValid && !tourney.participantsPublic && 
                 <Grid item xs={12} margin={5} marginTop={2}>
                     <ConfirmationDialog
                         btnProps={{ 
@@ -75,7 +75,7 @@ const Players = () => {
                         actionTitle={'Publish'} 
                         action={() => publishPlayers()}/>
                 </Grid>}
-                <Grid item>
+                <Grid item xs={12}>
                     <PlayerList 
                         playersPublic={tourney.participantsPublic}
                         players={players.sort((a, b) => 

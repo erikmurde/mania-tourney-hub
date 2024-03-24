@@ -131,8 +131,7 @@ const Staff = () => {
             <>
             {roles.map(role => {
                 const filteredStaff = filterStaff(role);
-                return filteredStaff.length > 0 && 
-                <StaffGroup 
+                return <StaffGroup 
                     key={role}
                     name={role === GFX 
                         ? 'Graphic Designers' 

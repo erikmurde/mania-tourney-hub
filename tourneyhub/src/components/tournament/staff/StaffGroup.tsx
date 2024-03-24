@@ -25,6 +25,10 @@ const StaffGroup = ({name, groupRole, staff, removeStaffRole}: IProps) => {
                     {name}
                 </Typography>
                 <Grid container spacing={1} justifyContent='center'>
+                    {staff.length === 0 && 
+                    <Typography fontSize={20}>
+                        No staff here yet
+                    </Typography>}
                     {staff.map(member => 
                         <Grid item key={member.id}>
                             <StaffCard 

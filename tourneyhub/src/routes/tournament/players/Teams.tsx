@@ -82,7 +82,7 @@ const Teams = () => {
                     </Button>
                 </Grid>}
                 {(isValid || tourney.participantsPublic) &&
-                <Grid item>
+                <Grid item xs={12}>
                     <TeamList 
                         teamsPublic={tourney.participantsPublic} 
                         teams={teams} 

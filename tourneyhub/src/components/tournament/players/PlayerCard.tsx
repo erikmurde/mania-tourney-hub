@@ -50,7 +50,7 @@ const PlayerCard = ({playersPublic, player, eliminatePlayer}: IProps) => {
                     {playersPublic && 
                     <Grid item xs={3}>
                         <Typography fontSize={14} textAlign='end'>
-                            Seed {stats.seeding}
+                            {stats.seeding > 0 ? `Seed ${stats.seeding}` : ''}
                         </Typography>
                     </Grid>}
                     <Flag country={player.country}/>

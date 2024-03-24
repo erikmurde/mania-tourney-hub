@@ -30,22 +30,12 @@
         },
         {
           "tournamentId": "1",
-          "name": "host",
-          "canRegWithRole": false
-        },
-        {
-          "tournamentId": "lr_cc0V",
-          "name": "host",
-          "canRegWithRole": false
-        },
-        {
-          "tournamentId": "lr_cc0V",
           "name": "mapper",
           "canRegWithRole": false
         },
         {
           "tournamentId": "lr_cc0V",
-          "name": "mappooler",
+          "name": "host",
           "canRegWithRole": false
         }
       ],
@@ -4809,38 +4799,26 @@
       "code": "asd",
       "description": "asdasdasd",
       "banner": "https://i.ppy.sh/3b753e545a099f6422213b3849e4fd9eb3c0f071/68747470733a2f2f63646e2e646973636f72646170702e636f6d2f6174746163686d656e74732f313231323837383034383734383234393130392f313231323837383038343036383437343932302f33372e6a70673f65783d36356633366662642669733d363565306661626426686d3d3832663738363234626633653264613666653034356235303564393061663133306432646633643733396361656565373261303264313034376238333166653926",
-      "public": false,
-      "participantsPublic": false,
+      "public": true,
+      "participantsPublic": true,
       "done": false,
       "keys": 4,
-      "minTeamSize": 2,
-      "maxTeamSize": 2,
+      "minTeamSize": 1,
+      "maxTeamSize": 1,
       "minRank": 0,
       "maxRank": 0,
       "protects": false,
       "warmups": true,
-      "regOpen": false,
+      "regOpen": true,
       "applicationOpen": false,
-      "regDeadline": null,
+      "regDeadline": "Wed, 10 Jul 2024 07:00:00 GMT",
       "applicationDeadline": null,
       "discordLink": "",
       "forumLink": "",
       "challongeLink": "",
       "countries": [],
-      "information": {
-        "ops": [
-          {
-            "attributes": {
-              "color": "#f06666"
-            },
-            "insert": "Test Info"
-          },
-          {
-            "insert": "\n"
-          }
-        ]
-      },
-      "regMessage": "asdasd"
+      "information": {},
+      "regMessage": "Please join our discord server before registering."
     }
   ],
   "stages": [
@@ -5068,7 +5046,7 @@
       "id": "14",
       "stageId": "4",
       "beatmapId": 2999060,
-      "inMappool": false,
+      "inMappool": true,
       "title": "fffff op.2",
       "diff": "Evening's Extreme",
       "artist": "Five Hammer",
@@ -5325,7 +5303,7 @@
         "id": "0",
         "name": "RC"
       },
-      "inMappool": true
+      "inMappool": false
     },
     {
       "id": "uudqwCQ",

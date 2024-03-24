@@ -1,4 +1,4 @@
-import { Button, ButtonProps, Dialog } from '@mui/material';
+import { Button, ButtonProps, Dialog, Divider } from '@mui/material';
 import TourneyDialogTitle from './TourneyDialogTitle';
 import { StyledDialogActions } from '../../styled/StyledDialogActions';
 import { useState } from 'react';
@@ -35,7 +35,7 @@ const ConfirmationDialog = ({btnProps, btnIcon, title, description, actionTitle,
                     fontSize={18} 
                     onClose={() => setOpen(false)}
                 />
-                <StyledDialogContent>
+                <StyledDialogContent sx={{ marginBottom: 1 }}>
                     {description}
                 </StyledDialogContent>
                 <StyledDialogActions>
