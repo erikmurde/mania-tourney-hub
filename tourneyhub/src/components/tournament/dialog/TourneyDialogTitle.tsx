@@ -1,5 +1,5 @@
 import { Close } from '@mui/icons-material';
-import { DialogTitle, Box, IconButton, Typography } from '@mui/material';
+import { DialogTitle, Box, IconButton, Typography, Divider } from '@mui/material';
 
 interface IProps {
     title: string,
@@ -10,7 +10,7 @@ interface IProps {
 const TourneyDialogTitle = ({title, fontSize, onClose}: IProps) => {
     return (  
         <DialogTitle>
-            <Box display='flex' alignItems='center'>
+            <Box display='flex' alignItems='center' marginBottom={1}>
                 <Typography flexGrow={1} fontSize={fontSize ?? 26} fontWeight={500}>
                     {title}
                 </Typography>
@@ -20,6 +20,7 @@ const TourneyDialogTitle = ({title, fontSize, onClose}: IProps) => {
                     </IconButton>
                 </Box>
             </Box>
+            <Divider/>
         </DialogTitle>
     );
 }

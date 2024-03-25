@@ -1,6 +1,7 @@
 import { Grid } from '@mui/material';
 import { IStageDto } from '../../../dto/stage/IStageDto';
 import StageCard from './card/StageCard';
+import NoItems from '../NoItems';
 
 const StageList = ({stages}: {stages: IStageDto[]}) => {
     return (  
@@ -10,6 +11,7 @@ const StageList = ({stages}: {stages: IStageDto[]}) => {
                     <StageCard stage={stage}/>
                 </Grid>
             )}
+            {stages.length === 0 && <NoItems name='stages'/>}
         </Grid>
     );
 }

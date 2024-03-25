@@ -6,6 +6,7 @@ import MapManageCard from './card/MapManageCard';
 import { MapService } from '../../../services/mapService';
 import { useContext } from 'react';
 import { UpdateContext } from '../../../routes/Root';
+import NoItems from '../NoItems';
 
 const MapManageList = ({maps}: {maps: IMapDto[]}) => {
     const { mapPoolUpdate, setMapPoolUpdate } = useContext(UpdateContext);
@@ -75,6 +76,7 @@ const MapManageList = ({maps}: {maps: IMapDto[]}) => {
     return ( 
         <Grid container justifyContent='center' rowSpacing={2}>
             {accordions}
+            {accordions.length === 0 && <NoItems name='maps'/>}
         </Grid>
     );
 }

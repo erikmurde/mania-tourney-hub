@@ -129,8 +129,6 @@ const Information = () => {
                     </Button>}
                 </Grid>
                 <Grid item xs={12} marginLeft={5} marginRight={5}>
-                    {!edit && hasNoContent(value) && 
-                    <NoItems name='information'/>}
                     <ReactQuill
                         className={edit ? 'quill-edit' : 'quill-view'}
                         theme='snow'
@@ -142,6 +140,7 @@ const Information = () => {
                         onChange={(content, delta, source, editor) => setValue(editor.getContents())}/>
                 </Grid>
             </Grid>
+            {!edit && hasNoContent(value) && <NoItems name='information'/>}
         </Paper>
     );
 }

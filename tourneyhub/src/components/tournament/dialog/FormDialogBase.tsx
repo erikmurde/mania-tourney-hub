@@ -1,4 +1,4 @@
-import { Breakpoint, Button, ButtonProps, Dialog, Divider } from '@mui/material';
+import { Breakpoint, Button, ButtonProps, Dialog, Divider, Typography } from '@mui/material';
 import { StyledDialogActions } from '../../styled/StyledDialogActions';
 import { StyledDialogContent } from '../../styled/styledDialogContent';
 import TourneyDialogTitle from './TourneyDialogTitle';
@@ -12,12 +12,16 @@ interface IProps {
     btnIcon?: JSX.Element,
     submitActionName: string,
     size?: Breakpoint,
+    description?: string,
 
     open: boolean,
     setOpen: (open: boolean) => void
 }
 
-const FormDialogBase = ({title, formName, btnIcon, submitActionName, btnProps, form, size, open, setOpen}: IProps) => {
+const FormDialogBase = ({
+    title, formName, btnIcon, submitActionName, btnProps, form, size, description, open, setOpen
+    }: IProps) => {
+
     return (  
         <>
         {btnIcon &&
@@ -39,8 +43,8 @@ const FormDialogBase = ({title, formName, btnIcon, submitActionName, btnProps, f
         {open &&
         <Dialog open={open} onClose={() => setOpen(false)} fullWidth maxWidth={size ?? 'sm'}>
             <TourneyDialogTitle title={title} onClose={() => setOpen(false)}/>
-            <StyledDialogContent sx={{ '&::-webkit-scrollbar': {display: 'none'} }}>
-                <Divider/>
+            <StyledDialogContent>
+                <Typography>{description}</Typography>
                 {form}
             </StyledDialogContent>
             <StyledDialogActions>

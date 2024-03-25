@@ -4795,11 +4795,11 @@
     },
     {
       "id": "lr_cc0V",
-      "name": "asdasdTAST",
-      "code": "asd",
-      "description": "asdasdasd",
+      "name": "4K Test tournament for testing",
+      "code": "TEST",
+      "description": "This is just a test tournament for testing functionality :)",
       "banner": "https://i.ppy.sh/3b753e545a099f6422213b3849e4fd9eb3c0f071/68747470733a2f2f63646e2e646973636f72646170702e636f6d2f6174746163686d656e74732f313231323837383034383734383234393130392f313231323837383038343036383437343932302f33372e6a70673f65783d36356633366662642669733d363565306661626426686d3d3832663738363234626633653264613666653034356235303564393061663133306432646633643733396361656565373261303264313034376238333166653926",
-      "public": true,
+      "public": false,
       "participantsPublic": true,
       "done": false,
       "keys": 4,
@@ -4809,16 +4809,18 @@
       "maxRank": 0,
       "protects": false,
       "warmups": true,
-      "regOpen": true,
+      "regOpen": false,
       "applicationOpen": false,
-      "regDeadline": "Wed, 10 Jul 2024 07:00:00 GMT",
-      "applicationDeadline": null,
+      "regDeadline": null,
+      "applicationDeadline": "2024-03-26T22:00:00.000Z",
       "discordLink": "",
       "forumLink": "",
       "challongeLink": "",
-      "countries": [],
+      "countries": [
+        "Estonia"
+      ],
       "information": {},
-      "regMessage": "Please join our discord server before registering."
+      "regMessage": "This is a test register message. If you see this then it's working."
     }
   ],
   "stages": [

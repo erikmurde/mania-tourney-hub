@@ -53,7 +53,7 @@ const ProfileRoleCard = ({tournamentId, roles, stats}: IProps) => {
                 </Typography>
                 <Typography marginBottom={1}>
                     {staffRoles.length > 0 
-                        ? `Staffed as ${staffRoles.join(', ')}` 
+                        ? `${tourney.done ? 'Staffed' : 'Staffing'} as ${staffRoles.join(', ')}` 
                         : 'Did not staff in tournament'}.
                 </Typography>
                 <Typography fontWeight={700} color={theme.palette.primary.main} marginBottom={0.5}>

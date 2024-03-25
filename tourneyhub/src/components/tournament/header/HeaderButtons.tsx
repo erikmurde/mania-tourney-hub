@@ -1,15 +1,17 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../../routes/Root';
 import { TournamentDto } from '../../../dto/tournament/TournamentDto';
-import { Button, Dialog, DialogTitle, Grid } from '@mui/material';
-import { Done, KeyboardArrowDown, Publish } from '@mui/icons-material';
+import { Button, Grid } from '@mui/material';
+import { Done, KeyboardArrowDown, Lock } from '@mui/icons-material';
 import { HOST } from '../../../constants';
 import StaffApplicationForm from '../staff/form/StaffApplicationForm';
 import { useParams } from 'react-router-dom';
 import TournamentEditForm from '../form/TournamentEditForm';
 import ConfirmationDialog from '../dialog/ConfirmationDialog';
-import { StyledDialogActions } from '../../styled/StyledDialogActions';
 import { AuthService } from '../../../services/authService';
+import TournamentPublishForm from '../form/TournamentPublishForm';
+import SuccessDialog from '../dialog/SuccessDialog';
+import { TournamentService } from '../../../services/tournamentService';
 
 interface IProps {
     tourney: TournamentDto,
@@ -18,11 +20,18 @@ interface IProps {
 
 const HeaderButtons = ({tourney, updateTourney}: IProps) => {
     const [successOpen, setSuccessOpen] = useState(false);
+    const [canMakePrivate, setCanMakePrivate] = useState(false);
     const { id } = useParams();
     const { user } = useContext(AuthContext);
+    const authService = new AuthService();
 
-    const roles = user ? user.roles.filter(role => role.tournamentId === id) : [];
-    const isHost = user && roles.some(role => role.tournamentId === id && role.name === HOST);
+    useEffect(() => {
+        if (tourney.public) {
+            authService
+                .getPlayers(tourney.id)
+                .then(players => setCanMakePrivate(players.length === 0))
+        }
+    }, [tourney.public]);
 
     const onRegister = async() => {
         if (!user) {
@@ -39,9 +48,21 @@ const HeaderButtons = ({tourney, updateTourney}: IProps) => {
             seeding: 0,
             placement: 0
         });
-        await new AuthService().edit(user.id, user);
+        await authService.edit(user.id, user);
         setSuccessOpen(true);
     }
+
+    const onPrivate = async() => {
+        tourney.public = false;
+        tourney.regOpen = false;
+        tourney.applicationOpen = false;
+
+        await new TournamentService().edit(tourney.id, tourney);
+        updateTourney();
+    }
+    
+    const roles = user ? user.roles.filter(role => role.tournamentId === id) : [];
+    const isHost = user && roles.some(role => role.tournamentId === id && role.name === HOST);
 
     return (
         <>
@@ -71,9 +92,16 @@ const HeaderButtons = ({tourney, updateTourney}: IProps) => {
             </Grid>}
             {isHost && !tourney.public &&
             <Grid item>
-                <Button variant='contained' startIcon={<Publish/>}>
-                    Publish
-                </Button>
+                <TournamentPublishForm tourney={tourney} updateTourney={updateTourney}/>
+            </Grid>}
+            {tourney.public && canMakePrivate &&
+            <Grid item>
+                <ConfirmationDialog 
+                    title='Are you sure you wish to make this tournament private?'
+                    description='The tournament can be made public again at any time.'
+                    actionTitle='Make private' 
+                    action={onPrivate}
+                    btnProps={{ startIcon: <Lock/>, title: 'Make private' }}/>
             </Grid>}
             {isHost && !tourney.done && tourney.public &&
             <Grid item>
@@ -87,16 +115,10 @@ const HeaderButtons = ({tourney, updateTourney}: IProps) => {
                 </Button>
             </Grid>
         </Grid>
-        <Dialog open={successOpen} onClose={() => setSuccessOpen(false)}>
-            <DialogTitle>
-                You have been successfully registered.
-            </DialogTitle>
-            <StyledDialogActions>
-                <Button variant='contained' onClick={() => setSuccessOpen(false)}>
-                    Close
-                </Button>
-            </StyledDialogActions>
-        </Dialog>
+        <SuccessDialog 
+            open={successOpen} 
+            setOpen={setSuccessOpen} 
+            title='You have been successfully registered.'/>
         </>
     );
 }

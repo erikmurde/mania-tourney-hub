@@ -3,6 +3,7 @@ import { IUserDto } from '../../../dto/user/IUserDto';
 import PlayerCard from './PlayerCard';
 import { AuthService } from '../../../services/authService';
 import { ACTIVE, DISQUALIFIED, ELIMINATED } from '../../../constants';
+import NoItems from '../NoItems';
 
 interface IProps {
     playersPublic: boolean,
@@ -29,6 +30,7 @@ const PlayerList = ({playersPublic, players, setPlayers}: IProps) => {
 
     return (  
         <Grid container spacing={2} justifyContent='center'>
+            {players.length === 0 && <NoItems name='players'/>}
             {players.map(player => 
                 <Grid item key={player.id}>
                     <PlayerCard playersPublic={playersPublic} player={player} eliminatePlayer={eliminatePlayer}/>
