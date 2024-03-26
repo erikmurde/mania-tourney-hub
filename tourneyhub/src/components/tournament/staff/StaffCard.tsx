@@ -1,4 +1,4 @@
-import { Card, CardMedia, Grid, Typography, useTheme } from '@mui/material';
+import { Card, CardActionArea, CardMedia, Grid, Typography, useTheme } from '@mui/material';
 import { IUserDto } from '../../../dto/user/IUserDto';
 import { PersonRemove } from '@mui/icons-material';
 import ConfirmationDialog from '../dialog/ConfirmationDialog';
@@ -6,8 +6,9 @@ import Flag from '../../Flag';
 import { AuthService } from '../../../services/authService';
 import { useParams } from 'react-router-dom';
 import { UserCardContent } from '../../styled/UserCardContent';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { AuthContext } from '../../../routes/Root';
+import Profile from '../../../routes/profile/Profile';
 
 interface IProps {
     staff: IUserDto,
@@ -17,6 +18,7 @@ interface IProps {
 const StaffCard = ({staff, removeStaff}: IProps) => {
     const { user } = useContext(AuthContext);
     const { id } = useParams();
+    const [open, setOpen] = useState(false);
     const theme = useTheme();
     const service = new AuthService();
 
@@ -25,12 +27,14 @@ const StaffCard = ({staff, removeStaff}: IProps) => {
 
     return (  
         <Card elevation={8} sx={{ display: 'flex', width: 320, height: 80 }}>
-            <CardMedia
-                sx={{ width: 80, minWidth: 80 }}
-                className='avatar'
-                image={staff.avatar} 
-                title={`Avatar of ${staff.name}`}
-            />
+            <CardActionArea sx={{ width: 80, minWidth: 80, height: 1 }} onClick={() => setOpen(true)}>
+                <CardMedia
+                    className='avatar'
+                    image={staff.avatar} 
+                    title={`Avatar of ${staff.name}`}
+                />
+            </CardActionArea>
+            <Profile owner={staff} open={open} setOpen={setOpen}/>
             <UserCardContent>
                 <Grid container columnSpacing={1}>
                     <Grid item xs={isStaffHost || !isHost ? 12 : 9}>

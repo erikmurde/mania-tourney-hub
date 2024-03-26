@@ -11,8 +11,8 @@ const Header = () => {
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     const [profileOpen, setProfileOpen] = useState(false);
     const open = Boolean(anchorEl);
-    const navigate = useNavigate();
     const service = new AuthService();
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (user) {
@@ -62,7 +62,8 @@ const Header = () => {
                 Logout
             </MenuItem>
         </Menu>
-        <Profile open={profileOpen} setOpen={setProfileOpen}/>
+        {user && 
+        <Profile owner={user} open={profileOpen} setOpen={setProfileOpen}/>}
         </>
     );
 }

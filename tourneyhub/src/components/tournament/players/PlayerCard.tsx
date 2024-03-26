@@ -1,14 +1,15 @@
-import { Card, CardMedia, Grid, Typography, useTheme } from '@mui/material';
+import { Card, CardActionArea, CardMedia, Grid, Typography, useTheme } from '@mui/material';
 import { IUserDto } from '../../../dto/user/IUserDto';
 import Flag from '../../Flag';
 import { PersonRemove } from '@mui/icons-material';
 import ConfirmationDialog from '../dialog/ConfirmationDialog';
 import { UserCardContent } from '../../styled/UserCardContent';
 import { AuthService } from '../../../services/authService';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { AuthContext } from '../../../routes/Root';
 import { useParams } from 'react-router-dom';
 import { ACTIVE, DISQUALIFIED, ELIMINATED, REGISTERED, SUFFIX_MAP } from '../../../constants';
+import Profile from '../../../routes/profile/Profile';
 
 interface IProps {
     playersPublic: boolean,
@@ -19,6 +20,7 @@ interface IProps {
 const PlayerCard = ({playersPublic, player, eliminatePlayer}: IProps) => {
     const { user } = useContext(AuthContext);
     const { id } = useParams();
+    const [open, setOpen] = useState(false);
     const theme = useTheme();
     const stats = player.stats[0];
 
@@ -30,16 +32,18 @@ const PlayerCard = ({playersPublic, player, eliminatePlayer}: IProps) => {
         [ELIMINATED, theme.palette.error.main],
         [DISQUALIFIED, theme.palette.error.main],
         [REGISTERED, theme.palette.primary.main]
-    ])
+    ]);
 
     return (  
         <Card elevation={8} sx={{ display: 'flex', width: 400, height: 90 }}>
-            <CardMedia
-                sx={{ width: 90, minWidth: 90 }}
-                className='avatar'
-                image={player.avatar} 
-                title={`Avatar of ${player.name}`}
-            />
+            <CardActionArea sx={{ width: 90, minWidth: 90, height: 1 }} onClick={() => setOpen(true)}>
+                <CardMedia
+                    className='avatar'
+                    image={player.avatar} 
+                    title={`Avatar of ${player.name}`}
+                />
+            </CardActionArea>
+            <Profile owner={player} open={open} setOpen={setOpen}/>
             <UserCardContent>
                 <Grid container columnSpacing={1} alignItems='center'>
                     <Grid item xs={playersPublic ? 9 : 12}>

@@ -1,4 +1,4 @@
-import { Breakpoint, Button, ButtonProps, Dialog, Divider, Typography } from '@mui/material';
+import { Breakpoint, Button, ButtonProps, Dialog, Typography } from '@mui/material';
 import { StyledDialogActions } from '../../styled/StyledDialogActions';
 import { StyledDialogContent } from '../../styled/styledDialogContent';
 import TourneyDialogTitle from './TourneyDialogTitle';
@@ -9,8 +9,8 @@ interface IProps {
     formName: string,
     form: JSX.Element,
     btnProps: ButtonProps,
-    btnIcon?: JSX.Element,
     submitActionName: string,
+    btnIcon?: JSX.Element,
     size?: Breakpoint,
     description?: string,
 
@@ -19,7 +19,8 @@ interface IProps {
 }
 
 const FormDialogBase = ({
-    title, formName, btnIcon, submitActionName, btnProps, form, size, description, open, setOpen
+    title, formName, btnIcon, submitActionName, btnProps, form, size, description, 
+    open, setOpen
     }: IProps) => {
 
     return (  

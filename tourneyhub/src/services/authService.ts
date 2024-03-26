@@ -51,6 +51,7 @@ export class AuthService extends BaseEntityService<IUserDto> {
                     role.tournamentId !== tournamentId || role.name === 'player'));
     
         this.filterUserRolesByTournament(staff, tournamentId);
+        this.filterUserStatsByTournament(staff, tournamentId);
 
         console.log('getStaff response: ', staff);
         return staff;

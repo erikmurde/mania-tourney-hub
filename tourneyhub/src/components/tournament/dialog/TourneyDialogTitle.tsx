@@ -4,10 +4,11 @@ import { DialogTitle, Box, IconButton, Typography, Divider } from '@mui/material
 interface IProps {
     title: string,
     fontSize?: number,
+    divider?: boolean,
     onClose: () => void
 }
 
-const TourneyDialogTitle = ({title, fontSize, onClose}: IProps) => {
+const TourneyDialogTitle = ({title, fontSize, divider = true, onClose}: IProps) => {
     return (  
         <DialogTitle>
             <Box display='flex' alignItems='center' marginBottom={1}>
@@ -20,7 +21,7 @@ const TourneyDialogTitle = ({title, fontSize, onClose}: IProps) => {
                     </IconButton>
                 </Box>
             </Box>
-            <Divider/>
+            {divider && <Divider/>}
         </DialogTitle>
     );
 }
