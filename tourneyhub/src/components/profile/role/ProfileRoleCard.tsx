@@ -66,7 +66,7 @@ const ProfileRoleCard = ({tournamentId, roles, stats}: IProps) => {
                 </Typography>}
                 {stats.seeding === undefined && 
                 <Typography>
-                    Did not play in tournament.
+                    {tourney.done ? 'Did not play' : 'Not playing'} in tournament.
                 </Typography>}
             </StyledCardContent>
         </Card>

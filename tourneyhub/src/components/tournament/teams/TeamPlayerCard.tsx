@@ -5,14 +5,29 @@ import { faCrown } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from 'react';
 import Profile from '../../../routes/profile/Profile';
+import Flag from '../../Flag';
 
-const TeamPlayerCard = ({player}: {player: TeamPlayerDto}) => {
+interface IProps {
+    player: TeamPlayerDto,
+    isSeparate?: boolean
+}
+
+const TeamPlayerCard = ({player, isSeparate}: IProps) => {
     const [open, setOpen] = useState(false);
     const theme = useTheme();
 
+    const height = isSeparate ? 80 : 70;
+    const width = isSeparate ? 400 : 'auto';
+
     return (  
-        <Card elevation={12} sx={{ display: 'flex', height: 70 }}>
-            <CardActionArea sx={{ width: 70, minWidth: 70, height: 1 }} onClick={() => setOpen(true)}>
+        <Card 
+            elevation={12} 
+            sx={{ 
+                display: 'flex', 
+                height: height, 
+                width: width
+            }}>
+            <CardActionArea sx={{ width: height, minWidth: height, height: 1 }} onClick={() => setOpen(true)}>
                 <CardMedia
                     className='avatar'
                     image={player.avatar} 
@@ -34,6 +49,15 @@ const TeamPlayerCard = ({player}: {player: TeamPlayerDto}) => {
                             color={theme.palette.warning.main} 
                             size='lg'/>
                     </Grid>}
+                    {isSeparate && 
+                    <>
+                    <Flag country={player.country}/>
+                    <Grid item xs={10} marginTop={0.5}>
+                        <Typography lineHeight={1.7} fontSize={12} color={theme.palette.text.secondary}>
+                            {player.country.name}
+                        </Typography>
+                    </Grid>
+                    </>}
                 </Grid>
             </UserCardContent>
         </Card>

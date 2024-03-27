@@ -34,9 +34,11 @@ const PlayerCard = ({playersPublic, player, eliminatePlayer}: IProps) => {
         [REGISTERED, theme.palette.primary.main]
     ]);
 
+    const height = isHost ? 90 : 80;
+
     return (  
-        <Card elevation={8} sx={{ display: 'flex', width: 400, height: 90 }}>
-            <CardActionArea sx={{ width: 90, minWidth: 90, height: 1 }} onClick={() => setOpen(true)}>
+        <Card elevation={8} sx={{ display: 'flex', width: 400, height: height }}>
+            <CardActionArea sx={{ width: height, minWidth: height, height: 1 }} onClick={() => setOpen(true)}>
                 <CardMedia
                     className='avatar'
                     image={player.avatar} 
@@ -65,13 +67,22 @@ const PlayerCard = ({playersPublic, player, eliminatePlayer}: IProps) => {
                     </Grid>
                     {isHost && 
                     <Grid item xs={6} height={30}>
-                        <Typography color={colorMap.get(stats.status)} fontSize={14} marginTop={1} fontWeight={700}>
+                        <Typography 
+                            color={colorMap.get(stats.status)} 
+                            fontSize={14} 
+                            marginTop={1} 
+                            fontWeight={700}
+                            >
                             {stats.status.toUpperCase()}
                         </Typography>
                     </Grid>}
                     <Grid item xs={isHost ? 6 : 12} textAlign={'end'} height={30}>
                         {stats.placement > 0 &&
-                        <Typography fontSize={14} marginTop={1} color='secondary'>
+                        <Typography 
+                            fontSize={14} 
+                            marginTop={isHost ? 1 : 0} 
+                            color='secondary'
+                            >
                             {stats.placement}{SUFFIX_MAP.get(stats.placement % 10) ?? 'th'} place
                         </Typography>}
                         {stats.placement === 0 && isHost && !disqualified &&

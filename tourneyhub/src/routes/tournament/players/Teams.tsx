@@ -1,4 +1,4 @@
-import { Paper, Grid, Button } from '@mui/material';
+import { Paper, Grid, Button, Tabs, Tab } from '@mui/material';
 import TeamList from '../../../components/tournament/teams/TeamList';
 import SectionTitle from '../../../components/tournament/SectionTitle';
 import { TeamDto } from '../../../dto/team/TeamDto';
@@ -11,12 +11,16 @@ import { TournamentDto } from '../../../dto/tournament/TournamentDto';
 import { TournamentService } from '../../../services/tournamentService';
 import { ACTIVE, ADMIN, DISQUALIFIED, HOST } from '../../../constants';
 import ConfirmationDialog from '../../../components/tournament/dialog/ConfirmationDialog';
+import PlayerList from '../../../components/tournament/players/PlayerList';
+import { IUserDto } from '../../../dto/user/IUserDto';
+import TeamPlayerList from '../../../components/tournament/teams/TeamPlayerList';
 
 const Teams = () => {
     const { id } = useParams();
     const { user } = useContext(AuthContext);
     const [teams, setTeams] = useState([] as TeamDto[]);
     const [tourney, setTourney] = useState({} as TournamentDto);
+    const [showTeams, setShowTeams] = useState(1);
     const validRoles = [HOST, ADMIN];
     const tourneyService = new TournamentService();
     const teamService = new TeamService();
@@ -60,7 +64,18 @@ const Teams = () => {
     return (  
         <Paper elevation={2} sx={{ minHeight: 500, paddingBottom: 2 }}>
             <Grid container marginBottom={5}>
-                <SectionTitle title='Teams'/>
+                <SectionTitle title='Teams' xsAuto/>
+                <Grid item xs margin='auto' container justifyContent='center'>
+                    <Tabs
+                        textColor='secondary'
+                        indicatorColor='secondary'
+                        value={showTeams} 
+                        onChange={(_, value) => setShowTeams(value)}
+                        >
+                        <Tab label='Teams' value={1}/>
+                        <Tab label='Players' value={0}/>
+                    </Tabs>
+                </Grid>
                 {isValid && 
                 <Grid item xs={12} margin={5} marginTop={2}>
                     {!tourney.participantsPublic && 
@@ -83,11 +98,17 @@ const Teams = () => {
                 </Grid>}
                 {(isValid || tourney.participantsPublic) &&
                 <Grid item xs={12}>
-                    <TeamList 
-                        teamsPublic={tourney.participantsPublic} 
-                        teams={teams} 
-                        setTeams={setTeams}
-                    />
+                    {showTeams 
+                    ?   <TeamList 
+                            teamsPublic={tourney.participantsPublic} 
+                            teams={teams} 
+                            setTeams={setTeams}/>
+                    :   <TeamPlayerList players={
+                            teams
+                            .map(team => team.players)
+                            .flat()
+                            .sort((a, b) => a.rank - b.rank)
+                        }/>}
                 </Grid>}
             </Grid>
         </Paper>

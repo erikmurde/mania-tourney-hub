@@ -1,4 +1,4 @@
-import { Button, ButtonProps, Dialog, Divider } from '@mui/material';
+import { Breakpoint, Button, ButtonProps, Dialog, Divider } from '@mui/material';
 import TourneyDialogTitle from './TourneyDialogTitle';
 import { StyledDialogActions } from '../../styled/StyledDialogActions';
 import { useState } from 'react';
@@ -11,10 +11,11 @@ interface IProps {
     title: string,
     description?: string,
     actionTitle: string,
+    size?: Breakpoint,
     action: () => void
 }
 
-const ConfirmationDialog = ({btnProps, btnIcon, title, description, actionTitle, action}: IProps) => {
+const ConfirmationDialog = ({btnProps, btnIcon, title, description, actionTitle, size, action}: IProps) => {
     const [open, setOpen] = useState(false);
 
     return ( 
@@ -29,7 +30,7 @@ const ConfirmationDialog = ({btnProps, btnIcon, title, description, actionTitle,
                         {btnProps?.title ?? 'Missing title'}
                     </Button>}
             {open && 
-            <Dialog open={open} onClose={() => setOpen(false)}>
+            <Dialog open={open} onClose={() => setOpen(false)} maxWidth={size ?? 'sm'} fullWidth>
                 <TourneyDialogTitle 
                     title={title} 
                     fontSize={18} 

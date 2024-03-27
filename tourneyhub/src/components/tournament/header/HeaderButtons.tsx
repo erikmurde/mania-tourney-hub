@@ -71,6 +71,7 @@ const HeaderButtons = ({tourney, updateTourney}: IProps) => {
             <Grid item>
                 <ConfirmationDialog 
                     title='Are you sure you wish to register?'
+                    
                     description={tourney.regMessage}
                     actionTitle='Register' 
                     action={onRegister}
