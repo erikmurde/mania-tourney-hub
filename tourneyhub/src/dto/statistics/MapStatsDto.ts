@@ -7,8 +7,5 @@ export interface MapStatsDto {
     title: string,
     type: string,
     index: number,
-    picked: number,
-    banned: number,
-    protected: number,
     scores: TeamScoreDto[] | PlayerScoreDto[]
 }

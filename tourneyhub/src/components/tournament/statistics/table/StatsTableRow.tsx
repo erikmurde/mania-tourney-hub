@@ -4,19 +4,17 @@ import { SchedTableCell } from '../../../styled/SchedTableCell';
 import MapTypeBox from '../../../MapTypeBox';
 import { PlayerScoreDto } from '../../../../dto/score/PlayerScoreDto';
 import { MapStatsService } from '../../../../services/mapStatsService';
-import { STANDARD } from '../../../../constants';
 import { TeamScoreDto } from '../../../../dto/score/TeamScoreDto';
 import { useEffect, useState } from 'react';
 import StatsTableMvp from './StatsTableMvp';
 
 interface IProps {
     map: MapStatsDto,
-    stageType: string,
     teamTourney: boolean,
     showTeams: boolean
 }
 
-const StatsTableRow = ({map, stageType, teamTourney, showTeams}: IProps) => {
+const StatsTableRow = ({map, teamTourney, showTeams}: IProps) => {
     const service = new MapStatsService();
 
     const [state, setState] = useState({
@@ -86,12 +84,6 @@ const StatsTableRow = ({map, stageType, teamTourney, showTeams}: IProps) => {
             <SchedTableCell>
                 {state.avgAcc ? `${state.avgAcc.toFixed(2)}%` : ''}
             </SchedTableCell>
-            {stageType === STANDARD && 
-            <>
-            <SchedTableCell>{map.picked}</SchedTableCell>
-            <SchedTableCell>{map.banned}</SchedTableCell>
-            <SchedTableCell>{map.protected}</SchedTableCell>
-            </>}
         </TableRow>
     );
 }

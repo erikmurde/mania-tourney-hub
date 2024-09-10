@@ -1,13 +1,7 @@
 import { TableHead, TableRow } from '@mui/material';
-import { STANDARD } from '../../../../constants';
 import { SchedTableCell } from '../../../styled/SchedTableCell';
 
-interface IProps {
-    stageType: string,
-    showTeams: boolean
-}
-
-const StatsTableHead = ({stageType, showTeams}: IProps) => {
+const StatsTableHead = ({showTeams}: {showTeams: boolean}) => {
     return (  
         <TableHead>
             <TableRow>
@@ -22,12 +16,6 @@ const StatsTableHead = ({stageType, showTeams}: IProps) => {
                 <SchedTableCell width={50}>Acc</SchedTableCell>
                 <SchedTableCell width={80}>Avg. score</SchedTableCell>
                 <SchedTableCell width={70}>Avg. acc</SchedTableCell>
-                {stageType === STANDARD && 
-                <>
-                <SchedTableCell width={40}>Picks</SchedTableCell>
-                <SchedTableCell width={40}>Bans</SchedTableCell>
-                <SchedTableCell width={50}>Protects</SchedTableCell>
-                </>}
             </TableRow>
         </TableHead>
     );

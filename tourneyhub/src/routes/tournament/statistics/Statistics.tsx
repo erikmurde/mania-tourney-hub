@@ -96,7 +96,7 @@ const Statistics = () => {
                         teamTourney={tourney.minTeamSize > 1}
                     />}
                     {(stage.statsPublic || isHost) && stage.id && mapId === '' && mapStats.length > 0 &&
-                    <StageStats stage={stage} mapStats={mapStats} tourney={tourney}
+                    <StageStats mapStats={mapStats} tourney={tourney}
                     />}
                     {!statsVisible && <NoItems name={'statistics'}/>}
                 </Grid>

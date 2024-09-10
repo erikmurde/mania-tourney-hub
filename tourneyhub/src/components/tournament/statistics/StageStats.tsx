@@ -1,5 +1,4 @@
-import { Grid, Paper, Tab, Table, TableBody, TableContainer, Tabs } from '@mui/material';
-import { IStageDto } from '../../../dto/stage/IStageDto';
+import { Grid, Paper, Table, TableBody, TableContainer } from '@mui/material';
 import StatsTableHead from './table/StatsTableHead';
 import { useEffect, useState } from 'react';
 import StatsTableRow from './table/StatsTableRow';
@@ -8,12 +7,11 @@ import { TournamentDto } from '../../../dto/tournament/TournamentDto';
 import StatTypeTabs from './tabs/StatTypeTabs';
 
 interface IProps {
-    stage: IStageDto,
     mapStats: MapStatsDto[],
     tourney: TournamentDto
 }
 
-const StageStats = ({stage, mapStats, tourney}: IProps) => {
+const StageStats = ({mapStats, tourney}: IProps) => {
     const [showTeams, setShowTeams] = useState(false);
 
     useEffect(() => {
@@ -32,13 +30,12 @@ const StageStats = ({stage, mapStats, tourney}: IProps) => {
                 {tourney.id && 
                 <TableContainer>
                     <Table>
-                        <StatsTableHead stageType={stage.stageType} showTeams={showTeams}/>
+                        <StatsTableHead showTeams={showTeams}/>
                         <TableBody>
                             {mapStats.map(map => 
                                 <StatsTableRow 
                                     key={map.id} 
-                                    map={map} 
-                                    stageType={stage.stageType}
+                                    map={map}
                                     teamTourney={tourney.minTeamSize > 1}
                                     showTeams={showTeams}/>
                             )}

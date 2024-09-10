@@ -6288,9 +6288,6 @@
       "title": "void feat. Hiroko - world devoid of you (fairydust radio edit) [Silent Sky]",
       "type": "RC",
       "index": 1,
-      "picked": 8,
-      "banned": 3,
-      "protected": 2,
       "scores": [
         {
           "player": {
@@ -6454,9 +6451,6 @@
       "title": "Yooh - Decoy [Yoced]",
       "type": "RC",
       "index": 2,
-      "picked": 7,
-      "banned": 2,
-      "protected": 3,
       "scores": [
         {
           "player": {
@@ -6620,9 +6614,6 @@
       "title": "Silentroom - 9876734123 (\"Hyperprime\" Full Version) [1.05x For AST]",
       "type": "RC",
       "index": 3,
-      "picked": 6,
-      "banned": 1,
-      "protected": 0,
       "scores": [
         {
           "player": {
@@ -6764,9 +6755,6 @@
       "title": "Blitz Lunar - A Dichroic Glass Snafu [Broken]",
       "type": "RC",
       "index": 4,
-      "picked": 5,
-      "banned": 5,
-      "protected": 0,
       "scores": [
         {
           "player": {
@@ -6864,9 +6852,6 @@
       "title": "ZUN - Hiroari Shoots a Strange Bird ~ Till When [Perfect Cherry Blossom]",
       "type": "RC",
       "index": 5,
-      "picked": 4,
-      "banned": 3,
-      "protected": 1,
       "scores": [
         {
           "player": {
@@ -6964,9 +6949,6 @@
       "title": "Lia - Light Colors [The Color of Oblivion]",
       "type": "RC",
       "index": 6,
-      "picked": 7,
-      "banned": 4,
-      "protected": 3,
       "scores": [
         {
           "player": {
@@ -7108,9 +7090,6 @@
       "title": "Hoshimachi Suisei - phony [Master]",
       "type": "LN",
       "index": 1,
-      "picked": 10,
-      "banned": 2,
-      "protected": 5,
       "scores": [
         {
           "player": {
@@ -7142,9 +7121,6 @@
       "title": "Xi feat. Sta - Tiferet [MeLady]",
       "type": "LN",
       "index": 2,
-      "picked": 6,
-      "banned": 1,
-      "protected": 1,
       "scores": [
         {
           "player": {
@@ -7176,9 +7152,6 @@
       "title": "-45 - G e n g a o z o [void (AST Edit)]",
       "type": "LN",
       "index": 3,
-      "picked": 10,
-      "banned": 1,
-      "protected": 5,
       "scores": [
         {
           "player": {
@@ -7210,9 +7183,6 @@
       "title": "Mili - Cerebrite [iya]",
       "type": "LN",
       "index": 4,
-      "picked": 7,
-      "banned": 3,
-      "protected": 2,
       "scores": [
         {
           "player": {
@@ -7244,9 +7214,6 @@
       "title": "HiTECH NINJA vs Cranky - BREaK! BREaK! BREaK! [Break it all up]",
       "type": "HB",
       "index": 1,
-      "picked": 9,
-      "banned": 1,
-      "protected": 3,
       "scores": [
         {
           "player": {
@@ -7278,9 +7245,6 @@
       "title": "SunsetRay - PhantasmalWar [Blood moon]",
       "type": "HB",
       "index": 2,
-      "picked": 11,
-      "banned": 0,
-      "protected": 0,
       "scores": [
         {
           "player": {
@@ -7312,9 +7276,6 @@
       "title": "Juggernaut. - Catastrophe [Apocalypse]",
       "type": "HB",
       "index": 3,
-      "picked": 6,
-      "banned": 0,
-      "protected": 1,
       "scores": [
         {
           "player": {
@@ -7346,9 +7307,6 @@
       "title": "Dragonforce - Heroes of our time [The Epic]",
       "type": "TB",
       "index": 0,
-      "picked": 1,
-      "banned": 0,
-      "protected": 0,
       "scores": [
         {
           "player": {
@@ -7380,9 +7338,6 @@
       "title": "lapix - HiTECH Bass Loops Vol.1 [Stage 1: Erraticity]",
       "type": "RC",
       "index": 1,
-      "picked": 0,
-      "banned": 0,
-      "protected": 0,
       "scores": [
         {
           "player": {
@@ -7579,9 +7534,6 @@
       "title": "Uetsu Shi - Firmament Castle \"Velier\" [Stage 2: Welkin]",
       "type": "RC",
       "index": 2,
-      "picked": 0,
-      "banned": 0,
-      "protected": 0,
       "scores": [
         {
           "player": {
@@ -7767,9 +7719,6 @@
       "title": "Warak - Jikai ~ Paganelope [Stage 3: Lust]",
       "type": "HB",
       "index": 3,
-      "picked": 0,
-      "banned": 0,
-      "protected": 0,
       "scores": [
         {
           "player": {
@@ -7889,9 +7838,6 @@
       "title": "Aethoro - Woodfairies [Stage 4: Yearning]",
       "type": "LN",
       "index": 4,
-      "picked": 0,
-      "banned": 0,
-      "protected": 0,
       "scores": [
         {
           "player": {
@@ -8011,9 +7957,6 @@
       "title": "Silentroom - Nhelv [Stage 5: NERVE]",
       "type": "RC",
       "index": 5,
-      "picked": 0,
-      "banned": 0,
-      "protected": 0,
       "scores": [
         {
           "player": {
@@ -8133,9 +8076,6 @@
       "title": "dj TAKA - ELPIS [Stage 6: Hope]",
       "type": "RC",
       "index": 6,
-      "picked": 0,
-      "banned": 0,
-      "protected": 0,
       "scores": [
         {
           "player": {
@@ -8255,9 +8195,6 @@
       "title": "Tsukino - Debiru Janai Mon [Stage 7: Zakozako]",
       "type": "LN",
       "index": 7,
-      "picked": 0,
-      "banned": 0,
-      "protected": 0,
       "scores": [
         {
           "player": {
@@ -8377,9 +8314,6 @@
       "title": "sakuzyo - Strange Love [Stage 8: Affliction]",
       "type": "HB",
       "index": 8,
-      "picked": 0,
-      "banned": 0,
-      "protected": 0,
       "scores": [
         {
           "player": {
@@ -8499,9 +8433,6 @@
       "title": "linear ring with RNAcid - Gypsophila (MyZterioN-) [blossom 1.1x (166bpm)]",
       "type": "RC",
       "index": 1,
-      "picked": 10,
-      "banned": 4,
-      "protected": 1,
       "scores": [
         {
           "name": "United States",
@@ -8589,9 +8520,6 @@
       "title": "seatrus - Cosmo Station (Blessia) [Orbis x1.1]",
       "type": "RC",
       "index": 2,
-      "picked": 2,
-      "banned": 6,
-      "protected": 1,
       "scores": [
         {
           "name": "Canada",
@@ -8679,9 +8607,6 @@
       "title": "EvOke - Edison (Miaurichesu) [Challenge (Edit) 1.1x (146bpm)]",
       "type": "RC",
       "index": 3,
-      "picked": 8,
-      "banned": 0,
-      "protected": 4,
       "scores": [
         {
           "name": "United States",
@@ -8769,9 +8694,6 @@
       "title": "Camellia - Break The Silence (0DZ0) [Challenge]",
       "type": "RC",
       "index": 4,
-      "picked": 8,
-      "banned": 0,
-      "protected": 2,
       "scores": [
         {
           "name": "Indonesia",
@@ -8859,9 +8781,6 @@
       "title": "Kazuma Kiryu (CV: Takaya Kuroda) - Baka Mitai (elexire) [Ska's n no. . (edit)]",
       "type": "RC",
       "index": 5,
-      "picked": 12,
-      "banned": 0,
-      "protected": 1,
       "scores": [
         {
           "name": "South Korea",
@@ -8949,9 +8868,6 @@
       "title": "Frums - Nisemono (Pizza69) [Impostor (cut 1.05x)]",
       "type": "RC",
       "index": 6,
-      "picked": 8,
-      "banned": 4,
-      "protected": 1,
       "scores": [
         {
           "name": "United States",
@@ -9039,9 +8955,6 @@
       "title": "MisoilePunch -Forever- - Bloomin' (guden) [Flowerin']",
       "type": "HB",
       "index": 1,
-      "picked": 10,
-      "banned": 1,
-      "protected": 2,
       "scores": [
         {
           "name": "Brazil",
@@ -9129,9 +9042,6 @@
       "title": "Camellia - Upload Your Mind :: Download My Soul (Cut Ver.) (-mint-) [Multidimensional]",
       "type": "HB",
       "index": 2,
-      "picked": 11,
-      "banned": 0,
-      "protected": 1,
       "scores": [
         {
           "name": "Brazil",
@@ -9219,9 +9129,6 @@
       "title": "M-O-T-U - Calculator ([Crz]FolAH1217) [.857142]",
       "type": "HB",
       "index": 3,
-      "picked": 9,
-      "banned": 0,
-      "protected": 0,
       "scores": [
         {
           "name": "Brazil",
@@ -9309,9 +9216,6 @@
       "title": "paraoka - Astra Walkthrough ([Crz]Crysarlene) [Faded Stars]",
       "type": "LN",
       "index": 1,
-      "picked": 11,
-      "banned": 1,
-      "protected": 3,
       "scores": [
         {
           "name": "South Korea",
@@ -9399,9 +9303,6 @@
       "title": "Helblinde - Heaven's Fall (guden) [Firmaments]",
       "type": "LN",
       "index": 2,
-      "picked": 12,
-      "banned": 1,
-      "protected": 2,
       "scores": [
         {
           "name": "Brazil",
@@ -9489,9 +9390,6 @@
       "title": "Toromaru - Erinyes (Toaph Daddy) [Enigma]",
       "type": "LN",
       "index": 3,
-      "picked": 5,
-      "banned": 3,
-      "protected": 2,
       "scores": [
         {
           "name": "Japan",
@@ -9579,9 +9477,6 @@
       "title": "AltVoid - Sample enSemble (Tidek) [SV asSemble]",
       "type": "SV",
       "index": 1,
-      "picked": 4,
-      "banned": 8,
-      "protected": 5,
       "scores": [
         {
           "name": "Japan",
@@ -9669,9 +9564,6 @@
       "title": "EZFG - Cyber Thunder Cider (zero2snow) [??]",
       "type": "SV",
       "index": 2,
-      "picked": 11,
-      "banned": 4,
-      "protected": 7,
       "scores": [
         {
           "name": "Philippines",
@@ -9759,9 +9651,6 @@
       "title": "Camellia feat. Ninomae Ina'nis - Drenched in Air (elexire) [Submerge]",
       "type": "TB",
       "index": 0,
-      "picked": 0,
-      "banned": 0,
-      "protected": 0,
       "scores": []
     },
     {
@@ -9770,9 +9659,6 @@
       "title": "sakuraburst - sha (Cut Ver.) [Stage 1: blake]",
       "type": "SV",
       "index": 1,
-      "picked": 0,
-      "banned": 0,
-      "protected": 0,
       "scores": [
         {
           "name": "Japan",
@@ -10016,9 +9902,6 @@
       "title": "Frums - ultra-blazures (Cut Ver.) [Stage 2: amalgam]",
       "type": "RC",
       "index": 1,
-      "picked": 0,
-      "banned": 0,
-      "protected": 0,
       "scores": [
         {
           "name": "United States",
@@ -10223,9 +10106,6 @@
       "title": "xi - Tenimuhou (Cut Ver.) [Stage 3: Absolute]",
       "type": "HB",
       "index": 1,
-      "picked": 0,
-      "banned": 0,
-      "protected": 0,
       "scores": [
         {
           "name": "United States",
@@ -10430,9 +10310,6 @@
       "title": "technoplanet feat. Haruno - End of Fairytale [Stage 4: Parable]",
       "type": "LN",
       "index": 1,
-      "picked": 0,
-      "banned": 0,
-      "protected": 0,
       "scores": [
         {
           "name": "United States",
@@ -10637,9 +10514,6 @@
       "title": "Hino Isuka vs. Umeboshi Chazuke - Ultra Happy Miracle Bazoooooka!! [Stage 5: Overjoy]",
       "type": "LN",
       "index": 2,
-      "picked": 0,
-      "banned": 0,
-      "protected": 0,
       "scores": [
         {
           "name": "United States",
@@ -10844,9 +10718,6 @@
       "title": "Camellia - onslaught -Retaliation of Bahamut- [Stage 6: Massacre]",
       "type": "HB",
       "index": 2,
-      "picked": 0,
-      "banned": 0,
-      "protected": 0,
       "scores": [
         {
           "name": "United States",
@@ -11051,9 +10922,6 @@
       "title": "katagiri - AMEN KATAGIRI GENERATION [Stage 7: Revival]",
       "type": "RC",
       "index": 2,
-      "picked": 0,
-      "banned": 0,
-      "protected": 0,
       "scores": [
         {
           "name": "United States",
@@ -11258,9 +11126,6 @@
       "title": "Kou! - Xuasar Charge [Stage 8: A Sea of Stars]",
       "type": "RC",
       "index": 3,
-      "picked": 0,
-      "banned": 0,
-      "protected": 0,
       "scores": [
         {
           "name": "United States",
