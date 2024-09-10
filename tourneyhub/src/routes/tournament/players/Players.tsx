@@ -8,15 +8,15 @@ import SectionTitle from '../../../components/tournament/SectionTitle';
 import ConfirmationDialog from '../../../components/tournament/dialog/ConfirmationDialog';
 import { Publish } from '@mui/icons-material';
 import { TournamentService } from '../../../services/tournamentService';
-import { TournamentDto } from '../../../dto/tournament/TournamentDto';
 import { DISQUALIFIED, ACTIVE, ADMIN, HOST } from '../../../constants';
 import { AuthContext } from '../../Root';
+import { useTourney } from '../TournamentHeader';
 
 const Players = () => {
     const { id } = useParams();
+    const { tourney } = useTourney();
     const { user } = useContext(AuthContext);
     const [players, setPlayers] = useState([] as IUserDto[]);
-    const [tourney, setTourney] = useState({} as TournamentDto);
     const validRoles = [HOST, ADMIN];
     const tourneyService = new TournamentService();
     const authService = new AuthService();
@@ -27,10 +27,6 @@ const Players = () => {
 
     useEffect(() => {
         if (id) {
-            tourneyService
-                .getEntity(id)
-                .then(tourney => setTourney(tourney));
-
             authService
                 .getPlayers(id)
                 .then(players => setPlayers(isValid 

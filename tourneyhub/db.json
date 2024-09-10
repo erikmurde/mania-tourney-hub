@@ -29,11 +29,6 @@
           "canRegWithRole": false
         },
         {
-          "tournamentId": "1",
-          "name": "mapper",
-          "canRegWithRole": false
-        },
-        {
           "tournamentId": "lr_cc0V",
           "name": "host",
           "canRegWithRole": false
@@ -4283,9 +4278,12 @@
       "applicationOpen": true,
       "regDeadline": "Wed, 10 Jul 2024 07:00:00 GMT",
       "applicationDeadline": "Wed, 10 Jul 2024 07:00:00 GMT",
-      "discordLink": "",
-      "forumLink": "",
-      "challongeLink": "",
+      "links": [
+        {
+          "name": "discord",
+          "link": "https://www.youtube.com"
+        }
+      ],
       "countries": [],
       "regMessage": "Please join our discord server before registering.",
       "information": {
@@ -4827,7 +4825,7 @@
       "banner": "https://assets.ppy.sh/tournament-banners/official/mwc4k2023.jpg",
       "public": true,
       "participantsPublic": true,
-      "done": true,
+      "done": false,
       "keys": 4,
       "minTeamSize": 4,
       "maxTeamSize": 6,
@@ -4839,9 +4837,12 @@
       "applicationOpen": false,
       "regDeadline": "Wed, 10 Jul 2024 07:00:00 GMT",
       "applicationDeadline": "Wed, 10 Jul 2024 07:00:00 GMT",
-      "discordLink": "",
-      "forumLink": "",
-      "challongeLink": "",
+      "links": [
+        {
+          "name": "discord",
+          "link": "https://www.youtube.com"
+        }
+      ],
       "countries": [],
       "regMessage": "Please join our discord server before registering.",
       "information": {}
@@ -4851,7 +4852,7 @@
       "name": "4K Test tournament for testing",
       "code": "TEST",
       "description": "This is just a test tournament for testing functionality :)",
-      "banner": "https://i.ppy.sh/3b753e545a099f6422213b3849e4fd9eb3c0f071/68747470733a2f2f63646e2e646973636f72646170702e636f6d2f6174746163686d656e74732f313231323837383034383734383234393130392f313231323837383038343036383437343932302f33372e6a70673f65783d36356633366662642669733d363565306661626426686d3d3832663738363234626633653264613666653034356235303564393061663133306432646633643733396361656565373261303264313034376238333166653926",
+      "banner": "https://static.vecteezy.com/system/resources/previews/024/388/059/large_2x/space-wallpaper-banner-background-stunning-view-of-a-cosmic-galaxy-with-planets-and-space-objects-elements-of-this-image-furnished-by-nasa-generate-ai-free-photo.jpg",
       "public": false,
       "participantsPublic": true,
       "done": false,
@@ -4865,10 +4866,13 @@
       "regOpen": false,
       "applicationOpen": false,
       "regDeadline": null,
-      "applicationDeadline": "2024-03-26T22:00:00.000Z",
-      "discordLink": "",
-      "forumLink": "",
-      "challongeLink": "",
+      "applicationDeadline": "2024-10-22T21:00:00.000Z",
+      "links": [
+        {
+          "name": "discord",
+          "link": "https://www.youtube.com"
+        }
+      ],
       "countries": [
         "Estonia"
       ],
@@ -5026,7 +5030,7 @@
       "sr": 5.42,
       "hp": 8,
       "od": 8,
-      "mapTypeId": "0",
+      "mapType": "RC",
       "index": 1,
       "comment": "Test comment"
     },
@@ -5047,7 +5051,7 @@
       "sr": 5.84,
       "hp": 8,
       "od": 8,
-      "mapTypeId": "0",
+      "mapType": "RC",
       "index": 2,
       "comment": "Test comment"
     },
@@ -5068,7 +5072,7 @@
       "sr": 5.71,
       "hp": 8,
       "od": 8,
-      "mapTypeId": "0",
+      "mapType": "RC",
       "index": 3,
       "comment": "Test comment"
     },
@@ -5089,13 +5093,9 @@
       "sr": 5.23,
       "hp": 8,
       "od": 8,
-      "mapTypeId": "0",
+      "mapType": "RC",
       "index": 4,
-      "comment": "Test comment",
-      "mapType": {
-        "id": "0",
-        "name": "RC"
-      }
+      "comment": "Test comment"
     },
     {
       "id": "14",
@@ -5114,13 +5114,9 @@
       "sr": 6.13,
       "hp": 8.5,
       "od": 8.5,
-      "mapTypeId": "0",
+      "mapType": "RC",
       "index": 4,
-      "comment": "Test comment",
-      "mapType": {
-        "id": "0",
-        "name": "RC"
-      }
+      "comment": "Test comment"
     },
     {
       "id": "4",
@@ -5139,7 +5135,7 @@
       "sr": 5.67,
       "hp": 8,
       "od": 8,
-      "mapTypeId": "0",
+      "mapType": "RC",
       "index": 5,
       "comment": "Test comment"
     },
@@ -5160,7 +5156,7 @@
       "sr": 5.85,
       "hp": 8,
       "od": 8,
-      "mapTypeId": "0",
+      "mapType": "RC",
       "index": 6,
       "comment": "Test comment"
     },
@@ -5181,7 +5177,7 @@
       "sr": 6.28,
       "hp": 7,
       "od": 6,
-      "mapTypeId": "1",
+      "mapType": "LN",
       "index": 1,
       "comment": "Test comment"
     },
@@ -5202,7 +5198,7 @@
       "sr": 6.33,
       "hp": 7,
       "od": 6,
-      "mapTypeId": "1",
+      "mapType": "LN",
       "index": 2,
       "comment": "Test comment"
     },
@@ -5223,7 +5219,7 @@
       "sr": 6.37,
       "hp": 7,
       "od": 6,
-      "mapTypeId": "1",
+      "mapType": "LN",
       "index": 3,
       "comment": "Test comment"
     },
@@ -5244,7 +5240,7 @@
       "sr": 5.26,
       "hp": 7,
       "od": 6.5,
-      "mapTypeId": "1",
+      "mapType": "LN",
       "index": 4,
       "comment": "Test comment"
     },
@@ -5265,7 +5261,7 @@
       "sr": 7.51,
       "hp": 7,
       "od": 7,
-      "mapTypeId": "2",
+      "mapType": "HB",
       "index": 1,
       "comment": "Test comment"
     },
@@ -5286,13 +5282,9 @@
       "sr": 6.75,
       "hp": 6,
       "od": 6,
-      "mapTypeId": "2",
+      "mapType": "HB",
       "index": 2,
-      "comment": "Test comment",
-      "mapType": {
-        "id": "2",
-        "name": "HB"
-      }
+      "comment": "Test comment"
     },
     {
       "id": "12",
@@ -5311,7 +5303,7 @@
       "sr": 6.24,
       "hp": 7.6,
       "od": 7.6,
-      "mapTypeId": "2",
+      "mapType": "HB",
       "index": 3,
       "comment": "Test comment"
     },
@@ -5332,7 +5324,7 @@
       "sr": 7.14,
       "hp": 8,
       "od": 7,
-      "mapTypeId": "4",
+      "mapType": "TB",
       "index": 0,
       "comment": "Test comment"
     },
@@ -5348,29 +5340,22 @@
       "drainTime": 329,
       "hp": 8,
       "od": 8,
-      "mapTypeId": "0",
+      "mapType": "RC",
       "index": 4,
       "comment": "Test map",
       "suggestor": "Arcaxio",
       "stageId": "4",
       "id": "FER7PAf",
-      "mapType": {
-        "id": "0",
-        "name": "RC"
-      },
       "inMappool": false
     },
     {
       "id": "uudqwCQ",
       "stageId": "4",
-      "beatmapId": 0,
-      "mapTypeId": "2",
-      "inMappool": true,
+      "beatmapId": 4256390,
       "title": "oddloop",
       "diff": "Oddities",
       "artist": "Frederic",
       "mapper": "White Hare",
-      "suggestor": "Arcaxio",
       "cover": "https://assets.ppy.sh/beatmaps/2034766/covers/card.jpg",
       "download": "https://osu.ppy.sh/beatmapsets/2034766#mania/4256390",
       "bpm": 172,
@@ -5378,34 +5363,11 @@
       "sr": 3.9,
       "hp": 8,
       "od": 7.5,
+      "mapType": "HB",
       "index": 2,
       "comment": "dfsdfzfsdfdsfsd sdfds fsd fsda fsd fsdafds",
-      "mapType": {
-        "id": "2",
-        "name": "HB"
-      }
-    }
-  ],
-  "mapTypes": [
-    {
-      "id": "0",
-      "name": "RC"
-    },
-    {
-      "id": "1",
-      "name": "LN"
-    },
-    {
-      "id": "2",
-      "name": "HB"
-    },
-    {
-      "id": "3",
-      "name": "SV"
-    },
-    {
-      "id": "4",
-      "name": "TB"
+      "suggestor": "Arcaxio",
+      "inMappool": true
     }
   ],
   "staffApplications": [
@@ -11496,40 +11458,6 @@
           ]
         }
       ]
-    }
-  ],
-  "tourneyInfo": [
-    {
-      "tournamentId": "0",
-      "value": {
-        "ops": [
-          {
-            "insert": "trdf"
-          },
-          {
-            "attributes": {
-              "color": "#e60000"
-            },
-            "insert": "gdfgdf"
-          },
-          {
-            "insert": "sdfdsf"
-          },
-          {
-            "attributes": {
-              "underline": true
-            },
-            "insert": "455 "
-          },
-          {
-            "attributes": {
-              "align": "right"
-            },
-            "insert": "\n"
-          }
-        ]
-      },
-      "id": 1
     }
   ]
 }

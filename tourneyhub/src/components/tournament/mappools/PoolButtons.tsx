@@ -9,6 +9,7 @@ import { AuthService } from '../../../services/authService';
 import { useParams } from 'react-router-dom';
 import { StageService } from '../../../services/stageService';
 import { IStageDto } from '../../../dto/stage/IStageDto';
+import { useTourney } from '../../../routes/tournament/TournamentHeader';
 
 interface IProps {
     stage: IStageDto,
@@ -19,6 +20,7 @@ interface IProps {
 const PoolButtons = ({stage, manage, setManage}: IProps) => {
     const { mapPoolUpdate, setMapPoolUpdate } = useContext(UpdateContext);
     const { id } = useParams();
+    const { tourney } = useTourney();
     const { user } = useContext(AuthContext);
 
     const publishMappool = async() => {
@@ -37,9 +39,10 @@ const PoolButtons = ({stage, manage, setManage}: IProps) => {
         <>            
             {manage && 
             <>
+            {!tourney.done &&
             <Grid item>
                 <MapSelectForm/>
-            </Grid>
+            </Grid>}
             <Grid item>
                 <Button sx={{ width: 150 }}
                     variant='contained' 

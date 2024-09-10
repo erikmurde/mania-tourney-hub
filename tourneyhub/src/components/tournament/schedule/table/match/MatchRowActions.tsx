@@ -1,19 +1,24 @@
-import { Delete, Edit, Link, PlayArrow } from '@mui/icons-material';
+import { Delete, Link, PlayArrow } from '@mui/icons-material';
 import { ADMIN, COMMENTATOR, HOST, REFEREE, STREAMER, TERTIARY } from '../../../../../constants';
 import { MatchDto } from '../../../../../dto/schedule/MatchDto';
 import { SchedTableCell } from '../../../../styled/SchedTableCell';
 import { StyledIconButton } from '../../../../styled/StyledIconButton';
 import { useContext } from 'react';
 import { AuthContext, UpdateContext } from '../../../../../routes/Root';
-import { useParams } from 'react-router-dom';
 import ConfirmationDialog from '../../../dialog/ConfirmationDialog';
 import { MatchService } from '../../../../../services/matchService';
 import MatchActionMenu from './MatchActionMenu';
 import { Tooltip } from '@mui/material';
 import MatchEditForm from '../../form/MatchEditForm';
+import { useTourney } from '../../../../../routes/tournament/TournamentHeader';
 
-const MatchRowActions = ({match}: {match: MatchDto}) => {
-    const { id } = useParams();
+interface IProps {
+    match: MatchDto,
+    onRef: () => void
+}
+
+const MatchRowActions = ({match, onRef}: IProps) => {
+    const { tourney } = useTourney();
     const { user } = useContext(AuthContext);
     const { scheduleUpdate, setScheduleUpdate } = useContext(UpdateContext);
     const service = new MatchService();
@@ -23,7 +28,7 @@ const MatchRowActions = ({match}: {match: MatchDto}) => {
             return false;
         }
         return user.roles
-            .filter(role => role.tournamentId === id)
+            .filter(role => role.tournamentId === tourney.id)
             .some(role => roles.includes(role.name))
     }
 
@@ -57,7 +62,7 @@ const MatchRowActions = ({match}: {match: MatchDto}) => {
 
     return (
         <SchedTableCell align='center'>
-            {match.isDone && !isWbd &&
+            {match.isDone && !isWbd && match.mpLink &&
             <Tooltip title='Match link'>
                 <StyledIconButton 
                     onClick={() => window.open(match.mpLink, '_blank')}
@@ -67,7 +72,7 @@ const MatchRowActions = ({match}: {match: MatchDto}) => {
             </Tooltip>}
             {(isHost || isReferee) && !match.isDone && 
             <Tooltip title='Conduct match'>
-                <StyledIconButton color='primary'>
+                <StyledIconButton color='primary' onClick={onRef}>
                     <PlayArrow/>
                 </StyledIconButton>
             </Tooltip>}

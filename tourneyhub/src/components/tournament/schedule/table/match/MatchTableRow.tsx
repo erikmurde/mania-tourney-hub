@@ -7,11 +7,16 @@ import MatchRowActions from './MatchRowActions';
 import MatchTableScore from './MatchRowScore';
 import MatchRowPlayer from './MatchRowPlayer';
 
-const MatchTableRow = ({match}: {match: MatchDto}) => {
+interface IProps {
+    match: MatchDto,
+    refMatch: (match: MatchDto) => void
+}
+
+const MatchTableRow = ({match, refMatch}: IProps) => {
     dayjs.extend(utc);
 
     const p1Winner = match.isDone 
-        ? match.score1 < 0 || match.score1 > match.score2 && match.score2 > 0 
+        ? (match.score1 < 0 || match.score1 > match.score2) && match.score2 > 0 
         : false;
 
     const p2Winner = match.isDone ? !p1Winner : false;
@@ -43,7 +48,7 @@ const MatchTableRow = ({match}: {match: MatchDto}) => {
             <SchedTableCell>{match.referee}</SchedTableCell>
             <SchedTableCell>{match.streamer}</SchedTableCell>
             <SchedTableCell>{match.commentators.join(', ')}</SchedTableCell>
-            <MatchRowActions match={match}/>
+            <MatchRowActions match={match} onRef={() => refMatch(match)}/>
         </TableRow>    
     );
 }

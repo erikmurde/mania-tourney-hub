@@ -7,19 +7,17 @@ import { TeamService } from '../../../services/teamService';
 import { useParams } from 'react-router-dom';
 import { GroupAdd, Publish } from '@mui/icons-material';
 import { AuthContext } from '../../Root';
-import { TournamentDto } from '../../../dto/tournament/TournamentDto';
 import { TournamentService } from '../../../services/tournamentService';
 import { ACTIVE, ADMIN, DISQUALIFIED, HOST } from '../../../constants';
 import ConfirmationDialog from '../../../components/tournament/dialog/ConfirmationDialog';
-import PlayerList from '../../../components/tournament/players/PlayerList';
-import { IUserDto } from '../../../dto/user/IUserDto';
 import TeamPlayerList from '../../../components/tournament/teams/TeamPlayerList';
+import { useTourney } from '../TournamentHeader';
 
 const Teams = () => {
     const { id } = useParams();
+    const { tourney } = useTourney();
     const { user } = useContext(AuthContext);
     const [teams, setTeams] = useState([] as TeamDto[]);
-    const [tourney, setTourney] = useState({} as TournamentDto);
     const [showTeams, setShowTeams] = useState(1);
     const validRoles = [HOST, ADMIN];
     const tourneyService = new TournamentService();
@@ -31,10 +29,6 @@ const Teams = () => {
 
     useEffect(() => {
         if (id) {
-            tourneyService
-                .getEntity(id)
-                .then(tourney => setTourney(tourney));
-
             teamService
                 .getTeams(id)
                 .then(teams => setTeams(isValid 

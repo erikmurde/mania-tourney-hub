@@ -4,7 +4,7 @@ import { SchedTableCell } from '../../../styled/SchedTableCell';
 import MapTypeBox from '../../../MapTypeBox';
 import { PlayerScoreDto } from '../../../../dto/score/PlayerScoreDto';
 import { MapStatsService } from '../../../../services/mapStatsService';
-import { QUALIFIER, STANDARD } from '../../../../constants';
+import { STANDARD } from '../../../../constants';
 import { TeamScoreDto } from '../../../../dto/score/TeamScoreDto';
 import { useEffect, useState } from 'react';
 import StatsTableMvp from './StatsTableMvp';

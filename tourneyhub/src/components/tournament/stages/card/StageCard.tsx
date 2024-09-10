@@ -9,8 +9,10 @@ import StageEditForm from '../form/StageEditForm';
 import { useContext } from 'react';
 import { UpdateContext } from '../../../../routes/Root';
 import { StageService } from '../../../../services/stageService';
+import { useTourney } from '../../../../routes/tournament/TournamentHeader';
 
 const StageCard = ({stage}: {stage: IStageDto}) => {
+    const { tourney } = useTourney();
     const { stageUpdate, setStageUpdate } = useContext(UpdateContext);
 
     const onDelete = async() => {
@@ -33,6 +35,7 @@ const StageCard = ({stage}: {stage: IStageDto}) => {
                             {stage.name}
                         </Typography>
                     </Grid>
+                    {!tourney.done && 
                     <Grid item xs='auto'>
                         <CardActions sx={{ padding: 0 }}>
                             <StageEditForm initialValues={stage}/>
@@ -44,7 +47,7 @@ const StageCard = ({stage}: {stage: IStageDto}) => {
                                 actionTitle='Delete'
                                 action={() => onDelete()}/>}
                         </CardActions>
-                    </Grid>
+                    </Grid>}
                 </Grid>
                 <StageInfo stage={stage}/>
             </StyledCardContent>

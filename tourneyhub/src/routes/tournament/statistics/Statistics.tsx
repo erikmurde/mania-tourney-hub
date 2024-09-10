@@ -15,15 +15,14 @@ import { MapStatsDto } from '../../../dto/statistics/MapStatsDto';
 import MapStats from '../../../components/tournament/statistics/MapStats';
 import { QUALIFIER } from '../../../constants';
 import SeedingStats from '../../../components/tournament/statistics/SeedingStats';
-import { TournamentDto } from '../../../dto/tournament/TournamentDto';
-import { TournamentService } from '../../../services/tournamentService';
+import { useTourney } from '../TournamentHeader';
 
 const Statistics = () => {
     const { id } = useParams();
+    const { tourney } = useTourney();
     const { user } = useContext(AuthContext);
     const [stages, setStages] = useState([] as IStageDto[]);
     const [mapStats, setMapStats] = useState([] as MapStatsDto[]);
-    const [tourney, setTourney] = useState({} as TournamentDto);
     const [stageId, setStageId] = useState('');
     const [mapId, setMapId] = useState('');
     const navigate = useNavigate();
@@ -40,12 +39,7 @@ const Statistics = () => {
                     navigate(`#${stageId}`);
                 });
         }
-        if (id && !tourney.id) {
-            new TournamentService()
-                .getEntity(id)
-                .then(tourney => setTourney(tourney));
-        }
-    }, [id, tourney.id]);
+    }, [id]);
 
     let stage = stages.find(stage => 
         stage.id === stageId.toString()

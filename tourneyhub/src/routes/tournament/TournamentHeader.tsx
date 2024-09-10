@@ -1,11 +1,15 @@
 import { Box, Grid, Paper } from '@mui/material';
-import { Outlet, useParams } from 'react-router-dom';
+import { Outlet, useOutletContext, useParams } from 'react-router-dom';
 import { TournamentDto } from '../../dto/tournament/TournamentDto';
 import { useEffect, useState } from 'react';
 import { TournamentService } from '../../services/tournamentService';
 import HeaderText from '../../components/tournament/header/HeaderText';
 import HeaderButtons from '../../components/tournament/header/HeaderButtons';
 import HeaderTabs from '../../components/tournament/header/HeaderTabs';
+
+export function useTourney() {
+    return useOutletContext<{ tourney: TournamentDto }>();
+}
 
 const TournamentHeader = () => {
     const [tourney, setTourney] = useState({} as TournamentDto);
@@ -38,7 +42,7 @@ const TournamentHeader = () => {
                 </Paper>
             </Grid>
             <Grid item>
-                <Outlet/>
+                <Outlet context={{ tourney }}/>
             </Grid>
         </Grid>
     );

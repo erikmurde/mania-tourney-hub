@@ -1,12 +1,11 @@
 import { Field, Form, Formik } from 'formik';
 import { IMapDto } from '../../../../../dto/map/IMapDto';
 import { Grid, MenuItem, TextField, Typography } from '@mui/material';
-import { MapTypeDto } from '../../../../../dto/mapType/MapTypeDto';
 import TourneySelectField from '../../../field/TourneySelectField';
 
 interface IProps {
     initialValues: IMapDto,
-    selectValues: MapTypeDto[],
+    selectValues: string[],
     onSubmit: (values: IMapDto) => void
 }
 
@@ -63,9 +62,9 @@ const UnsubmittedMapFormView = ({initialValues, selectValues, onSubmit}: IProps)
                         <Typography>Map placement</Typography>
                     </Grid>
                     <Grid item xs={2.4}>
-                        <TourneySelectField name='mapTypeId' label='Map type' 
-                            options={selectValues.map(value => 
-                                <MenuItem key={value.id} value={value.id}>{value.name}</MenuItem>
+                        <TourneySelectField name='mapType' label='Map type' 
+                            options={selectValues.map((value, index) => 
+                                <MenuItem key={index} value={value}>{value}</MenuItem>
                             )}/>
                     </Grid>
                     <Grid item xs={2.4}>

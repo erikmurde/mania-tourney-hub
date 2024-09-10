@@ -8,7 +8,12 @@ import { useContext } from 'react';
 import { UpdateContext } from '../../../../routes/Root';
 import { MapService } from '../../../../services/mapService';
 
-const MapManageButtons = ({map}: {map: IMapDto}) => {
+interface IProps {
+    map: IMapDto,
+    tourneyDone: boolean
+}
+
+const MapManageButtons = ({map, tourneyDone}: IProps) => {
     const { mapPoolUpdate, setMapPoolUpdate } = useContext(UpdateContext);
     const theme = useTheme();
 
@@ -19,18 +24,19 @@ const MapManageButtons = ({map}: {map: IMapDto}) => {
 
     return (  
         <Grid container justifyContent='end'>
+            {!tourneyDone &&
             <Grid item> 
                 <MapEditForm map={map}/>
-            </Grid>
+            </Grid>}
+            {!tourneyDone && !map.inMappool && 
             <Grid item>
-                {!map.inMappool &&
                 <ConfirmationDialog 
                     btnProps={{ sx: {color: theme.palette.error.main }}}
                     btnIcon={<Delete/>}
                     title='Are you sure you wish to delete this map?'
                     actionTitle='Delete'
-                    action={() => onDelete()}/>}
-            </Grid>
+                    action={() => onDelete()}/>
+            </Grid>}
             <Grid item>
                 <StyledIconButton 
                     sx={{ color: theme.palette.primary.main }} 

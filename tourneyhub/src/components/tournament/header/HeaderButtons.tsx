@@ -12,6 +12,7 @@ import { AuthService } from '../../../services/authService';
 import TournamentPublishForm from '../form/TournamentPublishForm';
 import SuccessDialog from '../dialog/SuccessDialog';
 import { TournamentService } from '../../../services/tournamentService';
+import TeamRegisterForm from './form/TeamRegisterForm';
 
 interface IProps {
     tourney: TournamentDto,
@@ -24,6 +25,7 @@ const HeaderButtons = ({tourney, updateTourney}: IProps) => {
     const { id } = useParams();
     const { user } = useContext(AuthContext);
     const authService = new AuthService();
+    const tourneyService = new TournamentService();
 
     useEffect(() => {
         if (tourney.public) {
@@ -33,7 +35,7 @@ const HeaderButtons = ({tourney, updateTourney}: IProps) => {
         }
     }, [tourney.public]);
 
-    const onRegister = async() => {
+    const registerPlayer = async() => {
         if (!user) {
             return;
         }
@@ -57,7 +59,14 @@ const HeaderButtons = ({tourney, updateTourney}: IProps) => {
         tourney.regOpen = false;
         tourney.applicationOpen = false;
 
-        await new TournamentService().edit(tourney.id, tourney);
+        await tourneyService.edit(tourney.id, tourney);
+        updateTourney();
+    }
+
+    const onConclude = async() => {
+        tourney.done = true;
+
+        await tourneyService.edit(tourney.id, tourney);
         updateTourney();
     }
     
@@ -69,16 +78,17 @@ const HeaderButtons = ({tourney, updateTourney}: IProps) => {
         <Grid container columnSpacing={1} height={56} justifyContent='center'>
             {roles.every(role => role.canRegWithRole) &&
             <Grid item>
-                <ConfirmationDialog 
-                    title='Are you sure you wish to register?'
-                    
-                    description={tourney.regMessage}
-                    actionTitle='Register' 
-                    action={onRegister}
-                    btnProps={{ 
-                        disabled: !tourney.regOpen, 
-                        title: tourney.regOpen ? 'Register' : 'Registrations closed' 
-                    }}/>
+                {tourney.minTeamSize > 1 
+                ?   <TeamRegisterForm/>
+                :   <ConfirmationDialog 
+                        title='Are you sure you wish to register?'
+                        description={tourney.regMessage}
+                        actionTitle='Register' 
+                        action={registerPlayer}
+                        btnProps={{ 
+                            disabled: !tourney.regOpen, 
+                            title: tourney.regOpen ? 'Register' : 'Registrations closed' 
+                    }}/>}
             </Grid>}
             {!isHost &&
             <Grid item>
@@ -106,9 +116,12 @@ const HeaderButtons = ({tourney, updateTourney}: IProps) => {
             </Grid>}
             {isHost && !tourney.done && tourney.public &&
             <Grid item>
-                <Button variant='contained' startIcon={<Done/>}>
-                    Conclude
-                </Button>
+                <ConfirmationDialog 
+                    title='Are you sure you wish to conclude this tournament?'
+                    description='This will archive the tournament and remove any ability to edit it. This action cannot be undone!'
+                    actionTitle='Conclude' 
+                    action={onConclude}
+                    btnProps={{ title: 'Conclude', startIcon: <Done/> }}/>
             </Grid>}
             <Grid item>
                 <Button variant='contained' endIcon={<KeyboardArrowDown/>}>

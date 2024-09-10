@@ -11,7 +11,7 @@ export class MapService extends BaseEntityService<IMapDto> {
     ])
 
     getWeight(map: IMapDto): number {
-        return (this.weights.get(map.mapType.name) ?? 0) + map.index;
+        return (this.weights.get(map.mapType) ?? 0) + map.index;
     }
 
     async getAllStage(stageId: string): Promise<IMapDto[]> {

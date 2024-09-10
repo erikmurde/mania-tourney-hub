@@ -8,11 +8,13 @@ import { useParams } from 'react-router-dom';
 import { AuthService } from '../../../services/authService';
 import StageSelectForm from '../../../components/tournament/stages/form/StageSelectForm';
 import NoPermission from '../../NoPermission';
+import { useTourney } from '../TournamentHeader';
 
 const Stages = () => {
     const { stageUpdate } = useContext(UpdateContext);
     const { user } = useContext(AuthContext);
     const { id } = useParams();
+    const { tourney } = useTourney();
     const [stages, setStages] = useState([] as IStageDto[]);
 
     const valid = id && user && new AuthService()
@@ -42,7 +44,7 @@ const Stages = () => {
                         Stages
                     </Typography>
                 </Grid>
-                <StageSelectForm/>
+                {!tourney.done && <StageSelectForm/>}
             </Grid>
             <StageList stages={stages}/>
         </Paper>

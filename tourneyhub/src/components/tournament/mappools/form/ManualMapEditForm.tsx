@@ -6,11 +6,10 @@ import TourneyDialogTitle from '../../dialog/TourneyDialogTitle';
 import { DialogProps } from '../../../../props/DialogProps';
 import UnsubmittedMapFormView from './views/UnsubmittedMapFormView';
 import { IMapDto } from '../../../../dto/map/IMapDto';
-import { useContext, useEffect, useState } from 'react';
-import { MapTypeService } from '../../../../services/mapTypeService';
-import { MapTypeDto } from '../../../../dto/mapType/MapTypeDto';
+import { useContext } from 'react';
 import { UpdateContext } from '../../../../routes/Root';
 import { MapService } from '../../../../services/mapService';
+import { MAP_TYPES } from '../../../../constants';
 
 interface IProps {
     dialogProps: DialogProps,
@@ -19,16 +18,9 @@ interface IProps {
 
 const ManualMapEditForm = ({dialogProps, initialValues}: IProps) => {
     const { mapPoolUpdate, setMapPoolUpdate } = useContext(UpdateContext);
-    const [mapTypes, setMapTypes] = useState([] as MapTypeDto[]);
-
-    useEffect(() => {
-        new MapTypeService()
-            .getAll()
-            .then(types => setMapTypes(types));
-    }, []);
 
     const onSubmit = async(values: IMapDto) => {
-        if (initialValues.index !== values.index || initialValues.mapTypeId !== values.mapTypeId) {
+        if (initialValues.index !== values.index || initialValues.mapType !== values.mapType) {
             values.inMappool = false;
         }
         await new MapService().edit(values.id, values);
@@ -43,9 +35,9 @@ const ManualMapEditForm = ({dialogProps, initialValues}: IProps) => {
                 <UnsubmittedMapFormView 
                     initialValues={{
                         ...initialValues, 
-                        mapTypeId: mapTypes.length > 0 ? initialValues.mapTypeId : ''
+                        mapType: MAP_TYPES.length > 0 ? initialValues.mapType : ''
                     }} 
-                    selectValues={mapTypes} 
+                    selectValues={MAP_TYPES} 
                     onSubmit={onSubmit}
                 />
             </StyledDialogContent>

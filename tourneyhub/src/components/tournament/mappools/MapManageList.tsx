@@ -18,7 +18,7 @@ const MapManageList = ({maps}: {maps: IMapDto[]}) => {
     maps
     .sort((a, b) => service.getWeight(a) - service.getWeight(b))
     .forEach(map => {
-        let key = `${map.mapType.name}${map.index}`;
+        let key = `${map.mapType}${map.index}`;
 
         if (data.has(key)) {
             let tempList = data.get(key)!;
@@ -54,7 +54,7 @@ const MapManageList = ({maps}: {maps: IMapDto[]}) => {
             <Grid item xs={11} key={index}>
                 <Accordion elevation={6} defaultExpanded>
                     <AccordionSummary expandIcon={<ExpandMore/>}>
-                        <MapTypeBox mapType={maps[0].mapType.name} index={maps[0].index}/>
+                        <MapTypeBox mapType={maps[0].mapType} index={maps[0].index}/>
                     </AccordionSummary>
                     <AccordionDetails>
                         <Grid container rowSpacing={1} direction='column'>

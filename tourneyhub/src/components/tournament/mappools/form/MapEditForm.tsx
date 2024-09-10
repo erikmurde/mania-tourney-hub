@@ -1,14 +1,13 @@
 import { Edit } from '@mui/icons-material';
-import { Button, Dialog, IconButton, useTheme } from '@mui/material';
-import { useContext, useState } from 'react';
+import { Button, Dialog, useTheme } from '@mui/material';
+import { useState } from 'react';
 import { StyledDialogActions } from '../../../styled/StyledDialogActions';
 import TourneyDialogTitle from '../../dialog/TourneyDialogTitle';
 import ManualMapEditForm from './ManualMapEditForm';
-import AutoMapEditFormView from './views/AutoMapEditFormView';
 import { IMapDto } from '../../../../dto/map/IMapDto';
 import { StyledDialogContent } from '../../../styled/styledDialogContent';
 import { StyledIconButton } from '../../../styled/StyledIconButton';
-import { UpdateContext } from '../../../../routes/Root';
+import AutoMapEditFormView from './views/AutoMapEditFormView';
 
 const MapEditForm = ({map}: {map: IMapDto}) => {
     const theme = useTheme();

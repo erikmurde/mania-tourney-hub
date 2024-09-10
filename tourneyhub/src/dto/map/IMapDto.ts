@@ -1,10 +1,7 @@
-import { MapTypeDto } from '../mapType/MapTypeDto';
-
 export interface IMapDto {
     id: string,
     stageId: string,
     beatmapId: number,
-    mapTypeId: string,
     inMappool: boolean,
     title: string,
     diff: string,
@@ -20,5 +17,5 @@ export interface IMapDto {
     od: number,
     index: number,
     comment: string,
-    mapType: MapTypeDto;
+    mapType: string;
 }

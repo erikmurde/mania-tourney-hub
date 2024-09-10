@@ -9,7 +9,7 @@ const MapInfo = ({map}: {map: IMapDto}) => {
     return (  
         <Grid container height={40} justifyContent='space-between'>
             <Grid item>
-                <MapTypeBox mapType={map.mapType.name} index={map.index}/>
+                <MapTypeBox mapType={map.mapType} index={map.index}/>
             </Grid>
             <Grid item>
                 <IconButton 

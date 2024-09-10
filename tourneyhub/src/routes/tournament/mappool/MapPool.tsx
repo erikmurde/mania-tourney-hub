@@ -13,12 +13,12 @@ import SectionTitle from '../../../components/tournament/SectionTitle';
 import StageTabs from '../../../components/tournament/StageTabs';
 
 const MapPool = () => {
+    const { id } = useParams();
     const { mapPoolUpdate } = useContext(UpdateContext);
     const [isManage, setIsManage] = useState(false);
     const [stages, setStages] = useState([] as IStageDto[]);
     const [stageId, setStageId] = useState('');
     const [maps, setMaps] = useState([] as IMapDto[]);
-    const { id } = useParams();
     const navigate = useNavigate();
 
     useEffect(() => {

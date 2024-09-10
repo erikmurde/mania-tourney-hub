@@ -2,6 +2,7 @@
   --background-default: #121212;
   --primary-main: #64B5F6;
   --primary-dark: #2196F3;
+  --success-main: #66BB6A;
   --text-primary: #F5F5F5;
 }
 
@@ -69,6 +70,10 @@ button {
   background-color: var(--background-default);
   background-image: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2));
   height: 1px;
+}
+
+.map-picked {
+  border: 2px solid var(--success-main);
 }
 
 .ql-picker-label:hover {

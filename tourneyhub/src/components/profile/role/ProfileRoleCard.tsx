@@ -61,8 +61,8 @@ const ProfileRoleCard = ({tournamentId, roles, stats}: IProps) => {
                 </Typography>
                 {stats.seeding !== undefined && 
                 <Typography>
-                    {stats.seeding > 0 ? `Seeded ${stats.seeding}${SUFFIX_MAP.get(stats.seeding) ?? 'th'}` : 'Seeding TBD'}.
-                    Final placement {stats.placement > 0 ? stats.placement : 'TBD'}.
+                    {stats.seeding > 0 ? `Seeded ${stats.seeding}${SUFFIX_MAP.get(stats.seeding) ?? 'th'}` : 'Seeding undecided'}. 
+                    {stats.placement > 0 ? ` Placed ${stats.placement}${SUFFIX_MAP.get(stats.placement) ?? 'th'}` : 'Placement undecided'}.
                 </Typography>}
                 {stats.seeding === undefined && 
                 <Typography>

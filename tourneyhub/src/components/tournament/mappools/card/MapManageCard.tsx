@@ -6,6 +6,7 @@ import MapManageButtons from './MapManageButtons';
 import { useContext } from 'react';
 import { AuthContext } from '../../../../routes/Root';
 import { ADMIN, HOST, MAPPOOLER } from '../../../../constants';
+import { useTourney } from '../../../../routes/tournament/TournamentHeader';
 
 interface IProps {
     map: IMapDto,
@@ -14,6 +15,7 @@ interface IProps {
 }
 
 const MapManageCard = ({map, addToPool, removeFromPool}: IProps) => {
+    const { tourney } = useTourney();
     const { user } = useContext(AuthContext);
     const theme = useTheme();
  
@@ -38,11 +40,11 @@ const MapManageCard = ({map, addToPool, removeFromPool}: IProps) => {
             </CardContent>
             <Grid item xs/>
             <CardActions sx={{ alignItems: 'start', flexDirection: 'column' }}>
-                <MapManageButtons map={map}
+                <MapManageButtons map={map} tourneyDone={tourney.done}
                 />
                 <Grid container flexGrow={1}
                 />
-                {canAddToPool && 
+                {!tourney.done && canAddToPool && 
                 <Grid container justifyContent='end' paddingRight={1}>
                     <Grid item>
                         <Button 
@@ -51,7 +53,7 @@ const MapManageCard = ({map, addToPool, removeFromPool}: IProps) => {
                             color={map.inMappool ? 'error' : 'success'} 
                             onClick={() => map.inMappool 
                                 ? removeFromPool(map) 
-                                : addToPool(map.id, `${map.mapType.name}${map.index}`)}>
+                                : addToPool(map.id, `${map.mapType}${map.index}`)}>
                             {map.inMappool ? 'Remove' : 'Add'}
                         </Button>
                     </Grid>

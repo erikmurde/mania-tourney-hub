@@ -5,11 +5,11 @@ import ReactQuill, { Value } from 'react-quill';
 import { useParams } from 'react-router-dom';
 import { TournamentService } from '../../../services/tournamentService';
 import { ChevronLeft, Edit } from '@mui/icons-material';
-import { TournamentDto } from '../../../dto/tournament/TournamentDto';
 import { AuthContext } from '../../Root';
 import 'react-quill/dist/quill.snow.css';
 import { AuthService } from '../../../services/authService';
 import NoItems from '../../../components/tournament/NoItems';
+import { useTourney } from '../TournamentHeader';
 
 const COLORS = [
     "#000000", "#e60000", "#ff9900", "#ffff00", "#008a00", "#0066cc", "#9933ff",
@@ -21,22 +21,17 @@ const COLORS = [
 
 const Information = () => {
     const { id } = useParams();
+    const { tourney } = useTourney();
     const { user } = useContext(AuthContext);
     const [value, setValue] = useState({} as Value);
-    const [tourney, setTourney] = useState({} as TournamentDto);
     const [edit, setEdit] = useState(false);
     const service = new TournamentService();
 
     useEffect(() => {
-        if (id) {
-            service
-                .getEntity(id)
-                .then(tourney => {
-                    setTourney(tourney);
-                    setValue(tourney.information);
-                });
+        if (tourney.id) {
+            setValue(tourney.information);
         }
-    }, [id]);
+    }, [tourney.id]);
 
     const formats = [
         'header',
@@ -73,7 +68,7 @@ const Information = () => {
     };
 
     const hasNoContent = (delta: any) => {
-        if (!delta.ops) {
+        if (Object.keys(delta).length === 0) {
             return true;
         }
         if (delta.ops.length === 0) {

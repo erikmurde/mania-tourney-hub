@@ -12,9 +12,11 @@ import MatchTable from '../../../components/tournament/schedule/table/match/Matc
 import NoItems from '../../../components/tournament/NoItems';
 import { AuthContext } from '../../Root';
 import { AuthService } from '../../../services/authService';
+import { useTourney } from '../TournamentHeader';
 
 const Schedule = () => {
     const { id } = useParams();
+    const { tourney } = useTourney();
     const { user } = useContext(AuthContext);
     const [stages, setStages] = useState([] as IStageDto[]);
     const [stageId, setStageId] = useState('');
@@ -49,7 +51,7 @@ const Schedule = () => {
                     stageId={stageId} 
                     setStageId={setStageId}
                     buttons={
-                        isHost ? <ScheduleButtons stage={stage}/> : <></>
+                        isHost && !tourney.done ? <ScheduleButtons stage={stage}/> : <></>
                     }/>
                 <Grid item xs marginLeft={2} marginRight={2}>
                     {stage.schedulePublic || isHost

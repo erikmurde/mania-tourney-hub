@@ -1,4 +1,4 @@
-import { Paper, Table, TableBody, TableContainer } from '@mui/material';
+import { Dialog, Paper, Table, TableBody, TableContainer } from '@mui/material';
 import { MatchDto } from '../../../../../dto/schedule/MatchDto';
 import { useContext, useEffect, useState } from 'react';
 import { MatchService } from '../../../../../services/matchService';
@@ -8,10 +8,12 @@ import MatchTableRow from './MatchTableRow';
 import { UpdateContext } from '../../../../../routes/Root';
 import dayjs from 'dayjs';
 import NoItems from '../../../NoItems';
+import RefSheetMatchSolo from '../../../dialog/ref/RefSheetMatchSolo';
 
 const MatchTable = ({stage}: {stage: IStageDto}) => {
     const { scheduleUpdate } = useContext(UpdateContext);
     const [matches, setMatches] = useState([] as MatchDto[]);
+    const [refIndex, setRefIndex] = useState(null as number | null);
 
     useEffect(() => {
         new MatchService()
@@ -33,6 +35,7 @@ const MatchTable = ({stage}: {stage: IStageDto}) => {
                                 <MatchTableRow 
                                     key={match.id} 
                                     match={match} 
+                                    refMatch={(match) => setRefIndex(matches.indexOf(match))}
                                 />
                             )}
                         </TableBody>
@@ -40,6 +43,16 @@ const MatchTable = ({stage}: {stage: IStageDto}) => {
                 </TableContainer>
             </Paper>
         :   <NoItems name='matches'/>}
+        <Dialog fullScreen open={refIndex !== null} 
+            PaperProps={{ elevation: 2, sx: { alignItems: 'center' } }}
+            >
+            {refIndex !== null &&
+            <RefSheetMatchSolo 
+                match={matches[refIndex]} 
+                stage={stage} 
+                onClose={() => setRefIndex(null)}
+            />}   
+        </Dialog>
         </>
     );
 }

@@ -1,4 +1,4 @@
-import { Delete, Edit, Link, PersonAdd, PersonRemove, PlayArrow } from '@mui/icons-material';
+import { Delete, Link, PersonAdd, PersonRemove, PlayArrow } from '@mui/icons-material';
 import { TERTIARY } from '../../../../../constants';
 import { SchedTableCell } from '../../../../styled/SchedTableCell';
 import { StyledIconButton } from '../../../../styled/StyledIconButton';
