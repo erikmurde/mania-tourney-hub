@@ -7,6 +7,7 @@ import { MatchStatus } from '../../../../domain/MatchStatus';
 import RefSheetPlayerBox from '../../../RefSheetPlayerBox';
 import { TERTIARY } from '../../../../constants';
 import { StyledTableRow } from '../../../styled/StyledTableRow';
+import { useEffect, useState } from 'react';
 
 interface IProps {
     bestOf: number,
@@ -16,6 +17,7 @@ interface IProps {
 
 const RefMatchPicks = ({bestOf, maps, values}: IProps) => {
     const theme = useTheme();
+    const [unselectableMaps, setUnselectableMaps] = useState([] as string[]);
     const players = [values.match.player1.name, values.match.player2.name];
 
     const getBgColor = (index: number) => {
@@ -28,37 +30,50 @@ const RefMatchPicks = ({bestOf, maps, values}: IProps) => {
         return index % 2 === 0 ? theme.palette.primary.main : theme.palette.error.main;
     }
 
+    useEffect(() => {
+        setUnselectableMaps(maps
+            .map(map => map.beatmapId)
+            .filter(id => values.bans.includes(id) || values.picks.map(pick => pick.beatmapId).includes(id))
+        );
+    }, [values.picks, values.bans]);
+
     return (  
         <Paper elevation={8} sx={{ padding: 1 }}>
             <TableContainer>
                 <Table>
                     <TableHead>
-                        <TableRow>
+                        <StyledTableRow>
                             <SchedTableCell width={150}>Pick</SchedTableCell>
                             <SchedTableCell width={80}>Map</SchedTableCell>
                             <SchedTableCell width={170}>Winner</SchedTableCell>
-                        </TableRow>
+                        </StyledTableRow>
                     </TableHead>
                     <TableBody>
                         <FieldArray name='picks'>
                         {() => values.picks.map((pick, index) => 
-                            <StyledTableRow key={index} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                                <SchedTableCell>
+                            <TableRow key={index}>
+                                <SchedTableCell sx={{ border: 0 }}>
                                     <RefSheetPlayerBox name={pick.player} bgColor={getBgColor(index)}/>
                                 </SchedTableCell>
-                                <SchedTableCell>
-                                    <TourneySelectField name={`picks[${index}].map`} small
+                                <SchedTableCell sx={{ border: 0 }}>
+                                    <TourneySelectField name={`picks[${index}].beatmapId`} small
                                         options={maps.map((value, index) => 
-                                            <MenuItem key={index} value={value.id}>{value.mapType}{value.index}</MenuItem>
+                                            <MenuItem 
+                                                sx={{ display: unselectableMaps.includes(value.beatmapId) ? 'none' : '' }} 
+                                                key={index} 
+                                                value={value.beatmapId}
+                                                >
+                                                {value.mapType}{value.index}
+                                            </MenuItem>
                                         )}/>
                                 </SchedTableCell>
-                                <SchedTableCell>
+                                <SchedTableCell sx={{ border: 0 }}>
                                     <TourneySelectField name={`picks[${index}].winner`} small
                                         options={players.map((value, index) => 
                                             <MenuItem key={index} value={value}>{value}</MenuItem>
                                         )}/>
                                 </SchedTableCell>
-                            </StyledTableRow>
+                            </TableRow>
                         )}
                         </FieldArray>
                     </TableBody>

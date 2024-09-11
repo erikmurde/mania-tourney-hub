@@ -1,5 +1,4 @@
-import { Grid, MenuItem, Paper, Typography, useTheme } from '@mui/material';
-import TourneySelectField from '../../field/TourneySelectField';
+import { Grid, Paper, Typography, useTheme } from '@mui/material';
 import { useEffect } from 'react';
 import { RefPick } from '../../../../domain/RefPick';
 import { MatchStatus } from '../../../../domain/MatchStatus';
@@ -23,9 +22,9 @@ const RefMatchStatus = ({values: {match, firstPick, picks}, bestOf, setFieldValu
         let index = players.indexOf(firstPick);
 
         for (let i = 0; i < bestOf - 1; i++) {
-            picks.push({ player: players[index++ % 2], map: '', winner: '' });
+            picks.push({ player: players[index++ % 2], beatmapId: '', winner: '' });
         }
-        picks.push({ player: 'TIEBREAKER', map: '', winner: '' });
+        picks.push({ player: 'TIEBREAKER', beatmapId: '', winner: '' });
         setFieldValue('picks', picks);
     }, [firstPick]);
 
@@ -61,16 +60,10 @@ const RefMatchStatus = ({values: {match, firstPick, picks}, bestOf, setFieldValu
                         BEST OF {bestOf}
                     </Typography>
                 </Grid>
-                <Grid item xs={4} marginBottom={3}>
+                <Grid item xs={4}>
                     <Typography fontSize={20} fontWeight={500}>
                         {match.score2}
                     </Typography>
-                </Grid>
-                <Grid item xs textAlign='start'>
-                    <TourneySelectField name='firstPick' label='First pick' small
-                        options={players.map((value, index) => 
-                            <MenuItem key={index} value={value}>{value}</MenuItem>
-                        )}/>
                 </Grid>
             </Grid>
         </Paper>

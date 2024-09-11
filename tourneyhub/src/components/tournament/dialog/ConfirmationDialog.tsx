@@ -27,7 +27,7 @@ const ConfirmationDialog = ({btnProps, btnIcon, title, description, actionTitle,
                         {btnIcon}
                     </StyledIconButton>
                 :   <Button variant='contained' onClick={() => setOpen(true)} {...btnProps}>
-                        {btnProps?.title ?? 'Missing title'}
+                        {btnProps?.title ?? actionTitle}
                     </Button>}
             {open && 
             <Dialog open={open} onClose={() => setOpen(false)} maxWidth={size ?? 'sm'} fullWidth>

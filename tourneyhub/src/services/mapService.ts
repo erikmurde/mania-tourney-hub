@@ -22,6 +22,10 @@ export class MapService extends BaseEntityService<IMapDto> {
     }
 
     async getAllStageInMappool(stageId: string): Promise<IMapDto[]> {
-        return (await this.getAllStage(stageId)).filter(map => map.inMappool);
+        return (await this
+            .getAllStage(stageId))
+            .filter(map => map.inMappool)
+            .sort((a, b) => this.getWeight(a) - this.getWeight(b)
+        );
     }
 }

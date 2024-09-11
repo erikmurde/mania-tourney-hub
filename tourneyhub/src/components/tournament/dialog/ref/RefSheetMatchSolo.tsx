@@ -12,7 +12,8 @@ import { Form, Formik } from 'formik';
 import { MatchStatus } from '../../../../domain/MatchStatus';
 import RefMapPool from '../../ref/match/RefMapPool';
 import RefMatchMain from '../../ref/match/RefMatchMain';
-import RefMatchBans from '../../ref/match/RefMatchBans';
+import RefMatchCommands from '../../ref/match/RefMatchCommands';
+import RefMatchChoices from '../../ref/match/RefMatchChoices';
 
 interface IProps {
     match: MatchDto,
@@ -26,23 +27,21 @@ const RefSheetMatchSolo = ({match, stage, onClose}: IProps) => {
     const initialValues: MatchStatus = {
         match: match,
         firstPick: '',
-        picks: []
+        picks: [],
+        bans: ['', ''],
+        protects: ['', '']
     };
 
     useEffect(() => {
         new MapService()
-            .getAllStageInMappool(stage.id.toString())
+            .getAllStageInMappool(stage.id)
             .then(maps => setMaps(maps));
     }, [stage.id]);
-
-    const onConclude = (values: MatchStatus) => {
-        console.log(values);
-    }
 
     return (  
         <Grid container alignItems='center' maxWidth={1400} marginBottom={2}>
             <SectionTitle title='Conduct match' xsAuto/>
-            <Grid item xs textAlign='end' marginRight={5}>
+            <Grid item xs textAlign='end' paddingRight={5}>
                 <Button variant='contained' 
                     startIcon={<ChevronLeft/>} 
                     sx={{ width: 100 }} 
@@ -53,21 +52,27 @@ const RefSheetMatchSolo = ({match, stage, onClose}: IProps) => {
             <Grid item xs={12}>
                 <Formik 
                     initialValues={initialValues} 
-                    onSubmit={onConclude}
+                    onSubmit={() => console.log('Submit')}
                     validateOnChange={false}
                     validateOnBlur={false}>
                 {({ values, setFieldValue }) => (
                     <Form>
-                        <Grid container spacing={1}>
+                        <Grid container justifyContent='center' spacing={1}>
                             <Grid item width={450}>
-                                <RefMatchMain match={match} stageName={stage.name}/>
+                                <RefMatchMain match={values.match} stageName={stage.name} onClose={onClose}/>
+                                <RefMatchCommands match={values.match} picks={values.picks}/>
                             </Grid>
                             <Grid item width={450}>
                                 <RefMatchStatus
                                     values={values}
                                     bestOf={stage.bestOf}
                                     setFieldValue={setFieldValue}/>
-                                <RefMatchBans maps={maps} player1={match.player1.name} player2={match.player2.name}/>
+                                <RefMatchChoices 
+                                    maps={maps} 
+                                    player1={match.player1.name} 
+                                    player2={match.player2.name}
+                                    bans={values.bans}
+                                    protects={values.protects}/>
                                 {values.picks.length > 0 &&
                                 <RefMatchPicks 
                                     bestOf={stage.bestOf} 
@@ -75,7 +80,11 @@ const RefSheetMatchSolo = ({match, stage, onClose}: IProps) => {
                                     values={values}/>}
                             </Grid>
                             <Grid item width={450}>
-                                <RefMapPool maps={maps} picks={values.picks.map(pick => pick.map)}/>
+                                <RefMapPool 
+                                    maps={maps} 
+                                    picks={values.picks.map(pick => pick.beatmapId)}
+                                    bans={values.bans}
+                                    protects={values.protects}/>
                             </Grid>
                         </Grid>
                     </Form>

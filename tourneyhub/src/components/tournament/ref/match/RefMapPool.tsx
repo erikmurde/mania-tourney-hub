@@ -1,24 +1,46 @@
-import { Grid, IconButton, Paper, Table, TableBody, TableContainer, TableHead, TableRow, Typography, useTheme } from '@mui/material';
+import { Grid, Paper, Table, TableBody, TableContainer, TableHead, TableRow, Typography, useTheme } from '@mui/material';
 import { IMapDto } from '../../../../dto/map/IMapDto';
 import { SchedTableCell } from '../../../styled/SchedTableCell';
 import MapTypeBox from '../../../MapTypeBox';
-import { ContentCopy } from '@mui/icons-material';
 import { StyledTableRow } from '../../../styled/StyledTableRow';
+import CopyClipboard from '../CopyClipboard';
+import { RefSheetPaper } from '../../../styled/RefSheetPaper';
 
 interface IProps {
     maps: IMapDto[],
-    picks: string[]
+    picks: string[],
+    bans: string[],
+    protects: string[]
 }
 
-const RefMapPool = ({maps, picks}: IProps) => {
+const RefMapPool = ({maps, picks, bans, protects}: IProps) => {
     const theme = useTheme();
 
-    const isMapPicked = (map: IMapDto) => {
-        return picks.includes(map.id);
+    const isMapDisabled = (map: IMapDto) => {
+        return bans.includes(map.beatmapId) || picks.includes(map.beatmapId);
+    }
+
+    const getBorder = (map: IMapDto) => {
+        let border = '2px solid ';
+
+        if (bans.includes(map.beatmapId)) {
+            return border + theme.palette.error.main;
+        }
+        else if (picks.includes(map.beatmapId)) {
+            return border + theme.palette.success.main;
+        }
+        else if (protects.includes(map.beatmapId)) {
+            return border + theme.palette.warning.main;
+        }
+        return 'none';
+    }
+
+    const getTextColor = (map: IMapDto) => {
+        return isMapDisabled(map) ? theme.palette.text.disabled : theme.palette.text.primary; 
     }
 
     return (  
-        <Paper elevation={8} sx={{ padding: 1 }}>
+        <RefSheetPaper elevation={8} sx={{ height: 1 }}>
             <Grid item>
                 <TableContainer>
                     <Table>
@@ -26,11 +48,12 @@ const RefMapPool = ({maps, picks}: IProps) => {
                             <TableRow>
                                 <SchedTableCell colSpan={2}>Map</SchedTableCell>
                                 <SchedTableCell width={115}>Command</SchedTableCell>
+                                <SchedTableCell></SchedTableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
                             {maps.map(map => 
-                                <StyledTableRow className={isMapPicked(map) ? 'map-picked' : ''}>
+                                <StyledTableRow sx={{ border: getBorder(map) }}>
                                     <SchedTableCell>
                                         <MapTypeBox 
                                             mapType={map.mapType} 
@@ -43,23 +66,19 @@ const RefMapPool = ({maps, picks}: IProps) => {
                                     <SchedTableCell>
                                         <Typography 
                                             fontSize={12}
-                                            color={isMapPicked(map) ? theme.palette.text.disabled : theme.palette.text.primary}>
+                                            color={getTextColor(map)}>
                                             {map.artist} - {map.title} [{map.diff}]
                                         </Typography>
                                     </SchedTableCell>
                                     <SchedTableCell sx={{ paddingRight: 0 }}>
                                         <Typography 
                                             fontSize={12}
-                                            color={isMapPicked(map) ? theme.palette.text.disabled : theme.palette.text.primary}>
+                                            color={getTextColor(map)}>
                                             !mp map {map.beatmapId} 3
                                         </Typography>
                                     </SchedTableCell>
                                     <SchedTableCell sx={{ paddingLeft: 0 }}>
-                                        <IconButton size='small' 
-                                            disabled={isMapPicked(map)}
-                                            sx={{ color: isMapPicked(map) ? theme.palette.text.disabled : theme.palette.primary.main }}>
-                                            <ContentCopy/>
-                                        </IconButton>
+                                        <CopyClipboard text={`!mp map ${map.beatmapId} 3`} disabled={isMapDisabled(map)}/>
                                     </SchedTableCell>
                                 </StyledTableRow>
                             )}
@@ -67,7 +86,7 @@ const RefMapPool = ({maps, picks}: IProps) => {
                     </Table>
                 </TableContainer>
             </Grid>
-        </Paper>
+        </RefSheetPaper>
     );
 }
  

@@ -15,9 +15,7 @@ const MapManageList = ({maps}: {maps: IMapDto[]}) => {
     let data = new Map<string, IMapDto[]>();
     let accordions: JSX.Element[] = [];
 
-    maps
-    .sort((a, b) => service.getWeight(a) - service.getWeight(b))
-    .forEach(map => {
+    maps.forEach(map => {
         let key = `${map.mapType}${map.index}`;
 
         if (data.has(key)) {

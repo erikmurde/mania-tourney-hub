@@ -29,7 +29,7 @@ const UnsubmittedMapCreateForm = ({open, onClose}: DialogProps) => {
     const initialValues: IMapDto = {
         id: '',
         stageId: location.hash.split('#')[1],
-        beatmapId: 0,
+        beatmapId: '',
         inMappool: false,
         title: '',
         diff: '',

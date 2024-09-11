@@ -4,5 +4,7 @@ import { RefPick } from './RefPick';
 export interface MatchStatus {
     match: MatchDto,
     firstPick: string,
-    picks: RefPick[]
+    picks: RefPick[],
+    bans: string[]
+    protects: string[]
 }

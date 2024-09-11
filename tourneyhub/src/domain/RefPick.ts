@@ -1,5 +1,5 @@
 export interface RefPick {
     player: string,
-    map: string,
-    winner: string
+    winner: string,
+    beatmapId: string
 }

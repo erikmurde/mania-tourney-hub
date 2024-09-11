@@ -14,9 +14,9 @@ const MapInfo = ({map}: {map: IMapDto}) => {
             <Grid item>
                 <IconButton 
                     sx={{ color: theme.palette.primary.main}} 
-                    className='icon-btn'
                     href={map.download}
-                    target='_blank'>
+                    target='_blank'
+                    size='small'>
                     <Download/>
                 </IconButton>
             </Grid>
