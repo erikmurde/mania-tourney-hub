@@ -26,7 +26,7 @@ const QualiInviteCommands = ({players}: {players: string[]}) => {
                         {getRows().map((row, rowIndex) =>
                             <StyledTableRow key={rowIndex}>
                                 {row.map((player, playerIndex) => 
-                                    <CommandTableCell command={{ 
+                                    <CommandTableCell key={rowIndex + playerIndex} command={{ 
                                         name: `Player ${rowIndex * COL_COUNT + playerIndex + 1}`, 
                                         command: `!mp invite ${player}` 
                                     }}/>

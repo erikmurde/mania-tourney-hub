@@ -50,9 +50,9 @@ const RefMatchCommands = ({match, picks, bestOf}: IProps) => {
                     <Table>
                         <RefTableHead title='GENERAL COMMANDS' props={{ sx: { fontWeight: 500 } }}/>
                         <TableBody>
-                            {getGeneralCommands().map((command, index) => 
-                                <StyledTableRow>
-                                    <CommandTableCell key={index} command={command}/>
+                            {getGeneralCommands().map(command => 
+                                <StyledTableRow key={command.name}>
+                                    <CommandTableCell command={command}/>
                                 </StyledTableRow>
                             )}
                         </TableBody>

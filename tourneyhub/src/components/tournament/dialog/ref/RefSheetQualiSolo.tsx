@@ -42,7 +42,7 @@ const RefSheetQualiSolo = ({lobby, stageName, lobbySize, onClose}: IProps) => {
             <Grid item maxWidth={1200}>
                 <Grid container justifyContent='center' spacing={1}>
                     <Grid item xs={5}>
-                        <QualiMain lobby={lobby} stageName={stageName}/>
+                        <QualiMain lobby={lobby} stageName={stageName} onClose={onClose}/>
                         <QualiMapCommands selectedId={selectedId}/>
                         <QualiGeneralCommands lobbySize={lobbySize}/>
                     </Grid>

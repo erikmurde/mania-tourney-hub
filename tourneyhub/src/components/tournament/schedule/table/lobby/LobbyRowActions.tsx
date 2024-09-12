@@ -23,6 +23,11 @@ const LobbyRowActions = ({lobby, isHost, canReg, hasRefRole, onRef}: IProps) => 
     const { scheduleUpdate, setScheduleUpdate } = useContext(UpdateContext);
     const service = new LobbyService();
 
+    const editLobby = async() => {
+        await service.edit(lobby.id, lobby);
+        setScheduleUpdate(scheduleUpdate + 1);
+    }
+
     const deleteLobby = async() => {
         await service.delete(lobby.id);
         setScheduleUpdate(scheduleUpdate + 1);
@@ -36,18 +41,20 @@ const LobbyRowActions = ({lobby, isHost, canReg, hasRefRole, onRef}: IProps) => 
             ? [...lobby.players, user.name] 
             : lobby.players.filter(player => player !== user.name);
     
-        await service.edit(lobby.id, lobby);
-        setScheduleUpdate(scheduleUpdate + 1);
+        editLobby();
     }
 
-    const editLobbyRef = async(add: boolean) => {
+    const editLobbyRef = (add: boolean) => {
         if (!user) {
             return
         }
         lobby.referee = add ? user.name : '';
+        editLobby();
+    }
 
-        await service.edit(lobby.id, lobby);
-        setScheduleUpdate(scheduleUpdate + 1);
+    const closeEmptyLobby = () => {
+        lobby.isDone = true;
+        editLobby();
     }
 
     const isReferee = user && lobby.referee === user.name;
@@ -56,7 +63,7 @@ const LobbyRowActions = ({lobby, isHost, canReg, hasRefRole, onRef}: IProps) => 
     return (  
         <SchedTableCell align='center'>
             {lobby.isDone && lobby.mpLink &&
-            <Tooltip title='Match link'>
+            <Tooltip title='Lobby link'>
                 <StyledIconButton 
                     onClick={() => window.open(lobby.mpLink, '_blank')}
                     sx={{ color: TERTIARY }}>
@@ -65,9 +72,19 @@ const LobbyRowActions = ({lobby, isHost, canReg, hasRefRole, onRef}: IProps) => 
             </Tooltip>}
             {(isHost || isReferee) && !lobby.isDone && 
             <Tooltip title='Conduct lobby'>
-                <StyledIconButton color='primary' onClick={onRef}>
-                    <PlayArrow/>
-                </StyledIconButton>
+                {lobby.players.length > 0 
+                ?   <StyledIconButton color='primary' onClick={onRef}>
+                        <PlayArrow/>
+                    </StyledIconButton>
+                :   <span>
+                        <ConfirmationDialog
+                            size='xs'
+                            title='This lobby has no registered players. Do you wish to close it?'
+                            actionTitle='Yes'
+                            action={closeEmptyLobby}
+                            btnIcon={<PlayArrow/>}
+                            btnProps={{ color: 'primary' }}/>
+                    </span>}
             </Tooltip>}
             {!isHost && (canReg || canAddRef) && !lobby.isDone &&
             <Tooltip title={hasRefRole ? 'Set as referee' : 'Register for lobby'}>
@@ -91,11 +108,11 @@ const LobbyRowActions = ({lobby, isHost, canReg, hasRefRole, onRef}: IProps) => 
             <>
             <LobbyEditForm lobby={lobby}/>
             <ConfirmationDialog
-                btnIcon={<Delete/>}
-                btnProps={{ color: 'error' }}
                 title='Are you sure you wish to delete this lobby?' 
                 actionTitle='Delete' 
-                action={() => deleteLobby()}/>
+                action={() => deleteLobby()}
+                btnIcon={<Delete/>}
+                btnProps={{ color: 'error' }}/>
             </>}
         </SchedTableCell>
     );

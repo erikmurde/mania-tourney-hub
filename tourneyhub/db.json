@@ -5269,7 +5269,7 @@
       "id": "11",
       "stageId": "4",
       "beatmapId": "4368284",
-      "inMappool": false,
+      "inMappool": true,
       "title": "PhantasmalWar",
       "diff": "Blood moon",
       "artist": "SunsetRay",
@@ -5367,7 +5367,7 @@
       "index": 2,
       "comment": "dfsdfzfsdfdsfsd sdfds fsd fsda fsd fsdafds",
       "suggestor": "Arcaxio",
-      "inMappool": true
+      "inMappool": false
     },
     {
       "id": "OYPUro7",

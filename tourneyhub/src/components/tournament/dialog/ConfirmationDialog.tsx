@@ -1,4 +1,4 @@
-import { Breakpoint, Button, ButtonProps, Dialog, Divider } from '@mui/material';
+import { Breakpoint, Button, ButtonProps, Dialog } from '@mui/material';
 import TourneyDialogTitle from './TourneyDialogTitle';
 import { StyledDialogActions } from '../../styled/StyledDialogActions';
 import { useState } from 'react';
@@ -40,14 +40,17 @@ const ConfirmationDialog = ({btnProps, btnIcon, title, description, actionTitle,
                     {description}
                 </StyledDialogContent>
                 <StyledDialogActions>
-                    <Button variant='contained' color='error' onClick={() => setOpen(false)}>
+                    <Button variant='contained' color='error' 
+                        onClick={() => setOpen(false)} 
+                        sx={{ minWidth: 90 }}>
                         Cancel
                     </Button>
                     <Button variant='contained' color='success' 
                         onClick={() => {
                             action();
                             setOpen(false)
-                        }}>
+                        }}
+                        sx={{ minWidth: 90 }}>
                         {actionTitle}
                     </Button>
                 </StyledDialogActions>

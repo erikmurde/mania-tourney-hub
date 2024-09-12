@@ -38,7 +38,7 @@ const StatusCommandsTable = ({picks, match, bestOf}: IProps) => {
         const filtered = picks.filter(pick => pick.beatmapId !== '');
 
         if (filtered.length === 0) {
-            return '';
+            return 'none';
         }
         return `!mp map ${filtered[filtered.length - 1].beatmapId} 3`;
     }
@@ -57,9 +57,9 @@ const StatusCommandsTable = ({picks, match, bestOf}: IProps) => {
             <Table>
                 <RefTableHead title='MATCH STATUS' props={{ sx: { fontWeight: 500 } }}/>
                 <TableBody>
-                    {statusCommands.map((command, index) => 
-                        <StyledTableRow>
-                            <CommandTableCell key={index} command={command}/>
+                    {statusCommands.map(command => 
+                        <StyledTableRow key={command.name}>
+                            <CommandTableCell command={command}/>
                         </StyledTableRow>
                     )}
                 </TableBody>

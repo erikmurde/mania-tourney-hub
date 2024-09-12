@@ -4,45 +4,66 @@ import ConfirmationDialog from '../../dialog/ConfirmationDialog';
 import { Divider, Grid, TextField, Typography } from '@mui/material';
 import { useTourney } from '../../../../routes/tournament/TournamentHeader';
 import { LobbyDto } from '../../../../dto/schedule/LobbyDto';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { LobbyService } from '../../../../services/lobbyService';
+import { UpdateContext } from '../../../../routes/Root';
+import { INVALID_URL, URL_REGEX } from '../../../../constants';
+import CopyClipboard from '../CopyClipboard';
 
 interface IProps {
     lobby: LobbyDto,
-    stageName: string
+    stageName: string,
+    onClose: () => void
 }
 
-const QualiMain = ({lobby, stageName}: IProps) => {
-    const [mpLink, setMpLink] = useState('');
+const QualiMain = ({lobby, stageName, onClose}: IProps) => {
     const { tourney } = useTourney();
+    const { scheduleUpdate, setScheduleUpdate } = useContext(UpdateContext);
+    const [mpLink, setMpLink] = useState('');
+    const [error, setError] = useState('');
 
-    const onConclude = () => {
+    const onConclude = async() => {
+        if (!mpLink.match(URL_REGEX)) {
+            setError(INVALID_URL);
+            return;
+        }
         lobby.isDone = true;
         lobby.mpLink = mpLink;
         
-        console.log(lobby);
+        await new LobbyService().edit(lobby.id, lobby);
+        setScheduleUpdate(scheduleUpdate + 1);
+        onClose();
     }
 
     const roomCommand = `!mp make ${tourney.code}: Lobby ${lobby.code}`;
 
     return (  
-        <RefSheetPaper elevation={8} sx={{ marginBottom: 1, paddingTop: 1 }}>
-            <Grid container direction='column' rowGap={1}>
-                <Grid item>
+        <RefSheetPaper elevation={8} sx={{ marginBottom: 1 }}>
+            <Grid container alignItems='center'>
+                <Grid item xs={12} height={50} alignContent='center'>
                     <Typography fontWeight={500}>
                         {tourney.code} {stageName} lobby {lobby.code}
                     </Typography>
                 </Grid>
-                <Divider/>
-                <Grid item>
+                <Grid item xs={12}>
+                    <Divider/>
+                </Grid>
+                <Grid item xs={11} height={50} alignContent='center'>
                     <Typography fontSize={14}>
                         {roomCommand}
                     </Typography>
                 </Grid>
-                <Divider/>
-                <Grid item>
-                    <TextField fullWidth label='MP link' size='small' onChange={(e) => setMpLink(e.target.value)}/>
+                <Grid item xs textAlign='end'>
+                    <CopyClipboard text={roomCommand}/>
                 </Grid>
-                <Grid item padding={1} paddingLeft={0}>
+                <Grid item xs={12} marginTop={0.5} marginBottom={1}>
+                    <TextField fullWidth label='MP link' size='small' 
+                        onChange={(e) => setMpLink(e.target.value)}
+                        onBlur={() => setError(!mpLink.match(URL_REGEX) ? INVALID_URL : '')}
+                        error={error !== ''}
+                        helperText={error}/>
+                </Grid>
+                <Grid item marginTop={1} marginBottom={1} paddingLeft={0}>
                     <ConfirmationDialog 
                         title='Are you sure you wish to conclude this lobby?' 
                         actionTitle='Conclude'
