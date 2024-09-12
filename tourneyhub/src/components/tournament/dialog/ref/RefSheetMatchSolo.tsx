@@ -40,7 +40,7 @@ const RefSheetMatchSolo = ({match, stage, onClose}: IProps) => {
 
     return (  
         <Grid container alignItems='center' maxWidth={1400} marginBottom={2}>
-            <SectionTitle title='Conduct match' xsAuto/>
+            <SectionTitle xsAuto title='Conduct match'/>
             <Grid item xs textAlign='end' paddingRight={5}>
                 <Button variant='contained' 
                     startIcon={<ChevronLeft/>} 
@@ -58,26 +58,35 @@ const RefSheetMatchSolo = ({match, stage, onClose}: IProps) => {
                 {({ values, setFieldValue }) => (
                     <Form>
                         <Grid container justifyContent='center' spacing={1}>
-                            <Grid item width={450}>
-                                <RefMatchMain match={values.match} stageName={stage.name} onClose={onClose}/>
-                                <RefMatchCommands match={values.match} picks={values.picks}/>
+                            <Grid item container width={450} direction='column'>
+                                <RefMatchMain 
+                                    match={values.match} 
+                                    stageName={stage.name} 
+                                    maxScore={Math.floor(stage.bestOf / 2) + 1}
+                                    onClose={onClose}
+                                />
+                                <Grid item flexGrow={1}>
+                                    <RefMatchCommands match={values.match} picks={values.picks} bestOf={stage.bestOf}/>
+                                </Grid>
                             </Grid>
-                            <Grid item width={450}>
-                                <RefMatchStatus
-                                    values={values}
-                                    bestOf={stage.bestOf}
-                                    setFieldValue={setFieldValue}/>
-                                <RefMatchChoices 
-                                    maps={maps} 
-                                    player1={match.player1.name} 
-                                    player2={match.player2.name}
-                                    bans={values.bans}
-                                    protects={values.protects}/>
-                                {values.picks.length > 0 &&
-                                <RefMatchPicks 
-                                    bestOf={stage.bestOf} 
-                                    maps={maps}
-                                    values={values}/>}
+                            <Grid item container width={450} direction='column'>
+                                    <RefMatchStatus
+                                        values={values}
+                                        bestOf={stage.bestOf}
+                                        setFieldValue={setFieldValue}/>
+                                    <RefMatchChoices 
+                                        maps={maps} 
+                                        player1={match.player1.name} 
+                                        player2={match.player2.name}
+                                        bans={values.bans}
+                                        protects={values.protects}/>
+                                <Grid item flexGrow={1}>
+                                    {values.picks.length > 0 &&
+                                    <RefMatchPicks 
+                                        bestOf={stage.bestOf} 
+                                        maps={maps}
+                                        values={values}/>}
+                                </Grid>
                             </Grid>
                             <Grid item width={450}>
                                 <RefMapPool 

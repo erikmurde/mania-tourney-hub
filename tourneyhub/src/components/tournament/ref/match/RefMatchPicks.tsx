@@ -1,4 +1,4 @@
-import { MenuItem, Paper, Table, TableBody, TableContainer, TableHead, TableRow, useTheme } from '@mui/material';
+import { Grid, MenuItem, Paper, Table, TableBody, TableContainer, TableHead, TableRow, useTheme } from '@mui/material';
 import { SchedTableCell } from '../../../styled/SchedTableCell';
 import { FieldArray } from 'formik';
 import TourneySelectField from '../../field/TourneySelectField';
@@ -8,14 +8,15 @@ import RefSheetPlayerBox from '../../../RefSheetPlayerBox';
 import { TERTIARY } from '../../../../constants';
 import { StyledTableRow } from '../../../styled/StyledTableRow';
 import { useEffect, useState } from 'react';
+import { RefSheetPaper } from '../../../styled/RefSheetPaper';
 
 interface IProps {
-    bestOf: number,
+    values: MatchStatus,
     maps: IMapDto[],
-    values: MatchStatus
+    bestOf: number
 }
 
-const RefMatchPicks = ({bestOf, maps, values}: IProps) => {
+const RefMatchPicks = ({values, maps, bestOf}: IProps) => {
     const theme = useTheme();
     const [unselectableMaps, setUnselectableMaps] = useState([] as string[]);
     const players = [values.match.player1.name, values.match.player2.name];
@@ -30,15 +31,26 @@ const RefMatchPicks = ({bestOf, maps, values}: IProps) => {
         return index % 2 === 0 ? theme.palette.primary.main : theme.palette.error.main;
     }
 
+    const pickDisabled = (index: number) => {
+        const maxScore = Math.floor(bestOf / 2) + 1;
+        const prev = index > 0 ? values.picks[index - 1] : null;
+
+        return (prev && (prev.winner === '' || prev.beatmapId === '')) 
+            || (values.match.score1 === maxScore && index >= maxScore) 
+            || (values.match.score2 === maxScore && index >= maxScore);
+    }
+
     useEffect(() => {
         setUnselectableMaps(maps
             .map(map => map.beatmapId)
-            .filter(id => values.bans.includes(id) || values.picks.map(pick => pick.beatmapId).includes(id))
+            .filter(id => 
+                values.bans.includes(id) || values.picks.map(pick => pick.beatmapId).includes(id)
+            )
         );
     }, [values.picks, values.bans]);
 
     return (  
-        <Paper elevation={8} sx={{ padding: 1 }}>
+        <RefSheetPaper elevation={8} sx={{ height: 1 }}>
             <TableContainer>
                 <Table>
                     <TableHead>
@@ -50,36 +62,41 @@ const RefMatchPicks = ({bestOf, maps, values}: IProps) => {
                     </TableHead>
                     <TableBody>
                         <FieldArray name='picks'>
-                        {() => values.picks.map((pick, index) => 
-                            <TableRow key={index}>
-                                <SchedTableCell sx={{ border: 0 }}>
-                                    <RefSheetPlayerBox name={pick.player} bgColor={getBgColor(index)}/>
-                                </SchedTableCell>
-                                <SchedTableCell sx={{ border: 0 }}>
-                                    <TourneySelectField name={`picks[${index}].beatmapId`} small
-                                        options={maps.map((value, index) => 
-                                            <MenuItem 
-                                                sx={{ display: unselectableMaps.includes(value.beatmapId) ? 'none' : '' }} 
-                                                key={index} 
-                                                value={value.beatmapId}
-                                                >
-                                                {value.mapType}{value.index}
-                                            </MenuItem>
-                                        )}/>
-                                </SchedTableCell>
-                                <SchedTableCell sx={{ border: 0 }}>
-                                    <TourneySelectField name={`picks[${index}].winner`} small
-                                        options={players.map((value, index) => 
-                                            <MenuItem key={index} value={value}>{value}</MenuItem>
-                                        )}/>
-                                </SchedTableCell>
-                            </TableRow>
-                        )}
+                        {() => values.picks.map((pick, index) => {
+                            const disabled = pickDisabled(index);
+                            return (
+                                <TableRow key={index}>
+                                    <SchedTableCell sx={{ border: 0 }}>
+                                        <RefSheetPlayerBox name={pick.player} bgColor={getBgColor(index)}/>
+                                    </SchedTableCell>
+                                    <SchedTableCell sx={{ border: 0 }}>
+                                        <TourneySelectField name={`picks[${index}].beatmapId`} small
+                                            disabled={disabled}
+                                            options={maps.map((value, index) => 
+                                                <MenuItem 
+                                                    sx={{ display: unselectableMaps.includes(value.beatmapId) ? 'none' : '' }} 
+                                                    key={index} 
+                                                    value={value.beatmapId}
+                                                    >
+                                                    {value.mapType}{value.index}
+                                                </MenuItem>
+                                            )}/>
+                                    </SchedTableCell>
+                                    <SchedTableCell sx={{ border: 0 }}>
+                                        <TourneySelectField name={`picks[${index}].winner`} small
+                                            disabled={disabled}
+                                            options={players.map((value, index) => 
+                                                <MenuItem key={index} value={value}>{value}</MenuItem>
+                                            )}/>
+                                    </SchedTableCell>
+                                </TableRow>
+                            )
+                        })}
                         </FieldArray>
                     </TableBody>
                 </Table>
             </TableContainer>
-        </Paper>
+        </RefSheetPaper>
     );
 }
  

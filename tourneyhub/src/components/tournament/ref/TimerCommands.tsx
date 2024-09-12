@@ -20,8 +20,8 @@ const TimerCommands = () => {
                     </StyledTableRow>
                 </TableHead>
                 <TableBody>
-                    {rows.map(row => 
-                        <StyledTableRow>
+                    {rows.map((row, index) => 
+                        <StyledTableRow key={index}>
                             <SchedTableCell width={100}>
                                 {row[0]}
                             </SchedTableCell>

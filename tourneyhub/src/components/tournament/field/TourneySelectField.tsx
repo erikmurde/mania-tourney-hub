@@ -6,6 +6,7 @@ interface IProps {
     label?: string,
     error?: string,
     small?: boolean,
+    disabled?: boolean,
     options: JSX.Element[]
 }
 
@@ -13,7 +14,7 @@ const ITEM_HEIGHT = 36;
 const ITEM_COUNT = 6;
 const PADDING = 8;
 
-const TourneySelectField = ({name, label, error, small, options}: IProps) => {
+const TourneySelectField = ({name, label, error, small, disabled, options}: IProps) => {
     const isInvalid = error !== undefined;
 
     return (  
@@ -26,6 +27,7 @@ const TourneySelectField = ({name, label, error, small, options}: IProps) => {
                 name={name} 
                 label={label}
                 defaultValue=''
+                disabled={disabled}
                 >
                 {options}
             </Field>

@@ -1,10 +1,11 @@
-import { MenuItem, Paper, Table, TableBody, TableContainer, TableHead, TableRow, useTheme } from '@mui/material';
+import { MenuItem, Table, TableBody, TableContainer, TableHead, useTheme } from '@mui/material';
 import { SchedTableCell } from '../../../styled/SchedTableCell';
 import { useTourney } from '../../../../routes/tournament/TournamentHeader';
 import { IMapDto } from '../../../../dto/map/IMapDto';
 import RefSheetPlayerBox from '../../../RefSheetPlayerBox';
 import { StyledTableRow } from '../../../styled/StyledTableRow';
 import TourneySelectField from '../../field/TourneySelectField';
+import { RefSheetPaper } from '../../../styled/RefSheetPaper';
 
 interface IProps {
     maps: IMapDto[],
@@ -19,7 +20,7 @@ const RefMatchChoices = ({maps, player1, player2, bans, protects}: IProps) => {
     const { tourney } = useTourney();
 
     return (  
-        <Paper elevation={8} sx={{ padding: 1, marginBottom: 1 }}>
+        <RefSheetPaper elevation={8} sx={{ marginBottom: 1, paddingBottom: 1 }}>
             <TableContainer sx={{ marginBottom: 2 }}>
                 <Table>
                     <TableHead>
@@ -32,7 +33,7 @@ const RefMatchChoices = ({maps, player1, player2, bans, protects}: IProps) => {
                     </TableHead>
                     <TableBody>
                         {[player1, player2].map((player, index) => 
-                            <StyledTableRow>
+                            <StyledTableRow key={index}>
                                 <SchedTableCell sx={{ border: 0 }}>
                                     <RefSheetPlayerBox 
                                         name={player} 
@@ -72,7 +73,7 @@ const RefMatchChoices = ({maps, player1, player2, bans, protects}: IProps) => {
                 options={[player1, player2].map((value, index) => 
                     <MenuItem key={index} value={value}>{value}</MenuItem>
                 )}/>
-        </Paper>
+        </RefSheetPaper>
     );
 }
  

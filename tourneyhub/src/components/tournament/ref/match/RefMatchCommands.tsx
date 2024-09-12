@@ -3,18 +3,19 @@ import { MatchDto } from '../../../../dto/schedule/MatchDto';
 import StatusCommandsTable from './table/StatusCommandsTable';
 import { RefSheetPaper } from '../../../styled/RefSheetPaper';
 import { RefCommand } from '../../../../domain/RefCommand';
-import { TableContainer, Table, TableHead, TableBody } from '@mui/material';
-import { SchedTableCell } from '../../../styled/SchedTableCell';
-import CommandTableRow from './table/CommandTableRow';
+import { TableContainer, Table, TableBody } from '@mui/material';
 import { StyledTableRow } from '../../../styled/StyledTableRow';
 import TimerCommands from '../TimerCommands';
+import CommandTableCell from '../CommandTableCell';
+import RefTableHead from '../CommandTableHead';
 
 interface IProps {
     match: MatchDto,
+    bestOf: number,
     picks: RefPick[]
 }
 
-const RefMatchCommands = ({match, picks}: IProps) => {
+const RefMatchCommands = ({match, picks, bestOf}: IProps) => {
 
     const getGeneralCommands = () => {
         let generalCommands: RefCommand[] = [
@@ -42,21 +43,17 @@ const RefMatchCommands = ({match, picks}: IProps) => {
     return (  
         <>
             <RefSheetPaper elevation={8} sx={{ marginBottom: 1 }}>
-                <StatusCommandsTable picks={picks} match={match}/>
+                <StatusCommandsTable picks={picks} match={match} bestOf={bestOf}/>
             </RefSheetPaper>
             <RefSheetPaper elevation={8}>
                 <TableContainer>
                     <Table>
-                        <TableHead>
-                            <StyledTableRow>
-                                <SchedTableCell colSpan={3} sx={{ fontWeight: 500 }}>
-                                    GENERAL COMMANDS
-                                </SchedTableCell>
-                            </StyledTableRow>
-                        </TableHead>
+                        <RefTableHead title='GENERAL COMMANDS' props={{ sx: { fontWeight: 500 } }}/>
                         <TableBody>
                             {getGeneralCommands().map((command, index) => 
-                                <CommandTableRow key={index} command={command}/>
+                                <StyledTableRow>
+                                    <CommandTableCell key={index} command={command}/>
+                                </StyledTableRow>
                             )}
                         </TableBody>
                     </Table>

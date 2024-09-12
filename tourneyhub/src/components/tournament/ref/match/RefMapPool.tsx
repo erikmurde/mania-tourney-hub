@@ -1,4 +1,4 @@
-import { Grid, Paper, Table, TableBody, TableContainer, TableHead, TableRow, Typography, useTheme } from '@mui/material';
+import { Grid, Table, TableBody, TableContainer, TableHead, TableRow, Typography, useTheme } from '@mui/material';
 import { IMapDto } from '../../../../dto/map/IMapDto';
 import { SchedTableCell } from '../../../styled/SchedTableCell';
 import MapTypeBox from '../../../MapTypeBox';
@@ -21,7 +21,7 @@ const RefMapPool = ({maps, picks, bans, protects}: IProps) => {
     }
 
     const getBorder = (map: IMapDto) => {
-        let border = '2px solid ';
+        let border = 'inset 0px 0px 0px 2px ';
 
         if (bans.includes(map.beatmapId)) {
             return border + theme.palette.error.main;
@@ -32,7 +32,7 @@ const RefMapPool = ({maps, picks, bans, protects}: IProps) => {
         else if (protects.includes(map.beatmapId)) {
             return border + theme.palette.warning.main;
         }
-        return 'none';
+        return '';
     }
 
     const getTextColor = (map: IMapDto) => {
@@ -44,16 +44,18 @@ const RefMapPool = ({maps, picks, bans, protects}: IProps) => {
             <Grid item>
                 <TableContainer>
                     <Table>
-                        <TableHead sx={{ height: 50 }}>
-                            <TableRow>
+                        <TableHead>
+                            <TableRow sx={{ height: 50 }}>
                                 <SchedTableCell colSpan={2}>Map</SchedTableCell>
                                 <SchedTableCell width={115}>Command</SchedTableCell>
                                 <SchedTableCell></SchedTableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {maps.map(map => 
-                                <StyledTableRow sx={{ border: getBorder(map) }}>
+                            {maps.map(map => {
+                                const textColor = getTextColor(map);
+                                return (
+                                <StyledTableRow key={map.id} sx={{ boxShadow: getBorder(map), borderRadius: 1 }}>
                                     <SchedTableCell>
                                         <MapTypeBox 
                                             mapType={map.mapType} 
@@ -66,22 +68,22 @@ const RefMapPool = ({maps, picks, bans, protects}: IProps) => {
                                     <SchedTableCell>
                                         <Typography 
                                             fontSize={12}
-                                            color={getTextColor(map)}>
+                                            color={textColor}>
                                             {map.artist} - {map.title} [{map.diff}]
                                         </Typography>
                                     </SchedTableCell>
                                     <SchedTableCell sx={{ paddingRight: 0 }}>
                                         <Typography 
                                             fontSize={12}
-                                            color={getTextColor(map)}>
+                                            color={textColor}>
                                             !mp map {map.beatmapId} 3
                                         </Typography>
                                     </SchedTableCell>
                                     <SchedTableCell sx={{ paddingLeft: 0 }}>
                                         <CopyClipboard text={`!mp map ${map.beatmapId} 3`} disabled={isMapDisabled(map)}/>
                                     </SchedTableCell>
-                                </StyledTableRow>
-                            )}
+                                </StyledTableRow>)
+                            })}
                         </TableBody>
                     </Table>
                 </TableContainer>

@@ -1,24 +1,29 @@
-import { Divider, Grid, Paper, TextField, Typography } from '@mui/material';
+import { Divider, Grid, TextField, Typography } from '@mui/material';
 import { useTourney } from '../../../../routes/tournament/TournamentHeader';
 import { MatchDto } from '../../../../dto/schedule/MatchDto';
 import { Check } from '@mui/icons-material';
-import { FastField } from 'formik';
 import MatchWbdForm from './form/MatchWbdForm';
 import { MatchWbdDto } from '../../../../dto/ref/MatchWbdDto';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { UpdateContext } from '../../../../routes/Root';
 import { MatchService } from '../../../../services/matchService';
 import ConfirmationDialog from '../../dialog/ConfirmationDialog';
+import { RefSheetPaper } from '../../../styled/RefSheetPaper';
+import CopyClipboard from '../CopyClipboard';
+import { REQUIRED } from '../../../../constants';
 
 interface IProps {
     match: MatchDto,
     stageName: string,
+    maxScore: number,
     onClose: () => void
 }
 
-const RefMatchMain = ({match, stageName, onClose}: IProps) => {
+const RefMatchMain = ({match, stageName, maxScore, onClose}: IProps) => {
     const { scheduleUpdate, setScheduleUpdate } = useContext(UpdateContext);
     const { tourney } = useTourney();
+    const [mpLink, setMpLink] = useState('');
+    const [error, setError] = useState('');
 
     const editMatch = async() => {
         await new MatchService().edit(match.id, match);
@@ -36,12 +41,19 @@ const RefMatchMain = ({match, stageName, onClose}: IProps) => {
     }
 
     const onConclude = async() => {
+        if (match.mpLink === '') {
+            setError(REQUIRED);
+            return;
+        }
         match.isDone = true;
+        match.mpLink = mpLink;
         editMatch();
     }
 
+    const roomCommand = `!mp make ${tourney.code}: ${match.player1.name} vs ${match.player2.name}`;
+
     return (  
-        <Paper elevation={8} sx={{ padding: 1, paddingBottom: 0, marginBottom: 1 }}>
+        <RefSheetPaper elevation={8} sx={{ marginBottom: 1 }}>
             <Grid container direction='column'>
                 <Grid item>
                     <Typography fontWeight={500} padding={1}>
@@ -51,12 +63,17 @@ const RefMatchMain = ({match, stageName, onClose}: IProps) => {
                 <Divider/>
                 <Grid item>
                     <Typography fontSize={14} padding={1}>
-                        !mp make {tourney.code}: {match.player1.name} vs {match.player2.name} 
+                        {roomCommand}
+                        <CopyClipboard text={roomCommand}/>
                     </Typography>
                 </Grid>
                 <Divider/>
                 <Grid item paddingTop={1}>
-                    <FastField fullWidth name='match.mpLink' label='MP link' size='small' as={TextField}/>
+                    <TextField fullWidth label='MP link' size='small' 
+                        onChange={(e) => setMpLink(e.target.value)}
+                        onBlur={() => setError(mpLink === '' ? REQUIRED : '')}
+                        error={error !== ''}
+                        helperText={error}/>
                 </Grid>
                 <Divider/>
                 <Grid item padding={1} paddingLeft={0}>
@@ -67,12 +84,13 @@ const RefMatchMain = ({match, stageName, onClose}: IProps) => {
                         btnProps={{
                             sx: { marginRight: 1 },
                             color: 'success',
-                            startIcon: <Check/>
+                            startIcon: <Check/>,
+                            disabled: match.score1 < maxScore && match.score2 < maxScore
                         }}/>
                     <MatchWbdForm match={match} onWbd={onWbd}/>
                 </Grid>
             </Grid>
-        </Paper>
+        </RefSheetPaper>
     );
 }
  

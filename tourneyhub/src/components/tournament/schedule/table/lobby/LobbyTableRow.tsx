@@ -13,10 +13,11 @@ interface IProps {
     lobby: LobbyDto,
     lobbySize: number,
     isRegistered: boolean,
-    deadlinePassed: boolean
+    deadlinePassed: boolean,
+    refLobby: (lobby: LobbyDto) => void
 }
 
-const LobbyTableRow = ({lobby, lobbySize, isRegistered, deadlinePassed}: IProps) => {
+const LobbyTableRow = ({lobby, lobbySize, isRegistered, deadlinePassed, refLobby}: IProps) => {
     const { id } = useParams();
     const { user } = useContext(AuthContext);
     dayjs.extend(utc);
@@ -49,6 +50,7 @@ const LobbyTableRow = ({lobby, lobbySize, isRegistered, deadlinePassed}: IProps)
                 isHost={isHost} 
                 canReg={canReg}
                 hasRefRole={hasRefRole}
+                onRef={() => refLobby(lobby)}
             />
         </TableRow>
     );

@@ -1,30 +1,37 @@
-import { TableContainer, Table, TableHead, TableRow, TableBody } from '@mui/material';
-import { SchedTableCell } from '../../../../styled/SchedTableCell';
-import CommandTableRow from './CommandTableRow';
+import { TableContainer, Table, TableBody } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { RefCommand } from '../../../../../domain/RefCommand';
 import { RefPick } from '../../../../../domain/RefPick';
 import { MatchDto } from '../../../../../dto/schedule/MatchDto';
 import { StyledTableRow } from '../../../../styled/StyledTableRow';
+import CommandTableCell from '../../CommandTableCell';
+import RefTableHead from '../../CommandTableHead';
 
 interface IProps {
     picks: RefPick[],
-    match: MatchDto
+    match: MatchDto,
+    bestOf: number
 }
 
-const StatusCommandsTable = ({picks, match}: IProps) => {
+const StatusCommandsTable = ({picks, match, bestOf}: IProps) => {
     const [statusCommands, setStatusCommands] = useState([] as RefCommand[]);
     const p1 = match.player1.name;
     const p2 = match.player2.name;
 
     const nextPick = () => {
-        const message = 'Next player to pick: '
+        const message = 'Next pick: ';
         const filtered = picks.filter(pick => pick.winner !== '');
+        const maxScore = Math.floor(bestOf / 2) + 1;
 
         if (filtered.length === 0) {
             return picks.length > 0 ? message + picks[0].player : '';
+        } else if (filtered.length === bestOf - 1) {
+            return 'Tiebreaker';
+        } else if (match.score1 === maxScore || match.score2 === maxScore) {
+            return `${match.score1 === maxScore ? p1 : p2} wins the match!`;
         }
-        return message + filtered[filtered.length - 1].player === p1 ? p2 : p1;
+        
+        return message + (filtered[filtered.length - 1].player === p1 ? p2 : p1);
     }
 
     const nextMap = () => {
@@ -39,25 +46,21 @@ const StatusCommandsTable = ({picks, match}: IProps) => {
     useEffect(() => {
         setStatusCommands([
             { name: 'Score', command: `${p1} ${match.score1} - ${match.score2} ${p2}` },
-            { name: 'Next pick', command: nextPick() },
+            { name: 'Status', command: nextPick() },
             { name: 'Next map', command: nextMap() },
             { name: 'Map mod', command: '!mp mods Freemod' }
         ])
-    }, [picks]);
+    }, [picks, match.score1, match.score2]);
 
     return (  
         <TableContainer>
             <Table>
-                <TableHead>
-                    <StyledTableRow>
-                        <SchedTableCell colSpan={3} sx={{ fontWeight: 500 }}>
-                            MATCH STATUS
-                        </SchedTableCell>
-                    </StyledTableRow>
-                </TableHead>
+                <RefTableHead title='MATCH STATUS' props={{ sx: { fontWeight: 500 } }}/>
                 <TableBody>
                     {statusCommands.map((command, index) => 
-                        <CommandTableRow key={index} command={command}/>
+                        <StyledTableRow>
+                            <CommandTableCell key={index} command={command}/>
+                        </StyledTableRow>
                     )}
                 </TableBody>
             </Table>

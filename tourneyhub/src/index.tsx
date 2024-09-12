@@ -99,6 +99,10 @@ const appTheme = createTheme({
             main: '#EF5350',
             contrastText: bg
         },
+        warning: {
+            main: '#FFEE58',
+            contrastText: bg
+        },
         text: {
             primary: white
         },

@@ -48,7 +48,7 @@ const MatchTable = ({stage}: {stage: IStageDto}) => {
             >
             {refIndex !== null &&
             <RefSheetMatchSolo 
-                match={matches[refIndex]} 
+                match={{...matches[refIndex]}} 
                 stage={stage} 
                 onClose={() => setRefIndex(null)}
             />}   

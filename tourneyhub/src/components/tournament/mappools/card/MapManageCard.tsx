@@ -20,6 +20,7 @@ const MapManageCard = ({map, addToPool, removeFromPool}: IProps) => {
     const theme = useTheme();
  
     const canAddToPool = user && user.roles
+        .filter(role => role.tournamentId === tourney.id)
         .some(role => [HOST, ADMIN, MAPPOOLER].includes(role.name));
 
     return (

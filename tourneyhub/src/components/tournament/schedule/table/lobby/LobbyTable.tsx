@@ -1,4 +1,4 @@
-import { TableContainer, Table, TableBody, TableHead, TableRow, Paper } from '@mui/material';
+import { TableContainer, Table, TableBody, TableHead, TableRow, Paper, Dialog } from '@mui/material';
 import { LobbyDto } from '../../../../../dto/schedule/LobbyDto';
 import { SchedTableCell } from '../../../../styled/SchedTableCell';
 import { IStageDto } from '../../../../../dto/stage/IStageDto';
@@ -8,11 +8,13 @@ import { LobbyService } from '../../../../../services/lobbyService';
 import LobbyTableRow from './LobbyTableRow';
 import dayjs from 'dayjs';
 import NoItems from '../../../NoItems';
+import RefSheetQualiSolo from '../../../dialog/ref/RefSheetQualiSolo';
 
 const LobbyTable = ({stage}: {stage: IStageDto}) => {
     const { user } = useContext(AuthContext); 
     const { scheduleUpdate } = useContext(UpdateContext);
     const [lobbies, setLobbies] = useState([] as LobbyDto[]);
+    const [refIndex, setRefIndex] = useState(null as number | null);    
 
     useEffect(() => {
         new LobbyService()
@@ -50,13 +52,25 @@ const LobbyTable = ({stage}: {stage: IStageDto}) => {
                                     lobby={lobby} 
                                     lobbySize={stage.lobbySize} 
                                     isRegistered={isRegistered}
-                                    deadlinePassed={deadlinePassed}/>
+                                    deadlinePassed={deadlinePassed}
+                                    refLobby={(lobby) => setRefIndex(lobbies.indexOf(lobby))}/>
                             )}
                         </TableBody>
                     </Table>
                 </TableContainer>
             </Paper>
         :   <NoItems name='lobbies'/>}
+        <Dialog fullScreen open={refIndex !== null} 
+            PaperProps={{ elevation: 2, sx: { alignItems: 'center' } }}
+            >
+            {refIndex !== null &&
+            <RefSheetQualiSolo 
+                lobby={lobbies[refIndex]}
+                stageName={stage.name}
+                lobbySize={stage.lobbySize}
+                onClose={() => setRefIndex(null)}
+            />}   
+        </Dialog>
         </>
     );
 }

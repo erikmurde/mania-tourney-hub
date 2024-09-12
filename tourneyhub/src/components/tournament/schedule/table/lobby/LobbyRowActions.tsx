@@ -14,10 +14,11 @@ interface IProps {
     lobby: LobbyDto,
     isHost: boolean,
     canReg: boolean,
-    hasRefRole: boolean
+    hasRefRole: boolean,
+    onRef: () => void
 }
 
-const LobbyRowActions = ({lobby, isHost, canReg, hasRefRole}: IProps) => {
+const LobbyRowActions = ({lobby, isHost, canReg, hasRefRole, onRef}: IProps) => {
     const { user } = useContext(AuthContext);
     const { scheduleUpdate, setScheduleUpdate } = useContext(UpdateContext);
     const service = new LobbyService();
@@ -64,7 +65,7 @@ const LobbyRowActions = ({lobby, isHost, canReg, hasRefRole}: IProps) => {
             </Tooltip>}
             {(isHost || isReferee) && !lobby.isDone && 
             <Tooltip title='Conduct lobby'>
-                <StyledIconButton color='primary'>
+                <StyledIconButton color='primary' onClick={onRef}>
                     <PlayArrow/>
                 </StyledIconButton>
             </Tooltip>}
