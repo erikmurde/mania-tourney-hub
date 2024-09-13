@@ -15,6 +15,7 @@ import RefMatchMain from '../../ref/match/RefMatchMain';
 import RefMatchChoices from '../../ref/match/RefMatchChoices';
 import MatchStatusCommands from '../../ref/match/MatchStatusCommands';
 import MatchGeneralCommands from '../../ref/match/MatchGeneralCommands';
+import TeamInviteCommands from '../../ref/TeamInviteCommands';
 
 interface IProps {
     match: MatchDto,
@@ -96,12 +97,15 @@ const RefSheetMatchSolo = ({match, stage, onClose}: IProps) => {
                                         values={values}/>}
                                 </Grid>
                             </Grid>
-                            <Grid item width={450}>
+                            <Grid item width={500}>
                                 <RefMapPool 
                                     maps={maps} 
                                     picks={values.picks.map(pick => pick.beatmapId)}
                                     bans={values.bans}
                                     protects={values.protects}/>
+                            </Grid>
+                            <Grid item width={1400}>
+                                <TeamInviteCommands teamNames={[match.player1.name, match.player2.name]} isMatch/>
                             </Grid>
                         </Grid>
                     </Form>

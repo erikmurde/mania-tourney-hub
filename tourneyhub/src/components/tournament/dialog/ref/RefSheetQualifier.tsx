@@ -11,7 +11,7 @@ import QualiGeneralCommands from '../../ref/qualifier/QualiGeneralCommands';
 import QualiMain from '../../ref/qualifier/QualiMain';
 import { LobbyDto } from '../../../../dto/schedule/LobbyDto';
 import { useTourney } from '../../../../routes/tournament/TournamentHeader';
-import TeamInviteCommands from '../../ref/qualifier/TeamInviteCommands';
+import TeamInviteCommands from '../../ref/TeamInviteCommands';
 
 interface IProps {
     lobby: LobbyDto,

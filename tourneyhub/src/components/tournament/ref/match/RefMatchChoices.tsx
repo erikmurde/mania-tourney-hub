@@ -6,6 +6,7 @@ import RefSheetPlayerBox from '../../../RefSheetPlayerBox';
 import { StyledTableRow } from '../../../styled/StyledTableRow';
 import TourneySelectField from '../../field/TourneySelectField';
 import { RefSheetPaper } from '../../../styled/RefSheetPaper';
+import { RefTableCell } from '../../../styled/RefTableCell';
 
 interface IProps {
     maps: IMapDto[],
@@ -34,13 +35,13 @@ const RefMatchChoices = ({maps, player1, player2, bans, protects}: IProps) => {
                     <TableBody>
                         {[player1, player2].map((player, index) => 
                             <StyledTableRow key={index}>
-                                <SchedTableCell sx={{ border: 0 }}>
+                                <RefTableCell>
                                     <RefSheetPlayerBox 
                                         name={player} 
                                         bgColor={player === player1 ? theme.palette.primary.main : theme.palette.error.main}/>
-                                </SchedTableCell>
+                                </RefTableCell>
                                 {tourney.protects && 
-                                <SchedTableCell sx={{ border: 0 }}>
+                                <RefTableCell>
                                     <TourneySelectField name={`protects[${index}]`} small
                                         options={maps.map((value, index) => 
                                             <MenuItem 
@@ -51,8 +52,8 @@ const RefMatchChoices = ({maps, player1, player2, bans, protects}: IProps) => {
                                                 {value.mapType}{value.index}
                                             </MenuItem>
                                         )}/>
-                                </SchedTableCell>}
-                                <SchedTableCell sx={{ border: 0 }}>
+                                </RefTableCell>}
+                                <RefTableCell>
                                     <TourneySelectField name={`bans[${index}]`} small
                                         options={maps.map((value, index) => 
                                             <MenuItem 
@@ -63,7 +64,7 @@ const RefMatchChoices = ({maps, player1, player2, bans, protects}: IProps) => {
                                                 {value.mapType}{value.index}
                                             </MenuItem>
                                         )}/>
-                                </SchedTableCell>
+                                </RefTableCell>
                             </StyledTableRow>
                         )}
                     </TableBody>

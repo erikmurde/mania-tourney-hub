@@ -1,14 +1,15 @@
-import { Grid, Typography } from '@mui/material';
-import { RefSheetPaper } from '../../../styled/RefSheetPaper';
-import { TeamDtoSimple } from '../../../../dto/team/TeamDtoSimple';
+import { Grid, Typography, useTheme } from '@mui/material';
+import { RefSheetPaper } from '../../styled/RefSheetPaper';
+import { TeamDtoSimple } from '../../../dto/team/TeamDtoSimple';
 import { useEffect, useState } from 'react';
-import { TeamService } from '../../../../services/teamService';
+import { TeamService } from '../../../services/teamService';
 import { useParams } from 'react-router-dom';
-import TeamInvites from './TeamInvites';
+import TeamInvites from './qualifier/TeamInvites';
 
-const TeamInviteCommands = ({teamNames}: {teamNames: string[]}) => {
+const TeamInviteCommands = ({teamNames, isMatch}: {teamNames: string[], isMatch?: boolean}) => {
     const { id } = useParams();
     const [teams, setTeams] = useState([] as TeamDtoSimple[]);
+    const theme = useTheme();
 
     useEffect(() => {
         if (id) {
@@ -26,9 +27,11 @@ const TeamInviteCommands = ({teamNames}: {teamNames: string[]}) => {
                         PLAYER INVITES
                     </Typography>
                 </Grid>
-                {teams.map(team => 
+                {teams.map((team, index) => 
                     <Grid item xs={4} key={team.name}>
-                        <TeamInvites team={team}/>
+                        <TeamInvites 
+                            team={team} 
+                            bgColor={index % 2 === 1 && isMatch ? theme.palette.error.main : undefined}/>
                     </Grid>
                 )}
             </Grid>

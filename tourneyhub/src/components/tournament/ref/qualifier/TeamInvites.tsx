@@ -3,7 +3,12 @@ import { TeamDtoSimple } from '../../../../dto/team/TeamDtoSimple';
 import RefSheetPlayerBox from '../../../RefSheetPlayerBox';
 import CopyClipboard from '../CopyClipboard';
 
-const TeamInvites = ({team}: {team: TeamDtoSimple}) => {
+interface IProps {
+    team: TeamDtoSimple,
+    bgColor?: string
+}
+
+const TeamInvites = ({team, bgColor}: IProps) => {
     const theme = useTheme();
 
     const sortPlayers = () => {
@@ -16,7 +21,7 @@ const TeamInvites = ({team}: {team: TeamDtoSimple}) => {
     return (  
         <Grid container direction='column'>
             <Grid item marginBottom={1}>
-                <RefSheetPlayerBox name={team.name} bgColor={theme.palette.primary.main}/>
+                <RefSheetPlayerBox name={team.name} bgColor={bgColor ?? theme.palette.primary.main}/>
             </Grid>
             {sortPlayers().map((player, index) => 
                 <Grid item container key={index} height={50} alignItems='center'>

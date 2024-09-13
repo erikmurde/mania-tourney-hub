@@ -1,4 +1,4 @@
-import { Grid, MenuItem, Paper, Table, TableBody, TableContainer, TableHead, TableRow, useTheme } from '@mui/material';
+import { MenuItem, Table, TableBody, TableContainer, TableHead, TableRow, useTheme } from '@mui/material';
 import { SchedTableCell } from '../../../styled/SchedTableCell';
 import { FieldArray } from 'formik';
 import TourneySelectField from '../../field/TourneySelectField';
@@ -9,6 +9,7 @@ import { TERTIARY } from '../../../../constants';
 import { StyledTableRow } from '../../../styled/StyledTableRow';
 import { useEffect, useState } from 'react';
 import { RefSheetPaper } from '../../../styled/RefSheetPaper';
+import { RefTableCell } from '../../../styled/RefTableCell';
 
 interface IProps {
     values: MatchStatus,
@@ -50,7 +51,7 @@ const RefMatchPicks = ({values, maps, bestOf}: IProps) => {
     }, [values.picks, values.bans]);
 
     return (  
-        <RefSheetPaper elevation={8} sx={{ height: 1 }}>
+        <RefSheetPaper elevation={8} sx={{ height: 1, marginBottom: 1 }}>
             <TableContainer>
                 <Table>
                     <TableHead>
@@ -66,10 +67,10 @@ const RefMatchPicks = ({values, maps, bestOf}: IProps) => {
                             const disabled = pickDisabled(index);
                             return (
                                 <TableRow key={index}>
-                                    <SchedTableCell sx={{ border: 0 }}>
+                                    <RefTableCell>
                                         <RefSheetPlayerBox name={pick.player} bgColor={getBgColor(index)}/>
-                                    </SchedTableCell>
-                                    <SchedTableCell sx={{ border: 0 }}>
+                                    </RefTableCell>
+                                    <RefTableCell>
                                         <TourneySelectField name={`picks[${index}].beatmapId`} small
                                             disabled={disabled}
                                             options={maps.map((value, index) => 
@@ -81,14 +82,14 @@ const RefMatchPicks = ({values, maps, bestOf}: IProps) => {
                                                     {value.mapType}{value.index}
                                                 </MenuItem>
                                             )}/>
-                                    </SchedTableCell>
-                                    <SchedTableCell sx={{ border: 0 }}>
+                                    </RefTableCell>
+                                    <RefTableCell>
                                         <TourneySelectField name={`picks[${index}].winner`} small
                                             disabled={disabled}
                                             options={players.map((value, index) => 
                                                 <MenuItem key={index} value={value}>{value}</MenuItem>
                                             )}/>
-                                    </SchedTableCell>
+                                    </RefTableCell>
                                 </TableRow>
                             )
                         })}
