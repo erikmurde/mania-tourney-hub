@@ -1,4 +1,5 @@
 import { TeamDto } from '../dto/team/TeamDto';
+import { TeamDtoSimple } from '../dto/team/TeamDtoSimple';
 import { BaseEntityService } from './base/baseEntityService';
 
 export class TeamService extends BaseEntityService<TeamDto> {
@@ -14,5 +15,34 @@ export class TeamService extends BaseEntityService<TeamDto> {
         
         console.log('getTeams response: ', teams);
         return teams;
+    }
+
+    async getTeamsByName(tournamentId: string, names: string[]): Promise<TeamDtoSimple[]> {
+        const response = await this.axios.get<TeamDto[]>('teams');
+
+        const teams = response.data
+            .filter(team => team.tournamentId === tournamentId && names.includes(team.name))
+            .map(team => ({ 
+                name: team.name, 
+                logo: team.logo, 
+                players: team.players.map(player => ({ 
+                    name: player.name, 
+                    isCaptain: player.isCaptain 
+                })) 
+            }));
+
+        console.log('getTeamsByName response: ', teams);
+        return teams;
+    }
+
+    async getUserTeam(userId: string, tournamentId: string): Promise<TeamDto | null> {
+        const response = await this.getTeams(tournamentId);
+
+        const team = response.find(team => 
+            team.players.some(player => player.id === userId)
+        );
+
+        console.log('getUserTeam response: ', response);
+        return team ?? null;
     }
 }

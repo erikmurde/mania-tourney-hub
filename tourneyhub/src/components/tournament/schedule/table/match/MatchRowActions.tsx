@@ -1,5 +1,5 @@
-import { Delete, Link, PlayArrow } from '@mui/icons-material';
-import { ADMIN, COMMENTATOR, HOST, REFEREE, STREAMER, TERTIARY } from '../../../../../constants';
+import { Delete, PlayArrow } from '@mui/icons-material';
+import { ADMIN, COMMENTATOR, HOST, REFEREE, STREAMER } from '../../../../../constants';
 import { MatchDto } from '../../../../../dto/schedule/MatchDto';
 import { SchedTableCell } from '../../../../styled/SchedTableCell';
 import { StyledIconButton } from '../../../../styled/StyledIconButton';
@@ -11,6 +11,7 @@ import MatchActionMenu from './MatchActionMenu';
 import { Tooltip } from '@mui/material';
 import MatchEditForm from '../../form/MatchEditForm';
 import { useTourney } from '../../../../../routes/tournament/TournamentHeader';
+import MpLink from '../../MpLink';
 
 interface IProps {
     match: MatchDto,
@@ -63,13 +64,7 @@ const MatchRowActions = ({match, onRef}: IProps) => {
     return (
         <SchedTableCell align='center'>
             {match.isDone && !isWbd && match.mpLink &&
-            <Tooltip title='Match link'>
-                <StyledIconButton 
-                    onClick={() => window.open(match.mpLink, '_blank')}
-                    sx={{ color: TERTIARY }}>
-                    <Link/>
-                </StyledIconButton>
-            </Tooltip>}
+            <MpLink title='Match link' link={match.mpLink}/>}
             {(isHost || isReferee) && !match.isDone && 
             <Tooltip title='Conduct match'>
                 <StyledIconButton color='primary' onClick={onRef}>

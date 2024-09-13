@@ -29,6 +29,11 @@
           "canRegWithRole": false
         },
         {
+          "tournamentId": "1",
+          "name": "host",
+          "canRegWithRole": false
+        },
+        {
           "tournamentId": "lr_cc0V",
           "name": "host",
           "canRegWithRole": false
@@ -64,6 +69,11 @@
         {
           "tournamentId": "0",
           "name": "sheeter",
+          "canRegWithRole": false
+        },
+        {
+          "tournamentId": "1",
+          "name": "referee",
           "canRegWithRole": false
         }
       ],
@@ -5006,7 +5016,7 @@
       "bestOf": 0,
       "lobbySize": 10,
       "numAdvancing": 3,
-      "schedulingDeadline": "2024-07-17T07:00:00.000Z",
+      "schedulingDeadline": "2025-01-22T07:00:00.000Z",
       "mappoolPublic": true,
       "schedulePublic": true,
       "statsPublic": true
@@ -6414,6 +6424,26 @@
         "DealerOfMelons"
       ],
       "referee": "walmart5193"
+    },
+    {
+      "id": "9ANqv7k",
+      "stageId": "9",
+      "code": "Q01",
+      "time": "2024-09-20T08:06:30.000Z",
+      "mpLink": "",
+      "isDone": false,
+      "players": ["Team United States", "Team Japan", "Team Indonesia", "Team France"],
+      "referee": "Albionthegreat"
+    },
+    {
+      "id": "iXFdBpe",
+      "stageId": "9",
+      "code": "Q02",
+      "time": "2024-09-30T11:14:08.000Z",
+      "mpLink": "",
+      "isDone": false,
+      "players": [],
+      "referee": "Albionthegreat"
     }
   ],
   "staffInvites": [

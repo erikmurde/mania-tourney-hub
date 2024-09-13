@@ -1,5 +1,4 @@
-import { Delete, Link, PersonAdd, PersonRemove, PlayArrow } from '@mui/icons-material';
-import { TERTIARY } from '../../../../../constants';
+import { Delete, PersonAdd, PersonRemove, PlayArrow } from '@mui/icons-material';
 import { SchedTableCell } from '../../../../styled/SchedTableCell';
 import { StyledIconButton } from '../../../../styled/StyledIconButton';
 import ConfirmationDialog from '../../../dialog/ConfirmationDialog';
@@ -9,16 +8,18 @@ import { useContext } from 'react';
 import { AuthContext, UpdateContext } from '../../../../../routes/Root';
 import { Tooltip } from '@mui/material';
 import LobbyEditForm from '../../form/LobbyEditForm';
+import MpLink from '../../MpLink';
 
 interface IProps {
     lobby: LobbyDto,
-    isHost: boolean,
+    regName: string,
     canReg: boolean,
+    isHost: boolean,
     hasRefRole: boolean,
     onRef: () => void
 }
 
-const LobbyRowActions = ({lobby, isHost, canReg, hasRefRole, onRef}: IProps) => {
+const LobbyRowActions = ({lobby, regName, isHost, canReg, hasRefRole, onRef}: IProps) => {
     const { user } = useContext(AuthContext);
     const { scheduleUpdate, setScheduleUpdate } = useContext(UpdateContext);
     const service = new LobbyService();
@@ -38,8 +39,8 @@ const LobbyRowActions = ({lobby, isHost, canReg, hasRefRole, onRef}: IProps) => 
             return;
         }
         lobby.players = reg 
-            ? [...lobby.players, user.name] 
-            : lobby.players.filter(player => player !== user.name);
+            ? [...lobby.players, regName] 
+            : lobby.players.filter(player => player !== regName);
     
         editLobby();
     }
@@ -62,14 +63,8 @@ const LobbyRowActions = ({lobby, isHost, canReg, hasRefRole, onRef}: IProps) => 
 
     return (  
         <SchedTableCell align='center'>
-            {lobby.isDone && lobby.mpLink &&
-            <Tooltip title='Lobby link'>
-                <StyledIconButton 
-                    onClick={() => window.open(lobby.mpLink, '_blank')}
-                    sx={{ color: TERTIARY }}>
-                    <Link/>
-                </StyledIconButton>
-            </Tooltip>}
+            {lobby.isDone && lobby.mpLink && 
+            <MpLink title='Lobby link' link={lobby.mpLink}/>}
             {(isHost || isReferee) && !lobby.isDone && 
             <Tooltip title='Conduct lobby'>
                 {lobby.players.length > 0 
@@ -95,7 +90,7 @@ const LobbyRowActions = ({lobby, isHost, canReg, hasRefRole, onRef}: IProps) => 
                     <PersonAdd/>
                 </StyledIconButton>
             </Tooltip>}
-            {user && (isReferee || lobby.players.includes(user.name)) &&
+            {user && !isHost && (isReferee || lobby.players.includes(regName)) &&
             <Tooltip title={hasRefRole ? 'Remove referee' : 'Cancel registration'}>
                 <StyledIconButton 
                     color='error' 

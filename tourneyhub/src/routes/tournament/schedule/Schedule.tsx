@@ -57,7 +57,7 @@ const Schedule = () => {
                     {stage.schedulePublic || isHost
                     ?   <>
                             {stage.stageType === QUALIFIER 
-                            ?   <LobbyTable stage={stage}/> 
+                            ?   <LobbyTable stage={stage} showTeams={tourney.minTeamSize > 1}/> 
                             :   <MatchTable stage={stage}/>}
                         </>
                     :   <NoItems name={stage.stageType === QUALIFIER ? 'lobbies' : 'matches'}/>}

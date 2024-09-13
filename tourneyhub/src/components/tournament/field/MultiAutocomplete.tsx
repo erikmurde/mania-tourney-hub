@@ -12,11 +12,11 @@ interface IProps {
     form: FormikProps<any>,
     label: string,
     error: string,
+    options: IOption[],
     country?: boolean,
-    options: IOption[]
 }
 
-const MultiAutocomplete = ({field, form, label, error, country, options}: IProps) => {
+const MultiAutocomplete = ({field, form, label, error, options, country}: IProps) => {
 
     const initialValue = options.filter(option => 
         form.values[field.name].includes(option.name)

@@ -18,6 +18,7 @@ import { MatchService } from '../../../../services/matchService';
 const MatchCreateForm = ({stageId}: {stageId: string}) => {
     const { id } = useParams();
     const { scheduleUpdate, setScheduleUpdate } = useContext(UpdateContext);
+
     const [selectValues, setSelectValues] = useState({
         streamers: [] as EventParticipantDto[],
         commentators: [] as EventParticipantDto[],
@@ -25,6 +26,7 @@ const MatchCreateForm = ({stageId}: {stageId: string}) => {
         players: [] as EventParticipantDto[]
     });
     const [open, setOpen] = useState(false);
+
     const authService = new AuthService();
     dayjs.extend(utc);
 

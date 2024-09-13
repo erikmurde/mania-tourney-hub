@@ -10,6 +10,8 @@ import QualiMapCommands from '../../ref/qualifier/QualiMapCommands';
 import QualiGeneralCommands from '../../ref/qualifier/QualiGeneralCommands';
 import QualiMain from '../../ref/qualifier/QualiMain';
 import { LobbyDto } from '../../../../dto/schedule/LobbyDto';
+import { useTourney } from '../../../../routes/tournament/TournamentHeader';
+import TeamInviteCommands from '../../ref/qualifier/TeamInviteCommands';
 
 interface IProps {
     lobby: LobbyDto,
@@ -18,7 +20,9 @@ interface IProps {
     onClose: () => void
 }
 
-const RefSheetQualiSolo = ({lobby, stageName, lobbySize, onClose}: IProps) => {
+const RefSheetQualifier = ({lobby, stageName, lobbySize, onClose}: IProps) => {
+    const { tourney } = useTourney();
+
     const [maps, setMaps] = useState([] as IMapDto[]);
     const [selectedId, setSelectedId] = useState('');
 
@@ -50,7 +54,9 @@ const RefSheetQualiSolo = ({lobby, stageName, lobbySize, onClose}: IProps) => {
                         <QualiMapPool maps={maps} selectedId={selectedId} setSelectedId={setSelectedId}/>
                     </Grid>
                     <Grid item xs>
-                        <QualiInviteCommands players={lobby.players}/>
+                        {tourney.minTeamSize > 1 
+                            ? <TeamInviteCommands teamNames={lobby.players}/> 
+                            : <QualiInviteCommands players={lobby.players}/>}
                     </Grid>
                 </Grid>
             </Grid>
@@ -58,4 +64,4 @@ const RefSheetQualiSolo = ({lobby, stageName, lobbySize, onClose}: IProps) => {
     );
 }
  
-export default RefSheetQualiSolo;
+export default RefSheetQualifier;

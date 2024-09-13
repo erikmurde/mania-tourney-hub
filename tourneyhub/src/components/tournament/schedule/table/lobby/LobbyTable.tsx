@@ -8,13 +8,27 @@ import { LobbyService } from '../../../../../services/lobbyService';
 import LobbyTableRow from './LobbyTableRow';
 import dayjs from 'dayjs';
 import NoItems from '../../../NoItems';
-import RefSheetQualiSolo from '../../../dialog/ref/RefSheetQualiSolo';
+import { TeamDto } from '../../../../../dto/team/TeamDto';
+import { useTourney } from '../../../../../routes/tournament/TournamentHeader';
+import { TeamService } from '../../../../../services/teamService';
+import RefSheetQualifier from '../../../dialog/ref/RefSheetQualifier';
 
-const LobbyTable = ({stage}: {stage: IStageDto}) => {
-    const { user } = useContext(AuthContext); 
+const LobbyTable = ({stage, showTeams}: {stage: IStageDto, showTeams: boolean}) => {
+    const { user } = useContext(AuthContext);
+    const { tourney } = useTourney();
     const { scheduleUpdate } = useContext(UpdateContext);
+
     const [lobbies, setLobbies] = useState([] as LobbyDto[]);
+    const [userTeam, setUserTeam] = useState(null as TeamDto | null);
     const [refIndex, setRefIndex] = useState(null as number | null);    
+
+    useEffect(() => {
+        if (user?.id && tourney.minTeamSize > 1) {
+            new TeamService()
+                .getUserTeam(user.id, tourney.id)
+                .then(team => setUserTeam(team));
+        }
+    }, [user?.id, tourney.minTeamSize]);
 
     useEffect(() => {
         new LobbyService()
@@ -25,10 +39,8 @@ const LobbyTable = ({stage}: {stage: IStageDto}) => {
     }, [stage.id, scheduleUpdate]);
 
     const isRegistered = user 
-        ?   lobbies.some(lobby => lobby.players.includes(user.name)) 
-        :   false;
-
-    const deadlinePassed = dayjs(stage.schedulingDeadline) < dayjs();
+        ? lobbies.some(lobby => lobby.players.includes(userTeam ? userTeam.name : user.name)) 
+        : false;
 
     return (  
         <>
@@ -41,19 +53,20 @@ const LobbyTable = ({stage}: {stage: IStageDto}) => {
                                 <SchedTableCell width={65}>Lobby ID</SchedTableCell>
                                 <SchedTableCell width={140}>Lobby Time (UTC)</SchedTableCell>
                                 <SchedTableCell width={160}>Referee</SchedTableCell>
-                                <SchedTableCell>Players</SchedTableCell>
+                                <SchedTableCell>{showTeams ? 'Teams' : 'Players'}</SchedTableCell>
                                 <SchedTableCell align='center' width={110}>Actions</SchedTableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
                             {lobbies.map(lobby =>
                             <LobbyTableRow 
-                                    key={lobby.id} 
-                                    lobby={lobby} 
-                                    lobbySize={stage.lobbySize} 
-                                    isRegistered={isRegistered}
-                                    deadlinePassed={deadlinePassed}
-                                    refLobby={(lobby) => setRefIndex(lobbies.indexOf(lobby))}/>
+                                key={lobby.id} 
+                                lobby={lobby} 
+                                userTeam={userTeam}
+                                lobbySize={stage.lobbySize} 
+                                isRegistered={isRegistered}
+                                deadlinePassed={dayjs(stage.schedulingDeadline) < dayjs()}
+                                refLobby={(lobby) => setRefIndex(lobbies.indexOf(lobby))}/>
                             )}
                         </TableBody>
                     </Table>
@@ -64,7 +77,7 @@ const LobbyTable = ({stage}: {stage: IStageDto}) => {
             PaperProps={{ elevation: 2, sx: { alignItems: 'center' } }}
             >
             {refIndex !== null &&
-            <RefSheetQualiSolo 
+            <RefSheetQualifier
                 lobby={lobbies[refIndex]}
                 stageName={stage.name}
                 lobbySize={stage.lobbySize}
