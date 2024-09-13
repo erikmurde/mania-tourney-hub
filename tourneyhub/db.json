@@ -3158,7 +3158,7 @@
     {
       "id": "0",
       "tournamentId": "1",
-      "name": "Team United States",
+      "name": "United States",
       "logo": "https://assets.ppy.sh/old-flags/US.png",
       "status": "eliminated",
       "availability": "We are available whenever.",
@@ -3344,7 +3344,7 @@
     {
       "id": "1",
       "tournamentId": "1",
-      "name": "Team Japan",
+      "name": "Japan",
       "logo": "https://assets.ppy.sh/old-flags/JP.png",
       "status": "active",
       "availability": "We are available whenever.",
@@ -3530,7 +3530,7 @@
     {
       "id": "2",
       "tournamentId": "1",
-      "name": "Team Indonesia",
+      "name": "Indonesia",
       "logo": "https://assets.ppy.sh/old-flags/ID.png",
       "status": "active",
       "availability": "We are available whenever.",
@@ -3716,7 +3716,7 @@
     {
       "id": "3",
       "tournamentId": "1",
-      "name": "Team France",
+      "name": "France",
       "logo": "https://assets.ppy.sh/old-flags/FR.png",
       "status": "active",
       "availability": "We are available whenever.",
@@ -3902,7 +3902,7 @@
     {
       "id": "4",
       "tournamentId": "1",
-      "name": "Team Netherlands",
+      "name": "Netherlands",
       "logo": "https://assets.ppy.sh/old-flags/NL.png",
       "status": "active",
       "availability": "We are available whenever.",
@@ -4088,7 +4088,7 @@
     {
       "id": "5",
       "tournamentId": "1",
-      "name": "Team Germany",
+      "name": "Germany",
       "logo": "https://assets.ppy.sh/old-flags/DE.png",
       "status": "active",
       "availability": "We are available whenever.",
@@ -6566,7 +6566,7 @@
       "player1": {
         "id": "1",
         "tournamentId": "1",
-        "name": "Team Japan",
+        "name": "Japan",
         "logo": "https://assets.ppy.sh/old-flags/JP.png",
         "status": "active",
         "availability": "We are available whenever.",
@@ -6752,7 +6752,7 @@
       "player2": {
         "id": "3",
         "tournamentId": "1",
-        "name": "Team France",
+        "name": "France",
         "logo": "https://assets.ppy.sh/old-flags/FR.png",
         "status": "active",
         "availability": "We are available whenever.",
@@ -7306,10 +7306,10 @@
       "mpLink": "",
       "isDone": false,
       "players": [
-        "Team United States",
-        "Team Japan",
-        "Team Indonesia",
-        "Team France"
+        "United States",
+        "Japan",
+        "Indonesia",
+        "France"
       ],
       "referee": "Arcaxio"
     },
