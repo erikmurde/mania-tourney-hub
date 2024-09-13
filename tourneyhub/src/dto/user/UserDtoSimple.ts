@@ -1,6 +1,6 @@
 import { ICountryDto } from '../ICountryDto';
 
-export interface EventParticipantDto {
+export interface UserDtoSimple {
     name: string,
     country: ICountryDto
 }

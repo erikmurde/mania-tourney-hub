@@ -3,23 +3,28 @@ import { Field, Form, Formik } from 'formik';
 import PlayerAutocomplete from '../../../field/PlayerAutocomplete';
 import TourneyDateTimeField from '../../../field/TourneyDateTimeField';
 import { Schema } from 'yup';
-import { EventParticipantDto } from '../../../../../dto/user/EventParticipantDto';
+import { UserDtoSimple } from '../../../../../dto/user/UserDtoSimple';
 import { MatchCreateDto } from '../../../../../dto/schedule/MatchCreateDto';
 import MultiAutocomplete from '../../../field/MultiAutocomplete';
+import { TeamDtoSimple } from '../../../../../dto/team/TeamDtoSimple';
+import TeamAutocomplete from '../../../field/TeamAutocomplete';
 
 interface IProps {
     initialValues: MatchCreateDto,
     selectValues: {
-        players: EventParticipantDto[],
-        referees: EventParticipantDto[],
-        streamers: EventParticipantDto[],
-        commentators: EventParticipantDto[]
+        players: UserDtoSimple[] | TeamDtoSimple[],
+        referees: UserDtoSimple[],
+        streamers: UserDtoSimple[],
+        commentators: UserDtoSimple[]
     },
     validationSchema: Schema,
     onSubmit: (values: MatchCreateDto) => void
 }
 
 const MatchCreateFormView = ({initialValues, selectValues, validationSchema, onSubmit}: IProps) => {
+
+    const isTeam = selectValues.players.length > 0 && 'players' in selectValues.players[0];
+
     return (  
         <Formik 
             initialValues={initialValues}
@@ -47,14 +52,14 @@ const MatchCreateFormView = ({initialValues, selectValues, validationSchema, onS
                                 error={errors.time}/>
                         </Grid>
                         <Grid item xs={6}>
-                            <Field component={PlayerAutocomplete}
+                            <Field component={isTeam ? TeamAutocomplete : PlayerAutocomplete}
                                 name='player1'
                                 label='Player 1'
                                 error={errors.player1}
                                 options={selectValues.players}/>
                         </Grid>
                         <Grid item xs={6}>
-                            <Field component={PlayerAutocomplete}
+                            <Field component={isTeam ? TeamAutocomplete : PlayerAutocomplete}
                                 name='player2'
                                 label='Player 2'
                                 error={errors.player2}

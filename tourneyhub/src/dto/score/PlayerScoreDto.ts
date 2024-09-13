@@ -1,7 +1,7 @@
-import { EventParticipantDto } from '../user/EventParticipantDto';
+import { UserDtoSimple } from '../user/UserDtoSimple';
 
 export interface PlayerScoreDto {
-    player: EventParticipantDto,
+    player: UserDtoSimple,
     score: number,
     accuracy: number
 }

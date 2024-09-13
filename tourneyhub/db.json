@@ -34,6 +34,11 @@
           "canRegWithRole": false
         },
         {
+          "tournamentId": "1",
+          "name": "mappooler",
+          "canRegWithRole": false
+        },
+        {
           "tournamentId": "lr_cc0V",
           "name": "host",
           "canRegWithRole": false
@@ -5004,8 +5009,8 @@
       "lobbySize": 0,
       "numAdvancing": 0,
       "schedulingDeadline": "2024-07-17T07:00:00.000Z",
-      "mappoolPublic": false,
-      "schedulePublic": false,
+      "mappoolPublic": true,
+      "schedulePublic": true,
       "statsPublic": false
     },
     {
@@ -5693,6 +5698,321 @@
       "index": 3,
       "comment": "",
       "mapType": "RC"
+    },
+    {
+      "id": "9z72Afg",
+      "stageId": "8",
+      "beatmapId": "4283526",
+      "inMappool": true,
+      "title": "Gypsophila",
+      "diff": "[4K] blossom 1.1x (166bpm)",
+      "artist": "linear ring with RNAcid",
+      "mapper": "MyZterioN-",
+      "suggestor": "Arcaxio",
+      "cover": "https://assets.ppy.sh/beatmaps/1805950/covers/cover.jpg?1695499261",
+      "download": "https://osu.ppy.sh/beatmapsets/1805950#mania/4283526",
+      "bpm": 166,
+      "drainTime": 147,
+      "sr": 4.82,
+      "hp": 8,
+      "od": 8,
+      "index": 1,
+      "comment": "",
+      "mapType": "RC"
+    },
+    {
+      "id": "LFQ1-PD",
+      "stageId": "8",
+      "beatmapId": "4272125",
+      "inMappool": true,
+      "title": "Cosmo Station",
+      "diff": "[4K] Orbis x1.1",
+      "artist": "seatrus",
+      "mapper": "Blessia",
+      "suggestor": "Arcaxio",
+      "cover": "https://assets.ppy.sh/beatmaps/2046586/covers/cover.jpg?1694775684",
+      "download": "https://osu.ppy.sh/beatmapsets/2046586#mania/4272125",
+      "bpm": 247,
+      "drainTime": 198,
+      "sr": 5.59,
+      "hp": 8,
+      "od": 8,
+      "index": 2,
+      "comment": "",
+      "mapType": "RC"
+    },
+    {
+      "id": "9TBiNkJ",
+      "stageId": "8",
+      "beatmapId": "4281865",
+      "inMappool": true,
+      "title": "Edison",
+      "diff": " [4K] Challenge (Edit) 1.1x (146bpm)",
+      "artist": "EvOke",
+      "mapper": "Miaurichesu",
+      "suggestor": "Arcaxio",
+      "cover": "https://assets.ppy.sh/beatmaps/2050560/covers/cover.jpg?1695398449",
+      "download": "https://osu.ppy.sh/beatmapsets/2050560#mania/4281865",
+      "bpm": 146,
+      "drainTime": 157,
+      "sr": 5.18,
+      "hp": 8,
+      "od": 8.5,
+      "index": 3,
+      "comment": "",
+      "mapType": "RC"
+    },
+    {
+      "id": "xs1utBk",
+      "stageId": "8",
+      "beatmapId": "4284901",
+      "inMappool": true,
+      "title": "Break The Silence",
+      "diff": "[4K] Challenge",
+      "artist": "Camellia",
+      "mapper": "0DZ0",
+      "suggestor": "Arcaxio",
+      "cover": "https://assets.ppy.sh/beatmaps/2051831/covers/cover.jpg?1719093450",
+      "download": "https://osu.ppy.sh/beatmapsets/2051831#mania/4284901",
+      "bpm": 220,
+      "drainTime": 224,
+      "sr": 4.96,
+      "hp": 8.5,
+      "od": 8.3,
+      "index": 4,
+      "comment": "",
+      "mapType": "RC"
+    },
+    {
+      "id": "waRDcZo",
+      "stageId": "8",
+      "beatmapId": "4284906",
+      "inMappool": true,
+      "title": "Baka Mitai (Cut Ver.)",
+      "diff": "[4K] Ska's n no. .",
+      "artist": "Kazuma Kiryu (CV: Takaya Kuroda)",
+      "mapper": "elexire",
+      "suggestor": "Arcaxio",
+      "cover": "https://assets.ppy.sh/beatmaps/2051835/covers/cover.jpg?1708542573",
+      "download": "https://osu.ppy.sh/beatmapsets/2051835#mania/4284906",
+      "bpm": 148,
+      "drainTime": 110,
+      "sr": 4.89,
+      "hp": 8,
+      "od": 8,
+      "index": 5,
+      "comment": "",
+      "mapType": "RC"
+    },
+    {
+      "id": "czGuy9m",
+      "stageId": "8",
+      "beatmapId": "4284888",
+      "inMappool": true,
+      "title": "Nisemono",
+      "diff": "[4K] Impostor (cut 1.05x)",
+      "artist": "Frums",
+      "mapper": "Pizza69",
+      "suggestor": "Arcaxio",
+      "cover": "https://assets.ppy.sh/beatmaps/2051825/covers/cover.jpg?1695589290",
+      "download": "https://osu.ppy.sh/beatmapsets/2051825#mania/4284888",
+      "bpm": 315,
+      "drainTime": 153,
+      "sr": 5.2,
+      "hp": 8,
+      "od": 8,
+      "index": 6,
+      "comment": "",
+      "mapType": "RC"
+    },
+    {
+      "id": "IuNX2Pn",
+      "stageId": "8",
+      "beatmapId": "4284664",
+      "inMappool": true,
+      "title": "Bloomin'",
+      "diff": "[4K] Flowerin'",
+      "artist": "MisoilePunch -Forever-",
+      "mapper": "guden",
+      "suggestor": "Arcaxio",
+      "cover": "https://assets.ppy.sh/beatmaps/2051734/covers/cover.jpg?1695582037",
+      "download": "https://osu.ppy.sh/beatmapsets/2051734#mania/4284664",
+      "bpm": 234,
+      "drainTime": 138,
+      "sr": 5.49,
+      "hp": 8,
+      "od": 7.5,
+      "index": 1,
+      "comment": "",
+      "mapType": "HB"
+    },
+    {
+      "id": "bL5sqbA",
+      "stageId": "8",
+      "beatmapId": "4284920",
+      "inMappool": true,
+      "title": "Upload Your Mind :: Download My Soul",
+      "diff": "[4K] Multidimensional",
+      "artist": "Camellia",
+      "mapper": "-mint-",
+      "suggestor": "Arcaxio",
+      "cover": "https://assets.ppy.sh/beatmaps/2051840/covers/cover.jpg?1699625840",
+      "download": "https://osu.ppy.sh/beatmapsets/2051840#mania/4284920",
+      "bpm": 166,
+      "drainTime": 271,
+      "sr": 5.22,
+      "hp": 8,
+      "od": 7.3,
+      "index": 2,
+      "comment": "",
+      "mapType": "HB"
+    },
+    {
+      "id": "zSqXqiX",
+      "stageId": "8",
+      "beatmapId": "4284700",
+      "inMappool": true,
+      "title": "Calculator",
+      "diff": "[4K] .857142",
+      "artist": "M-O-T-U",
+      "mapper": "[Crz]FolAH1217",
+      "suggestor": "Arcaxio",
+      "cover": "https://assets.ppy.sh/beatmaps/2051746/covers/cover.jpg?1695582106",
+      "download": "https://osu.ppy.sh/beatmapsets/2051746#mania/4284700",
+      "bpm": 166,
+      "drainTime": 109,
+      "sr": 4.95,
+      "hp": 7.5,
+      "od": 7.3,
+      "index": 3,
+      "comment": "",
+      "mapType": "HB"
+    },
+    {
+      "id": "hOFVAC8",
+      "stageId": "8",
+      "beatmapId": "4284564",
+      "inMappool": true,
+      "title": "Astra Walkthrough",
+      "diff": "[4K] Faded Stars",
+      "artist": "paraoka",
+      "mapper": "[Crz]Crysarlene",
+      "suggestor": "Arcaxio",
+      "cover": "https://assets.ppy.sh/beatmaps/2051679/covers/cover.jpg?1695574859",
+      "download": "https://osu.ppy.sh/beatmapsets/2051679#mania/4284564",
+      "bpm": 225,
+      "drainTime": 136,
+      "sr": 5.27,
+      "hp": 9,
+      "od": 7.3,
+      "index": 1,
+      "comment": "",
+      "mapType": "LN"
+    },
+    {
+      "id": "bnOLI-l",
+      "stageId": "8",
+      "beatmapId": "4284669",
+      "inMappool": true,
+      "title": "Heaven's Fall",
+      "diff": "[4K] Firmaments",
+      "artist": "Helblinde",
+      "mapper": "guden",
+      "suggestor": "Arcaxio",
+      "cover": "https://assets.ppy.sh/beatmaps/2051737/covers/cover.jpg?1695582048",
+      "download": "https://osu.ppy.sh/beatmapsets/2051737#mania/4284669",
+      "bpm": 200,
+      "drainTime": 167,
+      "sr": 5.71,
+      "hp": 8.6,
+      "od": 7.5,
+      "index": 2,
+      "comment": "",
+      "mapType": "LN"
+    },
+    {
+      "id": "DR3eYZm",
+      "stageId": "8",
+      "beatmapId": "4284918",
+      "inMappool": true,
+      "title": "Erinyes",
+      "diff": "[4K] Enigma",
+      "artist": "Toromaru",
+      "mapper": "Toaph Daddy",
+      "suggestor": "Arcaxio",
+      "cover": "https://assets.ppy.sh/beatmaps/2051839/covers/cover.jpg?1695591040",
+      "download": "https://osu.ppy.sh/beatmapsets/2051839#mania/4284918",
+      "bpm": 195,
+      "drainTime": 138,
+      "sr": 6.2,
+      "hp": 8,
+      "od": 7.5,
+      "index": 3,
+      "comment": "",
+      "mapType": "LN"
+    },
+    {
+      "id": "ySdgxzs",
+      "stageId": "8",
+      "beatmapId": "4284932",
+      "inMappool": true,
+      "title": "Sample enSemble",
+      "diff": " [4K] SV asSemble",
+      "artist": "AltVoid",
+      "mapper": "Tidek",
+      "suggestor": "Arcaxio",
+      "cover": "https://assets.ppy.sh/beatmaps/2051846/covers/cover.jpg?1695592849",
+      "download": "https://osu.ppy.sh/beatmapsets/2051846#mania/4284932",
+      "bpm": 141,
+      "drainTime": 139,
+      "sr": 3.2,
+      "hp": 7,
+      "od": 7,
+      "index": 1,
+      "comment": "",
+      "mapType": "SV"
+    },
+    {
+      "id": "_3SB76N",
+      "stageId": "8",
+      "beatmapId": "4284940",
+      "inMappool": true,
+      "title": "Cyber Thunder Cider",
+      "diff": "[4K] ??",
+      "artist": "EZFG",
+      "mapper": "zero2snow",
+      "suggestor": "Arcaxio",
+      "cover": "https://assets.ppy.sh/beatmaps/2051849/covers/cover.jpg?1695592863",
+      "download": "https://osu.ppy.sh/beatmapsets/2051849#mania/4284940",
+      "bpm": 145,
+      "drainTime": 183,
+      "sr": 3.34,
+      "hp": 5,
+      "od": 7,
+      "index": 2,
+      "comment": "",
+      "mapType": "SV"
+    },
+    {
+      "id": "QV7qtt7",
+      "stageId": "8",
+      "beatmapId": "4284926",
+      "inMappool": true,
+      "title": "Drenched in Air",
+      "diff": "[4K] Submerge",
+      "artist": "Camellia feat. Ninomae Ina'nis",
+      "mapper": "elexire",
+      "suggestor": "Arcaxio",
+      "cover": "https://assets.ppy.sh/beatmaps/2051843/covers/cover.jpg?1694366501",
+      "download": "https://osu.ppy.sh/beatmapsets/2051843#mania/4284926",
+      "bpm": 189,
+      "drainTime": 288,
+      "sr": 6.92,
+      "hp": 8,
+      "od": 7.3,
+      "index": 0,
+      "comment": "",
+      "mapType": "TB"
     }
   ],
   "staffApplications": [
@@ -6233,6 +6553,391 @@
       "commentators": [
         "ERA Adam"
       ]
+    },
+    {
+      "id": "UVEY_NY",
+      "stageId": "8",
+      "code": "123",
+      "time": "2024-09-26T17:39:35.000Z",
+      "mpLink": "",
+      "score1": 0,
+      "score2": 0,
+      "isDone": false,
+      "player1": {
+        "id": "1",
+        "tournamentId": "1",
+        "name": "Team Japan",
+        "logo": "https://assets.ppy.sh/old-flags/JP.png",
+        "status": "active",
+        "availability": "We are available whenever.",
+        "seeding": 3,
+        "placement": 0,
+        "players": [
+          {
+            "id": "93",
+            "playerId": 10242062,
+            "name": "AFOTHER",
+            "rank": 1792,
+            "country": {
+              "name": "Japan",
+              "ISO2": "JP"
+            },
+            "discordUsername": "Test",
+            "timezone": 0,
+            "avatar": "https://a.ppy.sh/10242062",
+            "roles": [
+              {
+                "tournamentId": "1",
+                "name": "player",
+                "canRegWithRole": false
+              }
+            ],
+            "stats": [
+              {
+                "tournamentId": "1",
+                "status": "active",
+                "seeding": 0,
+                "placement": 0
+              }
+            ],
+            "isCaptain": false
+          },
+          {
+            "id": "94",
+            "playerId": 11488604,
+            "name": "CrewK",
+            "rank": 502,
+            "country": {
+              "name": "Japan",
+              "ISO2": "JP"
+            },
+            "discordUsername": "Test",
+            "timezone": 0,
+            "avatar": "https://a.ppy.sh/11488604",
+            "roles": [
+              {
+                "tournamentId": "1",
+                "name": "player",
+                "canRegWithRole": false
+              }
+            ],
+            "stats": [
+              {
+                "tournamentId": "1",
+                "status": "active",
+                "seeding": 0,
+                "placement": 0
+              }
+            ],
+            "isCaptain": true
+          },
+          {
+            "id": "95",
+            "playerId": 16100800,
+            "name": "ICECAKE",
+            "rank": 896,
+            "country": {
+              "name": "Japan",
+              "ISO2": "JP"
+            },
+            "discordUsername": "Test",
+            "timezone": 0,
+            "avatar": "https://a.ppy.sh/16100800",
+            "roles": [
+              {
+                "tournamentId": "1",
+                "name": "player",
+                "canRegWithRole": false
+              }
+            ],
+            "stats": [
+              {
+                "tournamentId": "1",
+                "status": "active",
+                "seeding": 0,
+                "placement": 0
+              }
+            ],
+            "isCaptain": false
+          },
+          {
+            "id": "96",
+            "playerId": 10745260,
+            "name": "jhleetgirl",
+            "rank": 264,
+            "country": {
+              "name": "Japan",
+              "ISO2": "JP"
+            },
+            "discordUsername": "Test",
+            "timezone": 0,
+            "avatar": "https://a.ppy.sh/10745260",
+            "roles": [
+              {
+                "tournamentId": "1",
+                "name": "player",
+                "canRegWithRole": false
+              }
+            ],
+            "stats": [
+              {
+                "tournamentId": "1",
+                "status": "active",
+                "seeding": 0,
+                "placement": 0
+              }
+            ],
+            "isCaptain": false
+          },
+          {
+            "id": "97",
+            "playerId": 25588443,
+            "name": "Nikoro",
+            "rank": 528,
+            "country": {
+              "name": "Japan",
+              "ISO2": "JP"
+            },
+            "discordUsername": "Test",
+            "timezone": 0,
+            "avatar": "https://a.ppy.sh/25588443",
+            "roles": [
+              {
+                "tournamentId": "1",
+                "name": "player",
+                "canRegWithRole": false
+              }
+            ],
+            "stats": [
+              {
+                "tournamentId": "1",
+                "status": "active",
+                "seeding": 0,
+                "placement": 0
+              }
+            ],
+            "isCaptain": false
+          },
+          {
+            "id": "98",
+            "playerId": 18144664,
+            "name": "Toxicat",
+            "rank": 1273,
+            "country": {
+              "name": "Japan",
+              "ISO2": "JP"
+            },
+            "discordUsername": "Test",
+            "timezone": 0,
+            "avatar": "https://a.ppy.sh/18144664",
+            "roles": [
+              {
+                "tournamentId": "1",
+                "name": "player",
+                "canRegWithRole": false
+              }
+            ],
+            "stats": [
+              {
+                "tournamentId": "1",
+                "status": "active",
+                "seeding": 0,
+                "placement": 0
+              }
+            ],
+            "isCaptain": false
+          }
+        ]
+      },
+      "player2": {
+        "id": "3",
+        "tournamentId": "1",
+        "name": "Team France",
+        "logo": "https://assets.ppy.sh/old-flags/FR.png",
+        "status": "active",
+        "availability": "We are available whenever.",
+        "seeding": 18,
+        "placement": 0,
+        "players": [
+          {
+            "id": "105",
+            "playerId": 10015908,
+            "name": "Auraah",
+            "rank": 1408,
+            "country": {
+              "name": "France",
+              "ISO2": "FR"
+            },
+            "discordUsername": "Test",
+            "timezone": 0,
+            "avatar": "https://a.ppy.sh/10015908",
+            "roles": [
+              {
+                "tournamentId": "1",
+                "name": "player",
+                "canRegWithRole": false
+              }
+            ],
+            "stats": [
+              {
+                "tournamentId": "1",
+                "status": "active",
+                "seeding": 0,
+                "placement": 0
+              }
+            ],
+            "isCaptain": false
+          },
+          {
+            "id": "106",
+            "playerId": 16892459,
+            "name": "Babibelbleu",
+            "rank": 1658,
+            "country": {
+              "name": "France",
+              "ISO2": "FR"
+            },
+            "discordUsername": "Test",
+            "timezone": 0,
+            "avatar": "https://a.ppy.sh/16892459",
+            "roles": [
+              {
+                "tournamentId": "1",
+                "name": "player",
+                "canRegWithRole": false
+              }
+            ],
+            "stats": [
+              {
+                "tournamentId": "1",
+                "status": "active",
+                "seeding": 0,
+                "placement": 0
+              }
+            ],
+            "isCaptain": false
+          },
+          {
+            "id": "107",
+            "playerId": 18867523,
+            "name": "narahashi",
+            "rank": 369,
+            "country": {
+              "name": "France",
+              "ISO2": "FR"
+            },
+            "discordUsername": "Test",
+            "timezone": 0,
+            "avatar": "https://a.ppy.sh/18867523",
+            "roles": [
+              {
+                "tournamentId": "1",
+                "name": "player",
+                "canRegWithRole": false
+              }
+            ],
+            "stats": [
+              {
+                "tournamentId": "1",
+                "status": "active",
+                "seeding": 0,
+                "placement": 0
+              }
+            ],
+            "isCaptain": false
+          },
+          {
+            "id": "108",
+            "playerId": 14055233,
+            "name": "MisteurFR",
+            "rank": 1139,
+            "country": {
+              "name": "France",
+              "ISO2": "FR"
+            },
+            "discordUsername": "Test",
+            "timezone": 0,
+            "avatar": "https://a.ppy.sh/14055233",
+            "roles": [
+              {
+                "tournamentId": "1",
+                "name": "player",
+                "canRegWithRole": false
+              }
+            ],
+            "stats": [
+              {
+                "tournamentId": "1",
+                "status": "active",
+                "seeding": 0,
+                "placement": 0
+              }
+            ],
+            "isCaptain": false
+          },
+          {
+            "id": "109",
+            "playerId": 7306522,
+            "name": "PatouZ",
+            "rank": 3502,
+            "country": {
+              "name": "France",
+              "ISO2": "FR"
+            },
+            "discordUsername": "Test",
+            "timezone": 0,
+            "avatar": "https://a.ppy.sh/7306522",
+            "roles": [
+              {
+                "tournamentId": "1",
+                "name": "player",
+                "canRegWithRole": false
+              }
+            ],
+            "stats": [
+              {
+                "tournamentId": "1",
+                "status": "active",
+                "seeding": 0,
+                "placement": 0
+              }
+            ],
+            "isCaptain": true
+          },
+          {
+            "id": "110",
+            "playerId": 8756421,
+            "name": "quentin5110054",
+            "rank": 680,
+            "country": {
+              "name": "France",
+              "ISO2": "FR"
+            },
+            "discordUsername": "Test",
+            "timezone": 0,
+            "avatar": "https://a.ppy.sh/8756421",
+            "roles": [
+              {
+                "tournamentId": "1",
+                "name": "player",
+                "canRegWithRole": false
+              }
+            ],
+            "stats": [
+              {
+                "tournamentId": "1",
+                "status": "active",
+                "seeding": 0,
+                "placement": 0
+              }
+            ],
+            "isCaptain": false
+          }
+        ]
+      },
+      "referee": "Albionthegreat",
+      "streamer": "",
+      "commentators": []
     }
   ],
   "lobbies": [
@@ -6606,7 +7311,7 @@
         "Team Indonesia",
         "Team France"
       ],
-      "referee": "Albionthegreat"
+      "referee": "Arcaxio"
     },
     {
       "id": "iXFdBpe",

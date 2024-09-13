@@ -19,7 +19,6 @@ const StageEditForm = ({initialValues}: {initialValues: IStageDto}) => {
     dayjs.extend(utc);
 
     const onSubmit = async(values: IStageDto) => {
-        console.log('editing')
         await new StageService().edit(values.id, values);
         setStageUpdate(stageUpdate + 1);
         setOpen(false);

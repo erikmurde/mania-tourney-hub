@@ -30,7 +30,7 @@ const StatsTableMvp = ({bestPlayer, bestTeam}: IProps) => {
             <Grid container justifyContent='start' alignItems='center'>
                 {bestPlayer && 
                 <>
-                <Flag country={bestPlayer.player.country} marginTop={0}/>
+                <Flag country={bestPlayer.player.country}/>
                 <Grid item marginLeft={0.5}>
                     {bestPlayer.player.name}
                 </Grid>

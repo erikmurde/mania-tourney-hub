@@ -1,11 +1,11 @@
 import { Autocomplete, TextField, Typography } from '@mui/material';
 import Flag from '../../Flag';
 import { FieldInputProps, FormikProps } from 'formik';
-import { EventParticipantDto } from '../../../dto/user/EventParticipantDto';
+import { UserDtoSimple } from '../../../dto/user/UserDtoSimple';
 import { IUserDto } from '../../../dto/user/IUserDto';
 import { ICountryDto } from '../../../dto/ICountryDto';
 
-type IOption = IUserDto | EventParticipantDto | ICountryDto
+type IOption = IUserDto | UserDtoSimple | ICountryDto
 
 interface IProps {
     field: FieldInputProps<any>,
@@ -37,7 +37,7 @@ const MultiAutocomplete = ({field, form, label, error, options, country}: IProps
                 <li {...props}>
                     <Flag country={country 
                         ? option as ICountryDto 
-                        : (option as IUserDto | EventParticipantDto).country}/>
+                        : (option as IUserDto | UserDtoSimple).country}/>
                     <Typography marginLeft={1}>
                         {option.name}
                     </Typography>

@@ -52,7 +52,7 @@ const StaffCard = ({staff, removeStaff}: IProps) => {
                             action={() => removeStaff(staff)}
                         />
                     </Grid>}
-                    <Flag country={staff.country}/>
+                    <Flag country={staff.country} props={{ marginTop: 0.5 }}/>
                     <Grid item marginTop={0.5}>
                         <Typography lineHeight={1.7} fontSize={12} color={theme.palette.text.secondary}>
                             {staff.country.name}

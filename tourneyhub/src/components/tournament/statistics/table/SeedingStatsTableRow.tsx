@@ -1,5 +1,5 @@
 import { Grid, TableRow, Typography, useTheme } from '@mui/material';
-import { EventParticipantDto } from '../../../../dto/user/EventParticipantDto';
+import { UserDtoSimple } from '../../../../dto/user/UserDtoSimple';
 import { SchedTableCell } from '../../../styled/SchedTableCell';
 import Flag from '../../../Flag';
 
@@ -7,7 +7,7 @@ interface IProps {
     index: number,
     numAdvancing: number,
     stats: {
-        player?: EventParticipantDto,
+        player?: UserDtoSimple,
         team?: {name: string, logo: string},
         rankSum: number,
         avgScore: number
@@ -45,7 +45,7 @@ const SeedingStatsTableRow = ({index, numAdvancing, stats}: IProps) => {
             <SchedTableCell sx={{ borderBottom: border }}>
                 <Grid container justifyContent='start' alignItems='center'>
                     {player && 
-                    <Flag country={player.country} marginTop={0}/>}
+                    <Flag country={player.country}/>}
                     {team &&
                     <Grid item width={30} height={20} xs='auto'>
                         <img 

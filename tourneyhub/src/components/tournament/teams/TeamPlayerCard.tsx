@@ -51,7 +51,7 @@ const TeamPlayerCard = ({player, isSeparate}: IProps) => {
                     </Grid>}
                     {isSeparate && 
                     <>
-                    <Flag country={player.country}/>
+                    <Flag country={player.country} props={{ marginTop: 0.5 }}/>
                     <Grid item xs={10} marginTop={0.5}>
                         <Typography lineHeight={1.7} fontSize={12} color={theme.palette.text.secondary}>
                             {player.country.name}

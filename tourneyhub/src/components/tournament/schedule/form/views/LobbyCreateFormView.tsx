@@ -2,13 +2,13 @@ import { Field, Form, Formik } from 'formik';
 import { LobbyDto } from '../../../../../dto/schedule/LobbyDto';
 import { Grid } from '@mui/material';
 import { Schema } from 'yup';
-import { EventParticipantDto } from '../../../../../dto/user/EventParticipantDto';
+import { UserDtoSimple } from '../../../../../dto/user/UserDtoSimple';
 import PlayerAutocomplete from '../../../field/PlayerAutocomplete';
 import TourneyDateTimeField from '../../../field/TourneyDateTimeField';
 
 interface IProps {
     initialValues: LobbyDto,
-    selectValues: EventParticipantDto[],
+    selectValues: UserDtoSimple[],
     validationSchema: Schema,
     onSubmit: (values: LobbyDto) => void
 }

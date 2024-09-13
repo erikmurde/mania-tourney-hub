@@ -9,7 +9,7 @@ import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
 import { Schema, object, string, date, array } from 'yup';
 import { HOST, ADMIN, REFEREE, STREAMER, COMMENTATOR, REQUIRED } from '../../../../constants';
-import { EventParticipantDto } from '../../../../dto/user/EventParticipantDto';
+import { UserDtoSimple } from '../../../../dto/user/UserDtoSimple';
 import { IUserDto } from '../../../../dto/user/IUserDto';
 import { AuthService } from '../../../../services/authService';
 import { MatchDto } from '../../../../dto/schedule/MatchDto';
@@ -19,9 +19,9 @@ const MatchEditForm = ({match}: {match: MatchDto}) => {
     const { id } = useParams();
     const { scheduleUpdate, setScheduleUpdate } = useContext(UpdateContext);
     const [selectValues, setSelectValues] = useState({
-        streamers: [] as EventParticipantDto[],
-        commentators: [] as EventParticipantDto[],
-        referees: [] as EventParticipantDto[]
+        streamers: [] as UserDtoSimple[],
+        commentators: [] as UserDtoSimple[],
+        referees: [] as UserDtoSimple[]
     });
     const [open, setOpen] = useState(false);
     const authService = new AuthService();

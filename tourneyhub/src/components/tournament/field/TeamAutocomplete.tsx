@@ -1,46 +1,38 @@
-import { Autocomplete, TextField, Typography } from '@mui/material';
-import Flag from '../../Flag';
 import { FieldInputProps, FormikProps } from 'formik';
-import { UserDtoSimple } from '../../../dto/user/UserDtoSimple';
-import { IUserDto } from '../../../dto/user/IUserDto';
-
-type IOption = IUserDto | UserDtoSimple
+import { TeamDtoSimple } from '../../../dto/team/TeamDtoSimple';
+import { Autocomplete, TextField, Typography } from '@mui/material';
+import Logo from '../Logo';
 
 interface IProps {
     field: FieldInputProps<any>,
     form: FormikProps<any>,
     label: string,
     error: string,
-    options: IOption[],
-    valueId?: boolean
+    options: TeamDtoSimple[]
 }
 
-const PlayerAutocomplete = ({field, form, label, error, options, valueId}: IProps) => {
+const TeamAutocomplete = ({field, form, label, error, options}: IProps) => {
 
     const initialValue = options.find(option => 
-        (valueId ? (option as IUserDto).id : option.name) === form.values[field.name]
+        option.name === form.values[field.name]
     );
 
     return (  
         <Autocomplete
             options={options}
             getOptionLabel={option => option.name}
-            onChange={(_, value) => {
-                form.setFieldValue(field.name, valueId 
-                    ? (value as IUserDto)?.id ?? '' 
-                    : (value as UserDtoSimple)?.name ?? '')
-            }}
+            onChange={(_, value) => form.setFieldValue(field.name, value?.name)}
             value={initialValue ?? null}
             renderOption={(props, option) => (
                 <li {...props}>
-                    <Flag country={option.country}/>
+                    <Logo name={option.name} link={option.logo}/>
                     <Typography marginLeft={1}>
                         {option.name}
                     </Typography>
                 </li>
             )}
             renderInput={params => (
-                <TextField
+                <TextField 
                     {...params}
                     error={error !== undefined}
                     helperText={error}
@@ -51,5 +43,5 @@ const PlayerAutocomplete = ({field, form, label, error, options, valueId}: IProp
         />
     );
 }
-
-export default PlayerAutocomplete;
+ 
+export default TeamAutocomplete;

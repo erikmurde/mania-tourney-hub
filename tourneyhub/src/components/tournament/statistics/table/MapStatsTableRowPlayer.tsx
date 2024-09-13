@@ -16,7 +16,7 @@ const MapStatsTableRowPlayer = ({index, stats}: IProps) => {
             <SchedTableCell>{index}</SchedTableCell>
             <SchedTableCell>
                 <Grid container justifyContent='start' alignItems='center'>
-                    <Flag country={player.country} marginTop={0}/>
+                    <Flag country={player.country}/>
                     <Grid item marginLeft={0.5}>
                         {player.name}
                     </Grid>

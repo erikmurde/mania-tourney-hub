@@ -2,7 +2,7 @@ import { Paper, Table, TableBody, TableContainer, TableHead, TableRow } from '@m
 import { SchedTableCell } from '../../styled/SchedTableCell';
 import { MapStatsDto } from '../../../dto/statistics/MapStatsDto';
 import { PlayerScoreDto } from '../../../dto/score/PlayerScoreDto';
-import { EventParticipantDto } from '../../../dto/user/EventParticipantDto';
+import { UserDtoSimple } from '../../../dto/user/UserDtoSimple';
 import { MapStatsService } from '../../../services/mapStatsService';
 import { TeamScoreDto } from '../../../dto/score/TeamScoreDto';
 import SeedingStatsTableRow from './table/SeedingStatsTableRow';
@@ -23,7 +23,7 @@ const SeedingStats = ({mapStats, numAdvancing, teamTourney}: IProps) => {
 
     const rankSums = new Map<string, number>();
     const scores = new Map<string, number[]>();
-    const players: EventParticipantDto[] = [];
+    const players: UserDtoSimple[] = [];
     const teams: Team[] = [];
 
     const updateRankSum = (name: string, index: number) => {
@@ -46,7 +46,7 @@ const SeedingStats = ({mapStats, numAdvancing, teamTourney}: IProps) => {
         }
     }
 
-    const updatePlayerList = (player: EventParticipantDto) => {
+    const updatePlayerList = (player: UserDtoSimple) => {
         if (!players.find(existing => existing.name === player.name)) {
             players.push(player);
         }

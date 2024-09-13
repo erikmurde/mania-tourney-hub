@@ -41,7 +41,7 @@ const QualiMain = ({lobby, stageName, onClose}: IProps) => {
         <RefSheetPaper elevation={8} sx={{ marginBottom: 1 }}>
             <Grid container alignItems='center'>
                 <Grid item xs={12} height={50} alignContent='center'>
-                    <Typography fontWeight={500}>
+                    <Typography fontWeight={500} paddingLeft={0.5}>
                         {tourney.code} {stageName} lobby {lobby.code}
                     </Typography>
                 </Grid>
@@ -49,21 +49,21 @@ const QualiMain = ({lobby, stageName, onClose}: IProps) => {
                     <Divider/>
                 </Grid>
                 <Grid item xs={11} height={50} alignContent='center'>
-                    <Typography fontSize={14}>
+                    <Typography fontSize={14} paddingLeft={0.5}>
                         {roomCommand}
                     </Typography>
                 </Grid>
                 <Grid item xs textAlign='end'>
                     <CopyClipboard text={roomCommand}/>
                 </Grid>
-                <Grid item xs={12} marginTop={0.5} marginBottom={1}>
+                <Grid item xs={12} marginTop={0.5} marginBottom={1} paddingLeft={0.5}>
                     <TextField fullWidth label='MP link' size='small' 
                         onChange={(e) => setMpLink(e.target.value)}
                         onBlur={() => setError(!mpLink.match(URL_REGEX) ? INVALID_URL : '')}
                         error={error !== ''}
                         helperText={error}/>
                 </Grid>
-                <Grid item marginTop={1} marginBottom={1} paddingLeft={0}>
+                <Grid item marginTop={1} marginBottom={1} paddingLeft={0.5}>
                     <ConfirmationDialog 
                         title='Are you sure you wish to conclude this lobby?' 
                         actionTitle='Conclude'

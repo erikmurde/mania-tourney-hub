@@ -1,11 +1,12 @@
-
 import { Grid, useTheme } from '@mui/material';
 import { SchedTableCell } from '../../../../styled/SchedTableCell';
-import { EventParticipantDto } from '../../../../../dto/user/EventParticipantDto';
+import { UserDtoSimple } from '../../../../../dto/user/UserDtoSimple';
 import Flag from '../../../../Flag';
+import { TeamDtoSimple } from '../../../../../dto/team/TeamDtoSimple';
+import Logo from '../../../Logo';
 
 interface IProps {
-    player: EventParticipantDto,
+    player: UserDtoSimple | TeamDtoSimple,
     winner: boolean,
     matchDone: boolean,
     right?: boolean
@@ -18,11 +19,15 @@ const MatchRowPlayer = ({player, winner, matchDone, right}: IProps) => {
         ?   (winner ? theme.palette.text.primary : theme.palette.text.secondary) 
         :   theme.palette.text.primary;
 
+    const logo = 'players' in player 
+        ? <Logo name={player.name} link={player.logo}/> 
+        : <Flag country={player.country}/>;
+
     return (  
         <SchedTableCell sx={{ paddingLeft: right ? 0 : 0.5, paddingRight: right ? 0.5 : 0 }}
             >
             <Grid container justifyContent={right ? 'start' : 'end'}>
-                {right && <Flag country={player.country} marginTop={0}/>}
+                {right && logo}
                 <Grid item
                     marginRight={right ? 0 : 0.5} 
                     marginLeft={right ? 0.5 : 0}
@@ -31,7 +36,7 @@ const MatchRowPlayer = ({player, winner, matchDone, right}: IProps) => {
                     >
                     {player.name}
                 </Grid>
-                {!right && <Flag country={player.country} marginTop={0}/>}
+                {!right && logo}
             </Grid>
         </SchedTableCell>
     );

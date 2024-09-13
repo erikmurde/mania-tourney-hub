@@ -52,7 +52,7 @@ const RefSheetMatchSolo = ({match, stage, onClose}: IProps) => {
             <Grid item xs={12}>
                 <Formik 
                     initialValues={initialValues} 
-                    onSubmit={() => console.log('Submit')}
+                    onSubmit={() => {}}
                     validateOnChange={false}
                     validateOnBlur={false}>
                 {({ values, setFieldValue }) => (

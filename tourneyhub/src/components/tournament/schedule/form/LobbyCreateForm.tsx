@@ -2,7 +2,7 @@ import { PlaylistAdd } from '@mui/icons-material';
 import FormDialogBase from '../../dialog/FormDialogBase';
 import { useContext, useEffect, useState } from 'react';
 import LobbyCreateFormView from './views/LobbyCreateFormView';
-import { EventParticipantDto } from '../../../../dto/user/EventParticipantDto';
+import { UserDtoSimple } from '../../../../dto/user/UserDtoSimple';
 import { AuthService } from '../../../../services/authService';
 import { useParams } from 'react-router-dom';
 import { ADMIN, HOST, REFEREE, REQUIRED } from '../../../../constants';
@@ -16,7 +16,7 @@ import utc from 'dayjs/plugin/utc';
 const LobbyCreateForm = ({stageId}: {stageId: string}) => {
     const { id } = useParams();
     const { scheduleUpdate, setScheduleUpdate } = useContext(UpdateContext);
-    const [selectValues, setSelectValues] = useState([] as EventParticipantDto[]);
+    const [selectValues, setSelectValues] = useState([] as UserDtoSimple[]);
     const [lobbies, setLobbies] = useState([] as LobbyDto[]);
     const [open, setOpen] = useState(false);
     const service = new LobbyService();

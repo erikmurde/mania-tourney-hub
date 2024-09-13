@@ -3,7 +3,7 @@ import FormDialogBase from '../../dialog/FormDialogBase';
 import LobbyCreateFormView from './views/LobbyCreateFormView';
 import { useContext, useEffect, useState } from 'react';
 import { LobbyDto } from '../../../../dto/schedule/LobbyDto';
-import { EventParticipantDto } from '../../../../dto/user/EventParticipantDto';
+import { UserDtoSimple } from '../../../../dto/user/UserDtoSimple';
 import { useParams } from 'react-router-dom';
 import { AuthService } from '../../../../services/authService';
 import { ADMIN, HOST, REFEREE, REQUIRED } from '../../../../constants';
@@ -16,7 +16,7 @@ const LobbyEditForm = ({lobby}: {lobby: LobbyDto}) => {
     const { id } = useParams();
     const { scheduleUpdate, setScheduleUpdate } = useContext(UpdateContext);
     const [open, setOpen] = useState(false);
-    const [selectValues, setSelectValues] = useState([] as EventParticipantDto[]);
+    const [selectValues, setSelectValues] = useState([] as UserDtoSimple[]);
 
     useEffect(() => {
         if (id && open) {

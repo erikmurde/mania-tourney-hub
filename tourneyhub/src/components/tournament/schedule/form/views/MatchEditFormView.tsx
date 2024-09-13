@@ -2,7 +2,7 @@ import { Grid, Typography, TextField } from '@mui/material';
 import { Field, Form, Formik } from 'formik';
 import { Schema } from 'yup';
 import { MatchCreateDto } from '../../../../../dto/schedule/MatchCreateDto';
-import { EventParticipantDto } from '../../../../../dto/user/EventParticipantDto';
+import { UserDtoSimple } from '../../../../../dto/user/UserDtoSimple';
 import MultiAutocomplete from '../../../field/MultiAutocomplete';
 import PlayerAutocomplete from '../../../field/PlayerAutocomplete';
 import TourneyDateTimeField from '../../../field/TourneyDateTimeField';
@@ -10,9 +10,9 @@ import TourneyDateTimeField from '../../../field/TourneyDateTimeField';
 interface IProps {
     initialValues: MatchCreateDto,
     selectValues: {
-        referees: EventParticipantDto[],
-        streamers: EventParticipantDto[],
-        commentators: EventParticipantDto[]
+        referees: UserDtoSimple[],
+        streamers: UserDtoSimple[],
+        commentators: UserDtoSimple[]
     },
     validationSchema: Schema,
     onSubmit: (values: MatchCreateDto) => void

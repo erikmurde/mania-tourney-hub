@@ -30,7 +30,7 @@ const StaffApplicationCard = ({application, updateStatus}: IProps) => {
         <Card elevation={8} sx={{ width: 600 }}>
             <CardContent>
                 <Grid container columnSpacing={1} marginBottom={1}>
-                    <Flag country={user.country}/>
+                    <Flag country={user.country} props={{ marginTop: 0.5 }}/>
                     <Grid item xs>
                         <Typography fontWeight={700}>
                         {user.name} - {role} role

@@ -7,23 +7,27 @@ import utc from 'dayjs/plugin/utc'
 import { ADMIN, COMMENTATOR, HOST, PLAYER, REFEREE, REQUIRED, STREAMER } from '../../../../constants';
 import { Schema, object, date, string, array } from 'yup';
 import { AuthService } from '../../../../services/authService';
-import FormDialogBase from '../../dialog/FormDialogBase';
-import { EventParticipantDto } from '../../../../dto/user/EventParticipantDto';
-import MatchCreateFormView from './views/MatchCreateFormView';
+import { UserDtoSimple } from '../../../../dto/user/UserDtoSimple';
 import { IUserDto } from '../../../../dto/user/IUserDto';
 import { MatchCreateDto } from '../../../../dto/schedule/MatchCreateDto';
 import { MatchDto } from '../../../../dto/schedule/MatchDto';
 import { MatchService } from '../../../../services/matchService';
+import { TeamDtoSimple } from '../../../../dto/team/TeamDtoSimple';
+import { useTourney } from '../../../../routes/tournament/TournamentHeader';
+import FormDialogBase from '../../dialog/FormDialogBase';
+import MatchCreateFormView from './views/MatchCreateFormView';
+import { TeamService } from '../../../../services/teamService';
 
 const MatchCreateForm = ({stageId}: {stageId: string}) => {
     const { id } = useParams();
+    const { tourney } = useTourney();
     const { scheduleUpdate, setScheduleUpdate } = useContext(UpdateContext);
 
     const [selectValues, setSelectValues] = useState({
-        streamers: [] as EventParticipantDto[],
-        commentators: [] as EventParticipantDto[],
-        referees: [] as EventParticipantDto[],
-        players: [] as EventParticipantDto[]
+        players: [] as UserDtoSimple[] | TeamDtoSimple[],
+        referees: [] as UserDtoSimple[],
+        streamers: [] as UserDtoSimple[],
+        commentators: [] as UserDtoSimple[]
     });
     const [open, setOpen] = useState(false);
 
@@ -35,25 +39,44 @@ const MatchCreateForm = ({stageId}: {stageId: string}) => {
             .filter(user => user.roles.some(userRole => roles.includes(userRole.name)))
             .map(user => ({ name: user.name, country: user.country }));
     }
+    
+    const getPlayer = (name: string) => {
+        return tourney.minTeamSize > 1 
+            ? (selectValues.players as TeamDtoSimple[]).find(player => player.name === name)! 
+            : (selectValues.players as UserDtoSimple[]).find(player => player.name === name)! 
+    }
 
     useEffect(() => {
         if (id && open) {
-            authService
-                .getRoles(id, [HOST, ADMIN, REFEREE, STREAMER, COMMENTATOR, PLAYER])
-                .then(users => setSelectValues({
-                    players: getUsersWithRole(users, [PLAYER]),
-                    streamers: getUsersWithRole(users, [STREAMER]),
-                    commentators: getUsersWithRole(users, [COMMENTATOR]),
-                    referees: getUsersWithRole(users, [HOST, ADMIN, REFEREE]),
-            }));
+            if (tourney.minTeamSize > 1) {
+                new TeamService()
+                    .getTeams(id)
+                    .then(teams => initSelection(teams));
+            } else {
+                authService
+                    .getPlayers(id)
+                    .then(players => initSelection(players));
+            }
         };
-    }, [id, open]);
+    }, [id, open, tourney.minTeamSize]);
+
+    const initSelection = async(participants: UserDtoSimple[] | TeamDtoSimple[]) => {
+        const staff = await authService
+            .getRoles(id!, [HOST, ADMIN, REFEREE, STREAMER, COMMENTATOR, PLAYER]);
+  
+        setSelectValues({
+            players: participants,
+            streamers: getUsersWithRole(staff, [STREAMER]),
+            commentators: getUsersWithRole(staff, [COMMENTATOR]),
+            referees: getUsersWithRole(staff, [HOST, ADMIN, REFEREE]),
+        });
+    }
 
     const onSubmit = async(values: MatchCreateDto) => {
         const match: MatchDto = {
             ...values, 
-            player1: selectValues.players.find(player => player.name === values.player1)!,
-            player2: selectValues.players.find(player => player.name === values.player2)!
+            player1: getPlayer(values.player1),
+            player2: getPlayer(values.player2)
         }
         await new MatchService().create(match);
         setScheduleUpdate(scheduleUpdate + 1);

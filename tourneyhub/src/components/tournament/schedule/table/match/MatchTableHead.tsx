@@ -1,7 +1,11 @@
 import { TableHead, TableRow } from '@mui/material';
 import { SchedTableCell } from '../../../../styled/SchedTableCell';
+import { useTourney } from '../../../../../routes/tournament/TournamentHeader';
 
 const MatchTableHead = () => {
+    const { tourney } = useTourney();
+    const playerText = tourney.minTeamSize > 1 ? 'Team' : 'Player';
+
     return (  
         <TableHead sx={{ height: 50 }}>
             <TableRow>
@@ -10,13 +14,13 @@ const MatchTableHead = () => {
                 </SchedTableCell>
                 <SchedTableCell>Match Time (UTC)</SchedTableCell>
                 <SchedTableCell align='right' sx={{ paddingRight: 3.5 }}>
-                    Player 1
+                    {playerText} 1
                 </SchedTableCell>
                 <SchedTableCell align='center' colSpan={2} sx={{ padding: 0 }}>
                     Score
                 </SchedTableCell>
                 <SchedTableCell sx={{ paddingLeft: 3.5 }}>
-                    Player 2
+                    {playerText} 2
                 </SchedTableCell>
                 <SchedTableCell>Referee</SchedTableCell>
                 <SchedTableCell>Streamer</SchedTableCell>

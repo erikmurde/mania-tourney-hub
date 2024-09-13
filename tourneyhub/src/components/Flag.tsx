@@ -1,16 +1,17 @@
-import { Grid } from '@mui/material';
+import { Grid, GridProps } from '@mui/material';
 import { ICountryDto } from '../dto/ICountryDto';
 
 interface IProps {
     country: ICountryDto,
-    marginTop?: number
+    props?: GridProps
 }
 
-const Flag = ({country, marginTop}: IProps) => {
+const Flag = ({country, props}: IProps) => {
+    
     return (  
         <>
         {country && 
-        <Grid item width={30} height={20} xs='auto' marginTop={marginTop ?? 0.5}>
+        <Grid item width={30} height={20} xs='auto' {...props}>
             <img
                 className='flag' 
                 src={`https://assets.ppy.sh/old-flags/${country.ISO2}.png`} 

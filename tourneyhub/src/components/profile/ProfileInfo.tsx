@@ -26,7 +26,7 @@ const ProfileInfo = ({user}: {user: IUserDto}) => {
                         </Link>
                     </Typography>
                 </Grid>
-                <Flag country={user.country} marginTop={0}/>
+                <Flag country={user.country}/>
                 <Grid item marginLeft={1}>
                     <Typography fontSize={14}>
                         {user.country.name}
