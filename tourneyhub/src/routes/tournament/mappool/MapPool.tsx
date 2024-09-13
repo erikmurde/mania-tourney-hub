@@ -41,6 +41,12 @@ const MapPool = () => {
             service.getAllStage(stageId.toString())
                 .then(maps => setMaps(maps));
         } else {
+            const stage = stages.find(stage => stage.id === stageId);
+
+            if (!stage || !stage.mappoolPublic) {
+                setMaps([]);
+                return;
+            }
             service.getAllStageInMappool(stageId.toString())
                 .then(maps => setMaps(maps));
         }
@@ -58,7 +64,7 @@ const MapPool = () => {
                     <PoolButtons 
                         manage={isManage}
                         setManage={setIsManage}
-                        stage={stages.find(stage => stage.id === stageId.toString()) ?? {} as IStageDto}
+                        stage={stages.find(stage => stage.id === stageId.toString()) ?? null}
                     />}/>
                 <Grid item xs>
                     {isManage 

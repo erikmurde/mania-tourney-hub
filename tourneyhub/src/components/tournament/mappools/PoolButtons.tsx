@@ -12,7 +12,7 @@ import { IStageDto } from '../../../dto/stage/IStageDto';
 import { useTourney } from '../../../routes/tournament/TournamentHeader';
 
 interface IProps {
-    stage: IStageDto,
+    stage: IStageDto | null,
     manage: boolean,
     setManage: (manage: boolean) => void
 }
@@ -24,6 +24,9 @@ const PoolButtons = ({stage, manage, setManage}: IProps) => {
     const { user } = useContext(AuthContext);
 
     const publishMappool = async() => {
+        if (!stage) {
+            return;
+        }
         stage.mappoolPublic = true;
         await new StageService().edit(stage.id, stage);
         setMapPoolUpdate(mapPoolUpdate + 1);
@@ -61,7 +64,7 @@ const PoolButtons = ({stage, manage, setManage}: IProps) => {
                     Manage
                 </Button>
             </Grid>}
-            {!manage && !stage.mappoolPublic && isHost &&
+            {stage && !manage && !stage.mappoolPublic && isHost &&
             <Grid item>
                 <ConfirmationDialog
                     btnProps={{ startIcon: <Publish/>, title: 'Publish', sx: {width: 150}}}
