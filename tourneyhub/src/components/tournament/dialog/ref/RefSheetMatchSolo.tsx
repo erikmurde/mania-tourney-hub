@@ -12,8 +12,9 @@ import { Form, Formik } from 'formik';
 import { MatchStatus } from '../../../../domain/MatchStatus';
 import RefMapPool from '../../ref/match/RefMapPool';
 import RefMatchMain from '../../ref/match/RefMatchMain';
-import RefMatchCommands from '../../ref/match/RefMatchCommands';
 import RefMatchChoices from '../../ref/match/RefMatchChoices';
+import MatchStatusCommands from '../../ref/match/MatchStatusCommands';
+import MatchGeneralCommands from '../../ref/match/MatchGeneralCommands';
 
 interface IProps {
     match: MatchDto,
@@ -65,21 +66,28 @@ const RefSheetMatchSolo = ({match, stage, onClose}: IProps) => {
                                     maxScore={Math.floor(stage.bestOf / 2) + 1}
                                     onClose={onClose}
                                 />
+                                <MatchStatusCommands 
+                                    match={values.match} 
+                                    picks={values.picks} 
+                                    bestOf={stage.bestOf}
+                                />
                                 <Grid item flexGrow={1}>
-                                    <RefMatchCommands match={values.match} picks={values.picks} bestOf={stage.bestOf}/>
+                                    <MatchGeneralCommands match={values.match}/>
                                 </Grid>
                             </Grid>
                             <Grid item container width={450} direction='column'>
-                                    <RefMatchStatus
-                                        values={values}
-                                        bestOf={stage.bestOf}
-                                        setFieldValue={setFieldValue}/>
-                                    <RefMatchChoices 
-                                        maps={maps} 
-                                        player1={match.player1.name} 
-                                        player2={match.player2.name}
-                                        bans={values.bans}
-                                        protects={values.protects}/>
+                                <RefMatchStatus
+                                    values={values}
+                                    bestOf={stage.bestOf}
+                                    setFieldValue={setFieldValue}
+                                />
+                                <RefMatchChoices 
+                                    maps={maps} 
+                                    player1={match.player1.name} 
+                                    player2={match.player2.name}
+                                    bans={values.bans}
+                                    protects={values.protects}
+                                />
                                 <Grid item flexGrow={1}>
                                     {values.picks.length > 0 &&
                                     <RefMatchPicks 

@@ -1,11 +1,12 @@
 import { TableContainer, Table, TableBody } from '@mui/material';
 import { useEffect, useState } from 'react';
-import { RefCommand } from '../../../../../domain/RefCommand';
-import { RefPick } from '../../../../../domain/RefPick';
-import { MatchDto } from '../../../../../dto/schedule/MatchDto';
-import { StyledTableRow } from '../../../../styled/StyledTableRow';
-import CommandTableCell from '../../CommandTableCell';
-import RefTableHead from '../../CommandTableHead';
+import { RefCommand } from '../../../../domain/RefCommand';
+import { RefPick } from '../../../../domain/RefPick';
+import { MatchDto } from '../../../../dto/schedule/MatchDto';
+import { StyledTableRow } from '../../../styled/StyledTableRow';
+import CommandTableCell from '../CommandTableCell';
+import RefTableHead from '../CommandTableHead';
+import { RefSheetPaper } from '../../../styled/RefSheetPaper';
 
 interface IProps {
     picks: RefPick[],
@@ -53,18 +54,20 @@ const StatusCommandsTable = ({picks, match, bestOf}: IProps) => {
     }, [picks, match.score1, match.score2]);
 
     return (  
-        <TableContainer>
-            <Table>
-                <RefTableHead title='MATCH STATUS' props={{ sx: { fontWeight: 500 } }}/>
-                <TableBody>
-                    {statusCommands.map(command => 
-                        <StyledTableRow key={command.name}>
-                            <CommandTableCell command={command}/>
-                        </StyledTableRow>
-                    )}
-                </TableBody>
-            </Table>
-        </TableContainer>
+        <RefSheetPaper elevation={8} sx={{ marginBottom: 1 }}>
+            <TableContainer>
+                <Table>
+                    <RefTableHead title='MATCH STATUS' props={{ sx: { fontWeight: 500 } }}/>
+                    <TableBody>
+                        {statusCommands.map(command => 
+                            <StyledTableRow key={command.name}>
+                                <CommandTableCell command={command}/>
+                            </StyledTableRow>
+                        )}
+                    </TableBody>
+                </Table>
+            </TableContainer>
+        </RefSheetPaper>
     );
 }
  
