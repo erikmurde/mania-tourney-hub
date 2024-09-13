@@ -10,7 +10,7 @@ interface IProps {
     setFieldValue: (field: string, value: any) => void
 }
 
-const RefMatchStatus = ({values: {match, firstPick, picks}, bestOf, setFieldValue}: IProps) => {
+const MatchScores = ({values: {match, firstPick, picks}, bestOf, setFieldValue}: IProps) => {
     const theme = useTheme();
     const players = [match.player1.name, match.player2.name];
 
@@ -70,4 +70,4 @@ const RefMatchStatus = ({values: {match, firstPick, picks}, bestOf, setFieldValu
     );
 }
  
-export default RefMatchStatus;
+export default MatchScores;

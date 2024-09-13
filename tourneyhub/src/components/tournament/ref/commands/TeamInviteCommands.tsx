@@ -1,10 +1,10 @@
 import { Grid, Typography, useTheme } from '@mui/material';
-import { RefSheetPaper } from '../../styled/RefSheetPaper';
-import { TeamDtoSimple } from '../../../dto/team/TeamDtoSimple';
+import { RefSheetPaper } from '../../../styled/RefSheetPaper';
+import { TeamDtoSimple } from '../../../../dto/team/TeamDtoSimple';
 import { useEffect, useState } from 'react';
-import { TeamService } from '../../../services/teamService';
+import { TeamService } from '../../../../services/teamService';
 import { useParams } from 'react-router-dom';
-import TeamInvites from './qualifier/TeamInvites';
+import TeamInvites from '../TeamInvites';
 
 const TeamInviteCommands = ({teamNames, isMatch}: {teamNames: string[], isMatch?: boolean}) => {
     const { id } = useParams();

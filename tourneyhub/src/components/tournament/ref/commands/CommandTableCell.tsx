@@ -1,6 +1,6 @@
-import { SchedTableCell } from '../../styled/SchedTableCell';
-import { RefCommand } from '../../../domain/RefCommand';
-import CopyClipboard from './CopyClipboard';
+import { SchedTableCell } from '../../../styled/SchedTableCell';
+import { RefCommand } from '../../../../domain/RefCommand';
+import CopyClipboard from '../CopyClipboard';
 
 const CommandTableCell = ({command}: {command: RefCommand}) => {
 

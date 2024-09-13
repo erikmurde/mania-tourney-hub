@@ -6,16 +6,16 @@ import { IStageDto } from '../../../../dto/stage/IStageDto';
 import { useEffect, useState } from 'react';
 import { IMapDto } from '../../../../dto/map/IMapDto';
 import { MapService } from '../../../../services/mapService';
-import RefMatchStatus from '../../ref/match/RefMatchStatus';
-import RefMatchPicks from '../../ref/match/RefMatchPicks';
+import RefMatchStatus from '../../ref/match/MatchScores';
+import RefMatchPicks from '../../ref/match/MatchPicks';
 import { Form, Formik } from 'formik';
 import { MatchStatus } from '../../../../domain/MatchStatus';
-import RefMapPool from '../../ref/match/RefMapPool';
-import RefMatchMain from '../../ref/match/RefMatchMain';
-import RefMatchChoices from '../../ref/match/RefMatchChoices';
+import RefMapPool from '../../ref/match/MatchMapPool';
+import RefMatchMain from '../../ref/match/MatchMain';
+import RefMatchChoices from '../../ref/match/MatchChoices';
 import MatchStatusCommands from '../../ref/match/MatchStatusCommands';
 import MatchGeneralCommands from '../../ref/match/MatchGeneralCommands';
-import TeamInviteCommands from '../../ref/TeamInviteCommands';
+import TeamInviteCommands from '../../ref/commands/TeamInviteCommands';
 import { useTourney } from '../../../../routes/tournament/TournamentHeader';
 
 interface IProps {
@@ -24,7 +24,7 @@ interface IProps {
     onClose: () => void
 }
 
-const RefSheetMatchSolo = ({match, stage, onClose}: IProps) => {
+const MatchRefsheet = ({match, stage, onClose}: IProps) => {
     const { tourney } = useTourney();
     const [maps, setMaps] = useState([] as IMapDto[]);
 
@@ -119,4 +119,4 @@ const RefSheetMatchSolo = ({match, stage, onClose}: IProps) => {
     );
 }
  
-export default RefSheetMatchSolo;
+export default MatchRefsheet;

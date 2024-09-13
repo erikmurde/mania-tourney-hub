@@ -1,7 +1,7 @@
 import { Table, TableBody, TableContainer, TableHead } from '@mui/material';
-import { StyledTableRow } from '../../styled/StyledTableRow';
-import { SchedTableCell } from '../../styled/SchedTableCell';
-import CopyClipboard from './CopyClipboard';
+import { StyledTableRow } from '../../../styled/StyledTableRow';
+import { SchedTableCell } from '../../../styled/SchedTableCell';
+import CopyClipboard from '../CopyClipboard';
 
 const TimerCommands = () => {
     const rows = [

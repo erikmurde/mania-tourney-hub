@@ -1,10 +1,10 @@
 import { Table, TableBody, TableContainer } from '@mui/material';
 import { RefSheetPaper } from '../../../styled/RefSheetPaper';
-import TimerCommands from '../TimerCommands';
 import { RefCommand } from '../../../../domain/RefCommand';
 import { StyledTableRow } from '../../../styled/StyledTableRow';
-import CommandTableCell from '../CommandTableCell';
-import RefTableHead from '../CommandTableHead';
+import TimerCommands from '../commands/TimerCommands';
+import CommandTableCell from '../commands/CommandTableCell';
+import CommandTableHead from '../commands/CommandTableHead';
 
 const QualiGeneralCommands = ({lobbySize}: {lobbySize: number}) => {
     const generalCommands: RefCommand[] = [
@@ -17,7 +17,7 @@ const QualiGeneralCommands = ({lobbySize}: {lobbySize: number}) => {
         <RefSheetPaper elevation={8}>
             <TableContainer>
                 <Table>
-                    <RefTableHead title='GENERAL COMMANDS'/>
+                    <CommandTableHead title='GENERAL COMMANDS'/>
                     <TableBody>
                         {generalCommands.map((command) => 
                             <StyledTableRow key={command.name}>

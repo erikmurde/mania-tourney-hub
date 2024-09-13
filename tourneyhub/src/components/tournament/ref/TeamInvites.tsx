@@ -1,7 +1,7 @@
 import { Divider, Grid, Typography, useTheme } from '@mui/material';
-import { TeamDtoSimple } from '../../../../dto/team/TeamDtoSimple';
-import RefSheetPlayerBox from '../../../RefSheetPlayerBox';
-import CopyClipboard from '../CopyClipboard';
+import { TeamDtoSimple } from '../../../dto/team/TeamDtoSimple';
+import RefSheetPlayerBox from '../../RefSheetPlayerBox';
+import CopyClipboard from './CopyClipboard';
 
 interface IProps {
     team: TeamDtoSimple,

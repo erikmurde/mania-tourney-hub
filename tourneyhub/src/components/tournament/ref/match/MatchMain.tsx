@@ -19,7 +19,7 @@ interface IProps {
     onClose: () => void
 }
 
-const RefMatchMain = ({match, stageName, maxScore, onClose}: IProps) => {
+const MatchMain = ({match, stageName, maxScore, onClose}: IProps) => {
     const { scheduleUpdate, setScheduleUpdate } = useContext(UpdateContext);
     const { tourney } = useTourney();
     const [mpLink, setMpLink] = useState('');
@@ -96,4 +96,4 @@ const RefMatchMain = ({match, stageName, maxScore, onClose}: IProps) => {
     );
 }
  
-export default RefMatchMain;
+export default MatchMain;

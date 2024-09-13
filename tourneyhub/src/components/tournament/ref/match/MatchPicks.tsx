@@ -17,7 +17,7 @@ interface IProps {
     bestOf: number
 }
 
-const RefMatchPicks = ({values, maps, bestOf}: IProps) => {
+const MatchPicks = ({values, maps, bestOf}: IProps) => {
     const theme = useTheme();
     const [unselectableMaps, setUnselectableMaps] = useState([] as string[]);
     const players = [values.match.player1.name, values.match.player2.name];
@@ -101,4 +101,4 @@ const RefMatchPicks = ({values, maps, bestOf}: IProps) => {
     );
 }
  
-export default RefMatchPicks;
+export default MatchPicks;

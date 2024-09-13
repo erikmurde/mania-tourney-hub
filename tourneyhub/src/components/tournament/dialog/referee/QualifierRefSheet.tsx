@@ -11,7 +11,7 @@ import QualiGeneralCommands from '../../ref/qualifier/QualiGeneralCommands';
 import QualiMain from '../../ref/qualifier/QualiMain';
 import { LobbyDto } from '../../../../dto/schedule/LobbyDto';
 import { useTourney } from '../../../../routes/tournament/TournamentHeader';
-import TeamInviteCommands from '../../ref/TeamInviteCommands';
+import TeamInviteCommands from '../../ref/commands/TeamInviteCommands';
 
 interface IProps {
     lobby: LobbyDto,
@@ -20,7 +20,7 @@ interface IProps {
     onClose: () => void
 }
 
-const RefSheetQualifier = ({lobby, stageName, lobbySize, onClose}: IProps) => {
+const QualifierRefSheet = ({lobby, stageName, lobbySize, onClose}: IProps) => {
     const { tourney } = useTourney();
 
     const [maps, setMaps] = useState([] as IMapDto[]);
@@ -64,4 +64,4 @@ const RefSheetQualifier = ({lobby, stageName, lobbySize, onClose}: IProps) => {
     );
 }
  
-export default RefSheetQualifier;
+export default QualifierRefSheet;

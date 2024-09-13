@@ -14,7 +14,7 @@ interface IProps {
     protects: string[]
 }
 
-const RefMapPool = ({maps, picks, bans, protects}: IProps) => {
+const MatchMapPool = ({maps, picks, bans, protects}: IProps) => {
     const theme = useTheme();
 
     const isMapDisabled = (map: IMapDto) => {
@@ -93,4 +93,4 @@ const RefMapPool = ({maps, picks, bans, protects}: IProps) => {
     );
 }
  
-export default RefMapPool;
+export default MatchMapPool;

@@ -8,7 +8,7 @@ import MatchTableRow from './MatchTableRow';
 import { UpdateContext } from '../../../../../routes/Root';
 import dayjs from 'dayjs';
 import NoItems from '../../../NoItems';
-import RefSheetMatchSolo from '../../../dialog/ref/RefSheetMatchSolo';
+import MatchRefsheet from '../../../dialog/referee/MatchRefSheet';
 
 const MatchTable = ({stage}: {stage: IStageDto}) => {
     const { scheduleUpdate } = useContext(UpdateContext);
@@ -47,7 +47,7 @@ const MatchTable = ({stage}: {stage: IStageDto}) => {
             PaperProps={{ elevation: 2, sx: { alignItems: 'center' } }}
             >
             {refIndex !== null &&
-            <RefSheetMatchSolo 
+            <MatchRefsheet 
                 match={{...matches[refIndex]}} 
                 stage={stage} 
                 onClose={() => setRefIndex(null)}

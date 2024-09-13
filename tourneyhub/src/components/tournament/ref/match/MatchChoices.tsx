@@ -16,7 +16,7 @@ interface IProps {
     protects: string[]
 }
 
-const RefMatchChoices = ({maps, player1, player2, bans, protects}: IProps) => {
+const MatchChoices = ({maps, player1, player2, bans, protects}: IProps) => {
     const theme = useTheme();
     const { tourney } = useTourney();
 
@@ -78,4 +78,4 @@ const RefMatchChoices = ({maps, player1, player2, bans, protects}: IProps) => {
     );
 }
  
-export default RefMatchChoices;
+export default MatchChoices;

@@ -1,8 +1,8 @@
 import { Table, TableBody, TableContainer } from '@mui/material';
 import { RefSheetPaper } from '../../../styled/RefSheetPaper';
 import { StyledTableRow } from '../../../styled/StyledTableRow';
-import CommandTableCell from '../CommandTableCell';
-import RefTableHead from '../CommandTableHead';
+import CommandTableCell from '../commands/CommandTableCell';
+import CommandTableHead from '../commands/CommandTableHead';
 
 const COL_COUNT = 3;
 
@@ -21,7 +21,7 @@ const QualiInviteCommands = ({players}: {players: string[]}) => {
         <RefSheetPaper elevation={8}>
             <TableContainer>
                 <Table>
-                    <RefTableHead title='PLAYER INVITES' props={{ colSpan: COL_COUNT }}/>
+                    <CommandTableHead title='PLAYER INVITES' props={{ colSpan: COL_COUNT }}/>
                     <TableBody>
                         {getRows().map((row, rowIndex) =>
                             <StyledTableRow key={rowIndex}>

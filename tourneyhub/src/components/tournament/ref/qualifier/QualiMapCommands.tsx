@@ -1,9 +1,9 @@
 import { TableContainer, Table, TableBody } from '@mui/material';
 import { RefSheetPaper } from '../../../styled/RefSheetPaper';
 import { StyledTableRow } from '../../../styled/StyledTableRow';
-import CommandTableCell from '../CommandTableCell';
 import { RefCommand } from '../../../../domain/RefCommand';
-import RefTableHead from '../CommandTableHead';
+import CommandTableCell from '../commands/CommandTableCell';
+import CommandTableHead from '../commands/CommandTableHead';
 
 const QualiMapCommands = ({selectedId}: {selectedId: string}) => {
     
@@ -16,7 +16,7 @@ const QualiMapCommands = ({selectedId}: {selectedId: string}) => {
         <RefSheetPaper elevation={8} sx={{ marginBottom: 1 }}>
             <TableContainer>
                 <Table>
-                    <RefTableHead title='MAP COMMANDS'/>
+                    <CommandTableHead title='MAP COMMANDS'/>
                     <TableBody>
                         {mapCommands.map(command => 
                             <StyledTableRow key={command.name}>

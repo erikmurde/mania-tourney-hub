@@ -4,9 +4,9 @@ import { RefCommand } from '../../../../domain/RefCommand';
 import { RefPick } from '../../../../domain/RefPick';
 import { MatchDto } from '../../../../dto/schedule/MatchDto';
 import { StyledTableRow } from '../../../styled/StyledTableRow';
-import CommandTableCell from '../CommandTableCell';
-import RefTableHead from '../CommandTableHead';
 import { RefSheetPaper } from '../../../styled/RefSheetPaper';
+import CommandTableCell from '../commands/CommandTableCell';
+import CommandTableHead from '../commands/CommandTableHead';
 
 interface IProps {
     picks: RefPick[],
@@ -14,7 +14,7 @@ interface IProps {
     bestOf: number
 }
 
-const StatusCommandsTable = ({picks, match, bestOf}: IProps) => {
+const MatchStatusCommands = ({picks, match, bestOf}: IProps) => {
     const [statusCommands, setStatusCommands] = useState([] as RefCommand[]);
     const p1 = match.player1.name;
     const p2 = match.player2.name;
@@ -57,7 +57,7 @@ const StatusCommandsTable = ({picks, match, bestOf}: IProps) => {
         <RefSheetPaper elevation={8} sx={{ marginBottom: 1 }}>
             <TableContainer>
                 <Table>
-                    <RefTableHead title='MATCH STATUS' props={{ sx: { fontWeight: 500 } }}/>
+                    <CommandTableHead title='MATCH STATUS' props={{ sx: { fontWeight: 500 } }}/>
                     <TableBody>
                         {statusCommands.map(command => 
                             <StyledTableRow key={command.name}>
@@ -71,4 +71,4 @@ const StatusCommandsTable = ({picks, match, bestOf}: IProps) => {
     );
 }
  
-export default StatusCommandsTable;
+export default MatchStatusCommands;

@@ -1,6 +1,6 @@
 import { TableCellProps, TableHead } from '@mui/material';
-import { SchedTableCell } from '../../styled/SchedTableCell';
-import { StyledTableRow } from '../../styled/StyledTableRow';
+import { SchedTableCell } from '../../../styled/SchedTableCell';
+import { StyledTableRow } from '../../../styled/StyledTableRow';
 
 interface IProps {
     title: string,

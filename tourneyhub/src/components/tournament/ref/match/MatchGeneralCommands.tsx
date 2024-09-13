@@ -3,12 +3,12 @@ import { RefSheetPaper } from '../../../styled/RefSheetPaper';
 import { RefCommand } from '../../../../domain/RefCommand';
 import { TableContainer, Table, TableBody } from '@mui/material';
 import { StyledTableRow } from '../../../styled/StyledTableRow';
-import TimerCommands from '../TimerCommands';
-import CommandTableCell from '../CommandTableCell';
-import RefTableHead from '../CommandTableHead';
 import { useTourney } from '../../../../routes/tournament/TournamentHeader';
+import CommandTableHead from '../commands/CommandTableHead';
+import CommandTableCell from '../commands/CommandTableCell';
+import TimerCommands from '../commands/TimerCommands';
 
-const RefMatchCommands = ({match}: {match: MatchDto}) => {
+const MatchGeneralCommands = ({match}: {match: MatchDto}) => {
     const { tourney } = useTourney();
     const isTeam = tourney.minTeamSize > 1;
 
@@ -42,7 +42,7 @@ const RefMatchCommands = ({match}: {match: MatchDto}) => {
         <RefSheetPaper elevation={8} sx={{ height: 1 }}>
             <TableContainer>
                 <Table>
-                    <RefTableHead title='GENERAL COMMANDS' props={{ sx: { fontWeight: 500 } }}/>
+                    <CommandTableHead title='GENERAL COMMANDS' props={{ sx: { fontWeight: 500 } }}/>
                     <TableBody>
                         {getGeneralCommands().map(command => 
                             <StyledTableRow key={command.name}>
@@ -57,4 +57,4 @@ const RefMatchCommands = ({match}: {match: MatchDto}) => {
     );
 }
  
-export default RefMatchCommands;
+export default MatchGeneralCommands;
