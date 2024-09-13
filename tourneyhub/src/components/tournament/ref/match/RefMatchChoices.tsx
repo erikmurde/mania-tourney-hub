@@ -28,8 +28,8 @@ const RefMatchChoices = ({maps, player1, player2, bans, protects}: IProps) => {
                         <StyledTableRow>
                             <SchedTableCell width={150}>Player</SchedTableCell>
                             {tourney.protects && 
-                            <SchedTableCell width={125}>Protect</SchedTableCell>}
-                            <SchedTableCell width={125}>Ban</SchedTableCell>
+                            <SchedTableCell width={115}>Protect</SchedTableCell>}
+                            <SchedTableCell>Ban</SchedTableCell>
                         </StyledTableRow>
                     </TableHead>
                     <TableBody>

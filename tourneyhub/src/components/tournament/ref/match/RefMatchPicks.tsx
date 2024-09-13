@@ -48,7 +48,7 @@ const RefMatchPicks = ({values, maps, bestOf}: IProps) => {
                 values.bans.includes(id) || values.picks.map(pick => pick.beatmapId).includes(id)
             )
         );
-    }, [values.picks, values.bans]);
+    }, [maps, values.picks, values.bans]);
 
     return (  
         <RefSheetPaper elevation={8} sx={{ height: 1, marginBottom: 1 }}>

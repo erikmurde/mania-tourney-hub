@@ -24,6 +24,7 @@ interface IProps {
 const MatchCreateFormView = ({initialValues, selectValues, validationSchema, onSubmit}: IProps) => {
 
     const isTeam = selectValues.players.length > 0 && 'players' in selectValues.players[0];
+    const playerLabel = isTeam ? 'Team' : 'Player';
 
     return (  
         <Formik 
@@ -54,14 +55,14 @@ const MatchCreateFormView = ({initialValues, selectValues, validationSchema, onS
                         <Grid item xs={6}>
                             <Field component={isTeam ? TeamAutocomplete : PlayerAutocomplete}
                                 name='player1'
-                                label='Player 1'
+                                label={`${playerLabel} 1`}
                                 error={errors.player1}
                                 options={selectValues.players}/>
                         </Grid>
                         <Grid item xs={6}>
                             <Field component={isTeam ? TeamAutocomplete : PlayerAutocomplete}
                                 name='player2'
-                                label='Player 2'
+                                label={`${playerLabel} 2`}
                                 error={errors.player2}
                                 options={selectValues.players}/>
                         </Grid>

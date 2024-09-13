@@ -16,6 +16,7 @@ import RefMatchChoices from '../../ref/match/RefMatchChoices';
 import MatchStatusCommands from '../../ref/match/MatchStatusCommands';
 import MatchGeneralCommands from '../../ref/match/MatchGeneralCommands';
 import TeamInviteCommands from '../../ref/TeamInviteCommands';
+import { useTourney } from '../../../../routes/tournament/TournamentHeader';
 
 interface IProps {
     match: MatchDto,
@@ -24,6 +25,7 @@ interface IProps {
 }
 
 const RefSheetMatchSolo = ({match, stage, onClose}: IProps) => {
+    const { tourney } = useTourney();
     const [maps, setMaps] = useState([] as IMapDto[]);
 
     const initialValues: MatchStatus = {
@@ -104,9 +106,10 @@ const RefSheetMatchSolo = ({match, stage, onClose}: IProps) => {
                                     bans={values.bans}
                                     protects={values.protects}/>
                             </Grid>
+                            {tourney.minTeamSize > 1 && 
                             <Grid item width={1400}>
                                 <TeamInviteCommands teamNames={[match.player1.name, match.player2.name]} isMatch/>
-                            </Grid>
+                            </Grid>}
                         </Grid>
                     </Form>
                 )}

@@ -30,6 +30,7 @@ const MatchCreateForm = ({stageId}: {stageId: string}) => {
         commentators: [] as UserDtoSimple[]
     });
     const [open, setOpen] = useState(false);
+    const isTeam = tourney.minTeamSize > 1;
 
     const authService = new AuthService();
     dayjs.extend(utc);
@@ -48,7 +49,7 @@ const MatchCreateForm = ({stageId}: {stageId: string}) => {
 
     useEffect(() => {
         if (id && open) {
-            if (tourney.minTeamSize > 1) {
+            if (isTeam) {
                 new TeamService()
                     .getTeams(id)
                     .then(teams => initSelection(teams));
@@ -58,7 +59,7 @@ const MatchCreateForm = ({stageId}: {stageId: string}) => {
                     .then(players => initSelection(players));
             }
         };
-    }, [id, open, tourney.minTeamSize]);
+    }, [id, open]);
 
     const initSelection = async(participants: UserDtoSimple[] | TeamDtoSimple[]) => {
         const staff = await authService
@@ -93,7 +94,7 @@ const MatchCreateForm = ({stageId}: {stageId: string}) => {
             .when('player1', (player1, schema) => {
                 return schema.test({
                     test: player2 => player1.toString() !== player2,
-                    message: 'Players must be different'
+                    message: `${isTeam ? 'Teams' : 'Players'} must be different`
                 })
             }),
         time: date()

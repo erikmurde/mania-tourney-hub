@@ -16,7 +16,7 @@ const MatchTableRow = ({match, refMatch}: IProps) => {
     dayjs.extend(utc);
 
     const p1Winner = match.isDone 
-        ? (match.score1 < 0 || match.score1 > match.score2) && match.score2 > 0 
+        ? (match.score1 < 0 || match.score1 > match.score2) && match.score2 >= 0 
         : false;
 
     const p2Winner = match.isDone ? !p1Winner : false;
