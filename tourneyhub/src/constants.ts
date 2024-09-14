@@ -31,7 +31,7 @@ export const ROLE_REG = new Map<string, boolean>([
 ]);
 
 // URL REGEX
-export const URL_REGEX = /^(?:(?:https?|ftp):\/\/)?(?:www\.)?[a-z0-9-]+(?:\.[a-z0-9-]+)+[^\s]*$/i;
+export const URL_REGEX = /^(?:(?:https?|ftp):\/\/)(?:www\.)?[a-z0-9-]+(?:\.[a-z0-9-]+)+[^\s]*$/i;
 
 // COLORS
 export const TERTIARY = '#9575CD';
@@ -39,7 +39,7 @@ export const TERTIARY = '#9575CD';
 // FORM VALIDATION
 export const REQUIRED = 'Required';
 export const MIN1 = 'Must be 1 or more';
-export const INVALID_URL = 'Must be a url'
+export const INVALID_URL = 'Must be a full url'
 
 // STAGE TYPES
 export const STANDARD = 'standard';

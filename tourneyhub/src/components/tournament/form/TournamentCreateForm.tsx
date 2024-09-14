@@ -39,9 +39,7 @@ const TournamentCreateForm = () => {
         applicationOpen: false,
         regDeadline: null,
         applicationDeadline: null,
-        discordLink: '',
-        forumLink: '',
-        challongeLink: '',
+        links: [],
         countries: [],
         information: {} as Value,
         regMessage: '',
@@ -50,7 +48,7 @@ const TournamentCreateForm = () => {
         restrictRank: false
     };
 
-    const onSubmit = async(values: TournamentEdit) => {
+    const onSubmit = async(values: TournamentEdit) => {  
         const {hostRoles, teamTourney, restrictRank, ...tourney} = values;
 
         if (!values.teamTourney) {

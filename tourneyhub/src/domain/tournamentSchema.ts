@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
-import { Schema, boolean, date, number, object, string } from 'yup';
-import { REQUIRED, MIN1 } from '../constants';
+import { Schema, array, boolean, date, number, object, string } from 'yup';
+import { REQUIRED, MIN1, URL_REGEX, INVALID_URL } from '../constants';
 
 dayjs.extend(utc);
 
@@ -62,5 +62,14 @@ export const tournamentSchema: Schema = object({
                 : schema.notRequired()
         })
         .typeError('Invalid date format')
-        .min(dayjs.utc(), 'Must be in the future')
+        .min(dayjs.utc(), 'Must be in the future'),
+    links: array().of(
+        object().shape({
+            name: string()
+                .required(REQUIRED),
+            link: string()
+                .required(REQUIRED)
+                .matches(URL_REGEX, INVALID_URL)
+        })
+    )
 });

@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../../routes/Root';
 import { TournamentDto } from '../../../dto/tournament/TournamentDto';
-import { Button, Grid } from '@mui/material';
-import { Done, KeyboardArrowDown, Lock } from '@mui/icons-material';
+import { Grid } from '@mui/material';
+import { Done, Lock } from '@mui/icons-material';
 import { HOST } from '../../../constants';
 import StaffApplicationForm from '../staff/form/StaffApplicationForm';
 import { useParams } from 'react-router-dom';
@@ -13,6 +13,7 @@ import TournamentPublishForm from '../form/TournamentPublishForm';
 import SuccessDialog from '../dialog/SuccessDialog';
 import { TournamentService } from '../../../services/tournamentService';
 import TeamRegisterForm from './form/TeamRegisterForm';
+import LinkMenu from './LinkMenu';
 
 interface IProps {
     tourney: TournamentDto,
@@ -135,11 +136,7 @@ const HeaderButtons = ({tourney, updateTourney}: IProps) => {
                     action={onConclude}
                     btnProps={{ title: 'Conclude', startIcon: <Done/> }}/>
             </Grid>}
-            <Grid item>
-                <Button variant='contained' endIcon={<KeyboardArrowDown/>}>
-                    Links
-                </Button>
-            </Grid>
+            <LinkMenu links={tourney.links}/>
         </Grid>
         <SuccessDialog 
             open={successOpen} 

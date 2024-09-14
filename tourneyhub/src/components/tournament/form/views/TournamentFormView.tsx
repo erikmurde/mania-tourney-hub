@@ -6,6 +6,7 @@ import { ADMIN, COMMENTATOR, COUNTRIES, GFX, HOST, MAPPER, MAPPOOLER, PLAYTESTER
 import MultiAutocomplete from '../../field/MultiAutocomplete';
 import RoleAutocomplete from '../../field/RoleAutocomplete';
 import TourneyDateField from '../../field/TourneyDateField';
+import TourneyLinks from './TourneyLinks';
 
 interface IProps {
     initialValues: TournamentEdit,
@@ -25,7 +26,7 @@ const TournamentFormView = ({initialValues, validationSchema, onSubmit}: IProps)
             validateOnBlur={false}>
             {({ errors, values }) => (
                 <Form id='tourney-form'>
-                    <Grid container rowSpacing={2} columnSpacing={1} marginTop={0.5}>
+                    <Grid container rowSpacing={1.5} columnSpacing={1} marginTop={0.5}>
                         <Grid item xs={12}>
                             <Typography fontSize={18} fontWeight={500}>
                                 General information
@@ -56,13 +57,13 @@ const TournamentFormView = ({initialValues, validationSchema, onSubmit}: IProps)
                                 helperText={errors.keys} 
                                 fullWidth/>
                         </Grid>}
-                        <Grid item xs={values.public ? 12 : 10}>
+                        <Grid item xs={6}>
                             <FastField as={TextField} name='banner' label='Banner image link' 
                                 error={errors.banner !== undefined}
                                 helperText={errors.banner} 
                                 fullWidth/>
                         </Grid>
-                        <Grid item xs={12}>
+                        <Grid item xs={6}>
                             <FastField as={TextField} name='regMessage' label='Registration message' 
                                 error={errors.regMessage !== undefined}
                                 helperText={errors.regMessage} 
@@ -170,29 +171,7 @@ const TournamentFormView = ({initialValues, validationSchema, onSubmit}: IProps)
                                 label='Staff application deadline'
                                 error={errors.applicationDeadline}/>
                         </Grid>
-                        <Grid item xs={12}>
-                            <Typography fontSize={18} fontWeight={500} marginTop={1}>
-                                Links
-                            </Typography>
-                        </Grid>
-                        <Grid item xs={4}>
-                            <FastField as={TextField} name='forumLink' label='Forum post link' 
-                                error={errors.forumLink !== undefined}
-                                helperText={errors.forumLink} 
-                                fullWidth/>
-                        </Grid>
-                        <Grid item xs={4}>
-                            <FastField as={TextField} name='challongeLink' label='Challonge link' 
-                                error={errors.challongeLink !== undefined}
-                                helperText={errors.challongeLink} 
-                                fullWidth/>
-                        </Grid>
-                        <Grid item xs={4}>
-                            <FastField as={TextField} name='discordLink' label='Discord link' 
-                                error={errors.discordLink !== undefined}
-                                helperText={errors.discordLink} 
-                                fullWidth/>
-                        </Grid>
+                        <TourneyLinks links={values.links} errors={errors}/>
                     </Grid>
                 </Form>
             )}

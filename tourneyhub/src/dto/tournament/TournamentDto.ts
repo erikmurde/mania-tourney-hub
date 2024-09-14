@@ -1,5 +1,6 @@
 import { Dayjs } from 'dayjs';
 import { Value } from 'react-quill';
+import { TourneyLinkDto } from '../TourneyLinkDto';
 
 export interface TournamentDto {
     id: string,
@@ -21,9 +22,7 @@ export interface TournamentDto {
     applicationOpen: boolean,
     regDeadline: Dayjs | null,
     applicationDeadline: Dayjs | null,
-    discordLink: string,
-    forumLink: string,
-    challongeLink: string,
+    links: TourneyLinkDto[],
     countries: string[],
     information: Value,
     regMessage: string
