@@ -27,8 +27,8 @@ const TournamentEditForm = ({tourney, user, updateTourney}: IProps) => {
             tourneyEdit.maxTeamSize = 1;
         }
         if (!values.restrictRank) {
-            tourneyEdit.minRank = 0;
-            tourneyEdit.maxRank = 0;
+            tourneyEdit.minPlayerRank = 0;
+            tourneyEdit.maxPlayerRank = 0;
         }
         await new TournamentService().edit(tourney.id, tourneyEdit);
 
@@ -60,7 +60,7 @@ const TournamentEditForm = ({tourney, user, updateTourney}: IProps) => {
                     initialValues={{
                         ...tourney,
                         teamTourney: tourney.minTeamSize > 1,
-                        restrictRank: tourney.minRank > 0,
+                        restrictRank: tourney.minPlayerRank > 0,
                         hostRoles: user.roles
                             .filter(role => role.tournamentId === tourney.id)
                             .map(role => role.name)

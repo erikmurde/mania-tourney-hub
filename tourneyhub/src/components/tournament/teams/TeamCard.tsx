@@ -70,11 +70,7 @@ const TeamCard = ({teamsPublic, team, eliminateTeam}: IProps) => {
                             btnProps={{ color: 'error' }}
                             title={`Are you sure you wish to ${teamsPublic ? 'eliminate' : 'disqualify'} this team?`}
                             actionTitle={teamsPublic ? 'Eliminate' : 'Disqualify'} 
-                            action={() => eliminateTeam(team)}
-                            />
-                        <StyledIconButton color='primary'>
-                            <Edit/>
-                        </StyledIconButton>
+                            action={() => eliminateTeam(team)}/>
                     </Grid>}
                     {eliminated &&
                     <Grid item xs textAlign='end'>

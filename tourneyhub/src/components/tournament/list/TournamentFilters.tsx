@@ -17,16 +17,16 @@ const TournamentFilters = ({filters, setFilters}: IProps) => {
             </Grid>
             <Grid item xs={2}>
                 <TextField fullWidth name='minRank' label='Min. player rank' type='number'
-                    value={filters.minRank}
+                    value={filters.minPlayerRank}
                     placeholder='Any'
-                    onChange={(e) => setFilters({...filters, minRank: e.target.value})}
+                    onChange={(e) => setFilters({...filters, minPlayerRank: e.target.value})}
                 />
             </Grid>
             <Grid item xs={2}>
                 <TextField fullWidth name='maxRank' label='Max. player rank' type='number'
-                    value={filters.maxRank}
+                    value={filters.maxPlayerRank}
                     placeholder='Any'
-                    onChange={(e) => setFilters({...filters, maxRank: e.target.value})}
+                    onChange={(e) => setFilters({...filters, maxPlayerRank: e.target.value})}
                 />
             </Grid>
             <Grid item xs={3.5}/>

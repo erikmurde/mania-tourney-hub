@@ -4,6 +4,6 @@ export interface TourneyFilters {
     maxKeys: string,
     minTeamSize: string,
     maxTeamSize: string,
-    minRank: string,
-    maxRank: string
+    minPlayerRank: string,
+    maxPlayerRank: string
 }

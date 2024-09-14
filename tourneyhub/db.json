@@ -4850,8 +4850,8 @@
       "warmups": false,
       "regOpen": true,
       "applicationOpen": false,
-      "regDeadline": "Wed, 10 Jul 2024 07:00:00 GMT",
-      "applicationDeadline": "Wed, 10 Jul 2024 07:00:00 GMT",
+      "regDeadline": "2024-11-21T08:00:00.000Z",
+      "applicationDeadline": "2024-10-16T07:00:00.000Z",
       "links": [
         {
           "name": "discord",
@@ -4874,8 +4874,8 @@
       "keys": 4,
       "minTeamSize": 1,
       "maxTeamSize": 1,
-      "minRank": 0,
-      "maxRank": 0,
+      "minPlayerRank": 0,
+      "maxPlayerRank": 0,
       "protects": false,
       "warmups": true,
       "regOpen": false,

@@ -31,8 +31,8 @@ const TournamentCreateForm = () => {
         keys: 4,
         minTeamSize: 1,
         maxTeamSize: 1,
-        minRank: 0,
-        maxRank: 0,
+        minPlayerRank: 0,
+        maxPlayerRank: 0,
         protects: false,
         warmups: false,
         regOpen: false,
@@ -58,8 +58,8 @@ const TournamentCreateForm = () => {
             tourney.maxTeamSize = 1;
         }
         if (!values.restrictRank) {
-            tourney.minRank = 0;
-            tourney.maxRank = 0;
+            tourney.minPlayerRank = 0;
+            tourney.maxPlayerRank = 0;
         }
         const created = await new TournamentService().create(tourney);
 

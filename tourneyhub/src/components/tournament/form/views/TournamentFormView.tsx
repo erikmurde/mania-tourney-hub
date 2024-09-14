@@ -112,17 +112,17 @@ const TournamentFormView = ({initialValues, validationSchema, onSubmit}: IProps)
                         {values.restrictRank && 
                         <>
                         <Grid item xs={3}>
-                            <Field as={TextField} name='minRank' label='Min. player rank' type='number'
+                            <Field as={TextField} name='minPlayerRank' label='Min. player rank' type='number'
                                 placeholder='Any'
-                                error={errors.minRank !== undefined}
-                                helperText={errors.minRank} 
+                                error={errors.minPlayerRank !== undefined}
+                                helperText={errors.minPlayerRank} 
                                 fullWidth/>
                         </Grid>
                         <Grid item xs={3}>
-                            <Field as={TextField} name='maxRank' label='Max. player rank' type='number'
+                            <Field as={TextField} name='maxPlayerRank' label='Max. player rank' type='number'
                                 placeholder='Any'
-                                error={errors.maxRank !== undefined}
-                                helperText={errors.maxRank} 
+                                error={errors.maxPlayerRank !== undefined}
+                                helperText={errors.maxPlayerRank} 
                                 fullWidth/>
                         </Grid>
                         </>}

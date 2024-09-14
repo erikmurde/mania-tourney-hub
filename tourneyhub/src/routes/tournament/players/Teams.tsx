@@ -70,9 +70,8 @@ const Teams = () => {
                         <Tab label='Players' value={0}/>
                     </Tabs>
                 </Grid>
-                {isValid && 
+                {isValid && !tourney.participantsPublic &&
                 <Grid item xs={12} margin={5} marginTop={2}>
-                    {!tourney.participantsPublic && 
                     <ConfirmationDialog
                         btnProps={{ 
                             title: 'Publish', 
@@ -81,14 +80,7 @@ const Teams = () => {
                         }}
                         title={'Are you sure you wish to publish the teams list?'} 
                         actionTitle={'Publish'} 
-                        action={() => publishTeams()}/>}
-                    <Button 
-                        variant='contained' 
-                        startIcon={<GroupAdd/>} 
-                        sx={{ width: 150 }}
-                        >
-                        Add team
-                    </Button>
+                        action={() => publishTeams()}/>
                 </Grid>}
                 {(isValid || tourney.participantsPublic) &&
                 <Grid item xs={12}>

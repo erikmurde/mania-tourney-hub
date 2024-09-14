@@ -20,8 +20,8 @@ const Home = () => {
         maxKeys: '',
         minTeamSize: '',
         maxTeamSize: '',
-        minRank: '',
-        maxRank: ''
+        minPlayerRank: '',
+        maxPlayerRank: ''
     } as TourneyFilters);
     const authService = new AuthService();
 
@@ -40,8 +40,8 @@ const Home = () => {
                 tourney.name.toUpperCase().includes(filters.name.toUpperCase()) &&
                 (!filters.minKeys || tourney.keys >= parseInt(filters.minKeys)) &&
                 (!filters.maxKeys || tourney.keys <= parseInt(filters.maxKeys)) &&
-                (!filters.minRank || tourney.minRank >= parseInt(filters.minRank)) &&
-                (!filters.maxRank || tourney.maxRank <= parseInt(filters.maxRank)) &&
+                (!filters.minPlayerRank || tourney.minPlayerRank >= parseInt(filters.minPlayerRank)) &&
+                (!filters.minPlayerRank || tourney.maxPlayerRank <= parseInt(filters.minPlayerRank)) &&
                 (!filters.minTeamSize || tourney.minTeamSize >= parseInt(filters.minTeamSize)) &&
                 (!filters.maxTeamSize || tourney.maxTeamSize <= parseInt(filters.maxTeamSize))
             )
