@@ -12,17 +12,19 @@ interface IProps {
     label: string,
     error: string,
     options: IOption[],
-    valueId?: boolean
+    valueId?: boolean,
+    disabled?: boolean
 }
 
-const PlayerAutocomplete = ({field, form, label, error, options, valueId}: IProps) => {
+const PlayerAutocomplete = ({field, form, label, error, options, valueId, disabled}: IProps) => {
 
     const initialValue = options.find(option => 
-        (valueId ? (option as IUserDto).id : option.name) === form.values[field.name]
+        (valueId ? (option as IUserDto).id : option.name) === field.value
     );
 
     return (  
         <Autocomplete
+            disabled={disabled}
             options={options}
             getOptionLabel={option => option.name}
             onChange={(_, value) => {

@@ -20,20 +20,26 @@ interface IProps {
 }
 
 const HeaderButtons = ({tourney, updateTourney}: IProps) => {
-    const [successOpen, setSuccessOpen] = useState(false);
-    const [canMakePrivate, setCanMakePrivate] = useState(false);
     const { id } = useParams();
     const { user } = useContext(AuthContext);
+
+    const [successOpen, setSuccessOpen] = useState(false);
+    const [canMakePrivate, setCanMakePrivate] = useState(false);
+    const [isRegistered, setIsRegistered] = useState(false);
+
     const authService = new AuthService();
     const tourneyService = new TournamentService();
 
     useEffect(() => {
-        if (tourney.public) {
+        if (tourney.public && user) {
             authService
                 .getPlayers(tourney.id)
-                .then(players => setCanMakePrivate(players.length === 0))
+                .then(players => {
+                    setCanMakePrivate(players.length === 0);
+                    setIsRegistered(players.some(player => player.name === user.name));
+                })
         }
-    }, [tourney.public]);
+    }, [tourney, user]);
 
     const registerPlayer = async() => {
         if (!user) {
@@ -76,10 +82,16 @@ const HeaderButtons = ({tourney, updateTourney}: IProps) => {
     return (
         <>
         <Grid container columnSpacing={1} height={56} justifyContent='center'>
-            {roles.every(role => role.canRegWithRole) &&
+            {user && roles.every(role => role.canRegWithRole) && !isRegistered &&
             <Grid item>
                 {tourney.minTeamSize > 1 
-                ?   <TeamRegisterForm/>
+                ?   <TeamRegisterForm 
+                        user={user} 
+                        tourney={tourney} 
+                        openSuccess={() => {
+                            setSuccessOpen(true);
+                            updateTourney();
+                    }}/>
                 :   <ConfirmationDialog 
                         title='Are you sure you wish to register?'
                         description={tourney.regMessage}

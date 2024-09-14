@@ -29,16 +29,6 @@
           "canRegWithRole": false
         },
         {
-          "tournamentId": "1",
-          "name": "host",
-          "canRegWithRole": false
-        },
-        {
-          "tournamentId": "1",
-          "name": "mappooler",
-          "canRegWithRole": false
-        },
-        {
           "tournamentId": "lr_cc0V",
           "name": "host",
           "canRegWithRole": false
@@ -51,7 +41,8 @@
           "seeding": 11,
           "placement": 0
         }
-      ]
+      ],
+      "isCaptain": true
     },
     {
       "id": "2",
@@ -222,7 +213,8 @@
           "canRegWithRole": false
         }
       ],
-      "stats": []
+      "stats": [],
+      "isCaptain": false
     },
     {
       "id": "8",
@@ -243,7 +235,8 @@
           "canRegWithRole": false
         }
       ],
-      "stats": []
+      "stats": [],
+      "isCaptain": false
     },
     {
       "id": "9",
@@ -269,7 +262,8 @@
           "canRegWithRole": false
         }
       ],
-      "stats": []
+      "stats": [],
+      "isCaptain": false
     },
     {
       "id": "10",

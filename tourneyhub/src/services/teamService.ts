@@ -17,6 +17,11 @@ export class TeamService extends BaseEntityService<TeamDto> {
         return teams;
     }
 
+    async getSimpleTeams(tournamentId: string): Promise<TeamDto[]> {
+        //TODO fetch simple dto from backend once available
+        return await this.getTeams(tournamentId);
+    }
+
     async getTeamsByName(tournamentId: string, names: string[]): Promise<TeamDtoSimple[]> {
         const response = await this.axios.get<TeamDto[]>('teams');
 
