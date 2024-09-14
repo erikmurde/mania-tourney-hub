@@ -9,7 +9,6 @@ import { TournamentDto } from '../../../../dto/tournament/TournamentDto';
 import { TeamDto } from '../../../../dto/team/TeamDto';
 import { INVALID_URL, REQUIRED, URL_REGEX } from '../../../../constants';
 import { TeamService } from '../../../../services/teamService';
-import { TeamPlayerDto } from '../../../../dto/team/TeamPlayerDto';
 
 interface IProps {
     user: UserDto,
@@ -36,6 +35,13 @@ const TeamRegisterForm = ({user, tourney, openSuccess}: IProps) => {
             .getSimpleTeams(tourney.id)
             .then(teams => setTeams(teams));
     }, [open, tourney.id]);
+
+    const canRegister = (name: string) => {
+        const player = players.find(player => player.name === name)!;
+        const roles = player.roles.filter(role => role.tournamentId === tourney.id);
+
+        return roles.every(role => role.canRegWithRole);
+    }
 
     const registerPlayer = async(player: UserDto) => {
         player.roles.push({
@@ -90,7 +96,13 @@ const TeamRegisterForm = ({user, tourney, openSuccess}: IProps) => {
             .required(REQUIRED),
         players: array()
             .of(
-                string().required(REQUIRED)
+                string()
+                .required(REQUIRED)
+                .test(
+                    'validPlayer', 
+                    'Already staffing or playing', 
+                    player => canRegister(player)
+                )
             )
             .min(tourney.minTeamSize, `Need at least ${tourney.minTeamSize} players`)
             .test(

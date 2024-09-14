@@ -35,7 +35,7 @@
         },
         {
           "tournamentId": "1",
-          "name": "player",
+          "name": "host",
           "canRegWithRole": false
         }
       ],
@@ -75,11 +75,6 @@
         {
           "tournamentId": "1",
           "name": "referee",
-          "canRegWithRole": false
-        },
-        {
-          "tournamentId": "1",
-          "name": "player",
           "canRegWithRole": false
         }
       ],
@@ -156,7 +151,8 @@
           "canRegWithRole": false
         }
       ],
-      "stats": []
+      "stats": [],
+      "isCaptain": false
     },
     {
       "id": "5",
@@ -222,11 +218,6 @@
           "tournamentId": "0",
           "name": "mapper",
           "canRegWithRole": false
-        },
-        {
-          "tournamentId": "1",
-          "name": "player",
-          "canRegWithRole": false
         }
       ],
       "stats": [],
@@ -248,6 +239,11 @@
         {
           "tournamentId": "0",
           "name": "mappooler",
+          "canRegWithRole": false
+        },
+        {
+          "tournamentId": "1",
+          "name": "player",
           "canRegWithRole": false
         }
       ],
@@ -512,11 +508,6 @@
         {
           "tournamentId": "0",
           "name": "mapper",
-          "canRegWithRole": false
-        },
-        {
-          "tournamentId": "1",
-          "name": "player",
           "canRegWithRole": false
         }
       ],
@@ -4024,163 +4015,6 @@
           "timezone": 0,
           "avatar": "https://a.ppy.sh/15806513",
           "roles": [
-            {
-              "tournamentId": "1",
-              "name": "player",
-              "canRegWithRole": false
-            }
-          ],
-          "stats": [],
-          "isCaptain": false
-        }
-      ]
-    },
-    {
-      "id": "_Xxs4ni",
-      "tournamentId": "1",
-      "name": "Test team",
-      "logo": "https://i.gyazo.com/f60538d72aa8ba23adddb94d872a19ba.png",
-      "status": "registered",
-      "availability": "Whenever",
-      "seeding": 0,
-      "placement": 0,
-      "players": [
-        {
-          "id": "0",
-          "playerId": 16819909,
-          "name": "Arcaxio",
-          "rank": 80,
-          "country": {
-            "name": "Estonia",
-            "ISO2": "EE"
-          },
-          "discordUsername": "arcaxio_",
-          "timezone": 2,
-          "avatar": "https://a.ppy.sh/16819909",
-          "roles": [
-            {
-              "tournamentId": "0",
-              "name": "host",
-              "canRegWithRole": false
-            },
-            {
-              "tournamentId": "0",
-              "name": "mapper",
-              "canRegWithRole": false
-            },
-            {
-              "tournamentId": "0",
-              "name": "player",
-              "canRegWithRole": false
-            },
-            {
-              "tournamentId": "lr_cc0V",
-              "name": "host",
-              "canRegWithRole": false
-            },
-            {
-              "tournamentId": "1",
-              "name": "player",
-              "canRegWithRole": false
-            }
-          ],
-          "stats": [
-            {
-              "tournamentId": "0",
-              "status": "active",
-              "seeding": 11,
-              "placement": 0
-            }
-          ],
-          "isCaptain": true
-        },
-        {
-          "id": "2",
-          "playerId": 9853595,
-          "name": "Albionthegreat",
-          "rank": 31730,
-          "country": {
-            "name": "Netherlands",
-            "ISO2": "NL"
-          },
-          "discordUsername": "Test",
-          "timezone": 0,
-          "avatar": "https://a.ppy.sh/9853595",
-          "roles": [
-            {
-              "tournamentId": "0",
-              "name": "host",
-              "canRegWithRole": false
-            },
-            {
-              "tournamentId": "0",
-              "name": "sheeter",
-              "canRegWithRole": false
-            },
-            {
-              "tournamentId": "1",
-              "name": "referee",
-              "canRegWithRole": false
-            },
-            {
-              "tournamentId": "1",
-              "name": "player",
-              "canRegWithRole": false
-            }
-          ],
-          "stats": [],
-          "isCaptain": false
-        },
-        {
-          "id": "7",
-          "playerId": 9658070,
-          "name": "My Angel Nilou",
-          "rank": 2832,
-          "country": {
-            "name": "Mexico",
-            "ISO2": "MX"
-          },
-          "discordUsername": "Test",
-          "timezone": 0,
-          "avatar": "https://a.ppy.sh/9658070",
-          "roles": [
-            {
-              "tournamentId": "0",
-              "name": "mappooler",
-              "canRegWithRole": false
-            },
-            {
-              "tournamentId": "0",
-              "name": "mapper",
-              "canRegWithRole": false
-            },
-            {
-              "tournamentId": "1",
-              "name": "player",
-              "canRegWithRole": false
-            }
-          ],
-          "stats": [],
-          "isCaptain": false
-        },
-        {
-          "id": "20",
-          "playerId": 9080296,
-          "name": "Imperial Wolf",
-          "rank": 0,
-          "country": {
-            "name": "United Kingdom",
-            "ISO2": "GB"
-          },
-          "discordUsername": "Test",
-          "timezone": 0,
-          "avatar": "https://a.ppy.sh/9080296",
-          "roles": [
-            {
-              "tournamentId": "0",
-              "name": "mapper",
-              "canRegWithRole": false
-            },
             {
               "tournamentId": "1",
               "name": "player",
