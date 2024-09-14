@@ -1,5 +1,5 @@
-import { IUserDto } from '../user/IUserDto';
+import { UserDto } from '../user/UserDto';
 
-export interface TeamPlayerDto extends IUserDto {
+export interface TeamPlayerDto extends UserDto {
     isCaptain: boolean
 }

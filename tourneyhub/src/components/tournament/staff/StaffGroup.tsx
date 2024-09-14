@@ -1,12 +1,12 @@
 import { Grid, Paper, Typography } from '@mui/material';
-import { IUserDto } from '../../../dto/user/IUserDto';
+import { UserDto } from '../../../dto/user/UserDto';
 import StaffCard from './StaffCard';
 
 interface IProps {
     name: string,
     groupRole: string,
-    staff: IUserDto[],
-    removeStaffRole: (member: IUserDto, groupRole: string) => void
+    staff: UserDto[],
+    removeStaffRole: (member: UserDto, groupRole: string) => void
 }
 
 const StaffGroup = ({name, groupRole, staff, removeStaffRole}: IProps) => {

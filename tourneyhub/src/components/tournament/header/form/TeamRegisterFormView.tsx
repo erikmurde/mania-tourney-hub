@@ -1,6 +1,6 @@
 import { Field, FieldArray, Form, Formik } from 'formik';
 import { TeamCreateDto } from '../../../../dto/team/TeamCreateDto';
-import { IUserDto } from '../../../../dto/user/IUserDto';
+import { UserDto } from '../../../../dto/user/UserDto';
 import { Schema } from 'yup';
 import { Button, Grid, IconButton, TextField, Typography } from '@mui/material';
 import PlayerAutocomplete from '../../field/PlayerAutocomplete';
@@ -9,7 +9,7 @@ import { PersonAdd, PersonRemove } from '@mui/icons-material';
 interface IProps {
     maxTeamSize: number,
     initialValues: TeamCreateDto,
-    selectValues: IUserDto[],
+    selectValues: UserDto[],
     validationShcema: Schema,
     onSubmit: (values: TeamCreateDto) => void
 }

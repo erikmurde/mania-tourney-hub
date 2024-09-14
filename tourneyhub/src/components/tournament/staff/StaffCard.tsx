@@ -1,5 +1,5 @@
 import { Card, CardActionArea, CardMedia, Grid, Typography, useTheme } from '@mui/material';
-import { IUserDto } from '../../../dto/user/IUserDto';
+import { UserDto } from '../../../dto/user/UserDto';
 import { PersonRemove } from '@mui/icons-material';
 import ConfirmationDialog from '../dialog/ConfirmationDialog';
 import Flag from '../../Flag';
@@ -11,8 +11,8 @@ import { AuthContext } from '../../../routes/Root';
 import Profile from '../../../routes/profile/Profile';
 
 interface IProps {
-    staff: IUserDto,
-    removeStaff: (staff: IUserDto) => void
+    staff: UserDto,
+    removeStaff: (staff: UserDto) => void
 }
 
 const StaffCard = ({staff, removeStaff}: IProps) => {

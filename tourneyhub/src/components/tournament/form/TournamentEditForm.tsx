@@ -2,7 +2,7 @@ import { Edit } from '@mui/icons-material';
 import { useState } from 'react';
 import FormDialogBase from '../dialog/FormDialogBase';
 import { TournamentDto } from '../../../dto/tournament/TournamentDto';
-import { IUserDto } from '../../../dto/user/IUserDto';
+import { UserDto } from '../../../dto/user/UserDto';
 import TournamentFormView from './views/TournamentFormView';
 import { tournamentSchema } from '../../../domain/tournamentSchema';
 import { TournamentEdit } from '../../../domain/TournamentEdit';
@@ -12,7 +12,7 @@ import { AuthService } from '../../../services/authService';
 
 interface IProps {
     tourney: TournamentDto,
-    user: IUserDto,
+    user: UserDto,
     updateTourney: () => void
 }
 

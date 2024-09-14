@@ -1,6 +1,6 @@
 import { Button, Grid, Paper, Typography } from '@mui/material';
 import { useContext, useEffect, useState } from 'react';
-import { IUserDto } from '../../../dto/user/IUserDto';
+import { UserDto } from '../../../dto/user/UserDto';
 import { AuthService } from '../../../services/authService';
 import { useParams } from 'react-router-dom';
 import StaffGroup from '../../../components/tournament/staff/StaffGroup';
@@ -16,7 +16,7 @@ const Staff = () => {
     const { user } = useContext(AuthContext);
     const { id } = useParams();
     const [listView, setListView] = useState(true);
-    const [staff, setStaff] = useState([] as IUserDto[]);
+    const [staff, setStaff] = useState([] as UserDto[]);
     const [applications, setApplications] = useState([] as StaffApplicationDto[]);
     const authService = new AuthService();
     const staffApplicationService = new StaffApplicationService();
@@ -42,7 +42,7 @@ const Staff = () => {
                 .includes(role));
     }
 
-    const removeStaffRole = async(member: IUserDto, groupRole: string) => {
+    const removeStaffRole = async(member: UserDto, groupRole: string) => {
         const role = member.roles
             .find(role => role.name === groupRole);
 

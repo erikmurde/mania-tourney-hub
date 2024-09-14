@@ -5,7 +5,7 @@ import { StyledDialogContent } from '../../../styled/styledDialogContent';
 import TourneyDialogTitle from '../../dialog/TourneyDialogTitle';
 import { HOST, ADMIN, MAPPOOLER, MAPPER, PLAYTESTER, REFEREE, STREAMER, COMMENTATOR, SHEETER, GFX, REQUIRED } from '../../../../constants';
 import { AuthService } from '../../../../services/authService';
-import { IUserDto } from '../../../../dto/user/IUserDto';
+import { UserDto } from '../../../../dto/user/UserDto';
 import StaffInviteFormView from './views/StaffInviteFormView';
 import { PersonAdd } from '@mui/icons-material';
 import { StaffInviteDto } from '../../../../dto/staffInvite/StaffInviteDto';
@@ -22,7 +22,7 @@ const StaffInviteForm = () => {
     const [open, setOpen] = useState(false);
     const [tourney, setTourney] = useState({} as TournamentDto);
     const [selectValues, setSelectValues] = useState({
-        users: [] as IUserDto[],
+        users: [] as UserDto[],
         roles: [HOST, ADMIN, MAPPOOLER, MAPPER, PLAYTESTER, REFEREE, STREAMER, COMMENTATOR, SHEETER, GFX]
     });
 

@@ -4,23 +4,32 @@ import { StyledCardContent } from '../../styled/StyledCardContent';
 import { TournamentDto } from '../../../dto/tournament/TournamentDto';
 import { TournamentService } from '../../../services/tournamentService';
 import { useEffect, useState } from 'react';
-import { GFX, PLAYER, SUFFIX_MAP } from '../../../constants';
+import { GFX, PLAYER } from '../../../constants';
 import { IStatDto } from '../../../dto/IStatDto';
+import { TeamDto } from '../../../dto/team/TeamDto';
+import { TeamService } from '../../../services/teamService';
+import PlayerRoles from './PlayerRoles';
+import StaffRoles from './StaffRoles';
 
 interface IProps {
     tournamentId: string,
+    userId: string,
     roles: IRoleDto[],
     stats: IStatDto
 }
 
-const ProfileRoleCard = ({tournamentId, roles, stats}: IProps) => {
+const ProfileRoleCard = ({tournamentId, userId, roles, stats}: IProps) => {
     const theme = useTheme();
     const [tourney, setTourney] = useState({} as TournamentDto);
+    const [userTeam, setUserTeam] = useState(null as TeamDto | null);
 
     useEffect(() => {
         new TournamentService()
             .getEntity(tournamentId)
             .then(tourney => setTourney(tourney));
+        new TeamService()
+            .getUserTeam(userId, tournamentId)
+            .then(team => setUserTeam(team));
     }, []);
 
     const staffRoles = roles
@@ -48,26 +57,14 @@ const ProfileRoleCard = ({tournamentId, roles, stats}: IProps) => {
                     </Grid>
                 </Grid>
                 <Divider sx={{ marginTop: 1, marginBottom: 1 }}/>
-                <Typography fontWeight={700} color={theme.palette.secondary.main} marginBottom={0.5}>
-                    Staff
-                </Typography>
-                <Typography marginBottom={1}>
-                    {staffRoles.length > 0 
-                        ? `${tourney.done ? 'Staffed' : 'Staffing'} as ${staffRoles.join(', ')}` 
-                        : 'Did not staff in tournament'}.
-                </Typography>
-                <Typography fontWeight={700} color={theme.palette.primary.main} marginBottom={0.5}>
-                    Player
-                </Typography>
-                {stats.seeding !== undefined && 
-                <Typography>
-                    {stats.seeding > 0 ? `Seeded ${stats.seeding}${SUFFIX_MAP.get(stats.seeding) ?? 'th'}` : 'Seeding undecided'}. 
-                    {stats.placement > 0 ? ` Placed ${stats.placement}${SUFFIX_MAP.get(stats.placement) ?? 'th'}` : 'Placement undecided'}.
-                </Typography>}
-                {stats.seeding === undefined && 
-                <Typography>
-                    {tourney.done ? 'Did not play' : 'Not playing'} in tournament.
-                </Typography>}
+                <StaffRoles 
+                    tourneyDone={tourney.done} 
+                    staffRoles={staffRoles}/>
+                <PlayerRoles 
+                    tourneyDone={tourney.done} 
+                    teamName={userTeam?.name}
+                    seeding={userTeam ? userTeam.seeding : stats.seeding} 
+                    placement={userTeam ? userTeam.placement : stats.placement}/>
             </StyledCardContent>
         </Card>
     );

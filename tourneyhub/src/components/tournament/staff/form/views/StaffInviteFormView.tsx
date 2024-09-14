@@ -1,7 +1,7 @@
 import { Grid, MenuItem, TextField } from '@mui/material';
 import { Formik, Field, Form } from 'formik';
 import { StaffInviteDto } from '../../../../../dto/staffInvite/StaffInviteDto';
-import { IUserDto } from '../../../../../dto/user/IUserDto';
+import { UserDto } from '../../../../../dto/user/UserDto';
 import TourneySelectField from '../../../field/TourneySelectField';
 import { Schema } from 'yup';
 import PlayerAutocomplete from '../../../field/PlayerAutocomplete';
@@ -9,7 +9,7 @@ import PlayerAutocomplete from '../../../field/PlayerAutocomplete';
 interface IProps {
     initialValues: StaffInviteDto,
     selectValues: {
-        users: IUserDto[],
+        users: UserDto[],
         roles: string[]
     },
     validationSchema: Schema,

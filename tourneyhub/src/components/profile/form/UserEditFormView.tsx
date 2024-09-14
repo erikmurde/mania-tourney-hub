@@ -1,14 +1,14 @@
 import { Schema } from 'yup';
-import { IUserDto } from '../../../dto/user/IUserDto';
+import { UserDto } from '../../../dto/user/UserDto';
 import { Field, Form, Formik } from 'formik';
 import { Grid, MenuItem, TextField } from '@mui/material';
 import TourneySelectField from '../../tournament/field/TourneySelectField';
 import { TIMEZONES } from '../../../constants';
 
 interface IProps {
-    initialValues: IUserDto,
+    initialValues: UserDto,
     validationSchema: Schema,
-    onSubmit: (values: IUserDto) => void
+    onSubmit: (values: UserDto) => void
 }
 
 const UserEditFormView = ({initialValues, validationSchema, onSubmit}: IProps) => {

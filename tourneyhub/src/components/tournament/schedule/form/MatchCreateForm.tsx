@@ -8,7 +8,7 @@ import { ADMIN, COMMENTATOR, HOST, PLAYER, REFEREE, REQUIRED, STREAMER } from '.
 import { Schema, object, date, string, array } from 'yup';
 import { AuthService } from '../../../../services/authService';
 import { UserDtoSimple } from '../../../../dto/user/UserDtoSimple';
-import { IUserDto } from '../../../../dto/user/IUserDto';
+import { UserDto } from '../../../../dto/user/UserDto';
 import { MatchCreateDto } from '../../../../dto/schedule/MatchCreateDto';
 import { MatchDto } from '../../../../dto/schedule/MatchDto';
 import { MatchService } from '../../../../services/matchService';
@@ -35,7 +35,7 @@ const MatchCreateForm = ({stageId}: {stageId: string}) => {
     const authService = new AuthService();
     dayjs.extend(utc);
 
-    const getUsersWithRole = (staff: IUserDto[], roles: string[]) => {
+    const getUsersWithRole = (staff: UserDto[], roles: string[]) => {
         return staff
             .filter(user => user.roles.some(userRole => roles.includes(userRole.name)))
             .map(user => ({ name: user.name, country: user.country }));

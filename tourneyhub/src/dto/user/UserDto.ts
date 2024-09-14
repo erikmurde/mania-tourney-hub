@@ -2,7 +2,7 @@ import { ICountryDto } from '../ICountryDto';
 import { IRoleDto } from '../IRoleDto';
 import { IStatDto } from '../IStatDto';
 
-export interface IUserDto {
+export interface UserDto {
     id: string,
     playerId: number,
     name: string,

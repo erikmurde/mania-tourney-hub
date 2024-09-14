@@ -10,7 +10,7 @@ import utc from 'dayjs/plugin/utc';
 import { Schema, object, string, date, array } from 'yup';
 import { HOST, ADMIN, REFEREE, STREAMER, COMMENTATOR, REQUIRED } from '../../../../constants';
 import { UserDtoSimple } from '../../../../dto/user/UserDtoSimple';
-import { IUserDto } from '../../../../dto/user/IUserDto';
+import { UserDto } from '../../../../dto/user/UserDto';
 import { AuthService } from '../../../../services/authService';
 import { MatchDto } from '../../../../dto/schedule/MatchDto';
 import { MatchService } from '../../../../services/matchService';
@@ -27,7 +27,7 @@ const MatchEditForm = ({match}: {match: MatchDto}) => {
     const authService = new AuthService();
     dayjs.extend(utc);
 
-    const getUsersWithRole = (staff: IUserDto[], roles: string[]) => {
+    const getUsersWithRole = (staff: UserDto[], roles: string[]) => {
         return staff
             .filter(user => user.roles.some(userRole => roles.includes(userRole.name)))
             .map(user => ({ name: user.name, country: user.country }));

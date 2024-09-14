@@ -1,8 +1,8 @@
 import { Grid, Link, Typography } from '@mui/material';
-import { IUserDto } from '../../dto/user/IUserDto';
+import { UserDto } from '../../dto/user/UserDto';
 import Flag from '../Flag';
 
-const ProfileInfo = ({user}: {user: IUserDto}) => {
+const ProfileInfo = ({user}: {user: UserDto}) => {
     return (  
         <Grid container>
             <Grid item height={90} width={90}>

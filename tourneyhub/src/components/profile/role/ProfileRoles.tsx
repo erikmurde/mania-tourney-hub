@@ -1,10 +1,10 @@
 import { Grid } from '@mui/material';
-import { IUserDto } from '../../../dto/user/IUserDto';
+import { UserDto } from '../../../dto/user/UserDto';
 import ProfileRoleCard from './ProfileRoleCard';
 import { IRoleDto } from '../../../dto/IRoleDto';
 import { IStatDto } from '../../../dto/IStatDto';
 
-const ProfileRoles = ({user}: {user: IUserDto}) => {
+const ProfileRoles = ({user}: {user: UserDto}) => {
     const tourneyRoles = [] as {
         tournamentId: string, 
         roles: IRoleDto[], 
@@ -30,6 +30,7 @@ const ProfileRoles = ({user}: {user: IUserDto}) => {
                 <Grid item key={index}>
                     <ProfileRoleCard 
                         tournamentId={tourneyRole.tournamentId} 
+                        userId={user.id}
                         roles={tourneyRole.roles}
                         stats={tourneyRole.stats.length > 0 ? tourneyRole.stats[0] : {} as IStatDto}
                     />

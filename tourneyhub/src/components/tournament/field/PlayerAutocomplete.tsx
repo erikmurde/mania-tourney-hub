@@ -2,9 +2,9 @@ import { Autocomplete, TextField, Typography } from '@mui/material';
 import Flag from '../../Flag';
 import { FieldInputProps, FormikProps } from 'formik';
 import { UserDtoSimple } from '../../../dto/user/UserDtoSimple';
-import { IUserDto } from '../../../dto/user/IUserDto';
+import { UserDto } from '../../../dto/user/UserDto';
 
-type IOption = IUserDto | UserDtoSimple
+type IOption = UserDto | UserDtoSimple
 
 interface IProps {
     field: FieldInputProps<any>,
@@ -19,7 +19,7 @@ interface IProps {
 const PlayerAutocomplete = ({field, form, label, error, options, valueId, disabled}: IProps) => {
 
     const initialValue = options.find(option => 
-        (valueId ? (option as IUserDto).id : option.name) === field.value
+        (valueId ? (option as UserDto).id : option.name) === field.value
     );
 
     return (  
@@ -29,7 +29,7 @@ const PlayerAutocomplete = ({field, form, label, error, options, valueId, disabl
             getOptionLabel={option => option.name}
             onChange={(_, value) => {
                 form.setFieldValue(field.name, valueId 
-                    ? (value as IUserDto)?.id ?? '' 
+                    ? (value as UserDto)?.id ?? '' 
                     : (value as UserDtoSimple)?.name ?? '')
             }}
             value={initialValue ?? null}

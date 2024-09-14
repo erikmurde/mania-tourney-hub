@@ -10,7 +10,7 @@ import ProfileInvites from '../../components/profile/invite/ProfileInvites';
 import ProfileInfo from '../../components/profile/ProfileInfo';
 import { Edit } from '@mui/icons-material';
 import { Schema, number, object, string } from 'yup';
-import { IUserDto } from '../../dto/user/IUserDto';
+import { UserDto } from '../../dto/user/UserDto';
 import UserEditFormView from '../../components/profile/form/UserEditFormView';
 import { REQUIRED } from '../../constants';
 import { AuthService } from '../../services/authService';
@@ -18,7 +18,7 @@ import { useNavigate } from 'react-router-dom';
 import ForeignProfileInfo from '../../components/profile/ForeignProfileInfo';
 
 interface IProps {
-    owner: IUserDto,
+    owner: UserDto,
     open: boolean,
     setOpen: (open: boolean) => void
 }
@@ -30,7 +30,7 @@ const Profile = ({owner, open, setOpen}: IProps) => {
 
     const isOwner = user && user.id === owner.id;
 
-    const onSubmit = async(values: IUserDto) => {
+    const onSubmit = async(values: UserDto) => {
         if (!isOwner) {
             return;
         }

@@ -1,24 +1,25 @@
 import { useEffect, useState } from 'react';
 import FormDialogBase from '../../dialog/FormDialogBase';
 import { TeamCreateDto } from '../../../../dto/team/TeamCreateDto';
-import { array, Message, object, Schema, string } from 'yup';
-import { IUserDto } from '../../../../dto/user/IUserDto';
+import { array, object, Schema, string } from 'yup';
+import { UserDto } from '../../../../dto/user/UserDto';
 import { AuthService } from '../../../../services/authService';
 import TeamRegisterFormView from './TeamRegisterFormView';
 import { TournamentDto } from '../../../../dto/tournament/TournamentDto';
 import { TeamDto } from '../../../../dto/team/TeamDto';
 import { INVALID_URL, REQUIRED, URL_REGEX } from '../../../../constants';
 import { TeamService } from '../../../../services/teamService';
+import { TeamPlayerDto } from '../../../../dto/team/TeamPlayerDto';
 
 interface IProps {
-    user: IUserDto,
+    user: UserDto,
     tourney: TournamentDto,
     openSuccess: () => void
 }
 
 const TeamRegisterForm = ({user, tourney, openSuccess}: IProps) => {
     const [open, setOpen] = useState(false);
-    const [players, setPlayers] = useState([] as IUserDto[]);
+    const [players, setPlayers] = useState([] as UserDto[]);
     const [teams, setTeams] = useState([] as TeamDto[]);
 
     const authService = new AuthService();
@@ -36,13 +37,13 @@ const TeamRegisterForm = ({user, tourney, openSuccess}: IProps) => {
             .then(teams => setTeams(teams));
     }, [open, tourney.id]);
 
-    const registerPlayer = async(player: IUserDto) => {
+    const registerPlayer = async(player: UserDto) => {
         player.roles.push({
             tournamentId: tourney.id, 
             name: 'player', 
             canRegWithRole: false
         });
-        // await authService.edit(player.id, player);
+        await authService.edit(player.id, player);
     }
 
     const registerTeam = async(values: TeamCreateDto) => {
@@ -58,9 +59,9 @@ const TeamRegisterForm = ({user, tourney, openSuccess}: IProps) => {
         }
         team.players.forEach(player => registerPlayer(player));
 
-        // await new TeamService().create(team);
-        // setOpen(false);
-        // openSuccess();
+        await new TeamService().create(team);
+        setOpen(false);
+        openSuccess();
     }
 
     const initialValues: TeamCreateDto = {

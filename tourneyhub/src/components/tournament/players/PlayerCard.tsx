@@ -1,5 +1,5 @@
 import { Card, CardActionArea, CardMedia, Grid, Typography, useTheme } from '@mui/material';
-import { IUserDto } from '../../../dto/user/IUserDto';
+import { UserDto } from '../../../dto/user/UserDto';
 import Flag from '../../Flag';
 import { PersonRemove } from '@mui/icons-material';
 import ConfirmationDialog from '../dialog/ConfirmationDialog';
@@ -13,8 +13,8 @@ import Profile from '../../../routes/profile/Profile';
 
 interface IProps {
     playersPublic: boolean,
-    player: IUserDto,
-    eliminatePlayer: (player: IUserDto) => void
+    player: UserDto,
+    eliminatePlayer: (player: UserDto) => void
 }
 
 const PlayerCard = ({playersPublic, player, eliminatePlayer}: IProps) => {

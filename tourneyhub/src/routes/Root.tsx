@@ -2,14 +2,14 @@ import { Grid } from '@mui/material';
 import { Outlet } from 'react-router-dom';
 import Header from '../components/Header';
 import { createContext, useState } from 'react';
-import { IUserDto } from '../dto/user/IUserDto';
+import { UserDto } from '../dto/user/UserDto';
 import { STORED_USER } from '../constants';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 
 interface AuthContext {
-    user: IUserDto | null,
-    setUser: (user: IUserDto | null) => void
+    user: UserDto | null,
+    setUser: (user: UserDto | null) => void
 }
 
 interface UpdateContext {
@@ -39,7 +39,7 @@ const Root = () => {
     const stored = localStorage.getItem(STORED_USER);
 
     const [user, setUser] = useState(
-        (stored !== 'undefined' ? JSON.parse(stored!) : null) as IUserDto | null
+        (stored !== 'undefined' ? JSON.parse(stored!) : null) as UserDto | null
     );
 
     const [stageUpdate, setStageUpdate] = useState(0);

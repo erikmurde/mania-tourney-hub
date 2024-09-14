@@ -1,6 +1,6 @@
 import { Grid, Paper } from '@mui/material';
 import PlayerList from '../../../components/tournament/players/PlayerList';
-import { IUserDto } from '../../../dto/user/IUserDto';
+import { UserDto } from '../../../dto/user/UserDto';
 import { useContext, useEffect, useState } from 'react';
 import { AuthService } from '../../../services/authService';
 import { useParams } from 'react-router-dom';
@@ -16,7 +16,7 @@ const Players = () => {
     const { id } = useParams();
     const { tourney } = useTourney();
     const { user } = useContext(AuthContext);
-    const [players, setPlayers] = useState([] as IUserDto[]);
+    const [players, setPlayers] = useState([] as UserDto[]);
     const validRoles = [HOST, ADMIN];
     const tourneyService = new TournamentService();
     const authService = new AuthService();

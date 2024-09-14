@@ -2,7 +2,7 @@ import { Card, CardContent, Divider, Grid, Typography } from '@mui/material';
 import { StaffApplicationDto } from '../../../dto/staffApplication/StaffApplicationDto';
 import { useEffect, useState } from 'react';
 import { AuthService } from '../../../services/authService';
-import { IUserDto } from '../../../dto/user/IUserDto';
+import { UserDto } from '../../../dto/user/UserDto';
 import Flag from '../../Flag';
 import { StyledCardActions } from '../../styled/StyledCardActions';
 import ConfirmationDialog from '../dialog/ConfirmationDialog';
@@ -14,7 +14,7 @@ interface IProps {
 }
 
 const StaffApplicationCard = ({application, updateStatus}: IProps) => {
-    const [user, setUser] = useState({} as IUserDto);
+    const [user, setUser] = useState({} as UserDto);
 
     useEffect(() => {
         new AuthService()
