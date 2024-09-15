@@ -11,7 +11,7 @@ import NoItems from '../../../NoItems';
 import { TeamDto } from '../../../../../dto/team/TeamDto';
 import { useTourney } from '../../../../../routes/tournament/TournamentHeader';
 import { TeamService } from '../../../../../services/teamService';
-import QualifierRefSheet from '../../../dialog/referee/QualifierRefSheet';
+import LobbyRefSheet from '../../../dialog/referee/LobbyRefSheet';
 
 const LobbyTable = ({stage, showTeams}: {stage: IStageDto, showTeams: boolean}) => {
     const { user } = useContext(AuthContext);
@@ -73,11 +73,12 @@ const LobbyTable = ({stage, showTeams}: {stage: IStageDto, showTeams: boolean}) 
                 </TableContainer>
             </Paper>
         :   <NoItems name='lobbies'/>}
-        <Dialog fullScreen open={refIndex !== null} 
+        <Dialog fullScreen 
+            open={refIndex !== null} 
             PaperProps={{ elevation: 2, sx: { alignItems: 'center' } }}
             >
             {refIndex !== null &&
-            <QualifierRefSheet
+            <LobbyRefSheet
                 lobby={lobbies[refIndex]}
                 stageName={stage.name}
                 lobbySize={stage.lobbySize}

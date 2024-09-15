@@ -1,3 +1,4 @@
+import { HB, LN, RC, SV, TB } from '../constants';
 import { IMapDto } from '../dto/map/IMapDto';
 import { BaseEntityService } from './base/baseEntityService';
 
@@ -7,7 +8,7 @@ export class MapService extends BaseEntityService<IMapDto> {
     }
 
     weights = new Map<string, number>([
-        ['RC', 0], ['LN', 10], ['HB', 20], ['SV', 30], ['TB', 40]
+        [RC, 0], [LN, 10], [HB, 20], [SV, 30], [TB, 40]
     ])
 
     getWeight(map: IMapDto): number {

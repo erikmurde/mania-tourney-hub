@@ -5,7 +5,7 @@ import TourneySelectField from '../../field/TourneySelectField';
 import { IMapDto } from '../../../../dto/map/IMapDto';
 import { MatchStatus } from '../../../../domain/MatchStatus';
 import RefSheetPlayerBox from '../../../RefSheetPlayerBox';
-import { TERTIARY } from '../../../../constants';
+import { TB, TERTIARY } from '../../../../constants';
 import { StyledTableRow } from '../../../styled/StyledTableRow';
 import { useEffect, useState } from 'react';
 import { RefSheetPaper } from '../../../styled/RefSheetPaper';
@@ -37,16 +37,14 @@ const MatchPicks = ({values, maps, bestOf}: IProps) => {
         const prev = index > 0 ? values.picks[index - 1] : null;
 
         return (prev && (prev.winner === '' || prev.beatmapId === '')) 
-            || (values.match.score1 === maxScore && index >= maxScore) 
-            || (values.match.score2 === maxScore && index >= maxScore);
+            || (values.match.score1 === maxScore || values.match.score2 === maxScore) 
+            && index >= values.match.score1 + values.match.score2;
     }
 
     useEffect(() => {
         setUnselectableMaps(maps
             .map(map => map.beatmapId)
-            .filter(id => 
-                values.bans.includes(id) || values.picks.map(pick => pick.beatmapId).includes(id)
-            )
+            .filter(id => values.bans.includes(id) || values.picks.map(pick => pick.beatmapId).includes(id))
         );
     }, [maps, values.picks, values.bans]);
 
@@ -63,28 +61,36 @@ const MatchPicks = ({values, maps, bestOf}: IProps) => {
                     </TableHead>
                     <TableBody>
                         <FieldArray name='picks'>
-                        {() => values.picks.map((pick, index) => {
-                            const disabled = pickDisabled(index);
+                        {() => values.picks.map((pick, pickIndex) => {
+                            const disabled = pickDisabled(pickIndex);
                             return (
-                                <TableRow key={index}>
+                                <TableRow key={pickIndex}>
                                     <RefTableCell>
-                                        <RefSheetPlayerBox name={pick.player} bgColor={getBgColor(index)}/>
+                                        <RefSheetPlayerBox name={pick.player} bgColor={getBgColor(pickIndex)}/>
                                     </RefTableCell>
                                     <RefTableCell>
-                                        <TourneySelectField name={`picks[${index}].beatmapId`} small
+                                        <TourneySelectField name={`picks[${pickIndex}].beatmapId`} small
                                             disabled={disabled}
-                                            options={maps.map((value, index) => 
+                                            options={maps.map((value, mapIndex) => {
+                                                const lastPick = pickIndex === values.picks.length - 1;
+                                                const tiebreaker = value.mapType === TB
+                                                
+                                                const noDisplay = unselectableMaps.includes(value.beatmapId) 
+                                                    || !lastPick && tiebreaker 
+                                                    || lastPick && !tiebreaker;
+
+                                                return (
                                                 <MenuItem 
-                                                    sx={{ display: unselectableMaps.includes(value.beatmapId) ? 'none' : '' }} 
-                                                    key={index} 
+                                                    sx={{ display: noDisplay ? 'none' : '' }} 
+                                                    key={mapIndex} 
                                                     value={value.beatmapId}
                                                     >
                                                     {value.mapType}{value.index}
-                                                </MenuItem>
-                                            )}/>
+                                                </MenuItem>)
+                                            })}/>
                                     </RefTableCell>
                                     <RefTableCell>
-                                        <TourneySelectField name={`picks[${index}].winner`} small
+                                        <TourneySelectField name={`picks[${pickIndex}].winner`} small
                                             disabled={disabled}
                                             options={players.map((value, index) => 
                                                 <MenuItem key={index} value={value}>{value}</MenuItem>

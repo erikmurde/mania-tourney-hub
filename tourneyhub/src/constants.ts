@@ -61,8 +61,15 @@ export const TIMEZONES = [
     -11, -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12
 ];
 
+// MAP TYPES
+export const RC = 'RC';
+export const LN = 'LN';
+export const HB = 'HB';
+export const SV = 'SV';
+export const TB = 'TB';
+
 export const MAP_TYPES = [
-    'RC', 'LN', 'HB', 'SV', 'TB'
+    RC, LN, HB, SV, TB
 ];
 
 // COUNTRIES

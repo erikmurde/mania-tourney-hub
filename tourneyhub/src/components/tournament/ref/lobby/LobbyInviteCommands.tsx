@@ -6,7 +6,7 @@ import CommandTableHead from '../commands/CommandTableHead';
 
 const COL_COUNT = 3;
 
-const QualiInviteCommands = ({players}: {players: string[]}) => {
+const LobbyInviteCommands = ({players}: {players: string[]}) => {
 
     const getRows = () => {
         let rows: string[][] = [];
@@ -40,4 +40,4 @@ const QualiInviteCommands = ({players}: {players: string[]}) => {
     );
 }
  
-export default QualiInviteCommands;
+export default LobbyInviteCommands;

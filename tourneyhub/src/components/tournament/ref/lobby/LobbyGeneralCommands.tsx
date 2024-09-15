@@ -6,7 +6,7 @@ import TimerCommands from '../commands/TimerCommands';
 import CommandTableCell from '../commands/CommandTableCell';
 import CommandTableHead from '../commands/CommandTableHead';
 
-const QualiGeneralCommands = ({lobbySize}: {lobbySize: number}) => {
+const LobbyGeneralCommands = ({lobbySize}: {lobbySize: number}) => {
     const generalCommands: RefCommand[] = [
         { name: 'Settings', command: '!mp settings' },
         { name: 'Room setup', command: `!mp set 0 3 ${lobbySize}` },
@@ -32,4 +32,4 @@ const QualiGeneralCommands = ({lobbySize}: {lobbySize: number}) => {
     );
 }
  
-export default QualiGeneralCommands;
+export default LobbyGeneralCommands;

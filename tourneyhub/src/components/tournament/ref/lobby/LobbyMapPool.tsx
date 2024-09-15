@@ -14,7 +14,7 @@ interface IProps {
     setSelectedId: (id: string) => void
 }
 
-const QualiMapPool = ({maps, selectedId, setSelectedId}: IProps) => {
+const LobbyMapPool = ({maps, selectedId, setSelectedId}: IProps) => {
     const theme = useTheme();
     const [lobbyMaps, setLobbyMaps] = useState([] as { map: IMapDto, playedCount: number }[]);
 
@@ -81,4 +81,4 @@ const QualiMapPool = ({maps, selectedId, setSelectedId}: IProps) => {
     );
 }
  
-export default QualiMapPool;
+export default LobbyMapPool;

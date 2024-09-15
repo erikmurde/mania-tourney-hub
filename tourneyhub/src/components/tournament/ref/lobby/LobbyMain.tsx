@@ -1,14 +1,14 @@
 import { Check } from '@mui/icons-material';
 import { RefSheetPaper } from '../../../styled/RefSheetPaper';
 import ConfirmationDialog from '../../dialog/ConfirmationDialog';
-import { Divider, Grid, TextField, Typography } from '@mui/material';
+import { Grid, TextField } from '@mui/material';
 import { useTourney } from '../../../../routes/tournament/TournamentHeader';
 import { LobbyDto } from '../../../../dto/schedule/LobbyDto';
 import { useContext, useState } from 'react';
 import { LobbyService } from '../../../../services/lobbyService';
 import { UpdateContext } from '../../../../routes/Root';
 import { INVALID_URL, URL_REGEX } from '../../../../constants';
-import CopyClipboard from '../CopyClipboard';
+import RoomTitle from '../RoomTitle';
 
 interface IProps {
     lobby: LobbyDto,
@@ -16,7 +16,7 @@ interface IProps {
     onClose: () => void
 }
 
-const QualiMain = ({lobby, stageName, onClose}: IProps) => {
+const LobbyMain = ({lobby, stageName, onClose}: IProps) => {
     const { tourney } = useTourney();
     const { scheduleUpdate, setScheduleUpdate } = useContext(UpdateContext);
     const [mpLink, setMpLink] = useState('');
@@ -40,22 +40,10 @@ const QualiMain = ({lobby, stageName, onClose}: IProps) => {
     return (  
         <RefSheetPaper elevation={8} sx={{ marginBottom: 1 }}>
             <Grid container alignItems='center'>
-                <Grid item xs={12} height={50} alignContent='center'>
-                    <Typography fontWeight={500} paddingLeft={0.5}>
-                        {tourney.code} {stageName} lobby {lobby.code}
-                    </Typography>
-                </Grid>
-                <Grid item xs={12}>
-                    <Divider/>
-                </Grid>
-                <Grid item xs={11} height={50} alignContent='center'>
-                    <Typography fontSize={14} paddingLeft={0.5}>
-                        {roomCommand}
-                    </Typography>
-                </Grid>
-                <Grid item xs textAlign='end'>
-                    <CopyClipboard text={roomCommand}/>
-                </Grid>
+                <RoomTitle 
+                    roomTitle={`${tourney.code} ${stageName} lobby ${lobby.code}`} 
+                    roomCommand={roomCommand}
+                />
                 <Grid item xs={12} marginTop={0.5} marginBottom={1} paddingLeft={0.5}>
                     <TextField fullWidth label='MP link' size='small' 
                         onChange={(e) => setMpLink(e.target.value)}
@@ -78,4 +66,4 @@ const QualiMain = ({lobby, stageName, onClose}: IProps) => {
     );
 }
  
-export default QualiMain;
+export default LobbyMain;

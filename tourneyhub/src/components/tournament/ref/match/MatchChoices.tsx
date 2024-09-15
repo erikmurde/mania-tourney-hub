@@ -7,6 +7,7 @@ import { StyledTableRow } from '../../../styled/StyledTableRow';
 import TourneySelectField from '../../field/TourneySelectField';
 import { RefSheetPaper } from '../../../styled/RefSheetPaper';
 import { RefTableCell } from '../../../styled/RefTableCell';
+import { TB } from '../../../../constants';
 
 interface IProps {
     maps: IMapDto[],
@@ -45,7 +46,9 @@ const MatchChoices = ({maps, player1, player2, bans, protects}: IProps) => {
                                     <TourneySelectField name={`protects[${index}]`} small
                                         options={maps.map((value, index) => 
                                             <MenuItem 
-                                                sx={{ display: bans.includes(value.beatmapId) ? 'none' : '' }} 
+                                                sx={{ 
+                                                    display: bans.includes(value.beatmapId) || value.mapType === TB ? 'none' : ''
+                                                }} 
                                                 key={index} 
                                                 value={value.beatmapId}
                                                 >
@@ -57,7 +60,9 @@ const MatchChoices = ({maps, player1, player2, bans, protects}: IProps) => {
                                     <TourneySelectField name={`bans[${index}]`} small
                                         options={maps.map((value, index) => 
                                             <MenuItem 
-                                                sx={{ display: protects.includes(value.beatmapId) ? 'none' : '' }} 
+                                                sx={{ 
+                                                    display: protects.includes(value.beatmapId) || value.mapType === TB ? 'none' : ''
+                                                }} 
                                                 key={index} 
                                                 value={value.beatmapId}
                                                 >

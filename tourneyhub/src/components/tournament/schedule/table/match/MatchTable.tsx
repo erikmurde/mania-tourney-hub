@@ -43,7 +43,8 @@ const MatchTable = ({stage}: {stage: IStageDto}) => {
                 </TableContainer>
             </Paper>
         :   <NoItems name='matches'/>}
-        <Dialog fullScreen open={refIndex !== null} 
+        <Dialog fullScreen 
+            open={refIndex !== null} 
             PaperProps={{ elevation: 2, sx: { alignItems: 'center' } }}
             >
             {refIndex !== null &&

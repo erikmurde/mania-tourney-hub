@@ -1,5 +1,5 @@
 import { Box, Typography, useTheme } from '@mui/material';
-import { TERTIARY } from '../constants';
+import { HB, LN, RC, SV, TB, TERTIARY } from '../constants';
 
 interface IProps {
     mapType: string,
@@ -13,11 +13,11 @@ const MapTypeBox = ({mapType, index, height, width, fontSize}: IProps) => {
     const theme = useTheme();
 
     const bgMappings = new Map<string, string>([
-        ['RC', theme.palette.primary.dark],
-        ['LN', theme.palette.error.main],
-        ['HB', theme.palette.secondary.dark],
-        ['SV', theme.palette.success.main],
-        ['TB', TERTIARY]
+        [RC, theme.palette.primary.dark],
+        [LN, theme.palette.error.main],
+        [HB, theme.palette.secondary.dark],
+        [SV, theme.palette.success.main],
+        [TB, TERTIARY]
     ]);
 
     return (  

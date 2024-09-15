@@ -5,7 +5,7 @@ import { RefCommand } from '../../../../domain/RefCommand';
 import CommandTableCell from '../commands/CommandTableCell';
 import CommandTableHead from '../commands/CommandTableHead';
 
-const QualiMapCommands = ({selectedId}: {selectedId: string}) => {
+const LobbyMapCommands = ({selectedId}: {selectedId: string}) => {
     
     const mapCommands: RefCommand[] = [
         { name: 'Current map', command: selectedId ? `!mp map ${selectedId} 3` : 'none' },
@@ -30,4 +30,4 @@ const QualiMapCommands = ({selectedId}: {selectedId: string}) => {
     );
 }
  
-export default QualiMapCommands;
+export default LobbyMapCommands;

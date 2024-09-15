@@ -1,4 +1,4 @@
-import { Divider, Grid, TextField, Typography } from '@mui/material';
+import { Grid, TextField } from '@mui/material';
 import { useTourney } from '../../../../routes/tournament/TournamentHeader';
 import { MatchDto } from '../../../../dto/schedule/MatchDto';
 import { Check } from '@mui/icons-material';
@@ -9,8 +9,8 @@ import { UpdateContext } from '../../../../routes/Root';
 import { MatchService } from '../../../../services/matchService';
 import ConfirmationDialog from '../../dialog/ConfirmationDialog';
 import { RefSheetPaper } from '../../../styled/RefSheetPaper';
-import CopyClipboard from '../CopyClipboard';
 import { INVALID_URL, URL_REGEX } from '../../../../constants';
+import RoomTitle from '../RoomTitle';
 
 interface IProps {
     match: MatchDto,
@@ -55,30 +55,18 @@ const MatchMain = ({match, stageName, maxScore, onClose}: IProps) => {
     return (  
         <RefSheetPaper elevation={8} sx={{ marginBottom: 1 }}>
             <Grid container alignItems='center'>
-                <Grid item xs={12} height={50} alignContent='center'>
-                    <Typography fontWeight={500}>
-                        {tourney.code} {stageName} match {match.code}
-                    </Typography>
-                </Grid>
-                <Grid item xs>
-                    <Divider/>
-                </Grid>
-                <Grid item xs={11} height={50} alignContent='center'>
-                    <Typography fontSize={14}>
-                        {roomCommand}
-                    </Typography>
-                </Grid>
-                <Grid item xs textAlign='end'>
-                    <CopyClipboard text={roomCommand}/>
-                </Grid>
-                <Grid item xs={12} marginTop={0.5} marginBottom={1}>
+                <RoomTitle 
+                    roomTitle={`${tourney.code} ${stageName} match ${match.code}`} 
+                    roomCommand={roomCommand}
+                />
+                <Grid item xs={12} marginTop={0.5} marginBottom={1} paddingLeft={0.5}>
                     <TextField fullWidth label='MP link' size='small' 
                         onChange={(e) => setMpLink(e.target.value)}
                         onBlur={() => setError(!mpLink.match(URL_REGEX) ? INVALID_URL : '')}
                         error={error !== ''}
                         helperText={error}/>
                 </Grid>
-                <Grid item marginTop={1} marginBottom={1} paddingLeft={0}>
+                <Grid item marginTop={1} marginBottom={1} paddingLeft={0.5}>
                     <ConfirmationDialog 
                         title='Are you sure you wish to conclude this match?' 
                         actionTitle='Conclude'
