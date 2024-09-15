@@ -6,7 +6,6 @@ import { StyledDialogContent } from '../../../styled/styledDialogContent';
 import { StyledDialogActions } from '../../../styled/StyledDialogActions';
 import { ISubmittedMapDto } from '../../../../dto/map/ISubmittedMapDto';
 import SubmittedMapFormView from './views/SubmittedMapFormView';
-import { useLocation } from 'react-router-dom';
 import { number, Schema } from 'yup';
 import { baseMapSchema } from '../../../../domain/validation/baseMapSchema';
 import { DUPLICATE_BEATMAP_ID, INTEGER, NOT_NEGATIVE, REQUIRED, TB } from '../../../../constants';

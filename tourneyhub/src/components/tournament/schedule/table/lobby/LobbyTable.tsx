@@ -28,7 +28,7 @@ const LobbyTable = ({stage, showTeams}: {stage: IStageDto, showTeams: boolean}) 
                 .getUserTeam(user.id, tourney.id)
                 .then(team => setUserTeam(team));
         }
-    }, [user?.id, tourney.minTeamSize]);
+    }, [user?.id, tourney.minTeamSize, tourney.id]);
 
     useEffect(() => {
         new LobbyService()

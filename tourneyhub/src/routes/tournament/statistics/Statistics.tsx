@@ -3,7 +3,7 @@ import SectionTitle from '../../../components/tournament/SectionTitle';
 import { useContext, useEffect, useState } from 'react';
 import StageTabs from '../../../components/tournament/StageTabs';
 import { StageService } from '../../../services/stageService';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { IStageDto } from '../../../dto/stage/IStageDto';
 import NoItems from '../../../components/tournament/NoItems';
 import StageStats from '../../../components/tournament/statistics/StageStats';
@@ -25,47 +25,41 @@ const Statistics = () => {
     const [mapStats, setMapStats] = useState([] as MapStatsDto[]);
     const [stageId, setStageId] = useState('');
     const [mapId, setMapId] = useState('');
-    const navigate = useNavigate();
 
     useEffect(() => {
         if (id) {
             new StageService()
                 .getAllTourney(id)
-                .then(stages => setStages(stages))
-                .then(() => {
-                    const stageId = stages.length > 0 ? stages[0].id : '';
-
-                    setStageId(stageId);
-                    navigate(`#${stageId}`);
+                .then(stages => {
+                    setStages(stages);
+                    setStageId(stages.length > 0 ? stages[0].id : '');
                 });
         }
     }, [id]);
 
-    let stage = stages.find(stage => 
-        stage.id === stageId.toString()
-    ) ?? {} as IStageDto;
+    let stage = stages.find(stage => stage.id === stageId.toString());
 
     useEffect(() => {
-        if (stage.id) {
+        if (stage) {
             new MapStatsService()
                 .getAllStage(stage.id)
-                .then(stats => setMapStats(stats))
-                .then(() => {
-                    setMapId(stage.stageType === QUALIFIER ? QUALIFIER : '');
+                .then(stats => {
+                    setMapStats(stats);
+                    setMapId(stage!.stageType === QUALIFIER ? QUALIFIER : '');
                 });
         }
-    }, [stage.id]);
+    }, [stage]);
 
     const isHost = id && user && new AuthService().isHost(user, id);
     const map = mapStats.find(map => map.id === mapId);
-
-    const statsVisible = (stage.statsPublic || isHost) && mapStats.length > 0; 
+    
+    const statsVisible = (stage?.statsPublic || isHost) && mapStats.length > 0; 
 
     return (  
         <Paper elevation={2} sx={{ minHeight: 500, paddingBottom: 2 }}>
             <Grid container>
                 <SectionTitle title='Statistics' xsAuto/>
-                {statsVisible && 
+                {statsVisible && stage &&
                 <StatsTabs
                     maps={mapStats}
                     mapId={mapId}
@@ -73,6 +67,7 @@ const Statistics = () => {
                     setMapId={setMapId}
                 />}
             </Grid>
+            {stage &&
             <Grid container>
                 <StageTabs 
                     stages={stages} 
@@ -100,7 +95,7 @@ const Statistics = () => {
                     />}
                     {!statsVisible && <NoItems name={'statistics'}/>}
                 </Grid>
-            </Grid>
+            </Grid>}
         </Paper>
     );
 }

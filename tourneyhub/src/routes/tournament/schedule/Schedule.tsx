@@ -1,6 +1,6 @@
 import { Grid, Paper } from '@mui/material';
 import SectionTitle from '../../../components/tournament/SectionTitle';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { IStageDto } from '../../../dto/stage/IStageDto';
 import { useContext, useEffect, useState } from 'react';
 import { StageService } from '../../../services/stageService';
@@ -20,25 +20,19 @@ const Schedule = () => {
     const { user } = useContext(AuthContext);
     const [stages, setStages] = useState([] as IStageDto[]);
     const [stageId, setStageId] = useState('');
-    const navigate = useNavigate();
 
     useEffect(() => {
         if (id) {
             new StageService()
                 .getAllTourney(id)
-                .then(stages => setStages(stages))
-                .then(() => {
-                    const stageId = stages.length > 0 ? stages[0].id : '';
-
-                    setStageId(stageId);
-                    navigate(`#${stageId}`);
+                .then(stages => {
+                    setStages(stages);
+                    setStageId(stages.length > 0 ? stages[0].id : '');
                 });
         }
     }, [id]);
 
-    let stage = stages.find(stage => 
-        stage.id === stageId.toString()
-    ) ?? {} as IStageDto;
+    let stage = stages.find(stage => stage.id === stageId.toString()) ?? null;
 
     const isHost = id && user && new AuthService().isHost(user, id);
 
@@ -46,22 +40,24 @@ const Schedule = () => {
         <Paper elevation={2} sx={{ minHeight: 500, paddingBottom: 2 }}>
             <Grid container>
                 <SectionTitle title='Schedule'/>
+                {stage &&
+                <>
                 <StageTabs 
                     stages={stages} 
                     stageId={stageId} 
                     setStageId={setStageId}
-                    buttons={
-                        isHost && !tourney.done ? <ScheduleButtons stage={stage}/> : <></>
-                    }/>
+                    buttons={isHost && !tourney.done ? <ScheduleButtons stage={stage}/> : <></>}
+                />
                 <Grid item xs marginLeft={2} marginRight={2}>
                     {stage.schedulePublic || isHost
                     ?   <>
-                            {stage.stageType === QUALIFIER 
-                            ?   <LobbyTable stage={stage} showTeams={tourney.minTeamSize > 1}/> 
-                            :   <MatchTable stage={stage}/>}
+                        {stage.stageType === QUALIFIER 
+                        ?   <LobbyTable stage={stage} showTeams={tourney.minTeamSize > 1}/> 
+                        :   <MatchTable stage={stage}/>}
                         </>
                     :   <NoItems name={stage.stageType === QUALIFIER ? 'lobbies' : 'matches'}/>}
                 </Grid>
+                </>}
             </Grid>
         </Paper>
     );

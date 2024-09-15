@@ -8,7 +8,6 @@ import { useContext } from 'react';
 import { StyledDialogActions } from '../../../styled/StyledDialogActions';
 import { StyledDialogContent } from '../../../styled/styledDialogContent';
 import { AuthContext, UpdateContext } from '../../../../routes/Root';
-import { useLocation } from 'react-router-dom';
 import { TB } from '../../../../constants';
 import { unsubmittedMapSchema } from '../../../../domain/validation/unsubmittedMapSchema';
 import { MapService } from '../../../../services/mapService';
