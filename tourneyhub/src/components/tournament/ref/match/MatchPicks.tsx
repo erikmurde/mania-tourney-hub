@@ -37,8 +37,8 @@ const MatchPicks = ({values, maps, bestOf}: IProps) => {
         const prev = index > 0 ? values.picks[index - 1] : null;
 
         return (prev && (prev.winner === '' || prev.beatmapId === '')) 
-            || (values.match.score1 === maxScore || values.match.score2 === maxScore) 
-            && index >= values.match.score1 + values.match.score2;
+            || ((values.match.score1 === maxScore || values.match.score2 === maxScore) 
+            && index >= values.match.score1 + values.match.score2);
     }
 
     useEffect(() => {
@@ -76,8 +76,8 @@ const MatchPicks = ({values, maps, bestOf}: IProps) => {
                                                 const tiebreaker = value.mapType === TB
                                                 
                                                 const noDisplay = unselectableMaps.includes(value.beatmapId) 
-                                                    || !lastPick && tiebreaker 
-                                                    || lastPick && !tiebreaker;
+                                                    || (!lastPick && tiebreaker) 
+                                                    || (lastPick && !tiebreaker);
 
                                                 return (
                                                 <MenuItem 

@@ -30,7 +30,7 @@ export const ROLE_REG = new Map<string, boolean>([
     [GFX, false]
 ]);
 
-// URL REGEX
+// REGEX
 export const URL_REGEX = /^(?:(?:https?|ftp):\/\/)(?:www\.)?[a-z0-9-]+(?:\.[a-z0-9-]+)+[^\s]*$/i;
 
 // COLORS
@@ -39,7 +39,10 @@ export const TERTIARY = '#9575CD';
 // FORM VALIDATION
 export const REQUIRED = 'Required';
 export const MIN1 = 'Must be 1 or more';
-export const INVALID_URL = 'Must be a full url'
+export const INVALID_URL = 'Must be a full url';
+export const INTEGER = 'Must be an integer';
+export const NOT_NEGATIVE = 'Must be positive';
+export const DUPLICATE_BEATMAP_ID = 'Map already in pool';
 
 // STAGE TYPES
 export const STANDARD = 'standard';

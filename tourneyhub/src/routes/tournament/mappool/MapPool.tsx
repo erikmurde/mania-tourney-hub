@@ -1,6 +1,6 @@
 import { Grid, Paper } from '@mui/material';
 import { useContext, useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import MapList from '../../../components/tournament/mappools/MapList';
 import { IMapDto } from '../../../dto/map/IMapDto';
 import { StageService } from '../../../services/stageService';
@@ -19,17 +19,14 @@ const MapPool = () => {
     const [stages, setStages] = useState([] as IStageDto[]);
     const [stageId, setStageId] = useState('');
     const [maps, setMaps] = useState([] as IMapDto[]);
-    const navigate = useNavigate();
 
     useEffect(() => {
         if (id) {
-            new StageService().getAllTourney(id)
-                .then(stages => setStages(stages))
-                .then(() => {
-                    const stageId = stages.length > 0 ? stages[0].id : '';
-
-                    setStageId(stageId);
-                    navigate(`#${stageId}`);
+            new StageService()
+                .getAllTourney(id)
+                .then(stages => {
+                    setStages(stages);
+                    setStageId(stages.length > 0 ? stages[0].id : '');
                 });
         }
     }, [id]);
@@ -65,10 +62,11 @@ const MapPool = () => {
                         manage={isManage}
                         setManage={setIsManage}
                         stage={stages.find(stage => stage.id === stageId.toString()) ?? null}
+                        mappool={maps}
                     />}/>
                 <Grid item xs>
                     {isManage 
-                    ?   <MapManageList maps={maps}/>
+                    ?   <MapManageList mappool={maps}/>
                     :   <MapList maps={maps.filter(map => map.inMappool)}/>}
                 </Grid>
             </Grid>

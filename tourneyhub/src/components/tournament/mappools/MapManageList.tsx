@@ -8,14 +8,14 @@ import { useContext } from 'react';
 import { UpdateContext } from '../../../routes/Root';
 import NoItems from '../NoItems';
 
-const MapManageList = ({maps}: {maps: IMapDto[]}) => {
+const MapManageList = ({mappool}: {mappool: IMapDto[]}) => {
     const { mapPoolUpdate, setMapPoolUpdate } = useContext(UpdateContext);
     const service = new MapService();
 
     let data = new Map<string, IMapDto[]>();
     let accordions: JSX.Element[] = [];
 
-    maps.forEach(map => {
+    mappool.forEach(map => {
         let key = `${map.mapType}${map.index}`;
 
         if (data.has(key)) {
@@ -60,6 +60,7 @@ const MapManageList = ({maps}: {maps: IMapDto[]}) => {
                                 <Grid item key={map.id}>
                                     <MapManageCard 
                                         map={map} 
+                                        mappool={mappool}
                                         addToPool={addToPool}
                                         removeFromPool={removeFromPool}/>
                                 </Grid>

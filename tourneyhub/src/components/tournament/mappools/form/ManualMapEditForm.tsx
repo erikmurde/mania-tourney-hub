@@ -9,15 +9,20 @@ import { IMapDto } from '../../../../dto/map/IMapDto';
 import { useContext } from 'react';
 import { UpdateContext } from '../../../../routes/Root';
 import { MapService } from '../../../../services/mapService';
-import { MAP_TYPES } from '../../../../constants';
+import { DUPLICATE_BEATMAP_ID, INTEGER, MAP_TYPES, NOT_NEGATIVE } from '../../../../constants';
+import { unsubmittedMapSchema } from '../../../../domain/validation/unsubmittedMapSchema';
+import { number, Schema } from 'yup';
 
 interface IProps {
     dialogProps: DialogProps,
-    initialValues: IMapDto
+    initialValues: IMapDto,
+    hasTb: boolean,
+    isDuplicateId: (id: string, beatmapId?: string) => boolean,
 }
 
-const ManualMapEditForm = ({dialogProps, initialValues}: IProps) => {
+const ManualMapEditForm = ({dialogProps, initialValues, hasTb, isDuplicateId}: IProps) => {
     const { mapPoolUpdate, setMapPoolUpdate } = useContext(UpdateContext);
+    const { open, onClose } = dialogProps;
 
     const onSubmit = async(values: IMapDto) => {
         if (initialValues.index !== values.index || initialValues.mapType !== values.mapType) {
@@ -25,19 +30,30 @@ const ManualMapEditForm = ({dialogProps, initialValues}: IProps) => {
         }
         await new MapService().edit(values.id, values);
         setMapPoolUpdate(mapPoolUpdate + 1);
-        dialogProps.onClose();
+        onClose();
     }
 
+    const validationSchema: Schema = unsubmittedMapSchema(hasTb).shape({
+        beatmapId: number()
+            .notRequired()
+            .integer(INTEGER)
+            .min(0, NOT_NEGATIVE)
+            .test('', 
+                DUPLICATE_BEATMAP_ID, 
+                beatmapId => !isDuplicateId(initialValues.id, beatmapId?.toString())
+            )
+    });
+
     return (  
-        <Dialog open={dialogProps.open} onClose={dialogProps.onClose} fullWidth maxWidth='md'>
-            <TourneyDialogTitle title='Edit map' onClose={dialogProps.onClose}/>
+        <Dialog open={open} onClose={onClose} fullWidth maxWidth='md'>
+            <TourneyDialogTitle title='Edit map' onClose={onClose}/>
             <StyledDialogContent>
                 <UnsubmittedMapFormView 
                     initialValues={{
                         ...initialValues, 
                         mapType: MAP_TYPES.length > 0 ? initialValues.mapType : ''
-                    }} 
-                    selectValues={MAP_TYPES} 
+                    }}
+                    validationSchema={validationSchema}
                     onSubmit={onSubmit}
                 />
             </StyledDialogContent>

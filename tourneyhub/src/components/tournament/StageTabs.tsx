@@ -22,7 +22,7 @@ const StageTabs = ({stages, stageId, buttons, setStageId} : IProps) => {
                     onChange={(_, value) => setStageId(value)}>
 
                     {stages.map(stage => 
-                        <Tab key={stage.id} label={stage.name} value={stage.id} href={`#${stage.id}`}/>
+                        <Tab key={stage.id} label={stage.name} value={stage.id}/>
                     )}
                 </Tabs>
             </Grid>

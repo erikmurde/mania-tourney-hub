@@ -10,14 +10,16 @@ import { useParams } from 'react-router-dom';
 import { StageService } from '../../../services/stageService';
 import { IStageDto } from '../../../dto/stage/IStageDto';
 import { useTourney } from '../../../routes/tournament/TournamentHeader';
+import { IMapDto } from '../../../dto/map/IMapDto';
 
 interface IProps {
     stage: IStageDto | null,
+    mappool: IMapDto[],
     manage: boolean,
     setManage: (manage: boolean) => void
 }
 
-const PoolButtons = ({stage, manage, setManage}: IProps) => {
+const PoolButtons = ({stage, mappool, manage, setManage}: IProps) => {
     const { mapPoolUpdate, setMapPoolUpdate } = useContext(UpdateContext);
     const { id } = useParams();
     const { tourney } = useTourney();
@@ -40,38 +42,38 @@ const PoolButtons = ({stage, manage, setManage}: IProps) => {
 
     return (
         <>            
-            {manage && 
-            <>
-            {!tourney.done &&
-            <Grid item>
-                <MapSelectForm/>
-            </Grid>}
-            <Grid item>
-                <Button sx={{ width: 150 }}
-                    variant='contained' 
-                    startIcon={<Public/>}
-                    onClick={() => setManage(false)}>
-                    Public view
-                </Button>
-            </Grid>
-            </>}
-            {!manage && canManage &&
-            <Grid item>
-                <Button sx={{ width: 150 }} 
-                    variant='contained' 
-                    startIcon={<Edit/>}
-                    onClick={() => setManage(true)}>
-                    Manage
-                </Button>
-            </Grid>}
-            {stage && !manage && !stage.mappoolPublic && isHost &&
-            <Grid item>
-                <ConfirmationDialog
-                    btnProps={{ startIcon: <Publish/>, title: 'Publish', sx: {width: 150}}}
-                    title='Are you sure you wish to publish this mappool?'
-                    actionTitle='Publish'
-                    action={() => publishMappool()}/>
-            </Grid>}
+        {manage && stage &&
+        <>
+        {!tourney.done &&
+        <Grid item>
+            <MapSelectForm stageId={stage.id} mappool={mappool}/>
+        </Grid>}
+        <Grid item>
+            <Button sx={{ width: 150 }}
+                variant='contained' 
+                startIcon={<Public/>}
+                onClick={() => setManage(false)}>
+                Public view
+            </Button>
+        </Grid>
+        </>}
+        {!manage && canManage &&
+        <Grid item>
+            <Button sx={{ width: 150 }} 
+                variant='contained' 
+                startIcon={<Edit/>}
+                onClick={() => setManage(true)}>
+                Manage
+            </Button>
+        </Grid>}
+        {stage && !manage && !stage.mappoolPublic && isHost &&
+        <Grid item>
+            <ConfirmationDialog
+                btnProps={{ startIcon: <Publish/>, title: 'Publish', sx: {width: 150}}}
+                title='Are you sure you wish to publish this mappool?'
+                actionTitle='Publish'
+                action={() => publishMappool()}/>
+        </Grid>}
         </>
     );
 }

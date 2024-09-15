@@ -8,7 +8,7 @@ import { TournamentService } from '../../../services/tournamentService';
 import { Value } from 'react-quill';
 import { AuthService } from '../../../services/authService';
 import TournamentFormView from './views/TournamentFormView';
-import { tournamentSchema } from '../../../domain/tournamentSchema';
+import { tournamentSchema } from '../../../domain/validation/tournamentSchema';
 
 const TournamentCreateForm = () => {
     const { user } = useContext(AuthContext);

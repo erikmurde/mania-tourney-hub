@@ -15,18 +15,21 @@ export class MapService extends BaseEntityService<IMapDto> {
         return (this.weights.get(map.mapType) ?? 0) + map.index;
     }
 
+    sortMaps(maps: IMapDto[]): IMapDto[] {
+        return maps.sort((a, b) => this.getWeight(a) > this.getWeight(b) ? 1 : -1);
+    }
+
     async getAllStage(stageId: string): Promise<IMapDto[]> {
         const response = await this.axios.get<IMapDto[]>(`${this.baseUrl}${this.expand}&stageId=${stageId}`);
 
         console.log('getAllStage response: ', response);
-        return response.data;
+        return this.sortMaps(response.data);
     }
 
     async getAllStageInMappool(stageId: string): Promise<IMapDto[]> {
-        return (await this
-            .getAllStage(stageId))
+        return this.sortMaps(
+            (await this.getAllStage(stageId))
             .filter(map => map.inMappool)
-            .sort((a, b) => this.getWeight(a) - this.getWeight(b)
         );
     }
 }

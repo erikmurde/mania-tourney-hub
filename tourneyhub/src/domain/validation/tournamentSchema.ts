@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
 import { Schema, array, boolean, date, number, object, string } from 'yup';
-import { REQUIRED, MIN1, URL_REGEX, INVALID_URL } from '../constants';
+import { REQUIRED, MIN1, URL_REGEX, INVALID_URL } from '../../constants';
 
 dayjs.extend(utc);
 

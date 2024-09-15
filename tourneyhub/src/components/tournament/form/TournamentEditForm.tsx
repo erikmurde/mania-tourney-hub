@@ -4,7 +4,7 @@ import FormDialogBase from '../dialog/FormDialogBase';
 import { TournamentDto } from '../../../dto/tournament/TournamentDto';
 import { UserDto } from '../../../dto/user/UserDto';
 import TournamentFormView from './views/TournamentFormView';
-import { tournamentSchema } from '../../../domain/tournamentSchema';
+import { tournamentSchema } from '../../../domain/validation/tournamentSchema';
 import { TournamentEdit } from '../../../domain/TournamentEdit';
 import { TournamentService } from '../../../services/tournamentService';
 import { ROLE_REG } from '../../../constants';

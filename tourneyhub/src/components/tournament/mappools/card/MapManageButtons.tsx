@@ -10,10 +10,11 @@ import { MapService } from '../../../../services/mapService';
 
 interface IProps {
     map: IMapDto,
+    mappool: IMapDto[],
     tourneyDone: boolean
 }
 
-const MapManageButtons = ({map, tourneyDone}: IProps) => {
+const MapManageButtons = ({map, mappool, tourneyDone}: IProps) => {
     const { mapPoolUpdate, setMapPoolUpdate } = useContext(UpdateContext);
     const theme = useTheme();
 
@@ -26,7 +27,7 @@ const MapManageButtons = ({map, tourneyDone}: IProps) => {
         <Grid container justifyContent='end'>
             {!tourneyDone &&
             <Grid item> 
-                <MapEditForm map={map}/>
+                <MapEditForm mappool={mappool} map={map}/>
             </Grid>}
             {!tourneyDone && !map.inMappool && 
             <Grid item>

@@ -8,18 +8,28 @@ import { useContext } from 'react';
 import { StyledDialogActions } from '../../../styled/StyledDialogActions';
 import { StyledDialogContent } from '../../../styled/styledDialogContent';
 import { AuthContext, UpdateContext } from '../../../../routes/Root';
-import { MapService } from '../../../../services/mapService';
 import { useLocation } from 'react-router-dom';
-import { MAP_TYPES } from '../../../../constants';
+import { TB } from '../../../../constants';
+import { unsubmittedMapSchema } from '../../../../domain/validation/unsubmittedMapSchema';
+import { MapService } from '../../../../services/mapService';
 
-const UnsubmittedMapCreateForm = ({open, onClose}: DialogProps) => {
+interface IProps {
+    dialogProps: DialogProps,
+    hasTb: boolean,
+    stageId: string
+}
+
+const UnsubmittedMapCreateForm = ({dialogProps, hasTb, stageId}: IProps) => {
     const { mapPoolUpdate, setMapPoolUpdate } = useContext(UpdateContext);
     const { user } = useContext(AuthContext);
-    const location = useLocation();
+    const { open, onClose } = dialogProps;
 
     const onSubmit = async(values: IMapDto) => {
         if (!user) {
             return;
+        }
+        if (values.mapType === TB) {
+            values.index = 0;
         }
         await new MapService().create(values);
         setMapPoolUpdate(mapPoolUpdate + 1);
@@ -28,7 +38,7 @@ const UnsubmittedMapCreateForm = ({open, onClose}: DialogProps) => {
 
     const initialValues: IMapDto = {
         id: '',
-        stageId: location.hash.split('#')[1],
+        stageId: stageId,
         beatmapId: '',
         inMappool: false,
         title: '',
@@ -54,7 +64,7 @@ const UnsubmittedMapCreateForm = ({open, onClose}: DialogProps) => {
             <StyledDialogContent>
                 <UnsubmittedMapFormView 
                     initialValues={initialValues} 
-                    selectValues={MAP_TYPES} 
+                    validationSchema={unsubmittedMapSchema(hasTb)}
                     onSubmit={onSubmit}/>
             </StyledDialogContent>
             <StyledDialogActions>

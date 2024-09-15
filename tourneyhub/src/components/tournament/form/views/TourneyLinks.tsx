@@ -1,4 +1,4 @@
-import { Delete, Remove } from '@mui/icons-material';
+import { Delete } from '@mui/icons-material';
 import { Grid, Typography, Button, TextField, IconButton } from '@mui/material';
 import { FieldArray, FormikErrors, FastField } from 'formik';
 import { TourneyLinkDto } from '../../../../dto/TourneyLinkDto';

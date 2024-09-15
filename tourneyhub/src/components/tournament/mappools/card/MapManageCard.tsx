@@ -1,4 +1,4 @@
-import { Card, CardMedia, CardContent, useTheme, Grid, CardActions, Button } from '@mui/material';
+import { Card, CardMedia, CardContent, useTheme, Grid, CardActions, Button, Tooltip } from '@mui/material';
 import MapParams from './MapParams';
 import MapText from './MapText';
 import { IMapDto } from '../../../../dto/map/IMapDto';
@@ -10,11 +10,12 @@ import { useTourney } from '../../../../routes/tournament/TournamentHeader';
 
 interface IProps {
     map: IMapDto,
+    mappool: IMapDto[],
     addToPool: (id: string, key: string) => void
     removeFromPool: (map: IMapDto) => void
 }
 
-const MapManageCard = ({map, addToPool, removeFromPool}: IProps) => {
+const MapManageCard = ({map, mappool, addToPool, removeFromPool}: IProps) => {
     const { tourney } = useTourney();
     const { user } = useContext(AuthContext);
     const theme = useTheme();
@@ -22,6 +23,8 @@ const MapManageCard = ({map, addToPool, removeFromPool}: IProps) => {
     const canAddToPool = user && user.roles
         .filter(role => role.tournamentId === tourney.id)
         .some(role => [HOST, ADMIN, MAPPOOLER].includes(role.name));
+
+    const disabled = !map.inMappool && !map.beatmapId;
 
     return (
         <Card 
@@ -41,22 +44,30 @@ const MapManageCard = ({map, addToPool, removeFromPool}: IProps) => {
             </CardContent>
             <Grid item xs/>
             <CardActions sx={{ alignItems: 'start', flexDirection: 'column' }}>
-                <MapManageButtons map={map} tourneyDone={tourney.done}
+                <MapManageButtons 
+                    map={map} 
+                    mappool={mappool} 
+                    tourneyDone={tourney.done}
                 />
                 <Grid container flexGrow={1}
                 />
                 {!tourney.done && canAddToPool && 
                 <Grid container justifyContent='end' paddingRight={1}>
                     <Grid item>
-                        <Button 
-                            sx={{ width: 90 }}
-                            variant='outlined'
-                            color={map.inMappool ? 'error' : 'success'} 
-                            onClick={() => map.inMappool 
-                                ? removeFromPool(map) 
-                                : addToPool(map.id, `${map.mapType}${map.index}`)}>
-                            {map.inMappool ? 'Remove' : 'Add'}
-                        </Button>
+                        <Tooltip title={disabled ? 'Needs a beatmap ID' : ''}>
+                            <span>
+                                <Button 
+                                    disabled={disabled}
+                                    sx={{ width: 180 }}
+                                    variant='outlined'
+                                    color={map.inMappool ? 'error' : 'success'} 
+                                    onClick={() => map.inMappool 
+                                        ? removeFromPool(map) 
+                                        : addToPool(map.id, `${map.mapType}${map.index}`)}>
+                                    {map.inMappool ? 'Remove from pool' : 'Add to pool'}
+                                </Button>
+                            </span>
+                        </Tooltip>
                     </Grid>
                 </Grid>}
             </CardActions>
