@@ -1,4 +1,4 @@
-import { Remove } from '@mui/icons-material';
+import { Delete, Remove } from '@mui/icons-material';
 import { Grid, Typography, Button, TextField, IconButton } from '@mui/material';
 import { FieldArray, FormikErrors, FastField } from 'formik';
 import { TourneyLinkDto } from '../../../../dto/TourneyLinkDto';
@@ -23,7 +23,7 @@ const TourneyLinks = ({links, errors}: IProps) => {
             </Grid>
             <Grid item xs={10}>
                 {links.length < MAX_LINKS &&
-                <Button color='success' onClick={() => push({ name: '', link: '' })}>
+                <Button variant='contained' color='success' onClick={() => push({ name: '', link: '' })}>
                     Add link
                 </Button>}
             </Grid>
@@ -42,9 +42,9 @@ const TourneyLinks = ({links, errors}: IProps) => {
                         error={error?.link}
                         helperText={error?.link}/>  
                 </Grid>
-                <Grid item xs={4}>
+                <Grid item xs={4} marginTop={1}>
                     <IconButton color='error' onClick={() => remove(index)}>
-                        <Remove/>
+                        <Delete/>
                     </IconButton>
                 </Grid>
                 </>

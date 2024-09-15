@@ -19,11 +19,6 @@
           "canRegWithRole": false
         },
         {
-          "tournamentId": "1",
-          "name": "host",
-          "canRegWithRole": false
-        },
-        {
           "tournamentId": "0",
           "name": "host",
           "canRegWithRole": false
@@ -4619,7 +4614,13 @@
       ],
       "countries": [],
       "regMessage": "Please join our discord server before registering.",
-      "information": {}
+      "information": {
+        "ops": [
+          {
+            "insert": "\n"
+          }
+        ]
+      }
     },
     {
       "id": "lr_cc0V",

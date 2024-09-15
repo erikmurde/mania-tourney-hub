@@ -68,23 +68,24 @@ const TeamRegisterFormView = ({maxTeamSize, initialValues, selectValues, validat
                                     Add player
                                 </Button>
                             </Grid>}
-                            {values.players.map((_, index) => 
-                                <>
+                            {values.players.map((_, index) => {
+                                const error = getPlayerError(errors.players, index);
+                                return <>
                                 <Grid item xs={6}>
                                     <Field component={PlayerAutocomplete}
                                         name={`players[${index}]`}
                                         label={index > 0 ? `Player ${index + 1}` : 'Captain'}
-                                        error={getPlayerError(errors.players, index)}
+                                        error={error}
                                         options={selectValues}
                                         disabled={index === 0}/>
                                 </Grid>
-                                <Grid item xs={6}>
+                                <Grid item xs={6} marginBottom={error ? 2.5 : 0}>
                                     {index > 0 &&
                                     <IconButton color='error' onClick={() => remove(index)}>
                                         <PersonRemove/>
                                     </IconButton>}
                                 </Grid>
-                                </>)}
+                                </>})}
                             </>
                         }
                         </FieldArray>
