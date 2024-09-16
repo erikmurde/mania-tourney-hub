@@ -9,6 +9,7 @@ import { AuthService } from '../../../services/authService';
 import StageSelectForm from '../../../components/tournament/stages/form/StageSelectForm';
 import NoPermission from '../../NoPermission';
 import { useTourney } from '../TournamentHeader';
+import { QUALIFIER } from '../../../constants';
 
 const Stages = () => {
     const { stageUpdate } = useContext(UpdateContext);
@@ -44,7 +45,10 @@ const Stages = () => {
                         Stages
                     </Typography>
                 </Grid>
-                {!tourney.done && <StageSelectForm/>}
+                {!tourney.done && 
+                <StageSelectForm 
+                    hasQualifier={stages.some(stage => stage.stageType === QUALIFIER)}
+                />}
             </Grid>
             <StageList stages={stages}/>
         </Paper>

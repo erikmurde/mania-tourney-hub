@@ -1,5 +1,5 @@
 import { NoteAdd } from '@mui/icons-material';
-import { Grid, Button, Dialog } from '@mui/material';
+import { Grid, Button, Dialog, Tooltip } from '@mui/material';
 import { useState } from 'react';
 import { StyledDialogActions } from '../../../styled/StyledDialogActions';
 import { StyledDialogContent } from '../../../styled/styledDialogContent';
@@ -7,7 +7,7 @@ import TourneyDialogTitle from '../../dialog/TourneyDialogTitle';
 import StageCreateForm from './StageCreateForm';
 import { QUALIFIER, STANDARD } from '../../../../constants';
 
-const StageSelectForm = () => {
+const StageSelectForm = ({hasQualifier}: {hasQualifier: boolean}) => {
     const [open, setOpen] = useState(false);
     const [openCreate, setOpenCreate] = useState(false);
     const [stageType, setStageType] = useState('');
@@ -32,9 +32,15 @@ const StageSelectForm = () => {
                     <Button variant='contained' onClick={() => chooseType(STANDARD)}>
                         Standard
                     </Button>
-                    <Button variant='contained' color='secondary' onClick={() => chooseType(QUALIFIER)}>
-                        Qualifier
-                    </Button>
+                    <Tooltip title={hasQualifier ? 'A qualifier stage already exists' : ''}>
+                        <span>
+                            <Button variant='contained' color='secondary'
+                                disabled={hasQualifier} 
+                                onClick={() => chooseType(QUALIFIER)}>
+                                Qualifier
+                            </Button>
+                        </span>
+                    </Tooltip>
                 </StyledDialogActions>
             </Dialog>}
             {openCreate && 
