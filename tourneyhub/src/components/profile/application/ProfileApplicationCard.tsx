@@ -1,10 +1,10 @@
 import { Card, Divider, Grid, Typography, useTheme } from '@mui/material';
-import { StaffApplicationDto } from '../../../dto/staffApplication/StaffApplicationDto';
+import { StaffApplicationDto } from '../../../dto/staff/StaffApplicationDto';
 import { StyledCardActions } from '../../styled/StyledCardActions';
 import { StyledCardContent } from '../../styled/StyledCardContent';
 import ConfirmationDialog from '../../tournament/dialog/ConfirmationDialog';
 import { StaffApplicationService } from '../../../services/staffApplicationService';
-import { GFX } from '../../../constants';
+import { ACCEPTED, GFX, PENDING, REJECTED, RETRACTED } from '../../../constants';
 
 interface IProps {
     application: StaffApplicationDto,
@@ -17,13 +17,13 @@ const ProfileApplicationCard = ({application, navLink, applicationUpdate, setApp
     const theme = useTheme();
 
     const colorMap = new Map<string, string>([
-        ['accepted', theme.palette.success.main],
-        ['pending', theme.palette.secondary.main],
-        ['rejected', theme.palette.error.main]
+        [ACCEPTED, theme.palette.success.main],
+        [PENDING, theme.palette.secondary.main],
+        [REJECTED, theme.palette.error.main]
     ])
 
     const onRetract = async() => {
-        application.status = 'retracted';
+        application.status = RETRACTED;
         await new StaffApplicationService().edit(application.id, application);
         setApplicationUpdate(applicationUpdate + 1);
     }
@@ -49,19 +49,13 @@ const ProfileApplicationCard = ({application, navLink, applicationUpdate, setApp
                 </Grid>
                 <Divider sx={{ marginTop: 1, marginBottom: 1 }}/>
                 <Typography fontSize={14} fontWeight={700} marginTop={1} marginBottom={0.5}>
-                    Past experience
+                    Description
                 </Typography>
                 <Typography fontSize={14}>
-                    {application.experience}
-                </Typography>
-                <Typography fontSize={14} fontWeight={700} marginTop={1} marginBottom={0.5}>
-                    Motivation
-                </Typography>
-                <Typography fontSize={14}>
-                    {application.motivation}
+                    {application.description}
                 </Typography>
             </StyledCardContent>
-            {application.status === 'pending' &&
+            {application.status === PENDING &&
             <StyledCardActions>
                 <ConfirmationDialog 
                     title={'Are you sure you wish to retract this application?'} 

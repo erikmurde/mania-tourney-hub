@@ -2,9 +2,9 @@ import StaffApplicationFormView from './views/StaffApplicationFormView';
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../../../routes/Root';
 import { AuthService } from '../../../../services/authService';
-import { StaffApplicationDto } from '../../../../dto/staffApplication/StaffApplicationDto';
+import { StaffApplicationDto } from '../../../../dto/staff/StaffApplicationDto';
 import { useParams } from 'react-router-dom';
-import { ADMIN, MAPPOOLER, MAPPER, PLAYTESTER, REFEREE, STREAMER, COMMENTATOR, SHEETER, GFX, REQUIRED } from '../../../../constants';
+import { ADMIN, MAPPOOLER, MAPPER, PLAYTESTER, REFEREE, STREAMER, COMMENTATOR, SHEETER, GFX, REQUIRED, PENDING } from '../../../../constants';
 import { StaffApplicationService } from '../../../../services/staffApplicationService';
 import { Schema, object, string } from 'yup';
 import FormDialogBase from '../../dialog/FormDialogBase';
@@ -49,13 +49,12 @@ const StaffApplicationForm = ({applicationOpen, tourneyName}: IProps) => {
 
     const initialValues: StaffApplicationDto = {
         id: '',
-        userId: user.id,
+        senderId: user.id,
         tournamentId: id,
         tournament: tourneyName,
         role: '',
-        status: 'pending',
-        experience: '',
-        motivation: ''
+        status: PENDING,
+        description: ''
     }
 
     return (  

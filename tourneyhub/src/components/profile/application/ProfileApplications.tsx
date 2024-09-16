@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { StaffApplicationDto } from '../../../dto/staffApplication/StaffApplicationDto';
+import { StaffApplicationDto } from '../../../dto/staff/StaffApplicationDto';
 import { StaffApplicationService } from '../../../services/staffApplicationService';
 import { Grid, Link } from '@mui/material';
 import ProfileApplicationCard from './ProfileApplicationCard';

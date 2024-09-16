@@ -1,5 +1,5 @@
 import { Card, Typography, Divider } from '@mui/material';
-import { StaffInviteDto } from '../../../dto/staffInvite/StaffInviteDto';
+import { StaffInviteDto } from '../../../dto/staff/StaffInviteDto';
 import { StyledCardActions } from '../../styled/StyledCardActions';
 import { StyledCardContent } from '../../styled/StyledCardContent';
 import { StaffInviteService } from '../../../services/staffInviteService';
@@ -7,7 +7,7 @@ import ConfirmationDialog from '../../tournament/dialog/ConfirmationDialog';
 import { useContext } from 'react';
 import { AuthContext } from '../../../routes/Root';
 import { AuthService } from '../../../services/authService';
-import { ROLE_REG } from '../../../constants';
+import { ACCEPTED, REJECTED, ROLE_REG } from '../../../constants';
 
 interface IProps {
     invite: StaffInviteDto,
@@ -25,7 +25,7 @@ const ProfileInviteCard = ({invite, navLink, inviteUpdate, setInviteUpdate}: IPr
     }
 
     const onAccept = async() => {
-        invite.status = 'accepted';
+        invite.status = ACCEPTED;
         user.roles.push({
             tournamentId: invite.tournamentId,
             name: invite.role,
@@ -36,7 +36,7 @@ const ProfileInviteCard = ({invite, navLink, inviteUpdate, setInviteUpdate}: IPr
     }
 
     const onReject = () => {
-        invite.status = 'rejected';
+        invite.status = REJECTED;
         edit();
     }
 
@@ -56,7 +56,7 @@ const ProfileInviteCard = ({invite, navLink, inviteUpdate, setInviteUpdate}: IPr
                     {navLink} - Role of commentator
                 </Typography>
                 <Typography>
-                    {invite.reason}
+                    {invite.description}
                 </Typography>
             </StyledCardContent>
             <StyledCardActions>

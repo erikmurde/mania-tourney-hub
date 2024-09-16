@@ -1,6 +1,6 @@
 import { Grid, MenuItem, TextField } from '@mui/material';
 import { Field, Form, Formik } from 'formik';
-import { StaffApplicationDto } from '../../../../../dto/staffApplication/StaffApplicationDto';
+import { StaffApplicationDto } from '../../../../../dto/staff/StaffApplicationDto';
 import TourneySelectField from '../../../field/TourneySelectField';
 import { Schema } from 'yup';
 
@@ -30,17 +30,10 @@ const StaffApplicationFormView = ({initialValues, selectValues, validationSchema
                         <Grid item xs={12}>
                             <Field fullWidth multiline as={TextField} 
                                 name='experience' 
-                                label='Do you have any past experience regarding this role?'
-                                error={errors.experience !== undefined}
-                                helperText={errors.experience}
-                                rows={3}/>
-                        </Grid>
-                        <Grid item xs={12}>
-                            <Field fullWidth multiline as={TextField} 
-                                name='motivation' 
-                                label='Why do you want this staff role?'
-                                error={errors.motivation !== undefined}
-                                helperText={errors.motivation}             
+                                label='Description'
+                                placeholder='Describe your reason for applying and any relevant experience'
+                                error={errors.description !== undefined}
+                                helperText={errors.description}
                                 rows={3}/>
                         </Grid>
                     </Grid>

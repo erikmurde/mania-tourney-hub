@@ -3,12 +3,12 @@ import { useContext, useEffect, useState } from 'react';
 import { StyledDialogActions } from '../../../styled/StyledDialogActions';
 import { StyledDialogContent } from '../../../styled/styledDialogContent';
 import TourneyDialogTitle from '../../dialog/TourneyDialogTitle';
-import { HOST, ADMIN, MAPPOOLER, MAPPER, PLAYTESTER, REFEREE, STREAMER, COMMENTATOR, SHEETER, GFX, REQUIRED } from '../../../../constants';
+import { HOST, ADMIN, MAPPOOLER, MAPPER, PLAYTESTER, REFEREE, STREAMER, COMMENTATOR, SHEETER, GFX, REQUIRED, PENDING } from '../../../../constants';
 import { AuthService } from '../../../../services/authService';
 import { UserDto } from '../../../../dto/user/UserDto';
 import StaffInviteFormView from './views/StaffInviteFormView';
 import { PersonAdd } from '@mui/icons-material';
-import { StaffInviteDto } from '../../../../dto/staffInvite/StaffInviteDto';
+import { StaffInviteDto } from '../../../../dto/staff/StaffInviteDto';
 import { useParams } from 'react-router-dom';
 import { AuthContext } from '../../../../routes/Root';
 import { StaffInviteService } from '../../../../services/staffInviteService';
@@ -20,7 +20,7 @@ const StaffInviteForm = () => {
     const { id } = useParams();
     const { user } = useContext(AuthContext);
     const [open, setOpen] = useState(false);
-    const [tourney, setTourney] = useState({} as TournamentDto);
+    const [tourney, setTourney] = useState(null as TournamentDto | null);
     const [selectValues, setSelectValues] = useState({
         users: [] as UserDto[],
         roles: [HOST, ADMIN, MAPPOOLER, MAPPER, PLAYTESTER, REFEREE, STREAMER, COMMENTATOR, SHEETER, GFX]
@@ -33,14 +33,14 @@ const StaffInviteForm = () => {
                 .then(users => setSelectValues({
                     ...selectValues, 
                     users: users.filter(option => option.id !== user.id)
-                }));
-        }
+                })); 
+        }       
         if (id) {
             new TournamentService()
                 .getEntity(id)
                 .then(tourney => setTourney(tourney));
         }
-    }, [user]);
+    }, [user, id]);
 
     const onSubmit = async(values: StaffInviteDto) => {
         await new StaffInviteService().create(values);
@@ -56,13 +56,13 @@ const StaffInviteForm = () => {
 
     const initialValues: StaffInviteDto = {
         id: '',
-        tournament: tourney.name,
-        tournamentId: id!,
-        sender: user!.name,
+        tournament: tourney?.name ?? '',
+        tournamentId: id ?? '',
+        sender: user?.name ?? '',
         recipientId: '',
         role: '',
-        status: 'pending',
-        reason: ''
+        status: PENDING,
+        description: ''
     }
 
     return (  

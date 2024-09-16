@@ -1,4 +1,5 @@
-import { StaffApplicationDto } from '../dto/staffApplication/StaffApplicationDto';
+import { ACCEPTED, PENDING, REJECTED } from '../constants';
+import { StaffApplicationDto } from '../dto/staff/StaffApplicationDto';
 import { BaseEntityService } from './base/baseEntityService';
 
 export class StaffApplicationService extends BaseEntityService<StaffApplicationDto> {
@@ -11,15 +12,15 @@ export class StaffApplicationService extends BaseEntityService<StaffApplicationD
 
         console.log('getAllPending response: ', response);
         return response.data
-            .filter(application => application.status === 'pending');
+            .filter(application => application.status === PENDING);
     }
 
     async getAllUser(userId: string): Promise<StaffApplicationDto[]> {
-        const response = await this.axios.get<StaffApplicationDto[]>(`${this.baseUrl}?userId=${userId}`);
+        const response = await this.axios.get<StaffApplicationDto[]>(`${this.baseUrl}?senderId=${userId}`);
 
         console.log('getAllUser response: ', response);
         return response.data.filter(application => 
-            ['pending', 'accepted', 'rejected'].includes(application.status)
+            [PENDING, ACCEPTED, REJECTED].includes(application.status)
         );
     }
 }

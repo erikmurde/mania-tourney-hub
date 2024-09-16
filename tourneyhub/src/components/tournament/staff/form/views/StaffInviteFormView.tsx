@@ -1,6 +1,6 @@
 import { Grid, MenuItem, TextField } from '@mui/material';
 import { Formik, Field, Form } from 'formik';
-import { StaffInviteDto } from '../../../../../dto/staffInvite/StaffInviteDto';
+import { StaffInviteDto } from '../../../../../dto/staff/StaffInviteDto';
 import { UserDto } from '../../../../../dto/user/UserDto';
 import TourneySelectField from '../../../field/TourneySelectField';
 import { Schema } from 'yup';

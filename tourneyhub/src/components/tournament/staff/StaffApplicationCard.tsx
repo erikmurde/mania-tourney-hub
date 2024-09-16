@@ -1,12 +1,12 @@
 import { Card, CardContent, Divider, Grid, Typography } from '@mui/material';
-import { StaffApplicationDto } from '../../../dto/staffApplication/StaffApplicationDto';
+import { StaffApplicationDto } from '../../../dto/staff/StaffApplicationDto';
 import { useEffect, useState } from 'react';
 import { AuthService } from '../../../services/authService';
 import { UserDto } from '../../../dto/user/UserDto';
 import Flag from '../../Flag';
 import { StyledCardActions } from '../../styled/StyledCardActions';
 import ConfirmationDialog from '../dialog/ConfirmationDialog';
-import { GFX } from '../../../constants';
+import { ACCEPTED, GFX, REJECTED } from '../../../constants';
 
 interface IProps {
     application: StaffApplicationDto,
@@ -18,7 +18,7 @@ const StaffApplicationCard = ({application, updateStatus}: IProps) => {
 
     useEffect(() => {
         new AuthService()
-            .getUser(application.userId)
+            .getUser(application.senderId)
             .then(user => setUser(user));
     }, []);
 
@@ -39,16 +39,10 @@ const StaffApplicationCard = ({application, updateStatus}: IProps) => {
                 </Grid>
                 <Divider/>
                 <Typography fontSize={14} fontWeight={700} marginTop={1} marginBottom={0.5}>
-                    Past experience
+                    Description
                 </Typography>
                 <Typography fontSize={14}>
-                    {application.experience}
-                </Typography>
-                <Typography fontSize={14} fontWeight={700} marginTop={1} marginBottom={0.5}>
-                    Motivation
-                </Typography>
-                <Typography fontSize={14}>
-                    {application.motivation}
+                    {application.description}
                 </Typography>
             </CardContent>
             <StyledCardActions>
@@ -56,12 +50,12 @@ const StaffApplicationCard = ({application, updateStatus}: IProps) => {
                     btnProps={{ color: 'success', title: 'Accept', sx: { height: 30 }}}
                     title={'Are you sure you wish to accept this application?'} 
                     actionTitle={'Accept'} 
-                    action={() => updateStatus(application, 'accepted')}/>
+                    action={() => updateStatus(application, ACCEPTED)}/>
                 <ConfirmationDialog 
                     btnProps={{ color: 'error', title: 'Reject', sx: { height: 30 }}}
                     title={'Are you sure you wish to reject this application?'} 
                     actionTitle={'Reject'} 
-                    action={() => updateStatus(application, 'rejected')}/>
+                    action={() => updateStatus(application, REJECTED)}/>
             </StyledCardActions>
         </Card>
     );

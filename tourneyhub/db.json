@@ -4603,7 +4603,7 @@
       "protects": false,
       "warmups": false,
       "regOpen": true,
-      "applicationOpen": false,
+      "applicationOpen": true,
       "regDeadline": "2024-11-21T08:00:00.000Z",
       "applicationDeadline": "2024-10-16T07:00:00.000Z",
       "links": [
@@ -4718,7 +4718,7 @@
       "numAdvancing": 0,
       "schedulingDeadline": "2024-07-17T07:00:00.000Z",
       "mappoolPublic": true,
-      "schedulePublic": true,
+      "schedulePublic": false,
       "statsPublic": false
     },
     {
@@ -4854,7 +4854,7 @@
     {
       "id": "3",
       "stageId": "4",
-      "beatmapId": "4368168",
+      "beatmapId": "",
       "inMappool": false,
       "title": "A Dichroic Glass Snafu",
       "diff": "Broken",
@@ -5780,71 +5780,64 @@
       "id": "0",
       "tournamentId": "0",
       "tournament": "6K Autumn Showdown",
-      "userId": "41",
+      "senderId": "41",
       "role": "commentator",
       "status": "pending",
-      "experience": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      "motivation": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
     },
     {
       "id": "1",
       "tournamentId": "0",
       "tournament": "6K Autumn Showdown",
-      "userId": "14",
+      "senderId": "14",
       "role": "mapper",
       "status": "pending",
-      "experience": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      "motivation": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
     },
     {
       "id": "2",
       "tournamentId": "0",
       "tournament": "6K Autumn Showdown",
-      "userId": "42",
+      "senderId": "42",
       "role": "referee",
       "status": "pending",
-      "experience": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      "motivation": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
     },
     {
       "id": "3",
       "tournamentId": "0",
       "tournament": "6K Autumn Showdown",
-      "userId": "24",
+      "senderId": "24",
       "role": "mapper",
       "status": "pending",
-      "experience": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      "motivation": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
     },
     {
       "id": "4",
       "tournamentId": "0",
       "tournament": "6K Autumn Showdown",
-      "userId": "0",
+      "senderId": "0",
       "role": "mapper",
       "status": "pending",
-      "experience": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      "motivation": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
     },
     {
       "id": "5",
       "tournamentId": "0",
       "tournament": "6K Autumn Showdown",
-      "userId": "0",
+      "senderId": "0",
       "role": "gfx",
       "status": "accepted",
-      "experience": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      "motivation": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
     },
     {
       "id": "6",
       "tournamentId": "0",
       "tournament": "6K Autumn Showdown",
-      "userId": "0",
+      "senderId": "0",
       "role": "sheeter",
       "status": "rejected",
-      "experience": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      "motivation": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
     }
   ],
   "matches": [
@@ -7089,11 +7082,11 @@
       "id": "0",
       "tournament": "6K Autumn Showdown",
       "tournamentId": "0",
-      "sender": "TheFunk",
       "recipientId": "0",
+      "sender": "TheFunk",
       "role": "commentator",
       "status": "pending",
-      "reason": "Come join my tournament as a commentator because of reasons."
+      "description": "Come join my tournament as a commentator because of reasons."
     }
   ],
   "mapStats": [

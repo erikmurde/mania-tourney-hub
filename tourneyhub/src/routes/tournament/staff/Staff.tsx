@@ -4,10 +4,10 @@ import { UserDto } from '../../../dto/user/UserDto';
 import { AuthService } from '../../../services/authService';
 import { useParams } from 'react-router-dom';
 import StaffGroup from '../../../components/tournament/staff/StaffGroup';
-import { COMMENTATOR, GFX, HOST, MAPPER, MAPPOOLER, PLAYTESTER, REFEREE, SHEETER, STREAMER } from '../../../constants';
+import { ACCEPTED, COMMENTATOR, GFX, HOST, MAPPER, MAPPOOLER, PLAYTESTER, REFEREE, SHEETER, STREAMER } from '../../../constants';
 import { Description, List } from '@mui/icons-material';
 import { StaffApplicationService } from '../../../services/staffApplicationService';
-import { StaffApplicationDto } from '../../../dto/staffApplication/StaffApplicationDto';
+import { StaffApplicationDto } from '../../../dto/staff/StaffApplicationDto';
 import StaffApplicationCard from '../../../components/tournament/staff/StaffApplicationCard';
 import StaffInviteForm from '../../../components/tournament/staff/form/StaffInviteForm';
 import { AuthContext } from '../../Root';
@@ -59,7 +59,7 @@ const Staff = () => {
     const updateApplicationStatus = async(application: StaffApplicationDto, status: string) => {
         application.status = status;
 
-        if (status === 'accepted') {
+        if (status === ACCEPTED) {
             await acceptApplication(application);
         }
         await staffApplicationService
@@ -70,7 +70,7 @@ const Staff = () => {
     }
 
     const acceptApplication = async(application: StaffApplicationDto) => {
-        const newMember = await authService.getUser(application.userId);
+        const newMember = await authService.getUser(application.senderId);
 
         newMember.roles.push({
             tournamentId: id!, 

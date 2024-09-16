@@ -1,4 +1,4 @@
-import { StaffInviteDto } from '../dto/staffInvite/StaffInviteDto';
+import { StaffInviteDto } from '../dto/staff/StaffInviteDto';
 import { BaseEntityService } from './base/baseEntityService';
 
 export class StaffInviteService extends BaseEntityService<StaffInviteDto> {
