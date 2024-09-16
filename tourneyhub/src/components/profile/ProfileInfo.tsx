@@ -9,7 +9,7 @@ const ProfileInfo = ({user}: {user: UserDto}) => {
                 <img
                     className='avatar'
                     src={user.avatar} 
-                    alt={`Profile image of ${user.name}`}
+                    alt={`Profile of ${user.name}`}
                     style={{ borderRadius: 10 }}
                 />
             </Grid>

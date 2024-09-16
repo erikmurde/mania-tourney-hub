@@ -2,19 +2,22 @@ import { Field, FieldArray, Form, Formik } from 'formik';
 import { TeamCreateDto } from '../../../../dto/team/TeamCreateDto';
 import { UserDto } from '../../../../dto/user/UserDto';
 import { Schema } from 'yup';
-import { Button, Grid, IconButton, TextField, Typography } from '@mui/material';
+import { Button, Grid, TextField, Tooltip, Typography } from '@mui/material';
 import PlayerAutocomplete from '../../field/PlayerAutocomplete';
-import { PersonAdd, PersonRemove } from '@mui/icons-material';
+import { Info, PersonAdd, PersonRemove } from '@mui/icons-material';
+import { Fragment } from 'react';
+import { StyledIconButton } from '../../../styled/StyledIconButton';
+import { TournamentDto } from '../../../../dto/tournament/TournamentDto';
 
 interface IProps {
-    maxTeamSize: number,
+    tourney: TournamentDto,
     initialValues: TeamCreateDto,
     selectValues: UserDto[],
     validationShcema: Schema,
     onSubmit: (values: TeamCreateDto) => void
 }
 
-const TeamRegisterFormView = ({maxTeamSize, initialValues, selectValues, validationShcema, onSubmit}: IProps) => {
+const TeamRegisterFormView = ({tourney, initialValues, selectValues, validationShcema, onSubmit}: IProps) => {
 
     const getPlayerError = (error: string | string[] | undefined, index: number): string | undefined => {
         if (index > 0) {
@@ -29,7 +32,10 @@ const TeamRegisterFormView = ({maxTeamSize, initialValues, selectValues, validat
             validationSchema={validationShcema}
             validateOnChange={false}
             validateOnBlur={false}>
-             {({ values, errors }) => (
+             {({ values, errors }) => {
+                const showInfo = tourney.countries.length > 0;
+                const canAddPlayer = values.players.length < tourney.maxTeamSize;
+                return (
                 <Form id='team-register-form'>
                     <Grid container rowSpacing={1.5} columnSpacing={1} marginTop={1} alignItems='center'>
                         <Grid item xs={12}>
@@ -59,10 +65,18 @@ const TeamRegisterFormView = ({maxTeamSize, initialValues, selectValues, validat
                         <FieldArray name='players'>
                         {({ push, remove }) => 
                             <>
-                            <Grid item xs={values.players.length < maxTeamSize ? 6 : 12}>
-                                <Typography>Team composition</Typography>
+                            <Grid item xs={showInfo ? 'auto' : (canAddPlayer ? 6 : 12)}>
+                                <Typography>
+                                    Team composition
+                                </Typography>
                             </Grid>
-                            {values.players.length < maxTeamSize &&
+                            {showInfo && 
+                            <Grid item xs={canAddPlayer ? true : 7}>
+                                <Tooltip title={`Country restrictions: ${tourney.countries.join(', ')}`}>
+                                    <Info color='primary'/>
+                                </Tooltip>
+                            </Grid>}
+                            {canAddPlayer &&
                             <Grid item xs={6} textAlign='end'>
                                 <Button color='success' startIcon={<PersonAdd/>} onClick={() => push('')}>
                                     Add player
@@ -70,7 +84,8 @@ const TeamRegisterFormView = ({maxTeamSize, initialValues, selectValues, validat
                             </Grid>}
                             {values.players.map((_, index) => {
                                 const error = getPlayerError(errors.players, index);
-                                return <>
+                                return (
+                                <Fragment key={index}>
                                 <Grid item xs={6}>
                                     <Field component={PlayerAutocomplete}
                                         name={`players[${index}]`}
@@ -81,16 +96,17 @@ const TeamRegisterFormView = ({maxTeamSize, initialValues, selectValues, validat
                                 </Grid>
                                 <Grid item xs={6} marginBottom={error ? 2.5 : 0}>
                                     {index > 0 &&
-                                    <IconButton color='error' onClick={() => remove(index)}>
+                                    <StyledIconButton color='error' onClick={() => remove(index)}>
                                         <PersonRemove/>
-                                    </IconButton>}
+                                    </StyledIconButton>}
                                 </Grid>
-                                </>})}
+                                </Fragment>)
+                            })}
                             </>
                         }
                         </FieldArray>
                     </Grid>
-                </Form>)}
+                </Form>)}}
         </Formik>
     );
 }

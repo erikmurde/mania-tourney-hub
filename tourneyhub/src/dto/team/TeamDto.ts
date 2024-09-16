@@ -7,7 +7,7 @@ export interface TeamDto {
     logo: string,
     status: string,
     availability: string,
-    seeding: number,
+    seed: number,
     placement: number,
     players: TeamPlayerDto[]
 }

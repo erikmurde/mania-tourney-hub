@@ -14,11 +14,6 @@
       "avatar": "https://a.ppy.sh/16819909",
       "roles": [
         {
-          "tournamentId": "lr_cc0V",
-          "name": "host",
-          "canRegWithRole": false
-        },
-        {
           "tournamentId": "0",
           "name": "host",
           "canRegWithRole": false
@@ -31,6 +26,11 @@
         {
           "tournamentId": "0",
           "name": "player",
+          "canRegWithRole": false
+        },
+        {
+          "tournamentId": "lr_cc0V",
+          "name": "host",
           "canRegWithRole": false
         }
       ],
@@ -73,8 +73,7 @@
           "canRegWithRole": false
         }
       ],
-      "stats": [],
-      "isCaptain": false
+      "stats": []
     },
     {
       "id": "3",
@@ -146,8 +145,7 @@
           "canRegWithRole": false
         }
       ],
-      "stats": [],
-      "isCaptain": false
+      "stats": []
     },
     {
       "id": "5",
@@ -215,8 +213,7 @@
           "canRegWithRole": false
         }
       ],
-      "stats": [],
-      "isCaptain": false
+      "stats": []
     },
     {
       "id": "8",
@@ -242,8 +239,7 @@
           "canRegWithRole": false
         }
       ],
-      "stats": [],
-      "isCaptain": false
+      "stats": []
     },
     {
       "id": "9",
@@ -269,8 +265,7 @@
           "canRegWithRole": false
         }
       ],
-      "stats": [],
-      "isCaptain": false
+      "stats": []
     },
     {
       "id": "10",
@@ -506,8 +501,7 @@
           "canRegWithRole": false
         }
       ],
-      "stats": [],
-      "isCaptain": false
+      "stats": []
     },
     {
       "id": "21",
@@ -1302,7 +1296,7 @@
         {
           "tournamentId": "0",
           "status": "active",
-          "seeding": 1,
+          "seed": 1,
           "placement": 0
         }
       ]
@@ -1330,7 +1324,7 @@
         {
           "tournamentId": "0",
           "status": "active",
-          "seeding": 2,
+          "seed": 2,
           "placement": 0
         }
       ]
@@ -1358,7 +1352,7 @@
         {
           "tournamentId": "0",
           "status": "active",
-          "seeding": 3,
+          "seed": 3,
           "placement": 0
         }
       ]
@@ -1386,7 +1380,7 @@
         {
           "tournamentId": "0",
           "status": "active",
-          "seeding": 4,
+          "seed": 4,
           "placement": 0
         }
       ]
@@ -1414,7 +1408,7 @@
         {
           "tournamentId": "0",
           "status": "disqualified",
-          "seeding": 5,
+          "seed": 5,
           "placement": 0
         }
       ]
@@ -1442,7 +1436,7 @@
         {
           "tournamentId": "0",
           "status": "active",
-          "seeding": 6,
+          "seed": 6,
           "placement": 0
         }
       ]
@@ -1470,7 +1464,7 @@
         {
           "tournamentId": "0",
           "status": "eliminated",
-          "seeding": 7,
+          "seed": 7,
           "placement": 31
         }
       ]
@@ -1498,7 +1492,7 @@
         {
           "tournamentId": "0",
           "status": "active",
-          "seeding": 8,
+          "seed": 8,
           "placement": 0
         }
       ]
@@ -1526,7 +1520,7 @@
         {
           "tournamentId": "0",
           "status": "active",
-          "seeding": 9,
+          "seed": 9,
           "placement": 0
         }
       ]
@@ -1554,7 +1548,7 @@
         {
           "tournamentId": "0",
           "status": "active",
-          "seeding": 10,
+          "seed": 10,
           "placement": 0
         }
       ]
@@ -1582,7 +1576,7 @@
         {
           "tournamentId": "0",
           "status": "active",
-          "seeding": 12,
+          "seed": 12,
           "placement": 0
         }
       ]
@@ -1610,7 +1604,7 @@
         {
           "tournamentId": "0",
           "status": "active",
-          "seeding": 13,
+          "seed": 13,
           "placement": 0
         }
       ]
@@ -1638,7 +1632,7 @@
         {
           "tournamentId": "0",
           "status": "active",
-          "seeding": 14,
+          "seed": 14,
           "placement": 0
         }
       ]
@@ -1666,7 +1660,7 @@
         {
           "tournamentId": "0",
           "status": "eliminated",
-          "seeding": 15,
+          "seed": 15,
           "placement": 29
         }
       ]
@@ -1694,7 +1688,7 @@
         {
           "tournamentId": "0",
           "status": "active",
-          "seeding": 16,
+          "seed": 16,
           "placement": 0
         }
       ]
@@ -1722,7 +1716,7 @@
         {
           "tournamentId": "0",
           "status": "active",
-          "seeding": 17,
+          "seed": 17,
           "placement": 0
         }
       ]
@@ -1750,7 +1744,7 @@
         {
           "tournamentId": "0",
           "status": "active",
-          "seeding": 18,
+          "seed": 18,
           "placement": 0
         }
       ]
@@ -1778,7 +1772,7 @@
         {
           "tournamentId": "0",
           "status": "active",
-          "seeding": 19,
+          "seed": 19,
           "placement": 0
         }
       ]
@@ -1806,7 +1800,7 @@
         {
           "tournamentId": "0",
           "status": "active",
-          "seeding": 20,
+          "seed": 20,
           "placement": 0
         }
       ]
@@ -1834,7 +1828,7 @@
         {
           "tournamentId": "0",
           "status": "active",
-          "seeding": 21,
+          "seed": 21,
           "placement": 0
         }
       ]
@@ -1862,7 +1856,7 @@
         {
           "tournamentId": "0",
           "status": "active",
-          "seeding": 22,
+          "seed": 22,
           "placement": 0
         }
       ]
@@ -1890,7 +1884,7 @@
         {
           "tournamentId": "0",
           "status": "active",
-          "seeding": 23,
+          "seed": 23,
           "placement": 0
         }
       ]
@@ -1918,7 +1912,7 @@
         {
           "tournamentId": "0",
           "status": "active",
-          "seeding": 24,
+          "seed": 24,
           "placement": 0
         }
       ]
@@ -1946,7 +1940,7 @@
         {
           "tournamentId": "0",
           "status": "active",
-          "seeding": 25,
+          "seed": 25,
           "placement": 0
         }
       ]
@@ -1974,7 +1968,7 @@
         {
           "tournamentId": "0",
           "status": "eliminated",
-          "seeding": 26,
+          "seed": 26,
           "placement": 30
         }
       ]
@@ -2002,7 +1996,7 @@
         {
           "tournamentId": "0",
           "status": "active",
-          "seeding": 27,
+          "seed": 27,
           "placement": 0
         }
       ]
@@ -2030,7 +2024,7 @@
         {
           "tournamentId": "0",
           "status": "active",
-          "seeding": 28,
+          "seed": 28,
           "placement": 0
         }
       ]
@@ -2058,7 +2052,7 @@
         {
           "tournamentId": "0",
           "status": "active",
-          "seeding": 29,
+          "seed": 29,
           "placement": 0
         }
       ]
@@ -2086,7 +2080,7 @@
         {
           "tournamentId": "0",
           "status": "active",
-          "seeding": 30,
+          "seed": 30,
           "placement": 0
         }
       ]
@@ -2114,7 +2108,7 @@
         {
           "tournamentId": "0",
           "status": "active",
-          "seeding": 31,
+          "seed": 31,
           "placement": 0
         }
       ]
@@ -2142,7 +2136,7 @@
         {
           "tournamentId": "0",
           "status": "active",
-          "seeding": 32,
+          "seed": 32,
           "placement": 0
         }
       ]
@@ -2170,7 +2164,7 @@
         {
           "tournamentId": "1",
           "status": "active",
-          "seeding": 0,
+          "seed": 0,
           "placement": 0
         }
       ]
@@ -2198,7 +2192,7 @@
         {
           "tournamentId": "1",
           "status": "active",
-          "seeding": 0,
+          "seed": 0,
           "placement": 0
         }
       ]
@@ -2226,7 +2220,7 @@
         {
           "tournamentId": "1",
           "status": "active",
-          "seeding": 0,
+          "seed": 0,
           "placement": 0
         }
       ]
@@ -2254,7 +2248,7 @@
         {
           "tournamentId": "1",
           "status": "active",
-          "seeding": 0,
+          "seed": 0,
           "placement": 0
         }
       ]
@@ -2282,7 +2276,7 @@
         {
           "tournamentId": "1",
           "status": "active",
-          "seeding": 0,
+          "seed": 0,
           "placement": 0
         }
       ]
@@ -2310,7 +2304,7 @@
         {
           "tournamentId": "1",
           "status": "active",
-          "seeding": 0,
+          "seed": 0,
           "placement": 0
         }
       ]
@@ -2338,7 +2332,7 @@
         {
           "tournamentId": "1",
           "status": "active",
-          "seeding": 0,
+          "seed": 0,
           "placement": 0
         }
       ]
@@ -2366,7 +2360,7 @@
         {
           "tournamentId": "1",
           "status": "active",
-          "seeding": 0,
+          "seed": 0,
           "placement": 0
         }
       ]
@@ -2394,7 +2388,7 @@
         {
           "tournamentId": "1",
           "status": "active",
-          "seeding": 0,
+          "seed": 0,
           "placement": 0
         }
       ]
@@ -2422,7 +2416,7 @@
         {
           "tournamentId": "1",
           "status": "active",
-          "seeding": 0,
+          "seed": 0,
           "placement": 0
         }
       ]
@@ -2450,7 +2444,7 @@
         {
           "tournamentId": "1",
           "status": "active",
-          "seeding": 0,
+          "seed": 0,
           "placement": 0
         }
       ]
@@ -2478,7 +2472,7 @@
         {
           "tournamentId": "1",
           "status": "active",
-          "seeding": 0,
+          "seed": 0,
           "placement": 0
         }
       ]
@@ -2506,7 +2500,7 @@
         {
           "tournamentId": "1",
           "status": "active",
-          "seeding": 0,
+          "seed": 0,
           "placement": 0
         }
       ]
@@ -2534,7 +2528,7 @@
         {
           "tournamentId": "1",
           "status": "active",
-          "seeding": 0,
+          "seed": 0,
           "placement": 0
         }
       ]
@@ -2562,7 +2556,7 @@
         {
           "tournamentId": "1",
           "status": "active",
-          "seeding": 0,
+          "seed": 0,
           "placement": 0
         }
       ]
@@ -2590,7 +2584,7 @@
         {
           "tournamentId": "1",
           "status": "active",
-          "seeding": 0,
+          "seed": 0,
           "placement": 0
         }
       ]
@@ -2618,7 +2612,7 @@
         {
           "tournamentId": "1",
           "status": "active",
-          "seeding": 0,
+          "seed": 0,
           "placement": 0
         }
       ]
@@ -2646,7 +2640,7 @@
         {
           "tournamentId": "1",
           "status": "active",
-          "seeding": 0,
+          "seed": 0,
           "placement": 0
         }
       ]
@@ -2674,7 +2668,7 @@
         {
           "tournamentId": "1",
           "status": "active",
-          "seeding": 0,
+          "seed": 0,
           "placement": 0
         }
       ]
@@ -2702,7 +2696,7 @@
         {
           "tournamentId": "1",
           "status": "active",
-          "seeding": 0,
+          "seed": 0,
           "placement": 0
         }
       ]
@@ -2730,7 +2724,7 @@
         {
           "tournamentId": "1",
           "status": "active",
-          "seeding": 0,
+          "seed": 0,
           "placement": 0
         }
       ]
@@ -2758,7 +2752,7 @@
         {
           "tournamentId": "1",
           "status": "active",
-          "seeding": 0,
+          "seed": 0,
           "placement": 0
         }
       ]
@@ -2786,7 +2780,7 @@
         {
           "tournamentId": "1",
           "status": "active",
-          "seeding": 0,
+          "seed": 0,
           "placement": 0
         }
       ]
@@ -2814,7 +2808,7 @@
         {
           "tournamentId": "1",
           "status": "active",
-          "seeding": 0,
+          "seed": 0,
           "placement": 0
         }
       ]
@@ -2842,7 +2836,7 @@
         {
           "tournamentId": "1",
           "status": "active",
-          "seeding": 0,
+          "seed": 0,
           "placement": 0
         }
       ]
@@ -2870,7 +2864,7 @@
         {
           "tournamentId": "1",
           "status": "active",
-          "seeding": 0,
+          "seed": 0,
           "placement": 0
         }
       ]
@@ -2898,7 +2892,7 @@
         {
           "tournamentId": "1",
           "status": "active",
-          "seeding": 0,
+          "seed": 0,
           "placement": 0
         }
       ]
@@ -2926,7 +2920,7 @@
         {
           "tournamentId": "1",
           "status": "active",
-          "seeding": 0,
+          "seed": 0,
           "placement": 0
         }
       ]
@@ -2954,7 +2948,7 @@
         {
           "tournamentId": "1",
           "status": "active",
-          "seeding": 0,
+          "seed": 0,
           "placement": 0
         }
       ]
@@ -2982,7 +2976,7 @@
         {
           "tournamentId": "1",
           "status": "active",
-          "seeding": 0,
+          "seed": 0,
           "placement": 0
         }
       ]
@@ -3010,7 +3004,7 @@
         {
           "tournamentId": "1",
           "status": "active",
-          "seeding": 0,
+          "seed": 0,
           "placement": 0
         }
       ]
@@ -3038,7 +3032,7 @@
         {
           "tournamentId": "1",
           "status": "active",
-          "seeding": 0,
+          "seed": 0,
           "placement": 0
         }
       ]
@@ -3066,7 +3060,7 @@
         {
           "tournamentId": "1",
           "status": "active",
-          "seeding": 0,
+          "seed": 0,
           "placement": 0
         }
       ]
@@ -3094,7 +3088,7 @@
         {
           "tournamentId": "1",
           "status": "active",
-          "seeding": 0,
+          "seed": 0,
           "placement": 0
         }
       ]
@@ -3122,7 +3116,7 @@
         {
           "tournamentId": "1",
           "status": "active",
-          "seeding": 0,
+          "seed": 0,
           "placement": 0
         }
       ]
@@ -3150,7 +3144,7 @@
         {
           "tournamentId": "1",
           "status": "active",
-          "seeding": 0,
+          "seed": 0,
           "placement": 0
         }
       ]
@@ -3164,7 +3158,7 @@
       "logo": "https://assets.ppy.sh/old-flags/US.png",
       "status": "eliminated",
       "availability": "We are available whenever.",
-      "seeding": 2,
+      "seed": 2,
       "placement": 6,
       "players": [
         {
@@ -3308,7 +3302,7 @@
       "logo": "https://assets.ppy.sh/old-flags/JP.png",
       "status": "active",
       "availability": "We are available whenever.",
-      "seeding": 3,
+      "seed": 3,
       "placement": 0,
       "players": [
         {
@@ -3452,7 +3446,7 @@
       "logo": "https://assets.ppy.sh/old-flags/ID.png",
       "status": "active",
       "availability": "We are available whenever.",
-      "seeding": 6,
+      "seed": 6,
       "placement": 0,
       "players": [
         {
@@ -3596,7 +3590,7 @@
       "logo": "https://assets.ppy.sh/old-flags/FR.png",
       "status": "active",
       "availability": "We are available whenever.",
-      "seeding": 18,
+      "seed": 18,
       "placement": 0,
       "players": [
         {
@@ -3740,7 +3734,7 @@
       "logo": "https://assets.ppy.sh/old-flags/NL.png",
       "status": "active",
       "availability": "We are available whenever.",
-      "seeding": 24,
+      "seed": 24,
       "placement": 0,
       "players": [
         {
@@ -3884,7 +3878,7 @@
       "logo": "https://assets.ppy.sh/old-flags/DE.png",
       "status": "active",
       "availability": "We are available whenever.",
-      "seeding": 26,
+      "seed": 26,
       "placement": 0,
       "players": [
         {
@@ -4441,10 +4435,10 @@
             "attributes": {
               "bold": true
             },
-            "insert": "The Seeding Calculation"
+            "insert": "The seed Calculation"
           },
           {
-            "insert": " will start after Qualifiers concluded. If you played the Qualifiers twice, the higher score for each map will be taken. \nThis will determine the player's seed and decide whether they will proceed on to the next stage.\nEach player's seed is determined by how well they perform at each map. The 8 maps will be averaged out and any players that performed well for all of the maps \nwill get a higher seeding. Only the Top 64 seed will proceed on to the bracket stage, while the lower seeds will be eliminated.\n\n"
+            "insert": " will start after Qualifiers concluded. If you played the Qualifiers twice, the higher score for each map will be taken. \nThis will determine the player's seed and decide whether they will proceed on to the next stage.\nEach player's seed is determined by how well they perform at each map. The 8 maps will be averaged out and any players that performed well for all of the maps \nwill get a higher seed. Only the Top 64 seed will proceed on to the bracket stage, while the lower seeds will be eliminated.\n\n"
           },
           {
             "attributes": {
@@ -4628,28 +4622,31 @@
       "code": "TEST",
       "description": "This is just a test tournament for testing functionality :)",
       "banner": "https://static.vecteezy.com/system/resources/previews/024/388/059/large_2x/space-wallpaper-banner-background-stunning-view-of-a-cosmic-galaxy-with-planets-and-space-objects-elements-of-this-image-furnished-by-nasa-generate-ai-free-photo.jpg",
-      "public": false,
+      "public": true,
       "participantsPublic": true,
       "done": false,
       "keys": 4,
-      "minTeamSize": 1,
-      "maxTeamSize": 1,
+      "minTeamSize": 2,
+      "maxTeamSize": 2,
       "minPlayerRank": 0,
       "maxPlayerRank": 0,
       "protects": false,
       "warmups": true,
-      "regOpen": false,
+      "regOpen": true,
       "applicationOpen": false,
-      "regDeadline": null,
+      "regDeadline": "2024-09-25T21:00:00.000Z",
       "applicationDeadline": "2024-10-22T21:00:00.000Z",
       "links": [
         {
-          "name": "discord",
+          "name": "youtube",
           "link": "https://www.youtube.com"
         }
       ],
       "countries": [
-        "Estonia"
+        "Germany",
+        "Denmark",
+        "Estonia",
+        "France"
       ],
       "information": {},
       "regMessage": "This is a test register message. If you see this then it's working."
@@ -6323,7 +6320,7 @@
         "logo": "https://assets.ppy.sh/old-flags/JP.png",
         "status": "active",
         "availability": "We are available whenever.",
-        "seeding": 3,
+        "seed": 3,
         "placement": 0,
         "players": [
           {
@@ -6349,7 +6346,7 @@
               {
                 "tournamentId": "1",
                 "status": "active",
-                "seeding": 0,
+                "seed": 0,
                 "placement": 0
               }
             ],
@@ -6378,7 +6375,7 @@
               {
                 "tournamentId": "1",
                 "status": "active",
-                "seeding": 0,
+                "seed": 0,
                 "placement": 0
               }
             ],
@@ -6407,7 +6404,7 @@
               {
                 "tournamentId": "1",
                 "status": "active",
-                "seeding": 0,
+                "seed": 0,
                 "placement": 0
               }
             ],
@@ -6436,7 +6433,7 @@
               {
                 "tournamentId": "1",
                 "status": "active",
-                "seeding": 0,
+                "seed": 0,
                 "placement": 0
               }
             ],
@@ -6465,7 +6462,7 @@
               {
                 "tournamentId": "1",
                 "status": "active",
-                "seeding": 0,
+                "seed": 0,
                 "placement": 0
               }
             ],
@@ -6494,7 +6491,7 @@
               {
                 "tournamentId": "1",
                 "status": "active",
-                "seeding": 0,
+                "seed": 0,
                 "placement": 0
               }
             ],
@@ -6509,7 +6506,7 @@
         "logo": "https://assets.ppy.sh/old-flags/FR.png",
         "status": "active",
         "availability": "We are available whenever.",
-        "seeding": 18,
+        "seed": 18,
         "placement": 0,
         "players": [
           {
@@ -6535,7 +6532,7 @@
               {
                 "tournamentId": "1",
                 "status": "active",
-                "seeding": 0,
+                "seed": 0,
                 "placement": 0
               }
             ],
@@ -6564,7 +6561,7 @@
               {
                 "tournamentId": "1",
                 "status": "active",
-                "seeding": 0,
+                "seed": 0,
                 "placement": 0
               }
             ],
@@ -6593,7 +6590,7 @@
               {
                 "tournamentId": "1",
                 "status": "active",
-                "seeding": 0,
+                "seed": 0,
                 "placement": 0
               }
             ],
@@ -6622,7 +6619,7 @@
               {
                 "tournamentId": "1",
                 "status": "active",
-                "seeding": 0,
+                "seed": 0,
                 "placement": 0
               }
             ],
@@ -6651,7 +6648,7 @@
               {
                 "tournamentId": "1",
                 "status": "active",
-                "seeding": 0,
+                "seed": 0,
                 "placement": 0
               }
             ],
@@ -6680,7 +6677,7 @@
               {
                 "tournamentId": "1",
                 "status": "active",
-                "seeding": 0,
+                "seed": 0,
                 "placement": 0
               }
             ],

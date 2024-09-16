@@ -3,6 +3,7 @@ import { Grid, Typography, Button, TextField, IconButton } from '@mui/material';
 import { FieldArray, FormikErrors, FastField } from 'formik';
 import { TourneyLinkDto } from '../../../../dto/TourneyLinkDto';
 import { TournamentEdit } from '../../../../domain/TournamentEdit';
+import { Fragment } from 'react';
 
 interface IProps {
     links: TourneyLinkDto[],
@@ -29,7 +30,8 @@ const TourneyLinks = ({links, errors}: IProps) => {
             </Grid>
             {links.map((_, index) => {
                 const error = errors.links?.[index] as FormikErrors<TourneyLinkDto> | undefined;
-                return <>
+                return (
+                <Fragment key={index}>
                 <Grid item xs={4}>  
                     <FastField as={TextField} name={`links[${index}].name`} label='Name'
                         fullWidth
@@ -47,7 +49,7 @@ const TourneyLinks = ({links, errors}: IProps) => {
                         <Delete/>
                     </IconButton>
                 </Grid>
-                </>
+                </Fragment>)
             })}
             </>
         }

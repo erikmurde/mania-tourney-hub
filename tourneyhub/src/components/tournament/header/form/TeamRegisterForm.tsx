@@ -9,6 +9,7 @@ import { TournamentDto } from '../../../../dto/tournament/TournamentDto';
 import { TeamDto } from '../../../../dto/team/TeamDto';
 import { INVALID_URL, REQUIRED, URL_REGEX } from '../../../../constants';
 import { TeamService } from '../../../../services/teamService';
+import { TeamPlayerDto } from '../../../../dto/team/TeamPlayerDto';
 
 interface IProps {
     user: UserDto,
@@ -43,13 +44,14 @@ const TeamRegisterForm = ({user, tourney, openSuccess}: IProps) => {
         return roles.every(role => role.canRegWithRole);
     }
 
-    const registerPlayer = async(player: UserDto) => {
+    const registerPlayer = async(player: TeamPlayerDto) => {
         player.roles.push({
             tournamentId: tourney.id, 
             name: 'player', 
             canRegWithRole: false
         });
-        await authService.edit(player.id, player);
+        const { isCaptain: _, ...user } = player;
+        await authService.edit(player.id, user);
     }
 
     const registerTeam = async(values: TeamCreateDto) => {
@@ -77,7 +79,7 @@ const TeamRegisterForm = ({user, tourney, openSuccess}: IProps) => {
         logo: '',
         status: 'registered',
         availability: '',
-        seeding: 0,
+        seed: 0,
         placement: 0,
         players: [user.name]
     };
@@ -118,9 +120,13 @@ const TeamRegisterForm = ({user, tourney, openSuccess}: IProps) => {
             formName='team-register-form' 
             form={
                 <TeamRegisterFormView
-                    maxTeamSize={tourney.maxTeamSize}
+                    tourney={tourney}
                     initialValues={initialValues} 
-                    selectValues={players} 
+                    selectValues={
+                        tourney.countries.length > 0 
+                        ? players.filter(player => tourney.countries.includes(player.country.name)) 
+                        : players
+                    }
                     validationShcema={validationSchema} 
                     onSubmit={registerTeam}/>
             } 

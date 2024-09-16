@@ -1,8 +1,7 @@
 import { Card, Grid, Typography, useTheme } from '@mui/material';
 import { TeamDto } from '../../../dto/team/TeamDto';
 import { StyledCardContent } from '../../styled/StyledCardContent';
-import { Edit, GroupRemove } from '@mui/icons-material';
-import { StyledIconButton } from '../../styled/StyledIconButton';
+import { GroupRemove } from '@mui/icons-material';
 import { useContext } from 'react';
 import { AuthContext } from '../../../routes/Root';
 import { useParams } from 'react-router-dom';
@@ -53,7 +52,7 @@ const TeamCard = ({teamsPublic, team, eliminateTeam}: IProps) => {
                     </Grid>
                     <Grid item xs='auto'>
                         <Typography>
-                            Seed {team.seeding}
+                            {team.seed > 0 ? `Seed ${team.seed}` : ''}
                         </Typography>
                     </Grid>
                     {isValid &&

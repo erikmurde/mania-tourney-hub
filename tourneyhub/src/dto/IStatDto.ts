@@ -1,6 +1,6 @@
 export interface IStatDto {
     tournamentId: string,
     status: string,
-    seeding: number,
+    seed: number,
     placement: number
 }

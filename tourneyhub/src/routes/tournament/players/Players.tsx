@@ -75,7 +75,7 @@ const Players = () => {
                     <PlayerList 
                         playersPublic={tourney.participantsPublic}
                         players={players.sort((a, b) => 
-                            a.stats[0].seeding - b.stats[0].seeding
+                            a.stats[0].seed - b.stats[0].seed
                         )}
                         setPlayers={setPlayers}/>
                 </Grid>

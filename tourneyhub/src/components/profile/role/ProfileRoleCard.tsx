@@ -63,7 +63,7 @@ const ProfileRoleCard = ({tournamentId, userId, roles, stats}: IProps) => {
                 <PlayerRoles 
                     tourneyDone={tourney.done} 
                     teamName={userTeam?.name}
-                    seeding={userTeam ? userTeam.seeding : stats.seeding} 
+                    seeding={userTeam ? userTeam.seed : stats.seed} 
                     placement={userTeam ? userTeam.placement : stats.placement}/>
             </StyledCardContent>
         </Card>

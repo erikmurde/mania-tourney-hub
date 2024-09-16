@@ -54,7 +54,7 @@ const HeaderButtons = ({tourney, updateTourney}: IProps) => {
         user.stats.push({
             tournamentId: tourney.id,
             status: 'registered',
-            seeding: 0,
+            seed: 0,
             placement: 0
         });
         await authService.edit(user.id, user);
