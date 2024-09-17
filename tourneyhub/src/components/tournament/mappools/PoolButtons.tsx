@@ -38,6 +38,7 @@ const PoolButtons = ({stage, mappool, manage, setManage}: IProps) => {
         .isHost(user, id);
         
     const canManage = user && user.roles
+        .filter(role => role.tournamentId === id)
         .some(role => [HOST, ADMIN, MAPPER, MAPPOOLER, PLAYTESTER].includes(role.name));
 
     return (
