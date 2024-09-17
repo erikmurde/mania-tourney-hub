@@ -10,6 +10,7 @@ import { TeamDto } from '../../../../dto/team/TeamDto';
 import { INVALID_URL, REQUIRED, URL_REGEX } from '../../../../constants';
 import { TeamService } from '../../../../services/teamService';
 import { TeamPlayerDto } from '../../../../dto/team/TeamPlayerDto';
+import { TournamentService } from '../../../../services/tournamentService';
 
 interface IProps {
     user: UserDto,
@@ -24,6 +25,7 @@ const TeamRegisterForm = ({user, tourney, openSuccess}: IProps) => {
 
     const authService = new AuthService();
     const teamService = new TeamService();
+    const tourneyService = new TournamentService();
 
     useEffect(() => {
         if (!open) {
@@ -31,7 +33,9 @@ const TeamRegisterForm = ({user, tourney, openSuccess}: IProps) => {
         }
         authService
             .getAll()
-            .then(players => setPlayers(players));
+            .then(players => setPlayers(
+                players.filter(player => tourneyService.isValidUser(player, tourney))
+            ));
         teamService
             .getSimpleTeams(tourney.id)
             .then(teams => setTeams(teams));
@@ -122,11 +126,7 @@ const TeamRegisterForm = ({user, tourney, openSuccess}: IProps) => {
                 <TeamRegisterFormView
                     tourney={tourney}
                     initialValues={initialValues} 
-                    selectValues={
-                        tourney.countries.length > 0 
-                        ? players.filter(player => tourney.countries.includes(player.country.name)) 
-                        : players
-                    }
+                    selectValues={players}
                     validationShcema={validationSchema} 
                     onSubmit={registerTeam}/>
             } 

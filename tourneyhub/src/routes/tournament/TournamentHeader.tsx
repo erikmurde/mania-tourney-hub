@@ -12,7 +12,7 @@ export function useTourney() {
 }
 
 const TournamentHeader = () => {
-    const [tourney, setTourney] = useState({} as TournamentDto);
+    const [tourney, setTourney] = useState(null as TournamentDto | null);
     const [tourneyUpdate, setTourneyUpdate] = useState(0);
     const { id } = useParams();
 
@@ -27,6 +27,10 @@ const TournamentHeader = () => {
 
     const updateTourney = () => {
         setTourneyUpdate(tourneyUpdate + 1);
+    }
+
+    if (!tourney) {
+        return <></>;
     }
 
     return (

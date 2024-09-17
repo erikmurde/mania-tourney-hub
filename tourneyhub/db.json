@@ -29,7 +29,7 @@
           "canRegWithRole": false
         },
         {
-          "tournamentId": "lr_cc0V",
+          "tournamentId": "lr_cc0V_test",
           "name": "host",
           "canRegWithRole": false
         }
@@ -4628,8 +4628,8 @@
       "keys": 4,
       "minTeamSize": 2,
       "maxTeamSize": 2,
-      "minPlayerRank": 0,
-      "maxPlayerRank": 0,
+      "minPlayerRank": 10,
+      "maxPlayerRank": 1000,
       "protects": false,
       "warmups": true,
       "regOpen": true,
@@ -4643,9 +4643,10 @@
         }
       ],
       "countries": [
+        "Indonesia",
+        "Estonia",
         "Germany",
         "Denmark",
-        "Estonia",
         "France"
       ],
       "information": {},

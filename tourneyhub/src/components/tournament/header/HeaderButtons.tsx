@@ -14,6 +14,7 @@ import SuccessDialog from '../dialog/SuccessDialog';
 import { TournamentService } from '../../../services/tournamentService';
 import TeamRegisterForm from './form/TeamRegisterForm';
 import LinkMenu from './LinkMenu';
+import { UserDto } from '../../../dto/user/UserDto';
 
 interface IProps {
     tourney: TournamentDto,
@@ -37,7 +38,7 @@ const HeaderButtons = ({tourney, updateTourney}: IProps) => {
                 .getPlayers(tourney.id)
                 .then(players => {
                     setCanMakePrivate(players.length === 0);
-                    setIsRegistered(players.some(player => player.name === user.name));
+                    setIsRegistered(players.some(player => player.id === user.id));
                 })
         }
     }, [tourney, user]);
@@ -76,16 +77,24 @@ const HeaderButtons = ({tourney, updateTourney}: IProps) => {
         await tourneyService.edit(tourney.id, tourney);
         updateTourney();
     }
+
+    const getRoles = (user: UserDto) => user.roles.filter(role => role.tournamentId === id);
+
+    const canRegister = (user: UserDto) => {
+        const validUser = tourneyService.isValidUser(user, tourney);
+        const validRoles = getRoles(user).every(role => role.canRegWithRole);
+
+        return !isRegistered && validUser && validRoles;
+    };
     
-    const roles = user ? user.roles.filter(role => role.tournamentId === id) : [];
-    const isHost = user && roles.some(role => role.tournamentId === id && role.name === HOST);
+    const isHost = user && getRoles(user).some(role => role.name === HOST);
 
     return (
         <>
         <Grid container columnSpacing={1} height={56} justifyContent='center'>
-            {user && roles.every(role => role.canRegWithRole) && !isRegistered &&
+            {user && canRegister(user) &&
             <Grid item>
-                {tourney.minTeamSize > 1 
+                {tourney.minTeamSize > 1
                 ?   <TeamRegisterForm 
                         user={user} 
                         tourney={tourney} 
@@ -118,7 +127,7 @@ const HeaderButtons = ({tourney, updateTourney}: IProps) => {
             <Grid item>
                 <TournamentPublishForm tourney={tourney} updateTourney={updateTourney}/>
             </Grid>}
-            {tourney.public && canMakePrivate &&
+            {isHost && tourney.public && canMakePrivate &&
             <Grid item>
                 <ConfirmationDialog 
                     title='Are you sure you wish to make this tournament private?'

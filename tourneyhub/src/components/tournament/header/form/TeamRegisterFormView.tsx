@@ -2,12 +2,13 @@ import { Field, FieldArray, Form, Formik } from 'formik';
 import { TeamCreateDto } from '../../../../dto/team/TeamCreateDto';
 import { UserDto } from '../../../../dto/user/UserDto';
 import { Schema } from 'yup';
-import { Button, Grid, TextField, Tooltip, Typography } from '@mui/material';
+import { Button, Grid, TextField, Typography } from '@mui/material';
 import PlayerAutocomplete from '../../field/PlayerAutocomplete';
-import { Info, PersonAdd, PersonRemove } from '@mui/icons-material';
+import { PersonAdd, PersonRemove } from '@mui/icons-material';
 import { Fragment } from 'react';
 import { StyledIconButton } from '../../../styled/StyledIconButton';
 import { TournamentDto } from '../../../../dto/tournament/TournamentDto';
+import TeamTooltip from './TeamTooltip';
 
 interface IProps {
     tourney: TournamentDto,
@@ -33,8 +34,9 @@ const TeamRegisterFormView = ({tourney, initialValues, selectValues, validationS
             validateOnChange={false}
             validateOnBlur={false}>
              {({ values, errors }) => {
-                const showInfo = tourney.countries.length > 0;
+                const showInfo = tourney.countries.length > 0 || tourney.minPlayerRank > 0 || tourney.maxPlayerRank > 0;
                 const canAddPlayer = values.players.length < tourney.maxTeamSize;
+    
                 return (
                 <Form id='team-register-form'>
                     <Grid container rowSpacing={1.5} columnSpacing={1} marginTop={1} alignItems='center'>
@@ -72,9 +74,7 @@ const TeamRegisterFormView = ({tourney, initialValues, selectValues, validationS
                             </Grid>
                             {showInfo && 
                             <Grid item xs={canAddPlayer ? true : 7}>
-                                <Tooltip title={`Country restrictions: ${tourney.countries.join(', ')}`}>
-                                    <Info color='primary'/>
-                                </Tooltip>
+                                <TeamTooltip tourney={tourney}/>
                             </Grid>}
                             {canAddPlayer &&
                             <Grid item xs={6} textAlign='end'>
