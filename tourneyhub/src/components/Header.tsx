@@ -40,7 +40,9 @@ const Header = () => {
                 <Box flexGrow={1}></Box>
                 <Box>
                     {user 
-                    ?   <IconButton onClick={(e) => setAnchorEl(e.currentTarget)}>
+                    ?   <IconButton 
+                            sx={{ height: 'auto' }}
+                            onClick={(e) => setAnchorEl(e.currentTarget)}>
                             <Avatar sx={{ height: 50, width: 50 }}
                                 alt='User profile'
                                 src={user.avatar}/>
