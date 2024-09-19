@@ -17,6 +17,9 @@ public class TournamentRole extends BaseEntity {
     private Long tournamentId;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    private Tournament tournament;
+
+    @ManyToOne(fetch = FetchType.LAZY)
     private AppUser appUser;
 
     @ManyToOne
