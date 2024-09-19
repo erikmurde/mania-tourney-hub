@@ -263,3 +263,98 @@ INSERT INTO country (name, iso2) VALUES ('Mayotte', 'YT');
 INSERT INTO country (name, iso2) VALUES ('South Africa', 'ZA');
 INSERT INTO country (name, iso2) VALUES ('Zambia', 'ZM');
 INSERT INTO country (name, iso2) VALUES ('Zimbabwe', 'ZW');
+
+INSERT INTO app_user (name, player_id, rank, discord_username, timezone, avatar, country_id)
+VALUES ('Arcaxio', 16819909, 109, 'arcaxio_', 2, 'https://a.ppy.sh/16819909', 58);
+
+INSERT INTO app_user (name, player_id, rank, discord_username, timezone, avatar, country_id)
+VALUES ('SunApple', 11817622, 1654, 'test_username', 0, 'https://a.ppy.sh/11817622', 219);
+
+INSERT INTO app_user (name, player_id, rank, discord_username, timezone, avatar, country_id)
+VALUES ('BKWind', 8900975, 109, 'test_username', 0, 'https://a.ppy.sh/8900975', 43);
+
+INSERT INTO app_user (name, player_id, rank, discord_username, timezone, avatar, country_id)
+VALUES ('TheHunter1', 6496016, 0, 'test_username', 0, 'https://a.ppy.sh/6496016', 51);
+
+INSERT INTO app_user (name, player_id, rank, discord_username, timezone, avatar, country_id)
+VALUES ('Japeynius', 13993659, 1688, 'test_username', 0, 'https://a.ppy.sh/13993659', 188);
+
+INSERT INTO tournament (
+    applications_open, concluded, max_player_rank, max_team_size, min_player_rank, min_team_size, players_public,
+    protects, published, regs_open, warmups, application_deadline, reg_deadline, code, name, description, banner,
+    information
+)
+VALUES (
+    true, false, 0, 1, 0, 1, true, true, true, true, true,
+    '2024-10-23T07:00:00.000Z', '2024-10-16T07:00:00.000Z', '6KAST', '6K Autumn Showdown',
+    '6K Autumn Showdown Tournament (6KAST) is an osu!mania Free for all 1v1 Double-Elimination tournament focused ' ||
+    'on the 6 key gamemode.This is one of the first ever 6 key focused tournament ever hosted on osu!mania. ' ||
+    'So we hope you enjoy your experience on the newest tourney keymode meta!',
+    'https://i.ppy.sh/333a6da130763d34fb218cd7d3dc9cd24bb25a35/68747470733a2f2f696d6775722d617263686976652e7070792e7' ||
+    '3682f646973636f72642f313131343934313836353631363232303137312d313131363635313138383330323133353330382d415354364' ||
+    'b5f42616e6e65725f52656374616e676c652e706e67', ''
+);
+INSERT INTO tournament (
+    applications_open, concluded, max_player_rank, max_team_size, min_player_rank, min_team_size, players_public,
+    protects, published, regs_open, warmups, application_deadline, reg_deadline, code, name, description, banner,
+    information
+)
+VALUES (
+    true, false, 0, 4, 0, 6, true, false, true, true, false,
+    '2024-10-16T07:00:00.000Z', '2024-11-21T08:00:00.000Z', '4KMWC2023', 'osu!mania 4K World Cup 2023',
+    'The osu!mania 4K World Cup 2023 (MWC 4K 2023) was a country-based osu!mania tournament hosted by the osu! ' ||
+    'team. It was the seventh installment of the osu!mania 4K World Cup.',
+    'https://assets.ppy.sh/tournament-banners/official/mwc4k2023.jpg', ''
+);
+
+INSERT INTO staff_request (recipient_id, role_id, sender_id, status_id, tournament_id, description)
+VALUES (
+    null, 9, 2, 1, 1,
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore ' ||
+    'magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea ' ||
+    'commodo consequat.'
+);
+INSERT INTO staff_request (recipient_id, role_id, sender_id, status_id, tournament_id, description)
+VALUES (
+    null, 5, 3, 1, 1,
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore ' ||
+    'magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea ' ||
+    'commodo consequat.'
+);
+INSERT INTO staff_request (recipient_id, role_id, sender_id, status_id, tournament_id, description)
+VALUES (
+    null, 7, 4, 1, 1,
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore ' ||
+    'magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea ' ||
+    'commodo consequat.'
+);
+INSERT INTO staff_request (recipient_id, role_id, sender_id, status_id, tournament_id, description)
+VALUES (
+    null, 5, 5, 1, 1,
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore ' ||
+    'magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea ' ||
+    'commodo consequat.'
+);
+INSERT INTO staff_request (recipient_id, role_id, sender_id, status_id, tournament_id, description)
+VALUES (
+    null, 5, 1, 1, 1,
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore ' ||
+    'magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea ' ||
+    'commodo consequat.'
+);
+INSERT INTO staff_request (recipient_id, role_id, sender_id, status_id, tournament_id, description)
+VALUES (
+    null, 11, 1, 2, 1,
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore ' ||
+    'magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea ' ||
+    'commodo consequat.'
+);
+INSERT INTO staff_request (recipient_id, role_id, sender_id, status_id, tournament_id, description)
+VALUES (
+    null, 10, 1, 3, 1,
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore ' ||
+    'magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea ' ||
+    'commodo consequat.'
+);
+
+INSERT INTO tournament_role (can_reg_with_role, app_user_id, role_id, tournament_id) VALUES (false, 1, 2, 1);
