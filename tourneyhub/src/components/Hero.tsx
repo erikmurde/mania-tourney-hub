@@ -1,6 +1,6 @@
 import { Button, Grid, Typography, useTheme } from '@mui/material'
 import TournamentCreateForm from './tournament/form/TournamentCreateForm';
-import { AuthService } from '../services/authService';
+import { LOGIN_URL } from '../constants';
 
 const Hero = ({isLoggedIn}: {isLoggedIn: boolean}) => {
     const theme = useTheme();
@@ -32,7 +32,7 @@ const Hero = ({isLoggedIn}: {isLoggedIn: boolean}) => {
                 ?   <TournamentCreateForm/>
                 :   <Button variant='contained' 
                         sx={{ boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)' }}
-                        onClick={() => new AuthService().login()}
+                        onClick={() => window.location.assign(LOGIN_URL)}
                         >
                         Login to get started
                     </Button>}

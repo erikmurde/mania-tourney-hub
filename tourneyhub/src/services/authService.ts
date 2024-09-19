@@ -1,6 +1,7 @@
 import { ADMIN, COMMENTATOR, GFX, HOST, MAPPER, MAPPOOLER, PLAYTESTER, REFEREE, SHEETER, STREAMER } from '../constants';
 import { UserDto } from '../dto/user/UserDto';
 import { BaseEntityService } from './base/baseEntityService';
+import axios from 'axios';
 
 export class AuthService extends BaseEntityService<UserDto> {
     constructor() {
@@ -25,21 +26,14 @@ export class AuthService extends BaseEntityService<UserDto> {
         return staffRoles.some(staffRole => userRoles.includes(staffRole));
     }
 
-    async login() {
-        const url = new URL(
-            "https://osu.ppy.sh/oauth/authorize"
-        );
-
-        url.searchParams.append('client_id', '29436');
-        url.searchParams.append('redirect_uri', 'http://localhost:3000/auth/callback');
-        url.searchParams.append('response_type', 'code');
-        url.searchParams.append('scope', 'identify');
-
-        await fetch(url, {
-            method: 'GET',
-            mode: 'no-cors'
-        });
-        window.location.assign(url);
+    async whoAmI() {
+        try {
+            const response = await axios.get('http://localhost:8080/api/whoAmI', 
+                { withCredentials: true }
+            );
+            console.log('whoAmI response: ', response);
+            return response.data;
+        } catch (error) {}
     }
 
     async getStaff(tournamentId: string): Promise<UserDto[]> {

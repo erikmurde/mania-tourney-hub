@@ -1,11 +1,11 @@
 import { Grid } from '@mui/material';
 import { Outlet } from 'react-router-dom';
 import Header from '../components/Header';
-import { createContext, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import { UserDto } from '../dto/user/UserDto';
-import { STORED_USER } from '../constants';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { AuthService } from '../services/authService';
 
 interface AuthContext {
     user: UserDto | null,
@@ -36,15 +36,15 @@ export const UpdateContext = createContext<UpdateContext>({
 })
 
 const Root = () => {
-    const stored = localStorage.getItem(STORED_USER);
-
-    const [user, setUser] = useState(
-        (stored !== 'undefined' ? JSON.parse(stored!) : null) as UserDto | null
-    );
+    const [user, setUser] = useState(null as UserDto | null);
 
     const [stageUpdate, setStageUpdate] = useState(0);
     const [mapPoolUpdate, setMapPoolUpdate] = useState(0);
     const [scheduleUpdate, setScheduleUpdate] = useState(0);
+
+    useEffect(() => {
+        new AuthService().whoAmI().then(user => setUser(user ?? null));
+    }, []);
 
     return (
         <AuthContext.Provider value={{ user, setUser }}>

@@ -67,7 +67,7 @@ const TeamRegisterForm = ({user, tourney, openSuccess}: IProps) => {
         }
         if (!team.logo) {
             const captain = team.players.find(player => player.isCaptain);
-            team.logo = `https://assets.ppy.sh/old-flags/${captain!.country.ISO2}.png`;
+            team.logo = `https://assets.ppy.sh/old-flags/${captain!.country.iso2}.png`;
         }
         team.players.forEach(player => registerPlayer(player));
 

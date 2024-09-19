@@ -1,31 +1,19 @@
 import { AppBar, Avatar, Box, Button, IconButton, Menu, MenuItem, Toolbar, Typography } from "@mui/material"
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import { AuthContext } from '../routes/Root';
-import { AuthService } from '../services/authService';
-import { STORED_USER } from '../constants';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Profile from '../routes/profile/Profile';
+import { LOGIN_URL, LOGOUT_URL } from '../constants';
 
 const Header = () => {
-    const { user, setUser } = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     const [profileOpen, setProfileOpen] = useState(false);
     const open = Boolean(anchorEl);
-    const service = new AuthService();
-    const navigate = useNavigate();
 
-    useEffect(() => {
-        if (user) {
-            localStorage.setItem(STORED_USER, JSON.stringify(user));
-        }
-    }, [user]);
+    const login = () => window.location.assign(LOGIN_URL);
 
-    const logout = () => {
-        setAnchorEl(null);
-        setUser(null);
-        localStorage.removeItem(STORED_USER);
-        navigate('/');
-    }
+    const logout = () => window.location.assign(LOGOUT_URL);
 
     return (
         <>
@@ -47,7 +35,7 @@ const Header = () => {
                                 alt='User profile'
                                 src={user.avatar}/>
                         </IconButton>
-                    :   <Button onClick={service.login} size='large' variant='outlined'>
+                    :   <Button onClick={login} size='large' variant='outlined'>
                             Login
                         </Button>}
                 </Box>

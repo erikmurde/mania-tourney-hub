@@ -1,10 +1,9 @@
 import StaffApplicationFormView from './views/StaffApplicationFormView';
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../../../routes/Root';
-import { AuthService } from '../../../../services/authService';
 import { StaffApplicationDto } from '../../../../dto/staff/StaffApplicationDto';
 import { useParams } from 'react-router-dom';
-import { ADMIN, MAPPOOLER, MAPPER, PLAYTESTER, REFEREE, STREAMER, COMMENTATOR, SHEETER, GFX, REQUIRED, PENDING } from '../../../../constants';
+import { ADMIN, MAPPOOLER, MAPPER, PLAYTESTER, REFEREE, STREAMER, COMMENTATOR, SHEETER, GFX, REQUIRED, PENDING, LOGIN_URL } from '../../../../constants';
 import { StaffApplicationService } from '../../../../services/staffApplicationService';
 import { Schema, object, string } from 'yup';
 import FormDialogBase from '../../dialog/FormDialogBase';
@@ -23,7 +22,7 @@ const StaffApplicationForm = ({applicationOpen, tourneyName}: IProps) => {
     if (!user || !id) {
         return <></>;
     }
-
+    
     const filterRoles = () => {
         const userRoles = user.roles
             .filter(role => role.tournamentId === id);
@@ -65,7 +64,7 @@ const StaffApplicationForm = ({applicationOpen, tourneyName}: IProps) => {
             open={open}
             setOpen={setOpen}
             btnProps={{
-                onClick: () => user ? setOpen(true) : new AuthService().login(),
+                onClick: () => user ? setOpen(true) : window.location.assign(LOGIN_URL),
                 title: applicationOpen ? 'Apply for staff' : 'Staff applications closed',
                 disabled: !applicationOpen
             }}
