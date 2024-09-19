@@ -5,20 +5,28 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @Entity
+@Data
+@EqualsAndHashCode(callSuper = false)
 public class Tournament extends BaseEntityWithName {
 
     @Size(min = 2, max = 16)
     private String code;
 
     @Size(min = 2, max = 512)
+    @Column(length = 512)
     private String description;
 
     @Pattern(regexp = URL_REGEX)
+    @Size(max = 512)
+    @Column(length = 512)
     private String banner;
 
     @Min(1)
@@ -65,7 +73,7 @@ public class Tournament extends BaseEntityWithName {
 
     @ElementCollection
     @CollectionTable(name = "link")
-    private List<Link> links;
+    private List<Link> links = new ArrayList<>();
 
     @ManyToMany
     @JoinTable(
@@ -73,11 +81,11 @@ public class Tournament extends BaseEntityWithName {
             joinColumns = @JoinColumn(name = "tournament_id"),
             inverseJoinColumns = @JoinColumn(name = "country_id")
     )
-    private List<Country> countries;
+    private List<Country> countries = new ArrayList<>();
 
     @OneToMany(mappedBy = "tournament")
-    private List<Stage> stages;
+    private List<Stage> stages = new ArrayList<>();
 
     @OneToMany(mappedBy = "tournament")
-    private List<TournamentPlayer> players;
+    private List<TournamentPlayer> players = new ArrayList<>();
 }

@@ -5,24 +5,29 @@ import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Data
+@EqualsAndHashCode(callSuper = false)
 public class AppUser extends BaseEntityWithName {
 
-    @Pattern(regexp = POS_NUM_REGEX)
-    private String playerId;
+    @Min(0)
+    private Integer playerId;
 
     @Min(0)
-    private int rank;
+    private Integer rank;
 
-    @Size(min = 2, max = 32)
+    @Size(max = 32)
     private String discordUsername;
 
     @Min(-11)
     @Max(12)
-    private int timezone;
+    private Integer timezone;
 
     @Pattern(regexp = URL_REGEX)
     private String avatar;
@@ -31,9 +36,9 @@ public class AppUser extends BaseEntityWithName {
     @JoinColumn
     private Country country;
 
-    @OneToMany(mappedBy = "appUser")
-    private List<TournamentRole> roles;
+    @OneToMany(mappedBy = "appUser", fetch = FetchType.EAGER)
+    private List<TournamentRole> roles = new ArrayList<>();
 
-    @OneToMany(mappedBy = "appUser")
-    private List<TournamentPlayer> stats;
+    @OneToMany(mappedBy = "appUser", fetch = FetchType.EAGER)
+    private List<TournamentPlayer> stats = new ArrayList<>();
 }

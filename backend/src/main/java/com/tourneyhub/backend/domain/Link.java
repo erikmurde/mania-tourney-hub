@@ -10,6 +10,6 @@ public class Link {
     @Size(min = 2, max = 32)
     private String name;
 
-    @Pattern(regexp = "^(?:https?|ftp)://(?:www\\.)?[a-z0-9-]+(?:\\.[a-z0-9-]+)+\\S*/i$")
+    @Pattern(regexp = "^(?:(?:https?|ftp):\\/\\/)(?:www\\.)?[a-z0-9-]+(?:\\.[a-z0-9-]+)+[^\\s]*$")
     private String link;
 }
