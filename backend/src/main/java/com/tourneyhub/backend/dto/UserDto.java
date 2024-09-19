@@ -1,5 +1,6 @@
 package com.tourneyhub.backend.dto;
 
+import com.tourneyhub.backend.dto.tournamentRole.TournamentRoleDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 

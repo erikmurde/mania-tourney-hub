@@ -1,6 +1,7 @@
 package com.tourneyhub.backend.mapper;
 
 import com.tourneyhub.backend.domain.AppUser;
+import com.tourneyhub.backend.dto.SimpleUserDto;
 import com.tourneyhub.backend.dto.UserDto;
 import org.springframework.stereotype.Component;
 
@@ -29,6 +30,14 @@ public class UserMapper {
                 countryMapper.mapToDto(user.getCountry()),
                 user.getRoles().stream().map(roleMapper::mapToDto).toList(),
                 new ArrayList<>()
+        );
+    }
+
+    public SimpleUserDto mapToSimpleDto(AppUser user) {
+        return new SimpleUserDto(
+                user.getPlayerId(),
+                user.getName(),
+                countryMapper.mapToDto(user.getCountry())
         );
     }
 }

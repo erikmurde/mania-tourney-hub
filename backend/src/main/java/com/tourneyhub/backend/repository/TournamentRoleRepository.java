@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public interface TournamentRoleRepository extends CrudRepository<TournamentRole, Long> {
 
-    @Query("from TournamentRole r left join r.appUser u where u.playerId=:playerId and r.tournamentId=:tournamentId")
+    @Query("FROM TournamentRole r WHERE r.appUser.playerId=:playerId AND r.tournamentId=:tournamentId")
     List<TournamentRole> getUserRolesInTournament(
             @Param("playerId") Integer playerId,
             @Param("tournamentId") Long tournamentId

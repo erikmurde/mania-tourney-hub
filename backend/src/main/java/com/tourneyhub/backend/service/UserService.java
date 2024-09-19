@@ -1,6 +1,7 @@
 package com.tourneyhub.backend.service;
 
 import com.tourneyhub.backend.domain.AppUser;
+import com.tourneyhub.backend.helper.Constants;
 import com.tourneyhub.backend.repository.TournamentRoleRepository;
 import com.tourneyhub.backend.repository.UserRepository;
 import com.tourneyhub.backend.repository.CountryRepository;
@@ -47,6 +48,10 @@ public class UserService extends DefaultOAuth2UserService {
                 .stream()
                 .map(role -> role.getRole().getName())
                 .toList();
+    }
+
+    public boolean isHost(Long tournamentId, OAuth2User principal) {
+        return getTournamentRoles(tournamentId, principal).contains(Constants.HOST);
     }
 
     private OAuth2User processOAuth2User(OAuth2User oAuth2User) {
