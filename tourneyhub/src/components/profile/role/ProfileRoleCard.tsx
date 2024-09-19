@@ -1,21 +1,21 @@
 import { Card, Divider, Grid, Typography, useTheme } from '@mui/material';
-import { IRoleDto } from '../../../dto/IRoleDto';
 import { StyledCardContent } from '../../styled/StyledCardContent';
 import { TournamentDto } from '../../../dto/tournament/TournamentDto';
 import { TournamentService } from '../../../services/tournamentService';
 import { useEffect, useState } from 'react';
 import { GFX, PLAYER } from '../../../constants';
-import { IStatDto } from '../../../dto/IStatDto';
 import { TeamDto } from '../../../dto/team/TeamDto';
 import { TeamService } from '../../../services/teamService';
 import PlayerRoles from './PlayerRoles';
 import StaffRoles from './StaffRoles';
+import { TournamentRoleDto } from '../../../dto/tournamentRole/TournamentRoleDto';
+import { TournamentStatsDto } from '../../../dto/TournamentStatsDto';
 
 interface IProps {
     tournamentId: string,
     userId: string,
-    roles: IRoleDto[],
-    stats: IStatDto
+    roles: TournamentRoleDto[],
+    stats: TournamentStatsDto
 }
 
 const ProfileRoleCard = ({tournamentId, userId, roles, stats}: IProps) => {

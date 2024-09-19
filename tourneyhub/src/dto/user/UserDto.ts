@@ -1,6 +1,6 @@
 import { ICountryDto } from '../ICountryDto';
-import { IRoleDto } from '../IRoleDto';
-import { IStatDto } from '../IStatDto';
+import { TournamentRoleDto } from '../tournamentRole/TournamentRoleDto';
+import { TournamentStatsDto } from '../TournamentStatsDto';
 
 export interface UserDto {
     id: string,
@@ -11,6 +11,6 @@ export interface UserDto {
     discordUsername: string,
     timezone: number,
     avatar: string,
-    roles: IRoleDto[],
-    stats: IStatDto[]
+    roles: TournamentRoleDto[],
+    stats: TournamentStatsDto[]
 }

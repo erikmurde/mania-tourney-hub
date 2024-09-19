@@ -4,7 +4,7 @@ import { UserDto } from '../../../dto/user/UserDto';
 import { AuthService } from '../../../services/authService';
 import { useParams } from 'react-router-dom';
 import StaffGroup from '../../../components/tournament/staff/StaffGroup';
-import { ACCEPTED, COMMENTATOR, GFX, HOST, MAPPER, MAPPOOLER, PLAYTESTER, REFEREE, SHEETER, STREAMER } from '../../../constants';
+import { ACCEPTED, COMMENTATOR, GFX, HOST, MAPPER, MAPPOOLER, PLAYTESTER, REFEREE, ROLE_REG, SHEETER, STREAMER } from '../../../constants';
 import { Description, List } from '@mui/icons-material';
 import { StaffApplicationService } from '../../../services/staffApplicationService';
 import { StaffApplicationDto } from '../../../dto/staff/StaffApplicationDto';
@@ -70,17 +70,20 @@ const Staff = () => {
     }
 
     const acceptApplication = async(application: StaffApplicationDto) => {
-        const newMember = await authService.getUser(application.senderId);
 
-        newMember.roles.push({
+        //TODO fetch updated user from backend and replace in staff list
+
+        const userId = application.sender.playerId;
+        const role = {
+            userId: userId,
             tournamentId: id!, 
             name: application.role, 
-            canRegWithRole: false
-        })
-        await authService.edit(newMember.id, newMember);
-
+            canRegWithRole: ROLE_REG.get(application.role)!
+        };
         setStaff(staff.map(existing => 
-            existing.id === newMember.id ? newMember : existing
+            existing.playerId === userId 
+                ? { ...existing, roles: [...existing.roles, role] } 
+                : existing
         ));
     }
 

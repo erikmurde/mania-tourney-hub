@@ -23,7 +23,7 @@ const LobbyEditForm = ({lobby}: {lobby: LobbyDto}) => {
             new AuthService()
                 .getRoles(id, [HOST, ADMIN, REFEREE])
                 .then(staff => setSelectValues(
-                    staff.map(user => ({ name: user.name, country: user.country }))
+                    staff.map(user => ({ playerId: user.playerId, name: user.name, country: user.country }))
                 ));
         }
     }, [id, open]);

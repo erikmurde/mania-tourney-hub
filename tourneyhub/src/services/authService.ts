@@ -10,7 +10,7 @@ export class AuthService extends BaseEntityService<UserDto> {
 
     isHost(user: UserDto, tournamentId: string) {
         const roles = user.roles
-            .filter(role => role.tournamentId === tournamentId)
+            .filter(role => role.tournamentId.toString() === tournamentId)
             .map(role => role.name);
 
         return roles.includes(HOST);

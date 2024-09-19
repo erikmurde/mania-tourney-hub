@@ -74,7 +74,7 @@ const Profile = ({owner, open, setOpen}: IProps) => {
                 </>}
                 {tabId === 1 && <ProfileRoles user={owner}/>}
                 {tabId === 2 && isOwner && 
-                <ProfileApplications userId={user.id} onNavigate={onNavigate}/>}
+                <ProfileApplications onNavigate={onNavigate}/>}
                 {tabId === 3 && isOwner && 
                 <ProfileInvites userId={user.id} onNavigate={onNavigate}/>}
             </StyledDialogContent>

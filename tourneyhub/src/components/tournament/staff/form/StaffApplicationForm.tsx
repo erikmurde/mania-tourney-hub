@@ -4,9 +4,9 @@ import { AuthContext } from '../../../../routes/Root';
 import { StaffApplicationDto } from '../../../../dto/staff/StaffApplicationDto';
 import { useParams } from 'react-router-dom';
 import { ADMIN, MAPPOOLER, MAPPER, PLAYTESTER, REFEREE, STREAMER, COMMENTATOR, SHEETER, GFX, REQUIRED, PENDING, LOGIN_URL } from '../../../../constants';
-import { StaffApplicationService } from '../../../../services/staffApplicationService';
 import { Schema, object, string } from 'yup';
 import FormDialogBase from '../../dialog/FormDialogBase';
+import { StaffApplicationService } from '../../../../services/staffApplicationService';
 
 interface IProps {
     applicationOpen: boolean,
@@ -40,15 +40,13 @@ const StaffApplicationForm = ({applicationOpen, tourneyName}: IProps) => {
     const validationSchema: Schema = object({
         role: string()
             .required(REQUIRED),
-        experience: string()
-            .required(REQUIRED),
-        motivation: string()
+        description: string()
             .required(REQUIRED)
     })
 
     const initialValues: StaffApplicationDto = {
         id: '',
-        senderId: user.id,
+        sender: { playerId: user.playerId, name: user.name, country: user.country },
         tournamentId: id,
         tournament: tourneyName,
         role: '',

@@ -4,18 +4,13 @@ import { StaffApplicationService } from '../../../services/staffApplicationServi
 import { Grid, Link } from '@mui/material';
 import ProfileApplicationCard from './ProfileApplicationCard';
 
-interface IProps {
-    userId: string,
-    onNavigate: (tournamentId: string) => void
-}
-
-const ProfileApplications = ({userId, onNavigate}: IProps) => {
+const ProfileApplications = ({onNavigate}: {onNavigate: (tournamentId: string) => void}) => {
     const [staffApplications, setStaffApplications] = useState([] as StaffApplicationDto[]);
     const [applicationUpdate, setApplicationUpdate] = useState(0);
 
     useEffect(() => {
         new StaffApplicationService()
-            .getAllUser(userId)
+            .getAllUser()
             .then(applications => setStaffApplications(applications));
     }, [applicationUpdate]);
 

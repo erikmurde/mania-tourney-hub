@@ -1,4 +1,4 @@
-export interface IStatDto {
+export interface TournamentStatsDto {
     tournamentId: string,
     status: string,
     seed: number,

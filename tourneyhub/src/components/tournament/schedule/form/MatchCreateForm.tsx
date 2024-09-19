@@ -38,7 +38,7 @@ const MatchCreateForm = ({stageId}: {stageId: string}) => {
     const getUsersWithRole = (staff: UserDto[], roles: string[]) => {
         return staff
             .filter(user => user.roles.some(userRole => roles.includes(userRole.name)))
-            .map(user => ({ name: user.name, country: user.country }));
+            .map(user => ({ playerId: user.playerId, name: user.name, country: user.country }));
     }
     
     const getPlayer = (name: string) => {

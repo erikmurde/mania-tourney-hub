@@ -1,8 +1,8 @@
 import { Grid, MenuItem, TextField } from '@mui/material';
 import { Field, Form, Formik } from 'formik';
-import { StaffApplicationDto } from '../../../../../dto/staff/StaffApplicationDto';
 import TourneySelectField from '../../../field/TourneySelectField';
 import { Schema } from 'yup';
+import { StaffApplicationDto } from '../../../../../dto/staff/StaffApplicationDto';
 
 interface IProps {
     initialValues: StaffApplicationDto,
@@ -29,7 +29,7 @@ const StaffApplicationFormView = ({initialValues, selectValues, validationSchema
                         </Grid>
                         <Grid item xs={12}>
                             <Field fullWidth multiline as={TextField} 
-                                name='experience' 
+                                name='description' 
                                 label='Description'
                                 placeholder='Describe your reason for applying and any relevant experience'
                                 error={errors.description !== undefined}

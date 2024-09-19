@@ -1,14 +1,14 @@
 import { Grid } from '@mui/material';
 import { UserDto } from '../../../dto/user/UserDto';
 import ProfileRoleCard from './ProfileRoleCard';
-import { IRoleDto } from '../../../dto/IRoleDto';
-import { IStatDto } from '../../../dto/IStatDto';
+import { TournamentRoleDto } from '../../../dto/tournamentRole/TournamentRoleDto';
+import { TournamentStatsDto } from '../../../dto/TournamentStatsDto';
 
 const ProfileRoles = ({user}: {user: UserDto}) => {
     const tourneyRoles = [] as {
         tournamentId: string, 
-        roles: IRoleDto[], 
-        stats: IStatDto[]
+        roles: TournamentRoleDto[], 
+        stats: TournamentStatsDto[]
     }[];
 
     user.roles.forEach(role => {
@@ -32,7 +32,7 @@ const ProfileRoles = ({user}: {user: UserDto}) => {
                         tournamentId={tourneyRole.tournamentId} 
                         userId={user.id}
                         roles={tourneyRole.roles}
-                        stats={tourneyRole.stats.length > 0 ? tourneyRole.stats[0] : {} as IStatDto}
+                        stats={tourneyRole.stats.length > 0 ? tourneyRole.stats[0] : {} as TournamentStatsDto}
                     />
                 </Grid>    
             )}
