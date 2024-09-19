@@ -9,7 +9,7 @@ public class TournamentRoleMapper {
 
     public TournamentRoleDto mapToDto(TournamentRole role) {
         return new TournamentRoleDto(
-                role.getTournamentId(),
+                role.getTournament().getId(),
                 role.getRole().getName(),
                 role.isCanRegWithRole()
         );

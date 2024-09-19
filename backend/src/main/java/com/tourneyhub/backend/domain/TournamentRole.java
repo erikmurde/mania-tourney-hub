@@ -17,9 +17,6 @@ public class TournamentRole extends BaseEntity {
     @NotNull
     private boolean canRegWithRole;
 
-    @Column(name = "tournament_id", insertable = false, updatable = false)
-    private Long tournamentId;
-
     @ManyToOne(fetch = FetchType.LAZY)
     private Tournament tournament;
 

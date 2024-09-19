@@ -2,7 +2,6 @@ package com.tourneyhub.backend.controller;
 
 import com.tourneyhub.backend.domain.Role;
 import com.tourneyhub.backend.domain.StaffRequest;
-import com.tourneyhub.backend.domain.Tournament;
 import com.tourneyhub.backend.domain.TournamentRole;
 import com.tourneyhub.backend.dto.StaffApplicationDto;
 import com.tourneyhub.backend.helper.Constants;
@@ -114,13 +113,11 @@ public class StaffApplicationController {
     }
 
     private void addTournamentRole(StaffRequest staffRequest) {
-        Tournament tournament = staffRequest.getTournament();
         Role role = staffRequest.getRole();
 
         tournamentRoleRepository.save(new TournamentRole(
                 Constants.roleCanReg.get(role.getName()),
-                tournament.getId(),
-                tournament,
+                staffRequest.getTournament(),
                 staffRequest.getSender(),
                 role
         ));
