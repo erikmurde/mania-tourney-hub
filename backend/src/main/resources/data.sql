@@ -357,4 +357,64 @@ VALUES (
     'commodo consequat.'
 );
 
+INSERT INTO stage (
+    tournament_id, stage_type_id, name, best_of, lobby_size, num_advancing, scheduling_deadline,
+    mappool_published, schedule_published, stats_published
+)
+VALUES (1, 2, 'Qualifiers', 0, 10, 5, '2024-07-17T07:00:00.000Z', true, true, true);
+
+INSERT INTO stage (
+    tournament_id, stage_type_id, name, best_of, lobby_size, num_advancing, scheduling_deadline,
+    mappool_published, schedule_published, stats_published
+)
+VALUES (1, 1, 'Round of 64', 7, 0, 0, '2024-07-17T07:00:00.000Z', true, true, true);
+
+INSERT INTO stage (
+    tournament_id, stage_type_id, name, best_of, lobby_size, num_advancing, scheduling_deadline,
+    mappool_published, schedule_published, stats_published
+)
+VALUES (1, 1, 'Round of 32', 7, 0, 0, '2024-07-17T07:00:00.000Z', true, true, true);
+
+INSERT INTO stage (
+    tournament_id, stage_type_id, name, best_of, lobby_size, num_advancing, scheduling_deadline,
+    mappool_published, schedule_published, stats_published
+)
+VALUES (1, 1, 'Round of 16', 9, 0, 0, '2024-07-17T07:00:00.000Z', true, true, true);
+
+INSERT INTO stage (
+    tournament_id, stage_type_id, name, best_of, lobby_size, num_advancing, scheduling_deadline,
+    mappool_published, schedule_published, stats_published
+)
+VALUES (1, 1, 'QuarterFinals', 11, 0, 0, '2024-07-17T07:00:00.000Z', true, false, false);
+
+INSERT INTO stage (
+    tournament_id, stage_type_id, name, best_of, lobby_size, num_advancing, scheduling_deadline,
+    mappool_published, schedule_published, stats_published
+)
+VALUES (1, 1, 'SemiFinals', 11, 0, 0, '2024-07-17T07:00:00.000Z', false, false, false);
+
+INSERT INTO stage (
+    tournament_id, stage_type_id, name, best_of, lobby_size, num_advancing, scheduling_deadline,
+    mappool_published, schedule_published, stats_published
+)
+VALUES (1, 1, 'Finals', 13, 0, 0, '2024-07-17T07:00:00.000Z', false, false, false);
+
+INSERT INTO stage (
+    tournament_id, stage_type_id, name, best_of, lobby_size, num_advancing, scheduling_deadline,
+    mappool_published, schedule_published, stats_published
+)
+VALUES (1, 1, 'Grand Finals', 13, 0, 0, '2024-07-17T07:00:00.000Z', false, false, false);
+
+INSERT INTO stage (
+    tournament_id, stage_type_id, name, best_of, lobby_size, num_advancing, scheduling_deadline,
+    mappool_published, schedule_published, stats_published
+)
+VALUES (2, 1, 'QuarterFinals', 13, 0, 0, '2024-07-17T07:00:00.000Z', true, true, false);
+
+INSERT INTO stage (
+    tournament_id, stage_type_id, name, best_of, lobby_size, num_advancing, scheduling_deadline,
+    mappool_published, schedule_published, stats_published
+)
+VALUES (2, 2, 'Qualifiers', 0, 10, 3, '2024-07-17T07:00:00.000Z', true, true, true);
+
 INSERT INTO tournament_role (can_reg_with_role, app_user_id, role_id, tournament_id) VALUES (false, 1, 2, 1);

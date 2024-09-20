@@ -1,22 +1,23 @@
 package com.tourneyhub.backend.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.Date;
 import java.util.List;
 
 @Entity
+@Data
+@EqualsAndHashCode(callSuper = false)
 public class Stage extends BaseEntityWithName {
 
-    @Min(3)
+    @Min(0)
     private int bestOf;
 
-    @Min(1)
+    @Min(0)
     private int lobbySize;
 
     @Min(0)
@@ -34,11 +35,11 @@ public class Stage extends BaseEntityWithName {
     @NotNull
     private boolean statsPublished;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn
     private Tournament tournament;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn
     private StageType stageType;
 

@@ -12,6 +12,6 @@ import lombok.EqualsAndHashCode;
 public class BaseEntityWithName extends BaseEntity {
 
     @NotNull
-    @Size(min = 2, max = 128)
+    @Size(min = 1, max = 128)
     protected String name;
 }

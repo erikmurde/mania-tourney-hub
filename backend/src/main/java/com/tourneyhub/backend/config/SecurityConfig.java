@@ -81,7 +81,11 @@ public class SecurityConfig {
                         )
                 )
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/roles", "/api/statuses").permitAll()
+                        .requestMatchers(
+                                "/api/roles/**",
+                                "/api/statuses/**",
+                                "/api/stages/tournament/**"
+                        ).permitAll()
                         .anyRequest().authenticated()
                 )
                 .oauth2Login(oauth2 -> oauth2
