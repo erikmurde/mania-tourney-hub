@@ -10,6 +10,8 @@ import java.util.List;
 @AllArgsConstructor
 public class UserDto {
 
+    private Long id;
+
     private Integer playerId;
 
     private String name;

@@ -36,7 +36,46 @@ public class UserService extends DefaultOAuth2UserService {
 
     @Override
     public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
-        return processOAuth2User(super.loadUser(userRequest));
+        return processUser(super.loadUser(userRequest));
+    }
+
+    private OAuth2User processUser(OAuth2User principal) {
+        userRepository
+                .findByPlayerId(principal.getAttribute("id"))
+                .map(user -> updateExistingUser(user, principal))
+                .orElseGet(() -> createNewUser(principal));
+
+        return principal;
+    }
+
+    private AppUser updateExistingUser(AppUser user, OAuth2User principal) {
+        Map<String, Integer> statistics = principal.getAttribute("statistics");
+
+        if (statistics == null) {
+            throw new OAuth2AuthenticationException("Invalid user details!");
+        }
+        user.setRank(statistics.get("global_rank"));
+        return userRepository.save(user);
+    }
+
+    private AppUser createNewUser(OAuth2User principal) {
+        var user = new AppUser();
+
+        Map<String, String> country = principal.getAttribute("country");
+        Map<String, Integer> statistics = principal.getAttribute("statistics");
+
+        if (country == null || statistics == null) {
+            throw new OAuth2AuthenticationException("Invalid user details!");
+        }
+        user.setPlayerId(principal.getAttribute("id"));
+        user.setName(principal.getAttribute("username"));
+        user.setAvatar(principal.getAttribute("avatar_url"));
+        user.setRank(statistics.get("global_rank"));
+        user.setDiscordUsername("");
+        user.setTimezone(0);
+        user.setCountry(countryRepository.findByIso2(country.get("code")));
+
+        return userRepository.save(user);
     }
 
     public List<String> getTournamentRoles(Long tournamentId, OAuth2User principal) {
@@ -52,33 +91,5 @@ public class UserService extends DefaultOAuth2UserService {
 
     public boolean isHost(Long tournamentId, OAuth2User principal) {
         return getTournamentRoles(tournamentId, principal).contains(Constants.HOST);
-    }
-
-    private OAuth2User processOAuth2User(OAuth2User oAuth2User) {
-        userRepository
-                .findByPlayerId(oAuth2User.getAttribute("id"))
-                .orElseGet(() -> createNewUser(oAuth2User));
-
-        return oAuth2User;
-    }
-
-    private AppUser createNewUser(OAuth2User oAuth2User) {
-        var user = new AppUser();
-
-        Map<String, String> country = oAuth2User.getAttribute("country");
-        Map<String, Integer> statistics = oAuth2User.getAttribute("statistics");
-
-        if (country == null || statistics == null) {
-            throw  new OAuth2AuthenticationException("Invalid user details!");
-        }
-        user.setPlayerId(oAuth2User.getAttribute("id"));
-        user.setName(oAuth2User.getAttribute("username"));
-        user.setAvatar(oAuth2User.getAttribute("avatar_url"));
-        user.setRank(statistics.get("global_rank"));
-        user.setDiscordUsername("");
-        user.setTimezone(0);
-        user.setCountry(countryRepository.findByIso2(country.get("code")));
-
-        return userRepository.save(user);
     }
 }

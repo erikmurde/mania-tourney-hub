@@ -36,9 +36,9 @@ public class AppUser extends BaseEntityWithName {
     @JoinColumn
     private Country country;
 
-    @OneToMany(mappedBy = "appUser", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "appUser")
     private List<TournamentRole> roles = new ArrayList<>();
 
-    @OneToMany(mappedBy = "appUser", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "appUser")
     private List<TournamentPlayer> stats = new ArrayList<>();
 }

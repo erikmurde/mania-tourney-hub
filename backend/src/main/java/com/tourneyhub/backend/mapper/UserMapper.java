@@ -21,6 +21,7 @@ public class UserMapper {
 
     public UserDto mapToDto(AppUser user) {
         return new UserDto(
+                user.getId(),
                 user.getPlayerId(),
                 user.getName(),
                 user.getRank(),

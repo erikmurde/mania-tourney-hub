@@ -1,5 +1,6 @@
-package com.tourneyhub.backend.dto;
+package com.tourneyhub.backend.dto.staffApplication;
 
+import com.tourneyhub.backend.dto.SimpleUserDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 

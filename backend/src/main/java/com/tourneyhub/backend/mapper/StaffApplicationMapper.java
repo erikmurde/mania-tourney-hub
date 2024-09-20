@@ -1,38 +1,36 @@
 package com.tourneyhub.backend.mapper;
 
 import com.tourneyhub.backend.domain.StaffRequest;
+import com.tourneyhub.backend.domain.Status;
 import com.tourneyhub.backend.domain.Tournament;
-import com.tourneyhub.backend.dto.StaffApplicationDto;
+import com.tourneyhub.backend.dto.staffApplication.StaffApplicationCreateDto;
+import com.tourneyhub.backend.dto.staffApplication.StaffApplicationDto;
 import com.tourneyhub.backend.repository.RoleRepository;
-import com.tourneyhub.backend.repository.StatusRepository;
 import com.tourneyhub.backend.repository.TournamentRepository;
 import com.tourneyhub.backend.repository.UserRepository;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
-import org.springframework.web.server.ResponseStatusException;
 
 @Component
 public class StaffApplicationMapper {
-
-    private final UserMapper userMapper;
 
     private final UserRepository userRepository;
 
     private final RoleRepository roleRepository;
 
-    private final StatusRepository statusRepository;
-
     private final TournamentRepository tournamentRepository;
 
+    private final UserMapper userMapper;
+
     public StaffApplicationMapper(
-            UserMapper userMapper, UserRepository userRepository, RoleRepository roleRepository,
-            StatusRepository statusRepository, TournamentRepository tournamentRepository)
+            UserRepository userRepository,
+            RoleRepository roleRepository,
+            TournamentRepository tournamentRepository,
+            UserMapper userMapper)
     {
-        this.userMapper = userMapper;
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
-        this.statusRepository = statusRepository;
         this.tournamentRepository = tournamentRepository;
+        this.userMapper = userMapper;
     }
 
     public StaffApplicationDto mapToDto(StaffRequest staffRequest) {
@@ -49,22 +47,14 @@ public class StaffApplicationMapper {
         );
     }
 
-    public StaffRequest mapToEntity(StaffApplicationDto staffApplication) {
+    public StaffRequest mapToEntity(StaffApplicationCreateDto staffApplication, Status status) {
         return new StaffRequest(
                 staffApplication.getDescription(),
-                userRepository
-                        .findByPlayerId(staffApplication.getSender().getPlayerId())
-                        .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST)),
+                userRepository.getReferenceById(staffApplication.getSenderId()),
                 null,
-                roleRepository
-                        .findByName(staffApplication.getRole())
-                        .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST)),
-                statusRepository
-                        .findByName(staffApplication.getStatus())
-                        .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST)),
-                tournamentRepository
-                        .findById(staffApplication.getTournamentId())
-                        .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST))
+                roleRepository.getReferenceById(staffApplication.getRoleId()),
+                status,
+                tournamentRepository.getReferenceById(staffApplication.getTournamentId())
         );
     }
 }
