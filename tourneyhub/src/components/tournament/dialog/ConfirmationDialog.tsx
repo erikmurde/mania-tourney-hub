@@ -48,7 +48,7 @@ const ConfirmationDialog = ({btnProps, btnIcon, title, description, actionTitle,
                     <Button variant='contained' color='success' 
                         onClick={() => {
                             action();
-                            setOpen(false)
+                            setOpen(false);
                         }}
                         sx={{ minWidth: 90 }}>
                         {actionTitle}

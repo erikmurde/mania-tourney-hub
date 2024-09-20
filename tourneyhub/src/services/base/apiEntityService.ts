@@ -1,6 +1,6 @@
 import { ApiService } from './apiService';
 
-export abstract class ApiEntityService<TEntityDto> extends ApiService {
+export abstract class ApiEntityService<TEntityDto, TEntityCreateDto, TEntityEditDto> extends ApiService {
 
     protected baseUrl: string;
 
@@ -23,14 +23,14 @@ export abstract class ApiEntityService<TEntityDto> extends ApiService {
         return response.data;
     }
 
-    async create(entity: TEntityDto): Promise<TEntityDto> {
+    async create(entity: TEntityCreateDto): Promise<TEntityCreateDto> {
         const response = await this.axios.post(this.baseUrl, entity);
 
         console.log('create response: ', response);
         return response.data;
     }
 
-    async edit(id: string, entity: TEntityDto) {
+    async edit(id: string, entity: TEntityEditDto) {
         const response = await this.axios.put(`${this.baseUrl}/${id}`, entity);
 
         console.log('edit response: ', response);

@@ -27,12 +27,6 @@ const MatchEditForm = ({match}: {match: MatchDto}) => {
     const authService = new AuthService();
     dayjs.extend(utc);
 
-    const getUsersWithRole = (staff: UserDto[], roles: string[]) => {
-        return staff
-            .filter(user => user.roles.some(userRole => roles.includes(userRole.name)))
-            .map(user => ({ playerId: user.playerId, name: user.name, country: user.country }));
-    }
-
     useEffect(() => {
         if (id && open) {
             authService
@@ -44,6 +38,12 @@ const MatchEditForm = ({match}: {match: MatchDto}) => {
             }));
         };
     }, [id, open]);
+
+    const getUsersWithRole = (staff: UserDto[], roles: string[]) => {
+        return staff.filter(user => 
+            user.roles.some(userRole => roles.includes(userRole.name))
+        );
+    }
 
     const onSubmit = async(values: MatchCreateDto) => {
         const newMatch: MatchDto = {

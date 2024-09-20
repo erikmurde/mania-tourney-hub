@@ -1,23 +1,33 @@
 import StaffApplicationFormView from './views/StaffApplicationFormView';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../../../routes/Root';
-import { StaffApplicationDto } from '../../../../dto/staff/StaffApplicationDto';
 import { useParams } from 'react-router-dom';
-import { ADMIN, MAPPOOLER, MAPPER, PLAYTESTER, REFEREE, STREAMER, COMMENTATOR, SHEETER, GFX, REQUIRED, PENDING, LOGIN_URL } from '../../../../constants';
+import { REQUIRED, PENDING, LOGIN_URL } from '../../../../constants';
 import { Schema, object, string } from 'yup';
 import FormDialogBase from '../../dialog/FormDialogBase';
 import { StaffApplicationService } from '../../../../services/staffApplicationService';
+import { StaffApplicationCreateDto } from '../../../../dto/staff/application/StaffApplicationCreateDto';
+import { RoleDto } from '../../../../dto/RoleDto';
+import { RoleService } from '../../../../services/roleService';
+import { StatusService } from '../../../../services/statusService';
 
 interface IProps {
-    applicationOpen: boolean,
-    tourneyName: string
+    applicationOpen: boolean
 }
 
-const StaffApplicationForm = ({applicationOpen, tourneyName}: IProps) => {
+const StaffApplicationForm = ({applicationOpen}: IProps) => {
     const { user } = useContext(AuthContext);
     const { id } = useParams();
     const [open, setOpen] = useState(false);
-    const roles = [ADMIN, MAPPOOLER, MAPPER, PLAYTESTER, REFEREE, STREAMER, COMMENTATOR, SHEETER, GFX];
+    const [roles, setRoles] = useState([] as RoleDto[]);
+
+    useEffect(() => {
+        if (open && roles.length === 0) {
+            new RoleService()
+                .getAll()
+                .then(roles => setRoles(roles));
+        }
+    }, [open, roles.length]);
 
     if (!user || !id) {
         return <></>;
@@ -26,31 +36,36 @@ const StaffApplicationForm = ({applicationOpen, tourneyName}: IProps) => {
     const filterRoles = () => {
         const userRoles = user.roles
             .filter(role => role.tournamentId === id);
-    
+
         return roles.filter(role => 
-            userRoles.every(userRole => userRole.name !== role));
+            userRoles.every(userRole => userRole.name !== role.name));
     }
 
-    const onSubmit = async(values: StaffApplicationDto) => {
-        await new StaffApplicationService().create(values);
+    const onSubmit = async(values: StaffApplicationCreateDto) => {
+        const status = await new StatusService()
+            .getByName(PENDING);
 
-        setOpen(false);
+        if (status) {
+            values.statusId = status.id;
+            await new StaffApplicationService().create(values);
+    
+            setOpen(false);
+        }
     }
 
     const validationSchema: Schema = object({
-        role: string()
+        roleId: string()
             .required(REQUIRED),
         description: string()
             .required(REQUIRED)
     })
 
-    const initialValues: StaffApplicationDto = {
-        id: '',
-        sender: { playerId: user.playerId, name: user.name, country: user.country },
+    const initialValues: StaffApplicationCreateDto = {
+        playerId: user.playerId,
+        senderId: user.id,
         tournamentId: id,
-        tournament: tourneyName,
-        role: '',
-        status: PENDING,
+        roleId: '',
+        statusId: '',
         description: ''
     }
 
@@ -69,7 +84,7 @@ const StaffApplicationForm = ({applicationOpen, tourneyName}: IProps) => {
             form={
                 <StaffApplicationFormView 
                     initialValues={initialValues} 
-                    selectValues={filterRoles()} 
+                    roles={filterRoles()} 
                     validationSchema={validationSchema}
                     onSubmit={onSubmit}/>
             }/>

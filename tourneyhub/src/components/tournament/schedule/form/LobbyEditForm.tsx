@@ -3,7 +3,6 @@ import FormDialogBase from '../../dialog/FormDialogBase';
 import LobbyCreateFormView from './views/LobbyCreateFormView';
 import { useContext, useEffect, useState } from 'react';
 import { LobbyDto } from '../../../../dto/schedule/LobbyDto';
-import { UserDtoSimple } from '../../../../dto/user/UserDtoSimple';
 import { useParams } from 'react-router-dom';
 import { AuthService } from '../../../../services/authService';
 import { ADMIN, HOST, REFEREE, REQUIRED } from '../../../../constants';
@@ -11,20 +10,19 @@ import dayjs from 'dayjs';
 import { Schema, object, date } from 'yup';
 import { LobbyService } from '../../../../services/lobbyService';
 import { UpdateContext } from '../../../../routes/Root';
+import { UserDto } from '../../../../dto/user/UserDto';
 
 const LobbyEditForm = ({lobby}: {lobby: LobbyDto}) => {
     const { id } = useParams();
     const { scheduleUpdate, setScheduleUpdate } = useContext(UpdateContext);
     const [open, setOpen] = useState(false);
-    const [selectValues, setSelectValues] = useState([] as UserDtoSimple[]);
+    const [selectValues, setSelectValues] = useState([] as UserDto[]);
 
     useEffect(() => {
         if (id && open) {
             new AuthService()
                 .getRoles(id, [HOST, ADMIN, REFEREE])
-                .then(staff => setSelectValues(
-                    staff.map(user => ({ playerId: user.playerId, name: user.name, country: user.country }))
-                ));
+                .then(staff => setSelectValues(staff));
         }
     }, [id, open]);
 

@@ -1,5 +1,5 @@
 import { Card, CardContent, Divider, Grid, Typography } from '@mui/material';
-import { StaffApplicationDto } from '../../../dto/staff/StaffApplicationDto';
+import { StaffApplicationDto } from '../../../dto/staff/application/StaffApplicationDto';
 import Flag from '../../Flag';
 import { StyledCardActions } from '../../styled/StyledCardActions';
 import ConfirmationDialog from '../dialog/ConfirmationDialog';

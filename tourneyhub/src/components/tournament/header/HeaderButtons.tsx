@@ -114,10 +114,7 @@ const HeaderButtons = ({tourney, updateTourney}: IProps) => {
             </Grid>}
             {!isHost &&
             <Grid item>
-                <StaffApplicationForm
-                    applicationOpen={tourney.applicationOpen} 
-                    tourneyName={tourney.name}
-                />
+                <StaffApplicationForm applicationOpen={tourney.applicationOpen}/>
             </Grid>}
             {isHost && !tourney.done &&
             <Grid item>

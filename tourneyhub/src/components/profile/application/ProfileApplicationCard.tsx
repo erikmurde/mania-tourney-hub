@@ -1,32 +1,24 @@
 import { Card, Divider, Grid, Typography, useTheme } from '@mui/material';
-import { StaffApplicationDto } from '../../../dto/staff/StaffApplicationDto';
+import { StaffApplicationDto } from '../../../dto/staff/application/StaffApplicationDto';
 import { StyledCardActions } from '../../styled/StyledCardActions';
 import { StyledCardContent } from '../../styled/StyledCardContent';
 import ConfirmationDialog from '../../tournament/dialog/ConfirmationDialog';
-import { StaffApplicationService } from '../../../services/staffApplicationService';
-import { ACCEPTED, GFX, PENDING, REJECTED, RETRACTED } from '../../../constants';
+import { ACCEPTED, GFX, PENDING, REJECTED } from '../../../constants';
 
 interface IProps {
     application: StaffApplicationDto,
     navLink: JSX.Element,
-    applicationUpdate: number,
-    setApplicationUpdate: (update: number) => void
+    retractApplication: (application: StaffApplicationDto) => void
 }
 
-const ProfileApplicationCard = ({application, navLink, applicationUpdate, setApplicationUpdate}: IProps) => {
+const ProfileApplicationCard = ({application, navLink, retractApplication}: IProps) => {
     const theme = useTheme();
 
     const colorMap = new Map<string, string>([
         [ACCEPTED, theme.palette.success.main],
         [PENDING, theme.palette.secondary.main],
         [REJECTED, theme.palette.error.main]
-    ])
-
-    const onRetract = async() => {
-        application.status = RETRACTED;
-        await new StaffApplicationService().edit(application.id, application);
-        setApplicationUpdate(applicationUpdate + 1);
-    }
+    ]);
 
     const role = application.role === GFX 
         ? 'Graphics designer' 
@@ -60,7 +52,7 @@ const ProfileApplicationCard = ({application, navLink, applicationUpdate, setApp
                 <ConfirmationDialog 
                     title={'Are you sure you wish to retract this application?'} 
                     actionTitle={'Retract'} 
-                    action={onRetract}
+                    action={() => retractApplication(application)}
                     btnProps={{ color: 'error', title: 'Retract' }}/>
             </StyledCardActions>}
         </Card>

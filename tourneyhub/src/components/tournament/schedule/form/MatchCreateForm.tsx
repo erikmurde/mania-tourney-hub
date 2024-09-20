@@ -35,18 +35,6 @@ const MatchCreateForm = ({stageId}: {stageId: string}) => {
     const authService = new AuthService();
     dayjs.extend(utc);
 
-    const getUsersWithRole = (staff: UserDto[], roles: string[]) => {
-        return staff
-            .filter(user => user.roles.some(userRole => roles.includes(userRole.name)))
-            .map(user => ({ playerId: user.playerId, name: user.name, country: user.country }));
-    }
-    
-    const getPlayer = (name: string) => {
-        return tourney.minTeamSize > 1 
-            ? (selectValues.players as TeamDtoSimple[]).find(player => player.name === name)! 
-            : (selectValues.players as UserDtoSimple[]).find(player => player.name === name)! 
-    }
-
     useEffect(() => {
         if (id && open) {
             if (isTeam) {
@@ -60,6 +48,18 @@ const MatchCreateForm = ({stageId}: {stageId: string}) => {
             }
         };
     }, [id, open]);
+
+    const getUsersWithRole = (staff: UserDto[], roles: string[]) => {
+        return staff.filter(user => 
+            user.roles.some(userRole => roles.includes(userRole.name))
+        );
+    }
+    
+    const getPlayer = (name: string) => {
+        return tourney.minTeamSize > 1 
+            ? (selectValues.players as TeamDtoSimple[]).find(player => player.name === name)! 
+            : (selectValues.players as UserDtoSimple[]).find(player => player.name === name)! 
+    }
 
     const initSelection = async(participants: UserDtoSimple[] | TeamDtoSimple[]) => {
         const staff = await authService

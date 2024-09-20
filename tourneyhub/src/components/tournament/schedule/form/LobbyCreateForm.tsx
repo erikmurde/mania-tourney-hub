@@ -2,7 +2,6 @@ import { PlaylistAdd } from '@mui/icons-material';
 import FormDialogBase from '../../dialog/FormDialogBase';
 import { useContext, useEffect, useState } from 'react';
 import LobbyCreateFormView from './views/LobbyCreateFormView';
-import { UserDtoSimple } from '../../../../dto/user/UserDtoSimple';
 import { AuthService } from '../../../../services/authService';
 import { useParams } from 'react-router-dom';
 import { ADMIN, HOST, REFEREE, REQUIRED } from '../../../../constants';
@@ -12,11 +11,12 @@ import { Schema, date, object } from 'yup';
 import { UpdateContext } from '../../../../routes/Root';
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
+import { UserDto } from '../../../../dto/user/UserDto';
 
 const LobbyCreateForm = ({stageId}: {stageId: string}) => {
     const { id } = useParams();
     const { scheduleUpdate, setScheduleUpdate } = useContext(UpdateContext);
-    const [selectValues, setSelectValues] = useState([] as UserDtoSimple[]);
+    const [selectValues, setSelectValues] = useState([] as UserDto[]);
     const [lobbies, setLobbies] = useState([] as LobbyDto[]);
     const [open, setOpen] = useState(false);
     const service = new LobbyService();
@@ -26,9 +26,8 @@ const LobbyCreateForm = ({stageId}: {stageId: string}) => {
         if (id && open) {
             new AuthService()
                 .getRoles(id, [HOST, ADMIN, REFEREE])
-                .then(staff => setSelectValues(
-                    staff.map(user => ({ playerId: user.playerId, name: user.name, country: user.country }))
-            ));
+                .then(staff => setSelectValues(staff));
+
             service
                 .getAllStage(stageId)
                 .then(lobbies => {

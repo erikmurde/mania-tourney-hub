@@ -2,16 +2,17 @@ import { Grid, MenuItem, TextField } from '@mui/material';
 import { Field, Form, Formik } from 'formik';
 import TourneySelectField from '../../../field/TourneySelectField';
 import { Schema } from 'yup';
-import { StaffApplicationDto } from '../../../../../dto/staff/StaffApplicationDto';
+import { StaffApplicationCreateDto } from '../../../../../dto/staff/application/StaffApplicationCreateDto';
+import { RoleDto } from '../../../../../dto/RoleDto';
 
 interface IProps {
-    initialValues: StaffApplicationDto,
-    selectValues: string[],
+    initialValues: StaffApplicationCreateDto,
+    roles: RoleDto[],
     validationSchema: Schema,
-    onSubmit: (values: StaffApplicationDto) => void
+    onSubmit: (values: StaffApplicationCreateDto) => void
 }
 
-const StaffApplicationFormView = ({initialValues, selectValues, validationSchema, onSubmit}: IProps) => {
+const StaffApplicationFormView = ({initialValues, roles, validationSchema, onSubmit}: IProps) => {
     return (  
         <Formik 
             initialValues={initialValues}
@@ -22,9 +23,9 @@ const StaffApplicationFormView = ({initialValues, selectValues, validationSchema
                 <Form id='staff-application-form'>
                     <Grid container rowSpacing={2} marginTop={1}>
                         <Grid item xs={6}>
-                            <TourneySelectField name='role' label='Desired role' error={errors.role}
-                                options={selectValues.map(value => 
-                                    <MenuItem key={value} value={value}>{value}</MenuItem>
+                            <TourneySelectField name='roleId' label='Desired role' error={errors.roleId}
+                                options={roles.map(role => 
+                                    <MenuItem key={role.id} value={role.id}>{role.name}</MenuItem>
                                 )}/>
                         </Grid>
                         <Grid item xs={12}>
