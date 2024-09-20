@@ -1,15 +1,15 @@
 import { IStageDto } from '../dto/stage/IStageDto';
-import { BaseEntityService } from './base/baseEntityService';
+import { ApiEntityService } from './base/apiEntityService';
 
-export class StageService extends BaseEntityService<IStageDto> {
+export class StageService extends ApiEntityService<IStageDto, IStageDto, IStageDto> {
     constructor() {
         super('stages');
     }
 
-    async getAllTourney(tournamentId: string): Promise<IStageDto[]> {
-        const response = await this.axios.get<IStageDto[]>(`${this.baseUrl}?tournamentId=${tournamentId}`);
+    async getByTournamentId(tournamentId: string): Promise<IStageDto[]> {
+        const response = await this.axios.get<IStageDto[]>(`${this.baseUrl}/tournament/${tournamentId}`);
 
-        console.log('getAllTourney response: ', response);
+        console.log('getStagesByTournamentId response: ', response);
         return response.data;
     }
 }

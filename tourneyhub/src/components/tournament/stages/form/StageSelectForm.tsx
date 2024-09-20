@@ -45,7 +45,7 @@ const StageSelectForm = ({hasQualifier}: {hasQualifier: boolean}) => {
             </Dialog>}
             {openCreate && 
             <StageCreateForm 
-                stageType={stageType}
+                type={stageType}
                 open={openCreate} 
                 onClose={() => setOpenCreate(false)}/>}
         </Grid>

@@ -29,7 +29,7 @@ const PoolButtons = ({stage, mappool, manage, setManage}: IProps) => {
         if (!stage) {
             return;
         }
-        stage.mappoolPublic = true;
+        stage.mappoolPublished = true;
         await new StageService().edit(stage.id, stage);
         setMapPoolUpdate(mapPoolUpdate + 1);
     }
@@ -67,7 +67,7 @@ const PoolButtons = ({stage, mappool, manage, setManage}: IProps) => {
                 Manage
             </Button>
         </Grid>}
-        {stage && !manage && !stage.mappoolPublic && isHost &&
+        {stage && !manage && !stage.mappoolPublished && isHost &&
         <Grid item>
             <ConfirmationDialog
                 btnProps={{ startIcon: <Publish/>, title: 'Publish', sx: {width: 150}}}

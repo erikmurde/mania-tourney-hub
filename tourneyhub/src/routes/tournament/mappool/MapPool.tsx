@@ -23,7 +23,7 @@ const MapPool = () => {
     useEffect(() => {
         if (id) {
             new StageService()
-                .getAllTourney(id)
+                .getByTournamentId(id)
                 .then(stages => {
                     setStages(stages);
                     setStageId(stages.length > 0 ? stages[0].id : '');
@@ -40,7 +40,7 @@ const MapPool = () => {
         } else {
             const stage = stages.find(stage => stage.id === stageId);
 
-            if (!stage || !stage.mappoolPublic) {
+            if (!stage || !stage.mappoolPublished) {
                 setMaps([]);
                 return;
             }

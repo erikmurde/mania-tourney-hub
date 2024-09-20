@@ -24,7 +24,7 @@ const Stages = () => {
     useEffect(() => {
         if (valid) {
             new StageService()
-                .getAllTourney(id)
+                .getByTournamentId(id)
                 .then(stages => setStages(stages));
         }
     }, [valid, stageUpdate]);
@@ -47,7 +47,7 @@ const Stages = () => {
                 </Grid>
                 {!tourney.done && 
                 <StageSelectForm 
-                    hasQualifier={stages.some(stage => stage.stageType === QUALIFIER)}
+                    hasQualifier={stages.some(stage => stage.stageType.name === QUALIFIER)}
                 />}
             </Grid>
             <StageList stages={stages}/>

@@ -13,22 +13,33 @@ import { UpdateContext } from '../../../../routes/Root';
 import { StageService } from '../../../../services/stageService';
 import { Schema, date, number, object, string } from 'yup';
 import { QUALIFIER, REQUIRED, STANDARD } from '../../../../constants';
+import { StageTypeService } from '../../../../services/stageTypeService';
 
 interface IProps {
-    stageType: string,
+    type: string,
     open: boolean,
     onClose: () => void
 }
 
-const StageCreateForm = ({stageType, open, onClose}: IProps) => {
+const StageCreateForm = ({type, open, onClose}: IProps) => {
     const { stageUpdate, setStageUpdate } = useContext(UpdateContext);
     const { id } = useParams();
     dayjs.extend(utc);
 
+    if (!id) {
+        return <></>;
+    }
+
     const onSubmit = async(values: IStageDto) => {
-        await new StageService().create(values);
-        setStageUpdate(stageUpdate + 1);
-        onClose();
+        const stageType = await new StageTypeService().getByName(type);
+
+        if (stageType) {
+            values.stageType = stageType;
+
+            await new StageService().create(values);
+            setStageUpdate(stageUpdate + 1);
+            onClose();
+        }
     }
 
     const validationSchema: Schema = object({
@@ -36,16 +47,16 @@ const StageCreateForm = ({stageType, open, onClose}: IProps) => {
             .required(REQUIRED),
         bestOf: number()
             .required(REQUIRED)
-            .min(stageType === STANDARD ? 1 : 0, 'Must be above 0'),
+            .min(type === STANDARD ? 1 : 0, 'Must be above 0'),
         lobbySize: number()
             .required(REQUIRED)
-            .min(stageType === STANDARD ? 0 : 1, 'Must be above 0'),
+            .min(type === STANDARD ? 0 : 1, 'Must be above 0'),
         numAdvancing: number()
             .required(REQUIRED)
-            .min(stageType === STANDARD ? 0 : 1, 'Must be above 0'),
+            .min(type === STANDARD ? 0 : 1, 'Must be above 0'),
         schedulingDeadline: date()
             .when(([], schema) => {
-                if (stageType === QUALIFIER) {
+                if (type === QUALIFIER) {
                     return schema
                         .typeError('Invalid date format')
                         .required(REQUIRED)
@@ -57,16 +68,16 @@ const StageCreateForm = ({stageType, open, onClose}: IProps) => {
 
     const initialValues: IStageDto = {
         id: '',
-        stageType: stageType,
-        tournamentId: id!,
+        stageType: { id: '', name: type },
+        tournamentId: id,
         name: '',
         bestOf: 0,
         lobbySize: 0,
         numAdvancing: 0,
         schedulingDeadline: dayjs.utc(),
-        mappoolPublic: false,
-        schedulePublic: false,
-        statsPublic: false
+        mappoolPublished: false,
+        schedulePublished: false,
+        statsPublished: false
     };
 
     return (  

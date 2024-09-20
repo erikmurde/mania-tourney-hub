@@ -29,7 +29,7 @@ const Statistics = () => {
     useEffect(() => {
         if (id) {
             new StageService()
-                .getAllTourney(id)
+                .getByTournamentId(id)
                 .then(stages => {
                     setStages(stages);
                     setStageId(stages.length > 0 ? stages[0].id : '');
@@ -37,7 +37,7 @@ const Statistics = () => {
         }
     }, [id]);
 
-    let stage = stages.find(stage => stage.id === stageId.toString());
+    let stage = stages.find(stage => stage.id === stageId);
 
     useEffect(() => {
         if (stage) {
@@ -45,7 +45,7 @@ const Statistics = () => {
                 .getAllStage(stage.id)
                 .then(stats => {
                     setMapStats(stats);
-                    setMapId(stage!.stageType === QUALIFIER ? QUALIFIER : '');
+                    setMapId(stage!.stageType.name === QUALIFIER ? QUALIFIER : '');
                 });
         }
     }, [stage]);
@@ -53,7 +53,7 @@ const Statistics = () => {
     const isHost = id && user && new AuthService().isHost(user, id);
     const map = mapStats.find(map => map.id === mapId);
     
-    const statsVisible = (stage?.statsPublic || isHost) && mapStats.length > 0; 
+    const statsVisible = (stage?.statsPublished || isHost) && mapStats.length > 0; 
 
     return (  
         <Paper elevation={2} sx={{ minHeight: 500, paddingBottom: 2 }}>
@@ -63,7 +63,7 @@ const Statistics = () => {
                 <StatsTabs
                     maps={mapStats}
                     mapId={mapId}
-                    stageType={stage.stageType}
+                    stageType={stage.stageType.name}
                     setMapId={setMapId}
                 />}
             </Grid>
@@ -84,13 +84,13 @@ const Statistics = () => {
                     >
                     {map && 
                     <MapStats map={map} teamTourney={tourney.minTeamSize > 1}/>} 
-                    {mapId === QUALIFIER && (stage.statsPublic || isHost) && 
+                    {mapId === QUALIFIER && statsVisible &&
                     <SeedingStats 
                         mapStats={mapStats}
                         numAdvancing={stage.numAdvancing}
                         teamTourney={tourney.minTeamSize > 1}
                     />}
-                    {(stage.statsPublic || isHost) && stage.id && mapId === '' && mapStats.length > 0 &&
+                    {(stage.statsPublished || isHost) && stage.id && mapId === '' && mapStats.length > 0 &&
                     <StageStats mapStats={mapStats} tourney={tourney}
                     />}
                     {!statsVisible && <NoItems name={'statistics'}/>}

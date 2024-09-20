@@ -13,7 +13,7 @@ const ScheduleButtons = ({stage}: {stage: IStageDto}) => {
     const { scheduleUpdate, setScheduleUpdate } = useContext(UpdateContext);
 
     const publishSchedule = async() => {
-        stage.schedulePublic = true;
+        stage.schedulePublished = true;
         await new StageService().edit(stage.id, stage);
         setScheduleUpdate(scheduleUpdate + 1);
     }
@@ -21,11 +21,11 @@ const ScheduleButtons = ({stage}: {stage: IStageDto}) => {
     return (  
         <>
             <Grid item>
-                {stage.stageType === QUALIFIER 
+                {stage.stageType.name === QUALIFIER 
                 ?   <LobbyCreateForm stageId={stage.id}/> 
                 :   <MatchCreateForm stageId={stage.id}/>}
             </Grid>
-            {!stage.schedulePublic &&
+            {!stage.schedulePublished &&
             <Grid item>
                 <ConfirmationDialog 
                     btnProps={{ startIcon: <Publish />, title: 'Publish', sx: { width: 150 }}} 

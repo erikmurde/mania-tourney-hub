@@ -24,7 +24,7 @@ const Schedule = () => {
     useEffect(() => {
         if (id) {
             new StageService()
-                .getAllTourney(id)
+                .getByTournamentId(id)
                 .then(stages => {
                     setStages(stages);
                     setStageId(stages.length > 0 ? stages[0].id : '');
@@ -32,7 +32,7 @@ const Schedule = () => {
         }
     }, [id]);
 
-    let stage = stages.find(stage => stage.id === stageId.toString()) ?? null;
+    let stage = stages.find(stage => stage.id === stageId) ?? null;
 
     const isHost = id && user && new AuthService().isHost(user, id);
 
@@ -49,13 +49,13 @@ const Schedule = () => {
                     buttons={isHost && !tourney.done ? <ScheduleButtons stage={stage}/> : <></>}
                 />
                 <Grid item xs marginLeft={2} marginRight={2}>
-                    {stage.schedulePublic || isHost
+                    {stage.schedulePublished || isHost
                     ?   <>
-                        {stage.stageType === QUALIFIER 
+                        {stage.stageType.name === QUALIFIER 
                         ?   <LobbyTable stage={stage} showTeams={tourney.minTeamSize > 1}/> 
                         :   <MatchTable stage={stage}/>}
                         </>
-                    :   <NoItems name={stage.stageType === QUALIFIER ? 'lobbies' : 'matches'}/>}
+                    :   <NoItems name={stage.stageType.name === QUALIFIER ? 'lobbies' : 'matches'}/>}
                 </Grid>
                 </>}
             </Grid>

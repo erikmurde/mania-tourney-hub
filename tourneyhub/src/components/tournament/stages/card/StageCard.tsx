@@ -39,7 +39,7 @@ const StageCard = ({stage}: {stage: IStageDto}) => {
                     <Grid item xs='auto'>
                         <CardActions sx={{ padding: 0 }}>
                             <StageEditForm initialValues={stage}/>
-                            {!stage.mappoolPublic && !stage.schedulePublic && !stage.statsPublic &&
+                            {!stage.mappoolPublished && !stage.schedulePublished && !stage.statsPublished &&
                             <ConfirmationDialog 
                                 btnProps={{ color: 'error' }} 
                                 btnIcon={<Delete/>}
@@ -54,9 +54,9 @@ const StageCard = ({stage}: {stage: IStageDto}) => {
             <StyledCardContent sx={{ paddingTop: 0 }}>
                 <Box className='divider'/>
                 <Grid container height={30} justifyContent='space-between' alignItems='end'>
-                    <VisibilityMarker title='Mappools' isPublic={stage.mappoolPublic}/>
-                    <VisibilityMarker title='Schedule' isPublic={stage.schedulePublic}/>
-                    <VisibilityMarker title='Statistics' isPublic={stage.statsPublic}/>
+                    <VisibilityMarker title='Mappools' isPublic={stage.mappoolPublished}/>
+                    <VisibilityMarker title='Schedule' isPublic={stage.schedulePublished}/>
+                    <VisibilityMarker title='Statistics' isPublic={stage.statsPublished}/>
                 </Grid>
             </StyledCardContent>
         </Card>

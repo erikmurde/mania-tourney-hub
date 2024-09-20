@@ -12,7 +12,7 @@ interface IProps {
 }
 
 const StageEditFormView = ({initialValues, validationSchema, onSubmit}: IProps) => {
-    const type = initialValues.stageType;
+    const type = initialValues.stageType.name;
 
     return (  
         <Formik 
@@ -67,17 +67,17 @@ const StageEditFormView = ({initialValues, validationSchema, onSubmit}: IProps) 
                     </Grid>
                     <Grid container marginTop={1}>
                         <Grid item xs={12}>
-                            <Field name='mappoolPublic' label='Publish mappool' type='checkbox'
+                            <Field name='mappoolPublished' label='Publish mappool' type='checkbox'
                             as={FormControlLabel} 
                             control={<Checkbox/>}/>
                         </Grid>
                         <Grid item xs={12}>
-                            <Field name='schedulePublic' label='Publish schedule' type='checkbox'
+                            <Field name='schedulePublished' label='Publish schedule' type='checkbox'
                             as={FormControlLabel} 
                             control={<Checkbox/>}/>
                         </Grid>
                         <Grid item xs={12}>
-                            <Field name='statsPublic' label='Publish statistics' type='checkbox'
+                            <Field name='statsPublished' label='Publish statistics' type='checkbox'
                             as={FormControlLabel} 
                             control={<Checkbox/>}/>
                         </Grid>

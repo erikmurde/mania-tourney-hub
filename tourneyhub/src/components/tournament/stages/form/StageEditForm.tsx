@@ -24,13 +24,14 @@ const StageEditForm = ({initialValues}: {initialValues: IStageDto}) => {
         setOpen(false);
     }
 
-    const type = initialValues.stageType;
+    const type = initialValues.stageType.name;
+    
     const validationSchema: Schema = object({
         name: string()
             .required(REQUIRED),
         bestOf: number()
             .required(REQUIRED)
-            .min(type === STANDARD ? 1 : 0, 'Must be above 0'),
+            .min(type === STANDARD ? 3 : 0, 'Must be 3 or higher'),
         lobbySize: number()
             .required(REQUIRED)
             .min(type === STANDARD ? 0 : 1, 'Must be above 0'),

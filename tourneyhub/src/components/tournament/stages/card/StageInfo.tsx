@@ -4,7 +4,7 @@ import dayjs from 'dayjs';
 import { QUALIFIER } from '../../../../constants';
 
 const StageInfo = ({stage}: {stage: IStageDto}) => {
-    const type = stage.stageType;
+    const type = stage.stageType.name;
 
     return (
         <Grid container direction='column' flexGrow={1}>

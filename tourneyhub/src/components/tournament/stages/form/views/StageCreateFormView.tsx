@@ -12,7 +12,7 @@ interface IProps {
 }
 
 const StageCreateFormView = ({initialValues, validationSchema, onSubmit}: IProps) => {
-    const type = initialValues.stageType;
+    const type = initialValues.stageType.name;
 
     return (  
         <Formik 
