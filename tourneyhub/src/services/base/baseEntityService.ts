@@ -17,7 +17,7 @@ export abstract class BaseEntityService<TEntityDto> extends BaseService {
         return response.data;
     }
 
-    async getEntity(id: string): Promise<TEntityDto> {
+    async getEntity(id: number): Promise<TEntityDto> {
         const response = await this.axios.get<TEntityDto>(`${this.baseUrl}/${id}${this.expand}`);
 
         console.log('getEntity response: ', response);
@@ -31,13 +31,13 @@ export abstract class BaseEntityService<TEntityDto> extends BaseService {
         return response.data;
     }
 
-    async edit(id: string, entity: TEntityDto) {
+    async edit(id: number, entity: TEntityDto) {
         const response = await this.axios.put(`${this.baseUrl}/${id}`, entity);
 
         console.log('edit response: ', response);
     }
     
-    async delete(id: string) {
+    async delete(id: number) {
         const response = await this.axios.delete(`${this.baseUrl}/${id}`);
 
         console.log('delete response: ', response);

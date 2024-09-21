@@ -5,7 +5,7 @@ import { RefCommand } from '../../../../domain/RefCommand';
 import CommandTableCell from '../commands/CommandTableCell';
 import CommandTableHead from '../commands/CommandTableHead';
 
-const LobbyMapCommands = ({selectedId}: {selectedId: string}) => {
+const LobbyMapCommands = ({selectedId}: {selectedId: number | null}) => {
     
     const mapCommands: RefCommand[] = [
         { name: 'Current map', command: selectedId ? `!mp map ${selectedId} 3` : 'none' },

@@ -6,7 +6,7 @@ export class LobbyService extends BaseEntityService<LobbyDto> {
         super('lobbies');
     }
 
-    async getAllStage(stageId: string): Promise<LobbyDto[]> {
+    async getAllStage(stageId: number): Promise<LobbyDto[]> {
         const response =  await this.axios.get<LobbyDto[]>(`${this.baseUrl}?stageId=${stageId}`);
 
         console.log('getAllStage response: ', response);

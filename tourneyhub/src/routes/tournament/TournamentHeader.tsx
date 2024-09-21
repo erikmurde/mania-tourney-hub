@@ -6,6 +6,7 @@ import { TournamentService } from '../../services/tournamentService';
 import HeaderText from '../../components/tournament/header/HeaderText';
 import HeaderButtons from '../../components/tournament/header/HeaderButtons';
 import HeaderTabs from '../../components/tournament/header/HeaderTabs';
+import { NUM_REGEX } from '../../constants';
 
 export function useTourney() {
     return useOutletContext<{ tourney: TournamentDto }>();
@@ -17,12 +18,14 @@ const TournamentHeader = () => {
     const { id } = useParams();
 
     useEffect(() => {
-        if (id) {
-            new TournamentService()
-                .getEntity(id)
-                .then(tourney => setTourney(tourney));
-            window.scrollTo(0, 0);
+        if (!id || !id.match(NUM_REGEX)) {
+            return;
         }
+        new TournamentService()
+            .getEntity(Number(id))
+            .then(tourney => setTourney(tourney));
+    
+        window.scrollTo(0, 0);
     }, [id, tourneyUpdate]);
 
     const updateTourney = () => {

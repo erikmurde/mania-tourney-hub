@@ -15,7 +15,7 @@ import { MapService } from '../../../../services/mapService';
 interface IProps {
     dialogProps: DialogProps,
     hasTb: boolean,
-    stageId: string
+    stageId: number
 }
 
 const UnsubmittedMapCreateForm = ({dialogProps, hasTb, stageId}: IProps) => {
@@ -23,10 +23,11 @@ const UnsubmittedMapCreateForm = ({dialogProps, hasTb, stageId}: IProps) => {
     const { user } = useContext(AuthContext);
     const { open, onClose } = dialogProps;
 
+    if (!user) {
+        return <></>;
+    }
+
     const onSubmit = async(values: IMapDto) => {
-        if (!user) {
-            return;
-        }
         if (values.mapType === TB) {
             values.index = 0;
         }
@@ -36,15 +37,16 @@ const UnsubmittedMapCreateForm = ({dialogProps, hasTb, stageId}: IProps) => {
     }
 
     const initialValues: IMapDto = {
-        id: '',
+        id: 0,
         stageId: stageId,
-        beatmapId: '',
+        mapTypeId: 0,
+        beatmapId: 0,
         inMappool: false,
         title: '',
         diff: '',
         artist: '',
         mapper: '',
-        suggestor: user?.name ?? '',
+        suggestor: user.name,
         cover: '',
         download: '',
         bpm: 0,

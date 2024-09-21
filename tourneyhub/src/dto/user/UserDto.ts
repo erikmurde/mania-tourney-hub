@@ -3,7 +3,7 @@ import { TournamentRoleDto } from '../tournamentRole/TournamentRoleDto';
 import { TournamentStatsDto } from '../TournamentStatsDto';
 
 export interface UserDto {
-    id: string,
+    id: number,
     playerId: number,
     name: string,
     rank: number,

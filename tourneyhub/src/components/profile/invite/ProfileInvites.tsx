@@ -5,8 +5,8 @@ import { Grid, Link } from '@mui/material';
 import ProfileInviteCard from './ProfileInviteCard';
 
 interface IProps {
-    userId: string,
-    onNavigate: (tournamentId: string) => void
+    userId: number,
+    onNavigate: (tournamentId: number) => void
 }
 
 const ProfileInvites = ({userId, onNavigate}: IProps) => {

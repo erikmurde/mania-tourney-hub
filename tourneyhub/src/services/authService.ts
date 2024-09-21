@@ -8,15 +8,15 @@ export class AuthService extends BaseEntityService<UserDto> {
         super('users');
     }
 
-    isHost(user: UserDto, tournamentId: string) {
+    isHost(user: UserDto, tournamentId: number) {
         const roles = user.roles
-            .filter(role => role.tournamentId.toString() === tournamentId)
+            .filter(role => role.tournamentId === tournamentId)
             .map(role => role.name);
 
         return roles.includes(HOST);
     }
 
-    isStaff(user: UserDto, tournamentId: string) {
+    isStaff(user: UserDto, tournamentId: number) {
         const staffRoles = [HOST, ADMIN, MAPPOOLER, MAPPER, PLAYTESTER, REFEREE, STREAMER, COMMENTATOR, SHEETER, GFX];
 
         const userRoles = user.roles
@@ -36,7 +36,7 @@ export class AuthService extends BaseEntityService<UserDto> {
         } catch (error) {}
     }
 
-    async getStaff(tournamentId: string): Promise<UserDto[]> {
+    async getStaff(tournamentId: number): Promise<UserDto[]> {
         const response = await this.axios.get<UserDto[]>(`users`);
 
         let staff = response.data
@@ -51,7 +51,7 @@ export class AuthService extends BaseEntityService<UserDto> {
         return staff;
     }
 
-    async getRoles(tournamentId: string, roles: string[]): Promise<UserDto[]> {
+    async getRoles(tournamentId: number, roles: string[]): Promise<UserDto[]> {
         const response = await this.axios.get<UserDto[]>(`users`);
 
         let users = response.data;
@@ -66,7 +66,7 @@ export class AuthService extends BaseEntityService<UserDto> {
         return users;
     }
 
-    async getPlayers(tournamentId: string): Promise<UserDto[]> {
+    async getPlayers(tournamentId: number): Promise<UserDto[]> {
         const response = await this.axios.get<UserDto[]>('users');
 
         const players = response.data
@@ -81,20 +81,20 @@ export class AuthService extends BaseEntityService<UserDto> {
         return players;
     }
 
-    async getUser(id: string): Promise<UserDto> {
+    async getUser(id: number): Promise<UserDto> {
         const response = await this.axios.get<UserDto>(`users/${id}?_embed=stats`);
 
         console.log('getUser response: ', response)
         return response.data;
     }
 
-    private filterUserRolesByTournament(users: UserDto[], tournamentId: string) {
+    private filterUserRolesByTournament(users: UserDto[], tournamentId: number) {
         users.forEach(user => 
             user.roles = user.roles.filter(role => 
                 role.tournamentId === tournamentId));
     }
 
-    private filterUserStatsByTournament(users: UserDto[], tournamentId: string) {
+    private filterUserStatsByTournament(users: UserDto[], tournamentId: number) {
         users.forEach(user =>
             user.stats = user.stats?.filter(stat => 
                 stat.tournamentId === tournamentId));

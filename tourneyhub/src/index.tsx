@@ -13,7 +13,6 @@ import Root from './routes/Root';
 import MapPool from './routes/tournament/mappool/MapPool';
 import TournamentHeader from './routes/tournament/TournamentHeader';
 import Home from './routes/Home';
-import Callback from './routes/Callback';
 import Information from './routes/tournament/information/Information';
 import Stages from './routes/tournament/stages/Stages';
 import Schedule from './routes/tournament/schedule/Schedule';
@@ -30,10 +29,6 @@ const router = createBrowserRouter([
             {
                 path: '',
                 element: <Home/>
-            },
-            {
-                path: 'auth/callback',
-                element: <Callback/>
             },
             {
                 path: 'tournaments/:id/',

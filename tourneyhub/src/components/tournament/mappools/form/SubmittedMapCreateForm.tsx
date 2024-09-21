@@ -13,8 +13,8 @@ import { DUPLICATE_BEATMAP_ID, INTEGER, NOT_NEGATIVE, REQUIRED, TB } from '../..
 interface IProps {
     dialogProps: DialogProps,
     hasTb: boolean,
-    stageId: string,
-    isDuplicateId: (beatmapId: string) => boolean
+    stageId: number,
+    isDuplicateId: (beatmapId: number) => boolean
 }
 
 const SubmittedCreateMapForm = ({dialogProps, stageId, hasTb, isDuplicateId}: IProps) => {
@@ -29,7 +29,7 @@ const SubmittedCreateMapForm = ({dialogProps, stageId, hasTb, isDuplicateId}: IP
 
     const initialValues: ISubmittedMapDto = {
         stageId: stageId,
-        beatmapId: '',
+        beatmapId: 0,
         mapType: '',
         index: 0,
         comment: ''
@@ -42,7 +42,7 @@ const SubmittedCreateMapForm = ({dialogProps, stageId, hasTb, isDuplicateId}: IP
             .min(0, NOT_NEGATIVE)
             .test('', 
                 DUPLICATE_BEATMAP_ID, 
-                beatmapId => !isDuplicateId(beatmapId.toString())
+                beatmapId => !isDuplicateId(beatmapId)
             )
     });
 

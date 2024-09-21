@@ -9,18 +9,16 @@ import { UserDto } from '../../../../dto/user/UserDto';
 import StaffInviteFormView from './views/StaffInviteFormView';
 import { PersonAdd } from '@mui/icons-material';
 import { StaffInviteDto } from '../../../../dto/staff/StaffInviteDto';
-import { useParams } from 'react-router-dom';
 import { AuthContext } from '../../../../routes/Root';
 import { StaffInviteService } from '../../../../services/staffInviteService';
-import { Schema, object, string } from 'yup';
-import { TournamentDto } from '../../../../dto/tournament/TournamentDto';
-import { TournamentService } from '../../../../services/tournamentService';
+import { Schema, number, object, string } from 'yup';
+import { useTourney } from '../../../../routes/tournament/TournamentHeader';
 
 const StaffInviteForm = () => {
-    const { id } = useParams();
+    const { tourney } = useTourney();
     const { user } = useContext(AuthContext);
+
     const [open, setOpen] = useState(false);
-    const [tourney, setTourney] = useState(null as TournamentDto | null);
     const [selectValues, setSelectValues] = useState({
         users: [] as UserDto[],
         roles: [HOST, ADMIN, MAPPOOLER, MAPPER, PLAYTESTER, REFEREE, STREAMER, COMMENTATOR, SHEETER, GFX]
@@ -34,13 +32,12 @@ const StaffInviteForm = () => {
                     ...selectValues, 
                     users: users.filter(option => option.id !== user.id)
                 })); 
-        }       
-        if (id) {
-            new TournamentService()
-                .getEntity(id)
-                .then(tourney => setTourney(tourney));
         }
-    }, [user, id]);
+    }, [user]);
+
+    if (!user) {
+        return <></>;
+    }
 
     const onSubmit = async(values: StaffInviteDto) => {
         await new StaffInviteService().create(values);
@@ -48,18 +45,18 @@ const StaffInviteForm = () => {
     }
 
     const validationSchema: Schema = object({
-        recipientId: string()
+        recipientId: number()
             .required(REQUIRED),
         role: string()
             .required(REQUIRED)
     })
 
     const initialValues: StaffInviteDto = {
-        id: '',
-        tournament: tourney?.name ?? '',
-        tournamentId: id ?? '',
-        sender: user?.name ?? '',
-        recipientId: '',
+        id: 0,
+        tournament: tourney.name,
+        tournamentId: tourney.id,
+        sender: user.name,
+        recipientId: 0,
         role: '',
         status: PENDING,
         description: ''

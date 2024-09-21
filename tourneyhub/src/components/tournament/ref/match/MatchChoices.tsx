@@ -13,8 +13,8 @@ interface IProps {
     maps: IMapDto[],
     player1: string,
     player2: string,
-    bans: string[],
-    protects: string[]
+    bans: number[],
+    protects: number[]
 }
 
 const MatchChoices = ({maps, player1, player2, bans, protects}: IProps) => {

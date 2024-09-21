@@ -6,7 +6,7 @@ export class StaffInviteService extends BaseEntityService<StaffInviteDto> {
         super('staffInvites');
     }
 
-    async getByUser(userId: string): Promise<StaffInviteDto[]> {
+    async getByUser(userId: number): Promise<StaffInviteDto[]> {
         const response = await this.axios.get<StaffInviteDto[]>(`${this.baseUrl}?recipientId=${userId}`);
 
         console.log('getByUser response: ', response);

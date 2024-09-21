@@ -3,7 +3,6 @@ import FormDialogBase from '../../dialog/FormDialogBase';
 import { useContext, useEffect, useState } from 'react';
 import LobbyCreateFormView from './views/LobbyCreateFormView';
 import { AuthService } from '../../../../services/authService';
-import { useParams } from 'react-router-dom';
 import { ADMIN, HOST, REFEREE, REQUIRED } from '../../../../constants';
 import { LobbyDto } from '../../../../dto/schedule/LobbyDto';
 import { LobbyService } from '../../../../services/lobbyService';
@@ -12,9 +11,10 @@ import { UpdateContext } from '../../../../routes/Root';
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
 import { UserDto } from '../../../../dto/user/UserDto';
+import { useTourney } from '../../../../routes/tournament/TournamentHeader';
 
-const LobbyCreateForm = ({stageId}: {stageId: string}) => {
-    const { id } = useParams();
+const LobbyCreateForm = ({stageId}: {stageId: number}) => {
+    const { tourney } = useTourney();
     const { scheduleUpdate, setScheduleUpdate } = useContext(UpdateContext);
     const [selectValues, setSelectValues] = useState([] as UserDto[]);
     const [lobbies, setLobbies] = useState([] as LobbyDto[]);
@@ -23,9 +23,9 @@ const LobbyCreateForm = ({stageId}: {stageId: string}) => {
     dayjs.extend(utc);
 
     useEffect(() => {
-        if (id && open) {
+        if (open) {
             new AuthService()
-                .getRoles(id, [HOST, ADMIN, REFEREE])
+                .getRoles(tourney.id, [HOST, ADMIN, REFEREE])
                 .then(staff => setSelectValues(staff));
 
             service
@@ -34,7 +34,7 @@ const LobbyCreateForm = ({stageId}: {stageId: string}) => {
                     setLobbies(lobbies);
             });
         }
-    }, [id, open]);
+    }, [open]);
 
     const onSubmit = async(values: LobbyDto) => {
         await service.create(values);
@@ -50,7 +50,7 @@ const LobbyCreateForm = ({stageId}: {stageId: string}) => {
     })
 
     const initialValues: LobbyDto = {
-        id: '',
+        id: 0,
         stageId: stageId,
         code: `Q${(lobbies.length + 1).toString().padStart(2, '0')}`,
         time: dayjs.utc(),

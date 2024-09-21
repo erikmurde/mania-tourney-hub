@@ -6,7 +6,7 @@ import { TournamentStatsDto } from '../../../dto/TournamentStatsDto';
 
 const ProfileRoles = ({user}: {user: UserDto}) => {
     const tourneyRoles = [] as {
-        tournamentId: string, 
+        tournamentId: number, 
         roles: TournamentRoleDto[], 
         stats: TournamentStatsDto[]
     }[];

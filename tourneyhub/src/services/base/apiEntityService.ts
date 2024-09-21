@@ -16,7 +16,7 @@ export abstract class ApiEntityService<TEntityDto, TEntityCreateDto, TEntityEdit
         return response.data;
     }
 
-    async getEntity(id: string): Promise<TEntityDto> {
+    async getEntity(id: number): Promise<TEntityDto> {
         const response = await this.axios.get<TEntityDto>(`${this.baseUrl}/${id}`);
 
         console.log('getEntity response: ', response);
@@ -30,13 +30,13 @@ export abstract class ApiEntityService<TEntityDto, TEntityCreateDto, TEntityEdit
         return response.data;
     }
 
-    async edit(id: string, entity: TEntityEditDto) {
+    async edit(id: number, entity: TEntityEditDto) {
         const response = await this.axios.put(`${this.baseUrl}/${id}`, entity);
 
         console.log('edit response: ', response);
     }
     
-    async delete(id: string) {
+    async delete(id: number) {
         const response = await this.axios.delete(`${this.baseUrl}/${id}`);
 
         console.log('delete response: ', response);

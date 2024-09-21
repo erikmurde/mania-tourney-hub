@@ -17,7 +17,7 @@ interface IProps {
     dialogProps: DialogProps,
     initialValues: IMapDto,
     hasTb: boolean,
-    isDuplicateId: (id: string, beatmapId?: string) => boolean,
+    isDuplicateId: (id: number, beatmapId: number | null ) => boolean,
 }
 
 const ManualMapEditForm = ({dialogProps, initialValues, hasTb, isDuplicateId}: IProps) => {
@@ -40,7 +40,7 @@ const ManualMapEditForm = ({dialogProps, initialValues, hasTb, isDuplicateId}: I
             .min(0, NOT_NEGATIVE)
             .test('', 
                 DUPLICATE_BEATMAP_ID, 
-                beatmapId => !isDuplicateId(initialValues.id, beatmapId?.toString())
+                beatmapId => !isDuplicateId(initialValues.id, beatmapId ?? null)
             )
     });
 

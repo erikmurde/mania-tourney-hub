@@ -24,8 +24,8 @@ const MapEditForm = ({mappool, map}: IProps) => {
         console.log('Auto-update', values);
     }
 
-    const isDuplicateId = (id: string, beatmapId?: string) => {
-        return beatmapId !== undefined 
+    const isDuplicateId = (id: number, beatmapId: number | null) => {
+        return beatmapId !== null 
             && mappool.some(map => map.id !== id && map.beatmapId === beatmapId);
     }
 

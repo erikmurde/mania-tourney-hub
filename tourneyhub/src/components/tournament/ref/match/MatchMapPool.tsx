@@ -9,9 +9,9 @@ import { RefTableCell } from '../../../styled/RefTableCell';
 
 interface IProps {
     maps: IMapDto[],
-    picks: string[],
-    bans: string[],
-    protects: string[]
+    picks: (number | null)[],
+    bans: number[],
+    protects: number[]
 }
 
 const MatchMapPool = ({maps, picks, bans, protects}: IProps) => {

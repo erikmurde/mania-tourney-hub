@@ -4,7 +4,6 @@ import { IStageDto } from '../../../dto/stage/IStageDto';
 import { useContext, useEffect, useState } from 'react';
 import { StageService } from '../../../services/stageService';
 import { AuthContext, UpdateContext } from '../../Root';
-import { useParams } from 'react-router-dom';
 import { AuthService } from '../../../services/authService';
 import StageSelectForm from '../../../components/tournament/stages/form/StageSelectForm';
 import NoPermission from '../../NoPermission';
@@ -14,17 +13,15 @@ import { QUALIFIER } from '../../../constants';
 const Stages = () => {
     const { stageUpdate } = useContext(UpdateContext);
     const { user } = useContext(AuthContext);
-    const { id } = useParams();
     const { tourney } = useTourney();
     const [stages, setStages] = useState([] as IStageDto[]);
 
-    const valid = id && user && new AuthService()
-        .isHost(user, id);
+    const valid = user && new AuthService().isHost(user, tourney.id);
 
     useEffect(() => {
         if (valid) {
             new StageService()
-                .getByTournamentId(id)
+                .getByTournamentId(tourney.id)
                 .then(stages => setStages(stages));
         }
     }, [valid, stageUpdate]);

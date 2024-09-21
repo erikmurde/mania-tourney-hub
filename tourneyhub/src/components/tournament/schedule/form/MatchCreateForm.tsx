@@ -1,6 +1,5 @@
 import { PlaylistAdd } from '@mui/icons-material';
 import { useContext, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
 import { UpdateContext } from '../../../../routes/Root';
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc'
@@ -18,8 +17,7 @@ import FormDialogBase from '../../dialog/FormDialogBase';
 import MatchCreateFormView from './views/MatchCreateFormView';
 import { TeamService } from '../../../../services/teamService';
 
-const MatchCreateForm = ({stageId}: {stageId: string}) => {
-    const { id } = useParams();
+const MatchCreateForm = ({stageId}: {stageId: number}) => {
     const { tourney } = useTourney();
     const { scheduleUpdate, setScheduleUpdate } = useContext(UpdateContext);
 
@@ -36,18 +34,18 @@ const MatchCreateForm = ({stageId}: {stageId: string}) => {
     dayjs.extend(utc);
 
     useEffect(() => {
-        if (id && open) {
+        if (open) {
             if (isTeam) {
                 new TeamService()
-                    .getTeams(id)
+                    .getTeams(tourney.id)
                     .then(teams => initSelection(teams));
             } else {
                 authService
-                    .getPlayers(id)
+                    .getPlayers(tourney.id)
                     .then(players => initSelection(players));
             }
         };
-    }, [id, open]);
+    }, [tourney.id, open]);
 
     const getUsersWithRole = (staff: UserDto[], roles: string[]) => {
         return staff.filter(user => 
@@ -63,7 +61,7 @@ const MatchCreateForm = ({stageId}: {stageId: string}) => {
 
     const initSelection = async(participants: UserDtoSimple[] | TeamDtoSimple[]) => {
         const staff = await authService
-            .getRoles(id!, [HOST, ADMIN, REFEREE, STREAMER, COMMENTATOR, PLAYER]);
+            .getRoles(tourney.id, [HOST, ADMIN, REFEREE, STREAMER, COMMENTATOR, PLAYER]);
   
         setSelectValues({
             players: participants,
@@ -107,7 +105,7 @@ const MatchCreateForm = ({stageId}: {stageId: string}) => {
     });
 
     const initialValues: MatchCreateDto = {
-        id: '',
+        id: 0,
         stageId: stageId,
         code: '',
         time: dayjs.utc(),

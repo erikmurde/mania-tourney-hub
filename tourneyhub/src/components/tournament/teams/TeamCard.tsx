@@ -4,10 +4,10 @@ import { StyledCardContent } from '../../styled/StyledCardContent';
 import { GroupRemove } from '@mui/icons-material';
 import { useContext } from 'react';
 import { AuthContext } from '../../../routes/Root';
-import { useParams } from 'react-router-dom';
 import TeamPlayerCard from './TeamPlayerCard';
 import { ACTIVE, ADMIN, DISQUALIFIED, ELIMINATED, HOST, REGISTERED, SUFFIX_MAP } from '../../../constants';
 import ConfirmationDialog from '../dialog/ConfirmationDialog';
+import { useTourney } from '../../../routes/tournament/TournamentHeader';
 
 interface IProps {
     teamsPublic: boolean,
@@ -16,7 +16,7 @@ interface IProps {
 }
 
 const TeamCard = ({teamsPublic, team, eliminateTeam}: IProps) => {
-    const { id } = useParams();
+    const { tourney } = useTourney();
     const { user } = useContext(AuthContext);
     const validRoles = [HOST, ADMIN];
     const theme = useTheme();
@@ -29,7 +29,7 @@ const TeamCard = ({teamsPublic, team, eliminateTeam}: IProps) => {
     ])
 
     const isValid = user && user.roles
-        .filter(role => role.tournamentId === id)
+        .filter(role => role.tournamentId === tourney.id)
         .some(role => validRoles.includes(role.name));
 
     const eliminated = team.status === ELIMINATED;

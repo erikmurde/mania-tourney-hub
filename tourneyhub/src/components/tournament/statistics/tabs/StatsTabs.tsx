@@ -4,14 +4,14 @@ import { QUALIFIER } from '../../../../constants';
 
 interface IProps {
     maps: MapStatsDto[],
-    mapId: string,
+    mapType: string,
     stageType: string,
-    setMapId: (value: string) => void
+    setMapType: (value: string) => void
 }
 
-const StatsTabs = ({maps, mapId, stageType, setMapId}: IProps) => {
-    if (stageType !== QUALIFIER && mapId === QUALIFIER) {
-        mapId = '';
+const StatsTabs = ({maps, mapType, stageType, setMapType}: IProps) => {
+    if (stageType !== QUALIFIER && mapType === QUALIFIER) {
+        mapType = '';
     }
 
     return (  
@@ -19,8 +19,8 @@ const StatsTabs = ({maps, mapId, stageType, setMapId}: IProps) => {
             <Tabs sx={{ maxWidth: 600 }}
                 variant='scrollable'
                 scrollButtons='auto'
-                value={mapId}
-                onChange={(_, value) => setMapId(value)}
+                value={mapType}
+                onChange={(_, value) => setMapType(value)}
                 >
                 {stageType === QUALIFIER && 
                 <Tab label='seeding' value={QUALIFIER}/>
@@ -30,7 +30,7 @@ const StatsTabs = ({maps, mapId, stageType, setMapId}: IProps) => {
                     <Tab 
                         key={map.id} 
                         label={`${map.type}${map.index > 0 ? map.index : ''}`}
-                        value={map.id} onClick={() => setMapId(map.id)}
+                        value={map.id} onClick={() => setMapType(map.type)}
                     />
                 )}
             </Tabs>

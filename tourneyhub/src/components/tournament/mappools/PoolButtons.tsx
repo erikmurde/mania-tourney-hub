@@ -6,7 +6,6 @@ import { useContext } from 'react';
 import { AuthContext, UpdateContext } from '../../../routes/Root';
 import { HOST, ADMIN, MAPPER, MAPPOOLER, PLAYTESTER } from '../../../constants';
 import { AuthService } from '../../../services/authService';
-import { useParams } from 'react-router-dom';
 import { StageService } from '../../../services/stageService';
 import { IStageDto } from '../../../dto/stage/IStageDto';
 import { useTourney } from '../../../routes/tournament/TournamentHeader';
@@ -21,7 +20,6 @@ interface IProps {
 
 const PoolButtons = ({stage, mappool, manage, setManage}: IProps) => {
     const { mapPoolUpdate, setMapPoolUpdate } = useContext(UpdateContext);
-    const { id } = useParams();
     const { tourney } = useTourney();
     const { user } = useContext(AuthContext);
 
@@ -34,11 +32,11 @@ const PoolButtons = ({stage, mappool, manage, setManage}: IProps) => {
         setMapPoolUpdate(mapPoolUpdate + 1);
     }
 
-    const isHost = user && id && new AuthService()
-        .isHost(user, id);
+    const isHost = user && tourney.id && new AuthService()
+        .isHost(user, tourney.id);
         
     const canManage = user && user.roles
-        .filter(role => role.tournamentId === id)
+        .filter(role => role.tournamentId === tourney.id)
         .some(role => [HOST, ADMIN, MAPPER, MAPPOOLER, PLAYTESTER].includes(role.name));
 
     return (

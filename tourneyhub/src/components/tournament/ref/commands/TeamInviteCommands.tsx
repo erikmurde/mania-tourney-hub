@@ -3,21 +3,19 @@ import { RefSheetPaper } from '../../../styled/RefSheetPaper';
 import { TeamDtoSimple } from '../../../../dto/team/TeamDtoSimple';
 import { useEffect, useState } from 'react';
 import { TeamService } from '../../../../services/teamService';
-import { useParams } from 'react-router-dom';
 import TeamInvites from '../TeamInvites';
+import { useTourney } from '../../../../routes/tournament/TournamentHeader';
 
 const TeamInviteCommands = ({teamNames, isMatch}: {teamNames: string[], isMatch?: boolean}) => {
-    const { id } = useParams();
+    const { tourney } = useTourney();
     const [teams, setTeams] = useState([] as TeamDtoSimple[]);
     const theme = useTheme();
 
     useEffect(() => {
-        if (id) {
-            new TeamService()
-                .getTeamsByName(id, teamNames)
-                .then(teams => setTeams(teams));
-        }
-    }, [id]);
+        new TeamService()
+            .getTeamsByName(tourney.id, teamNames)
+            .then(teams => setTeams(teams));
+    }, [tourney.id]);
 
     return (  
         <RefSheetPaper elevation={8}>

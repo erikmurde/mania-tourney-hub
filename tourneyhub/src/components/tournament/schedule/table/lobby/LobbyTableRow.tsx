@@ -6,9 +6,9 @@ import { SchedTableCell } from '../../../../styled/SchedTableCell';
 import { useContext } from 'react';
 import { AuthContext } from '../../../../../routes/Root';
 import { HOST, ADMIN, PLAYER, REFEREE } from '../../../../../constants';
-import { useParams } from 'react-router-dom';
 import LobbyRowActions from './LobbyRowActions';
 import { TeamDto } from '../../../../../dto/team/TeamDto';
+import { useTourney } from '../../../../../routes/tournament/TournamentHeader';
 
 interface IProps {
     lobby: LobbyDto,
@@ -20,7 +20,7 @@ interface IProps {
 }
 
 const LobbyTableRow = ({lobby, userTeam, lobbySize, isRegistered, deadlinePassed, refLobby}: IProps) => {
-    const { id } = useParams();
+    const { tourney } = useTourney();
     const { user } = useContext(AuthContext);
     dayjs.extend(utc);
 
@@ -29,7 +29,7 @@ const LobbyTableRow = ({lobby, userTeam, lobbySize, isRegistered, deadlinePassed
             return false;
         }
         return user.roles
-            .filter(role => role.tournamentId === id)
+            .filter(role => role.tournamentId === tourney.id)
             .some(role => roles.includes(role.name))
     }
 

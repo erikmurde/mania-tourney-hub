@@ -1,6 +1,5 @@
 import { Grid, Paper } from '@mui/material';
 import { useContext, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
 import MapList from '../../../components/tournament/mappools/MapList';
 import { IMapDto } from '../../../dto/map/IMapDto';
 import { StageService } from '../../../services/stageService';
@@ -11,31 +10,33 @@ import { UpdateContext } from '../../Root';
 import { IStageDto } from '../../../dto/stage/IStageDto';
 import SectionTitle from '../../../components/tournament/SectionTitle';
 import StageTabs from '../../../components/tournament/StageTabs';
+import { useTourney } from '../TournamentHeader';
 
 const MapPool = () => {
-    const { id } = useParams();
+    const { tourney } = useTourney();
     const { mapPoolUpdate } = useContext(UpdateContext);
     const [isManage, setIsManage] = useState(false);
     const [stages, setStages] = useState([] as IStageDto[]);
-    const [stageId, setStageId] = useState('');
+    const [stageId, setStageId] = useState(null as number | null);
     const [maps, setMaps] = useState([] as IMapDto[]);
 
     useEffect(() => {
-        if (id) {
-            new StageService()
-                .getByTournamentId(id)
-                .then(stages => {
-                    setStages(stages);
-                    setStageId(stages.length > 0 ? stages[0].id : '');
-                });
-        }
-    }, [id]);
+        new StageService()
+            .getByTournamentId(tourney.id)
+            .then(stages => {
+                setStages(stages);
+                setStageId(stages.length > 0 ? stages[0].id : null);
+            });
+    }, [tourney.id]);
 
     useEffect(() => {
+        if (!stageId) {
+            return;
+        }
         const service = new MapService();
 
         if (isManage) {
-            service.getAllStage(stageId.toString())
+            service.getAllByStageId(stageId)
                 .then(maps => setMaps(maps));
         } else {
             const stage = stages.find(stage => stage.id === stageId);
@@ -44,7 +45,7 @@ const MapPool = () => {
                 setMaps([]);
                 return;
             }
-            service.getAllStageInMappool(stageId.toString())
+            service.getAllInMappoolByStageId(stageId)
                 .then(maps => setMaps(maps));
         }
     }, [stageId, isManage, mapPoolUpdate, stages]);
@@ -61,7 +62,7 @@ const MapPool = () => {
                     <PoolButtons 
                         manage={isManage}
                         setManage={setIsManage}
-                        stage={stages.find(stage => stage.id === stageId.toString()) ?? null}
+                        stage={stages.find(stage => stage.id === stageId) ?? null}
                         mappool={maps}
                     />}/>
                 <Grid item xs>

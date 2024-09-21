@@ -3,7 +3,6 @@ import PlayerList from '../../../components/tournament/players/PlayerList';
 import { UserDto } from '../../../dto/user/UserDto';
 import { useContext, useEffect, useState } from 'react';
 import { AuthService } from '../../../services/authService';
-import { useParams } from 'react-router-dom';
 import SectionTitle from '../../../components/tournament/SectionTitle';
 import ConfirmationDialog from '../../../components/tournament/dialog/ConfirmationDialog';
 import { Publish } from '@mui/icons-material';
@@ -13,7 +12,6 @@ import { AuthContext } from '../../Root';
 import { useTourney } from '../TournamentHeader';
 
 const Players = () => {
-    const { id } = useParams();
     const { tourney } = useTourney();
     const { user } = useContext(AuthContext);
     const [players, setPlayers] = useState([] as UserDto[]);
@@ -22,24 +20,19 @@ const Players = () => {
     const authService = new AuthService();
 
     const isValid = user && user.roles
-        .filter(role => role.tournamentId === id)
+        .filter(role => role.tournamentId === tourney.id)
         .some(role => validRoles.includes(role.name));
 
     useEffect(() => {
-        if (id) {
-            authService
-                .getPlayers(id)
-                .then(players => setPlayers(isValid 
-                    ? players 
-                    : players.filter(player => player.stats[0].status !== DISQUALIFIED))
-                );
-        }
-    }, [id]);
+        authService
+            .getPlayers(tourney.id)
+            .then(players => setPlayers(isValid 
+                ? players 
+                : players.filter(player => player.stats[0].status !== DISQUALIFIED))
+            );
+    }, [tourney.id]);
 
     const publishPlayers = async() => {
-        if (!id) {
-            return;
-        }
         const newPlayers = [...players];
         tourney.participantsPublic = true;
 
@@ -51,7 +44,7 @@ const Players = () => {
                 await authService.edit(player.id, player);
             }
         }
-        await tourneyService.edit(id, tourney);
+        await tourneyService.edit(tourney.id, tourney);
         setPlayers(newPlayers);
     }
 

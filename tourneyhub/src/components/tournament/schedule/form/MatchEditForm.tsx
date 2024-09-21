@@ -2,7 +2,6 @@ import { Edit } from '@mui/icons-material';
 import MatchEditFormView from './views/MatchEditFormView';
 import FormDialogBase from '../../dialog/FormDialogBase';
 import { MatchCreateDto } from '../../../../dto/schedule/MatchCreateDto';
-import { useParams } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
 import { UpdateContext } from '../../../../routes/Root';
 import dayjs from 'dayjs';
@@ -14,9 +13,10 @@ import { UserDto } from '../../../../dto/user/UserDto';
 import { AuthService } from '../../../../services/authService';
 import { MatchDto } from '../../../../dto/schedule/MatchDto';
 import { MatchService } from '../../../../services/matchService';
+import { useTourney } from '../../../../routes/tournament/TournamentHeader';
 
 const MatchEditForm = ({match}: {match: MatchDto}) => {
-    const { id } = useParams();
+    const { tourney } = useTourney();
     const { scheduleUpdate, setScheduleUpdate } = useContext(UpdateContext);
     const [selectValues, setSelectValues] = useState({
         streamers: [] as UserDtoSimple[],
@@ -28,16 +28,16 @@ const MatchEditForm = ({match}: {match: MatchDto}) => {
     dayjs.extend(utc);
 
     useEffect(() => {
-        if (id && open) {
+        if (open) {
             authService
-                .getRoles(id, [HOST, ADMIN, REFEREE, STREAMER, COMMENTATOR])
+                .getRoles(tourney.id, [HOST, ADMIN, REFEREE, STREAMER, COMMENTATOR])
                 .then(users => setSelectValues({
                     streamers: getUsersWithRole(users, [STREAMER]),
                     commentators: getUsersWithRole(users, [COMMENTATOR]),
                     referees: getUsersWithRole(users, [HOST, ADMIN, REFEREE]),
             }));
         };
-    }, [id, open]);
+    }, [tourney.id, open]);
 
     const getUsersWithRole = (staff: UserDto[], roles: string[]) => {
         return staff.filter(user => 

@@ -3,8 +3,8 @@ import { UserDtoSimple } from '../user/UserDtoSimple';
 import { TeamDtoSimple } from '../team/TeamDtoSimple';
 
 export interface MatchDto {
-    id: string,
-    stageId: string,
+    id: number,
+    stageId: number,
     code: string,
     time: Dayjs,
     mpLink: string,

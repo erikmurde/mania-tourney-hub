@@ -1,8 +1,8 @@
 import { TeamPlayerDto } from './TeamPlayerDto';
 
 export interface TeamDto {
-    id: string,
-    tournamentId: string,
+    id: number,
+    tournamentId: number,
     name: string,
     logo: string,
     status: string,

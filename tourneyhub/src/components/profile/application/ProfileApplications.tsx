@@ -6,7 +6,7 @@ import ProfileApplicationCard from './ProfileApplicationCard';
 import { StatusService } from '../../../services/statusService';
 import { RETRACTED } from '../../../constants';
 
-const ProfileApplications = ({onNavigate}: {onNavigate: (tournamentId: string) => void}) => {
+const ProfileApplications = ({onNavigate}: {onNavigate: (tournamentId: number) => void}) => {
     const [staffApplications, setStaffApplications] = useState([] as StaffApplicationDto[]);
     const [applicationUpdate, setApplicationUpdate] = useState(0);
 

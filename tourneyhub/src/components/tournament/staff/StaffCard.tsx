@@ -4,11 +4,11 @@ import { PersonRemove } from '@mui/icons-material';
 import ConfirmationDialog from '../dialog/ConfirmationDialog';
 import Flag from '../../Flag';
 import { AuthService } from '../../../services/authService';
-import { useParams } from 'react-router-dom';
 import { UserCardContent } from '../../styled/UserCardContent';
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../../routes/Root';
 import Profile from '../../../routes/profile/Profile';
+import { useTourney } from '../../../routes/tournament/TournamentHeader';
 
 interface IProps {
     staff: UserDto,
@@ -16,14 +16,14 @@ interface IProps {
 }
 
 const StaffCard = ({staff, removeStaff}: IProps) => {
+    const { tourney } = useTourney();
     const { user } = useContext(AuthContext);
-    const { id } = useParams();
     const [open, setOpen] = useState(false);
     const theme = useTheme();
     const service = new AuthService();
 
-    const isHost = user && id && service.isHost(user, id);
-    const isStaffHost = id && service.isHost(staff, id);
+    const isHost = user && service.isHost(user, tourney.id);
+    const isStaffHost = service.isHost(staff, tourney.id);
 
     return (  
         <Card elevation={8} sx={{ display: 'flex', width: 320, height: 80 }}>

@@ -7,13 +7,13 @@ import { IStageDto } from '../../../../dto/stage/IStageDto';
 import StageCreateFormView from './views/StageCreateFormView';
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
-import { useParams } from 'react-router-dom';
 import { useContext } from 'react';
 import { UpdateContext } from '../../../../routes/Root';
 import { StageService } from '../../../../services/stageService';
 import { Schema, date, number, object, string } from 'yup';
 import { QUALIFIER, REQUIRED, STANDARD } from '../../../../constants';
 import { StageTypeService } from '../../../../services/stageTypeService';
+import { useTourney } from '../../../../routes/tournament/TournamentHeader';
 
 interface IProps {
     type: string,
@@ -23,12 +23,8 @@ interface IProps {
 
 const StageCreateForm = ({type, open, onClose}: IProps) => {
     const { stageUpdate, setStageUpdate } = useContext(UpdateContext);
-    const { id } = useParams();
+    const { tourney } = useTourney();
     dayjs.extend(utc);
-
-    if (!id) {
-        return <></>;
-    }
 
     const onSubmit = async(values: IStageDto) => {
         const stageType = await new StageTypeService().getByName(type);
@@ -67,9 +63,9 @@ const StageCreateForm = ({type, open, onClose}: IProps) => {
     });
 
     const initialValues: IStageDto = {
-        id: '',
-        stageType: { id: '', name: type },
-        tournamentId: id,
+        id: 0,
+        stageType: { id: 0, name: type },
+        tournamentId: tourney.id,
         name: '',
         bestOf: 0,
         lobbySize: 0,

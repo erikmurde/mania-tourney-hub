@@ -24,11 +24,11 @@ const LobbyRefSheet = ({lobby, stageName, lobbySize, onClose}: IProps) => {
     const { tourney } = useTourney();
 
     const [maps, setMaps] = useState([] as IMapDto[]);
-    const [selectedId, setSelectedId] = useState('');
+    const [selectedId, setSelectedId] = useState(null as number | null);
 
     useEffect(() => {
         new MapService()
-            .getAllStageInMappool(lobby.stageId)
+            .getAllInMappoolByStageId(lobby.stageId)
             .then(maps => setMaps(maps));
     }, [lobby.stageId]);
 

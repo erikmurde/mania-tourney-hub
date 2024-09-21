@@ -2,7 +2,6 @@ import { Button, Grid, Paper } from '@mui/material';
 import SectionTitle from '../../../components/tournament/SectionTitle';
 import { useContext, useEffect, useState } from 'react';
 import ReactQuill, { Value } from 'react-quill';
-import { useParams } from 'react-router-dom';
 import { TournamentService } from '../../../services/tournamentService';
 import { ChevronLeft, Edit } from '@mui/icons-material';
 import { AuthContext } from '../../Root';
@@ -20,7 +19,6 @@ const COLORS = [
 ];
 
 const Information = () => {
-    const { id } = useParams();
     const { tourney } = useTourney();
     const { user } = useContext(AuthContext);
     const [value, setValue] = useState({} as Value);
@@ -83,13 +81,10 @@ const Information = () => {
     }
 
     const editInfo = async() => {
-        if (id) {
-            const tourney = await service.getEntity(id);
-            tourney.information = value;
-    
-            await service.edit(id, tourney);
-            setEdit(false);
-        }
+        tourney.information = value;
+        await service.edit(tourney.id, tourney);
+
+        setEdit(false);
     }
 
     const goBack = () => {
@@ -97,7 +92,7 @@ const Information = () => {
         setEdit(false);
     }
 
-    const isHost = id && user && new AuthService().isHost(user, id);
+    const isHost = user && new AuthService().isHost(user, tourney.id);
 
     return (  
         <Paper elevation={2} sx={{ minHeight: 500, paddingBottom: 2 }}>

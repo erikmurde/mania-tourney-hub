@@ -6,7 +6,7 @@ export class StageService extends ApiEntityService<IStageDto, IStageDto, IStageD
         super('stages');
     }
 
-    async getByTournamentId(tournamentId: string): Promise<IStageDto[]> {
+    async getByTournamentId(tournamentId: number): Promise<IStageDto[]> {
         const response = await this.axios.get<IStageDto[]>(`${this.baseUrl}/tournament/${tournamentId}`);
 
         console.log('getStagesByTournamentId response: ', response);

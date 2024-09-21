@@ -1,6 +1,5 @@
 import { Grid, Paper } from '@mui/material';
 import SectionTitle from '../../../components/tournament/SectionTitle';
-import { useParams } from 'react-router-dom';
 import { IStageDto } from '../../../dto/stage/IStageDto';
 import { useContext, useEffect, useState } from 'react';
 import { StageService } from '../../../services/stageService';
@@ -15,26 +14,23 @@ import { AuthService } from '../../../services/authService';
 import { useTourney } from '../TournamentHeader';
 
 const Schedule = () => {
-    const { id } = useParams();
     const { tourney } = useTourney();
     const { user } = useContext(AuthContext);
     const [stages, setStages] = useState([] as IStageDto[]);
-    const [stageId, setStageId] = useState('');
+    const [stageId, setStageId] = useState(null as number | null);
 
     useEffect(() => {
-        if (id) {
-            new StageService()
-                .getByTournamentId(id)
-                .then(stages => {
-                    setStages(stages);
-                    setStageId(stages.length > 0 ? stages[0].id : '');
-                });
-        }
-    }, [id]);
+        new StageService()
+            .getByTournamentId(tourney.id)
+            .then(stages => {
+                setStages(stages);
+                setStageId(stages.length > 0 ? stages[0].id : null);
+            });
+    }, [tourney.id]);
 
-    let stage = stages.find(stage => stage.id === stageId) ?? null;
+    let stage = stages.find(stage => stage.id === stageId);
 
-    const isHost = id && user && new AuthService().isHost(user, id);
+    const isHost = user && new AuthService().isHost(user, tourney.id);
 
     return (  
         <Paper elevation={2} sx={{ minHeight: 500, paddingBottom: 2 }}>

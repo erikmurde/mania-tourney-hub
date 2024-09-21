@@ -19,7 +19,7 @@ interface IProps {
 
 const MatchPicks = ({values, maps, bestOf}: IProps) => {
     const theme = useTheme();
-    const [unselectableMaps, setUnselectableMaps] = useState([] as string[]);
+    const [unselectableMaps, setUnselectableMaps] = useState([] as number[]);
     const players = [values.match.player1.name, values.match.player2.name];
 
     const getBgColor = (index: number) => {
@@ -36,7 +36,7 @@ const MatchPicks = ({values, maps, bestOf}: IProps) => {
         const maxScore = Math.floor(bestOf / 2) + 1;
         const prev = index > 0 ? values.picks[index - 1] : null;
 
-        return (prev && (prev.winner === '' || prev.beatmapId === '')) 
+        return (prev && (prev.winner === '' || !prev.beatmapId)) 
             || ((values.match.score1 === maxScore || values.match.score2 === maxScore) 
             && index >= values.match.score1 + values.match.score2);
     }

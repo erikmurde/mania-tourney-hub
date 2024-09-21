@@ -1,11 +1,10 @@
-import { Paper, Grid, Button, Tabs, Tab } from '@mui/material';
+import { Paper, Grid, Tabs, Tab } from '@mui/material';
 import TeamList from '../../../components/tournament/teams/TeamList';
 import SectionTitle from '../../../components/tournament/SectionTitle';
 import { TeamDto } from '../../../dto/team/TeamDto';
 import { useContext, useEffect, useState } from 'react';
 import { TeamService } from '../../../services/teamService';
-import { useParams } from 'react-router-dom';
-import { GroupAdd, Publish } from '@mui/icons-material';
+import { Publish } from '@mui/icons-material';
 import { AuthContext } from '../../Root';
 import { TournamentService } from '../../../services/tournamentService';
 import { ACTIVE, ADMIN, DISQUALIFIED, HOST } from '../../../constants';
@@ -14,7 +13,6 @@ import TeamPlayerList from '../../../components/tournament/teams/TeamPlayerList'
 import { useTourney } from '../TournamentHeader';
 
 const Teams = () => {
-    const { id } = useParams();
     const { tourney } = useTourney();
     const { user } = useContext(AuthContext);
     const [teams, setTeams] = useState([] as TeamDto[]);
@@ -24,24 +22,19 @@ const Teams = () => {
     const teamService = new TeamService();
 
     const isValid = user && user.roles
-        .filter(role => role.tournamentId === id)
+        .filter(role => role.tournamentId === tourney.id)
         .some(role => validRoles.includes(role.name));
 
     useEffect(() => {
-        if (id) {
-            teamService
-                .getTeams(id)
-                .then(teams => setTeams(isValid 
-                    ? teams 
-                    : teams.filter(team => team.status !== DISQUALIFIED))
-                );
-        }
-    }, [id, isValid]);
+        teamService
+            .getTeams(tourney.id)
+            .then(teams => setTeams(isValid 
+                ? teams 
+                : teams.filter(team => team.status !== DISQUALIFIED))
+            );
+    }, [tourney.id, isValid]);
 
     const publishTeams = async() => {
-        if (!id) {
-            return;
-        }
         const newTeams = [...teams];
         tourney.participantsPublic = true;
 
@@ -51,7 +44,7 @@ const Teams = () => {
                 await teamService.edit(team.id, team);
             }
         }
-        await tourneyService.edit(id, tourney);
+        await tourneyService.edit(tourney.id, tourney);
         setTeams(newTeams);
     }
 

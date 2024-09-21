@@ -7,7 +7,7 @@ import { INTEGER, NOT_NEGATIVE, REQUIRED } from '../../../../../constants';
 interface IProps {
     initialValues: IMapDto,
     onSubmit: (values: IMapDto) => void,
-    isDuplicateId: (id: string, beatmapId?: string) => boolean
+    isDuplicateId: (id: number, beatmapId: number | null) => boolean
 }
 
 const AutoMapEditFormView = ({initialValues, onSubmit, isDuplicateId}: IProps) => {
@@ -20,7 +20,7 @@ const AutoMapEditFormView = ({initialValues, onSubmit, isDuplicateId}: IProps) =
         .test(
             'duplicateId', 
             'Map already in mappool', 
-            beatmapId => !isDuplicateId(initialValues.id, beatmapId.toString())
+            beatmapId => !isDuplicateId(initialValues.id, beatmapId)
         )
     });
 

@@ -1,6 +1,6 @@
 export interface staffRequestDto {
-    id: string,
-    tournamentId: string,
+    id: number,
+    tournamentId: number,
     tournament: string,
     role: string,
     status: string,

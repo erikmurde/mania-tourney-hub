@@ -7,9 +7,9 @@ import { UserCardContent } from '../../styled/UserCardContent';
 import { AuthService } from '../../../services/authService';
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../../routes/Root';
-import { useParams } from 'react-router-dom';
 import { ACTIVE, DISQUALIFIED, ELIMINATED, REGISTERED, SUFFIX_MAP } from '../../../constants';
 import Profile from '../../../routes/profile/Profile';
+import { useTourney } from '../../../routes/tournament/TournamentHeader';
 
 interface IProps {
     playersPublic: boolean,
@@ -19,12 +19,12 @@ interface IProps {
 
 const PlayerCard = ({playersPublic, player, eliminatePlayer}: IProps) => {
     const { user } = useContext(AuthContext);
-    const { id } = useParams();
+    const { tourney } = useTourney();
     const [open, setOpen] = useState(false);
     const theme = useTheme();
     const stats = player.stats[0];
 
-    const isHost = user && id && new AuthService().isHost(user, id);
+    const isHost = user && new AuthService().isHost(user, tourney.id);
     const disqualified = player.stats[0].status === DISQUALIFIED;
 
     const colorMap = new Map<string, string>([

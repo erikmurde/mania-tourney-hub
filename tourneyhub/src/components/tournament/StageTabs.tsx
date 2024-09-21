@@ -3,9 +3,9 @@ import { IStageDto } from '../../dto/stage/IStageDto';
 
 interface IProps {
     stages: IStageDto[],
-    stageId: string,
+    stageId: number | null,
     buttons: JSX.Element,
-    setStageId: (value: string) => void
+    setStageId: (value: number) => void
 }
 
 const StageTabs = ({stages, stageId, buttons, setStageId} : IProps) => {
@@ -17,7 +17,7 @@ const StageTabs = ({stages, stageId, buttons, setStageId} : IProps) => {
             >
             <Grid item>
                 <Tabs sx={{ width: 200, marginBottom: 2 }}
-                    value={stageId === '' ? false : stageId}
+                    value={stageId ?? false}
                     orientation='vertical' 
                     onChange={(_, value) => setStageId(value)}>
 

@@ -32,13 +32,13 @@ const MatchRefsheet = ({match, stage, onClose}: IProps) => {
         match: match,
         firstPick: '',
         picks: [],
-        bans: ['', ''],
-        protects: ['', '']
+        bans: [],
+        protects: []
     };
 
     useEffect(() => {
         new MapService()
-            .getAllStageInMappool(stage.id)
+            .getAllInMappoolByStageId(stage.id)
             .then(maps => setMaps(maps));
     }, [stage.id]);
 

@@ -11,11 +11,10 @@ import { useTourney } from '../../../../routes/tournament/TournamentHeader';
 interface IProps {
     map: IMapDto,
     mappool: IMapDto[],
-    addToPool: (id: string, key: string) => void
-    removeFromPool: (map: IMapDto) => void
+    updateInMappool: (id: number, inMappool: boolean) => void
 }
 
-const MapManageCard = ({map, mappool, addToPool, removeFromPool}: IProps) => {
+const MapManageCard = ({map, mappool, updateInMappool}: IProps) => {
     const { tourney } = useTourney();
     const { user } = useContext(AuthContext);
     const theme = useTheme();
@@ -61,9 +60,7 @@ const MapManageCard = ({map, mappool, addToPool, removeFromPool}: IProps) => {
                                     sx={{ width: 180 }}
                                     variant='outlined'
                                     color={map.inMappool ? 'error' : 'success'} 
-                                    onClick={() => map.inMappool 
-                                        ? removeFromPool(map) 
-                                        : addToPool(map.id, `${map.mapType}${map.index}`)}>
+                                    onClick={() => updateInMappool(map.id, !map.inMappool)}>
                                     {map.inMappool ? 'Remove from pool' : 'Add to pool'}
                                 </Button>
                             </span>

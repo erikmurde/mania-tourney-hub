@@ -1,7 +1,7 @@
 {
   "users": [
     {
-      "id": "0",
+      "Id": 0,
       "playerId": 16819909,
       "name": "Arcaxio",
       "rank": 80,
@@ -14,29 +14,29 @@
       "avatar": "https://a.ppy.sh/16819909",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "host",
           "canRegWithRole": false
         },
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "mapper",
           "canRegWithRole": false
         },
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "player",
           "canRegWithRole": false
         },
         {
-          "tournamentId": "lr_cc0V",
+          "tournamentId": 3,
           "name": "host",
           "canRegWithRole": false
         }
       ],
       "stats": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "status": "active",
           "seeding": 11,
           "placement": 0
@@ -45,7 +45,7 @@
       "isCaptain": true
     },
     {
-      "id": "2",
+      "Id": 2,
       "playerId": 9853595,
       "name": "Albionthegreat",
       "rank": 31730,
@@ -58,17 +58,17 @@
       "avatar": "https://a.ppy.sh/9853595",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "host",
           "canRegWithRole": false
         },
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "sheeter",
           "canRegWithRole": false
         },
         {
-          "tournamentId": "2",
+          "tournamentId": 2,
           "name": "referee",
           "canRegWithRole": false
         }
@@ -76,7 +76,7 @@
       "stats": []
     },
     {
-      "id": "3",
+      "Id": 3,
       "playerId": 18496063,
       "name": "Tastydumpl1ng",
       "rank": 343,
@@ -89,22 +89,22 @@
       "avatar": "https://a.ppy.sh/18496063",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "host",
           "canRegWithRole": false
         },
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "mappooler",
           "canRegWithRole": false
         },
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "playtester",
           "canRegWithRole": false
         },
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "referee",
           "canRegWithRole": false
         }
@@ -112,7 +112,7 @@
       "stats": []
     },
     {
-      "id": "4",
+      "Id": 4,
       "playerId": 13981991,
       "name": "TheFunk",
       "rank": 7769,
@@ -125,22 +125,22 @@
       "avatar": "https://a.ppy.sh/13981991",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "host",
           "canRegWithRole": false
         },
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "mapper",
           "canRegWithRole": false
         },
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "referee",
           "canRegWithRole": false
         },
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "sheeter",
           "canRegWithRole": false
         }
@@ -148,7 +148,7 @@
       "stats": []
     },
     {
-      "id": "5",
+      "Id": 5,
       "playerId": 8814590,
       "name": "Arkman",
       "rank": 0,
@@ -161,7 +161,7 @@
       "avatar": "https://a.ppy.sh/8814590",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "mappooler",
           "canRegWithRole": false
         }
@@ -169,7 +169,7 @@
       "stats": []
     },
     {
-      "id": "6",
+      "Id": 6,
       "playerId": 10333739,
       "name": "[Crz]sunnyxxy",
       "rank": 285,
@@ -182,7 +182,7 @@
       "avatar": "https://a.ppy.sh/10333739",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "mappooler",
           "canRegWithRole": false
         }
@@ -190,7 +190,7 @@
       "stats": []
     },
     {
-      "id": "7",
+      "Id": 7,
       "playerId": 9658070,
       "name": "My Angel Nilou",
       "rank": 2832,
@@ -203,12 +203,12 @@
       "avatar": "https://a.ppy.sh/9658070",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "mappooler",
           "canRegWithRole": false
         },
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "mapper",
           "canRegWithRole": false
         }
@@ -216,7 +216,7 @@
       "stats": []
     },
     {
-      "id": "8",
+      "Id": 8,
       "playerId": 4556538,
       "name": "Phukiir",
       "rank": 4302,
@@ -229,12 +229,12 @@
       "avatar": "https://a.ppy.sh/4556538",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "mappooler",
           "canRegWithRole": false
         },
         {
-          "tournamentId": "2",
+          "tournamentId": 2,
           "name": "player",
           "canRegWithRole": false
         }
@@ -242,7 +242,7 @@
       "stats": []
     },
     {
-      "id": "9",
+      "Id": 9,
       "playerId": 10125072,
       "name": "U1d",
       "rank": 210,
@@ -255,12 +255,12 @@
       "avatar": "https://a.ppy.sh/10125072",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "mappooler",
           "canRegWithRole": false
         },
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "mapper",
           "canRegWithRole": false
         }
@@ -268,7 +268,7 @@
       "stats": []
     },
     {
-      "id": "10",
+      "Id": 10,
       "playerId": 4363223,
       "name": "553343477",
       "rank": 2063,
@@ -281,7 +281,7 @@
       "avatar": "https://a.ppy.sh/4363223",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "mapper",
           "canRegWithRole": false
         }
@@ -289,7 +289,7 @@
       "stats": []
     },
     {
-      "id": "11",
+      "Id": 11,
       "playerId": 9784248,
       "name": "AhoUsagi",
       "rank": 11233,
@@ -302,7 +302,7 @@
       "avatar": "https://a.ppy.sh/9784248",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "mapper",
           "canRegWithRole": false
         }
@@ -310,7 +310,7 @@
       "stats": []
     },
     {
-      "id": "12",
+      "Id": 12,
       "playerId": 26496648,
       "name": "Alptraum",
       "rank": 5640,
@@ -323,7 +323,7 @@
       "avatar": "https://a.ppy.sh/26496648",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "mapper",
           "canRegWithRole": false
         }
@@ -331,7 +331,7 @@
       "stats": []
     },
     {
-      "id": "13",
+      "Id": 13,
       "playerId": 18471116,
       "name": "Benson_",
       "rank": 4705,
@@ -344,7 +344,7 @@
       "avatar": "https://a.ppy.sh/18471116",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "mapper",
           "canRegWithRole": false
         }
@@ -352,7 +352,7 @@
       "stats": []
     },
     {
-      "id": "14",
+      "Id": 14,
       "playerId": 8900975,
       "name": "BKWind",
       "rank": 632,
@@ -365,7 +365,7 @@
       "avatar": "https://a.ppy.sh/8900975",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "mapper",
           "canRegWithRole": false
         }
@@ -373,7 +373,7 @@
       "stats": []
     },
     {
-      "id": "15",
+      "Id": 15,
       "playerId": 11253722,
       "name": "DannyPX",
       "rank": 21265,
@@ -386,12 +386,12 @@
       "avatar": "https://a.ppy.sh/11253722",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "mapper",
           "canRegWithRole": false
         },
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "referee",
           "canRegWithRole": false
         }
@@ -399,7 +399,7 @@
       "stats": []
     },
     {
-      "id": "16",
+      "Id": 16,
       "playerId": 13360768,
       "name": "Decku",
       "rank": 7559,
@@ -412,7 +412,7 @@
       "avatar": "https://a.ppy.sh/13360768",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "mapper",
           "canRegWithRole": false
         }
@@ -420,7 +420,7 @@
       "stats": []
     },
     {
-      "id": "17",
+      "Id": 17,
       "playerId": 12891443,
       "name": "HMillion",
       "rank": 45996,
@@ -433,7 +433,7 @@
       "avatar": "https://a.ppy.sh/12891443",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "mapper",
           "canRegWithRole": false
         }
@@ -441,7 +441,7 @@
       "stats": []
     },
     {
-      "id": "18",
+      "Id": 18,
       "playerId": 18270260,
       "name": "hylotl",
       "rank": 4951,
@@ -454,7 +454,7 @@
       "avatar": "https://a.ppy.sh/18270260",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "mapper",
           "canRegWithRole": false
         }
@@ -462,7 +462,7 @@
       "stats": []
     },
     {
-      "id": "19",
+      "Id": 19,
       "playerId": 7859973,
       "name": "_IceRain",
       "rank": 0,
@@ -475,7 +475,7 @@
       "avatar": "https://a.ppy.sh/7859973",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "mapper",
           "canRegWithRole": false
         }
@@ -483,7 +483,7 @@
       "stats": []
     },
     {
-      "id": "20",
+      "Id": 20,
       "playerId": 9080296,
       "name": "Imperial Wolf",
       "rank": 0,
@@ -496,7 +496,7 @@
       "avatar": "https://a.ppy.sh/9080296",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "mapper",
           "canRegWithRole": false
         }
@@ -504,7 +504,7 @@
       "stats": []
     },
     {
-      "id": "21",
+      "id": 21,
       "playerId": 1653229,
       "name": "_Stan",
       "rank": 8642,
@@ -517,7 +517,7 @@
       "avatar": "https://a.ppy.sh/1653229",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "mapper",
           "canRegWithRole": false
         }
@@ -525,7 +525,7 @@
       "stats": []
     },
     {
-      "id": "22",
+      "id": 22,
       "playerId": 13026904,
       "name": "tyrcs",
       "rank": 12,
@@ -538,7 +538,7 @@
       "avatar": "https://a.ppy.sh/13026904",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "mapper",
           "canRegWithRole": false
         }
@@ -546,7 +546,7 @@
       "stats": []
     },
     {
-      "id": "23",
+      "id": 23,
       "playerId": 17158897,
       "name": "YuzakiTsukasa",
       "rank": 3163,
@@ -559,7 +559,7 @@
       "avatar": "https://a.ppy.sh/17158897",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "mapper",
           "canRegWithRole": false
         }
@@ -567,7 +567,7 @@
       "stats": []
     },
     {
-      "id": "24",
+      "id": 24,
       "playerId": 13993659,
       "name": "Japeynius",
       "rank": 1688,
@@ -580,7 +580,7 @@
       "avatar": "https://a.ppy.sh/13993659",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "playtester",
           "canRegWithRole": false
         }
@@ -588,7 +588,7 @@
       "stats": []
     },
     {
-      "id": "25",
+      "id": 25,
       "playerId": 7286896,
       "name": "RevVoJH",
       "rank": 283,
@@ -601,7 +601,7 @@
       "avatar": "https://a.ppy.sh/7286896",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "playtester",
           "canRegWithRole": false
         }
@@ -609,7 +609,7 @@
       "stats": []
     },
     {
-      "id": "26",
+      "id": 26,
       "playerId": 7082178,
       "name": "[Crz]Satori",
       "rank": 37,
@@ -622,7 +622,7 @@
       "avatar": "https://a.ppy.sh/7082178",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "playtester",
           "canRegWithRole": false
         }
@@ -630,7 +630,7 @@
       "stats": []
     },
     {
-      "id": "27",
+      "id": 27,
       "playerId": 16308598,
       "name": "winterlover",
       "rank": 1118,
@@ -643,7 +643,7 @@
       "avatar": "https://a.ppy.sh/16308598",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "playtester",
           "canRegWithRole": false
         }
@@ -651,7 +651,7 @@
       "stats": []
     },
     {
-      "id": "28",
+      "id": 28,
       "playerId": 12320264,
       "name": "YuJJun",
       "rank": 270,
@@ -664,7 +664,7 @@
       "avatar": "https://a.ppy.sh/12320264",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "playtester",
           "canRegWithRole": false
         }
@@ -672,7 +672,7 @@
       "stats": []
     },
     {
-      "id": "29",
+      "id": 29,
       "playerId": 9308128,
       "name": "akace100",
       "rank": 8412,
@@ -685,7 +685,7 @@
       "avatar": "https://a.ppy.sh/9308128",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "referee",
           "canRegWithRole": false
         }
@@ -693,7 +693,7 @@
       "stats": []
     },
     {
-      "id": "30",
+      "id": 30,
       "playerId": 16417718,
       "name": "Auxesiaa",
       "rank": 4073,
@@ -706,7 +706,7 @@
       "avatar": "https://a.ppy.sh/16417718",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "referee",
           "canRegWithRole": false
         }
@@ -714,7 +714,7 @@
       "stats": []
     },
     {
-      "id": "31",
+      "id": 31,
       "playerId": 3855052,
       "name": "EpsilonMaiagare",
       "rank": 4338,
@@ -727,12 +727,12 @@
       "avatar": "https://a.ppy.sh/3855052",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "referee",
           "canRegWithRole": false
         },
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "streamer",
           "canRegWithRole": true
         }
@@ -740,7 +740,7 @@
       "stats": []
     },
     {
-      "id": "32",
+      "id": 32,
       "playerId": 17989444,
       "name": "ERA Xuste",
       "rank": 2394,
@@ -753,7 +753,7 @@
       "avatar": "https://a.ppy.sh/17989444",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "referee",
           "canRegWithRole": false
         }
@@ -761,7 +761,7 @@
       "stats": []
     },
     {
-      "id": "33",
+      "id": 33,
       "playerId": 3046856,
       "name": "[GB]Rush_FTK",
       "rank": 49217,
@@ -774,12 +774,12 @@
       "avatar": "https://a.ppy.sh/3046856",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "referee",
           "canRegWithRole": false
         },
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "streamer",
           "canRegWithRole": true
         }
@@ -787,7 +787,7 @@
       "stats": []
     },
     {
-      "id": "34",
+      "id": 34,
       "playerId": 10494860,
       "name": "MashedPotato",
       "rank": 1417,
@@ -800,7 +800,7 @@
       "avatar": "https://a.ppy.sh/10494860",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "referee",
           "canRegWithRole": false
         }
@@ -808,7 +808,7 @@
       "stats": []
     },
     {
-      "id": "35",
+      "id": 35,
       "playerId": 21340543,
       "name": "N4iveDx",
       "rank": 2572,
@@ -821,7 +821,7 @@
       "avatar": "https://a.ppy.sh/21340543",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "referee",
           "canRegWithRole": false
         }
@@ -829,7 +829,7 @@
       "stats": []
     },
     {
-      "id": "36",
+      "id": 36,
       "playerId": 17148657,
       "name": "Poity",
       "rank": 12842,
@@ -842,7 +842,7 @@
       "avatar": "https://a.ppy.sh/17148657",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "referee",
           "canRegWithRole": false
         }
@@ -850,7 +850,7 @@
       "stats": []
     },
     {
-      "id": "37",
+      "id": 37,
       "playerId": 8612061,
       "name": "Polytetral",
       "rank": 5501,
@@ -863,7 +863,7 @@
       "avatar": "https://a.ppy.sh/8612061",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "referee",
           "canRegWithRole": false
         }
@@ -871,7 +871,7 @@
       "stats": []
     },
     {
-      "id": "38",
+      "id": 38,
       "playerId": 16630515,
       "name": "Reihynn",
       "rank": 2591,
@@ -884,7 +884,7 @@
       "avatar": "https://a.ppy.sh/16630515",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "referee",
           "canRegWithRole": false
         }
@@ -892,7 +892,7 @@
       "stats": []
     },
     {
-      "id": "39",
+      "id": 39,
       "playerId": 9676089,
       "name": "rock-on",
       "rank": 128630,
@@ -905,7 +905,7 @@
       "avatar": "https://a.ppy.sh/9676089",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "referee",
           "canRegWithRole": false
         }
@@ -913,7 +913,7 @@
       "stats": []
     },
     {
-      "id": "40",
+      "id": 40,
       "playerId": 4928674,
       "name": "shizehao",
       "rank": 5978,
@@ -926,7 +926,7 @@
       "avatar": "https://a.ppy.sh/4928674",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "referee",
           "canRegWithRole": false
         }
@@ -934,7 +934,7 @@
       "stats": []
     },
     {
-      "id": "41",
+      "id": 41,
       "playerId": 11817622,
       "name": "SunApple",
       "rank": 1654,
@@ -947,17 +947,17 @@
       "avatar": "https://a.ppy.sh/11817622",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "referee",
           "canRegWithRole": false
         },
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "streamer",
           "canRegWithRole": true
         },
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "commentator",
           "canRegWithRole": true
         }
@@ -965,7 +965,7 @@
       "stats": []
     },
     {
-      "id": "42",
+      "id": 42,
       "playerId": 6496016,
       "name": "TheHunter1",
       "rank": 0,
@@ -978,7 +978,7 @@
       "avatar": "https://a.ppy.sh/6496016",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "referee",
           "canRegWithRole": false
         }
@@ -986,7 +986,7 @@
       "stats": []
     },
     {
-      "id": "43",
+      "id": 43,
       "playerId": 32028459,
       "name": "Trooperr",
       "rank": 3125,
@@ -999,12 +999,12 @@
       "avatar": "https://a.ppy.sh/32028459",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "referee",
           "canRegWithRole": false
         },
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "commentator",
           "canRegWithRole": true
         }
@@ -1012,7 +1012,7 @@
       "stats": []
     },
     {
-      "id": "44",
+      "id": 44,
       "playerId": 15665805,
       "name": "konkawe",
       "rank": 1131,
@@ -1025,7 +1025,7 @@
       "avatar": "https://a.ppy.sh/15665805",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "streamer",
           "canRegWithRole": true
         }
@@ -1033,7 +1033,7 @@
       "stats": []
     },
     {
-      "id": "45",
+      "id": 45,
       "playerId": 11590784,
       "name": "SiFouR",
       "rank": 5529,
@@ -1046,12 +1046,12 @@
       "avatar": "https://a.ppy.sh/11590784",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "streamer",
           "canRegWithRole": true
         },
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "commentator",
           "canRegWithRole": true
         }
@@ -1059,7 +1059,7 @@
       "stats": []
     },
     {
-      "id": "46",
+      "id": 46,
       "playerId": 11818585,
       "name": "Baguette2Pain",
       "rank": 1971,
@@ -1072,7 +1072,7 @@
       "avatar": "https://a.ppy.sh/11818585",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "commentator",
           "canRegWithRole": true
         }
@@ -1080,7 +1080,7 @@
       "stats": []
     },
     {
-      "id": "47",
+      "id": 47,
       "playerId": 8784587,
       "name": "Dynascape",
       "rank": 19576,
@@ -1093,7 +1093,7 @@
       "avatar": "https://a.ppy.sh/8784587",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "commentator",
           "canRegWithRole": true
         }
@@ -1101,7 +1101,7 @@
       "stats": []
     },
     {
-      "id": "48",
+      "id": 48,
       "playerId": 12297375,
       "name": "ERA Adam",
       "rank": 1509,
@@ -1114,7 +1114,7 @@
       "avatar": "https://a.ppy.sh/12297375",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "commentator",
           "canRegWithRole": true
         }
@@ -1122,7 +1122,7 @@
       "stats": []
     },
     {
-      "id": "49",
+      "id": 49,
       "playerId": 18520056,
       "name": "[LS]Tenshi",
       "rank": 666,
@@ -1135,7 +1135,7 @@
       "avatar": "https://a.ppy.sh/18520056",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "commentator",
           "canRegWithRole": true
         }
@@ -1143,7 +1143,7 @@
       "stats": []
     },
     {
-      "id": "50",
+      "id": 50,
       "playerId": 11517895,
       "name": "Silhoueska Elze",
       "rank": 1043,
@@ -1156,7 +1156,7 @@
       "avatar": "https://a.ppy.sh/11517895",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "commentator",
           "canRegWithRole": true
         }
@@ -1164,7 +1164,7 @@
       "stats": []
     },
     {
-      "id": "51",
+      "id": 51,
       "playerId": 3187959,
       "name": "Sparky",
       "rank": 6432,
@@ -1177,7 +1177,7 @@
       "avatar": "https://a.ppy.sh/3187959",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "commentator",
           "canRegWithRole": true
         }
@@ -1185,7 +1185,7 @@
       "stats": []
     },
     {
-      "id": "52",
+      "id": 52,
       "playerId": 5183940,
       "name": "2fast",
       "rank": 5293,
@@ -1198,7 +1198,7 @@
       "avatar": "https://a.ppy.sh/5183940",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "sheeter",
           "canRegWithRole": false
         }
@@ -1206,7 +1206,7 @@
       "stats": []
     },
     {
-      "id": "53",
+      "id": 53,
       "playerId": 12609866,
       "name": "ShadeCegLgMn",
       "rank": 0,
@@ -1219,12 +1219,12 @@
       "avatar": "https://a.ppy.sh/12609866",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "sheeter",
           "canRegWithRole": false
         },
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "gfx",
           "canRegWithRole": false
         }
@@ -1232,7 +1232,7 @@
       "stats": []
     },
     {
-      "id": "54",
+      "id": 54,
       "playerId": 3964918,
       "name": "-Candy-",
       "rank": 361637,
@@ -1245,7 +1245,7 @@
       "avatar": "https://a.ppy.sh/3964918",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "gfx",
           "canRegWithRole": false
         }
@@ -1253,7 +1253,7 @@
       "stats": []
     },
     {
-      "id": "55",
+      "id": 55,
       "playerId": 8291099,
       "name": "demiantorp",
       "rank": 495050,
@@ -1266,7 +1266,7 @@
       "avatar": "https://a.ppy.sh/8291099",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "gfx",
           "canRegWithRole": false
         }
@@ -1274,7 +1274,7 @@
       "stats": []
     },
     {
-      "id": "56",
+      "id": 56,
       "playerId": 2071008,
       "name": "yz1155",
       "rank": 45,
@@ -1287,14 +1287,14 @@
       "avatar": "https://a.ppy.sh/2071008",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "player",
           "canRegWithRole": false
         }
       ],
       "stats": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "status": "active",
           "seed": 1,
           "placement": 0
@@ -1302,7 +1302,7 @@
       ]
     },
     {
-      "id": "57",
+      "id": 57,
       "playerId": 766374,
       "name": "LostCool",
       "rank": 8,
@@ -1315,14 +1315,14 @@
       "avatar": "https://a.ppy.sh/766374",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "player",
           "canRegWithRole": false
         }
       ],
       "stats": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "status": "active",
           "seed": 2,
           "placement": 0
@@ -1330,7 +1330,7 @@
       ]
     },
     {
-      "id": "58",
+      "id": 58,
       "playerId": 15314355,
       "name": "UmmmMrMoo",
       "rank": 55,
@@ -1343,14 +1343,14 @@
       "avatar": "https://a.ppy.sh/15314355",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "player",
           "canRegWithRole": false
         }
       ],
       "stats": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "status": "active",
           "seed": 3,
           "placement": 0
@@ -1358,7 +1358,7 @@
       ]
     },
     {
-      "id": "59",
+      "id": 59,
       "playerId": 11420405,
       "name": "Ojisan-",
       "rank": 3,
@@ -1371,14 +1371,14 @@
       "avatar": "https://a.ppy.sh/11420405",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "player",
           "canRegWithRole": false
         }
       ],
       "stats": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "status": "active",
           "seed": 4,
           "placement": 0
@@ -1386,7 +1386,7 @@
       ]
     },
     {
-      "id": "60",
+      "id": 60,
       "playerId": 13967954,
       "name": "Watch01",
       "rank": 153,
@@ -1399,14 +1399,14 @@
       "avatar": "https://a.ppy.sh/13967954",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "player",
           "canRegWithRole": false
         }
       ],
       "stats": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "status": "disqualified",
           "seed": 5,
           "placement": 0
@@ -1414,7 +1414,7 @@
       ]
     },
     {
-      "id": "61",
+      "id": 61,
       "playerId": 3036686,
       "name": "Sanni",
       "rank": 57,
@@ -1427,14 +1427,14 @@
       "avatar": "https://a.ppy.sh/3036686",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "player",
           "canRegWithRole": false
         }
       ],
       "stats": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "status": "active",
           "seed": 6,
           "placement": 0
@@ -1442,7 +1442,7 @@
       ]
     },
     {
-      "id": "62",
+      "id": 62,
       "playerId": 2039089,
       "name": "arcwinolivirus",
       "rank": 332,
@@ -1455,14 +1455,14 @@
       "avatar": "https://a.ppy.sh/2039089",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "player",
           "canRegWithRole": false
         }
       ],
       "stats": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "status": "eliminated",
           "seed": 7,
           "placement": 31
@@ -1470,7 +1470,7 @@
       ]
     },
     {
-      "id": "63",
+      "id": 63,
       "playerId": 89545,
       "name": "VanWilder",
       "rank": 42,
@@ -1483,14 +1483,14 @@
       "avatar": "https://a.ppy.sh/89545",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "player",
           "canRegWithRole": false
         }
       ],
       "stats": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "status": "active",
           "seed": 8,
           "placement": 0
@@ -1498,7 +1498,7 @@
       ]
     },
     {
-      "id": "64",
+      "id": 64,
       "playerId": 29606773,
       "name": "Shenzouz",
       "rank": 383,
@@ -1511,14 +1511,14 @@
       "avatar": "https://a.ppy.sh/29606773",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "player",
           "canRegWithRole": false
         }
       ],
       "stats": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "status": "active",
           "seed": 9,
           "placement": 0
@@ -1526,7 +1526,7 @@
       ]
     },
     {
-      "id": "65",
+      "id": 65,
       "playerId": 12598261,
       "name": "TsukiyaWhiskers",
       "rank": 46,
@@ -1539,14 +1539,14 @@
       "avatar": "https://a.ppy.sh/12598261",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "player",
           "canRegWithRole": false
         }
       ],
       "stats": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "status": "active",
           "seed": 10,
           "placement": 0
@@ -1554,7 +1554,7 @@
       ]
     },
     {
-      "id": "66",
+      "id": 66,
       "playerId": 24675802,
       "name": "Bunsen",
       "rank": 25,
@@ -1567,14 +1567,14 @@
       "avatar": "https://a.ppy.sh/24675802",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "player",
           "canRegWithRole": false
         }
       ],
       "stats": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "status": "active",
           "seed": 12,
           "placement": 0
@@ -1582,7 +1582,7 @@
       ]
     },
     {
-      "id": "67",
+      "id": 67,
       "playerId": 18338179,
       "name": "bagjettka",
       "rank": 98,
@@ -1595,14 +1595,14 @@
       "avatar": "https://a.ppy.sh/18338179",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "player",
           "canRegWithRole": false
         }
       ],
       "stats": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "status": "active",
           "seed": 13,
           "placement": 0
@@ -1610,7 +1610,7 @@
       ]
     },
     {
-      "id": "68",
+      "id": 68,
       "playerId": 4980256,
       "name": "Alter-",
       "rank": 24,
@@ -1623,14 +1623,14 @@
       "avatar": "https://a.ppy.sh/4980256",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "player",
           "canRegWithRole": false
         }
       ],
       "stats": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "status": "active",
           "seed": 14,
           "placement": 0
@@ -1638,7 +1638,7 @@
       ]
     },
     {
-      "id": "69",
+      "id": 69,
       "playerId": 12452291,
       "name": "Krn_",
       "rank": 169,
@@ -1651,14 +1651,14 @@
       "avatar": "https://a.ppy.sh/12452291",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "player",
           "canRegWithRole": false
         }
       ],
       "stats": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "status": "eliminated",
           "seed": 15,
           "placement": 29
@@ -1666,7 +1666,7 @@
       ]
     },
     {
-      "id": "70",
+      "id": 70,
       "playerId": 6264519,
       "name": "Milla[Monkey]",
       "rank": 221,
@@ -1679,14 +1679,14 @@
       "avatar": "https://a.ppy.sh/6264519",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "player",
           "canRegWithRole": false
         }
       ],
       "stats": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "status": "active",
           "seed": 16,
           "placement": 0
@@ -1694,7 +1694,7 @@
       ]
     },
     {
-      "id": "71",
+      "id": 71,
       "playerId": 18282863,
       "name": "HxcQ777",
       "rank": 48,
@@ -1707,14 +1707,14 @@
       "avatar": "https://a.ppy.sh/18282863",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "player",
           "canRegWithRole": false
         }
       ],
       "stats": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "status": "active",
           "seed": 17,
           "placement": 0
@@ -1722,7 +1722,7 @@
       ]
     },
     {
-      "id": "72",
+      "id": 72,
       "playerId": 2225008,
       "name": "Skalim",
       "rank": 267,
@@ -1735,14 +1735,14 @@
       "avatar": "https://a.ppy.sh/2225008",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "player",
           "canRegWithRole": false
         }
       ],
       "stats": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "status": "active",
           "seed": 18,
           "placement": 0
@@ -1750,7 +1750,7 @@
       ]
     },
     {
-      "id": "73",
+      "id": 73,
       "playerId": 12028216,
       "name": "mashu",
       "rank": 74,
@@ -1763,14 +1763,14 @@
       "avatar": "https://a.ppy.sh/12028216",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "player",
           "canRegWithRole": false
         }
       ],
       "stats": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "status": "active",
           "seed": 19,
           "placement": 0
@@ -1778,7 +1778,7 @@
       ]
     },
     {
-      "id": "74",
+      "id": 74,
       "playerId": 18664411,
       "name": "Potaterr",
       "rank": 139,
@@ -1791,14 +1791,14 @@
       "avatar": "https://a.ppy.sh/18664411",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "player",
           "canRegWithRole": false
         }
       ],
       "stats": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "status": "active",
           "seed": 20,
           "placement": 0
@@ -1806,7 +1806,7 @@
       ]
     },
     {
-      "id": "75",
+      "id": 75,
       "playerId": 3215366,
       "name": "Matiias",
       "rank": 703,
@@ -1819,14 +1819,14 @@
       "avatar": "https://a.ppy.sh/3215366",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "player",
           "canRegWithRole": false
         }
       ],
       "stats": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "status": "active",
           "seed": 21,
           "placement": 0
@@ -1834,7 +1834,7 @@
       ]
     },
     {
-      "id": "76",
+      "id": 76,
       "playerId": 9630674,
       "name": "Freek",
       "rank": 547,
@@ -1847,14 +1847,14 @@
       "avatar": "https://a.ppy.sh/9630674",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "player",
           "canRegWithRole": false
         }
       ],
       "stats": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "status": "active",
           "seed": 22,
           "placement": 0
@@ -1862,7 +1862,7 @@
       ]
     },
     {
-      "id": "77",
+      "id": 77,
       "playerId": 17721836,
       "name": "Natsurio",
       "rank": 115,
@@ -1875,14 +1875,14 @@
       "avatar": "https://a.ppy.sh/17721836",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "player",
           "canRegWithRole": false
         }
       ],
       "stats": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "status": "active",
           "seed": 23,
           "placement": 0
@@ -1890,7 +1890,7 @@
       ]
     },
     {
-      "id": "78",
+      "id": 78,
       "playerId": 10351684,
       "name": "AWMRone",
       "rank": 146,
@@ -1903,14 +1903,14 @@
       "avatar": "https://a.ppy.sh/10351684",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "player",
           "canRegWithRole": false
         }
       ],
       "stats": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "status": "active",
           "seed": 24,
           "placement": 0
@@ -1918,7 +1918,7 @@
       ]
     },
     {
-      "id": "79",
+      "id": 79,
       "playerId": 437945,
       "name": "KenZ",
       "rank": 181,
@@ -1931,14 +1931,14 @@
       "avatar": "https://a.ppy.sh/437945",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "player",
           "canRegWithRole": false
         }
       ],
       "stats": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "status": "active",
           "seed": 25,
           "placement": 0
@@ -1946,7 +1946,7 @@
       ]
     },
     {
-      "id": "80",
+      "id": 80,
       "playerId": 24140109,
       "name": "- Kopi -",
       "rank": 212,
@@ -1959,14 +1959,14 @@
       "avatar": "https://a.ppy.sh/24140109",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "player",
           "canRegWithRole": false
         }
       ],
       "stats": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "status": "eliminated",
           "seed": 26,
           "placement": 30
@@ -1974,7 +1974,7 @@
       ]
     },
     {
-      "id": "81",
+      "id": 81,
       "playerId": 8610776,
       "name": "Lelloq",
       "rank": 301,
@@ -1987,14 +1987,14 @@
       "avatar": "https://a.ppy.sh/8610776",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "player",
           "canRegWithRole": false
         }
       ],
       "stats": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "status": "active",
           "seed": 27,
           "placement": 0
@@ -2002,7 +2002,7 @@
       ]
     },
     {
-      "id": "82",
+      "id": 82,
       "playerId": 18834550,
       "name": "RhymesWithMash",
       "rank": 1068,
@@ -2015,14 +2015,14 @@
       "avatar": "https://a.ppy.sh/18834550",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "player",
           "canRegWithRole": false
         }
       ],
       "stats": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "status": "active",
           "seed": 28,
           "placement": 0
@@ -2030,7 +2030,7 @@
       ]
     },
     {
-      "id": "83",
+      "id": 83,
       "playerId": 13431947,
       "name": "Jerem[Monkey]",
       "rank": 282,
@@ -2043,14 +2043,14 @@
       "avatar": "https://a.ppy.sh/13431947",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "player",
           "canRegWithRole": false
         }
       ],
       "stats": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "status": "active",
           "seed": 29,
           "placement": 0
@@ -2058,7 +2058,7 @@
       ]
     },
     {
-      "id": "84",
+      "id": 84,
       "playerId": 16870002,
       "name": "sukidayo-",
       "rank": 279,
@@ -2071,14 +2071,14 @@
       "avatar": "https://a.ppy.sh/16870002",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "player",
           "canRegWithRole": false
         }
       ],
       "stats": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "status": "active",
           "seed": 30,
           "placement": 0
@@ -2086,7 +2086,7 @@
       ]
     },
     {
-      "id": "85",
+      "id": 85,
       "playerId": 18172498,
       "name": "Tsunakko",
       "rank": 121,
@@ -2099,14 +2099,14 @@
       "avatar": "https://a.ppy.sh/18172498",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "player",
           "canRegWithRole": false
         }
       ],
       "stats": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "status": "active",
           "seed": 31,
           "placement": 0
@@ -2114,7 +2114,7 @@
       ]
     },
     {
-      "id": "86",
+      "id": 86,
       "playerId": 11762834,
       "name": "[TCJ]ScanL",
       "rank": 6896,
@@ -2127,14 +2127,14 @@
       "avatar": "https://a.ppy.sh/11762834",
       "roles": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "name": "player",
           "canRegWithRole": false
         }
       ],
       "stats": [
         {
-          "tournamentId": "1",
+          "tournamentId": 1,
           "status": "active",
           "seed": 32,
           "placement": 0
@@ -2142,7 +2142,7 @@
       ]
     },
     {
-      "id": "87",
+      "id": 87,
       "playerId": 16407268,
       "name": "ERA Dev",
       "rank": 564,
@@ -2155,14 +2155,14 @@
       "avatar": "https://a.ppy.sh/16407268",
       "roles": [
         {
-          "tournamentId": "2",
+          "tournamentId": 2,
           "name": "player",
           "canRegWithRole": false
         }
       ],
       "stats": [
         {
-          "tournamentId": "2",
+          "tournamentId": 2,
           "status": "active",
           "seed": 0,
           "placement": 0
@@ -2170,7 +2170,7 @@
       ]
     },
     {
-      "id": "88",
+      "id": 88,
       "playerId": 17308009,
       "name": "Hello_Son",
       "rank": 407,
@@ -2183,14 +2183,14 @@
       "avatar": "https://a.ppy.sh/17308009",
       "roles": [
         {
-          "tournamentId": "2",
+          "tournamentId": 2,
           "name": "player",
           "canRegWithRole": false
         }
       ],
       "stats": [
         {
-          "tournamentId": "2",
+          "tournamentId": 2,
           "status": "active",
           "seed": 0,
           "placement": 0
@@ -2198,7 +2198,7 @@
       ]
     },
     {
-      "id": "89",
+      "id": 89,
       "playerId": 11734610,
       "name": "Nepijin",
       "rank": 329,
@@ -2211,14 +2211,14 @@
       "avatar": "https://a.ppy.sh/11734610",
       "roles": [
         {
-          "tournamentId": "2",
+          "tournamentId": 2,
           "name": "player",
           "canRegWithRole": false
         }
       ],
       "stats": [
         {
-          "tournamentId": "2",
+          "tournamentId": 2,
           "status": "active",
           "seed": 0,
           "placement": 0
@@ -2226,7 +2226,7 @@
       ]
     },
     {
-      "id": "90",
+      "id": 90,
       "playerId": 15926730,
       "name": "PeachMarrow",
       "rank": 692,
@@ -2239,14 +2239,14 @@
       "avatar": "https://a.ppy.sh/15926730",
       "roles": [
         {
-          "tournamentId": "2",
+          "tournamentId": 2,
           "name": "player",
           "canRegWithRole": false
         }
       ],
       "stats": [
         {
-          "tournamentId": "2",
+          "tournamentId": 2,
           "status": "active",
           "seed": 0,
           "placement": 0
@@ -2254,7 +2254,7 @@
       ]
     },
     {
-      "id": "91",
+      "id": 91,
       "playerId": 7794488,
       "name": "Reshiram",
       "rank": 319,
@@ -2267,14 +2267,14 @@
       "avatar": "https://a.ppy.sh/7794488",
       "roles": [
         {
-          "tournamentId": "2",
+          "tournamentId": 2,
           "name": "player",
           "canRegWithRole": false
         }
       ],
       "stats": [
         {
-          "tournamentId": "2",
+          "tournamentId": 2,
           "status": "active",
           "seed": 0,
           "placement": 0
@@ -2282,7 +2282,7 @@
       ]
     },
     {
-      "id": "92",
+      "id": 92,
       "playerId": 11817838,
       "name": "TristanJacob11",
       "rank": 335,
@@ -2295,14 +2295,14 @@
       "avatar": "https://a.ppy.sh/11817838",
       "roles": [
         {
-          "tournamentId": "2",
+          "tournamentId": 2,
           "name": "player",
           "canRegWithRole": false
         }
       ],
       "stats": [
         {
-          "tournamentId": "2",
+          "tournamentId": 2,
           "status": "active",
           "seed": 0,
           "placement": 0
@@ -2310,7 +2310,7 @@
       ]
     },
     {
-      "id": "93",
+      "id": 93,
       "playerId": 10242062,
       "name": "AFOTHER",
       "rank": 1792,
@@ -2323,14 +2323,14 @@
       "avatar": "https://a.ppy.sh/10242062",
       "roles": [
         {
-          "tournamentId": "2",
+          "tournamentId": 2,
           "name": "player",
           "canRegWithRole": false
         }
       ],
       "stats": [
         {
-          "tournamentId": "2",
+          "tournamentId": 2,
           "status": "active",
           "seed": 0,
           "placement": 0
@@ -2338,7 +2338,7 @@
       ]
     },
     {
-      "id": "94",
+      "id": 94,
       "playerId": 11488604,
       "name": "CrewK",
       "rank": 502,
@@ -2351,14 +2351,14 @@
       "avatar": "https://a.ppy.sh/11488604",
       "roles": [
         {
-          "tournamentId": "2",
+          "tournamentId": 2,
           "name": "player",
           "canRegWithRole": false
         }
       ],
       "stats": [
         {
-          "tournamentId": "2",
+          "tournamentId": 2,
           "status": "active",
           "seed": 0,
           "placement": 0
@@ -2366,7 +2366,7 @@
       ]
     },
     {
-      "id": "95",
+      "id": 95,
       "playerId": 16100800,
       "name": "ICECAKE",
       "rank": 896,
@@ -2379,14 +2379,14 @@
       "avatar": "https://a.ppy.sh/16100800",
       "roles": [
         {
-          "tournamentId": "2",
+          "tournamentId": 2,
           "name": "player",
           "canRegWithRole": false
         }
       ],
       "stats": [
         {
-          "tournamentId": "2",
+          "tournamentId": 2,
           "status": "active",
           "seed": 0,
           "placement": 0
@@ -2394,7 +2394,7 @@
       ]
     },
     {
-      "id": "96",
+      "id": 96,
       "playerId": 10745260,
       "name": "jhleetgirl",
       "rank": 264,
@@ -2407,14 +2407,14 @@
       "avatar": "https://a.ppy.sh/10745260",
       "roles": [
         {
-          "tournamentId": "2",
+          "tournamentId": 2,
           "name": "player",
           "canRegWithRole": false
         }
       ],
       "stats": [
         {
-          "tournamentId": "2",
+          "tournamentId": 2,
           "status": "active",
           "seed": 0,
           "placement": 0
@@ -2422,7 +2422,7 @@
       ]
     },
     {
-      "id": "97",
+      "id": 97,
       "playerId": 25588443,
       "name": "Nikoro",
       "rank": 528,
@@ -2435,14 +2435,14 @@
       "avatar": "https://a.ppy.sh/25588443",
       "roles": [
         {
-          "tournamentId": "2",
+          "tournamentId": 2,
           "name": "player",
           "canRegWithRole": false
         }
       ],
       "stats": [
         {
-          "tournamentId": "2",
+          "tournamentId": 2,
           "status": "active",
           "seed": 0,
           "placement": 0
@@ -2450,7 +2450,7 @@
       ]
     },
     {
-      "id": "98",
+      "id": 98,
       "playerId": 18144664,
       "name": "Toxicat",
       "rank": 1273,
@@ -2463,14 +2463,14 @@
       "avatar": "https://a.ppy.sh/18144664",
       "roles": [
         {
-          "tournamentId": "2",
+          "tournamentId": 2,
           "name": "player",
           "canRegWithRole": false
         }
       ],
       "stats": [
         {
-          "tournamentId": "2",
+          "tournamentId": 2,
           "status": "active",
           "seed": 0,
           "placement": 0
@@ -2478,7 +2478,7 @@
       ]
     },
     {
-      "id": "99",
+      "id": 99,
       "playerId": 18309106,
       "name": "adihza",
       "rank": 311,
@@ -2491,14 +2491,14 @@
       "avatar": "https://a.ppy.sh/18309106",
       "roles": [
         {
-          "tournamentId": "2",
+          "tournamentId": 2,
           "name": "player",
           "canRegWithRole": false
         }
       ],
       "stats": [
         {
-          "tournamentId": "2",
+          "tournamentId": 2,
           "status": "active",
           "seed": 0,
           "placement": 0
@@ -2506,7 +2506,7 @@
       ]
     },
     {
-      "id": "100",
+      "id": 100,
       "playerId": 12689667,
       "name": "[Albert]",
       "rank": 413,
@@ -2519,14 +2519,14 @@
       "avatar": "https://a.ppy.sh/12689667",
       "roles": [
         {
-          "tournamentId": "2",
+          "tournamentId": 2,
           "name": "player",
           "canRegWithRole": false
         }
       ],
       "stats": [
         {
-          "tournamentId": "2",
+          "tournamentId": 2,
           "status": "active",
           "seed": 0,
           "placement": 0
@@ -2534,7 +2534,7 @@
       ]
     },
     {
-      "id": "101",
+      "id": 101,
       "playerId": 5179764,
       "name": "AZKiFanboy",
       "rank": 3421,
@@ -2547,14 +2547,14 @@
       "avatar": "https://a.ppy.sh/5179764",
       "roles": [
         {
-          "tournamentId": "2",
+          "tournamentId": 2,
           "name": "player",
           "canRegWithRole": false
         }
       ],
       "stats": [
         {
-          "tournamentId": "2",
+          "tournamentId": 2,
           "status": "active",
           "seed": 0,
           "placement": 0
@@ -2562,7 +2562,7 @@
       ]
     },
     {
-      "id": "102",
+      "id": 102,
       "playerId": 13385865,
       "name": "bad hd player",
       "rank": 320,
@@ -2575,14 +2575,14 @@
       "avatar": "https://a.ppy.sh/13385865",
       "roles": [
         {
-          "tournamentId": "2",
+          "tournamentId": 2,
           "name": "player",
           "canRegWithRole": false
         }
       ],
       "stats": [
         {
-          "tournamentId": "2",
+          "tournamentId": 2,
           "status": "active",
           "seed": 0,
           "placement": 0
@@ -2590,7 +2590,7 @@
       ]
     },
     {
-      "id": "103",
+      "id": 103,
       "playerId": 8677684,
       "name": "Onta_Bekasi",
       "rank": 40,
@@ -2603,14 +2603,14 @@
       "avatar": "https://a.ppy.sh/8677684",
       "roles": [
         {
-          "tournamentId": "2",
+          "tournamentId": 2,
           "name": "player",
           "canRegWithRole": false
         }
       ],
       "stats": [
         {
-          "tournamentId": "2",
+          "tournamentId": 2,
           "status": "active",
           "seed": 0,
           "placement": 0
@@ -2618,7 +2618,7 @@
       ]
     },
     {
-      "id": "104",
+      "id": 104,
       "playerId": 10540515,
       "name": "RetroEX",
       "rank": 3915,
@@ -2631,14 +2631,14 @@
       "avatar": "https://a.ppy.sh/10540515",
       "roles": [
         {
-          "tournamentId": "2",
+          "tournamentId": 2,
           "name": "player",
           "canRegWithRole": false
         }
       ],
       "stats": [
         {
-          "tournamentId": "2",
+          "tournamentId": 2,
           "status": "active",
           "seed": 0,
           "placement": 0
@@ -2646,7 +2646,7 @@
       ]
     },
     {
-      "id": "105",
+      "id": 105,
       "playerId": 10015908,
       "name": "Auraah",
       "rank": 1408,
@@ -2659,14 +2659,14 @@
       "avatar": "https://a.ppy.sh/10015908",
       "roles": [
         {
-          "tournamentId": "2",
+          "tournamentId": 2,
           "name": "player",
           "canRegWithRole": false
         }
       ],
       "stats": [
         {
-          "tournamentId": "2",
+          "tournamentId": 2,
           "status": "active",
           "seed": 0,
           "placement": 0
@@ -2674,7 +2674,7 @@
       ]
     },
     {
-      "id": "106",
+      "id": 106,
       "playerId": 16892459,
       "name": "Babibelbleu",
       "rank": 1658,
@@ -2687,14 +2687,14 @@
       "avatar": "https://a.ppy.sh/16892459",
       "roles": [
         {
-          "tournamentId": "2",
+          "tournamentId": 2,
           "name": "player",
           "canRegWithRole": false
         }
       ],
       "stats": [
         {
-          "tournamentId": "2",
+          "tournamentId": 2,
           "status": "active",
           "seed": 0,
           "placement": 0
@@ -2702,7 +2702,7 @@
       ]
     },
     {
-      "id": "107",
+      "id": 107,
       "playerId": 18867523,
       "name": "narahashi",
       "rank": 369,
@@ -2715,14 +2715,14 @@
       "avatar": "https://a.ppy.sh/18867523",
       "roles": [
         {
-          "tournamentId": "2",
+          "tournamentId": 2,
           "name": "player",
           "canRegWithRole": false
         }
       ],
       "stats": [
         {
-          "tournamentId": "2",
+          "tournamentId": 2,
           "status": "active",
           "seed": 0,
           "placement": 0
@@ -2730,7 +2730,7 @@
       ]
     },
     {
-      "id": "108",
+      "id": 108,
       "playerId": 14055233,
       "name": "MisteurFR",
       "rank": 1139,
@@ -2743,14 +2743,14 @@
       "avatar": "https://a.ppy.sh/14055233",
       "roles": [
         {
-          "tournamentId": "2",
+          "tournamentId": 2,
           "name": "player",
           "canRegWithRole": false
         }
       ],
       "stats": [
         {
-          "tournamentId": "2",
+          "tournamentId": 2,
           "status": "active",
           "seed": 0,
           "placement": 0
@@ -2758,7 +2758,7 @@
       ]
     },
     {
-      "id": "109",
+      "id": 109,
       "playerId": 7306522,
       "name": "PatouZ",
       "rank": 3502,
@@ -2771,14 +2771,14 @@
       "avatar": "https://a.ppy.sh/7306522",
       "roles": [
         {
-          "tournamentId": "2",
+          "tournamentId": 2,
           "name": "player",
           "canRegWithRole": false
         }
       ],
       "stats": [
         {
-          "tournamentId": "2",
+          "tournamentId": 2,
           "status": "active",
           "seed": 0,
           "placement": 0
@@ -2786,7 +2786,7 @@
       ]
     },
     {
-      "id": "110",
+      "id": 110,
       "playerId": 8756421,
       "name": "quentin5110054",
       "rank": 680,
@@ -2799,14 +2799,14 @@
       "avatar": "https://a.ppy.sh/8756421",
       "roles": [
         {
-          "tournamentId": "2",
+          "tournamentId": 2,
           "name": "player",
           "canRegWithRole": false
         }
       ],
       "stats": [
         {
-          "tournamentId": "2",
+          "tournamentId": 2,
           "status": "active",
           "seed": 0,
           "placement": 0
@@ -2814,7 +2814,7 @@
       ]
     },
     {
-      "id": "111",
+      "id": 111,
       "playerId": 20454338,
       "name": "Cube9112",
       "rank": 2295,
@@ -2827,14 +2827,14 @@
       "avatar": "https://a.ppy.sh/20454338",
       "roles": [
         {
-          "tournamentId": "2",
+          "tournamentId": 2,
           "name": "player",
           "canRegWithRole": false
         }
       ],
       "stats": [
         {
-          "tournamentId": "2",
+          "tournamentId": 2,
           "status": "active",
           "seed": 0,
           "placement": 0
@@ -2842,7 +2842,7 @@
       ]
     },
     {
-      "id": "112",
+      "id": 112,
       "playerId": 10944966,
       "name": "Outlasted",
       "rank": 724,
@@ -2855,14 +2855,14 @@
       "avatar": "https://a.ppy.sh/10944966",
       "roles": [
         {
-          "tournamentId": "2",
+          "tournamentId": 2,
           "name": "player",
           "canRegWithRole": false
         }
       ],
       "stats": [
         {
-          "tournamentId": "2",
+          "tournamentId": 2,
           "status": "active",
           "seed": 0,
           "placement": 0
@@ -2870,7 +2870,7 @@
       ]
     },
     {
-      "id": "113",
+      "id": 113,
       "playerId": 16999311,
       "name": "Quinnie why",
       "rank": 1237,
@@ -2883,14 +2883,14 @@
       "avatar": "https://a.ppy.sh/16999311",
       "roles": [
         {
-          "tournamentId": "2",
+          "tournamentId": 2,
           "name": "player",
           "canRegWithRole": false
         }
       ],
       "stats": [
         {
-          "tournamentId": "2",
+          "tournamentId": 2,
           "status": "active",
           "seed": 0,
           "placement": 0
@@ -2898,7 +2898,7 @@
       ]
     },
     {
-      "id": "114",
+      "id": 114,
       "playerId": 10945523,
       "name": "samuelhklumpers",
       "rank": 7509,
@@ -2911,14 +2911,14 @@
       "avatar": "https://a.ppy.sh/10945523",
       "roles": [
         {
-          "tournamentId": "2",
+          "tournamentId": 2,
           "name": "player",
           "canRegWithRole": false
         }
       ],
       "stats": [
         {
-          "tournamentId": "2",
+          "tournamentId": 2,
           "status": "active",
           "seed": 0,
           "placement": 0
@@ -2926,7 +2926,7 @@
       ]
     },
     {
-      "id": "115",
+      "id": 115,
       "playerId": 13377652,
       "name": "Shoira",
       "rank": 1780,
@@ -2939,14 +2939,14 @@
       "avatar": "https://a.ppy.sh/13377652",
       "roles": [
         {
-          "tournamentId": "2",
+          "tournamentId": 2,
           "name": "player",
           "canRegWithRole": false
         }
       ],
       "stats": [
         {
-          "tournamentId": "2",
+          "tournamentId": 2,
           "status": "active",
           "seed": 0,
           "placement": 0
@@ -2954,7 +2954,7 @@
       ]
     },
     {
-      "id": "116",
+      "id": 116,
       "playerId": 12599154,
       "name": "Toxic Scent",
       "rank": 604,
@@ -2967,14 +2967,14 @@
       "avatar": "https://a.ppy.sh/12599154",
       "roles": [
         {
-          "tournamentId": "2",
+          "tournamentId": 2,
           "name": "player",
           "canRegWithRole": false
         }
       ],
       "stats": [
         {
-          "tournamentId": "2",
+          "tournamentId": 2,
           "status": "active",
           "seed": 0,
           "placement": 0
@@ -2982,7 +2982,7 @@
       ]
     },
     {
-      "id": "117",
+      "id": 117,
       "playerId": 10027302,
       "name": "Cyaewin",
       "rank": 379,
@@ -2995,14 +2995,14 @@
       "avatar": "https://a.ppy.sh/10027302",
       "roles": [
         {
-          "tournamentId": "2",
+          "tournamentId": 2,
           "name": "player",
           "canRegWithRole": false
         }
       ],
       "stats": [
         {
-          "tournamentId": "2",
+          "tournamentId": 2,
           "status": "active",
           "seed": 0,
           "placement": 0
@@ -3010,7 +3010,7 @@
       ]
     },
     {
-      "id": "118",
+      "id": 118,
       "playerId": 15440118,
       "name": "ERA Leo",
       "rank": 2418,
@@ -3023,14 +3023,14 @@
       "avatar": "https://a.ppy.sh/15440118",
       "roles": [
         {
-          "tournamentId": "2",
+          "tournamentId": 2,
           "name": "player",
           "canRegWithRole": false
         }
       ],
       "stats": [
         {
-          "tournamentId": "2",
+          "tournamentId": 2,
           "status": "active",
           "seed": 0,
           "placement": 0
@@ -3038,7 +3038,7 @@
       ]
     },
     {
-      "id": "119",
+      "id": 119,
       "playerId": 11625617,
       "name": "ERA medium kek",
       "rank": 2105,
@@ -3051,14 +3051,14 @@
       "avatar": "https://a.ppy.sh/11625617",
       "roles": [
         {
-          "tournamentId": "2",
+          "tournamentId": 2,
           "name": "player",
           "canRegWithRole": false
         }
       ],
       "stats": [
         {
-          "tournamentId": "2",
+          "tournamentId": 2,
           "status": "active",
           "seed": 0,
           "placement": 0
@@ -3066,7 +3066,7 @@
       ]
     },
     {
-      "id": "120",
+      "id": 120,
       "playerId": 10615367,
       "name": "ERA Punish",
       "rank": 2823,
@@ -3079,14 +3079,14 @@
       "avatar": "https://a.ppy.sh/10615367",
       "roles": [
         {
-          "tournamentId": "2",
+          "tournamentId": 2,
           "name": "player",
           "canRegWithRole": false
         }
       ],
       "stats": [
         {
-          "tournamentId": "2",
+          "tournamentId": 2,
           "status": "active",
           "seed": 0,
           "placement": 0
@@ -3094,7 +3094,7 @@
       ]
     },
     {
-      "id": "121",
+      "id": 121,
       "playerId": 14114899,
       "name": "Lotex09",
       "rank": 2481,
@@ -3107,14 +3107,14 @@
       "avatar": "https://a.ppy.sh/14114899",
       "roles": [
         {
-          "tournamentId": "2",
+          "tournamentId": 2,
           "name": "player",
           "canRegWithRole": false
         }
       ],
       "stats": [
         {
-          "tournamentId": "2",
+          "tournamentId": 2,
           "status": "active",
           "seed": 0,
           "placement": 0
@@ -3122,7 +3122,7 @@
       ]
     },
     {
-      "id": "122",
+      "id": 122,
       "playerId": 15806513,
       "name": "jkzu123",
       "rank": 422,
@@ -3135,14 +3135,14 @@
       "avatar": "https://a.ppy.sh/15806513",
       "roles": [
         {
-          "tournamentId": "2",
+          "tournamentId": 2,
           "name": "player",
           "canRegWithRole": false
         }
       ],
       "stats": [
         {
-          "tournamentId": "2",
+          "tournamentId": 2,
           "status": "active",
           "seed": 0,
           "placement": 0
@@ -3152,8 +3152,8 @@
   ],
   "teams": [
     {
-      "id": "0",
-      "tournamentId": "2",
+      "Id": 0,
+      "tournamentId": 2,
       "name": "United States",
       "logo": "https://assets.ppy.sh/old-flags/US.png",
       "status": "eliminated",
@@ -3162,7 +3162,7 @@
       "placement": 6,
       "players": [
         {
-          "id": "87",
+          "id": 87,
           "playerId": 16407268,
           "name": "ERA Dev",
           "rank": 564,
@@ -3175,7 +3175,7 @@
           "avatar": "https://a.ppy.sh/16407268",
           "roles": [
             {
-              "tournamentId": "2",
+              "tournamentId": 2,
               "name": "player",
               "canRegWithRole": false
             }
@@ -3184,7 +3184,7 @@
           "isCaptain": false
         },
         {
-          "id": "88",
+          "id": 88,
           "playerId": 17308009,
           "name": "Hello_Son",
           "rank": 407,
@@ -3197,7 +3197,7 @@
           "avatar": "https://a.ppy.sh/17308009",
           "roles": [
             {
-              "tournamentId": "2",
+              "tournamentId": 2,
               "name": "player",
               "canRegWithRole": false
             }
@@ -3206,7 +3206,7 @@
           "isCaptain": false
         },
         {
-          "id": "89",
+          "id": 89,
           "playerId": 11734610,
           "name": "Nepijin",
           "rank": 329,
@@ -3219,7 +3219,7 @@
           "avatar": "https://a.ppy.sh/11734610",
           "roles": [
             {
-              "tournamentId": "2",
+              "tournamentId": 2,
               "name": "player",
               "canRegWithRole": false
             }
@@ -3228,7 +3228,7 @@
           "isCaptain": true
         },
         {
-          "id": "90",
+          "id": 90,
           "playerId": 15926730,
           "name": "PeachMarrow",
           "rank": 692,
@@ -3241,7 +3241,7 @@
           "avatar": "https://a.ppy.sh/15926730",
           "roles": [
             {
-              "tournamentId": "2",
+              "tournamentId": 2,
               "name": "player",
               "canRegWithRole": false
             }
@@ -3250,7 +3250,7 @@
           "isCaptain": false
         },
         {
-          "id": "91",
+          "id": 91,
           "playerId": 7794488,
           "name": "Reshiram",
           "rank": 319,
@@ -3263,7 +3263,7 @@
           "avatar": "https://a.ppy.sh/7794488",
           "roles": [
             {
-              "tournamentId": "2",
+              "tournamentId": 2,
               "name": "player",
               "canRegWithRole": false
             }
@@ -3272,7 +3272,7 @@
           "isCaptain": false
         },
         {
-          "id": "92",
+          "id": 92,
           "playerId": 11817838,
           "name": "TristanJacob11",
           "rank": 335,
@@ -3285,7 +3285,7 @@
           "avatar": "https://a.ppy.sh/11817838",
           "roles": [
             {
-              "tournamentId": "2",
+              "tournamentId": 2,
               "name": "player",
               "canRegWithRole": false
             }
@@ -3296,8 +3296,8 @@
       ]
     },
     {
-      "id": "1",
-      "tournamentId": "2",
+      "Id": 1,
+      "tournamentId": 2,
       "name": "Japan",
       "logo": "https://assets.ppy.sh/old-flags/JP.png",
       "status": "active",
@@ -3306,7 +3306,7 @@
       "placement": 0,
       "players": [
         {
-          "id": "93",
+          "id": 93,
           "playerId": 10242062,
           "name": "AFOTHER",
           "rank": 1792,
@@ -3319,7 +3319,7 @@
           "avatar": "https://a.ppy.sh/10242062",
           "roles": [
             {
-              "tournamentId": "2",
+              "tournamentId": 2,
               "name": "player",
               "canRegWithRole": false
             }
@@ -3328,7 +3328,7 @@
           "isCaptain": false
         },
         {
-          "id": "94",
+          "id": 94,
           "playerId": 11488604,
           "name": "CrewK",
           "rank": 502,
@@ -3341,7 +3341,7 @@
           "avatar": "https://a.ppy.sh/11488604",
           "roles": [
             {
-              "tournamentId": "2",
+              "tournamentId": 2,
               "name": "player",
               "canRegWithRole": false
             }
@@ -3350,7 +3350,7 @@
           "isCaptain": true
         },
         {
-          "id": "95",
+          "id": 95,
           "playerId": 16100800,
           "name": "ICECAKE",
           "rank": 896,
@@ -3363,7 +3363,7 @@
           "avatar": "https://a.ppy.sh/16100800",
           "roles": [
             {
-              "tournamentId": "2",
+              "tournamentId": 2,
               "name": "player",
               "canRegWithRole": false
             }
@@ -3372,7 +3372,7 @@
           "isCaptain": false
         },
         {
-          "id": "96",
+          "id": 96,
           "playerId": 10745260,
           "name": "jhleetgirl",
           "rank": 264,
@@ -3385,7 +3385,7 @@
           "avatar": "https://a.ppy.sh/10745260",
           "roles": [
             {
-              "tournamentId": "2",
+              "tournamentId": 2,
               "name": "player",
               "canRegWithRole": false
             }
@@ -3394,7 +3394,7 @@
           "isCaptain": false
         },
         {
-          "id": "97",
+          "id": 97,
           "playerId": 25588443,
           "name": "Nikoro",
           "rank": 528,
@@ -3407,7 +3407,7 @@
           "avatar": "https://a.ppy.sh/25588443",
           "roles": [
             {
-              "tournamentId": "2",
+              "tournamentId": 2,
               "name": "player",
               "canRegWithRole": false
             }
@@ -3416,7 +3416,7 @@
           "isCaptain": false
         },
         {
-          "id": "98",
+          "id": 98,
           "playerId": 18144664,
           "name": "Toxicat",
           "rank": 1273,
@@ -3429,7 +3429,7 @@
           "avatar": "https://a.ppy.sh/18144664",
           "roles": [
             {
-              "tournamentId": "2",
+              "tournamentId": 2,
               "name": "player",
               "canRegWithRole": false
             }
@@ -3440,8 +3440,8 @@
       ]
     },
     {
-      "id": "2",
-      "tournamentId": "2",
+      "Id": 2,
+      "tournamentId": 2,
       "name": "Indonesia",
       "logo": "https://assets.ppy.sh/old-flags/ID.png",
       "status": "active",
@@ -3450,7 +3450,7 @@
       "placement": 0,
       "players": [
         {
-          "id": "99",
+          "id": 99,
           "playerId": 18309106,
           "name": "adihza",
           "rank": 311,
@@ -3463,7 +3463,7 @@
           "avatar": "https://a.ppy.sh/18309106",
           "roles": [
             {
-              "tournamentId": "2",
+              "tournamentId": 2,
               "name": "player",
               "canRegWithRole": false
             }
@@ -3472,7 +3472,7 @@
           "isCaptain": false
         },
         {
-          "id": "100",
+          "id": 100,
           "playerId": 12689667,
           "name": "[Albert]",
           "rank": 413,
@@ -3485,7 +3485,7 @@
           "avatar": "https://a.ppy.sh/12689667",
           "roles": [
             {
-              "tournamentId": "2",
+              "tournamentId": 2,
               "name": "player",
               "canRegWithRole": false
             }
@@ -3494,7 +3494,7 @@
           "isCaptain": false
         },
         {
-          "id": "101",
+          "id": 101,
           "playerId": 5179764,
           "name": "AZKiFanboy",
           "rank": 3421,
@@ -3507,7 +3507,7 @@
           "avatar": "https://a.ppy.sh/5179764",
           "roles": [
             {
-              "tournamentId": "2",
+              "tournamentId": 2,
               "name": "player",
               "canRegWithRole": false
             }
@@ -3516,7 +3516,7 @@
           "isCaptain": false
         },
         {
-          "id": "102",
+          "id": 102,
           "playerId": 13385865,
           "name": "bad hd player",
           "rank": 320,
@@ -3529,7 +3529,7 @@
           "avatar": "https://a.ppy.sh/13385865",
           "roles": [
             {
-              "tournamentId": "2",
+              "tournamentId": 2,
               "name": "player",
               "canRegWithRole": false
             }
@@ -3538,7 +3538,7 @@
           "isCaptain": true
         },
         {
-          "id": "103",
+          "id": 103,
           "playerId": 8677684,
           "name": "Onta_Bekasi",
           "rank": 40,
@@ -3551,7 +3551,7 @@
           "avatar": "https://a.ppy.sh/8677684",
           "roles": [
             {
-              "tournamentId": "2",
+              "tournamentId": 2,
               "name": "player",
               "canRegWithRole": false
             }
@@ -3560,7 +3560,7 @@
           "isCaptain": false
         },
         {
-          "id": "104",
+          "id": 104,
           "playerId": 10540515,
           "name": "RetroEX",
           "rank": 3915,
@@ -3573,7 +3573,7 @@
           "avatar": "https://a.ppy.sh/10540515",
           "roles": [
             {
-              "tournamentId": "2",
+              "tournamentId": 2,
               "name": "player",
               "canRegWithRole": false
             }
@@ -3584,8 +3584,8 @@
       ]
     },
     {
-      "id": "3",
-      "tournamentId": "2",
+      "Id": 3,
+      "tournamentId": 2,
       "name": "France",
       "logo": "https://assets.ppy.sh/old-flags/FR.png",
       "status": "active",
@@ -3594,7 +3594,7 @@
       "placement": 0,
       "players": [
         {
-          "id": "105",
+          "id": 105,
           "playerId": 10015908,
           "name": "Auraah",
           "rank": 1408,
@@ -3607,7 +3607,7 @@
           "avatar": "https://a.ppy.sh/10015908",
           "roles": [
             {
-              "tournamentId": "2",
+              "tournamentId": 2,
               "name": "player",
               "canRegWithRole": false
             }
@@ -3616,7 +3616,7 @@
           "isCaptain": false
         },
         {
-          "id": "106",
+          "id": 106,
           "playerId": 16892459,
           "name": "Babibelbleu",
           "rank": 1658,
@@ -3629,7 +3629,7 @@
           "avatar": "https://a.ppy.sh/16892459",
           "roles": [
             {
-              "tournamentId": "2",
+              "tournamentId": 2,
               "name": "player",
               "canRegWithRole": false
             }
@@ -3638,7 +3638,7 @@
           "isCaptain": false
         },
         {
-          "id": "107",
+          "id": 107,
           "playerId": 18867523,
           "name": "narahashi",
           "rank": 369,
@@ -3651,7 +3651,7 @@
           "avatar": "https://a.ppy.sh/18867523",
           "roles": [
             {
-              "tournamentId": "2",
+              "tournamentId": 2,
               "name": "player",
               "canRegWithRole": false
             }
@@ -3660,7 +3660,7 @@
           "isCaptain": false
         },
         {
-          "id": "108",
+          "id": 108,
           "playerId": 14055233,
           "name": "MisteurFR",
           "rank": 1139,
@@ -3673,7 +3673,7 @@
           "avatar": "https://a.ppy.sh/14055233",
           "roles": [
             {
-              "tournamentId": "2",
+              "tournamentId": 2,
               "name": "player",
               "canRegWithRole": false
             }
@@ -3682,7 +3682,7 @@
           "isCaptain": false
         },
         {
-          "id": "109",
+          "id": 109,
           "playerId": 7306522,
           "name": "PatouZ",
           "rank": 3502,
@@ -3695,7 +3695,7 @@
           "avatar": "https://a.ppy.sh/7306522",
           "roles": [
             {
-              "tournamentId": "2",
+              "tournamentId": 2,
               "name": "player",
               "canRegWithRole": false
             }
@@ -3704,7 +3704,7 @@
           "isCaptain": true
         },
         {
-          "id": "110",
+          "id": 110,
           "playerId": 8756421,
           "name": "quentin5110054",
           "rank": 680,
@@ -3717,7 +3717,7 @@
           "avatar": "https://a.ppy.sh/8756421",
           "roles": [
             {
-              "tournamentId": "2",
+              "tournamentId": 2,
               "name": "player",
               "canRegWithRole": false
             }
@@ -3728,8 +3728,8 @@
       ]
     },
     {
-      "id": "4",
-      "tournamentId": "2",
+      "Id": 4,
+      "tournamentId": 2,
       "name": "Netherlands",
       "logo": "https://assets.ppy.sh/old-flags/NL.png",
       "status": "active",
@@ -3738,7 +3738,7 @@
       "placement": 0,
       "players": [
         {
-          "id": "111",
+          "id": 111,
           "playerId": 20454338,
           "name": "Cube9112",
           "rank": 2295,
@@ -3751,7 +3751,7 @@
           "avatar": "https://a.ppy.sh/20454338",
           "roles": [
             {
-              "tournamentId": "2",
+              "tournamentId": 2,
               "name": "player",
               "canRegWithRole": false
             }
@@ -3760,7 +3760,7 @@
           "isCaptain": false
         },
         {
-          "id": "112",
+          "id": 112,
           "playerId": 10944966,
           "name": "Outlasted",
           "rank": 724,
@@ -3773,7 +3773,7 @@
           "avatar": "https://a.ppy.sh/10944966",
           "roles": [
             {
-              "tournamentId": "2",
+              "tournamentId": 2,
               "name": "player",
               "canRegWithRole": false
             }
@@ -3782,7 +3782,7 @@
           "isCaptain": false
         },
         {
-          "id": "113",
+          "id": 113,
           "playerId": 16999311,
           "name": "Quinnie why",
           "rank": 1237,
@@ -3795,7 +3795,7 @@
           "avatar": "https://a.ppy.sh/16999311",
           "roles": [
             {
-              "tournamentId": "2",
+              "tournamentId": 2,
               "name": "player",
               "canRegWithRole": false
             }
@@ -3804,7 +3804,7 @@
           "isCaptain": false
         },
         {
-          "id": "114",
+          "id": 114,
           "playerId": 10945523,
           "name": "samuelhklumpers",
           "rank": 7509,
@@ -3817,7 +3817,7 @@
           "avatar": "https://a.ppy.sh/10945523",
           "roles": [
             {
-              "tournamentId": "2",
+              "tournamentId": 2,
               "name": "player",
               "canRegWithRole": false
             }
@@ -3826,7 +3826,7 @@
           "isCaptain": false
         },
         {
-          "id": "115",
+          "id": 115,
           "playerId": 13377652,
           "name": "Shoira",
           "rank": 1780,
@@ -3839,7 +3839,7 @@
           "avatar": "https://a.ppy.sh/13377652",
           "roles": [
             {
-              "tournamentId": "2",
+              "tournamentId": 2,
               "name": "player",
               "canRegWithRole": false
             }
@@ -3848,7 +3848,7 @@
           "isCaptain": true
         },
         {
-          "id": "116",
+          "id": 116,
           "playerId": 12599154,
           "name": "Toxic Scent",
           "rank": 604,
@@ -3861,7 +3861,7 @@
           "avatar": "https://a.ppy.sh/12599154",
           "roles": [
             {
-              "tournamentId": "2",
+              "tournamentId": 2,
               "name": "player",
               "canRegWithRole": false
             }
@@ -3872,8 +3872,8 @@
       ]
     },
     {
-      "id": "5",
-      "tournamentId": "2",
+      "Id": 5,
+      "tournamentId": 2,
       "name": "Germany",
       "logo": "https://assets.ppy.sh/old-flags/DE.png",
       "status": "active",
@@ -3882,7 +3882,7 @@
       "placement": 0,
       "players": [
         {
-          "id": "117",
+          "id": 117,
           "playerId": 10027302,
           "name": "Cyaewin",
           "rank": 379,
@@ -3895,7 +3895,7 @@
           "avatar": "https://a.ppy.sh/10027302",
           "roles": [
             {
-              "tournamentId": "2",
+              "tournamentId": 2,
               "name": "player",
               "canRegWithRole": false
             }
@@ -3904,7 +3904,7 @@
           "isCaptain": false
         },
         {
-          "id": "118",
+          "id": 118,
           "playerId": 15440118,
           "name": "ERA Leo",
           "rank": 2418,
@@ -3917,7 +3917,7 @@
           "avatar": "https://a.ppy.sh/15440118",
           "roles": [
             {
-              "tournamentId": "2",
+              "tournamentId": 2,
               "name": "player",
               "canRegWithRole": false
             }
@@ -3926,7 +3926,7 @@
           "isCaptain": false
         },
         {
-          "id": "119",
+          "id": 119,
           "playerId": 11625617,
           "name": "ERA medium kek",
           "rank": 2105,
@@ -3939,7 +3939,7 @@
           "avatar": "https://a.ppy.sh/11625617",
           "roles": [
             {
-              "tournamentId": "2",
+              "tournamentId": 2,
               "name": "player",
               "canRegWithRole": false
             }
@@ -3948,7 +3948,7 @@
           "isCaptain": true
         },
         {
-          "id": "120",
+          "id": 120,
           "playerId": 10615367,
           "name": "ERA Punish",
           "rank": 2823,
@@ -3961,7 +3961,7 @@
           "avatar": "https://a.ppy.sh/10615367",
           "roles": [
             {
-              "tournamentId": "2",
+              "tournamentId": 2,
               "name": "player",
               "canRegWithRole": false
             }
@@ -3970,7 +3970,7 @@
           "isCaptain": false
         },
         {
-          "id": "121",
+          "id": 121,
           "playerId": 14114899,
           "name": "Lotex09",
           "rank": 2481,
@@ -3983,7 +3983,7 @@
           "avatar": "https://a.ppy.sh/14114899",
           "roles": [
             {
-              "tournamentId": "2",
+              "tournamentId": 2,
               "name": "player",
               "canRegWithRole": false
             }
@@ -3992,7 +3992,7 @@
           "isCaptain": false
         },
         {
-          "id": "122",
+          "id": 122,
           "playerId": 15806513,
           "name": "jkzu123",
           "rank": 422,
@@ -4005,7 +4005,7 @@
           "avatar": "https://a.ppy.sh/15806513",
           "roles": [
             {
-              "tournamentId": "2",
+              "tournamentId": 2,
               "name": "player",
               "canRegWithRole": false
             }
@@ -4018,7 +4018,7 @@
   ],
   "tournaments": [
     {
-      "id": "1",
+      "id": 1,
       "name": "6K Autumn Showdown",
       "code": "6KAST",
       "description": "6K Autumn Showdown Tournament (6KAST) is an osu!mania Free for all 1v1 Double-Elimination tournament focused on the 6 key gamemode.This is one of the first ever 6 key focused tournament ever hosted on osu!mania. So we hope you enjoy your experience on the newest tourney keymode meta!",
@@ -4581,7 +4581,7 @@
       }
     },
     {
-      "id": "2",
+      "id": 2,
       "name": "osu!mania 4K World Cup 2023",
       "code": "4KMWC2023",
       "description": "The osu!mania 4K World Cup 2023 (MWC 4K 2023) was a country-based osu!mania tournament hosted by the osu! team. It was the seventh installment of the osu!mania 4K World Cup.",
@@ -4617,7 +4617,7 @@
       }
     },
     {
-      "id": "lr_cc0V",
+      "id": 3,
       "name": "4K Test tournament for testing",
       "code": "TEST",
       "description": "This is just a test tournament for testing functionality :)",
@@ -4653,998 +4653,10 @@
       "regMessage": "This is a test register message. If you see this then it's working."
     }
   ],
-  "maps": [
-    {
-      "id": "0",
-      "stageId": "4",
-      "beatmapId": "4368325",
-      "inMappool": true,
-      "title": "world devoid of you (fairydust radio edit)",
-      "diff": "Silent Sky",
-      "artist": "void feat. Hiroko",
-      "mapper": "YuzakiTsukasa",
-      "suggestor": "YuzakiTsukasa",
-      "cover": "https://assets.ppy.sh/beatmaps/2085230/covers/card.jpg",
-      "download": "https://osu.ppy.sh/beatmapsets/2085230/download",
-      "bpm": 140,
-      "drainTime": 152,
-      "sr": 5.42,
-      "hp": 8,
-      "od": 8,
-      "mapType": "RC",
-      "index": 1,
-      "comment": "Test comment"
-    },
-    {
-      "id": "1",
-      "stageId": "4",
-      "beatmapId": "4368161",
-      "inMappool": true,
-      "title": "Decoy",
-      "diff": "Yoced",
-      "artist": "Yooh",
-      "mapper": "_IceRain",
-      "suggestor": "Tastydumpl1ng",
-      "cover": "https://assets.ppy.sh/beatmaps/2085155/covers/card.jpg",
-      "download": "https://osu.ppy.sh/beatmapsets/2085155/download",
-      "bpm": 180,
-      "drainTime": 132,
-      "sr": 5.84,
-      "hp": 8,
-      "od": 8,
-      "mapType": "RC",
-      "index": 2,
-      "comment": "Test comment"
-    },
-    {
-      "id": "2",
-      "stageId": "4",
-      "beatmapId": "4368407",
-      "inMappool": true,
-      "title": "9876734123 (\"Hyperprime\" Full Version)",
-      "diff": "1.05x For AST",
-      "artist": "Silentroom",
-      "mapper": "553343477",
-      "suggestor": "Phukiir",
-      "cover": "https://assets.ppy.sh/beatmaps/2085258/covers/card.jpg",
-      "download": "https://osu.ppy.sh/beatmapsets/2085258/download",
-      "bpm": 164.85,
-      "drainTime": 232,
-      "sr": 5.71,
-      "hp": 8,
-      "od": 8,
-      "mapType": "RC",
-      "index": 3,
-      "comment": "Test comment"
-    },
-    {
-      "id": "3",
-      "stageId": "4",
-      "beatmapId": "",
-      "inMappool": false,
-      "title": "A Dichroic Glass Snafu",
-      "diff": "Broken",
-      "artist": "Blitz Lunar",
-      "mapper": "_IceRain",
-      "suggestor": "_IceRain",
-      "cover": "https://assets.ppy.sh/beatmaps/2085157/covers/card.jpg",
-      "download": "https://osu.ppy.sh/beatmapsets/2085157/download",
-      "bpm": 180,
-      "drainTime": 117,
-      "sr": 5.23,
-      "hp": 8,
-      "od": 8,
-      "mapType": "RC",
-      "index": 4,
-      "comment": "Test comment"
-    },
-    {
-      "id": "14",
-      "stageId": "4",
-      "beatmapId": "2999060",
-      "inMappool": true,
-      "title": "fffff op.2",
-      "diff": "Evening's Extreme",
-      "artist": "Five Hammer",
-      "mapper": "Evening",
-      "suggestor": "U1d",
-      "cover": "https://assets.ppy.sh/beatmaps/1452883/covers/card.jpg",
-      "download": "https://osu.ppy.sh/beatmapsets/1452883/download",
-      "bpm": 266,
-      "drainTime": 114,
-      "sr": 6.13,
-      "hp": 8.5,
-      "od": 8.5,
-      "mapType": "RC",
-      "index": 4,
-      "comment": "Test comment"
-    },
-    {
-      "id": "4",
-      "stageId": "4",
-      "beatmapId": "4368123",
-      "inMappool": true,
-      "title": "Hiroari Shoots a Strange Bird ~ Till When",
-      "diff": "Perfect Cherry Blossom",
-      "artist": "ZUN",
-      "mapper": "_IceRain",
-      "suggestor": "_IceRain",
-      "cover": "https://assets.ppy.sh/beatmaps/2085144/covers/card.jpg",
-      "download": "https://osu.ppy.sh/beatmapsets/2085144/download",
-      "bpm": 155,
-      "drainTime": 212,
-      "sr": 5.67,
-      "hp": 8,
-      "od": 8,
-      "mapType": "RC",
-      "index": 5,
-      "comment": "Test comment"
-    },
-    {
-      "id": "5",
-      "stageId": "4",
-      "beatmapId": "4368323",
-      "inMappool": true,
-      "title": "Light Colors",
-      "diff": "The Color of Oblivion",
-      "artist": "Lia",
-      "mapper": "YuzakiTsukasa",
-      "suggestor": "YuzakiTsukasa",
-      "cover": "https://assets.ppy.sh/beatmaps/2085228/covers/card.jpg",
-      "download": "https://osu.ppy.sh/beatmapsets/2085228/download",
-      "bpm": 131.05,
-      "drainTime": 147,
-      "sr": 5.85,
-      "hp": 8,
-      "od": 8,
-      "mapType": "RC",
-      "index": 6,
-      "comment": "Test comment"
-    },
-    {
-      "id": "6",
-      "stageId": "4",
-      "beatmapId": "4368724",
-      "inMappool": true,
-      "title": "phony",
-      "diff": "Master",
-      "artist": "Hoshimachi Suisei",
-      "mapper": "[Crz]sunnyxxy",
-      "suggestor": "[Crz]sunnyxxy",
-      "cover": "https://assets.ppy.sh/beatmaps/2085404/covers/card.jpg",
-      "download": "https://osu.ppy.sh/beatmapsets/2085404/download",
-      "bpm": 170,
-      "drainTime": 186,
-      "sr": 6.28,
-      "hp": 7,
-      "od": 6,
-      "mapType": "LN",
-      "index": 1,
-      "comment": "Test comment"
-    },
-    {
-      "id": "7",
-      "stageId": "4",
-      "beatmapId": "4368231",
-      "inMappool": true,
-      "title": "Tiferet",
-      "diff": "MeLady",
-      "artist": "Xi feat. Sta",
-      "mapper": "Benson_",
-      "suggestor": "TheFunk",
-      "cover": "https://assets.ppy.sh/beatmaps/2085191/covers/card.jpg",
-      "download": "https://osu.ppy.sh/beatmapsets/2085191/download",
-      "bpm": 280,
-      "drainTime": 168,
-      "sr": 6.33,
-      "hp": 7,
-      "od": 6,
-      "mapType": "LN",
-      "index": 2,
-      "comment": "Test comment"
-    },
-    {
-      "id": "8",
-      "stageId": "4",
-      "beatmapId": "4368365",
-      "inMappool": true,
-      "title": "G e n g a o z o",
-      "diff": "void (AST Edit)",
-      "artist": "-45",
-      "mapper": "tyrcs",
-      "suggestor": "U1d",
-      "cover": "https://assets.ppy.sh/beatmaps/2085240/covers/card.jpg",
-      "download": "https://osu.ppy.sh/beatmapsets/2085240/download",
-      "bpm": 153,
-      "drainTime": 177,
-      "sr": 6.37,
-      "hp": 7,
-      "od": 6,
-      "mapType": "LN",
-      "index": 3,
-      "comment": "Test comment"
-    },
-    {
-      "id": "9",
-      "stageId": "4",
-      "beatmapId": "4368924",
-      "inMappool": true,
-      "title": "Cerebrite",
-      "diff": "iya",
-      "artist": "Mili",
-      "mapper": "U1d",
-      "suggestor": "Albionthegreat",
-      "cover": "https://assets.ppy.sh/beatmaps/2085486/covers/card.jpg",
-      "download": "https://osu.ppy.sh/beatmapsets/2085486/download",
-      "bpm": 148,
-      "drainTime": 155,
-      "sr": 5.26,
-      "hp": 7,
-      "od": 6.5,
-      "mapType": "LN",
-      "index": 4,
-      "comment": "Test comment"
-    },
-    {
-      "id": "10",
-      "stageId": "4",
-      "beatmapId": "4368406",
-      "inMappool": true,
-      "title": "BREaK! BREaK! BREaK!",
-      "diff": "Break it all up",
-      "artist": "HiTECH NINJA vs Cranky",
-      "mapper": "553343477",
-      "suggestor": "_IceRain",
-      "cover": "https://assets.ppy.sh/beatmaps/1616398/covers/card.jpg",
-      "download": "https://osu.ppy.sh/beatmapsets/1616398/download",
-      "bpm": 165,
-      "drainTime": 143,
-      "sr": 7.51,
-      "hp": 7,
-      "od": 7,
-      "mapType": "HB",
-      "index": 1,
-      "comment": "Test comment"
-    },
-    {
-      "id": "11",
-      "stageId": "4",
-      "beatmapId": "4368284",
-      "inMappool": true,
-      "title": "PhantasmalWar",
-      "diff": "Blood moon",
-      "artist": "SunsetRay",
-      "mapper": "AhoUsagi",
-      "suggestor": "AhoUsagi",
-      "cover": "https://assets.ppy.sh/beatmaps/2085211/covers/card.jpg",
-      "download": "https://osu.ppy.sh/beatmapsets/2085211/download",
-      "bpm": 125,
-      "drainTime": 138,
-      "sr": 6.75,
-      "hp": 6,
-      "od": 6,
-      "mapType": "HB",
-      "index": 2,
-      "comment": "Test comment"
-    },
-    {
-      "id": "12",
-      "stageId": "4",
-      "beatmapId": "4368711",
-      "inMappool": true,
-      "title": "Catastrophe",
-      "diff": "Apocalypse",
-      "artist": "Juggernaut.",
-      "mapper": "Alptraum",
-      "suggestor": "Alptraum",
-      "cover": "https://assets.ppy.sh/beatmaps/2085392/covers/card.jpg",
-      "download": "https://osu.ppy.sh/beatmapsets/2085392/download",
-      "bpm": 180,
-      "drainTime": 179,
-      "sr": 6.24,
-      "hp": 7.6,
-      "od": 7.6,
-      "mapType": "HB",
-      "index": 3,
-      "comment": "Test comment"
-    },
-    {
-      "id": "13",
-      "stageId": "4",
-      "beatmapId": "4368401",
-      "inMappool": true,
-      "title": "Heroes of our time",
-      "diff": "The Epic",
-      "artist": "Dragonforce",
-      "mapper": "Imperial Wolf",
-      "suggestor": "Tastydumpl1ng",
-      "cover": "https://assets.ppy.sh/beatmaps/2085254/covers/card.jpg",
-      "download": "https://osu.ppy.sh/beatmapsets/2085254/download",
-      "bpm": 200,
-      "drainTime": 422,
-      "sr": 7.14,
-      "hp": 8,
-      "od": 7,
-      "mapType": "TB",
-      "index": 0,
-      "comment": "Test comment"
-    },
-    {
-      "title": "Clinozoisite",
-      "diff": "Epidosis",
-      "artist": "Ludicin",
-      "mapper": "BKwind",
-      "cover": "https://assets.ppy.sh/beatmaps/2120625/covers/card.jpg",
-      "download": "https://osu.ppy.sh/beatmapsets/2120625#mania/4455483",
-      "sr": 6.31,
-      "bpm": 175,
-      "drainTime": 329,
-      "hp": 8,
-      "od": 8,
-      "mapType": "RC",
-      "index": 4,
-      "comment": "Test map",
-      "suggestor": "Arcaxio",
-      "stageId": "4",
-      "id": "FER7PAf",
-      "inMappool": false
-    },
-    {
-      "id": "uudqwCQ",
-      "stageId": "4",
-      "beatmapId": "4256390",
-      "title": "oddloop",
-      "diff": "Oddities",
-      "artist": "Frederic",
-      "mapper": "White Hare",
-      "cover": "https://assets.ppy.sh/beatmaps/2034766/covers/card.jpg",
-      "download": "https://osu.ppy.sh/beatmapsets/2034766#mania/4256390",
-      "bpm": 172,
-      "drainTime": 243,
-      "sr": 3.9,
-      "hp": 8,
-      "od": 7.5,
-      "mapType": "HB",
-      "index": 2,
-      "comment": "dfsdfzfsdfdsfsd sdfds fsd fsda fsd fsdafds",
-      "suggestor": "Arcaxio",
-      "inMappool": false
-    },
-    {
-      "id": "OYPUro7",
-      "stageId": "0",
-      "beatmapId": "4334158",
-      "inMappool": true,
-      "title": "HiTECH Bass Loops Vol.1",
-      "diff": "[6K] Stage 1: Erraticity",
-      "artist": "lapix",
-      "mapper": "Phukiir",
-      "suggestor": "Arcaxio",
-      "cover": "https://assets.ppy.sh/beatmaps/2071342/covers/cover.jpg?1699113691",
-      "download": "https://osu.ppy.sh/beatmapsets/2071342#mania/4334158",
-      "bpm": 150,
-      "drainTime": 139,
-      "sr": 4.37,
-      "hp": 8,
-      "od": 8.5,
-      "index": 1,
-      "comment": "",
-      "mapType": "RC"
-    },
-    {
-      "id": "PqPM6JM",
-      "stageId": "0",
-      "beatmapId": "4334134",
-      "inMappool": true,
-      "title": "Firmament Castle \"Velier\"",
-      "diff": "[6K] Stage 2: Welkin",
-      "artist": "Uetsu Shi",
-      "mapper": "HMillion",
-      "suggestor": "Arcaxio",
-      "cover": "https://assets.ppy.sh/beatmaps/2071330/covers/cover.jpg?1699111847",
-      "download": "https://osu.ppy.sh/beatmapsets/2071330#mania/4334134",
-      "bpm": 222,
-      "drainTime": 122,
-      "sr": 4.75,
-      "hp": 8,
-      "od": 8,
-      "index": 2,
-      "comment": "",
-      "mapType": "RC"
-    },
-    {
-      "id": "vx9MYuq",
-      "stageId": "0",
-      "beatmapId": "4334121",
-      "inMappool": true,
-      "title": "Jikai ~ Paganelope",
-      "diff": "[6K] Stage 3: Lust",
-      "artist": "Warak",
-      "mapper": "Alptraum",
-      "suggestor": "Arcaxio",
-      "cover": "https://assets.ppy.sh/beatmaps/2071323/covers/cover.jpg?1699111877",
-      "download": "https://osu.ppy.sh/beatmapsets/2071323#mania/4334121",
-      "bpm": 128,
-      "drainTime": 161,
-      "sr": 5.36,
-      "hp": 8,
-      "od": 8,
-      "index": 1,
-      "comment": "",
-      "mapType": "HB"
-    },
-    {
-      "id": "YUe_e9n",
-      "stageId": "0",
-      "beatmapId": "4334124",
-      "inMappool": true,
-      "title": "Woodfairies",
-      "diff": "[6K] Stage 4: Yearning",
-      "artist": "Aethoro",
-      "mapper": "tastydumpl1ng",
-      "suggestor": "Arcaxio",
-      "cover": "https://assets.ppy.sh/beatmaps/2071325/covers/cover.jpg?1699111879",
-      "download": "https://osu.ppy.sh/beatmapsets/2071325#mania/4334124",
-      "bpm": 174,
-      "drainTime": 147,
-      "sr": 4.49,
-      "hp": 7,
-      "od": 7.2,
-      "index": 1,
-      "comment": "",
-      "mapType": "LN"
-    },
-    {
-      "id": "7Hck81O",
-      "stageId": "0",
-      "beatmapId": "4334151",
-      "inMappool": true,
-      "title": "Nhelv",
-      "diff": "[6K] Stage 5: NERVE",
-      "artist": "Silentroom",
-      "mapper": "YuzakiTsukasa",
-      "suggestor": "Arcaxio",
-      "cover": "https://assets.ppy.sh/beatmaps/2071339/covers/cover.jpg?1699113683",
-      "download": "https://osu.ppy.sh/beatmapsets/2071339#mania/4334151",
-      "bpm": 175,
-      "drainTime": 155,
-      "sr": 5.08,
-      "hp": 8,
-      "od": 8,
-      "index": 3,
-      "comment": "",
-      "mapType": "RC"
-    },
-    {
-      "id": "EmeUnLw",
-      "stageId": "0",
-      "beatmapId": "4334143",
-      "inMappool": true,
-      "title": "ELPIS",
-      "diff": "[6K] Stage 6: Hope",
-      "artist": "dj TAKA",
-      "mapper": "_IceRain",
-      "suggestor": "Arcaxio",
-      "cover": "https://assets.ppy.sh/beatmaps/2071335/covers/cover.jpg?1699113673",
-      "download": "https://osu.ppy.sh/beatmapsets/2071335#mania/4334143",
-      "bpm": 175,
-      "drainTime": 112,
-      "sr": 5.77,
-      "hp": 8,
-      "od": 8,
-      "index": 4,
-      "comment": "",
-      "mapType": "RC"
-    },
-    {
-      "id": "OLnISnI",
-      "stageId": "0",
-      "beatmapId": "4334110",
-      "inMappool": true,
-      "title": "Strange Love",
-      "diff": " [6K] Stage 8: Affliction",
-      "artist": "Sakuzyo",
-      "mapper": "BKwind",
-      "suggestor": "Arcaxio",
-      "cover": "https://assets.ppy.sh/beatmaps/2071316/covers/cover.jpg?1700542844",
-      "download": "https://osu.ppy.sh/beatmapsets/2071316#mania/4334110",
-      "bpm": 190,
-      "drainTime": 165,
-      "sr": 6.84,
-      "hp": 8,
-      "od": 7,
-      "index": 2,
-      "comment": "",
-      "mapType": "HB"
-    },
-    {
-      "id": "FTdkFb8",
-      "stageId": "9",
-      "beatmapId": "4253502",
-      "inMappool": true,
-      "title": "sha (Cut Ver.)",
-      "diff": " [4K] Stage 1: blake",
-      "artist": "sakuraburst",
-      "mapper": "Paturages",
-      "suggestor": "Arcaxio",
-      "cover": "https://assets.ppy.sh/beatmaps/2039247/covers/cover.jpg?1693654294",
-      "download": "https://osu.ppy.sh/beatmapsets/2039247#mania/4253502",
-      "bpm": 170,
-      "drainTime": 114,
-      "sr": 3.02,
-      "hp": 7,
-      "od": 7,
-      "index": 1,
-      "comment": "",
-      "mapType": "SV"
-    },
-    {
-      "id": "8iiPAe1",
-      "stageId": "9",
-      "beatmapId": "4253751",
-      "inMappool": true,
-      "title": "ultra-blazures (Cut Ver.)",
-      "diff": "[4K] Stage 2: amalgam",
-      "artist": "Frums",
-      "mapper": "aeoliancarp",
-      "suggestor": "Arcaxio",
-      "cover": "https://assets.ppy.sh/beatmaps/2039339/covers/cover.jpg?1693670467",
-      "download": "https://osu.ppy.sh/beatmapsets/2039339#mania/4253751",
-      "bpm": 174,
-      "drainTime": 177,
-      "sr": 4.7,
-      "hp": 8.3,
-      "od": 8.3,
-      "index": 1,
-      "comment": "",
-      "mapType": "RC"
-    },
-    {
-      "id": "ercN4Et",
-      "stageId": "9",
-      "beatmapId": "4266621",
-      "inMappool": true,
-      "title": "Ten'imuhou",
-      "diff": "[4K] Absolute",
-      "artist": "xi",
-      "mapper": "elexire",
-      "suggestor": "Arcaxio",
-      "cover": "https://assets.ppy.sh/beatmaps/2039240/covers/cover.jpg?1696698020",
-      "download": "https://osu.ppy.sh/beatmapsets/2039240#mania/4266621",
-      "bpm": 148,
-      "drainTime": 249,
-      "sr": 4.63,
-      "hp": 8,
-      "od": 7.4,
-      "index": 1,
-      "comment": "",
-      "mapType": "HB"
-    },
-    {
-      "id": "PlMQs4G",
-      "stageId": "9",
-      "beatmapId": "4253496",
-      "inMappool": true,
-      "title": "End of Fairytale",
-      "diff": "[4K] Stage 4: Parable",
-      "artist": "technoplanet feat. Haruno",
-      "mapper": "Raveille",
-      "suggestor": "Arcaxio",
-      "cover": "https://assets.ppy.sh/beatmaps/2039243/covers/cover.jpg?1693654288",
-      "download": "https://osu.ppy.sh/beatmapsets/2039243#mania/4253496",
-      "bpm": 250,
-      "drainTime": 142,
-      "sr": 5.53,
-      "hp": 8,
-      "od": 7,
-      "index": 1,
-      "comment": "",
-      "mapType": "LN"
-    },
-    {
-      "id": "lKXR8Nx",
-      "stageId": "9",
-      "beatmapId": "4253649",
-      "inMappool": true,
-      "title": "Ultra Happy Miracle Bazoooooka!!",
-      "diff": "[4K] Stage 5: Overjoy",
-      "artist": "Hino Isuka vs. Umeboshi Chazuke",
-      "mapper": " Toaph Daddy",
-      "suggestor": "Arcaxio",
-      "cover": "https://assets.ppy.sh/beatmaps/2039298/covers/cover.jpg?1693663243",
-      "download": "https://osu.ppy.sh/beatmapsets/2039298#mania/4253649",
-      "bpm": 200,
-      "drainTime": 122,
-      "sr": 6.06,
-      "hp": 7.7,
-      "od": 7.7,
-      "index": 2,
-      "comment": "",
-      "mapType": "LN"
-    },
-    {
-      "id": "f8qRPtb",
-      "stageId": "9",
-      "beatmapId": "4253513",
-      "inMappool": true,
-      "title": "onslaught -Retaliation of Bahamut-",
-      "diff": "[4K] Stage 6: Massacre",
-      "artist": "Camellia",
-      "mapper": "guden",
-      "suggestor": "Arcaxio",
-      "cover": "https://assets.ppy.sh/beatmaps/2039253/covers/cover.jpg?1693656073",
-      "download": "https://osu.ppy.sh/beatmapsets/2039253#mania/4253513",
-      "bpm": 238,
-      "drainTime": 116,
-      "sr": 5.74,
-      "hp": 8.1,
-      "od": 7.8,
-      "index": 2,
-      "comment": "",
-      "mapType": "HB"
-    },
-    {
-      "id": "ucrt89x",
-      "stageId": "9",
-      "beatmapId": "4253489",
-      "inMappool": true,
-      "title": "AMEN KATAGIRI GENERATION",
-      "diff": "[4K] Stage 7: Revival",
-      "artist": "katagiri",
-      "mapper": "-mint-",
-      "suggestor": "Arcaxio",
-      "cover": "https://assets.ppy.sh/beatmaps/2039237/covers/cover.jpg?1693654283",
-      "download": "https://osu.ppy.sh/beatmapsets/2039237#mania/4253489",
-      "bpm": 250,
-      "drainTime": 168,
-      "sr": 5.75,
-      "hp": 8.5,
-      "od": 8.5,
-      "index": 2,
-      "comment": "",
-      "mapType": "RC"
-    },
-    {
-      "id": "ayE97Lg",
-      "stageId": "9",
-      "beatmapId": "4253740",
-      "inMappool": true,
-      "title": "Xuasar Charge",
-      "diff": " [4K] A Sea of Stars",
-      "artist": "Kou!",
-      "mapper": "0DZ0",
-      "suggestor": "Arcaxio",
-      "cover": "https://assets.ppy.sh/beatmaps/2039336/covers/cover.jpg?1725568276",
-      "download": "https://osu.ppy.sh/beatmapsets/2039336#mania/4253740",
-      "bpm": 150,
-      "drainTime": 211,
-      "sr": 5.07,
-      "hp": 8,
-      "od": 8,
-      "index": 3,
-      "comment": "",
-      "mapType": "RC"
-    },
-    {
-      "id": "9z72Afg",
-      "stageId": "8",
-      "beatmapId": "4283526",
-      "inMappool": true,
-      "title": "Gypsophila",
-      "diff": "[4K] blossom 1.1x (166bpm)",
-      "artist": "linear ring with RNAcid",
-      "mapper": "MyZterioN-",
-      "suggestor": "Arcaxio",
-      "cover": "https://assets.ppy.sh/beatmaps/1805950/covers/cover.jpg?1695499261",
-      "download": "https://osu.ppy.sh/beatmapsets/1805950#mania/4283526",
-      "bpm": 166,
-      "drainTime": 147,
-      "sr": 4.82,
-      "hp": 8,
-      "od": 8,
-      "index": 1,
-      "comment": "",
-      "mapType": "RC"
-    },
-    {
-      "id": "LFQ1-PD",
-      "stageId": "8",
-      "beatmapId": "4272125",
-      "inMappool": true,
-      "title": "Cosmo Station",
-      "diff": "[4K] Orbis x1.1",
-      "artist": "seatrus",
-      "mapper": "Blessia",
-      "suggestor": "Arcaxio",
-      "cover": "https://assets.ppy.sh/beatmaps/2046586/covers/cover.jpg?1694775684",
-      "download": "https://osu.ppy.sh/beatmapsets/2046586#mania/4272125",
-      "bpm": 247,
-      "drainTime": 198,
-      "sr": 5.59,
-      "hp": 8,
-      "od": 8,
-      "index": 2,
-      "comment": "",
-      "mapType": "RC"
-    },
-    {
-      "id": "9TBiNkJ",
-      "stageId": "8",
-      "beatmapId": "4281865",
-      "inMappool": true,
-      "title": "Edison",
-      "diff": " [4K] Challenge (Edit) 1.1x (146bpm)",
-      "artist": "EvOke",
-      "mapper": "Miaurichesu",
-      "suggestor": "Arcaxio",
-      "cover": "https://assets.ppy.sh/beatmaps/2050560/covers/cover.jpg?1695398449",
-      "download": "https://osu.ppy.sh/beatmapsets/2050560#mania/4281865",
-      "bpm": 146,
-      "drainTime": 157,
-      "sr": 5.18,
-      "hp": 8,
-      "od": 8.5,
-      "index": 3,
-      "comment": "",
-      "mapType": "RC"
-    },
-    {
-      "id": "xs1utBk",
-      "stageId": "8",
-      "beatmapId": "4284901",
-      "inMappool": true,
-      "title": "Break The Silence",
-      "diff": "[4K] Challenge",
-      "artist": "Camellia",
-      "mapper": "0DZ0",
-      "suggestor": "Arcaxio",
-      "cover": "https://assets.ppy.sh/beatmaps/2051831/covers/cover.jpg?1719093450",
-      "download": "https://osu.ppy.sh/beatmapsets/2051831#mania/4284901",
-      "bpm": 220,
-      "drainTime": 224,
-      "sr": 4.96,
-      "hp": 8.5,
-      "od": 8.3,
-      "index": 4,
-      "comment": "",
-      "mapType": "RC"
-    },
-    {
-      "id": "waRDcZo",
-      "stageId": "8",
-      "beatmapId": "4284906",
-      "inMappool": true,
-      "title": "Baka Mitai (Cut Ver.)",
-      "diff": "[4K] Ska's n no. .",
-      "artist": "Kazuma Kiryu (CV: Takaya Kuroda)",
-      "mapper": "elexire",
-      "suggestor": "Arcaxio",
-      "cover": "https://assets.ppy.sh/beatmaps/2051835/covers/cover.jpg?1708542573",
-      "download": "https://osu.ppy.sh/beatmapsets/2051835#mania/4284906",
-      "bpm": 148,
-      "drainTime": 110,
-      "sr": 4.89,
-      "hp": 8,
-      "od": 8,
-      "index": 5,
-      "comment": "",
-      "mapType": "RC"
-    },
-    {
-      "id": "czGuy9m",
-      "stageId": "8",
-      "beatmapId": "4284888",
-      "inMappool": true,
-      "title": "Nisemono",
-      "diff": "[4K] Impostor (cut 1.05x)",
-      "artist": "Frums",
-      "mapper": "Pizza69",
-      "suggestor": "Arcaxio",
-      "cover": "https://assets.ppy.sh/beatmaps/2051825/covers/cover.jpg?1695589290",
-      "download": "https://osu.ppy.sh/beatmapsets/2051825#mania/4284888",
-      "bpm": 315,
-      "drainTime": 153,
-      "sr": 5.2,
-      "hp": 8,
-      "od": 8,
-      "index": 6,
-      "comment": "",
-      "mapType": "RC"
-    },
-    {
-      "id": "IuNX2Pn",
-      "stageId": "8",
-      "beatmapId": "4284664",
-      "inMappool": true,
-      "title": "Bloomin'",
-      "diff": "[4K] Flowerin'",
-      "artist": "MisoilePunch -Forever-",
-      "mapper": "guden",
-      "suggestor": "Arcaxio",
-      "cover": "https://assets.ppy.sh/beatmaps/2051734/covers/cover.jpg?1695582037",
-      "download": "https://osu.ppy.sh/beatmapsets/2051734#mania/4284664",
-      "bpm": 234,
-      "drainTime": 138,
-      "sr": 5.49,
-      "hp": 8,
-      "od": 7.5,
-      "index": 1,
-      "comment": "",
-      "mapType": "HB"
-    },
-    {
-      "id": "bL5sqbA",
-      "stageId": "8",
-      "beatmapId": "4284920",
-      "inMappool": true,
-      "title": "Upload Your Mind :: Download My Soul",
-      "diff": "[4K] Multidimensional",
-      "artist": "Camellia",
-      "mapper": "-mint-",
-      "suggestor": "Arcaxio",
-      "cover": "https://assets.ppy.sh/beatmaps/2051840/covers/cover.jpg?1699625840",
-      "download": "https://osu.ppy.sh/beatmapsets/2051840#mania/4284920",
-      "bpm": 166,
-      "drainTime": 271,
-      "sr": 5.22,
-      "hp": 8,
-      "od": 7.3,
-      "index": 2,
-      "comment": "",
-      "mapType": "HB"
-    },
-    {
-      "id": "zSqXqiX",
-      "stageId": "8",
-      "beatmapId": "4284700",
-      "inMappool": true,
-      "title": "Calculator",
-      "diff": "[4K] .857142",
-      "artist": "M-O-T-U",
-      "mapper": "[Crz]FolAH1217",
-      "suggestor": "Arcaxio",
-      "cover": "https://assets.ppy.sh/beatmaps/2051746/covers/cover.jpg?1695582106",
-      "download": "https://osu.ppy.sh/beatmapsets/2051746#mania/4284700",
-      "bpm": 166,
-      "drainTime": 109,
-      "sr": 4.95,
-      "hp": 7.5,
-      "od": 7.3,
-      "index": 3,
-      "comment": "",
-      "mapType": "HB"
-    },
-    {
-      "id": "hOFVAC8",
-      "stageId": "8",
-      "beatmapId": "4284564",
-      "inMappool": true,
-      "title": "Astra Walkthrough",
-      "diff": "[4K] Faded Stars",
-      "artist": "paraoka",
-      "mapper": "[Crz]Crysarlene",
-      "suggestor": "Arcaxio",
-      "cover": "https://assets.ppy.sh/beatmaps/2051679/covers/cover.jpg?1695574859",
-      "download": "https://osu.ppy.sh/beatmapsets/2051679#mania/4284564",
-      "bpm": 225,
-      "drainTime": 136,
-      "sr": 5.27,
-      "hp": 9,
-      "od": 7.3,
-      "index": 1,
-      "comment": "",
-      "mapType": "LN"
-    },
-    {
-      "id": "bnOLI-l",
-      "stageId": "8",
-      "beatmapId": "4284669",
-      "inMappool": true,
-      "title": "Heaven's Fall",
-      "diff": "[4K] Firmaments",
-      "artist": "Helblinde",
-      "mapper": "guden",
-      "suggestor": "Arcaxio",
-      "cover": "https://assets.ppy.sh/beatmaps/2051737/covers/cover.jpg?1695582048",
-      "download": "https://osu.ppy.sh/beatmapsets/2051737#mania/4284669",
-      "bpm": 200,
-      "drainTime": 167,
-      "sr": 5.71,
-      "hp": 8.6,
-      "od": 7.5,
-      "index": 2,
-      "comment": "",
-      "mapType": "LN"
-    },
-    {
-      "id": "DR3eYZm",
-      "stageId": "8",
-      "beatmapId": "4284918",
-      "inMappool": true,
-      "title": "Erinyes",
-      "diff": "[4K] Enigma",
-      "artist": "Toromaru",
-      "mapper": "Toaph Daddy",
-      "suggestor": "Arcaxio",
-      "cover": "https://assets.ppy.sh/beatmaps/2051839/covers/cover.jpg?1695591040",
-      "download": "https://osu.ppy.sh/beatmapsets/2051839#mania/4284918",
-      "bpm": 195,
-      "drainTime": 138,
-      "sr": 6.2,
-      "hp": 8,
-      "od": 7.5,
-      "index": 3,
-      "comment": "",
-      "mapType": "LN"
-    },
-    {
-      "id": "ySdgxzs",
-      "stageId": "8",
-      "beatmapId": "4284932",
-      "inMappool": true,
-      "title": "Sample enSemble",
-      "diff": " [4K] SV asSemble",
-      "artist": "AltVoid",
-      "mapper": "Tidek",
-      "suggestor": "Arcaxio",
-      "cover": "https://assets.ppy.sh/beatmaps/2051846/covers/cover.jpg?1695592849",
-      "download": "https://osu.ppy.sh/beatmapsets/2051846#mania/4284932",
-      "bpm": 141,
-      "drainTime": 139,
-      "sr": 3.2,
-      "hp": 7,
-      "od": 7,
-      "index": 1,
-      "comment": "",
-      "mapType": "SV"
-    },
-    {
-      "id": "_3SB76N",
-      "stageId": "8",
-      "beatmapId": "4284940",
-      "inMappool": true,
-      "title": "Cyber Thunder Cider",
-      "diff": "[4K] ??",
-      "artist": "EZFG",
-      "mapper": "zero2snow",
-      "suggestor": "Arcaxio",
-      "cover": "https://assets.ppy.sh/beatmaps/2051849/covers/cover.jpg?1695592863",
-      "download": "https://osu.ppy.sh/beatmapsets/2051849#mania/4284940",
-      "bpm": 145,
-      "drainTime": 183,
-      "sr": 3.34,
-      "hp": 5,
-      "od": 7,
-      "index": 2,
-      "comment": "",
-      "mapType": "SV"
-    },
-    {
-      "id": "QV7qtt7",
-      "stageId": "8",
-      "beatmapId": "4284926",
-      "inMappool": true,
-      "title": "Drenched in Air",
-      "diff": "[4K] Submerge",
-      "artist": "Camellia feat. Ninomae Ina'nis",
-      "mapper": "elexire",
-      "suggestor": "Arcaxio",
-      "cover": "https://assets.ppy.sh/beatmaps/2051843/covers/cover.jpg?1694366501",
-      "download": "https://osu.ppy.sh/beatmapsets/2051843#mania/4284926",
-      "bpm": 189,
-      "drainTime": 288,
-      "sr": 6.92,
-      "hp": 8,
-      "od": 7.3,
-      "index": 0,
-      "comment": "",
-      "mapType": "TB"
-    }
-  ],
   "matches": [
     {
-      "id": "0",
-      "stageId": "4",
+      "Id": 0,
+      "stageId": 4,
       "code": "98",
       "time": "2023-11-10T13:00:00.000Z",
       "mpLink": "https://osu.ppy.sh/community/matches/111240607",
@@ -5670,8 +4682,8 @@
       "commentators": []
     },
     {
-      "id": "1",
-      "stageId": "4",
+      "Id": 1,
+      "stageId": 4,
       "code": "103",
       "time": "2023-11-11T08:00:00.000Z",
       "mpLink": "",
@@ -5697,8 +4709,8 @@
       "commentators": []
     },
     {
-      "id": "2",
-      "stageId": "4",
+      "Id": 2,
+      "stageId": 4,
       "code": "110",
       "time": "2023-11-11T12:00:00.000Z",
       "mpLink": "",
@@ -5724,8 +4736,8 @@
       "commentators": []
     },
     {
-      "id": "3",
-      "stageId": "4",
+      "Id": 3,
+      "stageId": 4,
       "code": "99",
       "time": "2023-11-11T12:00:00.000Z",
       "mpLink": "",
@@ -5751,8 +4763,8 @@
       "commentators": []
     },
     {
-      "id": "4",
-      "stageId": "4",
+      "Id": 4,
+      "stageId": 4,
       "code": "100",
       "time": "2023-11-11T14:00:00.000Z",
       "mpLink": "",
@@ -5778,8 +4790,8 @@
       "commentators": []
     },
     {
-      "id": "5",
-      "stageId": "4",
+      "Id": 5,
+      "stageId": 4,
       "code": "102",
       "time": "2023-11-11, 14:00",
       "mpLink": "",
@@ -5805,8 +4817,8 @@
       "commentators": []
     },
     {
-      "id": "6",
-      "stageId": "4",
+      "Id": 6,
+      "stageId": 4,
       "code": "112",
       "time": "2023-11-11T15:00:00.000Z",
       "mpLink": "",
@@ -5832,8 +4844,8 @@
       "commentators": []
     },
     {
-      "id": "7",
-      "stageId": "4",
+      "Id": 7,
+      "stageId": 4,
       "code": "97",
       "time": "2023-11-11T21:00:00.000Z",
       "mpLink": "",
@@ -5859,8 +4871,8 @@
       "commentators": []
     },
     {
-      "id": "8",
-      "stageId": "4",
+      "Id": 8,
+      "stageId": 4,
       "code": "101",
       "time": "2023-11-12T03:00:00.000Z",
       "mpLink": "",
@@ -5888,8 +4900,8 @@
       ]
     },
     {
-      "id": "9",
-      "stageId": "4",
+      "Id": 9,
+      "stageId": 4,
       "code": "104",
       "time": "2023-11-12T07:30:00.000Z",
       "mpLink": "",
@@ -5917,8 +4929,8 @@
       ]
     },
     {
-      "id": "10",
-      "stageId": "4",
+      "Id": 10,
+      "stageId": 4,
       "code": "106d",
       "time": "2023-11-12T08:00:00.000Z",
       "mpLink": "",
@@ -5944,8 +4956,8 @@
       "commentators": []
     },
     {
-      "id": "11",
-      "stageId": "4",
+      "Id": 11,
+      "stageId": 4,
       "code": "109",
       "time": "2023-11-12T08:00:00.000Z",
       "mpLink": "",
@@ -5971,8 +4983,8 @@
       "commentators": []
     },
     {
-      "id": "12",
-      "stageId": "4",
+      "Id": 12,
+      "stageId": 4,
       "code": "108b",
       "time": "2023-11-12T12:00:00.000Z",
       "mpLink": "",
@@ -5998,8 +5010,8 @@
       "commentators": []
     },
     {
-      "id": "13",
-      "stageId": "4",
+      "Id": 13,
+      "stageId": 4,
       "code": "107b",
       "time": "2023-11-12T13:00:00.000Z",
       "mpLink": "",
@@ -6025,8 +5037,8 @@
       "commentators": []
     },
     {
-      "id": "14",
-      "stageId": "4",
+      "Id": 14,
+      "stageId": 4,
       "code": "111",
       "time": "2023-11-12T15:00:00.000Z",
       "mpLink": "",
@@ -6052,8 +5064,8 @@
       "commentators": []
     },
     {
-      "id": "15",
-      "stageId": "4",
+      "Id": 15,
+      "stageId": 4,
       "code": "105b",
       "time": "2023-11-12T16:00:00.000Z",
       "mpLink": "",
@@ -6110,7 +5122,7 @@
     },
     {
       "id": "UVEY_NY",
-      "stageId": "8",
+      "stageId": 8,
       "code": "123",
       "time": "2024-09-26T17:39:35.000Z",
       "mpLink": "",
@@ -6118,8 +5130,8 @@
       "score2": 0,
       "isDone": false,
       "player1": {
-        "id": "1",
-        "tournamentId": "2",
+        "Id": 1,
+        "tournamentId": 2,
         "name": "Japan",
         "logo": "https://assets.ppy.sh/old-flags/JP.png",
         "status": "active",
@@ -6141,14 +5153,14 @@
             "avatar": "https://a.ppy.sh/10242062",
             "roles": [
               {
-                "tournamentId": "2",
+                "tournamentId": 2,
                 "name": "player",
                 "canRegWithRole": false
               }
             ],
             "stats": [
               {
-                "tournamentId": "2",
+                "tournamentId": 2,
                 "status": "active",
                 "seed": 0,
                 "placement": 0
@@ -6170,14 +5182,14 @@
             "avatar": "https://a.ppy.sh/11488604",
             "roles": [
               {
-                "tournamentId": "2",
+                "tournamentId": 2,
                 "name": "player",
                 "canRegWithRole": false
               }
             ],
             "stats": [
               {
-                "tournamentId": "2",
+                "tournamentId": 2,
                 "status": "active",
                 "seed": 0,
                 "placement": 0
@@ -6199,14 +5211,14 @@
             "avatar": "https://a.ppy.sh/16100800",
             "roles": [
               {
-                "tournamentId": "2",
+                "tournamentId": 2,
                 "name": "player",
                 "canRegWithRole": false
               }
             ],
             "stats": [
               {
-                "tournamentId": "2",
+                "tournamentId": 2,
                 "status": "active",
                 "seed": 0,
                 "placement": 0
@@ -6228,14 +5240,14 @@
             "avatar": "https://a.ppy.sh/10745260",
             "roles": [
               {
-                "tournamentId": "2",
+                "tournamentId": 2,
                 "name": "player",
                 "canRegWithRole": false
               }
             ],
             "stats": [
               {
-                "tournamentId": "2",
+                "tournamentId": 2,
                 "status": "active",
                 "seed": 0,
                 "placement": 0
@@ -6257,14 +5269,14 @@
             "avatar": "https://a.ppy.sh/25588443",
             "roles": [
               {
-                "tournamentId": "2",
+                "tournamentId": 2,
                 "name": "player",
                 "canRegWithRole": false
               }
             ],
             "stats": [
               {
-                "tournamentId": "2",
+                "tournamentId": 2,
                 "status": "active",
                 "seed": 0,
                 "placement": 0
@@ -6286,14 +5298,14 @@
             "avatar": "https://a.ppy.sh/18144664",
             "roles": [
               {
-                "tournamentId": "2",
+                "tournamentId": 2,
                 "name": "player",
                 "canRegWithRole": false
               }
             ],
             "stats": [
               {
-                "tournamentId": "2",
+                "tournamentId": 2,
                 "status": "active",
                 "seed": 0,
                 "placement": 0
@@ -6304,8 +5316,8 @@
         ]
       },
       "player2": {
-        "id": "3",
-        "tournamentId": "2",
+        "Id": 3,
+        "tournamentId": 2,
         "name": "France",
         "logo": "https://assets.ppy.sh/old-flags/FR.png",
         "status": "active",
@@ -6327,14 +5339,14 @@
             "avatar": "https://a.ppy.sh/10015908",
             "roles": [
               {
-                "tournamentId": "2",
+                "tournamentId": 2,
                 "name": "player",
                 "canRegWithRole": false
               }
             ],
             "stats": [
               {
-                "tournamentId": "2",
+                "tournamentId": 2,
                 "status": "active",
                 "seed": 0,
                 "placement": 0
@@ -6356,14 +5368,14 @@
             "avatar": "https://a.ppy.sh/16892459",
             "roles": [
               {
-                "tournamentId": "2",
+                "tournamentId": 2,
                 "name": "player",
                 "canRegWithRole": false
               }
             ],
             "stats": [
               {
-                "tournamentId": "2",
+                "tournamentId": 2,
                 "status": "active",
                 "seed": 0,
                 "placement": 0
@@ -6385,14 +5397,14 @@
             "avatar": "https://a.ppy.sh/18867523",
             "roles": [
               {
-                "tournamentId": "2",
+                "tournamentId": 2,
                 "name": "player",
                 "canRegWithRole": false
               }
             ],
             "stats": [
               {
-                "tournamentId": "2",
+                "tournamentId": 2,
                 "status": "active",
                 "seed": 0,
                 "placement": 0
@@ -6414,14 +5426,14 @@
             "avatar": "https://a.ppy.sh/14055233",
             "roles": [
               {
-                "tournamentId": "2",
+                "tournamentId": 2,
                 "name": "player",
                 "canRegWithRole": false
               }
             ],
             "stats": [
               {
-                "tournamentId": "2",
+                "tournamentId": 2,
                 "status": "active",
                 "seed": 0,
                 "placement": 0
@@ -6443,14 +5455,14 @@
             "avatar": "https://a.ppy.sh/7306522",
             "roles": [
               {
-                "tournamentId": "2",
+                "tournamentId": 2,
                 "name": "player",
                 "canRegWithRole": false
               }
             ],
             "stats": [
               {
-                "tournamentId": "2",
+                "tournamentId": 2,
                 "status": "active",
                 "seed": 0,
                 "placement": 0
@@ -6472,14 +5484,14 @@
             "avatar": "https://a.ppy.sh/8756421",
             "roles": [
               {
-                "tournamentId": "2",
+                "tournamentId": 2,
                 "name": "player",
                 "canRegWithRole": false
               }
             ],
             "stats": [
               {
-                "tournamentId": "2",
+                "tournamentId": 2,
                 "status": "active",
                 "seed": 0,
                 "placement": 0
@@ -6496,8 +5508,8 @@
   ],
   "lobbies": [
     {
-      "id": "0",
-      "stageId": "0",
+      "Id": 0,
+      "stageId": 0,
       "code": "Q25",
       "time": "2023-10-12T15:00:00.000Z",
       "mpLink": "https://osu.ppy.sh/home",
@@ -6508,8 +5520,8 @@
       "referee": "Albionthegreat"
     },
     {
-      "id": "1",
-      "stageId": "0",
+      "Id": 1,
+      "stageId": 0,
       "code": "Q26",
       "time": "2023-10-13T13:00:00.000Z",
       "mpLink": "https://osu.ppy.sh/home",
@@ -6520,8 +5532,8 @@
       "referee": "TheFunk"
     },
     {
-      "id": "2",
-      "stageId": "0",
+      "Id": 2,
+      "stageId": 0,
       "code": "Q01",
       "time": "2023-10-14T00:00:00.000Z",
       "mpLink": "",
@@ -6530,8 +5542,8 @@
       "referee": "walmart5193"
     },
     {
-      "id": "3",
-      "stageId": "0",
+      "Id": 3,
+      "stageId": 0,
       "code": "Q02",
       "time": "2023-10-14T02:00:00.000Z",
       "mpLink": "https://osu.ppy.sh/home",
@@ -6542,8 +5554,8 @@
       "referee": "walmart5193"
     },
     {
-      "id": "4",
-      "stageId": "0",
+      "Id": 4,
+      "stageId": 0,
       "code": "Q03",
       "time": "2023-10-14T04:00:00.000Z",
       "mpLink": "",
@@ -6552,8 +5564,8 @@
       "referee": ""
     },
     {
-      "id": "5",
-      "stageId": "0",
+      "Id": 5,
+      "stageId": 0,
       "code": "Q04",
       "time": "2023-10-14T06:00:00.000Z",
       "mpLink": "",
@@ -6562,8 +5574,8 @@
       "referee": "ERA Xuste"
     },
     {
-      "id": "6",
-      "stageId": "0",
+      "Id": 6,
+      "stageId": 0,
       "code": "Q05",
       "time": "2023-10-14T08:00:00.000Z",
       "mpLink": "https://osu.ppy.sh/home",
@@ -6577,8 +5589,8 @@
       "referee": "TheHunter1"
     },
     {
-      "id": "7",
-      "stageId": "0",
+      "Id": 7,
+      "stageId": 0,
       "code": "Q06",
       "time": "2023-10-14T10:00:00.000Z",
       "mpLink": "",
@@ -6587,8 +5599,8 @@
       "referee": "rock-on"
     },
     {
-      "id": "8",
-      "stageId": "0",
+      "Id": 8,
+      "stageId": 0,
       "code": "Q07",
       "time": "2023-10-14T12:00:00.000Z",
       "mpLink": "https://osu.ppy.sh/home",
@@ -6604,8 +5616,8 @@
       "referee": "[GB]Rush_FTK"
     },
     {
-      "id": "9",
-      "stageId": "0",
+      "Id": 9,
+      "stageId": 0,
       "code": "Q08",
       "time": "2023-10-14T14:00:00.000Z",
       "mpLink": "https://osu.ppy.sh/home",
@@ -6616,8 +5628,8 @@
       "referee": "Poity"
     },
     {
-      "id": "10",
-      "stageId": "0",
+      "Id": 10,
+      "stageId": 0,
       "code": "Q09",
       "time": "2023-10-14T16:00:00.000Z",
       "mpLink": "https://osu.ppy.sh/home",
@@ -6631,8 +5643,8 @@
       "referee": "Poity"
     },
     {
-      "id": "11",
-      "stageId": "0",
+      "Id": 11,
+      "stageId": 0,
       "code": "Q10",
       "time": "2023-10-14T18:00:00.000Z",
       "mpLink": "https://osu.ppy.sh/home",
@@ -6644,8 +5656,8 @@
       "referee": "ERA Xuste"
     },
     {
-      "id": "12",
-      "stageId": "0",
+      "Id": 12,
+      "stageId": 0,
       "code": "Q11",
       "time": "2023-10-14T20:00:00.000Z",
       "mpLink": "https://osu.ppy.sh/home",
@@ -6660,8 +5672,8 @@
       "referee": "walmart5193"
     },
     {
-      "id": "13",
-      "stageId": "0",
+      "Id": 13,
+      "stageId": 0,
       "code": "Q12",
       "time": "2023-10-14T22:00:00.000Z",
       "mpLink": "https://osu.ppy.sh/home",
@@ -6674,8 +5686,8 @@
       "referee": "SunApple"
     },
     {
-      "id": "14",
-      "stageId": "0",
+      "Id": 14,
+      "stageId": 0,
       "code": "Q13",
       "time": "2023-10-15T00:00:00.000Z",
       "mpLink": "https://osu.ppy.sh/home",
@@ -6688,8 +5700,8 @@
       "referee": "EpsilonMaiagare"
     },
     {
-      "id": "15",
-      "stageId": "0",
+      "Id": 15,
+      "stageId": 0,
       "code": "Q14",
       "time": "2023-10-15T02:00:00.000Z",
       "mpLink": "",
@@ -6702,8 +5714,8 @@
       "referee": "ERA Xuste"
     },
     {
-      "id": "16",
-      "stageId": "0",
+      "Id": 16,
+      "stageId": 0,
       "code": "Q15",
       "time": "2023-10-15T04:00:00.000Z",
       "mpLink": "",
@@ -6715,8 +5727,8 @@
       "referee": "Auxesiaa"
     },
     {
-      "id": "17",
-      "stageId": "0",
+      "Id": 17,
+      "stageId": 0,
       "code": "Q16",
       "time": "2023-10-15T06:00:00.000Z",
       "mpLink": "",
@@ -6729,8 +5741,8 @@
       "referee": "TheHunter1"
     },
     {
-      "id": "18",
-      "stageId": "0",
+      "Id": 18,
+      "stageId": 0,
       "code": "Q17",
       "time": "2023-10-15T08:00:00.000Z",
       "mpLink": "",
@@ -6739,8 +5751,8 @@
       "referee": "Poity"
     },
     {
-      "id": "19",
-      "stageId": "0",
+      "Id": 19,
+      "stageId": 0,
       "code": "Q18",
       "time": "2023-10-15T10:00:00.000Z",
       "mpLink": "",
@@ -6755,8 +5767,8 @@
       "referee": "shizehao"
     },
     {
-      "id": "20",
-      "stageId": "0",
+      "Id": 20,
+      "stageId": 0,
       "code": "Q19",
       "time": "2023-10-15T12:00:00.000Z",
       "mpLink": "",
@@ -6775,8 +5787,8 @@
       "referee": "[GB]Rush_FTK"
     },
     {
-      "id": "21",
-      "stageId": "0",
+      "id": 21,
+      "stageId": 0,
       "code": "Q20",
       "time": "2023-10-15T14:00:00.000Z",
       "mpLink": "",
@@ -6796,8 +5808,8 @@
       "referee": "Poity"
     },
     {
-      "id": "22",
-      "stageId": "0",
+      "id": 22,
+      "stageId": 0,
       "code": "Q21",
       "time": "2023-10-15T16:00:00.000Z",
       "mpLink": "",
@@ -6809,8 +5821,8 @@
       "referee": "ERA Xuste"
     },
     {
-      "id": "23",
-      "stageId": "0",
+      "id": 23,
+      "stageId": 0,
       "code": "Q22",
       "time": "2023-10-15T18:00:00.000Z",
       "mpLink": "",
@@ -6821,8 +5833,8 @@
       "referee": "ERA Xuste"
     },
     {
-      "id": "24",
-      "stageId": "0",
+      "id": 24,
+      "stageId": 0,
       "code": "Q23",
       "time": "2023-10-15T20:00:00.000Z",
       "mpLink": "",
@@ -6836,8 +5848,8 @@
       "referee": "EpsilonMaiagare"
     },
     {
-      "id": "25",
-      "stageId": "0",
+      "id": 25,
+      "stageId": 0,
       "code": "Q24",
       "time": "2023-10-15T22:00:00.000Z",
       "mpLink": "",
@@ -6853,8 +5865,8 @@
       "referee": "walmart5193"
     },
     {
-      "id": "9ANqv7k",
-      "stageId": "9",
+      "id": 26,
+      "stageId": 9,
       "code": "Q01",
       "time": "2024-09-20T08:06:30.000Z",
       "mpLink": "",
@@ -6868,8 +5880,8 @@
       "referee": "Arcaxio"
     },
     {
-      "id": "iXFdBpe",
-      "stageId": "9",
+      "id": 27,
+      "stageId": 9,
       "code": "Q02",
       "time": "2024-09-30T11:14:08.000Z",
       "mpLink": "",
@@ -6880,10 +5892,10 @@
   ],
   "staffInvites": [
     {
-      "id": "0",
+      "Id": 0,
       "tournament": "6K Autumn Showdown",
-      "tournamentId": "1",
-      "recipientId": "0",
+      "tournamentId": 1,
+      "recipientId": 0,
       "sender": "TheFunk",
       "role": "commentator",
       "status": "pending",
@@ -6892,8 +5904,8 @@
   ],
   "mapStats": [
     {
-      "id": "0",
-      "stageId": "4",
+      "Id": 0,
+      "stageId": 4,
       "title": "void feat. Hiroko - world devoid of you (fairydust radio edit) [Silent Sky]",
       "type": "RC",
       "index": 1,
@@ -7055,8 +6067,8 @@
       ]
     },
     {
-      "id": "1",
-      "stageId": "4",
+      "Id": 1,
+      "stageId": 4,
       "title": "Yooh - Decoy [Yoced]",
       "type": "RC",
       "index": 2,
@@ -7218,8 +6230,8 @@
       ]
     },
     {
-      "id": "2",
-      "stageId": "4",
+      "Id": 2,
+      "stageId": 4,
       "title": "Silentroom - 9876734123 (\"Hyperprime\" Full Version) [1.05x For AST]",
       "type": "RC",
       "index": 3,
@@ -7359,8 +6371,8 @@
       ]
     },
     {
-      "id": "3",
-      "stageId": "4",
+      "Id": 3,
+      "stageId": 4,
       "title": "Blitz Lunar - A Dichroic Glass Snafu [Broken]",
       "type": "RC",
       "index": 4,
@@ -7456,8 +6468,8 @@
       ]
     },
     {
-      "id": "4",
-      "stageId": "4",
+      "Id": 4,
+      "stageId": 4,
       "title": "ZUN - Hiroari Shoots a Strange Bird ~ Till When [Perfect Cherry Blossom]",
       "type": "RC",
       "index": 5,
@@ -7553,8 +6565,8 @@
       ]
     },
     {
-      "id": "5",
-      "stageId": "4",
+      "Id": 5,
+      "stageId": 4,
       "title": "Lia - Light Colors [The Color of Oblivion]",
       "type": "RC",
       "index": 6,
@@ -7694,8 +6706,8 @@
       ]
     },
     {
-      "id": "6",
-      "stageId": "4",
+      "Id": 6,
+      "stageId": 4,
       "title": "Hoshimachi Suisei - phony [Master]",
       "type": "LN",
       "index": 1,
@@ -7725,8 +6737,8 @@
       ]
     },
     {
-      "id": "7",
-      "stageId": "4",
+      "Id": 7,
+      "stageId": 4,
       "title": "Xi feat. Sta - Tiferet [MeLady]",
       "type": "LN",
       "index": 2,
@@ -7756,8 +6768,8 @@
       ]
     },
     {
-      "id": "8",
-      "stageId": "4",
+      "Id": 8,
+      "stageId": 4,
       "title": "-45 - G e n g a o z o [void (AST Edit)]",
       "type": "LN",
       "index": 3,
@@ -7787,8 +6799,8 @@
       ]
     },
     {
-      "id": "9",
-      "stageId": "4",
+      "Id": 9,
+      "stageId": 4,
       "title": "Mili - Cerebrite [iya]",
       "type": "LN",
       "index": 4,
@@ -7818,8 +6830,8 @@
       ]
     },
     {
-      "id": "10",
-      "stageId": "4",
+      "Id": 10,
+      "stageId": 4,
       "title": "HiTECH NINJA vs Cranky - BREaK! BREaK! BREaK! [Break it all up]",
       "type": "HB",
       "index": 1,
@@ -7849,8 +6861,8 @@
       ]
     },
     {
-      "id": "11",
-      "stageId": "4",
+      "Id": 11,
+      "stageId": 4,
       "title": "SunsetRay - PhantasmalWar [Blood moon]",
       "type": "HB",
       "index": 2,
@@ -7880,8 +6892,8 @@
       ]
     },
     {
-      "id": "12",
-      "stageId": "4",
+      "Id": 12,
+      "stageId": 4,
       "title": "Juggernaut. - Catastrophe [Apocalypse]",
       "type": "HB",
       "index": 3,
@@ -7911,8 +6923,8 @@
       ]
     },
     {
-      "id": "13",
-      "stageId": "4",
+      "Id": 13,
+      "stageId": 4,
       "title": "Dragonforce - Heroes of our time [The Epic]",
       "type": "TB",
       "index": 0,
@@ -7942,8 +6954,8 @@
       ]
     },
     {
-      "id": "14",
-      "stageId": "0",
+      "Id": 14,
+      "stageId": 0,
       "title": "lapix - HiTECH Bass Loops Vol.1 [Stage 1: Erraticity]",
       "type": "RC",
       "index": 1,
@@ -8138,8 +7150,8 @@
       ]
     },
     {
-      "id": "15",
-      "stageId": "0",
+      "Id": 15,
+      "stageId": 0,
       "title": "Uetsu Shi - Firmament Castle \"Velier\" [Stage 2: Welkin]",
       "type": "RC",
       "index": 2,
@@ -8323,8 +7335,8 @@
       ]
     },
     {
-      "id": "16",
-      "stageId": "0",
+      "Id": 16,
+      "stageId": 0,
       "title": "Warak - Jikai ~ Paganelope [Stage 3: Lust]",
       "type": "HB",
       "index": 3,
@@ -8442,8 +7454,8 @@
       ]
     },
     {
-      "id": "17",
-      "stageId": "0",
+      "Id": 17,
+      "stageId": 0,
       "title": "Aethoro - Woodfairies [Stage 4: Yearning]",
       "type": "LN",
       "index": 4,
@@ -8561,8 +7573,8 @@
       ]
     },
     {
-      "id": "18",
-      "stageId": "0",
+      "Id": 18,
+      "stageId": 0,
       "title": "Silentroom - Nhelv [Stage 5: NERVE]",
       "type": "RC",
       "index": 5,
@@ -8680,8 +7692,8 @@
       ]
     },
     {
-      "id": "19",
-      "stageId": "0",
+      "Id": 19,
+      "stageId": 0,
       "title": "dj TAKA - ELPIS [Stage 6: Hope]",
       "type": "RC",
       "index": 6,
@@ -8799,8 +7811,8 @@
       ]
     },
     {
-      "id": "20",
-      "stageId": "0",
+      "Id": 20,
+      "stageId": 0,
       "title": "Tsukino - Debiru Janai Mon [Stage 7: Zakozako]",
       "type": "LN",
       "index": 7,
@@ -8919,7 +7931,7 @@
     },
     {
       "id": "21",
-      "stageId": "0",
+      "stageId": 0,
       "title": "sakuzyo - Strange Love [Stage 8: Affliction]",
       "type": "HB",
       "index": 8,
@@ -9038,7 +8050,7 @@
     },
     {
       "id": "22",
-      "stageId": "8",
+      "stageId": 8,
       "title": "linear ring with RNAcid - Gypsophila (MyZterioN-) [blossom 1.1x (166bpm)]",
       "type": "RC",
       "index": 1,
@@ -9125,7 +8137,7 @@
     },
     {
       "id": "23",
-      "stageId": "8",
+      "stageId": 8,
       "title": "seatrus - Cosmo Station (Blessia) [Orbis x1.1]",
       "type": "RC",
       "index": 2,
@@ -9212,7 +8224,7 @@
     },
     {
       "id": "24",
-      "stageId": "8",
+      "stageId": 8,
       "title": "EvOke - Edison (Miaurichesu) [Challenge (Edit) 1.1x (146bpm)]",
       "type": "RC",
       "index": 3,
@@ -9299,7 +8311,7 @@
     },
     {
       "id": "25",
-      "stageId": "8",
+      "stageId": 8,
       "title": "Camellia - Break The Silence (0DZ0) [Challenge]",
       "type": "RC",
       "index": 4,
@@ -9386,7 +8398,7 @@
     },
     {
       "id": "26",
-      "stageId": "8",
+      "stageId": 8,
       "title": "Kazuma Kiryu (CV: Takaya Kuroda) - Baka Mitai (elexire) [Ska's n no. . (edit)]",
       "type": "RC",
       "index": 5,
@@ -9473,7 +8485,7 @@
     },
     {
       "id": "27",
-      "stageId": "8",
+      "stageId": 8,
       "title": "Frums - Nisemono (Pizza69) [Impostor (cut 1.05x)]",
       "type": "RC",
       "index": 6,
@@ -9560,7 +8572,7 @@
     },
     {
       "id": "28",
-      "stageId": "8",
+      "stageId": 8,
       "title": "MisoilePunch -Forever- - Bloomin' (guden) [Flowerin']",
       "type": "HB",
       "index": 1,
@@ -9647,7 +8659,7 @@
     },
     {
       "id": "29",
-      "stageId": "8",
+      "stageId": 8,
       "title": "Camellia - Upload Your Mind :: Download My Soul (Cut Ver.) (-mint-) [Multidimensional]",
       "type": "HB",
       "index": 2,
@@ -9734,7 +8746,7 @@
     },
     {
       "id": "30",
-      "stageId": "8",
+      "stageId": 8,
       "title": "M-O-T-U - Calculator ([Crz]FolAH1217) [.857142]",
       "type": "HB",
       "index": 3,
@@ -9821,7 +8833,7 @@
     },
     {
       "id": "31",
-      "stageId": "8",
+      "stageId": 8,
       "title": "paraoka - Astra Walkthrough ([Crz]Crysarlene) [Faded Stars]",
       "type": "LN",
       "index": 1,
@@ -9908,7 +8920,7 @@
     },
     {
       "id": "32",
-      "stageId": "8",
+      "stageId": 8,
       "title": "Helblinde - Heaven's Fall (guden) [Firmaments]",
       "type": "LN",
       "index": 2,
@@ -9995,7 +9007,7 @@
     },
     {
       "id": "33",
-      "stageId": "8",
+      "stageId": 8,
       "title": "Toromaru - Erinyes (Toaph Daddy) [Enigma]",
       "type": "LN",
       "index": 3,
@@ -10082,7 +9094,7 @@
     },
     {
       "id": "34",
-      "stageId": "8",
+      "stageId": 8,
       "title": "AltVoid - Sample enSemble (Tidek) [SV asSemble]",
       "type": "SV",
       "index": 1,
@@ -10169,7 +9181,7 @@
     },
     {
       "id": "35",
-      "stageId": "8",
+      "stageId": 8,
       "title": "EZFG - Cyber Thunder Cider (zero2snow) [??]",
       "type": "SV",
       "index": 2,
@@ -10256,7 +9268,7 @@
     },
     {
       "id": "36",
-      "stageId": "8",
+      "stageId": 8,
       "title": "Camellia feat. Ninomae Ina'nis - Drenched in Air (elexire) [Submerge]",
       "type": "TB",
       "index": 0,
@@ -10264,7 +9276,7 @@
     },
     {
       "id": "37",
-      "stageId": "9",
+      "stageId": 9,
       "title": "sakuraburst - sha (Cut Ver.) [Stage 1: blake]",
       "type": "SV",
       "index": 1,
@@ -10507,7 +9519,7 @@
     },
     {
       "id": "38",
-      "stageId": "9",
+      "stageId": 9,
       "title": "Frums - ultra-blazures (Cut Ver.) [Stage 2: amalgam]",
       "type": "RC",
       "index": 1,
@@ -10711,7 +9723,7 @@
     },
     {
       "id": "39",
-      "stageId": "9",
+      "stageId": 9,
       "title": "xi - Tenimuhou (Cut Ver.) [Stage 3: Absolute]",
       "type": "HB",
       "index": 1,
@@ -10915,7 +9927,7 @@
     },
     {
       "id": "40",
-      "stageId": "9",
+      "stageId": 9,
       "title": "technoplanet feat. Haruno - End of Fairytale [Stage 4: Parable]",
       "type": "LN",
       "index": 1,
@@ -11119,7 +10131,7 @@
     },
     {
       "id": "41",
-      "stageId": "9",
+      "stageId": 9,
       "title": "Hino Isuka vs. Umeboshi Chazuke - Ultra Happy Miracle Bazoooooka!! [Stage 5: Overjoy]",
       "type": "LN",
       "index": 2,
@@ -11323,7 +10335,7 @@
     },
     {
       "id": "42",
-      "stageId": "9",
+      "stageId": 9,
       "title": "Camellia - onslaught -Retaliation of Bahamut- [Stage 6: Massacre]",
       "type": "HB",
       "index": 2,
@@ -11527,7 +10539,7 @@
     },
     {
       "id": "43",
-      "stageId": "9",
+      "stageId": 9,
       "title": "katagiri - AMEN KATAGIRI GENERATION [Stage 7: Revival]",
       "type": "RC",
       "index": 2,
@@ -11731,7 +10743,7 @@
     },
     {
       "id": "44",
-      "stageId": "9",
+      "stageId": 9,
       "title": "Kou! - Xuasar Charge [Stage 8: A Sea of Stars]",
       "type": "RC",
       "index": 3,

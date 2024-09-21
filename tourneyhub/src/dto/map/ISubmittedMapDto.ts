@@ -1,6 +1,6 @@
 export interface ISubmittedMapDto {
-    stageId: string,
-    beatmapId: string,
+    stageId: number,
+    beatmapId: number,
     mapType: string,
     index: number,
     comment: string

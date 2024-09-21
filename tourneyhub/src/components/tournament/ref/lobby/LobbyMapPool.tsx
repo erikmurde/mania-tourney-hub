@@ -10,8 +10,8 @@ import { useEffect, useState } from 'react';
 
 interface IProps {
     maps: IMapDto[],
-    selectedId: string,
-    setSelectedId: (id: string) => void
+    selectedId: number | null,
+    setSelectedId: (id: number) => void
 }
 
 const LobbyMapPool = ({maps, selectedId, setSelectedId}: IProps) => {

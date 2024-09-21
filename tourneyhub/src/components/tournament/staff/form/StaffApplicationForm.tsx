@@ -1,15 +1,15 @@
 import StaffApplicationFormView from './views/StaffApplicationFormView';
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../../../routes/Root';
-import { useParams } from 'react-router-dom';
 import { REQUIRED, PENDING, LOGIN_URL } from '../../../../constants';
-import { Schema, object, string } from 'yup';
+import { Schema, number, object, string } from 'yup';
 import FormDialogBase from '../../dialog/FormDialogBase';
 import { StaffApplicationService } from '../../../../services/staffApplicationService';
 import { StaffApplicationCreateDto } from '../../../../dto/staff/application/StaffApplicationCreateDto';
 import { RoleDto } from '../../../../dto/RoleDto';
 import { RoleService } from '../../../../services/roleService';
 import { StatusService } from '../../../../services/statusService';
+import { useTourney } from '../../../../routes/tournament/TournamentHeader';
 
 interface IProps {
     applicationOpen: boolean
@@ -17,7 +17,7 @@ interface IProps {
 
 const StaffApplicationForm = ({applicationOpen}: IProps) => {
     const { user } = useContext(AuthContext);
-    const { id } = useParams();
+    const { tourney } = useTourney();
     const [open, setOpen] = useState(false);
     const [roles, setRoles] = useState([] as RoleDto[]);
 
@@ -29,13 +29,13 @@ const StaffApplicationForm = ({applicationOpen}: IProps) => {
         }
     }, [open, roles.length]);
 
-    if (!user || !id) {
+    if (!user) {
         return <></>;
     }
     
     const filterRoles = () => {
         const userRoles = user.roles
-            .filter(role => role.tournamentId === id);
+            .filter(role => role.tournamentId === tourney.id);
 
         return roles.filter(role => 
             userRoles.every(userRole => userRole.name !== role.name));
@@ -54,7 +54,7 @@ const StaffApplicationForm = ({applicationOpen}: IProps) => {
     }
 
     const validationSchema: Schema = object({
-        roleId: string()
+        roleId: number()
             .required(REQUIRED),
         description: string()
             .required(REQUIRED)
@@ -63,9 +63,9 @@ const StaffApplicationForm = ({applicationOpen}: IProps) => {
     const initialValues: StaffApplicationCreateDto = {
         playerId: user.playerId,
         senderId: user.id,
-        tournamentId: id,
-        roleId: '',
-        statusId: '',
+        tournamentId: tourney.id,
+        roleId: 0,
+        statusId: 0,
         description: ''
     }
 

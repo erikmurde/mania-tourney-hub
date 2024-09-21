@@ -10,7 +10,6 @@ import NoItems from '../NoItems';
 
 const MapManageList = ({mappool}: {mappool: IMapDto[]}) => {
     const { mapPoolUpdate, setMapPoolUpdate } = useContext(UpdateContext);
-    const service = new MapService();
 
     let data = new Map<string, IMapDto[]>();
     let accordions: JSX.Element[] = [];
@@ -27,23 +26,8 @@ const MapManageList = ({mappool}: {mappool: IMapDto[]}) => {
         }
     });
 
-    const addToPool = async(id: string, key: string) => {
-        const mapGroup = data.get(key)!;
-
-        const toAdd = mapGroup.find(map => map.id === id);
-        const toRemove = mapGroup.find(map => map.inMappool);
-
-        if (toAdd) {
-            await service.edit(toAdd.id, {...toAdd, inMappool: true});
-        }
-        if (toRemove) {
-            await service.edit(toRemove.id, {...toRemove, inMappool: false});
-        }
-        setMapPoolUpdate(mapPoolUpdate + 1);
-    }
-
-    const removeFromPool = async(toRemove: IMapDto) => {
-        await new MapService().edit(toRemove.id, {...toRemove, inMappool: false});
+    const updateInMappool = async(id: number, inMappool: boolean) => {
+        await new MapService().updateInMappool(id, inMappool);
         setMapPoolUpdate(mapPoolUpdate + 1);
     }
 
@@ -61,8 +45,7 @@ const MapManageList = ({mappool}: {mappool: IMapDto[]}) => {
                                     <MapManageCard 
                                         map={map} 
                                         mappool={mappool}
-                                        addToPool={addToPool}
-                                        removeFromPool={removeFromPool}/>
+                                        updateInMappool={updateInMappool}/>
                                 </Grid>
                             )}
                         </Grid>

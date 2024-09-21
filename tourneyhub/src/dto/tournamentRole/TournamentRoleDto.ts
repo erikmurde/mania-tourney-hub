@@ -1,5 +1,5 @@
 export interface TournamentRoleDto {
-    tournamentId: string,
+    tournamentId: number,
     name: string,
     canRegWithRole: boolean
 }

@@ -2,9 +2,8 @@ import { Button, Grid, Paper, Typography } from '@mui/material';
 import { useContext, useEffect, useState } from 'react';
 import { UserDto } from '../../../dto/user/UserDto';
 import { AuthService } from '../../../services/authService';
-import { useParams } from 'react-router-dom';
 import StaffGroup from '../../../components/tournament/staff/StaffGroup';
-import { ACCEPTED, COMMENTATOR, GFX, HOST, MAPPER, MAPPOOLER, PLAYTESTER, REFEREE, ROLE_REG, SHEETER, STREAMER } from '../../../constants';
+import { ACCEPTED, GFX, ROLE_REG } from '../../../constants';
 import { Description, List } from '@mui/icons-material';
 import { StaffApplicationService } from '../../../services/staffApplicationService';
 import { StaffApplicationDto } from '../../../dto/staff/application/StaffApplicationDto';
@@ -14,10 +13,11 @@ import { AuthContext } from '../../Root';
 import { StatusService } from '../../../services/statusService';
 import { RoleService } from '../../../services/roleService';
 import { RoleDto } from '../../../dto/RoleDto';
+import { useTourney } from '../TournamentHeader';
 
 const Staff = () => {
+    const { tourney } = useTourney();
     const { user } = useContext(AuthContext);
-    const { id } = useParams();
 
     const [listView, setListView] = useState(true);
     const [staff, setStaff] = useState([] as UserDto[]);
@@ -28,22 +28,20 @@ const Staff = () => {
     const staffApplicationService = new StaffApplicationService();
 
     useEffect(() => {
-        if (id) {
-            authService
-                .getStaff(id)
-                .then(staff => setStaff(staff));
+        authService
+            .getStaff(tourney.id)
+            .then(staff => setStaff(staff));
 
-            new RoleService()
-                .getAll()
-                .then(roles => setRoles(roles));
+        new RoleService()
+            .getAll()
+            .then(roles => setRoles(roles));
 
-            if (user && authService.isHost(user, id)) {
-                staffApplicationService
-                    .getAllPending(id)
-                    .then(applications => setApplications(applications));
-            }
+        if (user && authService.isHost(user, tourney.id)) {
+            staffApplicationService
+                .getAllPending(tourney.id)
+                .then(applications => setApplications(applications));
         }
-    }, [id, user]);
+    }, [tourney.id, user]);
 
     const filterStaff = (role: string) => {
         return staff.filter(user => 
@@ -93,7 +91,7 @@ const Staff = () => {
         const userId = application.sender.playerId;
         const role = {
             userId: userId,
-            tournamentId: id!, 
+            tournamentId: tourney.id, 
             name: application.role, 
             canRegWithRole: ROLE_REG.get(application.role)!
         };
@@ -106,7 +104,7 @@ const Staff = () => {
 
     return (
         <Grid container direction='column' rowSpacing={2}>
-            {user && id && authService.isHost(user, id) && 
+            {user && authService.isHost(user, tourney.id) && 
             <Grid item>
                 <Paper elevation={2} sx={{ paddingBottom: 2, paddingLeft: 5 }}>
                     <Typography variant='h3' fontSize={36} height={80} lineHeight={2}>

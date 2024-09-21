@@ -1,6 +1,6 @@
 export interface TeamCreateDto {
-    id: string,
-    tournamentId: string,
+    id: number,
+    tournamentId: number,
     name: string,
     logo: string,
     status: string,

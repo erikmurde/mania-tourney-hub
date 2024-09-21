@@ -25,7 +25,7 @@ const MapManageButtons = ({map, mappool, tourneyDone}: IProps) => {
 
     return (  
         <Grid container justifyContent='end'>
-            {!tourneyDone &&
+            {!tourneyDone && !map.inMappool &&
             <Grid item> 
                 <MapEditForm mappool={mappool} map={map}/>
             </Grid>}

@@ -35,6 +35,7 @@ export const ROLE_REG = new Map<string, boolean>([
 
 // REGEX
 export const URL_REGEX = /^(?:(?:https?|ftp):\/\/)(?:www\.)?[a-z0-9-]+(?:\.[a-z0-9-]+)+[^\s]*$/i;
+export const NUM_REGEX = /^\d+$/
 
 // COLORS
 export const TERTIARY = '#9575CD';

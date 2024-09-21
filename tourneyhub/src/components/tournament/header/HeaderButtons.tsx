@@ -22,7 +22,6 @@ interface IProps {
 }
 
 const HeaderButtons = ({tourney, updateTourney}: IProps) => {
-    const { id } = useParams();
     const { user } = useContext(AuthContext);
 
     const [successOpen, setSuccessOpen] = useState(false);
@@ -78,7 +77,7 @@ const HeaderButtons = ({tourney, updateTourney}: IProps) => {
         updateTourney();
     }
 
-    const getRoles = (user: UserDto) => user.roles.filter(role => role.tournamentId === id);
+    const getRoles = (user: UserDto) => user.roles.filter(role => role.tournamentId === tourney.id);
 
     const canRegister = (user: UserDto) => {
         const validUser = tourneyService.isValidUser(user, tourney);

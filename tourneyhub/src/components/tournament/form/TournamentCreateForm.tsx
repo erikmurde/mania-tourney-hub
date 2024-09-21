@@ -20,7 +20,7 @@ const TournamentCreateForm = () => {
     }
 
     const initialValues: TournamentEdit = {
-        id: '',
+        id: 0,
         name: '',
         code: '',
         description: '',

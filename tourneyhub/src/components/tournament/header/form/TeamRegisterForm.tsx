@@ -77,7 +77,7 @@ const TeamRegisterForm = ({user, tourney, openSuccess}: IProps) => {
     }
 
     const initialValues: TeamCreateDto = {
-        id: '',
+        id: 0,
         tournamentId: tourney.id,
         name: '',
         logo: '',

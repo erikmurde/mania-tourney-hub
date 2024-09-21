@@ -12,8 +12,8 @@ import { TournamentRoleDto } from '../../../dto/tournamentRole/TournamentRoleDto
 import { TournamentStatsDto } from '../../../dto/TournamentStatsDto';
 
 interface IProps {
-    tournamentId: string,
-    userId: string,
+    tournamentId: number,
+    userId: number,
     roles: TournamentRoleDto[],
     stats: TournamentStatsDto
 }

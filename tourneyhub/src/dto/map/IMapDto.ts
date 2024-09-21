@@ -1,7 +1,8 @@
 export interface IMapDto {
-    id: string,
-    stageId: string,
-    beatmapId: string,
+    id: number,
+    stageId: number,
+    mapTypeId: number,
+    beatmapId: number,
     inMappool: boolean,
     title: string,
     diff: string,

@@ -5,6 +5,6 @@ export interface MatchStatus {
     match: MatchDto,
     firstPick: string,
     picks: RefPick[],
-    bans: string[]
-    protects: string[]
+    bans: number[]
+    protects: number[]
 }
