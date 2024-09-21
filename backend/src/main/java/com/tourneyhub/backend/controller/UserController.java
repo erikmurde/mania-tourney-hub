@@ -1,7 +1,7 @@
 package com.tourneyhub.backend.controller;
 
 import com.tourneyhub.backend.domain.AppUser;
-import com.tourneyhub.backend.dto.UserDto;
+import com.tourneyhub.backend.dto.user.UserDto;
 import com.tourneyhub.backend.mapper.UserMapper;
 import com.tourneyhub.backend.repository.UserRepository;
 import org.springframework.http.HttpStatus;

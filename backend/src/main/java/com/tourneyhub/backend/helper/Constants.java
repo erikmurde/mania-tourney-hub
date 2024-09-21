@@ -32,4 +32,9 @@ public class Constants {
         roleCanReg.put(SHEETER, false);
         roleCanReg.put(GFX, false);
     }
+
+    // Regex
+    public static final String URL_REGEX = (
+            "^(?:(?:https?|ftp):\\/\\/)(?:www\\.)?[a-z0-9-]+(?:\\.[a-z0-9-]+)+[^\\s]*$"
+    );
 }

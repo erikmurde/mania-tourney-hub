@@ -11,6 +11,8 @@ import lombok.EqualsAndHashCode;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.tourneyhub.backend.helper.Constants.URL_REGEX;
+
 @Entity
 @Data
 @EqualsAndHashCode(callSuper = false)

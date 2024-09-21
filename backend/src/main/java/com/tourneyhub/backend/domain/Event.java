@@ -11,6 +11,8 @@ import jakarta.validation.constraints.Size;
 import java.util.Date;
 import java.util.List;
 
+import static com.tourneyhub.backend.helper.Constants.URL_REGEX;
+
 @Entity
 public class Event extends BaseEntity {
 

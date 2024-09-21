@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import static com.tourneyhub.backend.helper.Constants.URL_REGEX;
+
 @Entity
 @Data
 @EqualsAndHashCode(callSuper = false)

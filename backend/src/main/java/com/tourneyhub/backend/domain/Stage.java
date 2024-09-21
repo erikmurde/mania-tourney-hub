@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -44,8 +45,8 @@ public class Stage extends BaseEntityWithName {
     private StageType stageType;
 
     @OneToMany(mappedBy = "stage")
-    private List<Map> maps;
+    private List<Map> maps = new ArrayList<>();
 
     @OneToMany(mappedBy = "stage")
-    private List<Event> events;
+    private List<Event> events = new ArrayList<>();
 }

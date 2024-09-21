@@ -54,7 +54,9 @@ public class SecurityConfig {
 
     @Bean
     public ClientRegistrationRepository clientRegistrationRepository() {
-        return new InMemoryClientRegistrationRepository(this.osuClientRegistration());
+        return new InMemoryClientRegistrationRepository(
+                this.osuClientRegistration(), this.osuWebClientRegistration()
+        );
     }
 
     @Bean
@@ -84,7 +86,9 @@ public class SecurityConfig {
                         .requestMatchers(
                                 "/api/roles/**",
                                 "/api/statuses/**",
-                                "/api/stages/tournament/**"
+                                "/api/mapTypes/**",
+                                "/api/stages/tournament/**",
+                                "/api/maps/stage/{stageId}/inMappool"
                         ).permitAll()
                         .anyRequest().authenticated()
                 )
@@ -114,6 +118,19 @@ public class SecurityConfig {
                 .userInfoUri("https://osu.ppy.sh/api/v2/me/mania")
                 .userNameAttributeName("username")
                 .clientName("Osu")
+                .build();
+    }
+
+    private ClientRegistration osuWebClientRegistration() {
+        return ClientRegistration
+                .withRegistrationId("osu-web")
+                .clientId("29436")
+                .clientSecret("nVPI68rYhCUAVFSf0Y0yOPRyPw1r2PgV8ulAkPfU")
+                .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
+                .authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
+                .scope("public")
+                .tokenUri("https://osu.ppy.sh/oauth/token")
+                .clientName("OsuWeb")
                 .build();
     }
 }

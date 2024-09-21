@@ -5,11 +5,9 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class SimpleUserDto {
+public class MapTypeDto {
 
-    private Integer playerId;
+    private Long id;
 
     private String name;
-
-    private CountryDto country;
 }

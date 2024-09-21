@@ -1,8 +1,8 @@
 package com.tourneyhub.backend.mapper;
 
 import com.tourneyhub.backend.domain.AppUser;
-import com.tourneyhub.backend.dto.SimpleUserDto;
-import com.tourneyhub.backend.dto.UserDto;
+import com.tourneyhub.backend.dto.user.SimpleUserDto;
+import com.tourneyhub.backend.dto.user.UserDto;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;

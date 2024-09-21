@@ -12,6 +12,7 @@ import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -78,7 +79,17 @@ public class UserService extends DefaultOAuth2UserService {
         return userRepository.save(user);
     }
 
-    public List<String> getTournamentRoles(Long tournamentId, OAuth2User principal) {
+    public boolean isHost(Long tournamentId, OAuth2User principal) {
+        return getTournamentRoles(tournamentId, principal).contains(Constants.HOST);
+    }
+
+    public boolean hasAnyRole(Long tournamentId, OAuth2User principal, List<String> roles) {
+        List<String> userRoles = getTournamentRoles(tournamentId, principal);
+
+        return !Collections.disjoint(userRoles, roles);
+    }
+
+    private List<String> getTournamentRoles(Long tournamentId, OAuth2User principal) {
         if (principal == null) {
             return new ArrayList<>();
         }
@@ -87,9 +98,5 @@ public class UserService extends DefaultOAuth2UserService {
                 .stream()
                 .map(role -> role.getRole().getName())
                 .toList();
-    }
-
-    public boolean isHost(Long tournamentId, OAuth2User principal) {
-        return getTournamentRoles(tournamentId, principal).contains(Constants.HOST);
     }
 }

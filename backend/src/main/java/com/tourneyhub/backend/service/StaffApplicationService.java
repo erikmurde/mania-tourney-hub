@@ -82,11 +82,9 @@ public class StaffApplicationService {
         boolean isOwner = Objects.equals(playerId, staffRequest.getSender().getPlayerId());
         boolean retracting = status.getName().equals("retracted");
 
-        // Can't update non-pending application
         if (!staffRequest.getStatus().getName().equals("pending")) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
-        // Can only retract own application, can't retract others' applications
         if (isOwner && !retracting || !isOwner && retracting) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
