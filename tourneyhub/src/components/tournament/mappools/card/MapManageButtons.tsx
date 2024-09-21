@@ -1,5 +1,5 @@
-import { Delete, Download } from '@mui/icons-material';
-import { Grid, useTheme } from '@mui/material';
+import { Delete, Download, Pause, PlayArrow } from '@mui/icons-material';
+import { Grid, IconButton, useTheme } from '@mui/material';
 import MapEditForm from '../form/MapEditForm';
 import { IMapDto } from '../../../../dto/map/IMapDto';
 import ConfirmationDialog from '../../dialog/ConfirmationDialog';
@@ -11,10 +11,12 @@ import { MapService } from '../../../../services/mapService';
 interface IProps {
     map: IMapDto,
     mappool: IMapDto[],
-    tourneyDone: boolean
+    tourneyDone: boolean,
+    audioPlaying: boolean,
+    handleAudio: (mapId: number, src: string | undefined) => void
 }
 
-const MapManageButtons = ({map, mappool, tourneyDone}: IProps) => {
+const MapManageButtons = ({map, mappool, tourneyDone, audioPlaying, handleAudio}: IProps) => {
     const { mapPoolUpdate, setMapPoolUpdate } = useContext(UpdateContext);
     const theme = useTheme();
 
@@ -25,6 +27,13 @@ const MapManageButtons = ({map, mappool, tourneyDone}: IProps) => {
 
     return (  
         <Grid container justifyContent='end'>
+            {map.songPreview &&
+            <StyledIconButton 
+                color='primary' 
+                onClick={() => handleAudio(map.id, map.songPreview)}
+                >
+                {audioPlaying ? <Pause/> : <PlayArrow/>}
+            </StyledIconButton>}
             {!tourneyDone && !map.inMappool &&
             <Grid item> 
                 <MapEditForm mappool={mappool} map={map}/>

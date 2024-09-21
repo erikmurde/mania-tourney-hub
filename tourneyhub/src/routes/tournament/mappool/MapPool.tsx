@@ -15,10 +15,24 @@ import { useTourney } from '../TournamentHeader';
 const MapPool = () => {
     const { tourney } = useTourney();
     const { mapPoolUpdate } = useContext(UpdateContext);
+
     const [isManage, setIsManage] = useState(false);
     const [stages, setStages] = useState([] as IStageDto[]);
     const [stageId, setStageId] = useState(null as number | null);
     const [maps, setMaps] = useState([] as IMapDto[]);
+
+    const [audio] = useState(new Audio());
+    const [paused, setPaused] = useState(true);
+    const [activeAudioId, setActiveAudioId] = useState(0);
+
+    audio.onpause = () => setPaused(true);
+    audio.onplay = () => setPaused(false);
+    audio.onended = () => setPaused(true);
+    audio.volume = 0.04;
+
+    useEffect(() => {
+        return () => audio.pause();
+    }, []);
 
     useEffect(() => {
         new StageService()
@@ -50,6 +64,19 @@ const MapPool = () => {
         }
     }, [stageId, isManage, mapPoolUpdate, stages]);
 
+    const handleAudio = (mapId: number, src: string | undefined) => {       
+        if (!src) {
+            return;
+        }
+        if (mapId === activeAudioId) {
+            paused ? audio.play(): audio.pause();
+        } else {
+            setActiveAudioId(mapId);
+            audio.src = src;
+            audio.play();
+        }
+    }
+
     return (  
         <Paper elevation={2} sx={{ minHeight: 500, paddingBottom: 2 }}>
             <Grid container>
@@ -67,8 +94,17 @@ const MapPool = () => {
                     />}/>
                 <Grid item xs>
                     {isManage 
-                    ?   <MapManageList mappool={maps}/>
-                    :   <MapList maps={maps.filter(map => map.inMappool)}/>}
+                    ?   <MapManageList 
+                            mappool={maps} 
+                            activeAudioId={activeAudioId} 
+                            paused={paused} 
+                            handleAudio={handleAudio}
+                        />
+                    :   <MapList 
+                            mappool={maps.filter(map => map.inMappool)} 
+                            activeAudioId={activeAudioId} 
+                            paused={paused} 
+                            handleAudio={handleAudio}/>}
                 </Grid>
             </Grid>
         </Paper>

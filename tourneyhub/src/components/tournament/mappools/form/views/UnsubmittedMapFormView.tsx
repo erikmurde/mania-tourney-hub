@@ -1,17 +1,19 @@
-import { Field, Form, Formik } from 'formik';
+import { FastField, Form, Formik } from 'formik';
 import { IMapDto } from '../../../../../dto/map/IMapDto';
 import { Grid, MenuItem, TextField, Typography } from '@mui/material';
 import TourneySelectField from '../../../field/TourneySelectField';
 import { Schema } from 'yup';
-import { MAP_TYPES, TB } from '../../../../../constants';
+import { TB } from '../../../../../constants';
+import { MapTypeDto } from '../../../../../dto/map/MapTypeDto';
 
 interface IProps {
     initialValues: IMapDto,
+    mapTypes: MapTypeDto[],
     validationSchema: Schema,
     onSubmit: (values: IMapDto) => void
 }
 
-const UnsubmittedMapFormView = ({initialValues, validationSchema, onSubmit}: IProps) => {
+const UnsubmittedMapFormView = ({initialValues, mapTypes, validationSchema, onSubmit}: IProps) => {
     const edit = initialValues.id !== 0;
 
     return (  
@@ -20,7 +22,7 @@ const UnsubmittedMapFormView = ({initialValues, validationSchema, onSubmit}: IPr
             validationSchema={validationSchema}
             onSubmit={onSubmit}
             validateOnChange={false}
-            enableReinitialize
+            validateOnBlur={false}
             >
             {({ values, errors }) => 
             <Form id='unsubmitted-map-form'>
@@ -29,38 +31,38 @@ const UnsubmittedMapFormView = ({initialValues, validationSchema, onSubmit}: IPr
                         <Typography>General information</Typography>
                     </Grid>
                     <Grid item xs={6}>
-                        <Field as={TextField} name='title' label='Title' fullWidth
+                        <FastField as={TextField} name='title' label='Title' fullWidth
                             error={errors.title !== undefined}
                             helperText={errors.title}/>
                     </Grid>
                     <Grid item xs={6}>
-                        <Field as={TextField} name='diff' label='Difficulty' fullWidth
+                        <FastField as={TextField} name='diff' label='Difficulty' fullWidth
                             error={errors.diff !== undefined}
                             helperText={errors.diff}/>
                     </Grid>
                     {edit && 
                     <Grid item xs={4}>
-                        <Field as={TextField} type='number' name='beatmapId' label='Beatmap ID' fullWidth
+                        <FastField as={TextField} type='number' name='beatmapId' label='Beatmap ID' fullWidth
                             error={errors.beatmapId !== undefined}
                             helperText={errors.beatmapId}/>
                     </Grid>}
                     <Grid item xs={edit ? 4 : 6}>
-                        <Field as={TextField} name='artist' label='Artist' fullWidth
+                        <FastField as={TextField} name='artist' label='Artist' fullWidth
                             error={errors.artist !== undefined}
                             helperText={errors.artist}/>
                     </Grid>
                     <Grid item xs={edit ? 4 : 6}>
-                        <Field as={TextField} name='mapper' label='Mapper' fullWidth
+                        <FastField as={TextField} name='mapper' label='Mapper' fullWidth
                             error={errors.mapper !== undefined}
                             helperText={errors.mapper}/>
                     </Grid>
                     <Grid item xs={6}>
-                        <Field as={TextField} name='cover' label='Cover link' fullWidth
+                        <FastField as={TextField} name='cover' label='Cover link' fullWidth
                             error={errors.cover !== undefined}
                             helperText={errors.cover}/>
                     </Grid>
                     <Grid item xs={6}>
-                        <Field as={TextField} name='download' label='Download link' fullWidth
+                        <FastField as={TextField} name='download' label='Download link' fullWidth
                             error={errors.download !== undefined}
                             helperText={errors.download}/>
                     </Grid>
@@ -68,27 +70,27 @@ const UnsubmittedMapFormView = ({initialValues, validationSchema, onSubmit}: IPr
                         <Typography>Map parameters</Typography>
                     </Grid>
                     <Grid item xs={2.4}>
-                        <Field as={TextField} type='number' name='sr' label='Star rating' fullWidth
+                        <FastField as={TextField} type='number' name='sr' label='Star rating' fullWidth
                             error={errors.sr !== undefined}
                             helperText={errors.sr}/>
                     </Grid>
                     <Grid item xs={2.4}>
-                        <Field as={TextField} type='number' name='bpm' label='BPM' fullWidth
+                        <FastField as={TextField} type='number' name='bpm' label='BPM' fullWidth
                             error={errors.bpm !== undefined}
                             helperText={errors.bpm}/>
                     </Grid>
                     <Grid item xs={2.4}>
-                        <Field as={TextField} type='number' name='drainTime' label='Drain time (sec)' fullWidth
+                        <FastField as={TextField} type='number' name='drainTime' label='Drain time (sec)' fullWidth
                             error={errors.drainTime !== undefined}
                             helperText={errors.drainTime}/>
                     </Grid>
                     <Grid item xs={2.4}>
-                        <Field as={TextField} type='number' name='hp' label='HP' fullWidth
+                        <FastField as={TextField} type='number' name='hp' label='HP' fullWidth
                             error={errors.hp !== undefined}
                             helperText={errors.hp}/>
                     </Grid>
                     <Grid item xs={2.4}>
-                        <Field as={TextField} type='number' name='od' label='OD' fullWidth
+                        <FastField as={TextField} type='number' name='od' label='OD' fullWidth
                             error={errors.od !== undefined}
                             helperText={errors.od}/>
                     </Grid>
@@ -98,18 +100,18 @@ const UnsubmittedMapFormView = ({initialValues, validationSchema, onSubmit}: IPr
                     <Grid item xs={2.4}>
                         <TourneySelectField name='mapType' label='Map type' 
                             error={errors.mapType}
-                            options={MAP_TYPES.map((value, index) => 
-                                <MenuItem key={index} value={value}>{value}</MenuItem>
+                            options={mapTypes.map(mapType => 
+                                <MenuItem key={mapType.id} value={mapType.name}>{mapType.name}</MenuItem>
                             )}/>
                     </Grid>
                     {values.mapType !== TB &&
                     <Grid item xs={2.4}>
-                        <Field as={TextField} type='number' name='index' label='Index' fullWidth
+                        <FastField as={TextField} type='number' name='index' label='Index' fullWidth
                             error={errors.index !== undefined}
                             helperText={errors.index}/>
                     </Grid>}
                     <Grid item xs={12}>
-                        <Field as={TextField} name='comment' label='Comment' fullWidth multiline rows={2}/>
+                        <FastField as={TextField} name='comment' label='Comment' fullWidth multiline rows={2}/>
                     </Grid>
                 </Grid>
             </Form>

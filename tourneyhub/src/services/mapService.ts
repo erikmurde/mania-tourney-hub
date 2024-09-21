@@ -1,5 +1,6 @@
 import { HB, LN, RC, SV, TB } from '../constants';
 import { IMapDto } from '../dto/map/IMapDto';
+import { ISubmittedMapDto } from '../dto/map/ISubmittedMapDto';
 import { ApiEntityService } from './base/apiEntityService';
 
 export class MapService extends ApiEntityService<IMapDto, IMapDto, IMapDto> {
@@ -12,10 +13,6 @@ export class MapService extends ApiEntityService<IMapDto, IMapDto, IMapDto> {
     ])
 
     getWeight(map: IMapDto): number {
-        if (map.title === 'Heroes of our time') {
-            console.log(this.weights.get(map.mapType));
-        }
-
         return (this.weights.get(map.mapType) ?? 0) + map.index;
     }
 
@@ -39,8 +36,36 @@ export class MapService extends ApiEntityService<IMapDto, IMapDto, IMapDto> {
         return this.sortMaps(response.data);
     }
 
+    async createSubmitted(map: ISubmittedMapDto) {
+        const response = await this.axios.post(`${this.baseUrl}/submitted`, map);
+
+        console.log('createSubmittedMap response: ', response);
+        return response.data;
+    }
+
+    async createUnsubmitted(map: IMapDto) {
+        const response = await this.axios.post(`${this.baseUrl}/unsubmitted`, map);
+
+        console.log('createUnsubmittedMap response: ', response);
+        return response.data;
+    }
+
+    async updateSubmitted(mapId: number, map: ISubmittedMapDto) {
+        const response = await this.axios.put(`${this.baseUrl}/submitted/${mapId}`, map);
+
+        console.log('updateSubmittedMap response: ', response);
+        return response.data;
+    }
+
+    async updateUnsubmitted(mapId: number, map: IMapDto) {
+        const response = await this.axios.put(`${this.baseUrl}/unsubmitted/${mapId}`, map);
+
+        console.log('updateUnsubmittedMap response: ', response);
+        return response.data;
+    }
+
     async updateInMappool(mapId: number, inMappool: boolean) {
-        const response = await this.axios.post(`${this.baseUrl}/${mapId}/inMappool`, 
+        const response = await this.axios.put(`${this.baseUrl}/${mapId}/inMappool`, 
             { inMappool: inMappool }
         );
 

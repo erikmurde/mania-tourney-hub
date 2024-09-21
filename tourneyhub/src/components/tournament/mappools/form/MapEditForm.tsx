@@ -1,14 +1,21 @@
 import { Button, Dialog, useTheme } from '@mui/material';
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { StyledDialogActions } from '../../../styled/StyledDialogActions';
 import TourneyDialogTitle from '../../dialog/TourneyDialogTitle';
 import ManualMapEditForm from './ManualMapEditForm';
 import { IMapDto } from '../../../../dto/map/IMapDto';
 import { StyledDialogContent } from '../../../styled/styledDialogContent';
-import AutoMapEditFormView from './views/AutoMapEditFormView';
 import { StyledIconButton } from '../../../styled/StyledIconButton';
 import { Edit } from '@mui/icons-material';
-import { TB } from '../../../../constants';
+import { DUPLICATE_BEATMAP_ID, INTEGER, NOT_NEGATIVE, REQUIRED, TB } from '../../../../constants';
+import { MapTypeDto } from '../../../../dto/map/MapTypeDto';
+import { MapTypeService } from '../../../../services/mapTypeService';
+import SubmittedMapFormView from './views/SubmittedMapFormView';
+import { ISubmittedMapDto } from '../../../../dto/map/ISubmittedMapDto';
+import { number, Schema } from 'yup';
+import { baseMapSchema } from '../../../../domain/validation/baseMapSchema';
+import { MapService } from '../../../../services/mapService';
+import { UpdateContext } from '../../../../routes/Root';
 
 interface IProps {
     mappool: IMapDto[],
@@ -16,18 +23,45 @@ interface IProps {
 }
 
 const MapEditForm = ({mappool, map}: IProps) => {
-    const theme = useTheme();
+    const { mapPoolUpdate, setMapPoolUpdate } = useContext(UpdateContext);
     const [open, setOpen] = useState(false);
     const [openManual, setOpenManual] = useState(false);
+    const [mapTypes, setMapTypes] = useState([] as MapTypeDto[]);
+    const theme = useTheme();
 
-    const onSubmit = (values: IMapDto) => {
-        console.log('Auto-update', values);
+    useEffect(() => {
+        if (open && mapTypes.length === 0) {
+            new MapTypeService()
+                .getAll()
+                .then(mapTypes => setMapTypes(mapTypes));
+        }
+    }, [open, mapTypes.length]);
+
+    const onSubmit = async(values: ISubmittedMapDto) => {
+        values.mapTypeId = mapTypes.find(mapType => mapType.name === values.mapType)!.id;
+
+        await new MapService().updateSubmitted(map.id, values);
+        setMapPoolUpdate(mapPoolUpdate + 1);
+        setOpen(false);
     }
 
     const isDuplicateId = (id: number, beatmapId: number | null) => {
         return beatmapId !== null 
             && mappool.some(map => map.id !== id && map.beatmapId === beatmapId);
     }
+
+    const hasTb = mappool.some(map => map.mapType === TB);
+
+    const validationSchema: Schema = baseMapSchema(hasTb).shape({
+        beatmapId: number()
+            .required(REQUIRED)
+            .integer(INTEGER)
+            .min(0, NOT_NEGATIVE)
+            .test('', 
+                DUPLICATE_BEATMAP_ID, 
+                beatmapId => !isDuplicateId(map.id, beatmapId)
+            )
+    });
 
     return (  
         <>
@@ -40,14 +74,16 @@ const MapEditForm = ({mappool, map}: IProps) => {
         <Dialog open={open} onClose={() => setOpen(false)} fullWidth maxWidth='xs'>
             <TourneyDialogTitle title='Edit map' onClose={() => setOpen(false)}/>
             <StyledDialogContent>
-                <AutoMapEditFormView 
+                {mapTypes.length > 0 &&
+                <SubmittedMapFormView 
                     initialValues={map} 
+                    mapTypes={mapTypes}
+                    validationSchema={validationSchema}
                     onSubmit={onSubmit}
-                    isDuplicateId={isDuplicateId}
-                />
+                />}
             </StyledDialogContent>
             <StyledDialogActions>
-                <Button variant='contained' type='submit' form='auto-update-map-form'>
+                <Button variant='contained' type='submit' form='submitted-map-form'>
                     Auto-update
                 </Button>
                 <Button variant='contained' color='secondary' 
@@ -60,6 +96,7 @@ const MapEditForm = ({mappool, map}: IProps) => {
         <ManualMapEditForm 
             dialogProps={{open: openManual, onClose: () => setOpenManual(false)}}
             initialValues={map}
+            mapTypes={mapTypes}
             hasTb={mappool.some(map => map.mapType === TB)}
             isDuplicateId={isDuplicateId}/>}
         </>

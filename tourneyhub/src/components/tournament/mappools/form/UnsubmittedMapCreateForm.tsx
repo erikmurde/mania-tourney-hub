@@ -4,13 +4,14 @@ import TourneyDialogTitle from '../../dialog/TourneyDialogTitle';
 import { Add } from '@mui/icons-material';
 import { IMapDto } from '../../../../dto/map/IMapDto';
 import UnsubmittedMapFormView from './views/UnsubmittedMapFormView';
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { StyledDialogActions } from '../../../styled/StyledDialogActions';
 import { StyledDialogContent } from '../../../styled/styledDialogContent';
 import { AuthContext, UpdateContext } from '../../../../routes/Root';
-import { TB } from '../../../../constants';
 import { unsubmittedMapSchema } from '../../../../domain/validation/unsubmittedMapSchema';
 import { MapService } from '../../../../services/mapService';
+import { MapTypeDto } from '../../../../dto/map/MapTypeDto';
+import { MapTypeService } from '../../../../services/mapTypeService';
 
 interface IProps {
     dialogProps: DialogProps,
@@ -21,17 +22,25 @@ interface IProps {
 const UnsubmittedMapCreateForm = ({dialogProps, hasTb, stageId}: IProps) => {
     const { mapPoolUpdate, setMapPoolUpdate } = useContext(UpdateContext);
     const { user } = useContext(AuthContext);
+    const [mapTypes, setMapTypes] = useState([] as MapTypeDto[]);
     const { open, onClose } = dialogProps;
+
+    useEffect(() => {
+        if (open && mapTypes.length === 0) {
+            new MapTypeService()
+                .getAll()
+                .then(mapTypes => setMapTypes(mapTypes));
+        }
+    }, [open, mapTypes.length]);
 
     if (!user) {
         return <></>;
     }
 
     const onSubmit = async(values: IMapDto) => {
-        if (values.mapType === TB) {
-            values.index = 0;
-        }
-        await new MapService().create(values);
+        values.mapTypeId = mapTypes.find(mapType => mapType.name === values.mapType)!.id;
+
+        await new MapService().createUnsubmitted(values);
         setMapPoolUpdate(mapPoolUpdate + 1);
         onClose();
     }
@@ -64,7 +73,8 @@ const UnsubmittedMapCreateForm = ({dialogProps, hasTb, stageId}: IProps) => {
             <TourneyDialogTitle title='Add new unsubmitted map' onClose={onClose}/>
             <StyledDialogContent>
                 <UnsubmittedMapFormView 
-                    initialValues={initialValues} 
+                    initialValues={initialValues}
+                    mapTypes={mapTypes}
                     validationSchema={unsubmittedMapSchema(hasTb)}
                     onSubmit={onSubmit}/>
             </StyledDialogContent>

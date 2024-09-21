@@ -19,4 +19,5 @@ export interface IMapDto {
     index: number,
     comment: string,
     mapType: string;
+    songPreview?: string;
 }

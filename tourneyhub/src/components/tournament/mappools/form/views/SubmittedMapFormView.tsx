@@ -1,17 +1,19 @@
 import { Grid, MenuItem, TextField } from '@mui/material';
 import { Field, Form, Formik } from 'formik';
 import { ISubmittedMapDto } from '../../../../../dto/map/ISubmittedMapDto';
-import { MAP_TYPES, TB } from '../../../../../constants';
+import { TB } from '../../../../../constants';
 import TourneySelectField from '../../../field/TourneySelectField';
 import { Schema } from 'yup';
+import { MapTypeDto } from '../../../../../dto/map/MapTypeDto';
 
 interface IProps {
     initialValues: ISubmittedMapDto,
+    mapTypes: MapTypeDto[],
     validationSchema: Schema,
     onSubmit: (values: ISubmittedMapDto) => void
 }
 
-const SubmittedMapFormView = ({initialValues, validationSchema, onSubmit}: IProps) => {
+const SubmittedMapFormView = ({initialValues, mapTypes, validationSchema, onSubmit}: IProps) => {
     return (  
         <Formik 
             initialValues={initialValues}
@@ -30,8 +32,8 @@ const SubmittedMapFormView = ({initialValues, validationSchema, onSubmit}: IProp
                     <Grid item xs={6}>
                         <TourneySelectField name='mapType' label='Map type' 
                             error={errors.mapType}
-                            options={MAP_TYPES.map((value, index) => 
-                                <MenuItem key={index} value={value}>{value}</MenuItem>
+                            options={mapTypes.map(mapType => 
+                                <MenuItem key={mapType.id} value={mapType.name}>{mapType.name}</MenuItem>
                             )}/>
                     </Grid>
                     {values.mapType !== TB &&

@@ -11,10 +11,12 @@ import { useTourney } from '../../../../routes/tournament/TournamentHeader';
 interface IProps {
     map: IMapDto,
     mappool: IMapDto[],
+    audioPlaying: boolean,
+    handleAudio: (mapId: number, src: string | undefined) => void,
     updateInMappool: (id: number, inMappool: boolean) => void
 }
 
-const MapManageCard = ({map, mappool, updateInMappool}: IProps) => {
+const MapManageCard = ({map, mappool, audioPlaying, handleAudio, updateInMappool}: IProps) => {
     const { tourney } = useTourney();
     const { user } = useContext(AuthContext);
     const theme = useTheme();
@@ -47,6 +49,8 @@ const MapManageCard = ({map, mappool, updateInMappool}: IProps) => {
                     map={map} 
                     mappool={mappool} 
                     tourneyDone={tourney.done}
+                    audioPlaying={audioPlaying}
+                    handleAudio={handleAudio}
                 />
                 <Grid container flexGrow={1}
                 />

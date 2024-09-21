@@ -9,15 +9,10 @@ import { StaffApplicationCreateDto } from '../../../../dto/staff/application/Sta
 import { RoleDto } from '../../../../dto/RoleDto';
 import { RoleService } from '../../../../services/roleService';
 import { StatusService } from '../../../../services/statusService';
-import { useTourney } from '../../../../routes/tournament/TournamentHeader';
+import { TournamentDto } from '../../../../dto/tournament/TournamentDto';
 
-interface IProps {
-    applicationOpen: boolean
-}
-
-const StaffApplicationForm = ({applicationOpen}: IProps) => {
+const StaffApplicationForm = ({tourney}: {tourney: TournamentDto}) => {
     const { user } = useContext(AuthContext);
-    const { tourney } = useTourney();
     const [open, setOpen] = useState(false);
     const [roles, setRoles] = useState([] as RoleDto[]);
 
@@ -78,8 +73,8 @@ const StaffApplicationForm = ({applicationOpen}: IProps) => {
             setOpen={setOpen}
             btnProps={{
                 onClick: () => user ? setOpen(true) : window.location.assign(LOGIN_URL),
-                title: applicationOpen ? 'Apply for staff' : 'Staff applications closed',
-                disabled: !applicationOpen
+                title: tourney.applicationOpen ? 'Apply for staff' : 'Staff applications closed',
+                disabled: !tourney.applicationOpen
             }}
             form={
                 <StaffApplicationFormView 

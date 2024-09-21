@@ -9,6 +9,11 @@ import SubmittedMapFormView from './views/SubmittedMapFormView';
 import { number, Schema } from 'yup';
 import { baseMapSchema } from '../../../../domain/validation/baseMapSchema';
 import { DUPLICATE_BEATMAP_ID, INTEGER, NOT_NEGATIVE, REQUIRED, TB } from '../../../../constants';
+import { MapService } from '../../../../services/mapService';
+import { useContext, useEffect, useState } from 'react';
+import { UpdateContext } from '../../../../routes/Root';
+import { MapTypeDto } from '../../../../dto/map/MapTypeDto';
+import { MapTypeService } from '../../../../services/mapTypeService';
 
 interface IProps {
     dialogProps: DialogProps,
@@ -18,18 +23,30 @@ interface IProps {
 }
 
 const SubmittedCreateMapForm = ({dialogProps, stageId, hasTb, isDuplicateId}: IProps) => {
+    const { mapPoolUpdate, setMapPoolUpdate } = useContext(UpdateContext);
+    const [mapTypes, setMapTypes] = useState([] as MapTypeDto[]);
     const { open, onClose } = dialogProps;
 
-    const onSubmit = (values: ISubmittedMapDto) => {
-        if (values.mapType === TB) {
-            values.index = 0;
+    useEffect(() => {
+        if (open && mapTypes.length === 0) {
+            new MapTypeService()
+                .getAll()
+                .then(mapTypes => setMapTypes(mapTypes));
         }
-        console.log('Fetching map', values);
+    }, [open, mapTypes.length]);
+
+    const onSubmit = async(values: ISubmittedMapDto) => {
+        values.mapTypeId = mapTypes.find(mapType => mapType.name === values.mapType)!.id;
+
+        await new MapService().createSubmitted(values);
+        setMapPoolUpdate(mapPoolUpdate + 1);
+        onClose();
     }
 
     const initialValues: ISubmittedMapDto = {
         stageId: stageId,
         beatmapId: 0,
+        mapTypeId: 0,
         mapType: '',
         index: 0,
         comment: ''
@@ -52,6 +69,7 @@ const SubmittedCreateMapForm = ({dialogProps, stageId, hasTb, isDuplicateId}: IP
             <StyledDialogContent>
                 <SubmittedMapFormView 
                     initialValues={initialValues}
+                    mapTypes={mapTypes}
                     validationSchema={validationSchema}
                     onSubmit={onSubmit}
                 />

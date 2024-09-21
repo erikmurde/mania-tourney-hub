@@ -8,7 +8,14 @@ import { useContext } from 'react';
 import { UpdateContext } from '../../../routes/Root';
 import NoItems from '../NoItems';
 
-const MapManageList = ({mappool}: {mappool: IMapDto[]}) => {
+interface IProps {
+    mappool: IMapDto[],
+    activeAudioId: number,
+    paused: boolean,
+    handleAudio: (mapId: number, src: string | undefined) => void
+}
+
+const MapManageList = ({mappool, activeAudioId, paused, handleAudio}: IProps) => {
     const { mapPoolUpdate, setMapPoolUpdate } = useContext(UpdateContext);
 
     let data = new Map<string, IMapDto[]>();
@@ -45,6 +52,8 @@ const MapManageList = ({mappool}: {mappool: IMapDto[]}) => {
                                     <MapManageCard 
                                         map={map} 
                                         mappool={mappool}
+                                        audioPlaying={map.id === activeAudioId && !paused} 
+                                        handleAudio={handleAudio}
                                         updateInMappool={updateInMappool}/>
                                 </Grid>
                             )}
