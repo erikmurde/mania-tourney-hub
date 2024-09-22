@@ -30,7 +30,7 @@ const MatchEditForm = ({match}: {match: MatchDto}) => {
     useEffect(() => {
         if (open) {
             authService
-                .getRoles(tourney.id, [HOST, ADMIN, REFEREE, STREAMER, COMMENTATOR])
+                .getUsersWithRoles(tourney.id, [HOST, ADMIN, REFEREE, STREAMER, COMMENTATOR], true)
                 .then(users => setSelectValues({
                     streamers: getUsersWithRole(users, [STREAMER]),
                     commentators: getUsersWithRole(users, [COMMENTATOR]),
@@ -39,9 +39,9 @@ const MatchEditForm = ({match}: {match: MatchDto}) => {
         };
     }, [tourney.id, open]);
 
-    const getUsersWithRole = (staff: UserDto[], roles: string[]) => {
+    const getUsersWithRole = (staff: UserDtoSimple[], roles: string[]) => {
         return staff.filter(user => 
-            user.roles.some(userRole => roles.includes(userRole.name))
+            user.roles.some(userRole => roles.includes(userRole))
         );
     }
 

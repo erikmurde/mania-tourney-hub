@@ -41,8 +41,7 @@
           "seeding": 11,
           "placement": 0
         }
-      ],
-      "isCaptain": true
+      ]
     },
     {
       "Id": 2,
@@ -5888,18 +5887,6 @@
       "isDone": false,
       "players": [],
       "referee": "Albionthegreat"
-    }
-  ],
-  "staffInvites": [
-    {
-      "Id": 0,
-      "tournament": "6K Autumn Showdown",
-      "tournamentId": 1,
-      "recipientId": 0,
-      "sender": "TheFunk",
-      "role": "commentator",
-      "status": "pending",
-      "description": "Come join my tournament as a commentator because of reasons."
     }
   ],
   "mapStats": [

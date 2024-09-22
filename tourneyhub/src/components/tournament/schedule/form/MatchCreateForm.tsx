@@ -7,7 +7,6 @@ import { ADMIN, COMMENTATOR, HOST, PLAYER, REFEREE, REQUIRED, STREAMER } from '.
 import { Schema, object, date, string, array } from 'yup';
 import { AuthService } from '../../../../services/authService';
 import { UserDtoSimple } from '../../../../dto/user/UserDtoSimple';
-import { UserDto } from '../../../../dto/user/UserDto';
 import { MatchCreateDto } from '../../../../dto/schedule/MatchCreateDto';
 import { MatchDto } from '../../../../dto/schedule/MatchDto';
 import { MatchService } from '../../../../services/matchService';
@@ -41,15 +40,15 @@ const MatchCreateForm = ({stageId}: {stageId: number}) => {
                     .then(teams => initSelection(teams));
             } else {
                 authService
-                    .getPlayers(tourney.id)
+                    .getUsersWithRoles(tourney.id, [PLAYER])
                     .then(players => initSelection(players));
             }
         };
     }, [tourney.id, open]);
 
-    const getUsersWithRole = (staff: UserDto[], roles: string[]) => {
+    const getUsersWithRole = (staff: UserDtoSimple[], roles: string[]) => {
         return staff.filter(user => 
-            user.roles.some(userRole => roles.includes(userRole.name))
+            user.roles.some(userRole => roles.includes(userRole))
         );
     }
     
@@ -61,7 +60,7 @@ const MatchCreateForm = ({stageId}: {stageId: number}) => {
 
     const initSelection = async(participants: UserDtoSimple[] | TeamDtoSimple[]) => {
         const staff = await authService
-            .getRoles(tourney.id, [HOST, ADMIN, REFEREE, STREAMER, COMMENTATOR, PLAYER]);
+            .getUsersWithRoles(tourney.id, [HOST, ADMIN, REFEREE, STREAMER, COMMENTATOR, PLAYER], true);
   
         setSelectValues({
             players: participants,

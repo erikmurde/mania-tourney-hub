@@ -4,5 +4,6 @@ export interface UserDtoSimple {
     id: number,
     playerId: number,
     name: string,
-    country: ICountryDto
+    country: ICountryDto,
+    roles: string[]
 }

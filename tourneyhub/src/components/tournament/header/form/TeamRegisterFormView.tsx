@@ -1,6 +1,5 @@
 import { Field, FieldArray, Form, Formik } from 'formik';
 import { TeamCreateDto } from '../../../../dto/team/TeamCreateDto';
-import { UserDto } from '../../../../dto/user/UserDto';
 import { Schema } from 'yup';
 import { Button, Grid, TextField, Typography } from '@mui/material';
 import PlayerAutocomplete from '../../field/PlayerAutocomplete';
@@ -9,6 +8,7 @@ import { Fragment } from 'react';
 import { StyledIconButton } from '../../../styled/StyledIconButton';
 import { TournamentDto } from '../../../../dto/tournament/TournamentDto';
 import TeamTooltip from './TeamTooltip';
+import { UserDto } from '../../../../dto/user/UserDto';
 
 interface IProps {
     tourney: TournamentDto,

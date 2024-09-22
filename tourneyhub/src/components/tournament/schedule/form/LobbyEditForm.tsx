@@ -11,17 +11,18 @@ import { LobbyService } from '../../../../services/lobbyService';
 import { UpdateContext } from '../../../../routes/Root';
 import { UserDto } from '../../../../dto/user/UserDto';
 import { useTourney } from '../../../../routes/tournament/TournamentHeader';
+import { UserDtoSimple } from '../../../../dto/user/UserDtoSimple';
 
 const LobbyEditForm = ({lobby}: {lobby: LobbyDto}) => {
     const { tourney } = useTourney();
     const { scheduleUpdate, setScheduleUpdate } = useContext(UpdateContext);
     const [open, setOpen] = useState(false);
-    const [selectValues, setSelectValues] = useState([] as UserDto[]);
+    const [selectValues, setSelectValues] = useState([] as UserDtoSimple[]);
 
     useEffect(() => {
         if (open) {
             new AuthService()
-                .getRoles(tourney.id, [HOST, ADMIN, REFEREE])
+                .getUsersWithRoles(tourney.id, [HOST, ADMIN, REFEREE])
                 .then(staff => setSelectValues(staff));
         }
     }, [tourney.id, open]);

@@ -1,14 +1,14 @@
 import { Autocomplete, TextField, Typography } from '@mui/material';
 import Flag from '../../Flag';
 import { FieldInputProps, FormikProps } from 'formik';
-import { UserDto } from '../../../dto/user/UserDto';
+import { UserDtoSimple } from '../../../dto/user/UserDtoSimple';
 
 interface IProps {
     field: FieldInputProps<any>,
     form: FormikProps<any>,
     label: string,
     error: string,
-    options: UserDto[],
+    options: UserDtoSimple[],
     valueId?: boolean,
     disabled?: boolean
 }
@@ -26,7 +26,7 @@ const PlayerAutocomplete = ({field, form, label, error, options, valueId, disabl
             getOptionLabel={option => option.name}
             onChange={(_, value) => {
                 form.setFieldValue(field.name, valueId 
-                    ? value?.id ?? '' 
+                    ? value?.id ?? ''
                     : value?.name ?? '')
             }}
             value={initialValue ?? null}

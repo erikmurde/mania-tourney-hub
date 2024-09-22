@@ -1,5 +1,5 @@
 import { Card, Typography, Divider } from '@mui/material';
-import { StaffInviteDto } from '../../../dto/staff/StaffInviteDto';
+import { StaffInviteDto } from '../../../dto/staff/invite/StaffInviteDto';
 import { StyledCardActions } from '../../styled/StyledCardActions';
 import { StyledCardContent } from '../../styled/StyledCardContent';
 import { StaffInviteService } from '../../../services/staffInviteService';
@@ -12,11 +12,10 @@ import { ACCEPTED, REJECTED, ROLE_REG } from '../../../constants';
 interface IProps {
     invite: StaffInviteDto,
     navLink: JSX.Element,
-    inviteUpdate: number,
-    setInviteUpdate: (update: number) => void
+    updateState: () => void
 }
 
-const ProfileInviteCard = ({invite, navLink, inviteUpdate, setInviteUpdate}: IProps) => {
+const ProfileInviteCard = ({invite, navLink, updateState}: IProps) => {
     const { user } = useContext(AuthContext);
     const service = new StaffInviteService();
 
@@ -42,7 +41,7 @@ const ProfileInviteCard = ({invite, navLink, inviteUpdate, setInviteUpdate}: IPr
 
     const edit = async() => {
         await service.edit(invite.id, invite);
-        setInviteUpdate(inviteUpdate + 1);
+        updateState();
     }
 
     return (  

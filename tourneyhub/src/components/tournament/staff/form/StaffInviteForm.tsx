@@ -1,64 +1,59 @@
 import { Dialog, Button } from '@mui/material';
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { StyledDialogActions } from '../../../styled/StyledDialogActions';
 import { StyledDialogContent } from '../../../styled/styledDialogContent';
 import TourneyDialogTitle from '../../dialog/TourneyDialogTitle';
-import { HOST, ADMIN, MAPPOOLER, MAPPER, PLAYTESTER, REFEREE, STREAMER, COMMENTATOR, SHEETER, GFX, REQUIRED, PENDING } from '../../../../constants';
+import { REQUIRED, PENDING } from '../../../../constants';
 import { AuthService } from '../../../../services/authService';
-import { UserDto } from '../../../../dto/user/UserDto';
 import StaffInviteFormView from './views/StaffInviteFormView';
 import { PersonAdd } from '@mui/icons-material';
-import { StaffInviteDto } from '../../../../dto/staff/StaffInviteDto';
-import { AuthContext } from '../../../../routes/Root';
+import { StaffInviteDto } from '../../../../dto/staff/invite/StaffInviteDto';
 import { StaffInviteService } from '../../../../services/staffInviteService';
 import { Schema, number, object, string } from 'yup';
 import { useTourney } from '../../../../routes/tournament/TournamentHeader';
+import { UserDtoSimple } from '../../../../dto/user/UserDtoSimple';
+import { RoleDto } from '../../../../dto/RoleDto';
+import { UserDto } from '../../../../dto/user/UserDto';
+import { StaffInviteCreateDto } from '../../../../dto/staff/invite/StaffInviteCreateDto';
 
-const StaffInviteForm = () => {
+interface IProps {
+    roles: RoleDto[],
+    user: UserDto
+}
+
+const StaffInviteForm = ({roles, user}: IProps) => {
     const { tourney } = useTourney();
-    const { user } = useContext(AuthContext);
 
     const [open, setOpen] = useState(false);
-    const [selectValues, setSelectValues] = useState({
-        users: [] as UserDto[],
-        roles: [HOST, ADMIN, MAPPOOLER, MAPPER, PLAYTESTER, REFEREE, STREAMER, COMMENTATOR, SHEETER, GFX]
-    });
+    const [users, setUsers] = useState([] as UserDtoSimple[]);
 
     useEffect(() => {
-        if (user) {
+        if (open) {
             new AuthService()
-                .getAll()
-                .then(users => setSelectValues({
-                    ...selectValues, 
-                    users: users.filter(option => option.id !== user.id)
-                })); 
+                .getAllSimple()
+                .then(users => setUsers(
+                    users.filter(option => option.id !== user.id))
+                );
         }
-    }, [user]);
+    }, [open]);
 
-    if (!user) {
-        return <></>;
-    }
-
-    const onSubmit = async(values: StaffInviteDto) => {
+    const onSubmit = async(values: StaffInviteCreateDto) => {
         await new StaffInviteService().create(values);
         setOpen(false);
     }
 
     const validationSchema: Schema = object({
-        recipientId: number()
+        recipientId: string()
             .required(REQUIRED),
-        role: string()
+        roleId: string()
             .required(REQUIRED)
     })
 
-    const initialValues: StaffInviteDto = {
-        id: 0,
-        tournament: tourney.name,
-        tournamentId: tourney.id,
-        sender: user.name,
-        recipientId: 0,
-        role: '',
-        status: PENDING,
+    const initialValues: StaffInviteCreateDto = {
+        recipientId: '',
+        senderId: user.id.toString(),
+        tournamentId: tourney.id.toString(),
+        roleId: '',
         description: ''
     }
 
@@ -73,7 +68,7 @@ const StaffInviteForm = () => {
             <StyledDialogContent>
                 <StaffInviteFormView 
                     initialValues={initialValues} 
-                    selectValues={selectValues}
+                    selectValues={{ users: users, roles: roles }}
                     validationSchema={validationSchema}
                     onSubmit={onSubmit}/>
             </StyledDialogContent>

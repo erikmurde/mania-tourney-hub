@@ -7,12 +7,12 @@ import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { AuthService } from '../services/authService';
 
-interface AuthContext {
+interface IAuthContext {
     user: UserDto | null,
     setUser: (user: UserDto | null) => void
 }
 
-interface UpdateContext {
+interface IUpdateContext {
     stageUpdate: number,
     setStageUpdate: (count: number) => void,
     mapPoolUpdate: number,
@@ -21,12 +21,12 @@ interface UpdateContext {
     setScheduleUpdate: (cound: number) => void
 }
 
-export const AuthContext = createContext<AuthContext>({
+export const AuthContext = createContext<IAuthContext>({
     user: null,
     setUser: () => {}
 });
 
-export const UpdateContext = createContext<UpdateContext>({
+export const UpdateContext = createContext<IUpdateContext>({
     stageUpdate: 0,
     setStageUpdate: () => {},
     mapPoolUpdate: 0,
@@ -43,7 +43,9 @@ const Root = () => {
     const [scheduleUpdate, setScheduleUpdate] = useState(0);
 
     useEffect(() => {
-        new AuthService().whoAmI().then(user => setUser(user ?? null));
+        new AuthService()
+            .getMe()
+            .then(user => setUser(user ?? null));
     }, []);
 
     return (

@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from 'react';
 import { UserDto } from '../../../dto/user/UserDto';
 import { AuthService } from '../../../services/authService';
 import StaffGroup from '../../../components/tournament/staff/StaffGroup';
-import { ACCEPTED, GFX, ROLE_REG } from '../../../constants';
+import { ACCEPTED, GFX, PLAYER, ROLE_REG } from '../../../constants';
 import { Description, List } from '@mui/icons-material';
 import { StaffApplicationService } from '../../../services/staffApplicationService';
 import { StaffApplicationDto } from '../../../dto/staff/application/StaffApplicationDto';
@@ -34,7 +34,7 @@ const Staff = () => {
 
         new RoleService()
             .getAll()
-            .then(roles => setRoles(roles));
+            .then(roles => setRoles(roles.filter(role => role.name !== PLAYER)));
 
         if (user && authService.isHost(user, tourney.id)) {
             staffApplicationService
@@ -116,7 +116,7 @@ const Staff = () => {
                         >
                         {listView ? 'Staff applications' : 'Staff list'}
                     </Button>
-                    <StaffInviteForm/>
+                    <StaffInviteForm roles={roles} user={user}/>
                 </Paper>
             </Grid>}
             {!listView && 

@@ -1,15 +1,16 @@
-import { StaffInviteDto } from '../dto/staff/StaffInviteDto';
-import { BaseEntityService } from './base/baseEntityService';
+import { StaffInviteCreateDto } from '../dto/staff/invite/StaffInviteCreateDto';
+import { StaffInviteDto } from '../dto/staff/invite/StaffInviteDto';
+import { ApiEntityService } from './base/apiEntityService';
 
-export class StaffInviteService extends BaseEntityService<StaffInviteDto> {
+export class StaffInviteService extends ApiEntityService<StaffInviteDto, StaffInviteCreateDto, StaffInviteDto> {
     constructor() {
         super('staffInvites');
     }
 
-    async getByUser(userId: number): Promise<StaffInviteDto[]> {
-        const response = await this.axios.get<StaffInviteDto[]>(`${this.baseUrl}?recipientId=${userId}`);
+    async getAllOfUser(): Promise<StaffInviteDto[]> {
+        const response = await this.axios.get<StaffInviteDto[]>(`${this.baseUrl}/user`);
 
-        console.log('getByUser response: ', response);
+        console.log('getAllStaffInvitesOfUser response: ', response);
         return response.data;
     }
 }

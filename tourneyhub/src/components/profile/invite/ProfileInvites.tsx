@@ -1,23 +1,22 @@
 import { useEffect, useState } from 'react';
-import { StaffInviteDto } from '../../../dto/staff/StaffInviteDto';
+import { StaffInviteDto } from '../../../dto/staff/invite/StaffInviteDto';
 import { StaffInviteService } from '../../../services/staffInviteService';
 import { Grid, Link } from '@mui/material';
 import ProfileInviteCard from './ProfileInviteCard';
 
-interface IProps {
-    userId: number,
-    onNavigate: (tournamentId: number) => void
-}
-
-const ProfileInvites = ({userId, onNavigate}: IProps) => {
+const ProfileInvites = ({onNavigate}: {onNavigate: (tournamentId: number) => void}) => {
     const [staffInvites, setStaffInvites] = useState([] as StaffInviteDto[]);
     const [inviteUpdate, setInviteUpdate] = useState(0);
 
     useEffect(() => {
         new StaffInviteService()
-            .getByUser(userId)
+            .getAllOfUser()
             .then(invites => setStaffInvites(invites));
     }, [inviteUpdate]);
+
+    const updateState = () => {
+        setInviteUpdate(inviteUpdate + 1);
+    }
 
     return (  
         <Grid container direction='column'>
@@ -27,16 +26,15 @@ const ProfileInvites = ({userId, onNavigate}: IProps) => {
                 <Grid item key={invite.id}>
                     <ProfileInviteCard 
                         invite={invite}
-                        inviteUpdate={inviteUpdate}
-                        setInviteUpdate={setInviteUpdate}
+                        updateState={updateState}
                         navLink={                  
-                        <Link 
-                            sx={{ cursor: 'pointer' }} 
-                            onClick={() => onNavigate(invite.tournamentId)}
-                            >
-                            {invite.tournament}
-                        </Link>
-                    }/>
+                            <Link 
+                                sx={{ cursor: 'pointer' }} 
+                                onClick={() => onNavigate(invite.tournamentId)}
+                                >
+                                {invite.tournament}
+                            </Link>
+                        }/>
                 </Grid>    
             )}
         </Grid>

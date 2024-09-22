@@ -1,19 +1,20 @@
 import { Grid, MenuItem, TextField } from '@mui/material';
 import { Formik, Field, Form } from 'formik';
-import { StaffInviteDto } from '../../../../../dto/staff/StaffInviteDto';
-import { UserDto } from '../../../../../dto/user/UserDto';
 import TourneySelectField from '../../../field/TourneySelectField';
 import { Schema } from 'yup';
 import PlayerAutocomplete from '../../../field/PlayerAutocomplete';
+import { UserDtoSimple } from '../../../../../dto/user/UserDtoSimple';
+import { RoleDto } from '../../../../../dto/RoleDto';
+import { StaffInviteCreateDto } from '../../../../../dto/staff/invite/StaffInviteCreateDto';
 
 interface IProps {
-    initialValues: StaffInviteDto,
+    initialValues: StaffInviteCreateDto,
     selectValues: {
-        users: UserDto[],
-        roles: string[]
+        users: UserDtoSimple[],
+        roles: RoleDto[]
     },
     validationSchema: Schema,
-    onSubmit: (values: StaffInviteDto) => void
+    onSubmit: (values: StaffInviteCreateDto) => void
 }
 
 const StaffInviteFormView = ({initialValues, selectValues, validationSchema, onSubmit}: IProps) => {
@@ -36,13 +37,13 @@ const StaffInviteFormView = ({initialValues, selectValues, validationSchema, onS
                                 options={selectValues.users}/>
                         </Grid>
                         <Grid item>
-                            <TourneySelectField name='role' label='Staff role' error={errors.role}
+                            <TourneySelectField name='roleId' label='Staff role' error={errors.roleId}
                                 options={selectValues.roles.map(role => 
-                                    <MenuItem key={role} value={role}>{role}</MenuItem>
+                                    <MenuItem key={role.id} value={role.id}>{role.name}</MenuItem>
                                 )}/>
                         </Grid>
                         <Grid item>
-                            <Field as={TextField} name='reason' label='Reason' fullWidth multiline rows={2}/>
+                            <Field as={TextField} name='description' label='Description' fullWidth multiline rows={2}/>
                         </Grid>
                     </Grid>
                 </Form>

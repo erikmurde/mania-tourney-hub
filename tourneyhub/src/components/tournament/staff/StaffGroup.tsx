@@ -10,8 +10,9 @@ interface IProps {
 }
 
 const StaffGroup = ({name, groupRole, staff, removeStaffRole}: IProps) => {
-
     return (  
+        <>
+        {staff.length > 0 &&
         <Grid item>
             <Paper elevation={2} sx={{ paddingBottom: 2 }}>
                 <Typography 
@@ -38,7 +39,8 @@ const StaffGroup = ({name, groupRole, staff, removeStaffRole}: IProps) => {
                     )}
                 </Grid>
             </Paper>
-        </Grid>
+        </Grid>}
+        </>
     );
 }
 
