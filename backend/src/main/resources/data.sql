@@ -274,24 +274,7 @@ INSERT INTO country (name, iso2) VALUES ('South Africa', 'ZA');
 INSERT INTO country (name, iso2) VALUES ('Zambia', 'ZM');
 INSERT INTO country (name, iso2) VALUES ('Zimbabwe', 'ZW');
 
--- USERS --------------------------------------------------------------------------------------------------------------
-
-INSERT INTO app_user (name, player_id, rank, discord_username, timezone, avatar, country_id)
-VALUES ('Arcaxio', 16819909, 109, 'arcaxio_', 2, 'https://a.ppy.sh/16819909', 58);
-
-INSERT INTO app_user (name, player_id, rank, discord_username, timezone, avatar, country_id)
-VALUES ('SunApple', 11817622, 1654, 'test_username', 0, 'https://a.ppy.sh/11817622', 219);
-
-INSERT INTO app_user (name, player_id, rank, discord_username, timezone, avatar, country_id)
-VALUES ('BKWind', 8900975, 109, 'test_username', 0, 'https://a.ppy.sh/8900975', 43);
-
-INSERT INTO app_user (name, player_id, rank, discord_username, timezone, avatar, country_id)
-VALUES ('TheHunter1', 6496016, 0, 'test_username', 0, 'https://a.ppy.sh/6496016', 51);
-
-INSERT INTO app_user (name, player_id, rank, discord_username, timezone, avatar, country_id)
-VALUES ('Japeynius', 13993659, 1688, 'test_username', 0, 'https://a.ppy.sh/13993659', 188);
-
--- TOURNAMENTS
+-- TOURNAMENTS -------------------------------------------------------------------------------------------------------
 
 INSERT INTO tournament (
     applications_open, concluded, max_player_rank, max_team_size, min_player_rank, min_team_size, players_public,
@@ -319,58 +302,6 @@ VALUES (
     'The osu!mania 4K World Cup 2023 (MWC 4K 2023) was a country-based osu!mania tournament hosted by the osu! ' ||
     'team. It was the seventh installment of the osu!mania 4K World Cup.',
     'https://assets.ppy.sh/tournament-banners/official/mwc4k2023.jpg', ''
-);
-
--- STAFF REQUESTS -----------------------------------------------------------------------------------------------------
-
-INSERT INTO staff_request (recipient_id, role_id, sender_id, status_id, tournament_id, description)
-VALUES (
-    null, 9, 2, 1, 1,
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore ' ||
-    'magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea ' ||
-    'commodo consequat.'
-);
-INSERT INTO staff_request (recipient_id, role_id, sender_id, status_id, tournament_id, description)
-VALUES (
-    null, 5, 3, 1, 1,
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore ' ||
-    'magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea ' ||
-    'commodo consequat.'
-);
-INSERT INTO staff_request (recipient_id, role_id, sender_id, status_id, tournament_id, description)
-VALUES (
-    null, 7, 4, 1, 1,
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore ' ||
-    'magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea ' ||
-    'commodo consequat.'
-);
-INSERT INTO staff_request (recipient_id, role_id, sender_id, status_id, tournament_id, description)
-VALUES (
-    null, 5, 5, 1, 1,
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore ' ||
-    'magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea ' ||
-    'commodo consequat.'
-);
-INSERT INTO staff_request (recipient_id, role_id, sender_id, status_id, tournament_id, description)
-VALUES (
-    null, 5, 1, 1, 1,
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore ' ||
-    'magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea ' ||
-    'commodo consequat.'
-);
-INSERT INTO staff_request (recipient_id, role_id, sender_id, status_id, tournament_id, description)
-VALUES (
-    null, 11, 1, 2, 1,
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore ' ||
-    'magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea ' ||
-    'commodo consequat.'
-);
-INSERT INTO staff_request (recipient_id, role_id, sender_id, status_id, tournament_id, description)
-VALUES (
-    null, 10, 1, 3, 1,
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore ' ||
-    'magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea ' ||
-    'commodo consequat.'
 );
 
 -- STAGES -------------------------------------------------------------------------------------------------------------
@@ -909,6 +840,795 @@ VALUES (
            '//b.ppy.sh/preview/2051843.mp3'
        );
 
+-- USERS --------------------------------------------------------------------------------------------------------------
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (58, 16819909, 'Arcaxio', 109, 'arcaxio_', 2, 'https://a.ppy.sh/16819909');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (219, 11817622, 'SunApple', 1654, 'test_username', 0, 'https://a.ppy.sh/11817622');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (43, 8900975, 'BKWind', 109, 'test_username', 0, 'https://a.ppy.sh/8900975');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (51, 6496016, 'TheHunter1', 0, 'test_username', 0, 'https://a.ppy.sh/6496016');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (188, 13993659, 'Japeynius', 1688, 'test_username', 0, 'https://a.ppy.sh/13993659');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (156, 9853595, 'Albionthegreat', 31730, 'test_username', 0, 'https://a.ppy.sh/9853595');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (219, 18496063, 'Tastydumpl1ng', 343, 'test_username', 0, 'https://a.ppy.sh/18496063');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (188, 13981991, 'TheFunk', 7769, 'test_username', 0, 'https://a.ppy.sh/13981991');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (43, 8814590, 'Arkman', 0, 'test_username', 0, 'https://a.ppy.sh/8814590');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (43, 10333739, '[Crz]sunnyxxy', 285, 'test_username', 0, 'https://a.ppy.sh/10333739');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (147, 9658070, 'My Angel Nilou', 2832, 'test_username', 0, 'https://a.ppy.sh/9658070');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (43, 4556538, 'Phukiir', 4302, 'test_username', 0, 'https://a.ppy.sh/4556538');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (43, 10125072, 'U1d', 210, 'test_username', 0, 'https://a.ppy.sh/10125072');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (43, 4363223, '553343477', 2063, 'test_username', 0, 'https://a.ppy.sh/4363223');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (43, 9784248, 'AhoUsagi', 11233, 'test_username', 0, 'https://a.ppy.sh/9784248');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (87, 26496648, 'Alptraum', 5640, 'test_username', 0, 'https://a.ppy.sh/26496648');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (43, 18471116, 'Benson_', 4705, 'test_username', 0, 'https://a.ppy.sh/18471116');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (156, 11253722, 'DannyPX', 21265, 'test_username', 0, 'https://a.ppy.sh/11253722');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (12, 13360768, 'Decku', 7559, 'test_username', 0, 'https://a.ppy.sh/13360768');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (43, 12891443, 'HMillion', 45996, 'test_username', 0, 'https://a.ppy.sh/12891443');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (43, 18270260, 'hylotl', 4951, 'test_username', 0, 'https://a.ppy.sh/18270260');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (43, 7859973, '_IceRain', 0, 'test_username', 0, 'https://a.ppy.sh/7859973');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (70, 9080296, 'Imperial Wolf', 0, 'test_username', 0, 'https://a.ppy.sh/9080296');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (43, 1653229, '_Stan', 8642, 'test_username', 0, 'https://a.ppy.sh/1653229');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (43, 13026904, 'tyrcs', 12, 'test_username', 0, 'https://a.ppy.sh/13026904');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (43, 17158897, 'YuzakiTsukasa', 3163, 'test_username', 0, 'https://a.ppy.sh/17158897');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (219, 7286896, 'RevVoJH', 283, 'test_username', 0, 'https://a.ppy.sh/7286896');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (43, 7082178, '[Crz]Satori', 37, 'test_username', 0, 'https://a.ppy.sh/7082178');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (112, 16308598, 'winterlover', 1118, 'test_username', 0, 'https://a.ppy.sh/16308598');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (219, 12320264, 'YuJJun', 270, 'test_username', 0, 'https://a.ppy.sh/12320264');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (219, 9308128, 'akace100', 8412, 'test_username', 0, 'https://a.ppy.sh/9308128');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (148, 16417718, 'Auxesiaa', 4073, 'test_username', 0, 'https://a.ppy.sh/16417718');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (219, 3855052, 'EpsilonMaiagare', 4338, 'test_username', 0, 'https://a.ppy.sh/3855052');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (164, 17989444, 'ERA Xuste', 2394, 'test_username', 0, 'https://a.ppy.sh/17989444');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (43, 3046856, '[GB]Rush_FTK', 49217, 'test_username', 0, 'https://a.ppy.sh/3046856');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (227, 10494860, 'MashedPotato', 1417, 'test_username', 0, 'https://a.ppy.sh/10494860');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (147, 21340543, 'N4iveDx', 2572, 'test_username', 0, 'https://a.ppy.sh/21340543');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (227, 17148657, 'Poity', 12842, 'test_username', 0, 'https://a.ppy.sh/17148657');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (188, 8612061, 'Polytetral', 5501, 'test_username', 0, 'https://a.ppy.sh/8612061');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (93, 16630515, 'Reihynn', 2591, 'test_username', 0, 'https://a.ppy.sh/16630515');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (227, 9676089, 'rock-on', 128630, 'test_username', 0, 'https://a.ppy.sh/9676089');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (43, 4928674, 'shizehao', 5978, 'test_username', 0, 'https://a.ppy.sh/4928674');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (219, 32028459, 'Trooperr', 3125, 'test_username', 0, 'https://a.ppy.sh/32028459');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (206, 15665805, 'konkawe', 1131, 'test_username', 0, 'https://a.ppy.sh/15665805');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (43, 11590784, 'SiFouR', 5529, 'test_username', 0, 'https://a.ppy.sh/11590784');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (68, 11818585, 'Baguette2Pain', 1971, 'test_username', 0, 'https://a.ppy.sh/11818585');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (219, 8784587, 'Dynascape', 19576, 'test_username', 0, 'https://a.ppy.sh/8784587');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (188, 12297375, 'ERA Adam', 1509, 'test_username', 0, 'https://a.ppy.sh/12297375');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (167, 18520056, '[LS]Tenshi', 666, 'test_username', 0, 'https://a.ppy.sh/18520056');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (167, 11517895, 'Silhoueska Elze', 1043, 'test_username', 0, 'https://a.ppy.sh/11517895');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (219, 3187959, 'Sparky', 6432, 'test_username', 0, 'https://a.ppy.sh/3187959');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (156, 5183940, '2fast', 5293, 'test_username', 0, 'https://a.ppy.sh/5183940');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (87, 12609866, 'ShadeCegLgMn', 0, 'test_username', 0, 'https://a.ppy.sh/12609866');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (147, 3964918, '-Candy-', 361637, 'test_username', 0, 'https://a.ppy.sh/3964918');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (147, 8291099, 'demiantorp', 495050, 'test_username', 0, 'https://a.ppy.sh/8291099');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (112, 2071008, 'yz1155', 45, 'test_username', 0, 'https://a.ppy.sh/2071008');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (206, 766374, 'LostCool', 8, 'test_username', 0, 'https://a.ppy.sh/766374');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (35, 15314355, 'UmmmMrMoo', 55, 'test_username', 0, 'https://a.ppy.sh/15314355');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (167, 11420405, 'Ojisan-', 3, 'test_username', 0, 'https://a.ppy.sh/11420405');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (43, 13967954, 'Watch01', 153, 'test_username', 0, 'https://a.ppy.sh/13967954');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (167, 3036686, 'Sanni', 57, 'test_username', 0, 'https://a.ppy.sh/3036686');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (167, 2039089, 'arcwinolivirus', 332, 'test_username', 0, 'https://a.ppy.sh/2039089');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (43, 89545, 'VanWilder', 42, 'test_username', 0, 'https://a.ppy.sh/89545');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (43, 29606773, 'Shenzouz', 383, 'test_username', 0, 'https://a.ppy.sh/29606773');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (51, 12598261, 'TsukiyaWhiskers', 46, 'test_username', 0, 'https://a.ppy.sh/12598261');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (219, 24675802, 'Bunsen', 25, 'test_username', 0, 'https://a.ppy.sh/24675802');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (169, 18338179, 'bagjettka', 98, 'test_username', 0, 'https://a.ppy.sh/18338179');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (219, 4980256, 'Alter-', 24, 'test_username', 0, 'https://a.ppy.sh/4980256');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (43, 12452291, 'Krn_', 169, 'test_username', 0, 'https://a.ppy.sh/12452291');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (68, 6264519, 'Milla[Monkey]', 221, 'test_username', 0, 'https://a.ppy.sh/6264519');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (43, 18282863, 'HxcQ777', 48, 'test_username', 0, 'https://a.ppy.sh/18282863');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (41, 2225008, 'Skalim', 267, 'test_username', 0, 'https://a.ppy.sh/2225008');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (219, 12028216, 'mashu', 74, 'test_username', 0, 'https://a.ppy.sh/12028216');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (219, 18664411, 'Potaterr', 139, 'test_username', 0, 'https://a.ppy.sh/18664411');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (41, 3215366, 'Matiias', 703, 'test_username', 0, 'https://a.ppy.sh/3215366');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (156, 9630674, 'Freek', 547, 'test_username', 0, 'https://a.ppy.sh/9630674');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (206, 17721836, 'Natsurio', 115, 'test_username', 0, 'https://a.ppy.sh/17721836');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (43, 10351684, 'AWMRone', 146, 'test_username', 0, 'https://a.ppy.sh/10351684');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (206, 437945, 'KenZ', 181, 'test_username', 0, 'https://a.ppy.sh/437945');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (147, 24140109, '- Kopi -', 212, 'test_username', 0, 'https://a.ppy.sh/24140109');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (70, 8610776, 'Lelloq', 301, 'test_username', 0, 'https://a.ppy.sh/8610776');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (219, 18834550, 'RhymesWithMash', 1068, 'test_username', 0, 'https://a.ppy.sh/18834550');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (68, 13431947, 'Jerem[Monkey]', 282, 'test_username', 0, 'https://a.ppy.sh/13431947');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (188, 16870002, 'sukidayo-', 279, 'test_username', 0, 'https://a.ppy.sh/16870002');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (219, 18172498, 'Tsunakko', 121, 'test_username', 0, 'https://a.ppy.sh/18172498');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (219, 11762834, '[TCJ]ScanL', 6896, 'test_username', 0, 'https://a.ppy.sh/11762834');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (219, 16407268, 'ERA Dev', 564, 'test_username', 0, 'https://a.ppy.sh/16407268');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (219, 17308009, 'Hello_Son', 407, 'test_username', 0, 'https://a.ppy.sh/17308009');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (219, 11734610, 'Nepijin', 329, 'test_username', 0, 'https://a.ppy.sh/11734610');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (219, 15926730, 'PeachMarrow', 692, 'test_username', 0, 'https://a.ppy.sh/15926730');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (219, 7794488, 'Reshiram', 319, 'test_username', 0, 'https://a.ppy.sh/7794488');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (219, 11817838, 'TristanJacob11', 335, 'test_username', 0, 'https://a.ppy.sh/11817838');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (105, 10242062, 'AFOTHER', 1792, 'test_username', 0, 'https://a.ppy.sh/10242062');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (105, 11488604, 'CrewK', 502, 'test_username', 0, 'https://a.ppy.sh/11488604');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (105, 16100800, 'ICECAKE', 896, 'test_username', 0, 'https://a.ppy.sh/16100800');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (105, 10745260, 'jhleetgirl', 264, 'test_username', 0, 'https://a.ppy.sh/10745260');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (105, 25588443, 'Nikoro', 528, 'test_username', 0, 'https://a.ppy.sh/25588443');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (105, 18144664, 'Toxicat', 1273, 'test_username', 0, 'https://a.ppy.sh/18144664');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (93, 18309106, 'adihza', 311, 'test_username', 0, 'https://a.ppy.sh/18309106');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (93, 12689667, '[Albert]', 413, 'test_username', 0, 'https://a.ppy.sh/12689667');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (93, 5179764, 'AZKiFanboy', 3421, 'test_username', 0, 'https://a.ppy.sh/5179764');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (93, 13385865, 'bad hd player', 320, 'test_username', 0, 'https://a.ppy.sh/13385865');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (93, 8677684, 'Onta_Bekasi', 40, 'test_username', 0, 'https://a.ppy.sh/8677684');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (93, 10540515, 'RetroEX', 3915, 'test_username', 0, 'https://a.ppy.sh/10540515');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (68, 10015908, 'Auraah', 1408, 'test_username', 0, 'https://a.ppy.sh/10015908');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (68, 16892459, 'Babibelbleu', 1658, 'test_username', 0, 'https://a.ppy.sh/16892459');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (68, 18867523, 'narahashi', 369, 'test_username', 0, 'https://a.ppy.sh/18867523');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (68, 14055233, 'MisteurFR', 1139, 'test_username', 0, 'https://a.ppy.sh/14055233');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (68, 7306522, 'PatouZ', 3502, 'test_username', 0, 'https://a.ppy.sh/7306522');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (68, 8756421, 'quentin5110054', 680, 'test_username', 0, 'https://a.ppy.sh/8756421');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (156, 20454338, 'Cube9112', 2295, 'test_username', 0, 'https://a.ppy.sh/20454338');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (156, 10944966, 'Outlasted', 724, 'test_username', 0, 'https://a.ppy.sh/10944966');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (156, 16999311, 'Quinnie why', 1237, 'test_username', 0, 'https://a.ppy.sh/16999311');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (156, 10945523, 'samuelhklumpers', 7509, 'test_username', 0, 'https://a.ppy.sh/10945523');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (156, 13377652, 'Shoira', 1780, 'test_username', 0, 'https://a.ppy.sh/13377652');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (156, 12599154, 'Toxic Scent', 604, 'test_username', 0, 'https://a.ppy.sh/12599154');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (51, 10027302, 'Cyaewin', 379, 'test_username', 0, 'https://a.ppy.sh/10027302');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (51, 15440118, 'ERA Leo', 2418, 'test_username', 0, 'https://a.ppy.sh/15440118');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (51, 11625617, 'ERA medium kek', 2105, 'test_username', 0, 'https://a.ppy.sh/11625617');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (51, 10615367, 'ERA Punish', 2823, 'test_username', 0, 'https://a.ppy.sh/10615367');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (51, 14114899, 'Lotex09', 2481, 'test_username', 0, 'https://a.ppy.sh/14114899');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (51, 15806513, 'jkzu123', 422, 'test_username', 0, 'https://a.ppy.sh/15806513');
+
+-- TEAMS --------------------------------------------------------------------------------------------------------------
+
+INSERT INTO team (name, logo, availability)
+VALUES ('United States', 'https://assets.ppy.sh/old-flags/US.png', 'We are available whenever.');
+
+INSERT INTO team (name, logo, availability)
+VALUES ('Japan', 'https://assets.ppy.sh/old-flags/JP.png', 'We are available whenever.');
+
+INSERT INTO team (name, logo, availability)
+VALUES ('Indonesia', 'https://assets.ppy.sh/old-flags/ID.png', 'We are available whenever.');
+
+INSERT INTO team (name, logo, availability)
+VALUES ('France', 'https://assets.ppy.sh/old-flags/FR.png', 'We are available whenever.');
+
+INSERT INTO team (name, logo, availability)
+VALUES ('Netherlands', 'https://assets.ppy.sh/old-flags/NL.png', 'We are available whenever.');
+
+INSERT INTO team (name, logo, availability)
+VALUES ('Germany', 'https://assets.ppy.sh/old-flags/DE.png', 'We are available whenever.');
+
 -- TOURNAMENT ROLES ---------------------------------------------------------------------------------------------------
 
-INSERT INTO tournament_role (can_reg_with_role, app_user_id, role_id, tournament_id) VALUES (false, 1, 2, 1);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 1, 2, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 1, 5, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 1, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 1, 2, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 2, 7, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 2, 8, true);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 2, 9, true);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 2, 7, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 3, 5, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 4, 7, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 5, 6, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 6, 2, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 6, 10, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 6, 7, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 7, 2, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 7, 4, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 7, 6, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 7, 7, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 8, 2, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 8, 5, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 8, 7, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 8, 10, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 9, 4, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 10, 4, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 11, 4, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 11, 5, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 12, 4, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 12, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 13, 4, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 13, 5, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 14, 5, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 15, 5, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 16, 5, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 17, 5, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 18, 5, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 18, 7, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 19, 5, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 20, 5, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 21, 5, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 22, 5, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 23, 5, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 24, 5, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 25, 5, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 26, 5, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 27, 6, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 28, 6, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 29, 6, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 30, 6, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 31, 7, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 32, 7, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 33, 7, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 33, 8, true);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 34, 7, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 35, 7, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 35, 8, true);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 36, 7, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 37, 7, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 38, 7, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 39, 7, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 40, 7, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 41, 7, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 42, 7, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 43, 7, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 43, 9, true);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 44, 8, true);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 45, 8, true);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 45, 9, true);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 46, 9, true);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 47, 9, true);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 48, 9, true);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 49, 9, true);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 50, 9, true);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 51, 9, true);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 52, 10, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 53, 10, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 53, 11, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 54, 11, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 55, 11, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 56, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 57, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 58, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 59, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 60, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 61, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 62, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 63, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 64, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 65, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 66, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 67, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 68, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 69, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 70, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 71, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 72, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 73, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 74, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 75, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 76, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 77, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 78, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 79, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 80, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 81, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 82, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 83, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 84, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 85, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 86, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 87, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 88, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 89, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 90, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 91, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 92, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 93, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 94, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 95, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 96, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 97, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 98, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 99, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 100, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 101, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 102, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 103, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 104, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 105, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 106, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 107, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 108, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 109, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 110, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 111, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 112, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 113, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 114, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 115, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 116, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 117, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 118, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 119, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 120, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 121, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 122, 1, false);
+
+-- TOURNAMENT STATS ---------------------------------------------------------------------------------------------------
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+VALUES (1, 1, null, 6, 11, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+VALUES (1, 56, null, 6, 1, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+VALUES (1, 57, null, 6, 2, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+VALUES (1, 58, null, 6, 3, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+VALUES (1, 59, null, 6, 4, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+VALUES (1, 60, null, 8, 5, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+VALUES (1, 61, null, 6, 6, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+VALUES (1, 62, null, 7, 7, 31, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+VALUES (1, 63, null, 6, 8, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+VALUES (1, 64, null, 6, 9, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+VALUES (1, 65, null, 6, 10, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+VALUES (1, 66, null, 6, 12, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+VALUES (1, 67, null, 6, 13, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+VALUES (1, 68, null, 6, 14, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+VALUES (1, 69, null, 7, 15, 29, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+VALUES (1, 70, null, 6, 16, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+VALUES (1, 71, null, 6, 17, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+VALUES (1, 72, null, 6, 18, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+VALUES (1, 73, null, 6, 19, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+VALUES (1, 74, null, 6, 20, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+VALUES (1, 75, null, 6, 21, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+VALUES (1, 76, null, 6, 22, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+VALUES (1, 77, null, 6, 23, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+VALUES (1, 78, null, 6, 24, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+VALUES (1, 79, null, 6, 25, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+VALUES (1, 80, null, 7, 26, 30, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+VALUES (1, 81, null, 6, 27, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+VALUES (1, 82, null, 6, 28, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+VALUES (1, 83, null, 6, 29, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+VALUES (1, 84, null, 6, 30, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+VALUES (1, 85, null, 6, 31, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+VALUES (1, 86, null, 6, 32, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+VALUES (2, 87, 1, 6, 2, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+VALUES (2, 88, 1, 6, 2, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+VALUES (2, 89, 1, 6, 2, 0, true);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+VALUES (2, 90, 1, 6, 2, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+VALUES (2, 91, 1, 6, 2, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+VALUES (2, 93, 2, 6, 3, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+VALUES (2, 94, 2, 6, 3, 0, true);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+VALUES (2, 95, 2, 6, 3, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+VALUES (2, 96, 2, 6, 3, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+VALUES (2, 97, 2, 6, 3, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+VALUES (2, 98, 2, 6, 3, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+VALUES (2, 99, 3, 6, 6, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+VALUES (2, 100, 3, 6, 6, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+VALUES (2, 101, 3, 6, 6, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+VALUES (2, 102, 3, 6, 6, 0, true);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+VALUES (2, 103, 3, 6, 6, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+VALUES (2, 104, 3, 6, 6, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+VALUES (2, 105, 4, 6, 18, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+VALUES (2, 106, 4, 6, 18, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+VALUES (2, 107, 4, 6, 18, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+VALUES (2, 108, 4, 6, 18, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+VALUES (2, 109, 4, 6, 18, 0, true);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+VALUES (2, 110, 4, 6, 18, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+VALUES (2, 111, 5, 6, 24, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+VALUES (2, 112, 5, 6, 24, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+VALUES (2, 113, 5, 6, 24, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+VALUES (2, 114, 5, 6, 24, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+VALUES (2, 115, 5, 6, 24, 0, true);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+VALUES (2, 116, 5, 6, 24, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+VALUES (2, 117, 6, 6, 26, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+VALUES (2, 118, 6, 6, 26, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+VALUES (2, 119, 6, 6, 26, 0, true);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+VALUES (2, 120, 6, 6, 26, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+VALUES (2, 121, 6, 6, 26, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+VALUES (2, 122, 6, 6, 26, 0, false);
+
+-- STAFF REQUESTS -----------------------------------------------------------------------------------------------------
+
+INSERT INTO staff_request (recipient_id, role_id, sender_id, status_id, tournament_id, description)
+VALUES (
+           null, 9, 2, 1, 1,
+           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et ' ||
+           'dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut ' ||
+           'aliquip ex ea commodo consequat.'
+       );
+INSERT INTO staff_request (recipient_id, role_id, sender_id, status_id, tournament_id, description)
+VALUES (
+           null, 5, 3, 1, 1,
+           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et ' ||
+           'dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut ' ||
+           'aliquip ex ea commodo consequat.'
+       );
+INSERT INTO staff_request (recipient_id, role_id, sender_id, status_id, tournament_id, description)
+VALUES (
+           null, 7, 4, 1, 1,
+           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et ' ||
+           'dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut ' ||
+           'aliquip ex ea commodo consequat.'
+       );
+INSERT INTO staff_request (recipient_id, role_id, sender_id, status_id, tournament_id, description)
+VALUES (
+           null, 5, 5, 1, 1,
+           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et ' ||
+           'dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut ' ||
+           'aliquip ex ea commodo consequat.'
+       );
+INSERT INTO staff_request (recipient_id, role_id, sender_id, status_id, tournament_id, description)
+VALUES (
+           null, 5, 1, 1, 1,
+           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et ' ||
+           'dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut ' ||
+           'aliquip ex ea commodo consequat.'
+       );
+INSERT INTO staff_request (recipient_id, role_id, sender_id, status_id, tournament_id, description)
+VALUES (
+           null, 11, 1, 2, 1,
+           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et ' ||
+           'dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut ' ||
+           'aliquip ex ea commodo consequat.'
+       );
+INSERT INTO staff_request (recipient_id, role_id, sender_id, status_id, tournament_id, description)
+VALUES (
+           null, 10, 1, 3, 1,
+           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et ' ||
+           'dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut ' ||
+           'aliquip ex ea commodo consequat.'
+       );
+INSERT INTO staff_request (recipient_id, role_id, sender_id, status_id, tournament_id, description)
+VALUES (1, 9, 2, 1, 1, 'Come join my tournament as a commentator because of reasons.');

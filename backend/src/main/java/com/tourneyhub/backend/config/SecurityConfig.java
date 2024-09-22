@@ -88,7 +88,8 @@ public class SecurityConfig {
                                 "/api/statuses/**",
                                 "/api/mapTypes/**",
                                 "/api/stages/tournament/**",
-                                "/api/maps/stage/{stageId}/inMappool"
+                                "/api/maps/stage/{stageId}/inMappool",
+                                "/api/users/{tournamentId}/**"
                         ).permitAll()
                         .anyRequest().authenticated()
                 )
@@ -112,12 +113,11 @@ public class SecurityConfig {
                 .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
                 .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
                 .redirectUri("http://localhost:8080/login/oauth2/code/osu")
-                .scope("public", "identify")
                 .authorizationUri("https://osu.ppy.sh/oauth/authorize")
                 .tokenUri("https://osu.ppy.sh/oauth/token")
                 .userInfoUri("https://osu.ppy.sh/api/v2/me/mania")
                 .userNameAttributeName("username")
-                .clientName("Osu")
+                .scope("public", "identify")
                 .build();
     }
 
@@ -128,9 +128,8 @@ public class SecurityConfig {
                 .clientSecret("nVPI68rYhCUAVFSf0Y0yOPRyPw1r2PgV8ulAkPfU")
                 .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
                 .authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
-                .scope("public")
                 .tokenUri("https://osu.ppy.sh/oauth/token")
-                .clientName("OsuWeb")
+                .scope("public")
                 .build();
     }
 }

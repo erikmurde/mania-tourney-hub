@@ -1,11 +1,14 @@
-package com.tourneyhub.backend.dto.staffApplication;
+package com.tourneyhub.backend.dto.staffInvite;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 @Data
-public class StaffApplicationCreateDto {
+public class StaffInviteCreateDto {
+
+    @NotNull
+    private Long recipientId;
 
     @NotNull
     private Long senderId;
@@ -15,9 +18,6 @@ public class StaffApplicationCreateDto {
 
     @NotNull
     private Long roleId;
-
-    @NotNull
-    private Long statusId;
 
     @NotNull
     @Size(min = 1)

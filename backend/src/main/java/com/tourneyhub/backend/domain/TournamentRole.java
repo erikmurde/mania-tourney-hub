@@ -23,7 +23,7 @@ public class TournamentRole extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     private AppUser appUser;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn
     private Role role;
 }

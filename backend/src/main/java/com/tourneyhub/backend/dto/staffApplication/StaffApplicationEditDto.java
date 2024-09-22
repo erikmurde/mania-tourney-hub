@@ -7,7 +7,7 @@ import lombok.Data;
 public class StaffApplicationEditDto {
 
     @NotNull
-    private Integer playerId;
+    private Integer senderId;
 
     @NotNull
     private Long tournamentId;

@@ -41,9 +41,9 @@ public class StaffApplicationService {
         this.mapper = mapper;
     }
 
-    public List<StaffApplicationDto> getAllUser(Integer playerId) {
+    public List<StaffApplicationDto> getAllOfUser(Integer playerId) {
         return staffRequestRepository
-                .getAllUser(playerId)
+                .getAllApplicationsOfUser(playerId)
                 .stream()
                 .map(mapper::mapToDto)
                 .toList();
@@ -51,7 +51,7 @@ public class StaffApplicationService {
 
     public List<StaffApplicationDto> getAllPending(Long tournamentId) {
         return staffRequestRepository
-                .getAllPendingInTournament(tournamentId)
+                .getAllApplicationsPendingInTournament(tournamentId)
                 .stream()
                 .map(mapper::mapToDto)
                 .toList();

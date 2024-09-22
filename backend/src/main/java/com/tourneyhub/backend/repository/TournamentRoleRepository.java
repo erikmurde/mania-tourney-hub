@@ -7,6 +7,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface TournamentRoleRepository extends CrudRepository<TournamentRole, Long> {
@@ -15,5 +16,15 @@ public interface TournamentRoleRepository extends CrudRepository<TournamentRole,
     List<TournamentRole> getUserRolesInTournament(
             @Param("playerId") Integer playerId,
             @Param("tournamentId") Long tournamentId
+    );
+
+    @Query(
+            "FROM TournamentRole r " +
+            "WHERE r.appUser.id=:playerId AND r.tournament.id=:tournamentId AND r.role.id=:roleId"
+    )
+    Optional<TournamentRole> getUserRoleInTournament(
+            @Param("playerId") Long playerId,
+            @Param("tournamentId") Long tournamentId,
+            @Param("roleId") Long roleId
     );
 }

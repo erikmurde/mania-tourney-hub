@@ -6,6 +6,7 @@ import com.tourneyhub.backend.dto.user.UserDto;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class UserMapper {
@@ -14,9 +15,14 @@ public class UserMapper {
 
     private final TournamentRoleMapper roleMapper;
 
-    public UserMapper(CountryMapper countryMapper, TournamentRoleMapper roleMapper) {
+    private final TournamentPlayerMapper statsMapper;
+
+    public UserMapper(
+            CountryMapper countryMapper, TournamentRoleMapper roleMapper, TournamentPlayerMapper statsMapper)
+    {
         this.countryMapper = countryMapper;
         this.roleMapper = roleMapper;
+        this.statsMapper = statsMapper;
     }
 
     public UserDto mapToDto(AppUser user) {
@@ -30,15 +36,30 @@ public class UserMapper {
                 user.getAvatar(),
                 countryMapper.mapToDto(user.getCountry()),
                 user.getRoles().stream().map(roleMapper::mapToDto).toList(),
-                new ArrayList<>()
+                user.getStats().stream().map(statsMapper::mapToDto).toList()
         );
     }
 
     public SimpleUserDto mapToSimpleDto(AppUser user) {
+        return mapToSimpleDto(user, null);
+    }
+
+    public SimpleUserDto mapToSimpleDto(AppUser user, Long tournamentId) {
+        List<String> roles = tournamentId == null
+                ? new ArrayList<>()
+                : user
+                    .getRoles()
+                    .stream()
+                    .filter(role -> role.getTournament().getId().equals(tournamentId))
+                    .map(role -> role.getRole().getName())
+                    .toList();
+
         return new SimpleUserDto(
+                user.getId(),
                 user.getPlayerId(),
                 user.getName(),
-                countryMapper.mapToDto(user.getCountry())
+                countryMapper.mapToDto(user.getCountry()),
+                roles
         );
     }
 }

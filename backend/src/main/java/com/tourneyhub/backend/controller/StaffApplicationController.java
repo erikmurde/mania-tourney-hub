@@ -29,9 +29,9 @@ public class StaffApplicationController {
     }
 
     @GetMapping("/api/staffApplications/user")
-    public List<StaffApplicationDto> getAllUser(@AuthenticationPrincipal OAuth2User principal) {
+    public List<StaffApplicationDto> getAllOfUser(@AuthenticationPrincipal OAuth2User principal) {
         return staffApplicationService
-                .getAllUser(principal.getAttribute("id"));
+                .getAllOfUser(principal.getAttribute("id"));
     }
 
     @GetMapping("/api/staffApplications/pending/{tournamentId}")
@@ -42,7 +42,7 @@ public class StaffApplicationController {
     }
 
     @PostMapping("/api/staffApplications")
-    @PreAuthorize("#staffApplication.playerId == principal.getAttribute('id')")
+    @PreAuthorize("#staffApplication.senderId == principal.getAttribute('id')")
     public void create(
             @RequestBody @Valid StaffApplicationCreateDto staffApplication,
             @AuthenticationPrincipal OAuth2User principal)
@@ -57,11 +57,11 @@ public class StaffApplicationController {
     @PutMapping("/api/staffApplications/{id}")
     @PreAuthorize(
             "@userService.isHost(#staffApplication.tournamentId, principal) || " +
-            "#staffApplication.playerId == principal.getAttribute('id')"
+            "#staffApplication.senderId == principal.getAttribute('id')"
     )
     public void updateStatus(
             @PathVariable Long id,
-            @RequestBody StaffApplicationEditDto staffApplication,
+            @RequestBody @Valid StaffApplicationEditDto staffApplication,
             @AuthenticationPrincipal OAuth2User principal)
     {
         staffApplicationService

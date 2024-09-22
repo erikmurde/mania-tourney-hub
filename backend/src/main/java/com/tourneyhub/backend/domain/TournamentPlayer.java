@@ -1,13 +1,14 @@
 package com.tourneyhub.backend.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Entity
+@Data
+@EqualsAndHashCode(callSuper = false)
 public class TournamentPlayer extends BaseEntity {
 
     @Min(0)
@@ -19,19 +20,19 @@ public class TournamentPlayer extends BaseEntity {
     @NotNull
     private boolean isTeamCaptain;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn
     private Status status;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn
     private AppUser appUser;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn
     private Team team;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn
     private Tournament tournament;
 }

@@ -1,92 +1,103 @@
 package com.tourneyhub.backend.service;
 
 import com.tourneyhub.backend.domain.AppUser;
+import com.tourneyhub.backend.dto.user.SimpleUserDto;
+import com.tourneyhub.backend.dto.user.UserDto;
 import com.tourneyhub.backend.helper.Constants;
+import com.tourneyhub.backend.mapper.UserMapper;
 import com.tourneyhub.backend.repository.TournamentRoleRepository;
 import com.tourneyhub.backend.repository.UserRepository;
-import com.tourneyhub.backend.repository.CountryRepository;
-import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
-import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
-import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 
 @Service
-public class UserService extends DefaultOAuth2UserService {
+public class UserService {
 
     private final UserRepository userRepository;
 
-    private final CountryRepository countryRepository;
-
     private final TournamentRoleRepository tournamentRoleRepository;
 
+    private final UserMapper mapper;
+
     public UserService(
-            UserRepository userRepository,
-            CountryRepository countryRepository,
-            TournamentRoleRepository tournamentRoleRepository
-    ) {
+            UserRepository userRepository, TournamentRoleRepository tournamentRoleRepository, UserMapper mapper)
+    {
         this.userRepository = userRepository;
-        this.countryRepository = countryRepository;
         this.tournamentRoleRepository = tournamentRoleRepository;
+        this.mapper = mapper;
     }
 
-    @Override
-    public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
-        return processUser(super.loadUser(userRequest));
-    }
-
-    private OAuth2User processUser(OAuth2User principal) {
-        userRepository
+    public UserDto getMe(OAuth2User principal) {
+        if (principal == null) {
+            return null;
+        }
+        AppUser user = userRepository
                 .findByPlayerId(principal.getAttribute("id"))
-                .map(user -> updateExistingUser(user, principal))
-                .orElseGet(() -> createNewUser(principal));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
-        return principal;
+        return mapper.mapToDto(user);
     }
 
-    private AppUser updateExistingUser(AppUser user, OAuth2User principal) {
-        Map<String, Integer> statistics = principal.getAttribute("statistics");
-
-        if (statistics == null) {
-            throw new OAuth2AuthenticationException("Invalid user details!");
-        }
-        user.setRank(statistics.get("global_rank"));
-        return userRepository.save(user);
+    public List<UserDto> getAll() {
+        return userRepository
+                .findAll()
+                .stream()
+                .map(mapper::mapToDto)
+                .toList();
     }
 
-    private AppUser createNewUser(OAuth2User principal) {
-        var user = new AppUser();
+    public List<SimpleUserDto> getAllSimple() {
+        return userRepository
+                .findAll()
+                .stream()
+                .map(mapper::mapToSimpleDto)
+                .toList();
+    }
 
-        Map<String, String> country = principal.getAttribute("country");
-        Map<String, Integer> statistics = principal.getAttribute("statistics");
+    public List<UserDto> getAllStaff(Long tournamentId) {
+        return userRepository
+                .findAllStaffInTournament(tournamentId)
+                .stream()
+                .map(mapper::mapToDto)
+                .toList();
+    }
 
-        if (country == null || statistics == null) {
-            throw new OAuth2AuthenticationException("Invalid user details!");
-        }
-        user.setPlayerId(principal.getAttribute("id"));
-        user.setName(principal.getAttribute("username"));
-        user.setAvatar(principal.getAttribute("avatar_url"));
-        user.setRank(statistics.get("global_rank"));
-        user.setDiscordUsername("");
-        user.setTimezone(0);
-        user.setCountry(countryRepository.findByIso2(country.get("code")));
+    public List<UserDto> getAllPlayers(Long tournamentId) {
+        return userRepository
+                .findAllPlayersInTournament(tournamentId)
+                .stream()
+                .map(mapper::mapToDto)
+                .toList();
+    }
 
-        return userRepository.save(user);
+    public List<SimpleUserDto> getAllUsersWithRoles(
+            Long tournamentId, List<String> roles, Boolean includeUserRoles)
+    {
+        return userRepository
+                .findAllUsersInTournamentWithRoles(tournamentId, roles)
+                .stream()
+                .map(user ->
+                        includeUserRoles
+                        ? mapper.mapToSimpleDto(user, tournamentId)
+                        : mapper.mapToSimpleDto(user)
+                )
+                .toList();
     }
 
     public boolean isHost(Long tournamentId, OAuth2User principal) {
         return getTournamentRoles(tournamentId, principal).contains(Constants.HOST);
     }
 
-    public boolean hasAnyRole(Long tournamentId, OAuth2User principal, List<String> roles) {
+    public boolean hasAnyRole(Long tournamentId, OAuth2User principal, String... roles) {
         List<String> userRoles = getTournamentRoles(tournamentId, principal);
 
-        return !Collections.disjoint(userRoles, roles);
+        return !Collections.disjoint(userRoles, List.of(roles));
     }
 
     private List<String> getTournamentRoles(Long tournamentId, OAuth2User principal) {

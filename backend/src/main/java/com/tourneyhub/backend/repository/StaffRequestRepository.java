@@ -7,12 +7,16 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface StaffRequestRepository extends CrudRepository<StaffRequest, Long> {
 
     @Query("FROM StaffRequest r WHERE r.recipient.id IS NULL AND r.sender.playerId=:playerId")
-    List<StaffRequest> getAllUser(@Param("playerId") Integer playerId);
+    List<StaffRequest> getAllApplicationsOfUser(@Param("playerId") Integer playerId);
+
+    @Query("FROM StaffRequest r WHERE r.recipient.playerId=:playerId")
+    List<StaffRequest> getAllInvitesOfUser(@Param("playerId") Integer playerId);
 
     @Query(
             "FROM StaffRequest r " +
@@ -20,5 +24,16 @@ public interface StaffRequestRepository extends CrudRepository<StaffRequest, Lon
             "AND r.recipient.id IS NULL " +
             "AND r.status.name = 'pending'"
     )
-    List<StaffRequest> getAllPendingInTournament(@Param("tournamentId") Long tournamentId);
+    List<StaffRequest> getAllApplicationsPendingInTournament(@Param("tournamentId") Long tournamentId);
+
+    @Query(
+            "FROM StaffRequest r " +
+            "WHERE r.recipient.id=:recipientId AND r.tournament.id=:tournamentId AND r.role.id=:roleId " +
+            "AND r.status.name = 'pending'"
+    )
+    Optional<StaffRequest> getPendingInvite(
+            @Param("recipientId") Long recipientId,
+            @Param("tournamentId") Long tournamentId,
+            @Param("roleId") Long roleId
+    );
 }
