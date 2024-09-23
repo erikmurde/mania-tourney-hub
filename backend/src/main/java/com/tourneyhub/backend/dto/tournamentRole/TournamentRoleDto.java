@@ -11,7 +11,11 @@ public class TournamentRoleDto {
 
     private Long tournamentId;
 
-    private String name;
+    private String tournament;
+
+    private String role;
 
     private boolean canRegWithRole;
+
+    private boolean concluded;
 }

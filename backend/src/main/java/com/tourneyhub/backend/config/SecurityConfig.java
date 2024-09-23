@@ -89,7 +89,8 @@ public class SecurityConfig {
                                 "/api/mapTypes/**",
                                 "/api/stages/tournament/**",
                                 "/api/maps/stage/{stageId}/inMappool",
-                                "/api/users/{tournamentId}/**"
+                                "/api/users/{tournamentId}/**",
+                                "/api/tournaments/**"
                         ).permitAll()
                         .anyRequest().authenticated()
                 )

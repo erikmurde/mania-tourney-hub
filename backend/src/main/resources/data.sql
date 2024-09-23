@@ -277,31 +277,115 @@ INSERT INTO country (name, iso2) VALUES ('Zimbabwe', 'ZW');
 -- TOURNAMENTS -------------------------------------------------------------------------------------------------------
 
 INSERT INTO tournament (
-    applications_open, concluded, max_player_rank, max_team_size, min_player_rank, min_team_size, players_public,
-    protects, published, regs_open, warmups, application_deadline, reg_deadline, code, name, description, banner,
-    information
+    applications_open, concluded, max_player_rank, max_team_size, min_player_rank, min_team_size, players_published,
+    protects, published, regs_open, warmups, key_count, application_deadline, reg_deadline, code, name, description,
+    banner, reg_message, information
 )
 VALUES (
-    true, false, 0, 1, 0, 1, true, true, true, true, true,
+    true, false, 0, 1, 0, 1, true, true, true, true, true, 6,
     '2024-10-23T07:00:00.000Z', '2024-10-16T07:00:00.000Z', '6KAST', '6K Autumn Showdown',
     '6K Autumn Showdown Tournament (6KAST) is an osu!mania Free for all 1v1 Double-Elimination tournament focused ' ||
     'on the 6 key gamemode.This is one of the first ever 6 key focused tournament ever hosted on osu!mania. ' ||
     'So we hope you enjoy your experience on the newest tourney keymode meta!',
     'https://i.ppy.sh/333a6da130763d34fb218cd7d3dc9cd24bb25a35/68747470733a2f2f696d6' ||
     '775722d617263686976652e7070792e73682f646973636f72642f31313134393431383635363136' ||
-    '3232303137312d313131363635313138383330323133353330382d415354364b5f42616e6e65725f52656374616e676c652e706e67', ''
+    '3232303137312d313131363635313138383330323133353330382d415354364b5f42616e6e65725f52656374616e676c652e706e67',
+    'Please join our discord server before registering.',
+    '<p><span class="ql-size-huge">Schedule</span></p><ul><li><strong>Registration Phase</strong> - ' ||
+    '8 September to 22 September</li><li><strong>Screening Phase</strong> - 22 September to 7 October</li><li>' ||
+    '<strong>Qualifiers Showcase</strong> - October 8/9</li><li><strong>Qualifiers + Qualifiers Result + RO64 ' ||
+    'Showcase</strong> - October 14 to 16</li><li><strong>RO64 + RO32 Showcase</strong> - October 21 to 23</li>' ||
+    '<li><strong>RO32 + RO16 Showcase</strong> - October 28 to 30</li><li><strong>RO16 + Quaterfinals Showcase' ||
+    '</strong> - November 4 to 6</li><li><strong>Quarterfinals + Semifinals Showcase</strong> - November 11 to 13' ||
+    '</li><li><strong>Semifinals + Finals Showcase</strong> - November 18 to 20</li><li><strong>Finals + Grand ' ||
+    'Finals Showcase</strong> - November 25 to 26</li><li><strong>Grand Finals + Conclusion</strong> - December ' ||
+    '2 to 3</li></ul><p><br></p><p><br></p><p><span class="ql-size-huge">Registrations</span></p><p><br></p><p>' ||
+    '<span class="ql-size-large" style="color: rgb(246, 166, 100);">To play in the tournament, you must follow ' ||
+    'these rules:</span></p><ol><li>You must be in the 6K Autumn Showdown Tournament Discord Server</li>' ||
+    '<li>Registered for the tournament by clicking the register button on the home page.</li><li>Have not violated ' ||
+    'the community guidelines over the past 12 months.</li></ol><p><br></p><p><span class="ql-size-large" ' ||
+    'style="color: rgb(246, 166, 100);">To staff for the tournament:</span></p><ol><li>You must be in ' ||
+    'the 6K Autumn Showdown Tournament Discord Server</li><li>Completed and submitted a staff application with the ' ||
+    'requested role(s).</li><li>You may not play in the tournament unless you''re exclusively going to help as a ' ||
+    'streamer and/or commentator.</li><li>Once eliminated, you may apply as a playtester or referee.</li></ol><p>' ||
+    '<br></p><p><br></p><p><span class="ql-size-huge">Rules</span></p><p><br></p><p><span class="ql-size-large" ' ||
+    'style="color: rgb(246, 166, 100);">During the match:</span></p><p><br></p><p>- In advance, players will send ' ||
+    'their warmups (if they have) to the referees in-charge of their match. Warmups must be 6K and be below the ' ||
+    '4:00 drain time.</p><p>- After warmup has concluded, both players will run the !roll command in the lobby ' ||
+    'chat. The player with the higher roll will be able to choose whether to go first or second.</p><p>- The ' ||
+    'protect/ban phase will be as followed:As an example, if Player A goes first...</p><p>Player A: Protect -&gt; ' ||
+    'Player B: Protect -&gt; Player B: Ban -&gt; Player A: Ban -&gt; Player A: Pick</p><p>- During the match, both ' ||
+    'the players will alternate in picks depending on who picked first, and play the picked map together. The ' ||
+    'player with the higher score will obtain a point.</p><p><br></p><p><span class="ql-size-large" ' ||
+    'style="color: rgb(246, 166, 100);">Additional Rules:</span></p><p><br></p><p><span style="color: ' ||
+    'rgb(237, 143, 94);">Mod settings:</span></p><p><br></p><p>- The score system on all matches will be on Score ' ||
+    'V2</p><p>- All maps are played with FreeMod turned ON. Visual mods such as Mirror, Hidden, Fade-In, ' ||
+    'Flashlight, and any combination of these mods are allowed. NoFail is allowed too.</p><p><br></p><p><span ' ||
+    'style="color: rgb(237, 143, 94);">Punctuality:</span></p><p><br></p><p><span style="color: ' ||
+    'rgb(255, 255, 255);">- Players are required to be present before their match time. If one player isn''t ' ||
+    'present during the match time, a 10 minute grace period will start by the referee.</span></p><p>- If the ' ||
+    'player fails to arrive before the 10 minute grace period, the match will be considered as a Win By ' ||
+    'Default to the present player.</p><p><br></p><p><span style="color: rgb(237, 143, 94);">Protect/Ban/Pick ' ||
+    'Procedures:</span></p><p><br></p><p><span style="color: rgb(255, 255, 255);">- Players will be given 2 ' ||
+    'minutes to protect and ban a map from their choosing. Later on, players will have 2 minutes to pick a map ' ||
+    'and get ready for the map.</span></p><p>- Any player that fails to Protect/Ban/Pick during the given time, ' ||
+    'the referee will choose a map at random to be picked in behalf of the player by using the !roll command.' ||
+    '</p><p><br></p><p><span style="color: rgb(237, 143, 94);">Disconnection:</span></p><p><br></p><p>- If any ' ||
+    'player gets disconnected from a map during the first 30 seconds of the gameplay, they can ask for the map to ' ||
+    'be aborted and replayed.</p><p>This is only available once per match for each player, any subsequent ' ||
+    'disconnects will award the other player a point.</p><p>- If any player gets disconnected from a map after the ' ||
+    'first 30 seconds of the gameplay, the point will be awarded to the other player.</p><p>- If any player is ' ||
+    'unable to return to the lobby within 10 minutes, the match will be considered a win for the other player.' ||
+    '</p><p>- If both players are disconnected, the player that comes back will be saved from losing. If the other ' ||
+    'player comes back before their grace period ends, the match will continue.</p><p>This will only be available ' ||
+    'once. If subsequent cases happen, the player that joins back will be considered the winner of the match.' ||
+    '</p><p>- If both players are unable to reconnect to the lobby in time, the current standing will determine the ' ||
+    'winner of the match.</p><p>In the case of a tie, the higher seeded player will be awarded the win.</p><p>- The ' ||
+    'hosts reserve the right to be more or less lenient at their sole discretion.</p><p><br></p><p><br></p><p><span ' ||
+    'class="ql-size-huge">Structure</span></p><p><br></p><p><span class="ql-size-large" style="color: rgb(246, ' ||
+    '166, 100);">Qualifiers</span></p><p><br></p><p>The <strong>Qualifiers Stage</strong> will happen in the first ' ||
+    'week of the tournament play. All of the registered players who were not screened out during screening are ' ||
+    'eligible to</p><p>participate in the Qualifiers. Each player can play the Qualifiers in sequence up to 2 times ' ||
+    '(Players may choose to not play a 2nd time).</p><p><br></p><p>The <strong>Qualifiers Pool format</strong> ' ||
+    'will have <strong>8 stages</strong>, and they are as followed:</p><p>Stage 1: Accuracy/Tech</p><p>Stage 2: ' ||
+    'Speed/Delay</p><p>Stage 3: Early Mixed Hybrid</p><p>Stage 4: LN Release</p><p>Stage 5: Mixed Rice</p><p>' ||
+    'Stage 6: Chordstream</p><p>Stage 7: LN Density</p><p>Stage 8: Complex Mixed Hybrid</p><p><br></p><p><strong>' ||
+    'The Seeding Calculation</strong> will start after Qualifiers concluded. If you played the Qualifiers twice, ' ||
+    'the higher score for each map will be taken.</p><p>This will determine the player''s seed and decide whether ' ||
+    'they will proceed on to the next stage.</p><p>Each player''s seed is determined by how well they perform at ' ||
+    'each map. The 8 maps will be averaged out and any players that performed well for all of the maps</p><p>will ' ||
+    'get a higher seeding. Only the Top 64 seed will proceed on to the bracket stage, while the lower seeds will ' ||
+    'be eliminated.</p><p><br></p><p><span class="ql-size-large" style="color: rgb(246, 166, 100);">Bracket ' ||
+    'Stages</span></p><p><br></p><p><strong>Bracket Matches</strong> will arrange all the players into a standard ' ||
+    'Double Elimination Bracket, where 1st seed will face against 64th seed, 2nd seed will face against 63rd seed,' ||
+    '</p><p>and so on.</p><p><br></p><p><strong>The Mappool format</strong> for the bracket stages will be as ' ||
+    'followed:</p><p>Round of 64: 10 Maps (Best of 7)</p><p>Round of 32: 12 Maps (Best of 9)</p><p>Round of 16: ' ||
+    '12 Maps (Best of 9)</p><p>Quarterfinals: 14 Maps (Best of 11)</p><p>Semifinals: 14 Maps (Best of 11)</p><p>' ||
+    'Finals: 16 Maps (Best of 13)</p><p>Grand Finals: 16 Maps (Best of 13)</p><p><br></p><p><br></p><p><span ' ||
+    'class="ql-size-huge">Prizes</span></p><p><br></p><p class="ql-align-center"><strong ' ||
+    'class="ql-size-large">1st Place</strong><span class="ql-size-large"> - Six Month osu! Supporter ' ||
+    '[First Place Badge]</span></p><p class="ql-align-center"><strong class="ql-size-large">2nd Place' ||
+    '</strong><span class="ql-size-large"> - Four Month osu! Supporter</span></p><p class="ql-align-center">' ||
+    '<strong class="ql-size-large">3rd Place </strong><span class="ql-size-large">- Two Month osu! Supporter' ||
+    '</span></p><p class="ql-align-center"><strong class="ql-size-large">4th to 6th</strong><span ' ||
+    'class="ql-size-large"> - One Month osu! Supporter</span></p><p class="ql-align-center"><br></p><p ' ||
+    'class="ql-align-center">To submit a formal complaint to the Official Tournament Committee about 6KAST,' ||
+    '</p><p class="ql-align-center">please access the link below: <a ' ||
+    'href="https://pif.ephemeral.ink/tournament-reports" rel="noopener noreferrer" target="_blank" ' ||
+    'style="color: rgb(100, 181, 246);"><u>https://pif.ephemeral.ink/tournament-reports</u></a></p>'
 );
 INSERT INTO tournament (
-    applications_open, concluded, max_player_rank, max_team_size, min_player_rank, min_team_size, players_public,
-    protects, published, regs_open, warmups, application_deadline, reg_deadline, code, name, description, banner,
-    information
+    applications_open, concluded, max_player_rank, max_team_size, min_player_rank, min_team_size, players_published,
+    protects, published, regs_open, warmups, key_count, application_deadline, reg_deadline, code, name, description,
+    banner, reg_message, information
 )
 VALUES (
-    true, false, 0, 4, 0, 6, true, false, true, true, false,
+    true, false, 0, 4, 0, 6, true, false, true, true, false, 4,
     '2024-10-16T07:00:00.000Z', '2024-11-21T08:00:00.000Z', '4KMWC2023', 'osu!mania 4K World Cup 2023',
     'The osu!mania 4K World Cup 2023 (MWC 4K 2023) was a country-based osu!mania tournament hosted by the osu! ' ||
     'team. It was the seventh installment of the osu!mania 4K World Cup.',
-    'https://assets.ppy.sh/tournament-banners/official/mwc4k2023.jpg', ''
+    'https://assets.ppy.sh/tournament-banners/official/mwc4k2023.jpg',
+    'Please join our discord server before registering.', ''
 );
 
 -- STAGES -------------------------------------------------------------------------------------------------------------
@@ -1632,3 +1716,9 @@ VALUES (
        );
 INSERT INTO staff_request (recipient_id, role_id, sender_id, status_id, tournament_id, description)
 VALUES (1, 9, 2, 1, 1, 'Come join my tournament as a commentator because of reasons.');
+
+-- LINKS --------------------------------------------------------------------------------------------------------------
+
+INSERT INTO link (tournament_id, name, link) VALUES (1, 'Youtube', 'https://www.youtube.com');
+INSERT INTO link (tournament_id, name, link) VALUES (1, 'Twitch', 'https://www.twitch.tv');
+INSERT INTO link (tournament_id, name, link) VALUES (2, 'Discord', 'https://www.discord.com');

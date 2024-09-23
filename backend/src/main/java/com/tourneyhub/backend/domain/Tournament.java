@@ -1,10 +1,7 @@
 package com.tourneyhub.backend.domain;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -43,6 +40,10 @@ public class Tournament extends BaseEntityWithName {
     @Min(0)
     private int maxPlayerRank;
 
+    @Min(1)
+    @Max(10)
+    private int keyCount;
+
     @NotNull
     private boolean concluded;
 
@@ -50,7 +51,7 @@ public class Tournament extends BaseEntityWithName {
     private boolean published;
 
     @NotNull
-    private boolean playersPublic;
+    private boolean playersPublished;
 
     @NotNull
     private boolean protects;
@@ -71,7 +72,11 @@ public class Tournament extends BaseEntityWithName {
     private Date applicationDeadline;
 
     @NotNull
+    @Column(length = 1000000)
     private String information;
+
+    @NotNull
+    private String regMessage;
 
     @ElementCollection
     @CollectionTable(name = "link")
