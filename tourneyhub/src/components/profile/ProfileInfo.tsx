@@ -22,7 +22,7 @@ const ProfileInfo = ({user}: {user: UserDto}) => {
                             color='inherit'
                             underline='hover'
                             >
-                            {user.name} #{user.rank}
+                            {user.name} {user.rank > 0 ? `#${user.rank}` : ''}
                         </Link>
                     </Typography>
                 </Grid>

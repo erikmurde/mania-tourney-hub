@@ -6,7 +6,6 @@ import { StaffInviteService } from '../../../services/staffInviteService';
 import ConfirmationDialog from '../../tournament/dialog/ConfirmationDialog';
 import { useContext } from 'react';
 import { AuthContext } from '../../../routes/Root';
-import { AuthService } from '../../../services/authService';
 import { ACCEPTED, REJECTED, ROLE_REG } from '../../../constants';
 
 interface IProps {
@@ -17,30 +16,26 @@ interface IProps {
 
 const ProfileInviteCard = ({invite, navLink, updateState}: IProps) => {
     const { user } = useContext(AuthContext);
-    const service = new StaffInviteService();
 
-    if (!user || user.id !== invite.recipientId) {
+    if (!user) {
         return <></>; 
     }
 
     const onAccept = async() => {
-        invite.status = ACCEPTED;
         user.roles.push({
             tournamentId: invite.tournamentId,
             name: invite.role,
             canRegWithRole: ROLE_REG.get(invite.role)!
         });
-        await new AuthService().edit(user.id, user);
-        edit();
+        editStatus(ACCEPTED);
     }
 
-    const onReject = () => {
-        invite.status = REJECTED;
-        edit();
-    }
-
-    const edit = async() => {
-        await service.edit(invite.id, invite);
+    const editStatus = async(status: string) => {
+        await new StaffInviteService().edit(invite.id, {
+            recipientPlayerId: user.playerId.toString(),
+            recipientId: user.id.toString(),
+            status: status
+        });
         updateState();
     }
 
@@ -67,7 +62,7 @@ const ProfileInviteCard = ({invite, navLink, updateState}: IProps) => {
                 <ConfirmationDialog 
                     title={'Are you sure you wish to reject this invite?'} 
                     actionTitle={'Reject'} 
-                    action={onReject}
+                    action={() => editStatus(REJECTED)}
                     btnProps={{ title: 'Reject', color: 'error' }}/>
             </StyledCardActions>
         </Card>

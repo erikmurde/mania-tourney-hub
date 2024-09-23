@@ -1,8 +1,9 @@
 import { StaffInviteCreateDto } from '../dto/staff/invite/StaffInviteCreateDto';
 import { StaffInviteDto } from '../dto/staff/invite/StaffInviteDto';
+import { StaffInviteEditDto } from '../dto/staff/invite/StaffInviteEditDto';
 import { ApiEntityService } from './base/apiEntityService';
 
-export class StaffInviteService extends ApiEntityService<StaffInviteDto, StaffInviteCreateDto, StaffInviteDto> {
+export class StaffInviteService extends ApiEntityService<StaffInviteDto, StaffInviteCreateDto, StaffInviteEditDto> {
     constructor() {
         super('staffInvites');
     }
