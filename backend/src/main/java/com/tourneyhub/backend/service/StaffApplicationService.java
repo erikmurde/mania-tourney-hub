@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
+import java.util.Objects;
 
 import static com.tourneyhub.backend.helper.Constants.ROLE_CAN_REG;
 
@@ -66,7 +67,7 @@ public class StaffApplicationService {
         staffRequestRepository.save(mapper.mapToEntity(dto, status));
     }
 
-    public void updateStatus(Long staffApplicationId,StaffApplicationEditDto dto, Integer playerId) {
+    public void updateStatus(Long staffApplicationId, StaffApplicationEditDto dto, Integer playerId) {
         StaffRequest application = staffRequestRepository
                 .findById(staffApplicationId)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
@@ -75,7 +76,7 @@ public class StaffApplicationService {
                 .findById(dto.getStatusId())
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
-        boolean isOwner = playerId.equals(dto.getSenderPlayerId());
+        boolean isOwner = Objects.equals(playerId, dto.getSenderPlayerId());
         boolean retracting = status.getName().equals("retracted");
 
         if (!application.getStatus().getName().equals("pending")) {
