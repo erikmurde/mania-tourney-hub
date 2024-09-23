@@ -1,7 +1,5 @@
 import { Card, Divider, Grid, Typography, useTheme } from '@mui/material';
 import { StyledCardContent } from '../../styled/StyledCardContent';
-import { TournamentDto } from '../../../dto/tournament/TournamentDto';
-import { TournamentService } from '../../../services/tournamentService';
 import { useEffect, useState } from 'react';
 import { GFX, PLAYER } from '../../../constants';
 import { TeamDto } from '../../../dto/team/TeamDto';
@@ -12,56 +10,56 @@ import { TournamentRoleDto } from '../../../dto/tournamentRole/TournamentRoleDto
 import { TournamentStatsDto } from '../../../dto/TournamentStatsDto';
 
 interface IProps {
-    tournamentId: number,
-    userId: number,
     roles: TournamentRoleDto[],
     stats: TournamentStatsDto
 }
 
-const ProfileRoleCard = ({tournamentId, userId, roles, stats}: IProps) => {
+const ProfileRoleCard = ({roles, stats}: IProps) => {
     const theme = useTheme();
-    const [tourney, setTourney] = useState({} as TournamentDto);
     const [userTeam, setUserTeam] = useState(null as TeamDto | null);
 
     useEffect(() => {
-        new TournamentService()
-            .getEntity(tournamentId)
-            .then(tourney => setTourney(tourney));
-        new TeamService()
-            .getUserTeam(userId, tournamentId)
-            .then(team => setUserTeam(team));
-    }, []);
+        if (stats.teamId) {
+            new TeamService()
+                .getEntity(stats.teamId)
+                .then(team => setUserTeam(team));
+        }
+    }, [stats.teamId]);
 
     const staffRoles = roles
-        .filter(role => role.name !== PLAYER)
-        .map(role => 
-            role.name === GFX ? 'Graphics designer' : role.name[0].toUpperCase() + role.name.slice(1)
+        .filter(tourneyRole => tourneyRole.role !== PLAYER)
+        .map(tourneyRole => tourneyRole.role === GFX 
+            ? 'Graphics designer' 
+            : tourneyRole.role[0].toUpperCase() + tourneyRole.role.slice(1)
         );
-    
+
+    const tourneyName = roles.length > 0 ? roles[0].tournament : '';
+    const concluded = roles.length > 0 ? roles[0].concluded : false;
+
     return (  
         <Card elevation={12}>
             <StyledCardContent>
                 <Grid container>
                     <Grid item flexGrow={1}>
                         <Typography fontWeight={500}>
-                            {tourney.name}
+                            {tourneyName}
                         </Typography>
                     </Grid>
                     <Grid item>
                         <Typography 
                             fontWeight={700} 
-                            color={tourney.done ? theme.palette.error.main : theme.palette.success.main}
+                            color={concluded ? theme.palette.error.main : theme.palette.success.main}
                             >
-                            {tourney.done ? 'ENDED' : 'ONGOING'}
+                            {concluded ? 'ENDED' : 'ONGOING'}
                         </Typography>
                     </Grid>
                 </Grid>
                 <Divider sx={{ marginTop: 1, marginBottom: 1 }}/>
                 <StaffRoles 
-                    tourneyDone={tourney.done} 
+                    tourneyDone={concluded} 
                     staffRoles={staffRoles}/>
                 <PlayerRoles 
-                    tourneyDone={tourney.done} 
+                    tourneyDone={concluded} 
                     teamName={userTeam?.name}
                     seeding={userTeam ? userTeam.seed : stats.seed} 
                     placement={userTeam ? userTeam.placement : stats.placement}/>

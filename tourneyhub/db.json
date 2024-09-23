@@ -1,645 +1,8 @@
 {
-  "tournaments": [
-    {
-      "id": 1,
-      "name": "6K Autumn Showdown",
-      "code": "6KAST",
-      "description": "6K Autumn Showdown Tournament (6KAST) is an osu!mania Free for all 1v1 Double-Elimination tournament focused on the 6 key gamemode.This is one of the first ever 6 key focused tournament ever hosted on osu!mania. So we hope you enjoy your experience on the newest tourney keymode meta!",
-      "banner": "https://i.ppy.sh/333a6da130763d34fb218cd7d3dc9cd24bb25a35/68747470733a2f2f696d6775722d617263686976652e7070792e73682f646973636f72642f313131343934313836353631363232303137312d313131363635313138383330323133353330382d415354364b5f42616e6e65725f52656374616e676c652e706e67",
-      "public": true,
-      "participantsPublic": true,
-      "done": false,
-      "keys": 6,
-      "minTeamSize": 1,
-      "maxTeamSize": 1,
-      "minPlayerRank": 0,
-      "maxPlayerRank": 0,
-      "protects": true,
-      "warmups": true,
-      "regOpen": true,
-      "applicationOpen": true,
-      "regDeadline": "2024-10-16T07:00:00.000Z",
-      "applicationDeadline": "2024-10-23T07:00:00.000Z",
-      "links": [
-        {
-          "name": "Youtube",
-          "link": "https://youtube.com"
-        },
-        {
-          "name": "Test",
-          "link": "https://www.twitch.tv"
-        }
-      ],
-      "countries": [],
-      "regMessage": "Please join our discord server before registering.",
-      "information": {
-        "ops": [
-          {
-            "attributes": {
-              "size": "huge"
-            },
-            "insert": "Schedule"
-          },
-          {
-            "insert": "\n\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": " Registration Phase"
-          },
-          {
-            "insert": "  -  8 September to 22 September"
-          },
-          {
-            "attributes": {
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": " Screening Phase"
-          },
-          {
-            "insert": "  -  22 September to 7 October"
-          },
-          {
-            "attributes": {
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": " Qualifiers Showcase"
-          },
-          {
-            "insert": "  -  October 8/9"
-          },
-          {
-            "attributes": {
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": " Qualifiers + Qualifiers Result + RO64 Showcase"
-          },
-          {
-            "insert": "  -  October 14 to 16"
-          },
-          {
-            "attributes": {
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": " RO64 + RO32 Showcase"
-          },
-          {
-            "insert": "  -  October 21 to 23"
-          },
-          {
-            "attributes": {
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": " RO32 + RO16 Showcase"
-          },
-          {
-            "insert": "  -  October 28 to 30"
-          },
-          {
-            "attributes": {
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": " RO16 + Quarterfinals Showcase"
-          },
-          {
-            "insert": "  -  November 4 to 6"
-          },
-          {
-            "attributes": {
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": " Quarterfinals + Semifinals Showcase"
-          },
-          {
-            "insert": "  -  November 11 to 13"
-          },
-          {
-            "attributes": {
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": " Semifinals + Finals Showcase"
-          },
-          {
-            "insert": "  -  November 18 to 20"
-          },
-          {
-            "attributes": {
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": " Finals + Grand Finals Showcase"
-          },
-          {
-            "insert": "  -  November 25 to 26"
-          },
-          {
-            "attributes": {
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": " Grand Finals + Conclusion"
-          },
-          {
-            "insert": "  -  December 2 to 3"
-          },
-          {
-            "attributes": {
-              "list": "bullet"
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "size": "huge"
-            },
-            "insert": "Registrations"
-          },
-          {
-            "insert": "\n\n"
-          },
-          {
-            "attributes": {
-              "color": "#f6a664",
-              "size": "large"
-            },
-            "insert": "To play in the tournament, you must follow these rules:"
-          },
-          {
-            "insert": "\n\nYou must be in the 6K Autumn Showdown Tournament Discord Server"
-          },
-          {
-            "attributes": {
-              "list": "ordered"
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "Registered for the tournament by clicking the register button on the home page."
-          },
-          {
-            "attributes": {
-              "list": "ordered"
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "Have not violated the community guidelines over the past 12 months."
-          },
-          {
-            "attributes": {
-              "list": "ordered"
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "size": "large",
-              "color": "#f6a664"
-            },
-            "insert": "To staff for the tournament:"
-          },
-          {
-            "insert": "\n\nYou must be in the 6K Autumn Showdown Tournament Discord Server"
-          },
-          {
-            "attributes": {
-              "list": "ordered"
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "Completed and submitted a staff application with the requested role(s)."
-          },
-          {
-            "attributes": {
-              "list": "ordered"
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "You may not play in the tournament unless you're exclusively going to help as a streamer and/or commentator."
-          },
-          {
-            "attributes": {
-              "list": "ordered"
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "Once eliminated, you may apply as a playtester or referee."
-          },
-          {
-            "attributes": {
-              "list": "ordered"
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "size": "huge"
-            },
-            "insert": "Rules"
-          },
-          {
-            "insert": "\n\n"
-          },
-          {
-            "attributes": {
-              "size": "large",
-              "color": "#f6a664"
-            },
-            "insert": "During the match:"
-          },
-          {
-            "insert": "\n\n- In advance, players will send their warmups (if they have) to the referees in-charge of their match. Warmups must be 6K and be below the 4:00 drain time.\n- After warmup has concluded, both players will run the !roll command in the lobby chat. The player with the higher roll will be able to choose whether to go first or second.\n- The protect/ban phase will be as followed: As an example, if Player A goes first...\nPlayer A: Protect -> Player B: Protect -> Player B: Ban -> Player A: Ban -> Player A: Pick\n- During the match, both the players will alternate in picks depending on who picked first, and play the picked map together. The player with the higher score will obtain a point.\n\n"
-          },
-          {
-            "attributes": {
-              "size": "large",
-              "color": "#f6a664"
-            },
-            "insert": "Additional Rules:"
-          },
-          {
-            "insert": "\n\n"
-          },
-          {
-            "attributes": {
-              "color": "#ed8f5e"
-            },
-            "insert": "Mod settings:"
-          },
-          {
-            "insert": "\n\n- The score system on all matches will be on Score V2\n- All maps are played with FreeMod turned ON. Visual mods such as Mirror, Hidden, Fade-In, Flashlight, and any combination of these mods are allowed. NoFail is allowed too.\n\n"
-          },
-          {
-            "attributes": {
-              "color": "#ed8f5e"
-            },
-            "insert": "Punctuality:"
-          },
-          {
-            "insert": "\n\n- Players are required to be present before their match time. If one player isn't present during the match time, a 10 minute grace period will start by the referee.\n- If the player fails to arrive before the 10 minute grace period, the match will be considered as a Win By Default to the present player.\n\n"
-          },
-          {
-            "attributes": {
-              "color": "#ed8f5e"
-            },
-            "insert": "Protect/Ban/Pick Procedures:"
-          },
-          {
-            "insert": "\n\n- Players will be given 2 minutes to protect and ban a map from their choosing. Later on, players will have 2 minutes to pick a map and get ready for the map.\n- Any player that fails to Protect/Ban/Pick during the given time, the referee will choose a map at random to be picked in behalf of the player by using the !roll command.\n\n"
-          },
-          {
-            "attributes": {
-              "color": "#ed8f5e"
-            },
-            "insert": "Disconnection:"
-          },
-          {
-            "insert": "\n\n- If any player gets disconnected from a map during the first 30 seconds of the gameplay, they can ask for the map to be aborted and replayed. \nThis is only available once per match for each player, any subsequent disconnects will award the other player a point.\n- If any player gets disconnected from a map after the first 30 seconds of the gameplay, the point will be awarded to the other player.\n- If any player is unable to return to the lobby within 10 minutes, the match will be considered a win for the other player.\n- If both players are disconnected, the player that comes back will be saved from losing. If the other player comes back before their grace period ends, the match will continue. \nThis will only be available once. If subsequent cases happen, the player that joins back will be considered the winner of the match.\n- If both players are unable to reconnect to the lobby in time, the current standing will determine the winner of the match. \nIn the case of a tie, the higher seeded player will be awarded the win.\n- The hosts reserve the right to be more or less lenient at their sole discretion.\n\n"
-          },
-          {
-            "attributes": {
-              "size": "huge"
-            },
-            "insert": "Structure"
-          },
-          {
-            "insert": "\n\n"
-          },
-          {
-            "attributes": {
-              "size": "large",
-              "color": "#f6a664"
-            },
-            "insert": "Qualifiers"
-          },
-          {
-            "insert": "\n\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "The Qualifiers Stage"
-          },
-          {
-            "insert": " will happen in the first week of the tournament play. All of the registered players who were not screened out during screening are eligible to \nparticipate in the Qualifiers. Each player can play the Qualifiers in sequence up to 2 times (Players may choose to not play a 2nd time).\n\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "The Qualifiers Pool format"
-          },
-          {
-            "insert": " will have "
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "8 stages"
-          },
-          {
-            "insert": ", and they are as followed:\nStage 1: Accuracy/Tech\nStage 2: Speed/Delay\nStage 3: Early Mixed Hybrid\nStage 4: LN Release\nStage 5: Mixed Rice\nStage 6: Chordstream\nStage 7: LN Density\nStage 8: Complex Mixed Hybrid\n\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "The seed Calculation"
-          },
-          {
-            "insert": " will start after Qualifiers concluded. If you played the Qualifiers twice, the higher score for each map will be taken. \nThis will determine the player's seed and decide whether they will proceed on to the next stage.\nEach player's seed is determined by how well they perform at each map. The 8 maps will be averaged out and any players that performed well for all of the maps \nwill get a higher seed. Only the Top 64 seed will proceed on to the bracket stage, while the lower seeds will be eliminated.\n\n"
-          },
-          {
-            "attributes": {
-              "size": "large",
-              "color": "#f6a664"
-            },
-            "insert": "Bracket Stages"
-          },
-          {
-            "insert": "\n\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "Bracket Matches"
-          },
-          {
-            "insert": " will arrange all the players into a standard Double Elimination Bracket, where 1st seed will face against 64th seed, 2nd seed will face against 63rd seed, \nand so on.\n\n"
-          },
-          {
-            "attributes": {
-              "bold": true
-            },
-            "insert": "The Mappool format"
-          },
-          {
-            "insert": " for the bracket stages will be as followed:\nRound of 64: 10 Maps (Best of 7)\nRound of 32: 12 Maps (Best of 9)\nRound of 16: 12 Maps (Best of 9)\nQuarterfinals: 14 Maps (Best of 11)\nSemifinals: 14 Maps (Best of 11)\nFinals: 16 Maps (Best of 13)\nGrand Finals: 16 Maps (Best of 13)\n\n"
-          },
-          {
-            "attributes": {
-              "size": "huge"
-            },
-            "insert": "Prizes"
-          },
-          {
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "size": "large",
-              "bold": true
-            },
-            "insert": "1st Place "
-          },
-          {
-            "attributes": {
-              "size": "large"
-            },
-            "insert": "- Six Month osu! Supporter [First Place Badge]"
-          },
-          {
-            "attributes": {
-              "align": "center"
-            },
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "size": "large",
-              "bold": true
-            },
-            "insert": "2nd Place"
-          },
-          {
-            "attributes": {
-              "size": "large"
-            },
-            "insert": " - Four Month osu! Supporter"
-          },
-          {
-            "attributes": {
-              "align": "center"
-            },
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "size": "large",
-              "bold": true
-            },
-            "insert": "3rd Place"
-          },
-          {
-            "attributes": {
-              "size": "large"
-            },
-            "insert": " - Two Month osu! Supporter"
-          },
-          {
-            "attributes": {
-              "align": "center"
-            },
-            "insert": "\n"
-          },
-          {
-            "attributes": {
-              "size": "large",
-              "bold": true
-            },
-            "insert": "4th to 6th"
-          },
-          {
-            "attributes": {
-              "size": "large"
-            },
-            "insert": " - One Month osu! Supporter"
-          },
-          {
-            "attributes": {
-              "align": "center"
-            },
-            "insert": "\n\n"
-          },
-          {
-            "insert": "To submit a formal complaint to the Official Tournament Committee about 6KAST, "
-          },
-          {
-            "attributes": {
-              "align": "center"
-            },
-            "insert": "\n"
-          },
-          {
-            "insert": "please access the link below: "
-          },
-          {
-            "attributes": {
-              "link": "https://pif.ephemeral.ink/tournament-reports"
-            },
-            "insert": "https://pif.ephemeral.ink/tournament-reports"
-          },
-          {
-            "attributes": {
-              "align": "center"
-            },
-            "insert": "\n"
-          }
-        ]
-      }
-    },
-    {
-      "id": 2,
-      "name": "osu!mania 4K World Cup 2023",
-      "code": "4KMWC2023",
-      "description": "The osu!mania 4K World Cup 2023 (MWC 4K 2023) was a country-based osu!mania tournament hosted by the osu! team. It was the seventh installment of the osu!mania 4K World Cup.",
-      "banner": "https://assets.ppy.sh/tournament-banners/official/mwc4k2023.jpg",
-      "public": true,
-      "participantsPublic": true,
-      "done": false,
-      "keys": 4,
-      "minTeamSize": 4,
-      "maxTeamSize": 6,
-      "minPlayerRank": 0,
-      "maxPlayerRank": 0,
-      "protects": false,
-      "warmups": false,
-      "regOpen": true,
-      "applicationOpen": true,
-      "regDeadline": "2024-11-21T08:00:00.000Z",
-      "applicationDeadline": "2024-10-16T07:00:00.000Z",
-      "links": [
-        {
-          "name": "discord",
-          "link": "https://www.youtube.com"
-        }
-      ],
-      "countries": [],
-      "regMessage": "Please join our discord server before registering.",
-      "information": {
-        "ops": [
-          {
-            "insert": "\n"
-          }
-        ]
-      }
-    },
-    {
-      "id": 3,
-      "name": "4K Test tournament for testing",
-      "code": "TEST",
-      "description": "This is just a test tournament for testing functionality :)",
-      "banner": "https://static.vecteezy.com/system/resources/previews/024/388/059/large_2x/space-wallpaper-banner-background-stunning-view-of-a-cosmic-galaxy-with-planets-and-space-objects-elements-of-this-image-furnished-by-nasa-generate-ai-free-photo.jpg",
-      "public": true,
-      "participantsPublic": true,
-      "done": false,
-      "keys": 4,
-      "minTeamSize": 2,
-      "maxTeamSize": 2,
-      "minPlayerRank": 10,
-      "maxPlayerRank": 1000,
-      "protects": false,
-      "warmups": true,
-      "regOpen": true,
-      "applicationOpen": false,
-      "regDeadline": "2024-09-25T21:00:00.000Z",
-      "applicationDeadline": "2024-10-22T21:00:00.000Z",
-      "links": [
-        {
-          "name": "youtube",
-          "link": "https://www.youtube.com"
-        }
-      ],
-      "countries": [
-        "Indonesia",
-        "Estonia",
-        "Germany",
-        "Denmark",
-        "France"
-      ],
-      "information": {},
-      "regMessage": "This is a test register message. If you see this then it's working."
-    }
-  ],
   "matches": [
     {
       "Id": 0,
-      "stageId": 4,
+      "stageId": "5",
       "code": "98",
       "time": "2023-11-10T13:00:00.000Z",
       "mpLink": "https://osu.ppy.sh/community/matches/111240607",
@@ -666,7 +29,7 @@
     },
     {
       "Id": 1,
-      "stageId": 4,
+      "stageId": "5",
       "code": "103",
       "time": "2023-11-11T08:00:00.000Z",
       "mpLink": "",
@@ -693,7 +56,7 @@
     },
     {
       "Id": 2,
-      "stageId": 4,
+      "stageId": "5",
       "code": "110",
       "time": "2023-11-11T12:00:00.000Z",
       "mpLink": "",
@@ -720,7 +83,7 @@
     },
     {
       "Id": 3,
-      "stageId": 4,
+      "stageId": "5",
       "code": "99",
       "time": "2023-11-11T12:00:00.000Z",
       "mpLink": "",
@@ -747,7 +110,7 @@
     },
     {
       "Id": 4,
-      "stageId": 4,
+      "stageId": "5",
       "code": "100",
       "time": "2023-11-11T14:00:00.000Z",
       "mpLink": "",
@@ -774,7 +137,7 @@
     },
     {
       "Id": 5,
-      "stageId": 4,
+      "stageId": "5",
       "code": "102",
       "time": "2023-11-11, 14:00",
       "mpLink": "",
@@ -801,7 +164,7 @@
     },
     {
       "Id": 6,
-      "stageId": 4,
+      "stageId": "5",
       "code": "112",
       "time": "2023-11-11T15:00:00.000Z",
       "mpLink": "",
@@ -828,7 +191,7 @@
     },
     {
       "Id": 7,
-      "stageId": 4,
+      "stageId": "5",
       "code": "97",
       "time": "2023-11-11T21:00:00.000Z",
       "mpLink": "",
@@ -855,7 +218,7 @@
     },
     {
       "Id": 8,
-      "stageId": 4,
+      "stageId": "5",
       "code": "101",
       "time": "2023-11-12T03:00:00.000Z",
       "mpLink": "",
@@ -884,7 +247,7 @@
     },
     {
       "Id": 9,
-      "stageId": 4,
+      "stageId": "5",
       "code": "104",
       "time": "2023-11-12T07:30:00.000Z",
       "mpLink": "",
@@ -913,7 +276,7 @@
     },
     {
       "Id": 10,
-      "stageId": 4,
+      "stageId": "5",
       "code": "106d",
       "time": "2023-11-12T08:00:00.000Z",
       "mpLink": "",
@@ -940,7 +303,7 @@
     },
     {
       "Id": 11,
-      "stageId": 4,
+      "stageId": "5",
       "code": "109",
       "time": "2023-11-12T08:00:00.000Z",
       "mpLink": "",
@@ -967,7 +330,7 @@
     },
     {
       "Id": 12,
-      "stageId": 4,
+      "stageId": "5",
       "code": "108b",
       "time": "2023-11-12T12:00:00.000Z",
       "mpLink": "",
@@ -994,7 +357,7 @@
     },
     {
       "Id": 13,
-      "stageId": 4,
+      "stageId": "5",
       "code": "107b",
       "time": "2023-11-12T13:00:00.000Z",
       "mpLink": "",
@@ -1021,7 +384,7 @@
     },
     {
       "Id": 14,
-      "stageId": 4,
+      "stageId": "5",
       "code": "111",
       "time": "2023-11-12T15:00:00.000Z",
       "mpLink": "",
@@ -1048,7 +411,7 @@
     },
     {
       "Id": 15,
-      "stageId": 4,
+      "stageId": "5",
       "code": "105b",
       "time": "2023-11-12T16:00:00.000Z",
       "mpLink": "",
@@ -1076,7 +439,7 @@
       ]
     },
     {
-      "id": "QQertTr",
+      "id": "16",
       "code": "123",
       "time": "2024-03-16T16:06:50.836Z",
       "mpLink": "",
@@ -1104,8 +467,8 @@
       ]
     },
     {
-      "id": "UVEY_NY",
-      "stageId": 8,
+      "id": "17",
+      "stageId": "9",
       "code": "123",
       "time": "2024-09-26T17:39:35.000Z",
       "mpLink": "",
@@ -1114,7 +477,7 @@
       "isDone": false,
       "player1": {
         "Id": 1,
-        "tournamentId": 2,
+        "tournamentId": "2",
         "name": "Japan",
         "logo": "https://assets.ppy.sh/old-flags/JP.png",
         "status": "active",
@@ -1136,14 +499,14 @@
             "avatar": "https://a.ppy.sh/10242062",
             "roles": [
               {
-                "tournamentId": 2,
+                "tournamentId": "2",
                 "name": "player",
                 "canRegWithRole": false
               }
             ],
             "stats": [
               {
-                "tournamentId": 2,
+                "tournamentId": "2",
                 "status": "active",
                 "seed": 0,
                 "placement": 0
@@ -1165,14 +528,14 @@
             "avatar": "https://a.ppy.sh/11488604",
             "roles": [
               {
-                "tournamentId": 2,
+                "tournamentId": "2",
                 "name": "player",
                 "canRegWithRole": false
               }
             ],
             "stats": [
               {
-                "tournamentId": 2,
+                "tournamentId": "2",
                 "status": "active",
                 "seed": 0,
                 "placement": 0
@@ -1194,14 +557,14 @@
             "avatar": "https://a.ppy.sh/16100800",
             "roles": [
               {
-                "tournamentId": 2,
+                "tournamentId": "2",
                 "name": "player",
                 "canRegWithRole": false
               }
             ],
             "stats": [
               {
-                "tournamentId": 2,
+                "tournamentId": "2",
                 "status": "active",
                 "seed": 0,
                 "placement": 0
@@ -1223,14 +586,14 @@
             "avatar": "https://a.ppy.sh/10745260",
             "roles": [
               {
-                "tournamentId": 2,
+                "tournamentId": "2",
                 "name": "player",
                 "canRegWithRole": false
               }
             ],
             "stats": [
               {
-                "tournamentId": 2,
+                "tournamentId": "2",
                 "status": "active",
                 "seed": 0,
                 "placement": 0
@@ -1252,14 +615,14 @@
             "avatar": "https://a.ppy.sh/25588443",
             "roles": [
               {
-                "tournamentId": 2,
+                "tournamentId": "2",
                 "name": "player",
                 "canRegWithRole": false
               }
             ],
             "stats": [
               {
-                "tournamentId": 2,
+                "tournamentId": "2",
                 "status": "active",
                 "seed": 0,
                 "placement": 0
@@ -1281,14 +644,14 @@
             "avatar": "https://a.ppy.sh/18144664",
             "roles": [
               {
-                "tournamentId": 2,
+                "tournamentId": "2",
                 "name": "player",
                 "canRegWithRole": false
               }
             ],
             "stats": [
               {
-                "tournamentId": 2,
+                "tournamentId": "2",
                 "status": "active",
                 "seed": 0,
                 "placement": 0
@@ -1300,7 +663,7 @@
       },
       "player2": {
         "Id": 3,
-        "tournamentId": 2,
+        "tournamentId": "2",
         "name": "France",
         "logo": "https://assets.ppy.sh/old-flags/FR.png",
         "status": "active",
@@ -1322,14 +685,14 @@
             "avatar": "https://a.ppy.sh/10015908",
             "roles": [
               {
-                "tournamentId": 2,
+                "tournamentId": "2",
                 "name": "player",
                 "canRegWithRole": false
               }
             ],
             "stats": [
               {
-                "tournamentId": 2,
+                "tournamentId": "2",
                 "status": "active",
                 "seed": 0,
                 "placement": 0
@@ -1351,14 +714,14 @@
             "avatar": "https://a.ppy.sh/16892459",
             "roles": [
               {
-                "tournamentId": 2,
+                "tournamentId": "2",
                 "name": "player",
                 "canRegWithRole": false
               }
             ],
             "stats": [
               {
-                "tournamentId": 2,
+                "tournamentId": "2",
                 "status": "active",
                 "seed": 0,
                 "placement": 0
@@ -1380,14 +743,14 @@
             "avatar": "https://a.ppy.sh/18867523",
             "roles": [
               {
-                "tournamentId": 2,
+                "tournamentId": "2",
                 "name": "player",
                 "canRegWithRole": false
               }
             ],
             "stats": [
               {
-                "tournamentId": 2,
+                "tournamentId": "2",
                 "status": "active",
                 "seed": 0,
                 "placement": 0
@@ -1409,14 +772,14 @@
             "avatar": "https://a.ppy.sh/14055233",
             "roles": [
               {
-                "tournamentId": 2,
+                "tournamentId": "2",
                 "name": "player",
                 "canRegWithRole": false
               }
             ],
             "stats": [
               {
-                "tournamentId": 2,
+                "tournamentId": "2",
                 "status": "active",
                 "seed": 0,
                 "placement": 0
@@ -1438,14 +801,14 @@
             "avatar": "https://a.ppy.sh/7306522",
             "roles": [
               {
-                "tournamentId": 2,
+                "tournamentId": "2",
                 "name": "player",
                 "canRegWithRole": false
               }
             ],
             "stats": [
               {
-                "tournamentId": 2,
+                "tournamentId": "2",
                 "status": "active",
                 "seed": 0,
                 "placement": 0
@@ -1467,14 +830,14 @@
             "avatar": "https://a.ppy.sh/8756421",
             "roles": [
               {
-                "tournamentId": 2,
+                "tournamentId": "2",
                 "name": "player",
                 "canRegWithRole": false
               }
             ],
             "stats": [
               {
-                "tournamentId": 2,
+                "tournamentId": "2",
                 "status": "active",
                 "seed": 0,
                 "placement": 0
@@ -1492,7 +855,7 @@
   "lobbies": [
     {
       "Id": 0,
-      "stageId": 0,
+      "stageId": "1",
       "code": "Q25",
       "time": "2023-10-12T15:00:00.000Z",
       "mpLink": "https://osu.ppy.sh/home",
@@ -1504,7 +867,7 @@
     },
     {
       "Id": 1,
-      "stageId": 0,
+      "stageId": "1",
       "code": "Q26",
       "time": "2023-10-13T13:00:00.000Z",
       "mpLink": "https://osu.ppy.sh/home",
@@ -1516,7 +879,7 @@
     },
     {
       "Id": 2,
-      "stageId": 0,
+      "stageId": "1",
       "code": "Q01",
       "time": "2023-10-14T00:00:00.000Z",
       "mpLink": "",
@@ -1526,7 +889,7 @@
     },
     {
       "Id": 3,
-      "stageId": 0,
+      "stageId": "1",
       "code": "Q02",
       "time": "2023-10-14T02:00:00.000Z",
       "mpLink": "https://osu.ppy.sh/home",
@@ -1538,7 +901,7 @@
     },
     {
       "Id": 4,
-      "stageId": 0,
+      "stageId": "1",
       "code": "Q03",
       "time": "2023-10-14T04:00:00.000Z",
       "mpLink": "",
@@ -1548,7 +911,7 @@
     },
     {
       "Id": 5,
-      "stageId": 0,
+      "stageId": "1",
       "code": "Q04",
       "time": "2023-10-14T06:00:00.000Z",
       "mpLink": "",
@@ -1558,7 +921,7 @@
     },
     {
       "Id": 6,
-      "stageId": 0,
+      "stageId": "1",
       "code": "Q05",
       "time": "2023-10-14T08:00:00.000Z",
       "mpLink": "https://osu.ppy.sh/home",
@@ -1573,7 +936,7 @@
     },
     {
       "Id": 7,
-      "stageId": 0,
+      "stageId": "1",
       "code": "Q06",
       "time": "2023-10-14T10:00:00.000Z",
       "mpLink": "",
@@ -1583,7 +946,7 @@
     },
     {
       "Id": 8,
-      "stageId": 0,
+      "stageId": "1",
       "code": "Q07",
       "time": "2023-10-14T12:00:00.000Z",
       "mpLink": "https://osu.ppy.sh/home",
@@ -1600,7 +963,7 @@
     },
     {
       "Id": 9,
-      "stageId": 0,
+      "stageId": "1",
       "code": "Q08",
       "time": "2023-10-14T14:00:00.000Z",
       "mpLink": "https://osu.ppy.sh/home",
@@ -1612,7 +975,7 @@
     },
     {
       "Id": 10,
-      "stageId": 0,
+      "stageId": "1",
       "code": "Q09",
       "time": "2023-10-14T16:00:00.000Z",
       "mpLink": "https://osu.ppy.sh/home",
@@ -1627,7 +990,7 @@
     },
     {
       "Id": 11,
-      "stageId": 0,
+      "stageId": "1",
       "code": "Q10",
       "time": "2023-10-14T18:00:00.000Z",
       "mpLink": "https://osu.ppy.sh/home",
@@ -1640,7 +1003,7 @@
     },
     {
       "Id": 12,
-      "stageId": 0,
+      "stageId": "1",
       "code": "Q11",
       "time": "2023-10-14T20:00:00.000Z",
       "mpLink": "https://osu.ppy.sh/home",
@@ -1656,7 +1019,7 @@
     },
     {
       "Id": 13,
-      "stageId": 0,
+      "stageId": "1",
       "code": "Q12",
       "time": "2023-10-14T22:00:00.000Z",
       "mpLink": "https://osu.ppy.sh/home",
@@ -1670,7 +1033,7 @@
     },
     {
       "Id": 14,
-      "stageId": 0,
+      "stageId": "1",
       "code": "Q13",
       "time": "2023-10-15T00:00:00.000Z",
       "mpLink": "https://osu.ppy.sh/home",
@@ -1684,7 +1047,7 @@
     },
     {
       "Id": 15,
-      "stageId": 0,
+      "stageId": "1",
       "code": "Q14",
       "time": "2023-10-15T02:00:00.000Z",
       "mpLink": "",
@@ -1698,7 +1061,7 @@
     },
     {
       "Id": 16,
-      "stageId": 0,
+      "stageId": "1",
       "code": "Q15",
       "time": "2023-10-15T04:00:00.000Z",
       "mpLink": "",
@@ -1711,7 +1074,7 @@
     },
     {
       "Id": 17,
-      "stageId": 0,
+      "stageId": "1",
       "code": "Q16",
       "time": "2023-10-15T06:00:00.000Z",
       "mpLink": "",
@@ -1725,7 +1088,7 @@
     },
     {
       "Id": 18,
-      "stageId": 0,
+      "stageId": "1",
       "code": "Q17",
       "time": "2023-10-15T08:00:00.000Z",
       "mpLink": "",
@@ -1735,7 +1098,7 @@
     },
     {
       "Id": 19,
-      "stageId": 0,
+      "stageId": "1",
       "code": "Q18",
       "time": "2023-10-15T10:00:00.000Z",
       "mpLink": "",
@@ -1751,7 +1114,7 @@
     },
     {
       "Id": 20,
-      "stageId": 0,
+      "stageId": "1",
       "code": "Q19",
       "time": "2023-10-15T12:00:00.000Z",
       "mpLink": "",
@@ -1771,7 +1134,7 @@
     },
     {
       "id": 21,
-      "stageId": 0,
+      "stageId": "1",
       "code": "Q20",
       "time": "2023-10-15T14:00:00.000Z",
       "mpLink": "",
@@ -1792,7 +1155,7 @@
     },
     {
       "id": 22,
-      "stageId": 0,
+      "stageId": "1",
       "code": "Q21",
       "time": "2023-10-15T16:00:00.000Z",
       "mpLink": "",
@@ -1805,7 +1168,7 @@
     },
     {
       "id": 23,
-      "stageId": 0,
+      "stageId": "1",
       "code": "Q22",
       "time": "2023-10-15T18:00:00.000Z",
       "mpLink": "",
@@ -1817,7 +1180,7 @@
     },
     {
       "id": 24,
-      "stageId": 0,
+      "stageId": "1",
       "code": "Q23",
       "time": "2023-10-15T20:00:00.000Z",
       "mpLink": "",
@@ -1832,7 +1195,7 @@
     },
     {
       "id": 25,
-      "stageId": 0,
+      "stageId": "1",
       "code": "Q24",
       "time": "2023-10-15T22:00:00.000Z",
       "mpLink": "",
@@ -1849,7 +1212,7 @@
     },
     {
       "id": 26,
-      "stageId": 9,
+      "stageId": "10",
       "code": "Q01",
       "time": "2024-09-20T08:06:30.000Z",
       "mpLink": "",
@@ -1864,7 +1227,7 @@
     },
     {
       "id": 27,
-      "stageId": 9,
+      "stageId": "10",
       "code": "Q02",
       "time": "2024-09-30T11:14:08.000Z",
       "mpLink": "",
@@ -1876,7 +1239,7 @@
   "mapStats": [
     {
       "Id": 0,
-      "stageId": 4,
+      "stageId": "5",
       "title": "void feat. Hiroko - world devoid of you (fairydust radio edit) [Silent Sky]",
       "type": "RC",
       "index": 1,
@@ -2039,7 +1402,7 @@
     },
     {
       "Id": 1,
-      "stageId": 4,
+      "stageId": "5",
       "title": "Yooh - Decoy [Yoced]",
       "type": "RC",
       "index": 2,
@@ -2202,7 +1565,7 @@
     },
     {
       "Id": 2,
-      "stageId": 4,
+      "stageId": "5",
       "title": "Silentroom - 9876734123 (\"Hyperprime\" Full Version) [1.05x For AST]",
       "type": "RC",
       "index": 3,
@@ -2343,7 +1706,7 @@
     },
     {
       "Id": 3,
-      "stageId": 4,
+      "stageId": "5",
       "title": "Blitz Lunar - A Dichroic Glass Snafu [Broken]",
       "type": "RC",
       "index": 4,
@@ -2440,7 +1803,7 @@
     },
     {
       "Id": 4,
-      "stageId": 4,
+      "stageId": "5",
       "title": "ZUN - Hiroari Shoots a Strange Bird ~ Till When [Perfect Cherry Blossom]",
       "type": "RC",
       "index": 5,
@@ -2537,7 +1900,7 @@
     },
     {
       "Id": 5,
-      "stageId": 4,
+      "stageId": "5",
       "title": "Lia - Light Colors [The Color of Oblivion]",
       "type": "RC",
       "index": 6,
@@ -2678,7 +2041,7 @@
     },
     {
       "Id": 6,
-      "stageId": 4,
+      "stageId": "5",
       "title": "Hoshimachi Suisei - phony [Master]",
       "type": "LN",
       "index": 1,
@@ -2709,7 +2072,7 @@
     },
     {
       "Id": 7,
-      "stageId": 4,
+      "stageId": "5",
       "title": "Xi feat. Sta - Tiferet [MeLady]",
       "type": "LN",
       "index": 2,
@@ -2740,7 +2103,7 @@
     },
     {
       "Id": 8,
-      "stageId": 4,
+      "stageId": "5",
       "title": "-45 - G e n g a o z o [void (AST Edit)]",
       "type": "LN",
       "index": 3,
@@ -2771,7 +2134,7 @@
     },
     {
       "Id": 9,
-      "stageId": 4,
+      "stageId": "5",
       "title": "Mili - Cerebrite [iya]",
       "type": "LN",
       "index": 4,
@@ -2802,7 +2165,7 @@
     },
     {
       "Id": 10,
-      "stageId": 4,
+      "stageId": "5",
       "title": "HiTECH NINJA vs Cranky - BREaK! BREaK! BREaK! [Break it all up]",
       "type": "HB",
       "index": 1,
@@ -2833,7 +2196,7 @@
     },
     {
       "Id": 11,
-      "stageId": 4,
+      "stageId": "5",
       "title": "SunsetRay - PhantasmalWar [Blood moon]",
       "type": "HB",
       "index": 2,
@@ -2864,7 +2227,7 @@
     },
     {
       "Id": 12,
-      "stageId": 4,
+      "stageId": "5",
       "title": "Juggernaut. - Catastrophe [Apocalypse]",
       "type": "HB",
       "index": 3,
@@ -2895,7 +2258,7 @@
     },
     {
       "Id": 13,
-      "stageId": 4,
+      "stageId": "5",
       "title": "Dragonforce - Heroes of our time [The Epic]",
       "type": "TB",
       "index": 0,
@@ -2926,7 +2289,7 @@
     },
     {
       "Id": 14,
-      "stageId": 0,
+      "stageId": "1",
       "title": "lapix - HiTECH Bass Loops Vol.1 [Stage 1: Erraticity]",
       "type": "RC",
       "index": 1,
@@ -3122,7 +2485,7 @@
     },
     {
       "Id": 15,
-      "stageId": 0,
+      "stageId": "1",
       "title": "Uetsu Shi - Firmament Castle \"Velier\" [Stage 2: Welkin]",
       "type": "RC",
       "index": 2,
@@ -3307,7 +2670,7 @@
     },
     {
       "Id": 16,
-      "stageId": 0,
+      "stageId": "1",
       "title": "Warak - Jikai ~ Paganelope [Stage 3: Lust]",
       "type": "HB",
       "index": 3,
@@ -3426,7 +2789,7 @@
     },
     {
       "Id": 17,
-      "stageId": 0,
+      "stageId": "1",
       "title": "Aethoro - Woodfairies [Stage 4: Yearning]",
       "type": "LN",
       "index": 4,
@@ -3545,7 +2908,7 @@
     },
     {
       "Id": 18,
-      "stageId": 0,
+      "stageId": "1",
       "title": "Silentroom - Nhelv [Stage 5: NERVE]",
       "type": "RC",
       "index": 5,
@@ -3664,7 +3027,7 @@
     },
     {
       "Id": 19,
-      "stageId": 0,
+      "stageId": "1",
       "title": "dj TAKA - ELPIS [Stage 6: Hope]",
       "type": "RC",
       "index": 6,
@@ -3783,7 +3146,7 @@
     },
     {
       "Id": 20,
-      "stageId": 0,
+      "stageId": "1",
       "title": "Tsukino - Debiru Janai Mon [Stage 7: Zakozako]",
       "type": "LN",
       "index": 7,
@@ -3902,7 +3265,7 @@
     },
     {
       "id": "21",
-      "stageId": 0,
+      "stageId": "1",
       "title": "sakuzyo - Strange Love [Stage 8: Affliction]",
       "type": "HB",
       "index": 8,
@@ -4021,7 +3384,7 @@
     },
     {
       "id": "22",
-      "stageId": 8,
+      "stageId": "9",
       "title": "linear ring with RNAcid - Gypsophila (MyZterioN-) [blossom 1.1x (166bpm)]",
       "type": "RC",
       "index": 1,
@@ -4108,7 +3471,7 @@
     },
     {
       "id": "23",
-      "stageId": 8,
+      "stageId": "9",
       "title": "seatrus - Cosmo Station (Blessia) [Orbis x1.1]",
       "type": "RC",
       "index": 2,
@@ -4195,7 +3558,7 @@
     },
     {
       "id": "24",
-      "stageId": 8,
+      "stageId": "9",
       "title": "EvOke - Edison (Miaurichesu) [Challenge (Edit) 1.1x (146bpm)]",
       "type": "RC",
       "index": 3,
@@ -4282,7 +3645,7 @@
     },
     {
       "id": "25",
-      "stageId": 8,
+      "stageId": "9",
       "title": "Camellia - Break The Silence (0DZ0) [Challenge]",
       "type": "RC",
       "index": 4,
@@ -4369,7 +3732,7 @@
     },
     {
       "id": "26",
-      "stageId": 8,
+      "stageId": "9",
       "title": "Kazuma Kiryu (CV: Takaya Kuroda) - Baka Mitai (elexire) [Ska's n no. . (edit)]",
       "type": "RC",
       "index": 5,
@@ -4456,7 +3819,7 @@
     },
     {
       "id": "27",
-      "stageId": 8,
+      "stageId": "9",
       "title": "Frums - Nisemono (Pizza69) [Impostor (cut 1.05x)]",
       "type": "RC",
       "index": 6,
@@ -4543,7 +3906,7 @@
     },
     {
       "id": "28",
-      "stageId": 8,
+      "stageId": "9",
       "title": "MisoilePunch -Forever- - Bloomin' (guden) [Flowerin']",
       "type": "HB",
       "index": 1,
@@ -4630,7 +3993,7 @@
     },
     {
       "id": "29",
-      "stageId": 8,
+      "stageId": "9",
       "title": "Camellia - Upload Your Mind :: Download My Soul (Cut Ver.) (-mint-) [Multidimensional]",
       "type": "HB",
       "index": 2,
@@ -4717,7 +4080,7 @@
     },
     {
       "id": "30",
-      "stageId": 8,
+      "stageId": "9",
       "title": "M-O-T-U - Calculator ([Crz]FolAH1217) [.857142]",
       "type": "HB",
       "index": 3,
@@ -4804,7 +4167,7 @@
     },
     {
       "id": "31",
-      "stageId": 8,
+      "stageId": "9",
       "title": "paraoka - Astra Walkthrough ([Crz]Crysarlene) [Faded Stars]",
       "type": "LN",
       "index": 1,
@@ -4891,7 +4254,7 @@
     },
     {
       "id": "32",
-      "stageId": 8,
+      "stageId": "9",
       "title": "Helblinde - Heaven's Fall (guden) [Firmaments]",
       "type": "LN",
       "index": 2,
@@ -4978,7 +4341,7 @@
     },
     {
       "id": "33",
-      "stageId": 8,
+      "stageId": "9",
       "title": "Toromaru - Erinyes (Toaph Daddy) [Enigma]",
       "type": "LN",
       "index": 3,
@@ -5065,7 +4428,7 @@
     },
     {
       "id": "34",
-      "stageId": 8,
+      "stageId": "9",
       "title": "AltVoid - Sample enSemble (Tidek) [SV asSemble]",
       "type": "SV",
       "index": 1,
@@ -5152,7 +4515,7 @@
     },
     {
       "id": "35",
-      "stageId": 8,
+      "stageId": "9",
       "title": "EZFG - Cyber Thunder Cider (zero2snow) [??]",
       "type": "SV",
       "index": 2,
@@ -5239,7 +4602,7 @@
     },
     {
       "id": "36",
-      "stageId": 8,
+      "stageId": "9",
       "title": "Camellia feat. Ninomae Ina'nis - Drenched in Air (elexire) [Submerge]",
       "type": "TB",
       "index": 0,
@@ -5247,7 +4610,7 @@
     },
     {
       "id": "37",
-      "stageId": 9,
+      "stageId": "10",
       "title": "sakuraburst - sha (Cut Ver.) [Stage 1: blake]",
       "type": "SV",
       "index": 1,
@@ -5490,7 +4853,7 @@
     },
     {
       "id": "38",
-      "stageId": 9,
+      "stageId": "10",
       "title": "Frums - ultra-blazures (Cut Ver.) [Stage 2: amalgam]",
       "type": "RC",
       "index": 1,
@@ -5694,7 +5057,7 @@
     },
     {
       "id": "39",
-      "stageId": 9,
+      "stageId": "10",
       "title": "xi - Tenimuhou (Cut Ver.) [Stage 3: Absolute]",
       "type": "HB",
       "index": 1,
@@ -5898,7 +5261,7 @@
     },
     {
       "id": "40",
-      "stageId": 9,
+      "stageId": "10",
       "title": "technoplanet feat. Haruno - End of Fairytale [Stage 4: Parable]",
       "type": "LN",
       "index": 1,
@@ -6102,7 +5465,7 @@
     },
     {
       "id": "41",
-      "stageId": 9,
+      "stageId": "10",
       "title": "Hino Isuka vs. Umeboshi Chazuke - Ultra Happy Miracle Bazoooooka!! [Stage 5: Overjoy]",
       "type": "LN",
       "index": 2,
@@ -6306,7 +5669,7 @@
     },
     {
       "id": "42",
-      "stageId": 9,
+      "stageId": "10",
       "title": "Camellia - onslaught -Retaliation of Bahamut- [Stage 6: Massacre]",
       "type": "HB",
       "index": 2,
@@ -6510,7 +5873,7 @@
     },
     {
       "id": "43",
-      "stageId": 9,
+      "stageId": "10",
       "title": "katagiri - AMEN KATAGIRI GENERATION [Stage 7: Revival]",
       "type": "RC",
       "index": 2,
@@ -6714,7 +6077,7 @@
     },
     {
       "id": "44",
-      "stageId": 9,
+      "stageId": "10",
       "title": "Kou! - Xuasar Charge [Stage 8: A Sea of Stars]",
       "type": "RC",
       "index": 3,

@@ -5,7 +5,6 @@ import { TournamentEdit } from '../../../domain/TournamentEdit';
 import { HOST, ROLE_REG } from '../../../constants';
 import { useNavigate } from 'react-router-dom';
 import { TournamentService } from '../../../services/tournamentService';
-import { Value } from 'react-quill';
 import { AuthService } from '../../../services/authService';
 import TournamentFormView from './views/TournamentFormView';
 import { tournamentSchema } from '../../../domain/validation/tournamentSchema';
@@ -20,28 +19,28 @@ const TournamentCreateForm = () => {
     }
 
     const initialValues: TournamentEdit = {
-        id: 0,
+        id: '',
         name: '',
         code: '',
         description: '',
         banner: '',
-        public: false,
-        participantsPublic: false,
-        done: false,
-        keys: 4,
+        published: false,
+        playersPublished: false,
+        concluded: false,
+        keyCount: 4,
         minTeamSize: 1,
         maxTeamSize: 1,
         minPlayerRank: 0,
         maxPlayerRank: 0,
         protects: false,
         warmups: false,
-        regOpen: false,
-        applicationOpen: false,
+        regsOpen: false,
+        applicationsOpen: false,
         regDeadline: null,
         applicationDeadline: null,
         links: [],
         countries: [],
-        information: {} as Value,
+        information: '',
         regMessage: '',
         hostRoles: [HOST],
         teamTourney: false,
@@ -63,9 +62,11 @@ const TournamentCreateForm = () => {
 
         for (const role of values.hostRoles) {
             user.roles.push({
-                tournamentId: created.id, 
-                name: role, 
-                canRegWithRole: ROLE_REG.get(role)!
+                tournamentId: created.id,
+                tournament: values.name,
+                role: role, 
+                canRegWithRole: ROLE_REG.get(role)!,
+                concluded: values.concluded
             });
         }
         await new AuthService().edit(user.id, user);

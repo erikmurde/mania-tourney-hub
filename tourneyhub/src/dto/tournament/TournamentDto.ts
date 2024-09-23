@@ -1,29 +1,18 @@
 import { Dayjs } from 'dayjs';
-import { Value } from 'react-quill';
 import { TourneyLinkDto } from '../TourneyLinkDto';
+import { SimpleTournamentDto } from './SimpleTournamentDto';
 
-export interface TournamentDto {
-    id: number,
-    name: string,
+export interface TournamentDto extends SimpleTournamentDto {
     code: string,
-    description: string,
-    banner: string,
-    public: boolean,
-    participantsPublic: boolean,
-    done: boolean,
-    keys: number,
-    minTeamSize: number,
-    maxTeamSize: number,
-    minPlayerRank: number,
-    maxPlayerRank: number,
+    playersPublished: boolean,
     protects: boolean,
     warmups: boolean,
-    regOpen: boolean,
-    applicationOpen: boolean,
+    regsOpen: boolean,
+    applicationsOpen: boolean,
     regDeadline: Dayjs | null,
     applicationDeadline: Dayjs | null,
-    links: TourneyLinkDto[],
+    information: string,
+    regMessage: string,
     countries: string[],
-    information: Value,
-    regMessage: string
+    links: TourneyLinkDto[]
 }

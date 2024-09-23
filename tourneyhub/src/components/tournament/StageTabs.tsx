@@ -3,9 +3,9 @@ import { IStageDto } from '../../dto/stage/IStageDto';
 
 interface IProps {
     stages: IStageDto[],
-    stageId: number | null,
+    stageId: string | null,
     buttons: JSX.Element,
-    setStageId: (value: number) => void
+    setStageId: (value: string) => void
 }
 
 const StageTabs = ({stages, stageId, buttons, setStageId} : IProps) => {

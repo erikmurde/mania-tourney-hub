@@ -1,5 +1,5 @@
 export interface StaffInviteEditDto {
-    recipientPlayerId: string,
+    recipientPlayerId: number,
     recipientId: string,
     status: string
 }

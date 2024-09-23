@@ -22,14 +22,14 @@ export class MapService extends ApiEntityService<IMapDto, IMapDto, IMapDto> {
         );
     }
 
-    async getAllByStageId(stageId: number): Promise<IMapDto[]> {
+    async getAllByStageId(stageId: string): Promise<IMapDto[]> {
         const response = await this.axios.get<IMapDto[]>(`${this.baseUrl}/stage/${stageId}`);
 
         console.log('getAllMapsByStageId response: ', response);
         return this.sortMaps(response.data);
     }
 
-    async getAllInMappoolByStageId(stageId: number): Promise<IMapDto[]> {
+    async getAllInMappoolByStageId(stageId: string): Promise<IMapDto[]> {
         const response = await this.axios.get<IMapDto[]>(`${this.baseUrl}/stage/${stageId}/inMappool`);
 
         console.log('getAllMapsInMappoolByStageId response: ', response);
@@ -50,21 +50,21 @@ export class MapService extends ApiEntityService<IMapDto, IMapDto, IMapDto> {
         return response.data;
     }
 
-    async updateSubmitted(mapId: number, map: ISubmittedMapDto) {
+    async updateSubmitted(mapId: string, map: ISubmittedMapDto) {
         const response = await this.axios.put(`${this.baseUrl}/submitted/${mapId}`, map);
 
         console.log('updateSubmittedMap response: ', response);
         return response.data;
     }
 
-    async updateUnsubmitted(mapId: number, map: IMapDto) {
+    async updateUnsubmitted(mapId: string, map: IMapDto) {
         const response = await this.axios.put(`${this.baseUrl}/unsubmitted/${mapId}`, map);
 
         console.log('updateUnsubmittedMap response: ', response);
         return response.data;
     }
 
-    async updateInMappool(mapId: number, inMappool: boolean) {
+    async updateInMappool(mapId: string, inMappool: boolean) {
         const response = await this.axios.put(`${this.baseUrl}/${mapId}/inMappool`, 
             { inMappool: inMappool }
         );

@@ -1,6 +1,5 @@
 import { ExpandMore, FilterAlt } from '@mui/icons-material';
 import { Accordion, AccordionActions, AccordionDetails, AccordionSummary, Button, Grid, Typography } from '@mui/material';
-import { TournamentDto } from '../dto/tournament/TournamentDto';
 import { useContext, useEffect, useState } from 'react';
 import { TournamentService } from '../services/tournamentService';
 import TournamentBlock from '../components/tournament/list/TournamentBlock';
@@ -9,37 +8,43 @@ import { TourneyFilters } from '../domain/TourneyFilters';
 import Hero from '../components/Hero';
 import { AuthContext } from './Root';
 import { AuthService } from '../services/authService';
+import { SimpleTournamentDto } from '../dto/tournament/SimpleTournamentDto';
 
 const Home = () => {
     const { user } = useContext(AuthContext);
-    const [tourneys, setTourneys] = useState([] as TournamentDto[])
-    const [filteredTourneys, setFilteredTourneys] = useState([] as TournamentDto[]);
-    const [filters, setFilters] = useState({
-        name: '',
-        minKeys: '',
-        maxKeys: '',
-        minTeamSize: '',
-        maxTeamSize: '',
-        minPlayerRank: '',
-        maxPlayerRank: ''
-    } as TourneyFilters);
+    const [tourneys, setTourneys] = useState([] as SimpleTournamentDto[])
+    const [filteredTourneys, setFilteredTourneys] = useState([] as SimpleTournamentDto[]);
     const authService = new AuthService();
 
     useEffect(() => {
         new TournamentService()
-            .getAll()
+            .getAllSimple()
             .then(tourneys => {
                 setTourneys(tourneys);
                 setFilteredTourneys(tourneys);
             });
     }, []);
 
+    const getCleanFilters = (): TourneyFilters => {
+        return {
+            name: '',
+            minKeys: '',
+            maxKeys: '',
+            minTeamSize: '',
+            maxTeamSize: '',
+            minPlayerRank: '',
+            maxPlayerRank: ''
+        };
+    }
+
+    const [filters, setFilters] = useState(getCleanFilters());
+
     const filterTournaments = () => {
         setFilteredTourneys(
             tourneys.filter(tourney => 
                 tourney.name.toUpperCase().includes(filters.name.toUpperCase()) &&
-                (!filters.minKeys || tourney.keys >= parseInt(filters.minKeys)) &&
-                (!filters.maxKeys || tourney.keys <= parseInt(filters.maxKeys)) &&
+                (!filters.minKeys || tourney.keyCount >= parseInt(filters.minKeys)) &&
+                (!filters.maxKeys || tourney.keyCount <= parseInt(filters.maxKeys)) &&
                 (!filters.minPlayerRank || tourney.minPlayerRank >= parseInt(filters.minPlayerRank)) &&
                 (!filters.minPlayerRank || tourney.maxPlayerRank <= parseInt(filters.minPlayerRank)) &&
                 (!filters.minTeamSize || tourney.minTeamSize >= parseInt(filters.minTeamSize)) &&
@@ -48,8 +53,14 @@ const Home = () => {
         );
     }
 
-    const canDisplayTourney = (tourney: TournamentDto, done: boolean) => {
-        return tourney.done === done && ((user && authService.isStaff(user, tourney.id)) || tourney.public);
+    const clearFilters = () => {
+        setFilteredTourneys(tourneys);
+        setFilters(getCleanFilters());
+    }
+
+    const canDisplayTourney = (tourney: SimpleTournamentDto, concluded: boolean) => {
+        return tourney.concluded === concluded && 
+        ((user && authService.isStaff(user, tourney.id)) || tourney.published);
     }
 
     return (  
@@ -72,7 +83,7 @@ const Home = () => {
                         <Button variant='contained' startIcon={<FilterAlt/>} onClick={filterTournaments}>
                             Filter
                         </Button>
-                        <Button variant='contained' onClick={() => setFilteredTourneys(tourneys)}>
+                        <Button variant='contained' onClick={clearFilters}>
                             Clear filters
                         </Button>
                     </AccordionActions>

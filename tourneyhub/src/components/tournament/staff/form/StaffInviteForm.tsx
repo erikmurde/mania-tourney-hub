@@ -51,8 +51,8 @@ const StaffInviteForm = ({roles, user}: IProps) => {
 
     const initialValues: StaffInviteCreateDto = {
         recipientId: '',
-        senderId: user.id.toString(),
-        tournamentId: tourney.id.toString(),
+        senderId: user.id,
+        tournamentId: tourney.id,
         roleId: '',
         description: ''
     }

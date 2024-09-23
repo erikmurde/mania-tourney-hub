@@ -1,8 +1,8 @@
 import { Card, CardMedia, CardContent, CardActions, Typography, Button } from '@mui/material';
-import { TournamentDto } from '../../../dto/tournament/TournamentDto';
 import { useNavigate } from 'react-router-dom';
+import { SimpleTournamentDto } from '../../../dto/tournament/SimpleTournamentDto';
 
-const TournamentCard = ({tourney}: {tourney: TournamentDto}) => {
+const TournamentCard = ({tourney}: {tourney: SimpleTournamentDto}) => {
     const navigate = useNavigate();
 
     return (  

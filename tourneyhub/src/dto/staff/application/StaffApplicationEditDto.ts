@@ -1,5 +1,5 @@
 export interface StaffApplicationEditDto {
-    playerId: number,
-    tournamentId: number,
-    statusId: number
+    senderPlayerId: number,
+    tournamentId: string,
+    statusId: string
 }

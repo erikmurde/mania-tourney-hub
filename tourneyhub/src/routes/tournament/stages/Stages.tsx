@@ -42,7 +42,7 @@ const Stages = () => {
                         Stages
                     </Typography>
                 </Grid>
-                {!tourney.done && 
+                {!tourney.concluded && 
                 <StageSelectForm 
                     hasQualifier={stages.some(stage => stage.stageType.name === QUALIFIER)}
                 />}

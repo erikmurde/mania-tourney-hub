@@ -20,8 +20,8 @@ const Players = () => {
     const authService = new AuthService();
 
     const isValid = user && user.roles
-        .filter(role => role.tournamentId === tourney.id)
-        .some(role => validRoles.includes(role.name));
+        .filter(tourneyRole => tourneyRole.tournamentId === tourney.id)
+        .some(tourneyRole => validRoles.includes(tourneyRole.role));
 
     useEffect(() => {
         authService
@@ -34,7 +34,7 @@ const Players = () => {
 
     const publishPlayers = async() => {
         const newPlayers = [...players];
-        tourney.participantsPublic = true;
+        tourney.playersPublished = true;
 
         for (const player of newPlayers) {
             let stats = player.stats[0];
@@ -52,7 +52,7 @@ const Players = () => {
         <Paper elevation={2} sx={{ minHeight: 500, paddingBottom: 2 }}>
             <Grid container marginBottom={5}>
                 <SectionTitle title='Players'/>
-                {isValid && !tourney.participantsPublic && 
+                {isValid && !tourney.playersPublished && 
                 <Grid item xs={12} margin={5} marginTop={2}>
                     <ConfirmationDialog
                         btnProps={{ 
@@ -66,7 +66,7 @@ const Players = () => {
                 </Grid>}
                 <Grid item xs={12}>
                     <PlayerList 
-                        playersPublic={tourney.participantsPublic}
+                        playersPublic={tourney.playersPublished}
                         players={players.sort((a, b) => 
                             a.stats[0].seed - b.stats[0].seed
                         )}

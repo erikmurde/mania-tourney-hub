@@ -16,7 +16,7 @@ import FormDialogBase from '../../dialog/FormDialogBase';
 import MatchCreateFormView from './views/MatchCreateFormView';
 import { TeamService } from '../../../../services/teamService';
 
-const MatchCreateForm = ({stageId}: {stageId: number}) => {
+const MatchCreateForm = ({stageId}: {stageId: string}) => {
     const { tourney } = useTourney();
     const { scheduleUpdate, setScheduleUpdate } = useContext(UpdateContext);
 
@@ -104,7 +104,7 @@ const MatchCreateForm = ({stageId}: {stageId: number}) => {
     });
 
     const initialValues: MatchCreateDto = {
-        id: 0,
+        id: '',
         stageId: stageId,
         code: '',
         time: dayjs.utc(),

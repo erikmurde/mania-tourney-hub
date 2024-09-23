@@ -1,9 +1,9 @@
 import { UserDtoSimple } from '../../user/UserDtoSimple';
 
 export interface StaffApplicationDto {
-    id: number,
+    id: string,
     sender: UserDtoSimple
-    tournamentId: number,
+    tournamentId: string,
     tournament: string,
     role: string,
     status: string,

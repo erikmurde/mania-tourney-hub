@@ -9,7 +9,7 @@ import { IMapDto } from '../../../../dto/map/IMapDto';
 import { useContext } from 'react';
 import { UpdateContext } from '../../../../routes/Root';
 import { MapService } from '../../../../services/mapService';
-import { DUPLICATE_BEATMAP_ID, INTEGER, NOT_NEGATIVE, TB } from '../../../../constants';
+import { DUPLICATE_BEATMAP_ID, INTEGER, NOT_NEGATIVE } from '../../../../constants';
 import { unsubmittedMapSchema } from '../../../../domain/validation/unsubmittedMapSchema';
 import { number, Schema } from 'yup';
 import { MapTypeDto } from '../../../../dto/map/MapTypeDto';
@@ -19,7 +19,7 @@ interface IProps {
     initialValues: IMapDto,
     mapTypes: MapTypeDto[],
     hasTb: boolean,
-    isDuplicateId: (id: number, beatmapId: number | null ) => boolean,
+    isDuplicateId: (id: string, beatmapId: number | null ) => boolean,
 }
 
 const ManualMapEditForm = ({dialogProps, initialValues, mapTypes, hasTb, isDuplicateId}: IProps) => {

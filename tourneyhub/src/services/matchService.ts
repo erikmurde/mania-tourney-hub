@@ -6,7 +6,7 @@ export class MatchService extends BaseEntityService<MatchDto> {
         super('matches');
     }
 
-    async getAllStage(stageId: number): Promise<MatchDto[]> {
+    async getAllStage(stageId: string): Promise<MatchDto[]> {
         const response =  await this.axios.get<MatchDto[]>(`${this.baseUrl}?stageId=${stageId}`);
 
         console.log('getAllStage response: ', response);

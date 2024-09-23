@@ -24,16 +24,18 @@ const ProfileInviteCard = ({invite, navLink, updateState}: IProps) => {
     const onAccept = async() => {
         user.roles.push({
             tournamentId: invite.tournamentId,
-            name: invite.role,
-            canRegWithRole: ROLE_REG.get(invite.role)!
+            tournament: invite.tournament,
+            role: invite.role,
+            canRegWithRole: ROLE_REG.get(invite.role)!,
+            concluded: false
         });
         editStatus(ACCEPTED);
     }
 
     const editStatus = async(status: string) => {
         await new StaffInviteService().edit(invite.id, {
-            recipientPlayerId: user.playerId.toString(),
-            recipientId: user.id.toString(),
+            recipientPlayerId: user.playerId,
+            recipientId: user.id,
             status: status
         });
         updateState();
@@ -59,7 +61,7 @@ const ProfileInviteCard = ({invite, navLink, updateState}: IProps) => {
                     actionTitle={'Accept'} 
                     action={onAccept}
                     btnProps={{ title: 'Accept', color: 'success' }}/>
-                <ConfirmationDialog 
+                <ConfirmationDialog
                     title={'Are you sure you wish to reject this invite?'} 
                     actionTitle={'Reject'} 
                     action={() => editStatus(REJECTED)}

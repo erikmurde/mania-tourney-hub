@@ -50,11 +50,11 @@ const TournamentFormView = ({initialValues, validationSchema, onSubmit}: IProps)
                                 helperText={errors.description}             
                                 rows={3}/>
                         </Grid>
-                        {!values.public &&
+                        {!values.published &&
                         <Grid item xs={2}>
-                            <FastField as={TextField} name='keys' label='Keycount' type='number'
-                                error={errors.keys !== undefined}
-                                helperText={errors.keys} 
+                            <FastField as={TextField} name='keyCount' label='Keycount' type='number'
+                                error={errors.keyCount !== undefined}
+                                helperText={errors.keyCount} 
                                 fullWidth/>
                         </Grid>}
                         <Grid item xs={6}>
@@ -75,7 +75,7 @@ const TournamentFormView = ({initialValues, validationSchema, onSubmit}: IProps)
                                 error={errors.hostRoles}
                                 options={roles}/>
                         </Grid>
-                        {!values.public &&
+                        {!values.published &&
                         <>
                           <Grid item xs={12}>
                             <Typography fontSize={18} fontWeight={500} marginTop={1}>
@@ -148,13 +148,13 @@ const TournamentFormView = ({initialValues, validationSchema, onSubmit}: IProps)
                                 Deadlines
                             </Typography>
                         </Grid>
-                        {values.public && 
+                        {values.published && 
                         <Grid item xs={12}>
                             <FormGroup>
-                                <FastField name='regOpen' label='Registrations open' type='checkbox'
+                                <FastField name='regsOpen' label='Registrations open' type='checkbox'
                                     as={FormControlLabel} 
                                     control={<Checkbox/>}/>
-                                <FastField name='applicationOpen' label='Staff applications open' type='checkbox'
+                                <FastField name='applicationsOpen' label='Staff applications open' type='checkbox'
                                     as={FormControlLabel} 
                                     control={<Checkbox/>}/>
                             </FormGroup>

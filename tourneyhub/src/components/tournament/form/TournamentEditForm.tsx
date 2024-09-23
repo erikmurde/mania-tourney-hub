@@ -36,9 +36,11 @@ const TournamentEditForm = ({tourney, user, updateTourney}: IProps) => {
 
         for (const role of values.hostRoles) {
             user.roles.push({
-                tournamentId: tourney.id, 
-                name: role, 
-                canRegWithRole: ROLE_REG.get(role)!
+                tournamentId: tourney.id,
+                tournament: tourney.name,
+                role: role, 
+                canRegWithRole: ROLE_REG.get(role)!,
+                concluded: tourney.concluded
             });
         }
         await new AuthService().edit(user.id, user);
@@ -62,8 +64,8 @@ const TournamentEditForm = ({tourney, user, updateTourney}: IProps) => {
                         teamTourney: tourney.minTeamSize > 1,
                         restrictRank: tourney.minPlayerRank > 0,
                         hostRoles: user.roles
-                            .filter(role => role.tournamentId === tourney.id)
-                            .map(role => role.name)
+                            .filter(tourneyRole => tourneyRole.tournamentId === tourney.id)
+                            .map(tourneyRole => tourneyRole.role)
                     }} 
                     validationSchema={tournamentSchema} 
                     onSubmit={onSubmit}/>

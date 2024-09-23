@@ -6,7 +6,7 @@ import { TournamentStatsDto } from '../../../dto/TournamentStatsDto';
 
 const ProfileRoles = ({user}: {user: UserDto}) => {
     const tourneyRoles = [] as {
-        tournamentId: number, 
+        tournamentId: string, 
         roles: TournamentRoleDto[], 
         stats: TournamentStatsDto[]
     }[];
@@ -28,9 +28,7 @@ const ProfileRoles = ({user}: {user: UserDto}) => {
         <Grid container direction='column' rowSpacing={1}>
             {tourneyRoles.map((tourneyRole, index) => 
                 <Grid item key={index}>
-                    <ProfileRoleCard 
-                        tournamentId={tourneyRole.tournamentId} 
-                        userId={user.id}
+                    <ProfileRoleCard
                         roles={tourneyRole.roles}
                         stats={tourneyRole.stats.length > 0 ? tourneyRole.stats[0] : {} as TournamentStatsDto}
                     />

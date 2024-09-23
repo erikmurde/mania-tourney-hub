@@ -1,10 +1,18 @@
+import { SimpleTournamentDto } from '../dto/tournament/SimpleTournamentDto';
 import { TournamentDto } from '../dto/tournament/TournamentDto';
 import { UserDto } from '../dto/user/UserDto';
-import { BaseEntityService } from './base/baseEntityService';
+import { ApiEntityService } from './base/apiEntityService';
 
-export class TournamentService extends BaseEntityService<TournamentDto> {
+export class TournamentService extends ApiEntityService<TournamentDto, TournamentDto, TournamentDto> {
     constructor() {
         super('tournaments');
+    }
+
+    async getAllSimple(): Promise<SimpleTournamentDto[]> {
+        const response = await this.axios.get<SimpleTournamentDto[]>(this.baseUrl);
+
+        console.log('getAllSimpleTournaments response: ', response);
+        return response.data;
     }
 
     isValidUser(user: UserDto, tourney: TournamentDto): boolean {

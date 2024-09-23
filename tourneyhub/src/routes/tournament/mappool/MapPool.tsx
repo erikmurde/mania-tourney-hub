@@ -18,12 +18,12 @@ const MapPool = () => {
 
     const [isManage, setIsManage] = useState(false);
     const [stages, setStages] = useState([] as IStageDto[]);
-    const [stageId, setStageId] = useState(null as number | null);
+    const [stageId, setStageId] = useState(null as string | null);
     const [maps, setMaps] = useState([] as IMapDto[]);
 
     const [audio] = useState(new Audio());
     const [paused, setPaused] = useState(true);
-    const [activeAudioId, setActiveAudioId] = useState(0);
+    const [activeAudioId, setActiveAudioId] = useState('');
 
     audio.onpause = () => setPaused(true);
     audio.onplay = () => setPaused(false);
@@ -64,7 +64,7 @@ const MapPool = () => {
         }
     }, [stageId, isManage, mapPoolUpdate, stages]);
 
-    const handleAudio = (mapId: number, src: string | undefined) => {       
+    const handleAudio = (mapId: string, src: string | undefined) => {       
         if (!src) {
             return;
         }

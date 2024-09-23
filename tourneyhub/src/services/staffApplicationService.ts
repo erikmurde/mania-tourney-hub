@@ -9,7 +9,7 @@ export class StaffApplicationService extends ApiEntityService<StaffApplicationDt
         super('staffApplications');
     }
 
-    async getAllPending(tournamentId: number): Promise<StaffApplicationDto[]> {
+    async getAllPending(tournamentId: string): Promise<StaffApplicationDto[]> {
         const response = await this.axios.get<StaffApplicationDto[]>(`${this.baseUrl}/pending/${tournamentId}`);
 
         console.log('getAllPending response: ', response);

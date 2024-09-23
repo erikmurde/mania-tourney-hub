@@ -42,7 +42,7 @@ const TouramentPublishForm = ({tourney, updateTourney}: IProps) => {
     });
 
     const onSubmit = async(values: TournamentDto) => {
-        values.public = true;
+        values.published = true;
 
         await new TournamentService().edit(tourney.id, values);
         setOpen(false);

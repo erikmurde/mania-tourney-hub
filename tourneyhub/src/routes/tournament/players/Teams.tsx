@@ -22,8 +22,8 @@ const Teams = () => {
     const teamService = new TeamService();
 
     const isValid = user && user.roles
-        .filter(role => role.tournamentId === tourney.id)
-        .some(role => validRoles.includes(role.name));
+        .filter(tourneyRole => tourneyRole.tournamentId === tourney.id)
+        .some(tourneyRole => validRoles.includes(tourneyRole.role));
 
     useEffect(() => {
         teamService
@@ -36,7 +36,7 @@ const Teams = () => {
 
     const publishTeams = async() => {
         const newTeams = [...teams];
-        tourney.participantsPublic = true;
+        tourney.playersPublished = true;
 
         for (const team of newTeams) {
             if (team.status !== DISQUALIFIED) {
@@ -63,7 +63,7 @@ const Teams = () => {
                         <Tab label='Players' value={0}/>
                     </Tabs>
                 </Grid>
-                {isValid && !tourney.participantsPublic &&
+                {isValid && !tourney.playersPublished &&
                 <Grid item xs={12} margin={5} marginTop={2}>
                     <ConfirmationDialog
                         btnProps={{ 
@@ -75,11 +75,11 @@ const Teams = () => {
                         actionTitle={'Publish'} 
                         action={() => publishTeams()}/>
                 </Grid>}
-                {(isValid || tourney.participantsPublic) &&
+                {(isValid || tourney.playersPublished) &&
                 <Grid item xs={12}>
                     {showTeams 
                     ?   <TeamList 
-                            teamsPublic={tourney.participantsPublic} 
+                            teamsPublic={tourney.playersPublished} 
                             teams={teams} 
                             setTeams={setTeams}/>
                     :   <TeamPlayerList players={

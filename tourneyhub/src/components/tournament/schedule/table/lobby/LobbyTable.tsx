@@ -23,12 +23,15 @@ const LobbyTable = ({stage, showTeams}: {stage: IStageDto, showTeams: boolean}) 
     const [refIndex, setRefIndex] = useState(null as number | null);    
 
     useEffect(() => {
-        if (user?.id && tourney.minTeamSize > 1) {
+        const teamId = user?.stats
+            .find(stats => stats.tournamentId === tourney.id)?.teamId;
+
+        if (teamId && tourney.minTeamSize > 1) {
             new TeamService()
-                .getUserTeam(user.id, tourney.id)
+                .getEntity(teamId)
                 .then(team => setUserTeam(team));
         }
-    }, [user?.id, tourney.minTeamSize, tourney.id]);
+    }, [user?.stats, tourney.id, tourney.minTeamSize]);
 
     useEffect(() => {
         new LobbyService()

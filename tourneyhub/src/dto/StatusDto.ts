@@ -1,4 +1,4 @@
 export interface StatusDto {
-    id: number,
+    id: string,
     name: string
 }

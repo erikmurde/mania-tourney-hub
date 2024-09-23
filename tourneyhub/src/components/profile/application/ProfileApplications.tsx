@@ -6,7 +6,7 @@ import ProfileApplicationCard from './ProfileApplicationCard';
 import { StatusService } from '../../../services/statusService';
 import { RETRACTED } from '../../../constants';
 
-const ProfileApplications = ({onNavigate}: {onNavigate: (tournamentId: number) => void}) => {
+const ProfileApplications = ({onNavigate}: {onNavigate: (tournamentId: string) => void}) => {
     const [staffApplications, setStaffApplications] = useState([] as StaffApplicationDto[]);
     const [applicationUpdate, setApplicationUpdate] = useState(0);
 
@@ -22,7 +22,7 @@ const ProfileApplications = ({onNavigate}: {onNavigate: (tournamentId: number) =
 
         if (status) {
             await new StaffApplicationService().edit(application.id, {
-                playerId: application.sender.playerId,
+                senderPlayerId: application.sender.playerId,
                 tournamentId: application.tournamentId,
                 statusId: status.id
             });

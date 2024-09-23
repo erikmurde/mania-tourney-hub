@@ -46,13 +46,14 @@ const Staff = () => {
     const filterStaff = (role: string) => {
         return staff.filter(user => 
             user.roles
-                .map(role => role.name)
+                .filter(tourneyRole => tourneyRole.tournamentId === tourney.id)
+                .map(tourneyRole => tourneyRole.role)
                 .includes(role));
     }
 
     const removeStaffRole = async(member: UserDto, groupRole: string) => {
         const role = member.roles
-            .find(role => role.name === groupRole);
+            .find(tourneyRole => tourneyRole.role === groupRole);
 
         if (role) {
             member.roles.splice(member.roles.indexOf(role), 1);
@@ -75,7 +76,7 @@ const Staff = () => {
             await acceptApplication(application);
         }
         await staffApplicationService.edit(application.id, {
-            playerId: application.sender.playerId,
+            senderPlayerId: application.sender.playerId,
             tournamentId: application.tournamentId,
             statusId: updatedStatus.id
         });
@@ -91,9 +92,11 @@ const Staff = () => {
         const userId = application.sender.playerId;
         const role = {
             userId: userId,
-            tournamentId: tourney.id, 
-            name: application.role, 
-            canRegWithRole: ROLE_REG.get(application.role)!
+            tournamentId: tourney.id,
+            tournament: tourney.name,
+            role: application.role, 
+            canRegWithRole: ROLE_REG.get(application.role)!,
+            concluded: tourney.concluded
         };
         setStaff(staff.map(existing => 
             existing.playerId === userId 

@@ -8,7 +8,7 @@ import { Pause, PlayArrow, Download } from '@mui/icons-material';
 interface IProps {
     map: IMapDto,
     audioPlaying: boolean,
-    handleAudio: (mapId: number, src: string | undefined) => void
+    handleAudio: (mapId: string, src: string | undefined) => void
 }
 
 const MapCard = ({map, audioPlaying, handleAudio}: IProps) => {

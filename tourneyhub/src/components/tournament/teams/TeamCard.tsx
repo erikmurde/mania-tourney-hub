@@ -29,8 +29,8 @@ const TeamCard = ({teamsPublic, team, eliminateTeam}: IProps) => {
     ])
 
     const isValid = user && user.roles
-        .filter(role => role.tournamentId === tourney.id)
-        .some(role => validRoles.includes(role.name));
+        .filter(tourneyRole => tourneyRole.tournamentId === tourney.id)
+        .some(tourneyRole => validRoles.includes(tourneyRole.role));
 
     const eliminated = team.status === ELIMINATED;
     const disqualified = team.status === DISQUALIFIED;

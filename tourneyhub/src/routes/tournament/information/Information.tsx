@@ -1,7 +1,7 @@
 import { Button, Grid, Paper } from '@mui/material';
 import SectionTitle from '../../../components/tournament/SectionTitle';
 import { useContext, useEffect, useState } from 'react';
-import ReactQuill, { Value } from 'react-quill';
+import ReactQuill from 'react-quill';
 import { TournamentService } from '../../../services/tournamentService';
 import { ChevronLeft, Edit } from '@mui/icons-material';
 import { AuthContext } from '../../Root';
@@ -21,7 +21,7 @@ const COLORS = [
 const Information = () => {
     const { tourney } = useTourney();
     const { user } = useContext(AuthContext);
-    const [value, setValue] = useState({} as Value);
+    const [value, setValue] = useState('');
     const [edit, setEdit] = useState(false);
     const service = new TournamentService();
 
@@ -65,22 +65,11 @@ const Information = () => {
         }
     };
 
-    const hasNoContent = (delta: any) => {
-        if (Object.keys(delta).length === 0) {
-            return true;
-        }
-        if (delta.ops.length === 0) {
-            return true;
-        }
-        for (let i = 0; i < delta.ops.length; i++) {
-            if (delta.ops[i].insert.trim() !== '') {
-                return false;
-            }
-        }
-        return true;
-    }
+    const hasNoContent = () => value.replace(/<(.|\n)*?>/g, '').trim().length === 0;
 
     const editInfo = async() => {
+        console.log(value);
+
         tourney.information = value;
         await service.edit(tourney.id, tourney);
 
@@ -127,10 +116,10 @@ const Information = () => {
                         formats={formats}
                         modules={modules}
                         value={value}
-                        onChange={(content, delta, source, editor) => setValue(editor.getContents())}/>
+                        onChange={(content) => setValue(content)}/>
                 </Grid>
             </Grid>
-            {!edit && hasNoContent(value) && <NoItems name='information'/>}
+            {!edit && hasNoContent() && <NoItems name='information'/>}
         </Paper>
     );
 }

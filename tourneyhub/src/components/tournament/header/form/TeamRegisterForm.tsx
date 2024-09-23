@@ -28,17 +28,16 @@ const TeamRegisterForm = ({user, tourney, openSuccess}: IProps) => {
     const tourneyService = new TournamentService();
 
     useEffect(() => {
-        if (!open) {
-            return;
+        if (open) {
+            authService
+                .getAll()
+                .then(players => setPlayers(
+                    players.filter(player => tourneyService.isValidUser(player, tourney))
+                ));
+            teamService
+                .getSimpleTeams(tourney.id)
+                .then(teams => setTeams(teams));
         }
-        authService
-            .getAll()
-            .then(players => setPlayers(
-                players.filter(player => tourneyService.isValidUser(player, tourney))
-            ));
-        teamService
-            .getSimpleTeams(tourney.id)
-            .then(teams => setTeams(teams));
     }, [open, tourney.id]);
 
     const canRegister = (name: string) => {
@@ -50,9 +49,11 @@ const TeamRegisterForm = ({user, tourney, openSuccess}: IProps) => {
 
     const registerPlayer = async(player: TeamPlayerDto) => {
         player.roles.push({
-            tournamentId: tourney.id, 
-            name: 'player', 
-            canRegWithRole: false
+            tournamentId: tourney.id,
+            tournament: tourney.name,
+            role: 'player', 
+            canRegWithRole: false,
+            concluded: tourney.concluded
         });
         const { isCaptain: _, ...user } = player;
         await authService.edit(player.id, user);
@@ -77,7 +78,7 @@ const TeamRegisterForm = ({user, tourney, openSuccess}: IProps) => {
     }
 
     const initialValues: TeamCreateDto = {
-        id: 0,
+        id: '',
         tournamentId: tourney.id,
         name: '',
         logo: '',

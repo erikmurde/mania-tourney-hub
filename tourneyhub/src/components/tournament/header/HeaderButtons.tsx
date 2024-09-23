@@ -5,7 +5,6 @@ import { Grid } from '@mui/material';
 import { Done, Lock } from '@mui/icons-material';
 import { HOST } from '../../../constants';
 import StaffApplicationForm from '../staff/form/StaffApplicationForm';
-import { useParams } from 'react-router-dom';
 import TournamentEditForm from '../form/TournamentEditForm';
 import ConfirmationDialog from '../dialog/ConfirmationDialog';
 import { AuthService } from '../../../services/authService';
@@ -32,7 +31,7 @@ const HeaderButtons = ({tourney, updateTourney}: IProps) => {
     const tourneyService = new TournamentService();
 
     useEffect(() => {
-        if (tourney.public && user) {
+        if (tourney.published && user) {
             authService
                 .getPlayers(tourney.id)
                 .then(players => {
@@ -47,9 +46,11 @@ const HeaderButtons = ({tourney, updateTourney}: IProps) => {
             return;
         }
         user.roles.push({
-            tournamentId: tourney.id, 
-            name: 'player', 
-            canRegWithRole: false
+            tournamentId: tourney.id,
+            tournament: tourney.name,
+            role: 'player',
+            canRegWithRole: false,
+            concluded: tourney.concluded
         });
         user.stats.push({
             tournamentId: tourney.id,
@@ -62,16 +63,16 @@ const HeaderButtons = ({tourney, updateTourney}: IProps) => {
     }
 
     const onPrivate = async() => {
-        tourney.public = false;
-        tourney.regOpen = false;
-        tourney.applicationOpen = false;
+        tourney.published = false;
+        tourney.regsOpen = false;
+        tourney.applicationsOpen = false;
 
         await tourneyService.edit(tourney.id, tourney);
         updateTourney();
     }
 
     const onConclude = async() => {
-        tourney.done = true;
+        tourney.concluded = true;
 
         await tourneyService.edit(tourney.id, tourney);
         updateTourney();
@@ -86,7 +87,7 @@ const HeaderButtons = ({tourney, updateTourney}: IProps) => {
         return !isRegistered && validUser && validRoles;
     };
     
-    const isHost = user && getRoles(user).some(role => role.name === HOST);
+    const isHost = user && getRoles(user).some(tourneyRole => tourneyRole.role === HOST);
 
     return (
         <>
@@ -107,23 +108,23 @@ const HeaderButtons = ({tourney, updateTourney}: IProps) => {
                         actionTitle='Register' 
                         action={registerPlayer}
                         btnProps={{ 
-                            disabled: !tourney.regOpen, 
-                            title: tourney.regOpen ? 'Register' : 'Registrations closed' 
+                            disabled: !tourney.regsOpen, 
+                            title: tourney.regsOpen ? 'Register' : 'Registrations closed' 
                     }}/>}
             </Grid>}
             {!isHost &&
             <Grid item>
                 <StaffApplicationForm tourney={tourney}/>
             </Grid>}
-            {isHost && !tourney.done &&
+            {isHost && !tourney.concluded &&
             <Grid item>
                 <TournamentEditForm tourney={tourney} user={user} updateTourney={updateTourney}/>
             </Grid>}
-            {isHost && !tourney.public &&
+            {isHost && !tourney.published &&
             <Grid item>
                 <TournamentPublishForm tourney={tourney} updateTourney={updateTourney}/>
             </Grid>}
-            {isHost && tourney.public && canMakePrivate &&
+            {isHost && tourney.published && canMakePrivate &&
             <Grid item>
                 <ConfirmationDialog 
                     title='Are you sure you wish to make this tournament private?'
@@ -132,7 +133,7 @@ const HeaderButtons = ({tourney, updateTourney}: IProps) => {
                     action={onPrivate}
                     btnProps={{ startIcon: <Lock/>, title: 'Make private' }}/>
             </Grid>}
-            {isHost && !tourney.done && tourney.public &&
+            {isHost && !tourney.concluded && tourney.published &&
             <Grid item>
                 <ConfirmationDialog 
                     title='Are you sure you wish to conclude this tournament?'

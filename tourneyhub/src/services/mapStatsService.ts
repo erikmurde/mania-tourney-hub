@@ -8,7 +8,7 @@ export class MapStatsService extends BaseEntityService<MapStatsDto> {
         super('mapStats');
     }
 
-    async getAllStage(stageId: number): Promise<MapStatsDto[]> {
+    async getAllStage(stageId: string): Promise<MapStatsDto[]> {
         const response = await this.axios.get<MapStatsDto[]>(`${this.baseUrl}?stageId=${stageId}`);
 
         console.log('getAllStage response: ', response);

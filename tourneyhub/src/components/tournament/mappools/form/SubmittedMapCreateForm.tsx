@@ -8,7 +8,7 @@ import { ISubmittedMapDto } from '../../../../dto/map/ISubmittedMapDto';
 import SubmittedMapFormView from './views/SubmittedMapFormView';
 import { number, Schema } from 'yup';
 import { baseMapSchema } from '../../../../domain/validation/baseMapSchema';
-import { DUPLICATE_BEATMAP_ID, INTEGER, NOT_NEGATIVE, REQUIRED, TB } from '../../../../constants';
+import { DUPLICATE_BEATMAP_ID, INTEGER, NOT_NEGATIVE, REQUIRED } from '../../../../constants';
 import { MapService } from '../../../../services/mapService';
 import { useContext, useEffect, useState } from 'react';
 import { UpdateContext } from '../../../../routes/Root';
@@ -18,7 +18,7 @@ import { MapTypeService } from '../../../../services/mapTypeService';
 interface IProps {
     dialogProps: DialogProps,
     hasTb: boolean,
-    stageId: number,
+    stageId: string,
     isDuplicateId: (beatmapId: number) => boolean
 }
 
@@ -46,7 +46,7 @@ const SubmittedCreateMapForm = ({dialogProps, stageId, hasTb, isDuplicateId}: IP
     const initialValues: ISubmittedMapDto = {
         stageId: stageId,
         beatmapId: 0,
-        mapTypeId: 0,
+        mapTypeId: '',
         mapType: '',
         index: 0,
         comment: ''

@@ -14,7 +14,7 @@ interface IProps {
 }
 
 const UnsubmittedMapFormView = ({initialValues, mapTypes, validationSchema, onSubmit}: IProps) => {
-    const edit = initialValues.id !== 0;
+    const edit = initialValues.id !== '';
 
     return (  
         <Formik 

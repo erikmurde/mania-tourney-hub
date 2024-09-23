@@ -21,7 +21,7 @@ const Statistics = () => {
     const { user } = useContext(AuthContext);
     const [stages, setStages] = useState([] as IStageDto[]);
     const [mapStats, setMapStats] = useState([] as MapStatsDto[]);
-    const [stageId, setStageId] = useState(null as number | null);
+    const [stageId, setStageId] = useState(null as string | null);
     const [mapType, setMapType] = useState('');
 
     useEffect(() => {

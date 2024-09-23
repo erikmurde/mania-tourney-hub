@@ -16,7 +16,7 @@ import { MapTypeService } from '../../../../services/mapTypeService';
 interface IProps {
     dialogProps: DialogProps,
     hasTb: boolean,
-    stageId: number
+    stageId: string
 }
 
 const UnsubmittedMapCreateForm = ({dialogProps, hasTb, stageId}: IProps) => {
@@ -46,9 +46,9 @@ const UnsubmittedMapCreateForm = ({dialogProps, hasTb, stageId}: IProps) => {
     }
 
     const initialValues: IMapDto = {
-        id: 0,
+        id: '',
         stageId: stageId,
-        mapTypeId: 0,
+        mapTypeId: '',
         beatmapId: 0,
         inMappool: false,
         title: '',

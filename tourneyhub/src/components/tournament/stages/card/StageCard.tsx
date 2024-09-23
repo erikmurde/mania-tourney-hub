@@ -35,7 +35,7 @@ const StageCard = ({stage}: {stage: IStageDto}) => {
                             {stage.name}
                         </Typography>
                     </Grid>
-                    {!tourney.done && 
+                    {!tourney.concluded && 
                     <Grid item xs='auto'>
                         <CardActions sx={{ padding: 0 }}>
                             <StageEditForm initialValues={stage}/>

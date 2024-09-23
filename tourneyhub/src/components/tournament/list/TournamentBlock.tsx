@@ -1,10 +1,10 @@
 import { Paper, Typography, Grid } from '@mui/material';
-import { TournamentDto } from '../../../dto/tournament/TournamentDto';
 import TournamentCard from './TournamentCard';
+import { SimpleTournamentDto } from '../../../dto/tournament/SimpleTournamentDto';
 
 interface IProps {
     name: string,
-    tourneys: TournamentDto[]
+    tourneys: SimpleTournamentDto[]
 }
 
 const TournamentBlock = ({name, tourneys}: IProps) => {

@@ -1,4 +1,4 @@
 export interface MapTypeDto {
-    id: number,
+    id: string,
     name: string
 }

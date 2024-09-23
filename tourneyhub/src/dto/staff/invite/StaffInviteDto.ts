@@ -1,7 +1,7 @@
 export interface StaffInviteDto {
-    id: number,
-    tournamentId: number,
-    recipientId: number,
+    id: string,
+    tournamentId: string,
+    recipientId: string,
     sender: string
     tournament: string,
     role: string,

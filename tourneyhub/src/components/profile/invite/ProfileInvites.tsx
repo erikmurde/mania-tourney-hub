@@ -4,7 +4,7 @@ import { StaffInviteService } from '../../../services/staffInviteService';
 import { Grid, Link } from '@mui/material';
 import ProfileInviteCard from './ProfileInviteCard';
 
-const ProfileInvites = ({onNavigate}: {onNavigate: (tournamentId: number) => void}) => {
+const ProfileInvites = ({onNavigate}: {onNavigate: (tournamentId: string) => void}) => {
     const [staffInvites, setStaffInvites] = useState([] as StaffInviteDto[]);
     const [inviteUpdate, setInviteUpdate] = useState(0);
 

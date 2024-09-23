@@ -17,7 +17,7 @@ const Schedule = () => {
     const { tourney } = useTourney();
     const { user } = useContext(AuthContext);
     const [stages, setStages] = useState([] as IStageDto[]);
-    const [stageId, setStageId] = useState(null as number | null);
+    const [stageId, setStageId] = useState(null as string | null);
 
     useEffect(() => {
         new StageService()
@@ -42,7 +42,7 @@ const Schedule = () => {
                     stages={stages} 
                     stageId={stageId} 
                     setStageId={setStageId}
-                    buttons={isHost && !tourney.done ? <ScheduleButtons stage={stage}/> : <></>}
+                    buttons={isHost && !tourney.concluded ? <ScheduleButtons stage={stage}/> : <></>}
                 />
                 <Grid item xs marginLeft={2} marginRight={2}>
                     {stage.schedulePublished || isHost

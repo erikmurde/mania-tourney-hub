@@ -8,8 +8,8 @@ dayjs.extend(utc);
 export const tournamentSchema: Schema = object({
     teamTourney: boolean(),
     restrictRank: boolean(),
-    regOpen: boolean(),
-    applicationOpen: boolean(),
+    regsOpen: boolean(),
+    applicationsOpen: boolean(),
     name: string()
         .required(REQUIRED)
         .max(64, 'Must be 64 characters or less'),
@@ -18,7 +18,7 @@ export const tournamentSchema: Schema = object({
         .max(10, 'Must be 10 characters or less'),
     description: string()
         .required(REQUIRED),
-    keys: number()
+    keyCount: number()
         .min(1, MIN1)
         .max(18, 'Must be 18 or less'),
     banner: string()
@@ -48,16 +48,16 @@ export const tournamentSchema: Schema = object({
                 : schema.notRequired()
         }),
     regDeadline: date()
-        .when('regOpen', ([regOpen], schema) => {
-            return regOpen 
+        .when('regOpen', ([regsOpen], schema) => {
+            return regsOpen 
                 ? schema.required(REQUIRED)
                 : schema.notRequired()
         })
         .typeError('Invalid date format')
         .min(dayjs.utc(), 'Must be in the future'),
     applicationDeadline: date()
-        .when('applicationOpen', ([applicationOpen], schema) => {
-            return applicationOpen 
+        .when('applicationOpen', ([applicationsOpen], schema) => {
+            return applicationsOpen 
                 ? schema.required(REQUIRED)
                 : schema.notRequired()
         })

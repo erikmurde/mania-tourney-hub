@@ -13,7 +13,7 @@ import utc from 'dayjs/plugin/utc';
 import { useTourney } from '../../../../routes/tournament/TournamentHeader';
 import { UserDtoSimple } from '../../../../dto/user/UserDtoSimple';
 
-const LobbyCreateForm = ({stageId}: {stageId: number}) => {
+const LobbyCreateForm = ({stageId}: {stageId: string}) => {
     const { tourney } = useTourney();
     const { scheduleUpdate, setScheduleUpdate } = useContext(UpdateContext);
     const [selectValues, setSelectValues] = useState([] as UserDtoSimple[]);
@@ -50,7 +50,7 @@ const LobbyCreateForm = ({stageId}: {stageId: number}) => {
     })
 
     const initialValues: LobbyDto = {
-        id: 0,
+        id: '',
         stageId: stageId,
         code: `Q${(lobbies.length + 1).toString().padStart(2, '0')}`,
         time: dayjs.utc(),

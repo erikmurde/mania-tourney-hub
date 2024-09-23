@@ -63,8 +63,8 @@ const StageCreateForm = ({type, open, onClose}: IProps) => {
     });
 
     const initialValues: IStageDto = {
-        id: 0,
-        stageType: { id: 0, name: type },
+        id: '',
+        stageType: { id: '', name: type },
         tournamentId: tourney.id,
         name: '',
         bestOf: 0,

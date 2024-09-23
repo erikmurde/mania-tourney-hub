@@ -12,8 +12,8 @@ interface IProps {
     map: IMapDto,
     mappool: IMapDto[],
     audioPlaying: boolean,
-    handleAudio: (mapId: number, src: string | undefined) => void,
-    updateInMappool: (id: number, inMappool: boolean) => void
+    handleAudio: (mapId: string, src: string | undefined) => void,
+    updateInMappool: (id: string, inMappool: boolean) => void
 }
 
 const MapManageCard = ({map, mappool, audioPlaying, handleAudio, updateInMappool}: IProps) => {
@@ -22,8 +22,8 @@ const MapManageCard = ({map, mappool, audioPlaying, handleAudio, updateInMappool
     const theme = useTheme();
  
     const canAddToPool = user && user.roles
-        .filter(role => role.tournamentId === tourney.id)
-        .some(role => [HOST, ADMIN, MAPPOOLER].includes(role.name));
+        .filter(tourneyRole => tourneyRole.tournamentId === tourney.id)
+        .some(tourneyRole => [HOST, ADMIN, MAPPOOLER].includes(tourneyRole.role));
 
     const disabled = !map.inMappool && !map.beatmapId;
 
@@ -48,13 +48,13 @@ const MapManageCard = ({map, mappool, audioPlaying, handleAudio, updateInMappool
                 <MapManageButtons 
                     map={map} 
                     mappool={mappool} 
-                    tourneyDone={tourney.done}
+                    tourneyDone={tourney.concluded}
                     audioPlaying={audioPlaying}
                     handleAudio={handleAudio}
                 />
                 <Grid container flexGrow={1}
                 />
-                {!tourney.done && canAddToPool && 
+                {!tourney.concluded && canAddToPool && 
                 <Grid container justifyContent='end' paddingRight={1}>
                     <Grid item>
                         <Tooltip title={disabled ? 'Needs a beatmap ID' : ''}>

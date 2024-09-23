@@ -2,8 +2,8 @@ import { Dayjs } from 'dayjs';
 import { IStageTypeDto } from '../stageType/IStageTypeDto';
 
 export interface IStageDto {
-    id: number,
-    tournamentId: number,
+    id: string,
+    tournamentId: string,
     name: string,
     bestOf: number,
     lobbySize: number,

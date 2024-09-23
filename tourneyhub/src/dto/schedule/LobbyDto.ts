@@ -1,8 +1,8 @@
 import { Dayjs } from 'dayjs';
 
 export interface LobbyDto {
-    id: number,
-    stageId: number,
+    id: string,
+    stageId: string,
     code: string,
     time: Dayjs,
     mpLink: string,

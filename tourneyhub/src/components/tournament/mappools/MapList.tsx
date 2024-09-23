@@ -5,9 +5,9 @@ import NoItems from '../NoItems';
 
 interface IProps {
     mappool: IMapDto[],
-    activeAudioId: number,
+    activeAudioId: string,
     paused: boolean,
-    handleAudio: (mapId: number, src: string | undefined) => void
+    handleAudio: (mapId: string, src: string | undefined) => void
 }
 
 const MapList = ({mappool, activeAudioId, paused, handleAudio}: IProps) => {

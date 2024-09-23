@@ -10,9 +10,9 @@ import NoItems from '../NoItems';
 
 interface IProps {
     mappool: IMapDto[],
-    activeAudioId: number,
+    activeAudioId: string,
     paused: boolean,
-    handleAudio: (mapId: number, src: string | undefined) => void
+    handleAudio: (mapId: string, src: string | undefined) => void
 }
 
 const MapManageList = ({mappool, activeAudioId, paused, handleAudio}: IProps) => {
@@ -33,7 +33,7 @@ const MapManageList = ({mappool, activeAudioId, paused, handleAudio}: IProps) =>
         }
     });
 
-    const updateInMappool = async(id: number, inMappool: boolean) => {
+    const updateInMappool = async(id: string, inMappool: boolean) => {
         await new MapService().updateInMappool(id, inMappool);
         setMapPoolUpdate(mapPoolUpdate + 1);
     }

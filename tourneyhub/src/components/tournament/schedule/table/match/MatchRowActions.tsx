@@ -29,8 +29,8 @@ const MatchRowActions = ({match, onRef}: IProps) => {
             return false;
         }
         return user.roles
-            .filter(role => role.tournamentId === tourney.id)
-            .some(role => roles.includes(role.name))
+            .filter(tourneyRole => tourneyRole.tournamentId === tourney.id)
+            .some(tourneyRole => roles.includes(tourneyRole.role));
     }
 
     const deleteMatch = async() => {

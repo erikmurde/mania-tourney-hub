@@ -1,7 +1,8 @@
 export interface StaffApplicationCreateDto {
-    senderId: number,
-    tournamentId: number,
-    roleId: number,
-    statusId: number,
+    senderPlayerId: number,
+    senderId: string,
+    tournamentId: string,
+    roleId: string,
+    statusId: string,
     description: string
 }

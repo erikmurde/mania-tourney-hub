@@ -29,8 +29,8 @@ const LobbyTableRow = ({lobby, userTeam, lobbySize, isRegistered, deadlinePassed
             return false;
         }
         return user.roles
-            .filter(role => role.tournamentId === tourney.id)
-            .some(role => roles.includes(role.name))
+            .filter(tourneyRole => tourneyRole.tournamentId === tourney.id)
+            .some(tourneyRole => roles.includes(tourneyRole.role));
     }
 
     const regName = userTeam ? userTeam.name : user?.name ?? '';

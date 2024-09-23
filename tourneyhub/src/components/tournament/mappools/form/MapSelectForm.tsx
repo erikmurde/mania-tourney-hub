@@ -9,7 +9,7 @@ import { IMapDto } from '../../../../dto/map/IMapDto';
 import { TB } from '../../../../constants';
 
 interface IProps {
-    stageId: number,
+    stageId: string,
     mappool: IMapDto[]
 }
 

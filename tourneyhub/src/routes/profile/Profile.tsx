@@ -45,7 +45,7 @@ const Profile = ({owner, open, setOpen}: IProps) => {
             .required(REQUIRED)
     });
 
-    const onNavigate = (tournamentId: number) => {
+    const onNavigate = (tournamentId: string) => {
         setOpen(false);
         navigate(`/tournaments/${tournamentId}/information`);
     }

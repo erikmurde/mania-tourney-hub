@@ -45,7 +45,7 @@ const MapEditForm = ({mappool, map}: IProps) => {
         setOpen(false);
     }
 
-    const isDuplicateId = (id: number, beatmapId: number | null) => {
+    const isDuplicateId = (id: string, beatmapId: number | null) => {
         return beatmapId !== null 
             && mappool.some(map => map.id !== id && map.beatmapId === beatmapId);
     }

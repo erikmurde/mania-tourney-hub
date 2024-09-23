@@ -36,14 +36,14 @@ const PoolButtons = ({stage, mappool, manage, setManage}: IProps) => {
         .isHost(user, tourney.id);
         
     const canManage = user && user.roles
-        .filter(role => role.tournamentId === tourney.id)
-        .some(role => [HOST, ADMIN, MAPPER, MAPPOOLER, PLAYTESTER].includes(role.name));
+        .filter(tourneyRole => tourneyRole.tournamentId === tourney.id)
+        .some(tourneyRole => [HOST, ADMIN, MAPPER, MAPPOOLER, PLAYTESTER].includes(tourneyRole.role));
 
     return (
         <>            
         {manage && stage &&
         <>
-        {!tourney.done &&
+        {!tourney.concluded &&
         <Grid item>
             <MapSelectForm stageId={stage.id} mappool={mappool}/>
         </Grid>}

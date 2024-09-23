@@ -2,8 +2,8 @@ import { PlayerScoreDto } from '../score/PlayerScoreDto';
 import { TeamScoreDto } from '../score/TeamScoreDto';
 
 export interface MapStatsDto {
-    id: number,
-    stageId: number,
+    id: string,
+    stageId: string,
     title: string,
     type: string,
     index: number,

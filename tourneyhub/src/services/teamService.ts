@@ -7,7 +7,7 @@ export class TeamService extends BaseEntityService<TeamDto> {
         super('teams');
     }
 
-    async getTeams(tournamentId: number): Promise<TeamDto[]> {
+    async getTeams(tournamentId: string): Promise<TeamDto[]> {
         const response = await this.axios.get<TeamDto[]>('teams');
 
         const teams = response.data
@@ -17,12 +17,12 @@ export class TeamService extends BaseEntityService<TeamDto> {
         return teams;
     }
 
-    async getSimpleTeams(tournamentId: number): Promise<TeamDto[]> {
+    async getSimpleTeams(tournamentId: string): Promise<TeamDto[]> {
         //TODO fetch simple dto from backend once available
         return await this.getTeams(tournamentId);
     }
 
-    async getTeamsByName(tournamentId: number, names: string[]): Promise<TeamDtoSimple[]> {
+    async getTeamsByName(tournamentId: string, names: string[]): Promise<TeamDtoSimple[]> {
         const response = await this.axios.get<TeamDto[]>('teams');
 
         const teams = response.data
@@ -38,16 +38,5 @@ export class TeamService extends BaseEntityService<TeamDto> {
 
         console.log('getTeamsByName response: ', teams);
         return teams;
-    }
-
-    async getUserTeam(userId: number, tournamentId: number): Promise<TeamDto | null> {
-        const response = await this.getTeams(tournamentId);
-
-        const team = response.find(team => 
-            team.players.some(player => player.id === userId)
-        );
-
-        console.log('getUserTeam response: ', response);
-        return team ?? null;
     }
 }

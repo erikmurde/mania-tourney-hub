@@ -1,5 +1,5 @@
 import { Delete, Download, Pause, PlayArrow } from '@mui/icons-material';
-import { Grid, IconButton, useTheme } from '@mui/material';
+import { Grid, useTheme } from '@mui/material';
 import MapEditForm from '../form/MapEditForm';
 import { IMapDto } from '../../../../dto/map/IMapDto';
 import ConfirmationDialog from '../../dialog/ConfirmationDialog';
@@ -13,7 +13,7 @@ interface IProps {
     mappool: IMapDto[],
     tourneyDone: boolean,
     audioPlaying: boolean,
-    handleAudio: (mapId: number, src: string | undefined) => void
+    handleAudio: (mapId: string, src: string | undefined) => void
 }
 
 const MapManageButtons = ({map, mappool, tourneyDone, audioPlaying, handleAudio}: IProps) => {

@@ -1,4 +1,4 @@
 export interface IStageTypeDto {
-    id: number,
+    id: string,
     name: string
 }

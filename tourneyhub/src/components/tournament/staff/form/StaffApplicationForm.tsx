@@ -33,7 +33,7 @@ const StaffApplicationForm = ({tourney}: {tourney: TournamentDto}) => {
             .filter(role => role.tournamentId === tourney.id);
 
         return roles.filter(role => 
-            userRoles.every(userRole => userRole.name !== role.name));
+            userRoles.every(userRole => userRole.role !== role.name));
     }
 
     const onSubmit = async(values: StaffApplicationCreateDto) => {
@@ -56,10 +56,11 @@ const StaffApplicationForm = ({tourney}: {tourney: TournamentDto}) => {
     })
 
     const initialValues: StaffApplicationCreateDto = {
+        senderPlayerId: user.playerId,
         senderId: user.id,
         tournamentId: tourney.id,
-        roleId: 0,
-        statusId: 0,
+        roleId: '',
+        statusId: '',
         description: ''
     }
 
@@ -72,8 +73,8 @@ const StaffApplicationForm = ({tourney}: {tourney: TournamentDto}) => {
             setOpen={setOpen}
             btnProps={{
                 onClick: () => user ? setOpen(true) : window.location.assign(LOGIN_URL),
-                title: tourney.applicationOpen ? 'Apply for staff' : 'Staff applications closed',
-                disabled: !tourney.applicationOpen
+                title: tourney.applicationsOpen ? 'Apply for staff' : 'Staff applications closed',
+                disabled: !tourney.applicationsOpen
             }}
             form={
                 <StaffApplicationFormView 

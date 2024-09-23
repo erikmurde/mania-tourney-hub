@@ -22,7 +22,7 @@ const TournamentHeader = () => {
             return;
         }
         new TournamentService()
-            .getEntity(Number(id))
+            .getEntity(id)
             .then(tourney => setTourney(tourney));
     
         window.scrollTo(0, 0);

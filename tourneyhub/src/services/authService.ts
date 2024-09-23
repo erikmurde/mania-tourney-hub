@@ -8,20 +8,20 @@ export class AuthService extends ApiEntityService<UserDto, UserDto, UserDto> {
         super('users');
     }
 
-    isHost(user: UserDto, tournamentId: number) {
+    isHost(user: UserDto, tournamentId: string) {
         const roles = user.roles
-            .filter(role => role.tournamentId === tournamentId)
-            .map(role => role.name);
+            .filter(tourneyRole => tourneyRole.tournamentId === tournamentId)
+            .map(tourneyRole => tourneyRole.role);
 
         return roles.includes(HOST);
     }
 
-    isStaff(user: UserDto, tournamentId: number) {
+    isStaff(user: UserDto, tournamentId: string) {
         const staffRoles = [HOST, ADMIN, MAPPOOLER, MAPPER, PLAYTESTER, REFEREE, STREAMER, COMMENTATOR, SHEETER, GFX];
 
         const userRoles = user.roles
-            .filter(role => role.tournamentId === tournamentId)
-            .map(role => role.name);
+            .filter(tourneyRole => tourneyRole.tournamentId === tournamentId)
+            .map(tourneyRole => tourneyRole.role);
 
         return staffRoles.some(staffRole => userRoles.includes(staffRole));
     }
@@ -43,21 +43,21 @@ export class AuthService extends ApiEntityService<UserDto, UserDto, UserDto> {
         return response.data;
     }
 
-    async getPlayers(tournamentId: number): Promise<UserDto[]> {
+    async getPlayers(tournamentId: string): Promise<UserDto[]> {
         const response = await this.axios.get<UserDto[]>(`${this.baseUrl}/${tournamentId}/players`);
 
         console.log('getPlayers response: ', response);
         return response.data;
     }
 
-    async getStaff(tournamentId: number): Promise<UserDto[]> {
+    async getStaff(tournamentId: string): Promise<UserDto[]> {
         const response = await this.axios.get<UserDto[]>(`${this.baseUrl}/${tournamentId}/staff`);
 
         console.log('getStaff response: ', response);
         return response.data;
     }
 
-    async getUsersWithRoles(tournamentId: number, roles: string[], includeUserRoles: boolean = false): Promise<UserDtoSimple[]> {
+    async getUsersWithRoles(tournamentId: string, roles: string[], includeUserRoles: boolean = false): Promise<UserDtoSimple[]> {
         const response = await this.axios.get<UserDtoSimple[]>(`${this.baseUrl}/${tournamentId}`, { 
             params: { 
                 roles: roles, 
