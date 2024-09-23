@@ -41,4 +41,10 @@ public class TournamentController {
     public Long publish(@PathVariable Long tournamentId, @RequestBody @Valid TournamentPublishDto dto) {
         return service.publish(tournamentId, dto);
     }
+
+    @PutMapping("/api/tournaments/{tournamentId}/private")
+    @PreAuthorize("@userService.isHost(#tournamentId, principal)")
+    public Long makePrivate(@PathVariable Long tournamentId) {
+        return service.makePrivate(tournamentId);
+    }
 }

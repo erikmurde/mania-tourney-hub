@@ -62,6 +62,19 @@ public class TournamentService {
         return repository.save(tournament).getId();
     }
 
+    public Long makePrivate(Long tournamentId) {
+        Tournament tournament = fetchTournament(tournamentId);
+
+        if (!tournament.getPlayers().isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
+        tournament.setRegsOpen(false);
+        tournament.setApplicationsOpen(false);
+        tournament.setPublished(false);
+
+        return repository.save(tournament).getId();
+    }
+
     private boolean isMissingDeadlines(TournamentPublishDto dto) {
         return (
                 dto.isRegsOpen() && dto.getRegDeadline() == null ||
