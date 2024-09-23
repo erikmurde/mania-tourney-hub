@@ -39,10 +39,10 @@ const TourneyLinks = ({links, errors}: IProps) => {
                         helperText={error?.name}/>                           
                 </Grid>
                 <Grid item xs={4}>
-                    <FastField as={TextField} name={`links[${index}].link`} label='Link'
+                    <FastField as={TextField} name={`links[${index}].url`} label='URL'
                         fullWidth
-                        error={error?.link}
-                        helperText={error?.link}/>  
+                        error={error?.url}
+                        helperText={error?.url}/>  
                 </Grid>
                 <Grid item xs={4} marginTop={1}>
                     <IconButton color='error' onClick={() => remove(index)}>

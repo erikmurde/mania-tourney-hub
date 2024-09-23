@@ -9,6 +9,7 @@ import utc from 'dayjs/plugin/utc';
 import { REQUIRED } from '../../../constants';
 import { TournamentService } from '../../../services/tournamentService';
 import SuccessDialog from '../dialog/SuccessDialog';
+import { TournamentPublishDto } from '../../../dto/tournament/TournamentPublishDto';
 
 interface IProps {
     tourney: TournamentDto,
@@ -20,34 +21,41 @@ const TouramentPublishForm = ({tourney, updateTourney}: IProps) => {
     const [successOpen, setSuccessOpen] = useState(false);
     dayjs.extend(utc);
 
+    const onSubmit = async(values: TournamentPublishDto) => {
+        console.log(values);
+
+        await new TournamentService().publish(tourney.id, values);
+        setOpen(false);
+        setSuccessOpen(true);
+    }
+
+    const initialValues: TournamentPublishDto = {
+        regsOpen: false,
+        applicationsOpen: false,
+        regDeadline: tourney.regDeadline,
+        applicationDeadline: tourney.applicationDeadline
+    };
+
     const validationSchema: Schema = object({
-        regOpen: boolean(),
-        applicationOpen: boolean(),
+        regwOpen: boolean(),
+        applicationsOpen: boolean(),
         regDeadline: date()
-            .when('regOpen', ([regOpen], schema) => {
-                return regOpen 
+            .when('regsOpen', ([regsOpen], schema) => {
+                return regsOpen 
                     ? schema.required(REQUIRED)
                     : schema.notRequired()
             })
             .typeError('Invalid date format')
             .min(dayjs.utc(), 'Must be in the future'),
         applicationDeadline: date()
-            .when('applicationOpen', ([applicationOpen], schema) => {
-                return applicationOpen 
+            .when('applicationsOpen', ([applicationsOpen], schema) => {
+                return applicationsOpen 
                     ? schema.required(REQUIRED)
                     : schema.notRequired()
             })
             .typeError('Invalid date format')
             .min(dayjs.utc(), 'Must be in the future')
     });
-
-    const onSubmit = async(values: TournamentDto) => {
-        values.published = true;
-
-        await new TournamentService().edit(tourney.id, values);
-        setOpen(false);
-        setSuccessOpen(true);
-    }
 
     return (  
         <>
@@ -65,7 +73,7 @@ const TouramentPublishForm = ({tourney, updateTourney}: IProps) => {
             setOpen={setOpen}
             form={
                 <TournamentPublishFormView
-                    initialValues={tourney}
+                    initialValues={initialValues}
                     validationSchema={validationSchema}
                     onSubmit={onSubmit}/>
             }/>

@@ -1,5 +1,6 @@
 import { SimpleTournamentDto } from '../dto/tournament/SimpleTournamentDto';
 import { TournamentDto } from '../dto/tournament/TournamentDto';
+import { TournamentPublishDto } from '../dto/tournament/TournamentPublishDto';
 import { UserDto } from '../dto/user/UserDto';
 import { ApiEntityService } from './base/apiEntityService';
 
@@ -19,6 +20,13 @@ export class TournamentService extends ApiEntityService<TournamentDto, Tournamen
         const response = await this.axios.put<string>(`${this.baseUrl}/${tournamentId}/information`, information);
 
         console.log('updateTournamentInformation response: ', response);
+        return response.data;
+    }
+
+    async publish(tournamentId: string, tournament: TournamentPublishDto) {
+        const response = await this.axios.put<TournamentPublishDto>(`${this.baseUrl}/${tournamentId}/publish`, tournament);
+
+        console.log('publishTournament response: ', response);
         return response.data;
     }
 

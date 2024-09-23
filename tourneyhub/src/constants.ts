@@ -43,7 +43,7 @@ export const TERTIARY = '#9575CD';
 // FORM VALIDATION
 export const REQUIRED = 'Required';
 export const MIN1 = 'Must be 1 or more';
-export const INVALID_URL = 'Must be a full url';
+export const INVALID_URL = 'Must be a full URL';
 export const INTEGER = 'Must be an integer';
 export const NOT_NEGATIVE = 'Must be positive';
 export const DUPLICATE_BEATMAP_ID = 'Map already in pool';

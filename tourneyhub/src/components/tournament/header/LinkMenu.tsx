@@ -23,7 +23,7 @@ const LinkMenu = ({links}: {links: TourneyLinkDto[]}) => {
                     <MenuItem 
                         key={index} 
                         sx={{ minWidth: 150 }} 
-                        onClick={() => window.open(link.link, '_blank')}>
+                        onClick={() => window.open(link.url, '_blank')}>
                         {link.name}
                     </MenuItem>
                 )}

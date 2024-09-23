@@ -1,13 +1,13 @@
 import { Schema } from 'yup';
-import { TournamentDto } from '../../../../dto/tournament/TournamentDto';
 import { FastField, Form, Formik } from 'formik';
 import { Grid, FormGroup, FormControlLabel, Checkbox } from '@mui/material';
 import TourneyDateField from '../../field/TourneyDateField';
+import { TournamentPublishDto } from '../../../../dto/tournament/TournamentPublishDto';
 
 interface IProps {
-    initialValues: TournamentDto,
+    initialValues: TournamentPublishDto,
     validationSchema: Schema,
-    onSubmit: (values: TournamentDto) => void
+    onSubmit: (values: TournamentPublishDto) => void
 }
 
 const TournamentPublishFormView = ({initialValues, validationSchema, onSubmit}: IProps) => {

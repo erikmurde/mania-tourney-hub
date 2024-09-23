@@ -48,7 +48,7 @@ export const tournamentSchema: Schema = object({
                 : schema.notRequired()
         }),
     regDeadline: date()
-        .when('regOpen', ([regsOpen], schema) => {
+        .when('regsOpen', ([regsOpen], schema) => {
             return regsOpen 
                 ? schema.required(REQUIRED)
                 : schema.notRequired()
@@ -56,7 +56,7 @@ export const tournamentSchema: Schema = object({
         .typeError('Invalid date format')
         .min(dayjs.utc(), 'Must be in the future'),
     applicationDeadline: date()
-        .when('applicationOpen', ([applicationsOpen], schema) => {
+        .when('applicationsOpen', ([applicationsOpen], schema) => {
             return applicationsOpen 
                 ? schema.required(REQUIRED)
                 : schema.notRequired()
@@ -67,7 +67,7 @@ export const tournamentSchema: Schema = object({
         object().shape({
             name: string()
                 .required(REQUIRED),
-            link: string()
+            url: string()
                 .required(REQUIRED)
                 .matches(URL_REGEX, INVALID_URL)
         })
