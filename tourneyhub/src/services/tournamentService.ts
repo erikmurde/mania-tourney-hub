@@ -15,6 +15,13 @@ export class TournamentService extends ApiEntityService<TournamentDto, Tournamen
         return response.data;
     }
 
+    async updateInformation(tournamentId: string, information: string): Promise<string> {
+        const response = await this.axios.put<string>(`${this.baseUrl}/${tournamentId}/information`, information);
+
+        console.log('updateTournamentInformation response: ', response);
+        return response.data;
+    }
+
     isValidUser(user: UserDto, tourney: TournamentDto): boolean {
         const validRank = (
             (tourney.minPlayerRank === 0 || user.rank >= tourney.minPlayerRank) && 

@@ -68,11 +68,7 @@ const Information = () => {
     const hasNoContent = () => value.replace(/<(.|\n)*?>/g, '').trim().length === 0;
 
     const editInfo = async() => {
-        console.log(value);
-
-        tourney.information = value;
-        await service.edit(tourney.id, tourney);
-
+        await service.updateInformation(tourney.id, value);
         setEdit(false);
     }
 
