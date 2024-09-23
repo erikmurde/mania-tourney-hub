@@ -1,5 +1,6 @@
-import { Dialog, DialogTitle, Button } from '@mui/material';
+import { Dialog, DialogTitle, Button, Typography } from '@mui/material';
 import { StyledDialogActions } from '../../styled/StyledDialogActions';
+import { Check } from '@mui/icons-material';
 
 interface IProps {
     title: string,
@@ -19,10 +20,13 @@ const SuccessDialog = ({title, open, setOpen, onClose}: IProps) => {
 
     return (  
         <Dialog open={open} onClose={handleClose}>
-            <DialogTitle>
+            <DialogTitle sx={{ paddingBottom: 0 }}>
+                <Typography textAlign='center' marginBottom={1}>
+                    <Check color='success' sx={{ fontSize: 80 }}/>
+                </Typography>
                 {title}
             </DialogTitle>
-            <StyledDialogActions>
+            <StyledDialogActions sx={{ justifyContent: 'center' }}>
                 <Button variant='contained' onClick={handleClose}>
                     Close
                 </Button>

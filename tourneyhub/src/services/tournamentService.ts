@@ -16,7 +16,7 @@ export class TournamentService extends ApiEntityService<TournamentDto, Tournamen
         return response.data;
     }
 
-    async updateInformation(tournamentId: string, information: string): Promise<string> {
+    async updateInformation(tournamentId: string, information: string) {
         const response = await this.axios.put<string>(`${this.baseUrl}/${tournamentId}/information`, information);
 
         console.log('updateTournamentInformation response: ', response);
@@ -27,6 +27,13 @@ export class TournamentService extends ApiEntityService<TournamentDto, Tournamen
         const response = await this.axios.put<TournamentPublishDto>(`${this.baseUrl}/${tournamentId}/publish`, tournament);
 
         console.log('publishTournament response: ', response);
+        return response.data;
+    }
+
+    async makePrivate(tournamentId: string) {
+        const response = await this.axios.put<TournamentPublishDto>(`${this.baseUrl}/${tournamentId}/private`);
+
+        console.log('makeTournamentPrivate response: ', response);
         return response.data;
     }
 

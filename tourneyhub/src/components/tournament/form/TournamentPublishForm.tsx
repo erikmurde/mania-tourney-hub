@@ -22,8 +22,6 @@ const TouramentPublishForm = ({tourney, updateTourney}: IProps) => {
     dayjs.extend(utc);
 
     const onSubmit = async(values: TournamentPublishDto) => {
-        console.log(values);
-
         await new TournamentService().publish(tourney.id, values);
         setOpen(false);
         setSuccessOpen(true);

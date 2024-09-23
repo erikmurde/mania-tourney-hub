@@ -63,11 +63,7 @@ const HeaderButtons = ({tourney, updateTourney}: IProps) => {
     }
 
     const onPrivate = async() => {
-        tourney.published = false;
-        tourney.regsOpen = false;
-        tourney.applicationsOpen = false;
-
-        await tourneyService.edit(tourney.id, tourney);
+        await tourneyService.makePrivate(tourney.id);
         updateTourney();
     }
 
@@ -142,7 +138,8 @@ const HeaderButtons = ({tourney, updateTourney}: IProps) => {
                     action={onConclude}
                     btnProps={{ title: 'Conclude', startIcon: <Done/> }}/>
             </Grid>}
-            <LinkMenu links={tourney.links}/>
+            {tourney.links.length > 0 && 
+            <LinkMenu links={tourney.links}/>}
         </Grid>
         <SuccessDialog 
             open={successOpen} 
