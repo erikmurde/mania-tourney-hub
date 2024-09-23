@@ -42,29 +42,27 @@ public class StaffApplicationController {
     }
 
     @PostMapping("/api/staffApplications")
-    @PreAuthorize("#staffApplication.senderId == principal.getAttribute('id')")
+    @PreAuthorize("@userService.isOwner(#dto.senderPlayerId, #principal)")
     public void create(
-            @RequestBody @Valid StaffApplicationCreateDto staffApplication,
+            @RequestBody @Valid StaffApplicationCreateDto dto,
             @AuthenticationPrincipal OAuth2User principal)
     {
-        // Can't send application to own tournament
-        if (userService.isHost(staffApplication.getTournamentId(), principal)) {
+        if (userService.isHost(dto.getTournamentId(), principal)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
-        staffApplicationService.create(staffApplication);
+        staffApplicationService.create(dto);
     }
 
-    @PutMapping("/api/staffApplications/{id}")
+    @PutMapping("/api/staffApplications/{staffApplicationId}")
     @PreAuthorize(
-            "@userService.isHost(#staffApplication.tournamentId, principal) || " +
-            "#staffApplication.senderId == principal.getAttribute('id')"
+            "@userService.isHost(#dto.tournamentId, principal) || " +
+            "@userService.isOwner(#dto.senderPlayerId, principal)"
     )
     public void updateStatus(
-            @PathVariable Long id,
-            @RequestBody @Valid StaffApplicationEditDto staffApplication,
+            @PathVariable Long staffApplicationId,
+            @RequestBody @Valid StaffApplicationEditDto dto,
             @AuthenticationPrincipal OAuth2User principal)
     {
-        staffApplicationService
-                .updateStatus(id, staffApplication.getStatusId(), principal.getAttribute("id"));
+        staffApplicationService.updateStatus(staffApplicationId, dto, principal.getAttribute("id"));
     }
 }

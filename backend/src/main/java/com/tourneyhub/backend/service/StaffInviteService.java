@@ -1,6 +1,7 @@
 package com.tourneyhub.backend.service;
 
-import com.tourneyhub.backend.domain.Status;
+import com.tourneyhub.backend.domain.*;
+import com.tourneyhub.backend.dto.staffInvite.StaffInviteEditDto;
 import com.tourneyhub.backend.dto.staffInvite.StaffInviteCreateDto;
 import com.tourneyhub.backend.dto.staffInvite.StaffInviteDto;
 import com.tourneyhub.backend.mapper.StaffInviteMapper;
@@ -14,6 +15,8 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Objects;
+
+import static com.tourneyhub.backend.helper.Constants.ROLE_CAN_REG;
 
 @Service
 public class StaffInviteService {
@@ -46,29 +49,57 @@ public class StaffInviteService {
                 .toList();
     }
 
-    public void create(StaffInviteCreateDto dto, OAuth2User principal) {
+    public Long create(StaffInviteCreateDto dto, OAuth2User principal) {
         if (Objects.equals(principal.getAttribute("id"), dto.getRecipientId())) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
-        if (recipientAlreadyHasRole(dto) || isDuplicateInvite(dto)) {
+        if (recipientAlreadyHasRole(dto) || isDuplicateRequest(dto)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
         Status status = statusRepository
                 .findByName("pending")
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
-        staffRequestRepository.save(mapper.mapToEntity(dto, status));
+        return staffRequestRepository.save(mapper.mapToEntity(dto, status)).getId();
     }
 
-    public boolean recipientAlreadyHasRole(StaffInviteCreateDto dto) {
+    public Long updateStatus(Long staffInviteId, StaffInviteEditDto dto) {
+        StaffRequest staffInvite = staffRequestRepository
+                .findById(staffInviteId)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+
+        Status status = statusRepository
+                .findByName(dto.getStatus())
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+
+        if (status.getName().equals("accepted")) {
+            addTournamentRole(staffInvite.getRole(), staffInvite.getTournament(), staffInvite.getRecipient());
+        }
+        staffInvite.setStatus(status);
+        return staffRequestRepository.save(staffInvite).getId();
+    }
+
+    private boolean recipientAlreadyHasRole(StaffInviteCreateDto dto) {
         return tournamentRoleRepository
                 .getUserRoleInTournament(dto.getRecipientId(), dto.getTournamentId(), dto.getRoleId())
                 .isPresent();
     }
 
-    public boolean isDuplicateInvite(StaffInviteCreateDto dto) {
-        return staffRequestRepository
+    private boolean isDuplicateRequest(StaffInviteCreateDto dto) {
+        boolean hasInvite = staffRequestRepository
                 .getPendingInvite(dto.getRecipientId(), dto.getTournamentId(), dto.getRoleId())
                 .isPresent();
+
+        boolean hasApplication = staffRequestRepository
+                .getPendingApplication(dto.getRecipientId(), dto.getTournamentId(), dto.getRoleId())
+                .isPresent();
+
+        return hasInvite || hasApplication;
+    }
+
+    private void addTournamentRole(Role role, Tournament tournament, AppUser user) {
+        tournamentRoleRepository.save(
+                new TournamentRole(ROLE_CAN_REG.get(role.getName()), tournament, user, role)
+        );
     }
 }

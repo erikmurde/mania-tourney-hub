@@ -1,12 +1,9 @@
 package com.tourneyhub.backend.service;
 
-import com.tourneyhub.backend.domain.Role;
-import com.tourneyhub.backend.domain.StaffRequest;
-import com.tourneyhub.backend.domain.Status;
-import com.tourneyhub.backend.domain.TournamentRole;
+import com.tourneyhub.backend.domain.*;
 import com.tourneyhub.backend.dto.staffApplication.StaffApplicationCreateDto;
 import com.tourneyhub.backend.dto.staffApplication.StaffApplicationDto;
-import com.tourneyhub.backend.helper.Constants;
+import com.tourneyhub.backend.dto.staffApplication.StaffApplicationEditDto;
 import com.tourneyhub.backend.mapper.StaffApplicationMapper;
 import com.tourneyhub.backend.repository.StaffRequestRepository;
 import com.tourneyhub.backend.repository.StatusRepository;
@@ -16,7 +13,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
-import java.util.Objects;
+
+import static com.tourneyhub.backend.helper.Constants.ROLE_CAN_REG;
 
 @Service
 public class StaffApplicationService {
@@ -57,52 +55,45 @@ public class StaffApplicationService {
                 .toList();
     }
 
-    public void create(StaffApplicationCreateDto staffApplication) {
-        System.out.println("APPLICATION: " + staffApplication);
-
+    public void create(StaffApplicationCreateDto dto) {
         Status status = statusRepository
-                .findById(staffApplication.getStatusId())
+                .findById(dto.getStatusId())
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
         if (!status.getName().equals("pending")) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
-        staffRequestRepository.save(mapper.mapToEntity(staffApplication, status));
+        staffRequestRepository.save(mapper.mapToEntity(dto, status));
     }
 
-    public void updateStatus(Long applicationId, Long statusId, Integer playerId) {
-        StaffRequest staffRequest = staffRequestRepository
-                .findById(applicationId)
+    public void updateStatus(Long staffApplicationId,StaffApplicationEditDto dto, Integer playerId) {
+        StaffRequest application = staffRequestRepository
+                .findById(staffApplicationId)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
         Status status = statusRepository
-                .findById(statusId)
+                .findById(dto.getStatusId())
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
-        boolean isOwner = Objects.equals(playerId, staffRequest.getSender().getPlayerId());
+        boolean isOwner = playerId.equals(dto.getSenderPlayerId());
         boolean retracting = status.getName().equals("retracted");
 
-        if (!staffRequest.getStatus().getName().equals("pending")) {
+        if (!application.getStatus().getName().equals("pending")) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
         if (isOwner && !retracting || !isOwner && retracting) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
         if (status.getName().equals("accepted")) {
-            addTournamentRole(staffRequest);
+            addTournamentRole(application.getRole(), application.getTournament(), application.getSender());
         }
-        staffRequest.setStatus(status);
-        staffRequestRepository.save(staffRequest);
+        application.setStatus(status);
+        staffRequestRepository.save(application);
     }
 
-    private void addTournamentRole(StaffRequest staffRequest) {
-        Role role = staffRequest.getRole();
-
-        tournamentRoleRepository.save(new TournamentRole(
-                Constants.roleCanReg.get(role.getName()),
-                staffRequest.getTournament(),
-                staffRequest.getSender(),
-                role
-        ));
+    private void addTournamentRole(Role role, Tournament tournament, AppUser user) {
+        tournamentRoleRepository.save(
+                new TournamentRole(ROLE_CAN_REG.get(role.getName()), tournament, user, role)
+        );
     }
 }

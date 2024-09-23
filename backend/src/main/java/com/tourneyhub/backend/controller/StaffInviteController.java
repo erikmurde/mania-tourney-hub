@@ -1,5 +1,6 @@
 package com.tourneyhub.backend.controller;
 
+import com.tourneyhub.backend.dto.staffInvite.StaffInviteEditDto;
 import com.tourneyhub.backend.dto.staffInvite.StaffInviteCreateDto;
 import com.tourneyhub.backend.dto.staffInvite.StaffInviteDto;
 import com.tourneyhub.backend.service.StaffInviteService;
@@ -7,10 +8,7 @@ import jakarta.validation.Valid;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.user.OAuth2User;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -30,9 +28,15 @@ public class StaffInviteController {
 
     @PostMapping("/api/staffInvites")
     @PreAuthorize("@userService.isHost(#dto.tournamentId, principal)")
-    public void create(
+    public Long create(
             @RequestBody @Valid StaffInviteCreateDto dto, @AuthenticationPrincipal OAuth2User principal)
     {
-        service.create(dto, principal);
+        return service.create(dto, principal);
+    }
+
+    @PutMapping("/api/staffInvites/{staffInviteId}")
+    @PreAuthorize("@userService.isOwner(#dto.recipientPlayerId, principal)")
+    public Long updateStatus(@PathVariable Long staffInviteId, @RequestBody @Valid StaffInviteEditDto dto) {
+        return service.updateStatus(staffInviteId, dto);
     }
 }

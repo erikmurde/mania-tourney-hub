@@ -31,7 +31,7 @@ public class StaffInviteMapper {
         Tournament tournament = staffRequest.getTournament();
 
         return new StaffInviteDto(
-                tournament.getId(),
+                staffRequest.getId(),
                 staffRequest.getTournament().getId(),
                 staffRequest.getRecipient().getId(),
                 staffRequest.getSender().getName(),

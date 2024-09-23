@@ -17,20 +17,20 @@ public class Constants {
     public static final String SHEETER = "sheeter";
     public static final String GFX = "gfx";
 
-    public static final HashMap<String, Boolean> roleCanReg = new HashMap<>();
+    public static final HashMap<String, Boolean> ROLE_CAN_REG = new HashMap<>();
 
     static {
-        roleCanReg.put(PLAYER, false);
-        roleCanReg.put(HOST, false);
-        roleCanReg.put(ADMIN, false);
-        roleCanReg.put(MAPPOOLER, false);
-        roleCanReg.put(MAPPER, false);
-        roleCanReg.put(PLAYTESTER, false);
-        roleCanReg.put(REFEREE, false);
-        roleCanReg.put(STREAMER, true);
-        roleCanReg.put(COMMENTATOR, true);
-        roleCanReg.put(SHEETER, false);
-        roleCanReg.put(GFX, false);
+        ROLE_CAN_REG.put(PLAYER, false);
+        ROLE_CAN_REG.put(HOST, false);
+        ROLE_CAN_REG.put(ADMIN, false);
+        ROLE_CAN_REG.put(MAPPOOLER, false);
+        ROLE_CAN_REG.put(MAPPER, false);
+        ROLE_CAN_REG.put(PLAYTESTER, false);
+        ROLE_CAN_REG.put(REFEREE, false);
+        ROLE_CAN_REG.put(STREAMER, true);
+        ROLE_CAN_REG.put(COMMENTATOR, true);
+        ROLE_CAN_REG.put(SHEETER, false);
+        ROLE_CAN_REG.put(GFX, false);
     }
 
     // Regex

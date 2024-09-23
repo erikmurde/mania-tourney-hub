@@ -90,6 +90,10 @@ public class UserService {
                 .toList();
     }
 
+    public boolean isOwner(Integer playerId, OAuth2User principal) {
+        return playerId.equals(principal.getAttribute("id"));
+    }
+
     public boolean isHost(Long tournamentId, OAuth2User principal) {
         return getTournamentRoles(tournamentId, principal).contains(Constants.HOST);
     }

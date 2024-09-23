@@ -36,4 +36,15 @@ public interface StaffRequestRepository extends CrudRepository<StaffRequest, Lon
             @Param("tournamentId") Long tournamentId,
             @Param("roleId") Long roleId
     );
+
+    @Query(
+            "FROM StaffRequest r " +
+            "WHERE r.sender.id=:senderId AND r.recipient.id IS NULL " +
+            "AND r.tournament.id=:tournamentId AND r.role.id=:roleId AND r.status.name = 'pending'"
+    )
+    Optional<StaffRequest> getPendingApplication(
+            @Param("senderId") Long senderId,
+            @Param("tournamentId") Long tournamentId,
+            @Param("roleId") Long roleId
+    );
 }

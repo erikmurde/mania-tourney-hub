@@ -8,6 +8,9 @@ import lombok.Data;
 public class StaffApplicationCreateDto {
 
     @NotNull
+    private Integer senderPlayerId;
+
+    @NotNull
     private Long senderId;
 
     @NotNull
