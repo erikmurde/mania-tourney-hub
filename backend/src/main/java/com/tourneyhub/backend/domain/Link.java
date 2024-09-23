@@ -15,5 +15,5 @@ public class Link {
     private String name;
 
     @Pattern(regexp = URL_REGEX)
-    private String link;
+    private String url;
 }

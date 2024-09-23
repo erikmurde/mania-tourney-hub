@@ -387,6 +387,17 @@ VALUES (
     'https://assets.ppy.sh/tournament-banners/official/mwc4k2023.jpg',
     'Please join our discord server before registering.', ''
 );
+INSERT INTO tournament (
+    applications_open, concluded, max_player_rank, max_team_size, min_player_rank, min_team_size, players_published,
+    protects, published, regs_open, warmups, key_count, application_deadline, reg_deadline, code, name, description,
+    banner, reg_message, information
+)
+VALUES (
+    false, false, 0, 1, 0, 1, false, true, false, false, false, 4,
+    null, null, 'TEST', 'Test', 'Test tournament',
+    'https://assets.ppy.sh/tournament-banners/official/mwc4k2022.jpg',
+    'Test message', ''
+);
 
 -- STAGES -------------------------------------------------------------------------------------------------------------
 
@@ -1318,6 +1329,7 @@ INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_r
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 1, 5, false);
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 1, 1, false);
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 1, 2, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (3, 1, 2, false);
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 2, 7, false);
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 2, 8, true);
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 2, 9, true);
@@ -1719,6 +1731,6 @@ VALUES (1, 9, 2, 1, 1, 'Come join my tournament as a commentator because of reas
 
 -- LINKS --------------------------------------------------------------------------------------------------------------
 
-INSERT INTO link (tournament_id, name, link) VALUES (1, 'Youtube', 'https://www.youtube.com');
-INSERT INTO link (tournament_id, name, link) VALUES (1, 'Twitch', 'https://www.twitch.tv');
-INSERT INTO link (tournament_id, name, link) VALUES (2, 'Discord', 'https://www.discord.com');
+INSERT INTO link (tournament_id, name, url) VALUES (1, 'Youtube', 'https://www.youtube.com');
+INSERT INTO link (tournament_id, name, url) VALUES (1, 'Twitch', 'https://www.twitch.tv');
+INSERT INTO link (tournament_id, name, url) VALUES (2, 'Discord', 'https://www.discord.com');

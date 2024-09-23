@@ -41,7 +41,7 @@ public class TournamentMapper {
                 tournament
                         .getLinks()
                         .stream()
-                        .map(link -> new LinkDto(link.getName(), link.getLink()))
+                        .map(link -> new LinkDto(link.getName(), link.getUrl()))
                         .toList()
         );
     }

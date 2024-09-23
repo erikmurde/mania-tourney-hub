@@ -9,5 +9,5 @@ public class LinkDto {
 
     private String name;
 
-    private String link;
+    private String url;
 }

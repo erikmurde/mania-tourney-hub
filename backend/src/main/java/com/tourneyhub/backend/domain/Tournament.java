@@ -65,10 +65,8 @@ public class Tournament extends BaseEntityWithName {
     @NotNull
     private boolean applicationsOpen;
 
-    @NotNull
     private Date regDeadline;
 
-    @NotNull
     private Date applicationDeadline;
 
     @NotNull

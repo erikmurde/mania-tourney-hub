@@ -2,9 +2,10 @@ package com.tourneyhub.backend.controller;
 
 import com.tourneyhub.backend.dto.tournament.SimpleTournamentDto;
 import com.tourneyhub.backend.dto.tournament.TournamentDto;
+import com.tourneyhub.backend.dto.tournament.TournamentPublishDto;
 import com.tourneyhub.backend.service.TournamentService;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
-import net.minidev.json.JSONObject;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,5 +34,11 @@ public class TournamentController {
     @PreAuthorize("@userService.isHost(#tournamentId, principal)")
     public Long updateInformation(@PathVariable Long tournamentId, @RequestBody @NotNull String information) {
         return service.updateInformation(tournamentId, information);
+    }
+
+    @PutMapping("/api/tournaments/{tournamentId}/publish")
+    @PreAuthorize("@userService.isHost(#tournamentId, principal)")
+    public Long publish(@PathVariable Long tournamentId, @RequestBody @Valid TournamentPublishDto dto) {
+        return service.publish(tournamentId, dto);
     }
 }
