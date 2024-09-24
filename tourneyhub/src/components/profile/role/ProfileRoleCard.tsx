@@ -1,9 +1,6 @@
 import { Card, Divider, Grid, Typography, useTheme } from '@mui/material';
 import { StyledCardContent } from '../../styled/StyledCardContent';
-import { useEffect, useState } from 'react';
 import { GFX, PLAYER } from '../../../constants';
-import { TeamDto } from '../../../dto/team/TeamDto';
-import { TeamService } from '../../../services/teamService';
 import PlayerRoles from './PlayerRoles';
 import StaffRoles from './StaffRoles';
 import { TournamentRoleDto } from '../../../dto/tournamentRole/TournamentRoleDto';
@@ -16,15 +13,6 @@ interface IProps {
 
 const ProfileRoleCard = ({roles, stats}: IProps) => {
     const theme = useTheme();
-    const [userTeam, setUserTeam] = useState(null as TeamDto | null);
-
-    useEffect(() => {
-        if (stats.teamId) {
-            new TeamService()
-                .getEntity(stats.teamId)
-                .then(team => setUserTeam(team));
-        }
-    }, [stats.teamId]);
 
     const staffRoles = roles
         .filter(tourneyRole => tourneyRole.role !== PLAYER)
@@ -60,9 +48,9 @@ const ProfileRoleCard = ({roles, stats}: IProps) => {
                     staffRoles={staffRoles}/>
                 <PlayerRoles 
                     tourneyDone={concluded} 
-                    teamName={userTeam?.name}
-                    seeding={userTeam ? userTeam.seed : stats.seed} 
-                    placement={userTeam ? userTeam.placement : stats.placement}/>
+                    teamName={stats.team}
+                    seeding={stats.seed} 
+                    placement={stats.placement}/>
             </StyledCardContent>
         </Card>
     );

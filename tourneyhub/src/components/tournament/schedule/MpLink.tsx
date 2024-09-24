@@ -5,14 +5,14 @@ import { Link } from '@mui/icons-material';
 
 interface IProps {
     title: string,
-    link: string
+    matchId: number
 }
 
-const MpLink = ({title, link}: IProps) => {
+const MpLink = ({title, matchId}: IProps) => {
     return (  
         <Tooltip title={title}>
             <StyledIconButton 
-                onClick={() => window.open(link, '_blank')}
+                onClick={() => window.open(`https://osu.ppy.sh/community/matches/${matchId}`, '_blank')}
                 sx={{ color: TERTIARY }}>
                 <Link/>
             </StyledIconButton>

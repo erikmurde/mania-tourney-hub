@@ -36,7 +36,7 @@ const MatchCreateForm = ({stageId}: {stageId: string}) => {
         if (open) {
             if (isTeam) {
                 new TeamService()
-                    .getTeams(tourney.id)
+                    .getSimpleTeams(tourney.id)
                     .then(teams => initSelection(teams));
             } else {
                 authService
@@ -106,9 +106,9 @@ const MatchCreateForm = ({stageId}: {stageId: string}) => {
     const initialValues: MatchCreateDto = {
         id: '',
         stageId: stageId,
+        matchId: null,
         code: '',
         time: dayjs.utc(),
-        mpLink: '',
         score1: 0,
         score2: 0,
         isDone: false,

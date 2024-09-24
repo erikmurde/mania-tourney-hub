@@ -9,7 +9,6 @@ import { TournamentDto } from '../../../../dto/tournament/TournamentDto';
 import { TeamDto } from '../../../../dto/team/TeamDto';
 import { INVALID_URL, REQUIRED, URL_REGEX } from '../../../../constants';
 import { TeamService } from '../../../../services/teamService';
-import { TeamPlayerDto } from '../../../../dto/team/TeamPlayerDto';
 import { TournamentService } from '../../../../services/tournamentService';
 
 interface IProps {
@@ -35,7 +34,7 @@ const TeamRegisterForm = ({user, tourney, openSuccess}: IProps) => {
                     players.filter(player => tourneyService.isValidUser(player, tourney))
                 ));
             teamService
-                .getSimpleTeams(tourney.id)
+                .getTeams(tourney.id)
                 .then(teams => setTeams(teams));
         }
     }, [open, tourney.id]);
@@ -47,34 +46,38 @@ const TeamRegisterForm = ({user, tourney, openSuccess}: IProps) => {
         return roles.every(role => role.canRegWithRole);
     }
 
-    const registerPlayer = async(player: TeamPlayerDto) => {
-        player.roles.push({
-            tournamentId: tourney.id,
-            tournament: tourney.name,
-            role: 'player', 
-            canRegWithRole: false,
-            concluded: tourney.concluded
-        });
-        const { isCaptain: _, ...user } = player;
-        await authService.edit(player.id, user);
+    const registerPlayer = async(player: UserDto) => {
+        // TODO move to backend
+
+        // player.roles.push({
+        //     tournamentId: tourney.id,
+        //     tournament: tourney.name,
+        //     role: 'player', 
+        //     canRegWithRole: false,
+        //     concluded: tourney.concluded
+        // });
+        // const { isCaptain: _, ...user } = player;
+        // await authService.edit(player.id, user);
     }
 
     const registerTeam = async(values: TeamCreateDto) => {
-        const team: TeamDto = {
-            ...values,
-            players: players
-                .filter(player => values.players.includes(player.name))
-                .map(player => ({ ...player, isCaptain: player.name === user?.name }))
-        }
-        if (!team.logo) {
-            const captain = team.players.find(player => player.isCaptain);
-            team.logo = `https://assets.ppy.sh/old-flags/${captain!.country.iso2}.png`;
-        }
-        team.players.forEach(player => registerPlayer(player));
+        // TODO move to backend
 
-        await new TeamService().create(team);
-        setOpen(false);
-        openSuccess();
+        // const team: TeamDto = {
+        //     ...values,
+        //     players: players
+        //         .filter(player => values.players.includes(player.name))
+        //         .map(player => ({ ...player, isCaptain: player.name === user?.name }))
+        // }
+        // if (!team.logo) {
+        //     const captain = team.players.find(player => player.isCaptain);
+        //     team.logo = `https://assets.ppy.sh/old-flags/${captain!.country.iso2}.png`;
+        // }
+        // team.players.forEach(player => registerPlayer(player));
+
+        // await new TeamService().create(team);
+        // setOpen(false);
+        // openSuccess();
     }
 
     const initialValues: TeamCreateDto = {

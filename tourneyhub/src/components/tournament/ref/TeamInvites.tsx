@@ -13,8 +13,8 @@ const TeamInvites = ({team, bgColor}: IProps) => {
 
     const sortPlayers = () => {
         return [
-            team.players.find(player => player.isCaptain)!,
-            ...team.players.filter(player => !player.isCaptain)
+            team.players.find(player => player.teamCaptain)!,
+            ...team.players.filter(player => !player.teamCaptain)
         ];
     }
 
@@ -30,7 +30,7 @@ const TeamInvites = ({team, bgColor}: IProps) => {
                     </Grid>
                     <Grid item width={70} paddingLeft={0.5}>
                         <Typography fontSize={14} fontWeight={500}>
-                            {player.isCaptain ? 'Captain' : `Player ${index + 1}`}
+                            {player.teamCaptain ? 'Captain' : `Player ${index + 1}`}
                         </Typography>
                     </Grid>
                     <Grid item width={40}>

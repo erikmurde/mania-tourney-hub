@@ -44,6 +44,11 @@ const MapPool = () => {
     }, [tourney.id]);
 
     useEffect(() => {
+        audio.pause();
+        setActiveAudioId('');
+    }, [mapPoolUpdate]);
+
+    useEffect(() => {
         if (!stageId) {
             return;
         }

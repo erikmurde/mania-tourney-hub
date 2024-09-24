@@ -2,30 +2,40 @@ import { Delete, PersonAdd, PersonRemove, PlayArrow } from '@mui/icons-material'
 import { SchedTableCell } from '../../../../styled/SchedTableCell';
 import { StyledIconButton } from '../../../../styled/StyledIconButton';
 import ConfirmationDialog from '../../../dialog/ConfirmationDialog';
-import { LobbyDto } from '../../../../../dto/schedule/LobbyDto';
+import { LobbyDto } from '../../../../../dto/schedule/lobby/LobbyDto';
 import { LobbyService } from '../../../../../services/lobbyService';
 import { useContext } from 'react';
 import { AuthContext, UpdateContext } from '../../../../../routes/Root';
 import { Tooltip } from '@mui/material';
 import LobbyEditForm from '../../form/LobbyEditForm';
 import MpLink from '../../MpLink';
+import { LobbyRegisterDto } from '../../../../../dto/schedule/lobby/LobbyRegisterDto';
 
 interface IProps {
     lobby: LobbyDto,
-    regName: string,
+    teamName: string | null,
     canReg: boolean,
     isHost: boolean,
     hasRefRole: boolean,
     onRef: () => void
 }
 
-const LobbyRowActions = ({lobby, regName, isHost, canReg, hasRefRole, onRef}: IProps) => {
+const LobbyRowActions = ({lobby, teamName, isHost, canReg, hasRefRole, onRef}: IProps) => {
     const { user } = useContext(AuthContext);
     const { scheduleUpdate, setScheduleUpdate } = useContext(UpdateContext);
     const service = new LobbyService();
 
-    const editLobby = async() => {
-        await service.edit(lobby.id, lobby);
+    const editLobby = async(participant: string, referee: boolean, reg: boolean) => {
+        const data: LobbyRegisterDto = {
+            participant: participant,
+            referee: referee,
+            team: teamName !== null
+        }
+        if (reg) {
+            await service.registerParticipant(lobby.id, data);
+        } else {
+            await service.unregisterParticipant(lobby.id, data);
+        }
         setScheduleUpdate(scheduleUpdate + 1);
     }
 
@@ -34,38 +44,36 @@ const LobbyRowActions = ({lobby, regName, isHost, canReg, hasRefRole, onRef}: IP
         setScheduleUpdate(scheduleUpdate + 1);
     }
 
-    const editLobbyReg = async(reg: boolean) => {
-        if (!user) {
-            return;
+    const editLobbyPlayer = async(reg: boolean) => {
+        if (user) {
+            editLobby(teamName ?? user.name, false, reg);
         }
-        lobby.players = reg 
-            ? [...lobby.players, regName] 
-            : lobby.players.filter(player => player !== regName);
-    
-        editLobby();
     }
 
-    const editLobbyRef = (add: boolean) => {
-        if (!user) {
-            return
+    const editLobbyRef = (reg: boolean) => {
+        if (user) {
+            editLobby(user.name, true, reg);
         }
-        lobby.referee = add ? user.name : '';
-        editLobby();
     }
 
-    const closeEmptyLobby = () => {
-        lobby.isDone = true;
-        editLobby();
+    const closeEmptyLobby = async() => {
+        await service.edit(lobby.id, {
+            referee: lobby.referee,
+            matchId: null,
+            time: lobby.time,
+            concluded: true
+        });
+        setScheduleUpdate(scheduleUpdate + 1);
     }
 
-    const isReferee = user && lobby.referee === user.name;
-    const canAddRef = hasRefRole && lobby.referee === '';
+    const isReferee = lobby.referee === user?.name;
+    const canAddRef = hasRefRole && !lobby.referee;
 
     return (  
         <SchedTableCell align='center'>
-            {lobby.isDone && lobby.mpLink && 
-            <MpLink title='Lobby link' link={lobby.mpLink}/>}
-            {(isHost || isReferee) && !lobby.isDone && 
+            {lobby.concluded && lobby.matchId && 
+            <MpLink title='Lobby link' matchId={lobby.matchId}/>}
+            {(isHost || isReferee) && !lobby.concluded && 
             <Tooltip title='Conduct lobby'>
                 {lobby.players.length > 0 
                 ?   <StyledIconButton color='primary' onClick={onRef}>
@@ -81,31 +89,31 @@ const LobbyRowActions = ({lobby, regName, isHost, canReg, hasRefRole, onRef}: IP
                             btnProps={{ color: 'primary' }}/>
                     </span>}
             </Tooltip>}
-            {!isHost && (canReg || canAddRef) && !lobby.isDone &&
+            {!isHost && (canReg || canAddRef) && !lobby.concluded &&
             <Tooltip title={hasRefRole ? 'Set as referee' : 'Register for lobby'}>
                 <StyledIconButton 
                     color='success' 
-                    onClick={() => hasRefRole ? editLobbyRef(true) : editLobbyReg(true)}
+                    onClick={() => hasRefRole ? editLobbyRef(true) : editLobbyPlayer(true)}
                     >
                     <PersonAdd/>
                 </StyledIconButton>
             </Tooltip>}
-            {user && !isHost && (isReferee || lobby.players.includes(regName)) &&
+            {user && !isHost && !lobby.concluded && (isReferee || lobby.players.includes(teamName ?? user.name)) &&
             <Tooltip title={hasRefRole ? 'Remove referee' : 'Cancel registration'}>
                 <StyledIconButton 
                     color='error' 
-                    onClick={() => hasRefRole ? editLobbyRef(false) : editLobbyReg(false)}
+                    onClick={() => hasRefRole ? editLobbyRef(false) : editLobbyPlayer(false)}
                     >
                     <PersonRemove/>
                 </StyledIconButton>
             </Tooltip>}
-            {isHost && !lobby.isDone &&
+            {isHost && !lobby.concluded &&
             <>
             <LobbyEditForm lobby={lobby}/>
             <ConfirmationDialog
                 title='Are you sure you wish to delete this lobby?' 
                 actionTitle='Delete' 
-                action={() => deleteLobby()}
+                action={deleteLobby}
                 btnIcon={<Delete/>}
                 btnProps={{ color: 'error' }}/>
             </>}

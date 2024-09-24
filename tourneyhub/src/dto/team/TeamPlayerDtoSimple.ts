@@ -1,4 +1,4 @@
 export interface TeamPlayerDtoSimple {
     name: string,
-    isCaptain: boolean
+    teamCaptain: boolean
 }

@@ -1,5 +1,5 @@
 import { TableContainer, Table, TableBody, TableHead, TableRow, Paper, Dialog } from '@mui/material';
-import { LobbyDto } from '../../../../../dto/schedule/LobbyDto';
+import { LobbyDto } from '../../../../../dto/schedule/lobby/LobbyDto';
 import { SchedTableCell } from '../../../../styled/SchedTableCell';
 import { IStageDto } from '../../../../../dto/stage/IStageDto';
 import { useContext, useEffect, useState } from 'react';
@@ -8,9 +8,7 @@ import { LobbyService } from '../../../../../services/lobbyService';
 import LobbyTableRow from './LobbyTableRow';
 import dayjs from 'dayjs';
 import NoItems from '../../../NoItems';
-import { TeamDto } from '../../../../../dto/team/TeamDto';
 import { useTourney } from '../../../../../routes/tournament/TournamentHeader';
-import { TeamService } from '../../../../../services/teamService';
 import LobbyRefSheet from '../../../dialog/referee/LobbyRefSheet';
 
 const LobbyTable = ({stage, showTeams}: {stage: IStageDto, showTeams: boolean}) => {
@@ -19,30 +17,25 @@ const LobbyTable = ({stage, showTeams}: {stage: IStageDto, showTeams: boolean}) 
     const { scheduleUpdate } = useContext(UpdateContext);
 
     const [lobbies, setLobbies] = useState([] as LobbyDto[]);
-    const [userTeam, setUserTeam] = useState(null as TeamDto | null);
+    const [teamName, setTeamName] = useState(null as string | null);
     const [refIndex, setRefIndex] = useState(null as number | null);    
 
     useEffect(() => {
-        const teamId = user?.stats
-            .find(stats => stats.tournamentId === tourney.id)?.teamId;
-
-        if (teamId && tourney.minTeamSize > 1) {
-            new TeamService()
-                .getEntity(teamId)
-                .then(team => setUserTeam(team));
-        }
-    }, [user?.stats, tourney.id, tourney.minTeamSize]);
+        setTeamName(
+            user?.stats.find(stats => stats.tournamentId === tourney.id)?.team ?? null
+        );
+    }, [user?.stats, tourney.id]);
 
     useEffect(() => {
         new LobbyService()
-            .getAllStage(stage.id)
+            .getAllByStageId(stage.id)
             .then(lobbies => setLobbies(
                 lobbies.sort((a, b) => dayjs(a.time) > dayjs(b.time) ? 1 : -1)
             ));
     }, [stage.id, scheduleUpdate]);
 
     const isRegistered = user 
-        ? lobbies.some(lobby => lobby.players.includes(userTeam ? userTeam.name : user.name)) 
+        ? lobbies.some(lobby => lobby.players.includes(teamName ?? user.name)) 
         : false;
 
     return (  
@@ -65,7 +58,7 @@ const LobbyTable = ({stage, showTeams}: {stage: IStageDto, showTeams: boolean}) 
                             <LobbyTableRow 
                                 key={lobby.id} 
                                 lobby={lobby} 
-                                userTeam={userTeam}
+                                teamName={teamName}
                                 lobbySize={stage.lobbySize} 
                                 isRegistered={isRegistered}
                                 deadlinePassed={dayjs(stage.schedulingDeadline) < dayjs()}

@@ -1,7 +1,8 @@
 export interface TournamentStatsDto {
     tournamentId: string,
-    teamId?: string,
+    team?: string,
     status: string,
     seed: number,
-    placement: number
+    placement: number,
+    teamCaptain: boolean
 }

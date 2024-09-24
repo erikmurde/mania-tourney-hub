@@ -15,24 +15,26 @@ import { useTourney } from '../TournamentHeader';
 const Teams = () => {
     const { tourney } = useTourney();
     const { user } = useContext(AuthContext);
+
     const [teams, setTeams] = useState([] as TeamDto[]);
     const [showTeams, setShowTeams] = useState(1);
+
     const validRoles = [HOST, ADMIN];
     const tourneyService = new TournamentService();
     const teamService = new TeamService();
 
-    const isValid = user && user.roles
+    const hasValidRoles = user && user.roles
         .filter(tourneyRole => tourneyRole.tournamentId === tourney.id)
         .some(tourneyRole => validRoles.includes(tourneyRole.role));
 
     useEffect(() => {
         teamService
             .getTeams(tourney.id)
-            .then(teams => setTeams(isValid 
+            .then(teams => setTeams(hasValidRoles 
                 ? teams 
                 : teams.filter(team => team.status !== DISQUALIFIED))
             );
-    }, [tourney.id, isValid]);
+    }, [tourney.id, hasValidRoles]);
 
     const publishTeams = async() => {
         const newTeams = [...teams];
@@ -63,7 +65,7 @@ const Teams = () => {
                         <Tab label='Players' value={0}/>
                     </Tabs>
                 </Grid>
-                {isValid && !tourney.playersPublished &&
+                {hasValidRoles && !tourney.playersPublished &&
                 <Grid item xs={12} margin={5} marginTop={2}>
                     <ConfirmationDialog
                         btnProps={{ 
@@ -75,19 +77,14 @@ const Teams = () => {
                         actionTitle={'Publish'} 
                         action={() => publishTeams()}/>
                 </Grid>}
-                {(isValid || tourney.playersPublished) &&
+                {(hasValidRoles || tourney.playersPublished) &&
                 <Grid item xs={12}>
                     {showTeams 
                     ?   <TeamList 
                             teamsPublic={tourney.playersPublished} 
                             teams={teams} 
                             setTeams={setTeams}/>
-                    :   <TeamPlayerList players={
-                            teams
-                            .map(team => team.players)
-                            .flat()
-                            .sort((a, b) => a.rank - b.rank)
-                        }/>}
+                    :   <TeamPlayerList teams={teams}/>}
                 </Grid>}
             </Grid>
         </Paper>

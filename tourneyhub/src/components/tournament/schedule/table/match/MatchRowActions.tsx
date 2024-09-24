@@ -63,8 +63,8 @@ const MatchRowActions = ({match, onRef}: IProps) => {
 
     return (
         <SchedTableCell align='center'>
-            {match.isDone && !isWbd && match.mpLink &&
-            <MpLink title='Match link' link={match.mpLink}/>}
+            {match.isDone && !isWbd && match.matchId &&
+            <MpLink title='Match link' matchId={match.matchId}/>}
             {(isHost || isReferee) && !match.isDone && 
             <Tooltip title='Conduct match'>
                 <StyledIconButton color='primary' onClick={onRef}>

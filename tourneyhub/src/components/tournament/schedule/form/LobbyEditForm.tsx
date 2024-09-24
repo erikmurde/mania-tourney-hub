@@ -2,16 +2,16 @@ import { Edit } from '@mui/icons-material';
 import FormDialogBase from '../../dialog/FormDialogBase';
 import LobbyCreateFormView from './views/LobbyCreateFormView';
 import { useContext, useEffect, useState } from 'react';
-import { LobbyDto } from '../../../../dto/schedule/LobbyDto';
+import { LobbyDto } from '../../../../dto/schedule/lobby/LobbyDto';
 import { AuthService } from '../../../../services/authService';
 import { ADMIN, HOST, REFEREE, REQUIRED } from '../../../../constants';
 import dayjs from 'dayjs';
 import { Schema, object, date } from 'yup';
 import { LobbyService } from '../../../../services/lobbyService';
 import { UpdateContext } from '../../../../routes/Root';
-import { UserDto } from '../../../../dto/user/UserDto';
 import { useTourney } from '../../../../routes/tournament/TournamentHeader';
 import { UserDtoSimple } from '../../../../dto/user/UserDtoSimple';
+import { LobbyCreateDto } from '../../../../dto/schedule/lobby/LobbyCreateDto';
 
 const LobbyEditForm = ({lobby}: {lobby: LobbyDto}) => {
     const { tourney } = useTourney();
@@ -27,10 +27,21 @@ const LobbyEditForm = ({lobby}: {lobby: LobbyDto}) => {
         }
     }, [tourney.id, open]);
 
-    const onSubmit = async(values: LobbyDto) => {
-        await new LobbyService().edit(values.id, values);
+    const onSubmit = async(values: LobbyCreateDto) => {
+        await new LobbyService().edit(lobby.id, {
+            referee: values.referee === '' ? null : values.referee,
+            matchId: null,
+            time: values.time,
+            concluded: false
+        });
         setScheduleUpdate(scheduleUpdate + 1);
         setOpen(false);
+    }
+
+    const initialValues: LobbyCreateDto = {
+        stageId: lobby.stageId,
+        referee: selectValues.find(staff => staff.name === lobby.referee)?.name ?? '',
+        time: lobby.time
     }
 
     const validationSchema: Schema = object({
@@ -52,7 +63,7 @@ const LobbyEditForm = ({lobby}: {lobby: LobbyDto}) => {
             setOpen={setOpen}
             form={
                 <LobbyCreateFormView 
-                    initialValues={lobby} 
+                    initialValues={initialValues} 
                     selectValues={selectValues} 
                     validationSchema={validationSchema} 
                     onSubmit={onSubmit}/>

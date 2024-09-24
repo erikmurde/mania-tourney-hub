@@ -45,7 +45,7 @@ const Root = () => {
     useEffect(() => {
         new AuthService()
             .getMe()
-            .then(user => setUser(user ?? null));
+            .then(user => setUser(user === '' ? null : user));
     }, []);
 
     return (

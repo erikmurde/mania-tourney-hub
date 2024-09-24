@@ -3,12 +3,12 @@ import { RefSheetPaper } from '../../../styled/RefSheetPaper';
 import ConfirmationDialog from '../../dialog/ConfirmationDialog';
 import { Grid, TextField } from '@mui/material';
 import { useTourney } from '../../../../routes/tournament/TournamentHeader';
-import { LobbyDto } from '../../../../dto/schedule/LobbyDto';
+import { LobbyDto } from '../../../../dto/schedule/lobby/LobbyDto';
 import { useContext, useState } from 'react';
-import { LobbyService } from '../../../../services/lobbyService';
 import { UpdateContext } from '../../../../routes/Root';
-import { INVALID_URL, URL_REGEX } from '../../../../constants';
+import { NOT_NEGATIVE } from '../../../../constants';
 import RoomTitle from '../RoomTitle';
+import { LobbyService } from '../../../../services/lobbyService';
 
 interface IProps {
     lobby: LobbyDto,
@@ -19,20 +19,31 @@ interface IProps {
 const LobbyMain = ({lobby, stageName, onClose}: IProps) => {
     const { tourney } = useTourney();
     const { scheduleUpdate, setScheduleUpdate } = useContext(UpdateContext);
-    const [mpLink, setMpLink] = useState('');
+    const [matchId, setMatchId] = useState(null as number | null);
     const [error, setError] = useState('');
 
     const onConclude = async() => {
-        if (!mpLink.match(URL_REGEX)) {
-            setError(INVALID_URL);
+        if (!validate()) {
             return;
         }
-        lobby.isDone = true;
-        lobby.mpLink = mpLink;
-        
-        await new LobbyService().edit(lobby.id, lobby);
+        await new LobbyService().edit(lobby.id, {
+            referee: lobby.referee,
+            matchId: matchId,
+            time: lobby.time,
+            concluded: true
+        });
         setScheduleUpdate(scheduleUpdate + 1);
         onClose();
+    }
+
+    const validate = () => {
+        let message = '';
+
+        if (!matchId || matchId < 0) {
+            message = NOT_NEGATIVE;
+        }
+        setError(message);
+        return message === '';
     }
 
     const roomCommand = `!mp make ${tourney.code}: Lobby ${lobby.code}`;
@@ -45,9 +56,9 @@ const LobbyMain = ({lobby, stageName, onClose}: IProps) => {
                     roomCommand={roomCommand}
                 />
                 <Grid item xs={12} marginTop={0.5} marginBottom={1} paddingLeft={0.5}>
-                    <TextField fullWidth label='MP link' size='small' 
-                        onChange={(e) => setMpLink(e.target.value)}
-                        onBlur={() => setError(!mpLink.match(URL_REGEX) ? INVALID_URL : '')}
+                    <TextField fullWidth type='number' label='MP link' size='small'
+                        onChange={(e) => setMatchId(Number(e.target.value))}
+                        onBlur={validate}
                         error={error !== ''}
                         helperText={error}/>
                 </Grid>

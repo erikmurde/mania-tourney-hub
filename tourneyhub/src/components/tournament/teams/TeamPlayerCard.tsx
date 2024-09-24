@@ -1,18 +1,19 @@
 import { Card, CardActionArea, CardMedia, Grid, Typography, useTheme } from '@mui/material';
-import { TeamPlayerDto } from '../../../dto/team/TeamPlayerDto';
 import { UserCardContent } from '../../styled/UserCardContent';
 import { faCrown } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from 'react';
 import Profile from '../../../routes/profile/Profile';
 import Flag from '../../Flag';
+import { UserDto } from '../../../dto/user/UserDto';
 
 interface IProps {
-    player: TeamPlayerDto,
+    player: UserDto,
+    isCaptain: boolean,
     isSeparate?: boolean
 }
 
-const TeamPlayerCard = ({player, isSeparate}: IProps) => {
+const TeamPlayerCard = ({player, isCaptain, isSeparate}: IProps) => {
     const [open, setOpen] = useState(false);
     const theme = useTheme();
 
@@ -37,12 +38,12 @@ const TeamPlayerCard = ({player, isSeparate}: IProps) => {
             <Profile owner={player} open={open} setOpen={setOpen}/>
             <UserCardContent>
                 <Grid container columnSpacing={1} alignItems='center'>
-                    <Grid item xs={player.isCaptain ? 10 : 12}>
+                    <Grid item xs={isCaptain ? 10 : 12}>
                         <Typography>
                             {player.name} #{player.rank}
                         </Typography>
                     </Grid>
-                    {player.isCaptain && 
+                    {isCaptain && 
                     <Grid item xs textAlign='end'>
                         <FontAwesomeIcon 
                             icon={faCrown} 

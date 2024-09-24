@@ -9,7 +9,7 @@ import { UpdateContext } from '../../../../routes/Root';
 import { MatchService } from '../../../../services/matchService';
 import ConfirmationDialog from '../../dialog/ConfirmationDialog';
 import { RefSheetPaper } from '../../../styled/RefSheetPaper';
-import { INVALID_URL, URL_REGEX } from '../../../../constants';
+import { INVALID_URL, REQUIRED, URL_REGEX } from '../../../../constants';
 import RoomTitle from '../RoomTitle';
 
 interface IProps {
@@ -22,7 +22,7 @@ interface IProps {
 const MatchMain = ({match, stageName, maxScore, onClose}: IProps) => {
     const { scheduleUpdate, setScheduleUpdate } = useContext(UpdateContext);
     const { tourney } = useTourney();
-    const [mpLink, setMpLink] = useState('');
+    const [matchId, setMatchId] = useState(null as number | null);
     const [error, setError] = useState('');
 
     const editMatch = async() => {
@@ -33,7 +33,7 @@ const MatchMain = ({match, stageName, maxScore, onClose}: IProps) => {
 
     const onWbd = async({match, winner}: MatchWbdDto) => {
         match.isDone = true;
-        match.mpLink = '';
+        match.matchId = null;
         match.score1 = winner === match.player1.name ? -1 : 0;
         match.score2 = winner === match.player2.name ? -1 : 0;
 
@@ -41,12 +41,12 @@ const MatchMain = ({match, stageName, maxScore, onClose}: IProps) => {
     }
 
     const onConclude = async() => {
-        if (!mpLink.match(URL_REGEX)) {
-            setError(INVALID_URL);
+        if (!matchId) {
+            setError(REQUIRED);
             return;
         }
         match.isDone = true;
-        match.mpLink = mpLink;
+        match.matchId = matchId;
         editMatch();
     }
 
@@ -60,9 +60,9 @@ const MatchMain = ({match, stageName, maxScore, onClose}: IProps) => {
                     roomCommand={roomCommand}
                 />
                 <Grid item xs={12} marginTop={0.5} marginBottom={1} paddingLeft={0.5}>
-                    <TextField fullWidth label='MP link' size='small' 
-                        onChange={(e) => setMpLink(e.target.value)}
-                        onBlur={() => setError(!mpLink.match(URL_REGEX) ? INVALID_URL : '')}
+                    <TextField fullWidth type='number' label='MP link' size='small' 
+                        onChange={(e) => setMatchId(Number(e.target.value))}
+                        onBlur={() => setError(matchId ? '' : REQUIRED)}
                         error={error !== ''}
                         helperText={error}/>
                 </Grid>

@@ -1,16 +1,16 @@
 import { Field, Form, Formik } from 'formik';
-import { LobbyDto } from '../../../../../dto/schedule/LobbyDto';
 import { Grid } from '@mui/material';
 import { Schema } from 'yup';
 import { UserDtoSimple } from '../../../../../dto/user/UserDtoSimple';
 import PlayerAutocomplete from '../../../field/PlayerAutocomplete';
 import TourneyDateTimeField from '../../../field/TourneyDateTimeField';
+import { LobbyCreateDto } from '../../../../../dto/schedule/lobby/LobbyCreateDto';
 
 interface IProps {
-    initialValues: LobbyDto,
+    initialValues: LobbyCreateDto,
     selectValues: UserDtoSimple[],
     validationSchema: Schema,
-    onSubmit: (values: LobbyDto) => void
+    onSubmit: (values: LobbyCreateDto) => void
 }
 
 const LobbyCreateFormView = ({initialValues, selectValues, validationSchema, onSubmit}: IProps) => {
@@ -19,7 +19,8 @@ const LobbyCreateFormView = ({initialValues, selectValues, validationSchema, onS
             initialValues={initialValues}
             onSubmit={onSubmit}
             validationSchema={validationSchema}
-            validateOnChange={false}>
+            validateOnChange={false}
+            enableReinitialize>
             {({ errors }) => (
                 <Form id='lobby-create-form'>
                     <Grid container rowSpacing={2} marginTop={1}>

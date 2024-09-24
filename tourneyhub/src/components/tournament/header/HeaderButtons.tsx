@@ -3,7 +3,7 @@ import { AuthContext } from '../../../routes/Root';
 import { TournamentDto } from '../../../dto/tournament/TournamentDto';
 import { Grid } from '@mui/material';
 import { Done, Lock } from '@mui/icons-material';
-import { HOST } from '../../../constants';
+import { HOST, PLAYER, REGISTERED } from '../../../constants';
 import StaffApplicationForm from '../staff/form/StaffApplicationForm';
 import TournamentEditForm from '../form/TournamentEditForm';
 import ConfirmationDialog from '../dialog/ConfirmationDialog';
@@ -48,15 +48,16 @@ const HeaderButtons = ({tourney, updateTourney}: IProps) => {
         user.roles.push({
             tournamentId: tourney.id,
             tournament: tourney.name,
-            role: 'player',
+            role: PLAYER,
             canRegWithRole: false,
             concluded: tourney.concluded
         });
         user.stats.push({
             tournamentId: tourney.id,
-            status: 'registered',
+            status: REGISTERED,
             seed: 0,
-            placement: 0
+            placement: 0,
+            teamCaptain: false
         });
         await authService.edit(user.id, user);
         setSuccessOpen(true);

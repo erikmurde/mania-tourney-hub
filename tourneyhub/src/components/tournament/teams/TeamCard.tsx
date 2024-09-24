@@ -8,6 +8,7 @@ import TeamPlayerCard from './TeamPlayerCard';
 import { ACTIVE, ADMIN, DISQUALIFIED, ELIMINATED, HOST, REGISTERED, SUFFIX_MAP } from '../../../constants';
 import ConfirmationDialog from '../dialog/ConfirmationDialog';
 import { useTourney } from '../../../routes/tournament/TournamentHeader';
+import { UserDto } from '../../../dto/user/UserDto';
 
 interface IProps {
     teamsPublic: boolean,
@@ -20,6 +21,12 @@ const TeamCard = ({teamsPublic, team, eliminateTeam}: IProps) => {
     const { user } = useContext(AuthContext);
     const validRoles = [HOST, ADMIN];
     const theme = useTheme();
+
+    const playerIsCaptain = (player: UserDto) => {
+        return player.stats.find(stats => 
+            stats.team === team.name && stats.teamCaptain
+        ) !== undefined;
+    }
 
     const colorMap = new Map<string, string>([
         [ACTIVE, theme.palette.success.main],
@@ -82,7 +89,7 @@ const TeamCard = ({teamsPublic, team, eliminateTeam}: IProps) => {
                 <Grid container direction='column' rowSpacing={1}>
                     {team.players.map(player => 
                         <Grid item key={player.id}>
-                            <TeamPlayerCard player={player}/>
+                            <TeamPlayerCard player={player} isCaptain={playerIsCaptain(player)}/>
                         </Grid>    
                     )}
                 </Grid>

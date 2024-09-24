@@ -4,7 +4,6 @@ import { useContext, useEffect, useState } from 'react';
 import LobbyCreateFormView from './views/LobbyCreateFormView';
 import { AuthService } from '../../../../services/authService';
 import { ADMIN, HOST, REFEREE, REQUIRED } from '../../../../constants';
-import { LobbyDto } from '../../../../dto/schedule/LobbyDto';
 import { LobbyService } from '../../../../services/lobbyService';
 import { Schema, date, object } from 'yup';
 import { UpdateContext } from '../../../../routes/Root';
@@ -12,14 +11,13 @@ import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
 import { useTourney } from '../../../../routes/tournament/TournamentHeader';
 import { UserDtoSimple } from '../../../../dto/user/UserDtoSimple';
+import { LobbyCreateDto } from '../../../../dto/schedule/lobby/LobbyCreateDto';
 
 const LobbyCreateForm = ({stageId}: {stageId: string}) => {
     const { tourney } = useTourney();
     const { scheduleUpdate, setScheduleUpdate } = useContext(UpdateContext);
     const [selectValues, setSelectValues] = useState([] as UserDtoSimple[]);
-    const [lobbies, setLobbies] = useState([] as LobbyDto[]);
     const [open, setOpen] = useState(false);
-    const service = new LobbyService();
     dayjs.extend(utc);
 
     useEffect(() => {
@@ -27,17 +25,11 @@ const LobbyCreateForm = ({stageId}: {stageId: string}) => {
             new AuthService()
                 .getUsersWithRoles(tourney.id, [HOST, ADMIN, REFEREE])
                 .then(staff => setSelectValues(staff));
-
-            service
-                .getAllStage(stageId)
-                .then(lobbies => {
-                    setLobbies(lobbies);
-            });
         }
     }, [open]);
 
-    const onSubmit = async(values: LobbyDto) => {
-        await service.create(values);
+    const onSubmit = async(values: LobbyCreateDto) => {
+        await new LobbyService().create(values);
         setScheduleUpdate(scheduleUpdate + 1);
         setOpen(false);
     }
@@ -49,15 +41,10 @@ const LobbyCreateForm = ({stageId}: {stageId: string}) => {
             .min(dayjs.utc(), 'Must be in the future')
     })
 
-    const initialValues: LobbyDto = {
-        id: '',
+    const initialValues: LobbyCreateDto = {
         stageId: stageId,
-        code: `Q${(lobbies.length + 1).toString().padStart(2, '0')}`,
-        time: dayjs.utc(),
-        mpLink: '',
-        isDone: false,
-        players: [],
-        referee: ''
+        referee: '',
+        time: dayjs.utc()
     }
 
     return (  

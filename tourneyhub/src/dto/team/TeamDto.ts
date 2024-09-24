@@ -1,13 +1,12 @@
-import { TeamPlayerDto } from './TeamPlayerDto';
+import { UserDto } from '../user/UserDto';
 
 export interface TeamDto {
     id: string,
-    tournamentId: string,
     name: string,
     logo: string,
-    status: string,
     availability: string,
+    status: string,
     seed: number,
     placement: number,
-    players: TeamPlayerDto[]
+    players: UserDto[]
 }

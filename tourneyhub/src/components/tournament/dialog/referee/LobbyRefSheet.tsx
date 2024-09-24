@@ -4,7 +4,7 @@ import { ChevronLeft } from '@mui/icons-material';
 import { useEffect, useState } from 'react';
 import { IMapDto } from '../../../../dto/map/IMapDto';
 import { MapService } from '../../../../services/mapService';
-import { LobbyDto } from '../../../../dto/schedule/LobbyDto';
+import { LobbyDto } from '../../../../dto/schedule/lobby/LobbyDto';
 import { useTourney } from '../../../../routes/tournament/TournamentHeader';
 import TeamInviteCommands from '../../ref/commands/TeamInviteCommands';
 import LobbyGeneralCommands from '../../ref/lobby/LobbyGeneralCommands';
