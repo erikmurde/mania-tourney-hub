@@ -18,7 +18,7 @@ public class TournamentPlayer extends BaseEntity {
     private int placement;
 
     @NotNull
-    private boolean isTeamCaptain;
+    private boolean teamCaptain;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn

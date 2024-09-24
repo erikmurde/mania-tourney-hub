@@ -394,9 +394,10 @@ INSERT INTO tournament (
 )
 VALUES (
     false, false, 0, 1, 0, 1, false, true, false, false, false, 4,
-    null, null, 'TEST', 'Test', 'Test tournament',
-    'https://assets.ppy.sh/tournament-banners/official/mwc4k2022.jpg',
-    'Test message', ''
+    null, null, '4KMT', '4K Korean Mania Tournament', 'Test tournament',
+    'https://i.ppy.sh/b92ca1365e6f5bead5afbc24e26c6447ee8e0d9a/68747470733a2f2f696d6775722d617263686976652e7070' ||
+    '792e73682f646973636f72642f313038383433323930333939313539313032342d313130393731303236393737303337313133322d' ||
+    '344b4d545f666f72756d2e706e67', 'Test message', ''
 );
 
 -- STAGES -------------------------------------------------------------------------------------------------------------
@@ -405,7 +406,7 @@ INSERT INTO stage (
     tournament_id, stage_type_id, name, best_of, lobby_size, num_advancing, scheduling_deadline,
     mappool_published, schedule_published, stats_published
 )
-VALUES (1, 2, 'Qualifiers', 0, 10, 5, '2024-07-17T07:00:00.000Z', true, true, true);
+VALUES (1, 2, 'Qualifiers', 0, 10, 5, '2024-12-17T07:00:00.000Z', true, true, true);
 
 INSERT INTO stage (
     tournament_id, stage_type_id, name, best_of, lobby_size, num_advancing, scheduling_deadline,
@@ -1326,7 +1327,7 @@ VALUES ('Germany', 'https://assets.ppy.sh/old-flags/DE.png', 'We are available w
 -- TOURNAMENT ROLES ---------------------------------------------------------------------------------------------------
 
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 1, 2, false);
-INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 1, 5, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 1, 7, false);
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 1, 1, false);
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 1, 2, false);
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (3, 1, 2, false);
@@ -1399,6 +1400,7 @@ INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_r
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 49, 9, true);
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 50, 9, true);
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 51, 9, true);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 51, 7, true);
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 52, 10, false);
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 53, 10, false);
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 53, 11, false);
@@ -1442,6 +1444,7 @@ INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_r
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 91, 1, false);
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 92, 1, false);
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 93, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 94, 4, false);
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 94, 1, false);
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 95, 1, false);
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 96, 1, false);
@@ -1474,205 +1477,208 @@ INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_r
 
 -- TOURNAMENT STATS ---------------------------------------------------------------------------------------------------
 
-INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
 VALUES (1, 1, null, 6, 11, 0, false);
 
-INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
 VALUES (1, 56, null, 6, 1, 0, false);
 
-INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
 VALUES (1, 57, null, 6, 2, 0, false);
 
-INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
 VALUES (1, 58, null, 6, 3, 0, false);
 
-INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
 VALUES (1, 59, null, 6, 4, 0, false);
 
-INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
 VALUES (1, 60, null, 8, 5, 0, false);
 
-INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
 VALUES (1, 61, null, 6, 6, 0, false);
 
-INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
 VALUES (1, 62, null, 7, 7, 31, false);
 
-INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
 VALUES (1, 63, null, 6, 8, 0, false);
 
-INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
 VALUES (1, 64, null, 6, 9, 0, false);
 
-INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
 VALUES (1, 65, null, 6, 10, 0, false);
 
-INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
 VALUES (1, 66, null, 6, 12, 0, false);
 
-INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
 VALUES (1, 67, null, 6, 13, 0, false);
 
-INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
 VALUES (1, 68, null, 6, 14, 0, false);
 
-INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
 VALUES (1, 69, null, 7, 15, 29, false);
 
-INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
 VALUES (1, 70, null, 6, 16, 0, false);
 
-INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
 VALUES (1, 71, null, 6, 17, 0, false);
 
-INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
 VALUES (1, 72, null, 6, 18, 0, false);
 
-INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
 VALUES (1, 73, null, 6, 19, 0, false);
 
-INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
 VALUES (1, 74, null, 6, 20, 0, false);
 
-INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
 VALUES (1, 75, null, 6, 21, 0, false);
 
-INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
 VALUES (1, 76, null, 6, 22, 0, false);
 
-INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
 VALUES (1, 77, null, 6, 23, 0, false);
 
-INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
 VALUES (1, 78, null, 6, 24, 0, false);
 
-INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
 VALUES (1, 79, null, 6, 25, 0, false);
 
-INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
 VALUES (1, 80, null, 7, 26, 30, false);
 
-INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
 VALUES (1, 81, null, 6, 27, 0, false);
 
-INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
 VALUES (1, 82, null, 6, 28, 0, false);
 
-INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
 VALUES (1, 83, null, 6, 29, 0, false);
 
-INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
 VALUES (1, 84, null, 6, 30, 0, false);
 
-INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
 VALUES (1, 85, null, 6, 31, 0, false);
 
-INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
 VALUES (1, 86, null, 6, 32, 0, false);
 
-INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
 VALUES (2, 87, 1, 6, 2, 0, false);
 
-INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
 VALUES (2, 88, 1, 6, 2, 0, false);
 
-INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
 VALUES (2, 89, 1, 6, 2, 0, true);
 
-INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
 VALUES (2, 90, 1, 6, 2, 0, false);
 
-INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
 VALUES (2, 91, 1, 6, 2, 0, false);
 
-INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
+VALUES (2, 92, 1, 6, 2, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
 VALUES (2, 93, 2, 6, 3, 0, false);
 
-INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
 VALUES (2, 94, 2, 6, 3, 0, true);
 
-INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
 VALUES (2, 95, 2, 6, 3, 0, false);
 
-INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
 VALUES (2, 96, 2, 6, 3, 0, false);
 
-INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
 VALUES (2, 97, 2, 6, 3, 0, false);
 
-INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
 VALUES (2, 98, 2, 6, 3, 0, false);
 
-INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
 VALUES (2, 99, 3, 6, 6, 0, false);
 
-INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
 VALUES (2, 100, 3, 6, 6, 0, false);
 
-INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
 VALUES (2, 101, 3, 6, 6, 0, false);
 
-INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
 VALUES (2, 102, 3, 6, 6, 0, true);
 
-INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
 VALUES (2, 103, 3, 6, 6, 0, false);
 
-INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
 VALUES (2, 104, 3, 6, 6, 0, false);
 
-INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
 VALUES (2, 105, 4, 6, 18, 0, false);
 
-INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
 VALUES (2, 106, 4, 6, 18, 0, false);
 
-INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
 VALUES (2, 107, 4, 6, 18, 0, false);
 
-INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
 VALUES (2, 108, 4, 6, 18, 0, false);
 
-INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
 VALUES (2, 109, 4, 6, 18, 0, true);
 
-INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
 VALUES (2, 110, 4, 6, 18, 0, false);
 
-INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
 VALUES (2, 111, 5, 6, 24, 0, false);
 
-INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
 VALUES (2, 112, 5, 6, 24, 0, false);
 
-INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
 VALUES (2, 113, 5, 6, 24, 0, false);
 
-INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
 VALUES (2, 114, 5, 6, 24, 0, false);
 
-INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
 VALUES (2, 115, 5, 6, 24, 0, true);
 
-INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
 VALUES (2, 116, 5, 6, 24, 0, false);
 
-INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
 VALUES (2, 117, 6, 6, 26, 0, false);
 
-INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
 VALUES (2, 118, 6, 6, 26, 0, false);
 
-INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
 VALUES (2, 119, 6, 6, 26, 0, true);
 
-INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
 VALUES (2, 120, 6, 6, 26, 0, false);
 
-INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
 VALUES (2, 121, 6, 6, 26, 0, false);
 
-INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, is_team_captain)
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
 VALUES (2, 122, 6, 6, 26, 0, false);
 
 -- STAFF REQUESTS -----------------------------------------------------------------------------------------------------
@@ -1734,3 +1740,156 @@ VALUES (1, 9, 2, 1, 1, 'Come join my tournament as a commentator because of reas
 INSERT INTO link (tournament_id, name, url) VALUES (1, 'Youtube', 'https://www.youtube.com');
 INSERT INTO link (tournament_id, name, url) VALUES (1, 'Twitch', 'https://www.twitch.tv');
 INSERT INTO link (tournament_id, name, url) VALUES (2, 'Discord', 'https://www.discord.com');
+
+-- EVENTS -------------------------------------------------------------------------------------------------------------
+
+INSERT INTO event (stage_id, code, time, match_id, concluded)
+VALUES (1, 'Q25', '2023-10-12T15:00:00.000Z', 1, true);
+
+INSERT INTO event (stage_id, code, time, match_id, concluded)
+VALUES (1, 'Q26', '2023-10-13T13:00:00.000Z', 1, true);
+
+INSERT INTO event (stage_id, code, time, match_id, concluded)
+VALUES (1, 'Q01', '2023-10-14T00:00:00.000Z', null, true);
+
+INSERT INTO event (stage_id, code, time, match_id, concluded)
+VALUES (1, 'Q02', '2023-10-14T02:00:00.000Z', 1, true);
+
+INSERT INTO event (stage_id, code, time, match_id, concluded)
+VALUES (1, 'Q03', '2023-10-14T04:00:00.000Z', null, true);
+
+INSERT INTO event (stage_id, code, time, match_id, concluded)
+VALUES (1, 'Q04', '2023-10-14T06:00:00.000Z', null, true);
+
+INSERT INTO event (stage_id, code, time, match_id, concluded)
+VALUES (1, 'Q05', '2023-10-14T08:00:00.000Z', 1, true);
+
+INSERT INTO event (stage_id, code, time, match_id, concluded)
+VALUES (1, 'Q06', '2023-10-14T10:00:00.000Z', null, true);
+
+INSERT INTO event (stage_id, code, time, match_id, concluded)
+VALUES (1, 'Q07', '2023-10-14T12:00:00.000Z', 1, true);
+
+INSERT INTO event (stage_id, code, time, match_id, concluded)
+VALUES (1, 'Q08', '2023-10-14T14:00:00.000Z', 1, true);
+
+INSERT INTO event (stage_id, code, time, match_id, concluded)
+VALUES (1, 'Q09', '2023-10-14T16:00:00.000Z', 1, true);
+
+INSERT INTO event (stage_id, code, time, match_id, concluded)
+VALUES (1, 'Q10', '2023-10-14T18:00:00.000Z', 1, true);
+
+INSERT INTO event (stage_id, code, time, match_id, concluded)
+VALUES (1, 'Q11', '2023-10-14T20:00:00.000Z', 1, true);
+
+INSERT INTO event (stage_id, code, time, match_id, concluded)
+VALUES (1, 'Q12', '2023-10-14T22:00:00.000Z', 1, true);
+
+INSERT INTO event (stage_id, code, time, match_id, concluded)
+VALUES (1, 'Q13', '2023-10-15T00:00:00.000Z', 1, true);
+
+INSERT INTO event (stage_id, code, time, match_id, concluded)
+VALUES (1, 'Q14', '2023-10-15T02:00:00.000Z', null, false);
+
+INSERT INTO event (stage_id, code, time, match_id, concluded)
+VALUES (1, 'Q15', '2023-10-15T04:00:00.000Z', null, false);
+
+INSERT INTO event (stage_id, code, time, match_id, concluded)
+VALUES (1, 'Q16', '2023-10-15T06:00:00.000Z', null, false);
+
+INSERT INTO event (stage_id, code, time, match_id, concluded)
+VALUES (1, 'Q17', '2023-10-15T08:00:00.000Z', null, false);
+
+INSERT INTO event (stage_id, code, time, match_id, concluded)
+VALUES (1, 'Q18', '2023-10-15T10:00:00.000Z', null, false);
+
+INSERT INTO event (stage_id, code, time, match_id, concluded)
+VALUES (1, 'Q19', '2023-10-15T12:00:00.000Z', null, false);
+
+INSERT INTO event (stage_id, code, time, match_id, concluded)
+VALUES (1, 'Q20', '2023-10-15T14:00:00.000Z', null, false);
+
+INSERT INTO event (stage_id, code, time, match_id, concluded)
+VALUES (1, 'Q21', '2023-10-15T16:00:00.000Z', null, false);
+
+INSERT INTO event (stage_id, code, time, match_id, concluded)
+VALUES (1, 'Q22', '2023-10-15T18:00:00.000Z', null, false);
+
+INSERT INTO event (stage_id, code, time, match_id, concluded)
+VALUES (1, 'Q23', '2023-10-15T20:00:00.000Z', null, false);
+
+INSERT INTO event (stage_id, code, time, match_id, concluded)
+VALUES (1, 'Q24', '2023-10-15T22:00:00.000Z', null, false);
+
+INSERT INTO event (stage_id, code, time, match_id, concluded)
+VALUES (10, 'Q01', '2024-09-20T08:06:30.000Z', null, false);
+
+INSERT INTO event (stage_id, code, time, match_id, concluded)
+VALUES (10, 'Q02', '2024-09-30T11:14:08.000Z', null, false);
+
+-- EVENT PARTICIPANTS ------------------------------------------------------------------------------------------------
+
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (60, null, 1, 1, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (6, null, 1, 7, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (8, null, 2, 7, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (31, null, 3, 7, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (31, null, 4, 7, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (34, null, 6, 7, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (71, null, 7, 1, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (51, null, 7, 7, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (41, null, 8, 7, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (57, null, 9, 1, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (79, null, 9, 1, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (59, null, 9, 1, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (62, null, 9, 1, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (35, null, 9, 7, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (38, null, 10, 7, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (65, null, 11, 1, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (84, null, 11, 1, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (38, null, 11, 7, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (80, null, 12, 1, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (34, null, 12, 7, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (73, null, 13, 1, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (81, null, 13, 1, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (76, null, 13, 1, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (31, null, 13, 7, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (68, null, 14, 1, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (2, null, 14, 7, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (58, null, 15, 1, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (75, null, 15, 1, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (33, null, 15, 7, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (64, null, 16, 1, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (34, null, 16, 7, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (82, null, 17, 1, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (32, null, 17, 7, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (78, null, 18, 1, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (51, null, 18, 7, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (44, null, 20, 1, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (77, null, 20, 1, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (46, null, 20, 1, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (42, null, 20, 7, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (61, null, 21, 1, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (56, null, 21, 1, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (35, null, 21, 7, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (70, null, 22, 1, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (83, null, 22, 1, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (63, null, 22, 1, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (49, null, 22, 1, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (69, null, 22, 1, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (48, null, 22, 1, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (38, null, 22, 7, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (67, null, 23, 1, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (34, null, 23, 7, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (34, null, 24, 7, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (86, null, 25, 1, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (72, null, 25, 1, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (66, null, 25, 1, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (33, null, 25, 7, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (85, null, 26, 1, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (31, null, 26, 7, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (null, 1, 27, 1, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (null, 2, 27, 1, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (null, 3, 27, 1, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (null, 4, 27, 1, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (1, null, 27, 7, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (6, null, 28, 7, 0);

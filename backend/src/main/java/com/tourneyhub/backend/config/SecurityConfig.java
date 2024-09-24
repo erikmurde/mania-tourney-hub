@@ -90,7 +90,12 @@ public class SecurityConfig {
                                 "/api/stages/tournament/**",
                                 "/api/maps/stage/{stageId}/inMappool",
                                 "/api/users/{tournamentId}/**",
-                                "/api/tournaments/**"
+                                "/api/tournaments/**",
+                                "/api/teams/**"
+                        ).permitAll()
+                        .requestMatchers(
+                                HttpMethod.GET,
+                                "/api/lobbies/**"
                         ).permitAll()
                         .anyRequest().authenticated()
                 )

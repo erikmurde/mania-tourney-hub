@@ -22,7 +22,7 @@ public class AppUser extends BaseEntityWithName {
 
     private String avatar;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn
     private Country country;
 

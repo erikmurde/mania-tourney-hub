@@ -36,6 +36,9 @@ public class Stage extends BaseEntityWithName {
     @NotNull
     private boolean statsPublished;
 
+    @Column(name = "tournament_id", insertable = false, updatable = false)
+    private Long tournamentId;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn
     private Tournament tournament;

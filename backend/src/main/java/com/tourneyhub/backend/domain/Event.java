@@ -1,20 +1,26 @@
 package com.tourneyhub.backend.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 import java.util.List;
 
-import static com.tourneyhub.backend.helper.Constants.URL_REGEX;
-
 @Entity
+@Data
+@EqualsAndHashCode(callSuper = false)
+@NoArgsConstructor
+@AllArgsConstructor
 public class Event extends BaseEntity {
+
+    @Min(0)
+    private Integer matchId;
 
     @Size(min = 1, max = 8)
     private String code;
@@ -22,16 +28,18 @@ public class Event extends BaseEntity {
     @NotNull
     private Date time;
 
-    @Pattern(regexp = URL_REGEX)
-    private String mpLink;
-
     @NotNull
     private boolean concluded;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn
     private Stage stage;
 
-    @OneToMany(mappedBy = "event")
+    @OneToMany(
+            mappedBy = "event",
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
     private List<EventParticipant> participants;
 }

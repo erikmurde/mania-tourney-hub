@@ -1,29 +1,41 @@
 package com.tourneyhub.backend.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 @Entity
+@Data
+@EqualsAndHashCode(callSuper = false)
+@NoArgsConstructor
+@AllArgsConstructor
 public class EventParticipant extends BaseEntity {
 
     @Min(0)
     private int score;
 
-    @ManyToOne
+    @Column(name = "app_user_id", insertable=false, updatable=false)
+    private Long appUserId;
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn
     private AppUser appUser;
 
-    @ManyToOne
+    @Column(name = "team_id", insertable=false, updatable=false)
+    private Long teamId;
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn
     private Team team;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn
     private Role role;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn
     private Event event;
 }

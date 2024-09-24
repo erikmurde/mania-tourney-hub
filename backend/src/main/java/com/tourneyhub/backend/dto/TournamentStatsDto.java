@@ -12,6 +12,8 @@ public class TournamentStatsDto {
     @NotNull
     private Long tournamentId;
 
+    private String team;
+
     @NotNull
     private String status;
 
@@ -24,5 +26,5 @@ public class TournamentStatsDto {
     private Integer placement;
 
     @NotNull
-    private boolean isTeamCaptain;
+    private boolean teamCaptain;
 }
