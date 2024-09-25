@@ -29,7 +29,7 @@ const LobbyRowActions = ({lobby, teamName, isHost, canReg, hasRefRole, onRef}: I
         const data: LobbyRegisterDto = {
             participant: participant,
             referee: referee,
-            team: teamName !== null
+            team: teamName !== null && !referee
         }
         if (reg) {
             await service.registerParticipant(lobby.id, data);

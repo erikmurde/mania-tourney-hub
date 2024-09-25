@@ -1,21 +1,21 @@
 import { Grid, Typography, TextField } from '@mui/material';
 import { Field, Form, Formik } from 'formik';
 import { Schema } from 'yup';
-import { MatchCreateDto } from '../../../../../dto/schedule/MatchCreateDto';
 import { UserDtoSimple } from '../../../../../dto/user/UserDtoSimple';
 import MultiAutocomplete from '../../../field/MultiAutocomplete';
 import PlayerAutocomplete from '../../../field/PlayerAutocomplete';
 import TourneyDateTimeField from '../../../field/TourneyDateTimeField';
+import { MatchEditDto } from '../../../../../dto/schedule/match/MatchEditDto';
 
 interface IProps {
-    initialValues: MatchCreateDto,
+    initialValues: MatchEditDto,
     selectValues: {
         referees: UserDtoSimple[],
         streamers: UserDtoSimple[],
         commentators: UserDtoSimple[]
     },
     validationSchema: Schema,
-    onSubmit: (values: MatchCreateDto) => void
+    onSubmit: (values: MatchEditDto) => void
 }
 
 const MatchEditFormView = ({initialValues, selectValues, validationSchema, onSubmit}: IProps) => {
@@ -24,7 +24,8 @@ const MatchEditFormView = ({initialValues, selectValues, validationSchema, onSub
             initialValues={initialValues}
             onSubmit={onSubmit}
             validationSchema={validationSchema}
-            validateOnChange={false}>
+            validateOnChange={false}
+            enableReinitialize>
             {({ errors }) => (
                 <Form id='match-edit-form'>
                     <Grid container rowSpacing={2} columnSpacing={1} marginTop={1}>
@@ -34,7 +35,7 @@ const MatchEditFormView = ({initialValues, selectValues, validationSchema, onSub
                         <Grid item xs={6}>
                             <Field as={TextField} 
                                 name='code' 
-                                label='Match ID' 
+                                label='Match code' 
                                 error={errors.code !== undefined}
                                 helperText={errors.code} 
                                 fullWidth/>
@@ -50,23 +51,26 @@ const MatchEditFormView = ({initialValues, selectValues, validationSchema, onSub
                         </Grid>
                         <Grid item xs={6}>
                             <Field component={PlayerAutocomplete}
-                                name='referee'
+                                valueId
+                                name='refereeId'
                                 label='Referee'
-                                error={errors.referee}
+                                error={errors.refereeId}
                                 options={selectValues.referees}/>
                         </Grid>
                         <Grid item xs={6}>
                             <Field component={PlayerAutocomplete}
-                                name='streamer'
+                                valueId
+                                name='streamerId'
                                 label='Streamer'
-                                error={errors.streamer}
+                                error={errors.streamerId}
                                 options={selectValues.streamers}/>
                         </Grid>
                         <Grid item xs={12}>
                             <Field component={MultiAutocomplete}
-                                name='commentators'
+                                valueId
+                                name='commentatorIds'
                                 label='Commentators'
-                                error={errors.commentators}
+                                error={errors.commentatorIds}
                                 options={selectValues.commentators}/>
                         </Grid>
                     </Grid>

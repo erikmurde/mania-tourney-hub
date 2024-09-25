@@ -4,7 +4,7 @@ import PlayerAutocomplete from '../../../field/PlayerAutocomplete';
 import TourneyDateTimeField from '../../../field/TourneyDateTimeField';
 import { Schema } from 'yup';
 import { UserDtoSimple } from '../../../../../dto/user/UserDtoSimple';
-import { MatchCreateDto } from '../../../../../dto/schedule/MatchCreateDto';
+import { MatchCreateDto } from '../../../../../dto/schedule/match/MatchCreateDto';
 import MultiAutocomplete from '../../../field/MultiAutocomplete';
 import { TeamDtoSimple } from '../../../../../dto/team/TeamDtoSimple';
 import TeamAutocomplete from '../../../field/TeamAutocomplete';
@@ -41,7 +41,7 @@ const MatchCreateFormView = ({initialValues, selectValues, validationSchema, onS
                         <Grid item xs={6}>
                             <Field as={TextField} 
                                 name='code' 
-                                label='Match ID' 
+                                label='Match code' 
                                 error={errors.code !== undefined}
                                 helperText={errors.code} 
                                 fullWidth/>
@@ -54,16 +54,18 @@ const MatchCreateFormView = ({initialValues, selectValues, validationSchema, onS
                         </Grid>
                         <Grid item xs={6}>
                             <Field component={isTeam ? TeamAutocomplete : PlayerAutocomplete}
-                                name='player1'
+                                valueId
+                                name='player1Id'
                                 label={`${playerLabel} 1`}
-                                error={errors.player1}
+                                error={errors.player1Id}
                                 options={selectValues.players}/>
                         </Grid>
                         <Grid item xs={6}>
                             <Field component={isTeam ? TeamAutocomplete : PlayerAutocomplete}
-                                name='player2'
+                                valueId
+                                name='player2Id'
                                 label={`${playerLabel} 2`}
-                                error={errors.player2}
+                                error={errors.player2Id}
                                 options={selectValues.players}/>
                         </Grid>
                         <Grid item xs={12} marginTop={1}>
@@ -71,23 +73,26 @@ const MatchCreateFormView = ({initialValues, selectValues, validationSchema, onS
                         </Grid>
                         <Grid item xs={6}>
                             <Field component={PlayerAutocomplete}
-                                name='referee'
+                                valueId
+                                name='refereeId'
                                 label='Referee'
-                                error={errors.referee}
+                                error={errors.refereeId}
                                 options={selectValues.referees}/>
                         </Grid>
                         <Grid item xs={6}>
                             <Field component={PlayerAutocomplete}
-                                name='streamer'
+                                valueId
+                                name='streamerId'
                                 label='Streamer'
-                                error={errors.streamer}
+                                error={errors.streamerId}
                                 options={selectValues.streamers}/>
                         </Grid>
                         <Grid item xs={12}>
                             <Field component={MultiAutocomplete}
-                                name='commentators'
+                                valueId
+                                name='commentatorIds'
                                 label='Commentators'
-                                error={errors.commentators}
+                                error={errors.commentatorIds}
                                 options={selectValues.commentators}/>
                         </Grid>
                     </Grid>

@@ -13,7 +13,7 @@ const TeamInviteCommands = ({teamNames, isMatch}: {teamNames: string[], isMatch?
 
     useEffect(() => {
         new TeamService()
-            .getTeamsByName(tourney.id, teamNames)
+            .getSimpleTeams(tourney.id, teamNames)
             .then(teams => setTeams(teams));
     }, [tourney.id]);
 

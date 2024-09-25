@@ -8,20 +8,24 @@ interface IProps {
     form: FormikProps<any>,
     label: string,
     error: string,
-    options: TeamDtoSimple[]
+    options: TeamDtoSimple[],
+    valueId?: boolean
 }
 
-const TeamAutocomplete = ({field, form, label, error, options}: IProps) => {
+const TeamAutocomplete = ({field, form, label, error, options, valueId}: IProps) => {
 
     const initialValue = options.find(option => 
-        option.name === form.values[field.name]
+        (valueId ? option.id : option.name) === form.values[field.name]
     );
 
     return (  
         <Autocomplete
             options={options}
             getOptionLabel={option => option.name}
-            onChange={(_, value) => form.setFieldValue(field.name, value?.name)}
+            onChange={(_, value) => form.setFieldValue(
+                field.name, 
+                valueId ? value?.id : value?.name
+            )}
             value={initialValue ?? null}
             renderOption={(props, option) => (
                 <li {...props}>

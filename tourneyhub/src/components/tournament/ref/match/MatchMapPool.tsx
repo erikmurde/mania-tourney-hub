@@ -9,28 +9,28 @@ import { RefTableCell } from '../../../styled/RefTableCell';
 
 interface IProps {
     maps: IMapDto[],
-    picks: (number | null)[],
-    bans: number[],
-    protects: number[]
+    picks: string[],
+    bans: string[],
+    protects: string[]
 }
 
 const MatchMapPool = ({maps, picks, bans, protects}: IProps) => {
     const theme = useTheme();
 
     const isMapDisabled = (map: IMapDto) => {
-        return bans.includes(map.beatmapId) || picks.includes(map.beatmapId);
+        return bans.includes(map.beatmapId.toString()) || picks.includes(map.beatmapId.toString());
     }
 
     const getBorder = (map: IMapDto) => {
         let border = 'inset 0px 0px 0px 2px ';
 
-        if (bans.includes(map.beatmapId)) {
+        if (bans.includes(map.beatmapId.toString())) {
             return border + theme.palette.error.main;
         }
-        else if (picks.includes(map.beatmapId)) {
+        else if (picks.includes(map.beatmapId.toString())) {
             return border + theme.palette.success.main;
         }
-        else if (protects.includes(map.beatmapId)) {
+        else if (protects.includes(map.beatmapId.toString())) {
             return border + theme.palette.warning.main;
         }
         return '';

@@ -1,12 +1,10 @@
 import { Grid, useTheme } from '@mui/material';
 import { SchedTableCell } from '../../../../styled/SchedTableCell';
-import { UserDtoSimple } from '../../../../../dto/user/UserDtoSimple';
-import Flag from '../../../../Flag';
-import { TeamDtoSimple } from '../../../../../dto/team/TeamDtoSimple';
 import Logo from '../../../Logo';
+import { MatchPlayerDto } from '../../../../../dto/schedule/match/MatchPlayerDto';
 
 interface IProps {
-    player: UserDtoSimple | TeamDtoSimple,
+    player: MatchPlayerDto,
     winner: boolean,
     matchDone: boolean,
     right?: boolean
@@ -19,9 +17,7 @@ const MatchRowPlayer = ({player, winner, matchDone, right}: IProps) => {
         ?   (winner ? theme.palette.text.primary : theme.palette.text.secondary) 
         :   theme.palette.text.primary;
 
-    const logo = 'players' in player 
-        ? <Logo name={player.name} link={player.logo}/> 
-        : <Flag country={player.country}/>;
+    const logo = <Logo name={player.name} link={player.logo}/>;
 
     return (  
         <SchedTableCell sx={{ paddingLeft: right ? 0 : 0.5, paddingRight: right ? 0.5 : 0 }}

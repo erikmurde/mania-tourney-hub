@@ -7,8 +7,7 @@ import { ADMIN, COMMENTATOR, HOST, PLAYER, REFEREE, REQUIRED, STREAMER } from '.
 import { Schema, object, date, string, array } from 'yup';
 import { AuthService } from '../../../../services/authService';
 import { UserDtoSimple } from '../../../../dto/user/UserDtoSimple';
-import { MatchCreateDto } from '../../../../dto/schedule/MatchCreateDto';
-import { MatchDto } from '../../../../dto/schedule/MatchDto';
+import { MatchCreateDto } from '../../../../dto/schedule/match/MatchCreateDto';
 import { MatchService } from '../../../../services/matchService';
 import { TeamDtoSimple } from '../../../../dto/team/TeamDtoSimple';
 import { useTourney } from '../../../../routes/tournament/TournamentHeader';
@@ -27,9 +26,9 @@ const MatchCreateForm = ({stageId}: {stageId: string}) => {
         commentators: [] as UserDtoSimple[]
     });
     const [open, setOpen] = useState(false);
-    const isTeam = tourney.minTeamSize > 1;
 
-    const authService = new AuthService();
+    const isTeam = tourney.minTeamSize > 1;
+    const service = new AuthService();
     dayjs.extend(utc);
 
     useEffect(() => {
@@ -39,7 +38,7 @@ const MatchCreateForm = ({stageId}: {stageId: string}) => {
                     .getSimpleTeams(tourney.id)
                     .then(teams => initSelection(teams));
             } else {
-                authService
+                service
                     .getUsersWithRoles(tourney.id, [PLAYER])
                     .then(players => initSelection(players));
             }
@@ -51,15 +50,9 @@ const MatchCreateForm = ({stageId}: {stageId: string}) => {
             user.roles.some(userRole => roles.includes(userRole))
         );
     }
-    
-    const getPlayer = (name: string) => {
-        return tourney.minTeamSize > 1 
-            ? (selectValues.players as TeamDtoSimple[]).find(player => player.name === name)! 
-            : (selectValues.players as UserDtoSimple[]).find(player => player.name === name)! 
-    }
 
     const initSelection = async(participants: UserDtoSimple[] | TeamDtoSimple[]) => {
-        const staff = await authService
+        const staff = await service
             .getUsersWithRoles(tourney.id, [HOST, ADMIN, REFEREE, STREAMER, COMMENTATOR, PLAYER], true);
   
         setSelectValues({
@@ -71,12 +64,7 @@ const MatchCreateForm = ({stageId}: {stageId: string}) => {
     }
 
     const onSubmit = async(values: MatchCreateDto) => {
-        const match: MatchDto = {
-            ...values, 
-            player1: getPlayer(values.player1),
-            player2: getPlayer(values.player2)
-        }
-        await new MatchService().create(match);
+        await new MatchService().create(values);
         setScheduleUpdate(scheduleUpdate + 1);
         setOpen(false);
     }
@@ -84,13 +72,13 @@ const MatchCreateForm = ({stageId}: {stageId: string}) => {
     const validationSchema: Schema = object({
         code: string()
             .required(REQUIRED),
-        player1: string()
+        player1Id: string()
             .required(REQUIRED),
-        player2: string()
+        player2Id: string()
             .required(REQUIRED)
-            .when('player1', (player1, schema) => {
+            .when('player1Id', (player1Id, schema) => {
                 return schema.test({
-                    test: player2 => player1.toString() !== player2,
+                    test: player2Id => player1Id.toString() !== player2Id,
                     message: `${isTeam ? 'Teams' : 'Players'} must be different`
                 })
             }),
@@ -98,25 +86,21 @@ const MatchCreateForm = ({stageId}: {stageId: string}) => {
             .typeError('Invalid date format')
             .required(REQUIRED)
             .min(dayjs.utc(), 'Must be in the future'),
-        commentators: array()
+        commentatorIds: array()
             .of(string())
             .max(2, 'Maximum 2 commentators')
     });
 
     const initialValues: MatchCreateDto = {
-        id: '',
         stageId: stageId,
-        matchId: null,
+        teams: tourney.minTeamSize > 1,
         code: '',
         time: dayjs.utc(),
-        score1: 0,
-        score2: 0,
-        isDone: false,
-        player1: '',
-        player2: '',
-        referee: '',
-        streamer: '',
-        commentators: []
+        player1Id: '',
+        player2Id: '',
+        refereeId: '',
+        streamerId: '',
+        commentatorIds: []
     }
 
     return (  

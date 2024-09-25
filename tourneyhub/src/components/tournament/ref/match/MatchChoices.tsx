@@ -13,8 +13,8 @@ interface IProps {
     maps: IMapDto[],
     player1: string,
     player2: string,
-    bans: number[],
-    protects: number[]
+    bans: string[],
+    protects: string[]
 }
 
 const MatchChoices = ({maps, player1, player2, bans, protects}: IProps) => {
@@ -47,10 +47,11 @@ const MatchChoices = ({maps, player1, player2, bans, protects}: IProps) => {
                                         options={maps.map((value, index) => 
                                             <MenuItem 
                                                 sx={{ 
-                                                    display: bans.includes(value.beatmapId) || value.mapType === TB ? 'none' : ''
+                                                    display: bans.includes(value.beatmapId.toString()) || 
+                                                    value.mapType === TB ? 'none' : ''
                                                 }} 
                                                 key={index} 
-                                                value={value.beatmapId}
+                                                value={value.beatmapId.toString()}
                                                 >
                                                 {value.mapType}{value.index}
                                             </MenuItem>
@@ -61,10 +62,11 @@ const MatchChoices = ({maps, player1, player2, bans, protects}: IProps) => {
                                         options={maps.map((value, index) => 
                                             <MenuItem 
                                                 sx={{ 
-                                                    display: protects.includes(value.beatmapId) || value.mapType === TB ? 'none' : ''
+                                                    display: protects.includes(value.beatmapId.toString()) || 
+                                                    value.mapType === TB ? 'none' : ''
                                                 }} 
                                                 key={index} 
-                                                value={value.beatmapId}
+                                                value={value.beatmapId.toString()}
                                                 >
                                                 {value.mapType}{value.index}
                                             </MenuItem>

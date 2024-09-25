@@ -1,5 +1,6 @@
 import { Grid, GridProps } from '@mui/material';
 import { ICountryDto } from '../dto/ICountryDto';
+import { AuthService } from '../services/authService';
 
 interface IProps {
     country: ICountryDto,
@@ -14,7 +15,7 @@ const Flag = ({country, props}: IProps) => {
         <Grid item width={30} height={20} xs='auto' {...props}>
             <img
                 className='flag' 
-                src={`https://assets.ppy.sh/old-flags/${country.iso2}.png`} 
+                src={new AuthService().getLogo(country)} 
                 alt={`Flag of ${country.name}`}/>
         </Grid>}
         </>

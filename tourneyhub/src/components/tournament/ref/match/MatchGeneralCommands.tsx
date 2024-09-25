@@ -1,4 +1,4 @@
-import { MatchDto } from '../../../../dto/schedule/MatchDto';
+import { MatchDto } from '../../../../dto/schedule/match/MatchDto';
 import { RefSheetPaper } from '../../../styled/RefSheetPaper';
 import { RefCommand } from '../../../../domain/RefCommand';
 import { TableContainer, Table, TableBody } from '@mui/material';

@@ -3,7 +3,7 @@ import { useState } from 'react';
 import TourneyDialogTitle from '../../../dialog/TourneyDialogTitle';
 import { StyledDialogContent } from '../../../../styled/styledDialogContent';
 import { StyledDialogActions } from '../../../../styled/StyledDialogActions';
-import { MatchDto } from '../../../../../dto/schedule/MatchDto';
+import { MatchDto } from '../../../../../dto/schedule/match/MatchDto';
 import { MatchWbdDto } from '../../../../../dto/ref/MatchWbdDto';
 import { object, Schema, string } from 'yup';
 import { REQUIRED } from '../../../../../constants';

@@ -1,4 +1,5 @@
 import { ADMIN, COMMENTATOR, GFX, HOST, MAPPER, MAPPOOLER, PLAYTESTER, REFEREE, SHEETER, STREAMER } from '../constants';
+import { ICountryDto } from '../dto/ICountryDto';
 import { UserDto } from '../dto/user/UserDto';
 import { UserDtoSimple } from '../dto/user/UserDtoSimple';
 import { ApiEntityService } from './base/apiEntityService';
@@ -6,24 +7,6 @@ import { ApiEntityService } from './base/apiEntityService';
 export class AuthService extends ApiEntityService<UserDto, UserDto, UserDto> {
     constructor() {
         super('users');
-    }
-
-    isHost(user: UserDto, tournamentId: string) {
-        const roles = user.roles
-            .filter(tourneyRole => tourneyRole.tournamentId === tournamentId)
-            .map(tourneyRole => tourneyRole.role);
-
-        return roles.includes(HOST);
-    }
-
-    isStaff(user: UserDto, tournamentId: string) {
-        const staffRoles = [HOST, ADMIN, MAPPOOLER, MAPPER, PLAYTESTER, REFEREE, STREAMER, COMMENTATOR, SHEETER, GFX];
-
-        const userRoles = user.roles
-            .filter(tourneyRole => tourneyRole.tournamentId === tournamentId)
-            .map(tourneyRole => tourneyRole.role);
-
-        return staffRoles.some(staffRole => userRoles.includes(staffRole));
     }
 
     async getMe() {
@@ -67,5 +50,30 @@ export class AuthService extends ApiEntityService<UserDto, UserDto, UserDto> {
         });
         console.log('getUsersWithRoles response: ', response);
         return response.data;
+    }
+
+    isHost(user: UserDto, tournamentId: string) {
+        return this.getTournamentRoles(user, tournamentId).includes(HOST);
+    }
+
+    hasRoles(user: UserDto, tournamentId: string, ...roles: string[]) {
+        return this
+            .getTournamentRoles(user, tournamentId)
+            .some(role => roles.includes(role));
+    }
+
+    isStaff(user: UserDto, tournamentId: string) {
+        const staffRoles = [HOST, ADMIN, MAPPOOLER, MAPPER, PLAYTESTER, REFEREE, STREAMER, COMMENTATOR, SHEETER, GFX];
+        return this.hasRoles(user, tournamentId, ...staffRoles);
+    }
+
+    getLogo(country: ICountryDto) {
+        return `https://assets.ppy.sh/old-flags/${country.iso2}.png`;
+    }
+
+    private getTournamentRoles(user: UserDto, tournamentId: string) {
+        return user.roles
+            .filter(tourneyRole => tourneyRole.tournamentId === tournamentId)
+            .map(tourneyRole => tourneyRole.role);
     }
 }

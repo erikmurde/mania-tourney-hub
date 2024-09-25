@@ -1,6 +1,6 @@
 import { Delete, PlayArrow } from '@mui/icons-material';
-import { ADMIN, COMMENTATOR, HOST, REFEREE, STREAMER } from '../../../../../constants';
-import { MatchDto } from '../../../../../dto/schedule/MatchDto';
+import { ADMIN, HOST } from '../../../../../constants';
+import { MatchDto } from '../../../../../dto/schedule/match/MatchDto';
 import { SchedTableCell } from '../../../../styled/SchedTableCell';
 import { StyledIconButton } from '../../../../styled/StyledIconButton';
 import { useContext } from 'react';
@@ -12,6 +12,7 @@ import { Tooltip } from '@mui/material';
 import MatchEditForm from '../../form/MatchEditForm';
 import { useTourney } from '../../../../../routes/tournament/TournamentHeader';
 import MpLink from '../../MpLink';
+import { AuthService } from '../../../../../services/authService';
 
 interface IProps {
     match: MatchDto,
@@ -24,13 +25,8 @@ const MatchRowActions = ({match, onRef}: IProps) => {
     const { scheduleUpdate, setScheduleUpdate } = useContext(UpdateContext);
     const service = new MatchService();
 
-    const getRights = (roles: string[]): boolean => {
-        if (!user) {
-            return false;
-        }
-        return user.roles
-            .filter(tourneyRole => tourneyRole.tournamentId === tourney.id)
-            .some(tourneyRole => roles.includes(tourneyRole.role));
+    if (!user) {
+        return <></>;
     }
 
     const deleteMatch = async() => {
@@ -38,40 +34,30 @@ const MatchRowActions = ({match, onRef}: IProps) => {
         setScheduleUpdate(scheduleUpdate + 1);
     }
 
-    const editMatchRole = async(op: string, role: string) => {
-        if (!user) {
-            return;
-        }
-        if (op === '+') {
-            match.referee = role === REFEREE ? user.name : match.referee;
-            match.streamer = role === STREAMER ? user.name : match.streamer;
-            match.commentators = role === COMMENTATOR ? [...match.commentators, user.name] : match.commentators;
+    const editMatchRole = async(add: boolean, role: string) => {
+        if (add) {
+            await service.registerStaff(match.id, user.id, role);
         } else {
-            match.referee = role === REFEREE ? '' : match.referee;
-            match.streamer = role === STREAMER ? '' : match.streamer;
-            match.commentators = role === COMMENTATOR 
-                ?   match.commentators.filter(comm => comm !== user.name) 
-                :   match.commentators;
+            await service.unregisterStaff(match.id, user.id, role);
         }
-        await service.edit(match.id, match);
         setScheduleUpdate(scheduleUpdate + 1);
     }
 
     const isWbd = match.score1 < 0 || match.score2 < 0;
-    const isReferee = user && match.referee === user.name;
-    const isHost = getRights([HOST, ADMIN]);
+    const isReferee = match.referee === user.name;
+    const hasEditRights = new AuthService().hasRoles(user, tourney.id, HOST, ADMIN);
 
     return (
         <SchedTableCell align='center'>
-            {match.isDone && !isWbd && match.matchId &&
+            {match.concluded && !isWbd && match.matchId &&
             <MpLink title='Match link' matchId={match.matchId}/>}
-            {(isHost || isReferee) && !match.isDone && 
+            {(hasEditRights || isReferee) && !match.concluded && 
             <Tooltip title='Conduct match'>
                 <StyledIconButton color='primary' onClick={onRef}>
                     <PlayArrow/>
                 </StyledIconButton>
             </Tooltip>}
-            {isHost && !match.isDone &&
+            {hasEditRights && !match.concluded &&
             <>
             <MatchEditForm match={match}/>
             <ConfirmationDialog
@@ -82,7 +68,7 @@ const MatchRowActions = ({match, onRef}: IProps) => {
                 action={() => deleteMatch()}/>
             </>}
             {isWbd && 'WBD'}
-            <MatchActionMenu match={match} getRights={getRights} editMatchRole={editMatchRole}/>
+            <MatchActionMenu match={match} tourneyId={tourney.id} editMatchRole={editMatchRole}/>
         </SchedTableCell>
     );
 }

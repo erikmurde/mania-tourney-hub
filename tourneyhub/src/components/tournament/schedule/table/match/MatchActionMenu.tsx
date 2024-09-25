@@ -3,36 +3,44 @@ import { StyledIconButton } from '../../../../styled/StyledIconButton';
 import { Person } from '@mui/icons-material';
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../../../../routes/Root';
-import { MatchDto } from '../../../../../dto/schedule/MatchDto';
+import { MatchDto } from '../../../../../dto/schedule/match/MatchDto';
 import { REFEREE, STREAMER, COMMENTATOR, ADMIN, HOST } from '../../../../../constants';
+import { AuthService } from '../../../../../services/authService';
 
 interface IProps {
     match: MatchDto,
-    getRights: (roles: string[]) => boolean,
-    editMatchRole: (op: string, role: string) => void
+    tourneyId: string,
+    editMatchRole: (add: boolean, role: string) => void
 }
 
-const MatchActionMenu = ({match, getRights, editMatchRole}: IProps) => {
+const MatchActionMenu = ({match, tourneyId, editMatchRole}: IProps) => {
     const { user } = useContext(AuthContext);
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+    const service = new AuthService();
     const open = Boolean(anchorEl);
 
-    const handleClick = (op: string, role: string) => {
-        editMatchRole(op, role);
+    if (!user) {
+        return <></>;
+    }
+
+    const handleClick = (add: boolean, role: string) => {
+        editMatchRole(add, role);
         setAnchorEl(null);
     }
 
-    const isReferee = user && match.referee === user.name;
-    const isStreamer = user && match.streamer === user.name;
-    const isCommentator = user && match.commentators.includes(user.name);
+    const hasRoles = (...roles: string[]) => service.hasRoles(user, tourneyId, ...roles);
 
-    const canAddRef = getRights([REFEREE]) && !match.referee;
-    const canAddStreamer = getRights([STREAMER]) && !match.streamer;
-    const canAddCommentator = getRights([COMMENTATOR]) && match.commentators.length < 2 && !isCommentator;
+    const isReferee = match.referee === user.name;
+    const isStreamer = match.streamer === user.name;
+    const isCommentator = match.commentators.includes(user.name);
+
+    const canAddRef = hasRoles(REFEREE) && !match.referee;
+    const canAddStreamer = hasRoles(STREAMER) && !match.streamer;
+    const canAddCommentator = hasRoles(COMMENTATOR) && match.commentators.length < 2 && !isCommentator;
 
     return (  
         <>
-            {!match.isDone && !getRights([HOST, ADMIN]) && 
+            {!match.concluded && !hasRoles(HOST, ADMIN) && 
             (canAddRef || canAddStreamer || canAddCommentator || isReferee || isStreamer || isCommentator) &&
             <Tooltip title='Manage roles'>
                 <StyledIconButton 
@@ -44,27 +52,27 @@ const MatchActionMenu = ({match, getRights, editMatchRole}: IProps) => {
             </Tooltip>}
             <Menu anchorEl={anchorEl} open={open} onClose={() => setAnchorEl(null)}>
                 {canAddRef && 
-                <MenuItem onClick={() => handleClick('+', REFEREE)}>
+                <MenuItem onClick={() => handleClick(true, REFEREE)}>
                     Set as referee
                 </MenuItem>}
                 {canAddStreamer &&
-                <MenuItem onClick={() => handleClick('+', STREAMER)}>
+                <MenuItem onClick={() => handleClick(true, STREAMER)}>
                     Set as streamer
                 </MenuItem>}
                 {canAddCommentator && 
-                <MenuItem onClick={() => handleClick('+', COMMENTATOR)}>
+                <MenuItem onClick={() => handleClick(true, COMMENTATOR)}>
                     Set as commentator
                 </MenuItem>}
                 {isReferee && 
-                <MenuItem onClick={() => handleClick('-', REFEREE)}>
+                <MenuItem onClick={() => handleClick(false, REFEREE)}>
                     Remove referee
                 </MenuItem>}
                 {isStreamer && 
-                <MenuItem onClick={() => handleClick('-', STREAMER)}>
+                <MenuItem onClick={() => handleClick(false, STREAMER)}>
                     Remove streamer
                 </MenuItem>}
                 {isCommentator && 
-                <MenuItem onClick={() => handleClick('-', COMMENTATOR)}>
+                <MenuItem onClick={() => handleClick(false, COMMENTATOR)}>
                     Remove commentator
                 </MenuItem>}
             </Menu>

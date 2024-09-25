@@ -1,7 +1,6 @@
 import { Edit } from '@mui/icons-material';
 import MatchEditFormView from './views/MatchEditFormView';
 import FormDialogBase from '../../dialog/FormDialogBase';
-import { MatchCreateDto } from '../../../../dto/schedule/MatchCreateDto';
 import { useContext, useEffect, useState } from 'react';
 import { UpdateContext } from '../../../../routes/Root';
 import dayjs from 'dayjs';
@@ -9,11 +8,11 @@ import utc from 'dayjs/plugin/utc';
 import { Schema, object, string, date, array } from 'yup';
 import { HOST, ADMIN, REFEREE, STREAMER, COMMENTATOR, REQUIRED } from '../../../../constants';
 import { UserDtoSimple } from '../../../../dto/user/UserDtoSimple';
-import { UserDto } from '../../../../dto/user/UserDto';
 import { AuthService } from '../../../../services/authService';
-import { MatchDto } from '../../../../dto/schedule/MatchDto';
+import { MatchDto } from '../../../../dto/schedule/match/MatchDto';
 import { MatchService } from '../../../../services/matchService';
 import { useTourney } from '../../../../routes/tournament/TournamentHeader';
+import { MatchEditDto } from '../../../../dto/schedule/match/MatchEditDto';
 
 const MatchEditForm = ({match}: {match: MatchDto}) => {
     const { tourney } = useTourney();
@@ -45,13 +44,8 @@ const MatchEditForm = ({match}: {match: MatchDto}) => {
         );
     }
 
-    const onSubmit = async(values: MatchCreateDto) => {
-        const newMatch: MatchDto = {
-            ...values, 
-            player1: match.player1,
-            player2: match.player2
-        }
-        await new  MatchService().edit(newMatch.id, newMatch);
+    const onSubmit = async(values: MatchEditDto) => {
+        await new  MatchService().edit(match.id, values);
         setScheduleUpdate(scheduleUpdate + 1);
         setOpen(false);
     }
@@ -68,6 +62,20 @@ const MatchEditForm = ({match}: {match: MatchDto}) => {
             .max(2, 'Maximum 2 commentators')
     });
 
+    const initialValues: MatchEditDto = {
+        code: match.code,
+        time: match.time,
+        refereeId: selectValues.referees
+            .find(r => r.name === match.referee)?.id ?? '',
+
+        streamerId: selectValues.streamers
+            .find(s => s.name === match.streamer)?.id ?? '',
+
+        commentatorIds: selectValues.commentators
+            .filter(c => match.commentators.includes(c.name))
+            .map(c => c.id)
+    }
+
     return (  
         <FormDialogBase 
             title={'Edit match'} 
@@ -79,11 +87,7 @@ const MatchEditForm = ({match}: {match: MatchDto}) => {
             setOpen={setOpen}
             form={
                 <MatchEditFormView 
-                    initialValues={{
-                        ...match,
-                        player1: match.player1.name,
-                        player2: match.player2.name
-                    }} 
+                    initialValues={initialValues} 
                     selectValues={selectValues}
                     validationSchema={validationSchema}
                     onSubmit={onSubmit}/>

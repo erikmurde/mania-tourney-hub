@@ -19,7 +19,7 @@ interface IProps {
 
 const MatchPicks = ({values, maps, bestOf}: IProps) => {
     const theme = useTheme();
-    const [unselectableMaps, setUnselectableMaps] = useState([] as number[]);
+    const [unselectableMaps, setUnselectableMaps] = useState([] as string[]);
     const players = [values.match.player1.name, values.match.player2.name];
 
     const getBgColor = (index: number) => {
@@ -43,7 +43,7 @@ const MatchPicks = ({values, maps, bestOf}: IProps) => {
 
     useEffect(() => {
         setUnselectableMaps(maps
-            .map(map => map.beatmapId)
+            .map(map => map.beatmapId.toString())
             .filter(id => values.bans.includes(id) || values.picks.map(pick => pick.beatmapId).includes(id))
         );
     }, [maps, values.picks, values.bans]);
@@ -75,7 +75,7 @@ const MatchPicks = ({values, maps, bestOf}: IProps) => {
                                                 const lastPick = pickIndex === values.picks.length - 1;
                                                 const tiebreaker = value.mapType === TB
                                                 
-                                                const noDisplay = unselectableMaps.includes(value.beatmapId) 
+                                                const noDisplay = unselectableMaps.includes(value.beatmapId.toString()) 
                                                     || (!lastPick && tiebreaker) 
                                                     || (lastPick && !tiebreaker);
 
@@ -83,7 +83,7 @@ const MatchPicks = ({values, maps, bestOf}: IProps) => {
                                                 <MenuItem 
                                                     sx={{ display: noDisplay ? 'none' : '' }} 
                                                     key={mapIndex} 
-                                                    value={value.beatmapId}
+                                                    value={value.beatmapId.toString()}
                                                     >
                                                     {value.mapType}{value.index}
                                                 </MenuItem>)

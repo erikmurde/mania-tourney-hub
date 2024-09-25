@@ -14,12 +14,15 @@ interface IProps {
     error: string,
     options: IOption[],
     country?: boolean,
+    valueId?: boolean
 }
 
-const MultiAutocomplete = ({field, form, label, error, options, country}: IProps) => {
+const MultiAutocomplete = ({field, form, label, error, options, country, valueId}: IProps) => {
 
     const initialValue = options.filter(option => 
-        form.values[field.name].includes(option.name)
+        form.values[field.name].includes(
+            valueId ? (option as UserDto | UserDtoSimple).id : option.name
+        )
     );
 
     return (  
@@ -30,9 +33,10 @@ const MultiAutocomplete = ({field, form, label, error, options, country}: IProps
             getOptionLabel={option => option.name}
             isOptionEqualToValue={(option, value) => option.name === value.name}
             value={initialValue ?? []}
-            onChange={(_, value) => 
-                form.setFieldValue(field.name, value.map(option => option.name))
-            }
+            onChange={(_, value) => form.setFieldValue(
+                field.name, 
+                value.map(option => valueId ? (option as UserDto | UserDtoSimple).id : option.name)
+            )}
             renderOption={(props, option) => (
                 <li {...props}>
                     <Flag country={country 

@@ -1,5 +1,5 @@
 import { Button, Grid } from '@mui/material';
-import { MatchDto } from '../../../../dto/schedule/MatchDto';
+import { MatchDto } from '../../../../dto/schedule/match/MatchDto';
 import SectionTitle from '../../SectionTitle';
 import { ChevronLeft } from '@mui/icons-material';
 import { IStageDto } from '../../../../dto/stage/IStageDto';
@@ -32,8 +32,8 @@ const MatchRefsheet = ({match, stage, onClose}: IProps) => {
         match: match,
         firstPick: '',
         picks: [],
-        bans: [],
-        protects: []
+        bans: ['', ''],
+        protects: ['', '']
     };
 
     useEffect(() => {

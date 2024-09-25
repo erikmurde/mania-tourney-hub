@@ -1,5 +1,5 @@
 import { Dialog, Paper, Table, TableBody, TableContainer } from '@mui/material';
-import { MatchDto } from '../../../../../dto/schedule/MatchDto';
+import { MatchDto } from '../../../../../dto/schedule/match/MatchDto';
 import { useContext, useEffect, useState } from 'react';
 import { MatchService } from '../../../../../services/matchService';
 import { IStageDto } from '../../../../../dto/stage/IStageDto';
@@ -17,7 +17,7 @@ const MatchTable = ({stage}: {stage: IStageDto}) => {
 
     useEffect(() => {
         new MatchService()
-            .getAllStage(stage.id)
+            .getAllByStageId(stage.id)
             .then(matches => setMatches(
                 matches.sort((a, b) => dayjs(a.time) > dayjs(b.time) ? 1 : -1)
             ));

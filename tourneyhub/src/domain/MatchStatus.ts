@@ -1,10 +1,10 @@
-import { MatchDto } from '../dto/schedule/MatchDto';
+import { MatchDto } from '../dto/schedule/match/MatchDto';
 import { RefPick } from './RefPick';
 
 export interface MatchStatus {
     match: MatchDto,
     firstPick: string,
     picks: RefPick[],
-    bans: number[]
-    protects: number[]
+    bans: string[]
+    protects: string[]
 }

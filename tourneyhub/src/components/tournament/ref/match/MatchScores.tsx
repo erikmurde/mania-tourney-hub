@@ -22,9 +22,9 @@ const MatchScores = ({values: {match, firstPick, picks}, bestOf, setFieldValue}:
         let index = players.indexOf(firstPick);
 
         for (let i = 0; i < bestOf - 1; i++) {
-            picks.push({ player: players[index++ % 2], beatmapId: null, winner: '' });
+            picks.push({ player: players[index++ % 2], beatmapId: '', winner: '' });
         }
-        picks.push({ player: 'TIEBREAKER', beatmapId: null, winner: '' });
+        picks.push({ player: 'TIEBREAKER', beatmapId: '', winner: '' });
         setFieldValue('picks', picks);
     }, [firstPick]);
 

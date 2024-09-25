@@ -2,7 +2,7 @@ import { TableContainer, Table, TableBody } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { RefCommand } from '../../../../domain/RefCommand';
 import { RefPick } from '../../../../domain/RefPick';
-import { MatchDto } from '../../../../dto/schedule/MatchDto';
+import { MatchDto } from '../../../../dto/schedule/match/MatchDto';
 import { StyledTableRow } from '../../../styled/StyledTableRow';
 import { RefSheetPaper } from '../../../styled/RefSheetPaper';
 import CommandTableCell from '../commands/CommandTableCell';

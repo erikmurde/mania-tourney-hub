@@ -1,7 +1,7 @@
 import { TableRow } from '@mui/material';
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
-import { MatchDto } from '../../../../../dto/schedule/MatchDto';
+import { MatchDto } from '../../../../../dto/schedule/match/MatchDto';
 import { SchedTableCell } from '../../../../styled/SchedTableCell';
 import MatchRowActions from './MatchRowActions';
 import MatchTableScore from './MatchRowScore';
@@ -15,11 +15,11 @@ interface IProps {
 const MatchTableRow = ({match, refMatch}: IProps) => {
     dayjs.extend(utc);
 
-    const p1Winner = match.isDone 
+    const p1Winner = match.concluded 
         ? (match.score1 < 0 || match.score1 > match.score2) && match.score2 >= 0 
         : false;
 
-    const p2Winner = match.isDone ? !p1Winner : false;
+    const p2Winner = match.concluded ? !p1Winner : false;
 
     return (  
         <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 }, height: 50 }}>
@@ -31,19 +31,19 @@ const MatchTableRow = ({match, refMatch}: IProps) => {
             </SchedTableCell>
             <MatchRowPlayer
                 player={match.player1} 
-                matchDone={match.isDone} 
+                matchDone={match.concluded} 
                 winner={p1Winner}/>
             <MatchTableScore 
                 score={match.score1} 
-                matchDone={match.isDone} 
+                matchDone={match.concluded} 
                 winner={p1Winner}/>
             <MatchTableScore right 
                 score={match.score2} 
-                matchDone={match.isDone} 
+                matchDone={match.concluded} 
                 winner={p2Winner}/>
             <MatchRowPlayer right 
                 player={match.player2} 
-                matchDone={match.isDone} 
+                matchDone={match.concluded} 
                 winner={p2Winner}/>
             <SchedTableCell>{match.referee}</SchedTableCell>
             <SchedTableCell>{match.streamer}</SchedTableCell>

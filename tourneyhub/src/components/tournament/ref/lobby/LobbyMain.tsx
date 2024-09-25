@@ -56,7 +56,7 @@ const LobbyMain = ({lobby, stageName, onClose}: IProps) => {
                     roomCommand={roomCommand}
                 />
                 <Grid item xs={12} marginTop={0.5} marginBottom={1} paddingLeft={0.5}>
-                    <TextField fullWidth type='number' label='MP link' size='small'
+                    <TextField fullWidth type='number' label='osu! match ID' size='small'
                         onChange={(e) => setMatchId(Number(e.target.value))}
                         onBlur={validate}
                         error={error !== ''}

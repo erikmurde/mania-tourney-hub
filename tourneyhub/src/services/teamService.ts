@@ -14,29 +14,13 @@ export class TeamService extends ApiEntityService<TeamDto, TeamDto, TeamDto> {
         return response.data;
     }
 
-    async getSimpleTeams(tournamentId: string): Promise<TeamDtoSimple[]> {
-        const response = await this.axios.get<TeamDtoSimple[]>(`${this.baseUrl}/${tournamentId}/simple`);
+    async getSimpleTeams(tournamentId: string, names?: string[]): Promise<TeamDtoSimple[]> {
+        const response = await this.axios.get<TeamDtoSimple[]>(`${this.baseUrl}/${tournamentId}/simple`, {
+            params: { names: names },
+            paramsSerializer: { indexes: null }
+        });
 
         console.log('getSimpleTeams response: ', response);
         return response.data;
-    }
-
-    async getTeamsByName(tournamentId: string, names: string[]): Promise<TeamDtoSimple[]> {
-        return [];
-        // const response = await this.axios.get<TeamDto[]>('teams');
-
-        // const teams = response.data
-        //     .filter(team => team.tournamentId === tournamentId && names.includes(team.name))
-        //     .map(team => ({ 
-        //         name: team.name, 
-        //         logo: team.logo, 
-        //         players: team.players.map(player => ({ 
-        //             name: player.name, 
-        //             isCaptain: player.isCaptain 
-        //         })) 
-        //     }));
-
-        // console.log('getTeamsByName response: ', teams);
-        // return teams;
     }
 }
