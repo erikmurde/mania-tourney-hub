@@ -4,6 +4,7 @@ import com.tourneyhub.backend.dto.lobby.LobbyCreateDto;
 import com.tourneyhub.backend.dto.lobby.LobbyDto;
 import com.tourneyhub.backend.dto.lobby.LobbyEditDto;
 import com.tourneyhub.backend.dto.lobby.LobbyRegisterDto;
+import com.tourneyhub.backend.service.EventService;
 import com.tourneyhub.backend.service.LobbyService;
 import jakarta.validation.Valid;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -15,22 +16,25 @@ import java.util.List;
 @RestController
 public class LobbyController {
 
-    private final LobbyService service;
+    private final EventService eventService;
 
-    public LobbyController(LobbyService service) {
-        this.service = service;
+    private final LobbyService lobbyService;
+
+    public LobbyController(EventService eventService, LobbyService lobbyService) {
+        this.eventService = eventService;
+        this.lobbyService = lobbyService;
     }
 
     @GetMapping("/api/lobbies/{stageId}")
     public List<LobbyDto> getAllByStageId(
             @PathVariable Long stageId, @AuthenticationPrincipal OAuth2User principal)
     {
-        return service.getAllByStageId(stageId, principal);
+        return lobbyService.getAllByStageId(stageId, principal);
     }
 
     @PostMapping("/api/lobbies")
     public Long create(@RequestBody @Valid LobbyCreateDto dto, @AuthenticationPrincipal OAuth2User principal) {
-        return service.create(dto, principal);
+        return lobbyService.create(dto, principal);
     }
 
     @PutMapping("/api/lobbies/{lobbyId}")
@@ -39,7 +43,7 @@ public class LobbyController {
             @RequestBody @Valid LobbyEditDto dto,
             @AuthenticationPrincipal OAuth2User principal)
     {
-        return service.update(lobbyId, dto, principal);
+        return lobbyService.update(lobbyId, dto, principal);
     }
 
     @PutMapping("/api/lobbies/{lobbyId}/register")
@@ -48,7 +52,7 @@ public class LobbyController {
             @RequestBody @Valid LobbyRegisterDto dto,
             @AuthenticationPrincipal OAuth2User principal)
     {
-        return service.registerParticipant(lobbyId, dto, principal);
+        return lobbyService.registerParticipant(lobbyId, dto, principal);
     }
 
     @PutMapping("/api/lobbies/{lobbyId}/unregister")
@@ -57,11 +61,11 @@ public class LobbyController {
             @RequestBody @Valid LobbyRegisterDto dto,
             @AuthenticationPrincipal OAuth2User principal)
     {
-        return service.unregisterParticipant(lobbyId, dto, principal);
+        return lobbyService.unregisterParticipant(lobbyId, dto, principal);
     }
 
-    @DeleteMapping("/api/lobbies/{lobbyId}")
-    public Long delete(@PathVariable Long lobbyId, @AuthenticationPrincipal OAuth2User principal) {
-        return service.delete(lobbyId, principal);
+    @DeleteMapping("/api/lobbies/{id}")
+    public Long delete(@PathVariable Long id, @AuthenticationPrincipal OAuth2User principal) {
+        return eventService.delete(id, principal);
     }
 }

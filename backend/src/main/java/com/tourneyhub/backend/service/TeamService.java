@@ -20,18 +20,23 @@ public class TeamService {
         this.mapper = mapper;
     }
 
-    public List<TeamDto> getAllByTournamentId(Long tournamentId) {
+    public List<TeamDto> getAll(Long tournamentId) {
         return repository
-                .findAllTeamsInTournament(tournamentId)
-                .stream()
+                .findAllInTournament(tournamentId).stream()
                 .map(team -> mapper.mapToDto(team, tournamentId))
                 .toList();
     }
 
-    public List<SimpleTeamDto> getAllSimpleByTournamentId(Long tournamentId) {
+    public List<SimpleTeamDto> getAllSimple(Long tournamentId) {
         return repository
-                .findAllTeamsInTournament(tournamentId)
-                .stream()
+                .findAllInTournament(tournamentId).stream()
+                .map(mapper::mapToSimpleDto)
+                .toList();
+    }
+
+    public List<SimpleTeamDto> getAllSimpleWithNames(Long tournamentId, List<String> names) {
+        return repository
+                .findAllInTournamentWithNames(tournamentId, names).stream()
                 .map(mapper::mapToSimpleDto)
                 .toList();
     }

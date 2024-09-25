@@ -5,6 +5,7 @@ import com.tourneyhub.backend.dto.team.TeamDto;
 import com.tourneyhub.backend.service.TeamService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -19,12 +20,14 @@ public class TeamController {
     }
 
     @GetMapping("/api/teams/{tournamentId}")
-    public List<TeamDto> getAllByTournamentId(@PathVariable Long tournamentId) {
-        return service.getAllByTournamentId(tournamentId);
+    public List<TeamDto> getAll(@PathVariable Long tournamentId) {
+        return service.getAll(tournamentId);
     }
 
     @GetMapping("/api/teams/{tournamentId}/simple")
-    public List<SimpleTeamDto> getAllSimpleByTournamentId(@PathVariable Long tournamentId) {
-        return service.getAllSimpleByTournamentId(tournamentId);
+    public List<SimpleTeamDto> getAllSimple(@PathVariable Long tournamentId, @RequestParam List<String> names) {
+        return names != null
+                ? service.getAllSimpleWithNames(tournamentId, names)
+                : service.getAllSimple(tournamentId);
     }
 }

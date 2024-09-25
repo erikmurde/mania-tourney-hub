@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class EventParticipant extends BaseEntity {
 
-    @Min(0)
+    @Min(-1)
     private int score;
 
     @Column(name = "app_user_id", insertable=false, updatable=false)

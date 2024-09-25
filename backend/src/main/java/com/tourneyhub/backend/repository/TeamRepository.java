@@ -15,5 +15,14 @@ public interface TeamRepository extends JpaRepository<Team, Long> {
     Optional<Team> findByName(String name);
 
     @Query("FROM Team t LEFT JOIN TournamentPlayer p ON p.team.id=t.id WHERE p.tournament.id=:tournamentId")
-    List<Team> findAllTeamsInTournament(@Param("tournamentId") Long tournamentId);
+    List<Team> findAllInTournament(@Param("tournamentId") Long tournamentId);
+
+    @Query(
+            "FROM Team t LEFT JOIN FETCH TournamentPlayer p ON p.team.id=t.id " +
+            "WHERE p.tournament.id=:tournamentId AND t.name IN :names"
+    )
+    List<Team> findAllInTournamentWithNames(
+            @Param("tournamentId") Long tournamentId,
+            @Param("names") List<String> names
+    );
 }

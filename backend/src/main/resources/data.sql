@@ -1827,6 +1827,51 @@ VALUES (10, 'Q01', '2024-09-20T08:06:30.000Z', null, false);
 INSERT INTO event (stage_id, code, time, match_id, concluded)
 VALUES (10, 'Q02', '2024-09-30T11:14:08.000Z', null, false);
 
+INSERT INTO event (stage_id, code, time, match_id, concluded)
+VALUES (5, '110', '2023-11-11T12:00:00.000Z', null, true);
+
+INSERT INTO event (stage_id, code, time, match_id, concluded)
+VALUES (5, '99', '2023-11-11T12:00:00.000Z', 111255354, true);
+
+INSERT INTO event (stage_id, code, time, match_id, concluded)
+VALUES (5, '100', '2023-11-11T14:00:00.000Z', null, true);
+
+INSERT INTO event (stage_id, code, time, match_id, concluded)
+VALUES (5, '102', '2023-11-11T14:00:00.000Z', 111256942, true);
+
+INSERT INTO event (stage_id, code, time, match_id, concluded)
+VALUES (5, '112', '2023-11-11T15:00:00.000Z', 111257849, true);
+
+INSERT INTO event (stage_id, code, time, match_id, concluded)
+VALUES (5, '97', '2023-11-11T21:00:00.000Z', 111264171, true);
+
+INSERT INTO event (stage_id, code, time, match_id, concluded)
+VALUES (5, '101', '2023-11-12T03:00:00.000Z', 111268142, true);
+
+INSERT INTO event (stage_id, code, time, match_id, concluded)
+VALUES (5, '104', '2023-11-12T07:30:00.000Z', null, false);
+
+INSERT INTO event (stage_id, code, time, match_id, concluded)
+VALUES (5, '106d', '2023-11-12T08:00:00.000Z', null, false);
+
+INSERT INTO event (stage_id, code, time, match_id, concluded)
+VALUES (5, '109', '2023-11-12T08:00:00.000Z', null, false);
+
+INSERT INTO event (stage_id, code, time, match_id, concluded)
+VALUES (5, '107b', '2023-11-12T13:00:00.000Z', null, false);
+
+INSERT INTO event (stage_id, code, time, match_id, concluded)
+VALUES (5, '111', '2023-11-12T15:00:00.000Z', null, false);
+
+INSERT INTO event (stage_id, code, time, match_id, concluded)
+VALUES (5, '105b', '2023-11-12T16:00:00.000Z', null, false);
+
+INSERT INTO event (stage_id, code, time, match_id, concluded)
+VALUES (5, '123', '2023-11-12T17:00:00.000Z', null, false);
+
+INSERT INTO event (stage_id, code, time, match_id, concluded)
+VALUES (9, 'test', '2024-09-26T17:39:35.000Z', null, false);
+
 -- EVENT PARTICIPANTS ------------------------------------------------------------------------------------------------
 
 INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (60, null, 1, 1, 0);
@@ -1893,3 +1938,59 @@ INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) V
 INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (null, 4, 27, 1, 0);
 INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (1, null, 27, 7, 0);
 INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (6, null, 28, 7, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (59, null, 29, 1, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (60, null, 29, 1, -1);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (4, null, 29, 7, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (67, null, 30, 1, 1);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (73, null, 30, 1, 6);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (4, null, 30, 7, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (66, null, 31, 1, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (56, null, 31, 1, -1);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (62, null, 32, 1, 6);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (78, null, 32, 1, 1);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (38, null, 32, 7, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (35, null, 32, 8, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (58, null, 33, 1, 6);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (61, null, 33, 1, 3);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (38, null, 33, 7, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (35, null, 33, 8, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (86, null, 34, 1, 1);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (72, null, 34, 1, 6);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (31, null, 34, 7, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (33, null, 34, 8, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (69, null, 35, 1, 1);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (71, null, 35, 1, 6);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (31, null, 35, 7, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (33, null, 35, 8, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (51, null, 35, 9, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (1, null, 36, 1, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (82, null, 36, 1, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (4, null, 36, 7, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (33, null, 36, 8, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (56, null, 37, 1, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (73, null, 37, 1, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (70, null, 38, 1, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (63, null, 38, 1, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (4, null, 38, 7, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (35, null, 38, 8, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (62, null, 39, 1, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (71, null, 39, 1, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (41, null, 39, 7, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (35, null, 39, 8, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (57, null, 40, 1, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (65, null, 40, 1, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (38, null, 40, 7, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (33, null, 40, 8, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (64, null, 41, 1, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (72, null, 41, 1, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (38, null, 41, 7, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (33, null, 41, 8, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (51, null, 41, 9, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (57, null, 42, 1, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (56, null, 42, 1, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (35, null, 42, 7, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (2, null, 42, 8, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (48, null, 42, 9, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (null, 2, 43, 1, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (null, 4, 43, 1, 0);
+INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (6, null, 43, 7, 0);

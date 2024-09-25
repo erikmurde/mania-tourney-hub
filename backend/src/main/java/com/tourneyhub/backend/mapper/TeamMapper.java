@@ -23,8 +23,7 @@ public class TeamMapper {
 
     public TeamDto mapToDto(Team team, Long tournamentId) {
         List<UserDto> players = team
-                .getPlayers()
-                .stream()
+                .getPlayers().stream()
                 .map(player -> userMapper.mapToDto(player.getAppUser()))
                 .toList();
 
@@ -44,6 +43,7 @@ public class TeamMapper {
 
     public SimpleTeamDto mapToSimpleDto(Team team) {
         return new SimpleTeamDto(
+                team.getId(),
                 team.getName(),
                 team.getLogo(),
                 team.getPlayers().stream().map(tournamentPlayerMapper::mapToSimpleTeamPlayerDto).toList()
@@ -52,8 +52,7 @@ public class TeamMapper {
 
     private TournamentStatsDto getStats(UserDto player, String name, Long tournamentId) {
         return player
-                .getStats()
-                .stream()
+                .getStats().stream()
                 .filter(stat -> stat.getTournamentId().equals(tournamentId) && stat.getTeam().equals(name))
                 .findFirst()
                 .orElseThrow(IllegalArgumentException::new);
