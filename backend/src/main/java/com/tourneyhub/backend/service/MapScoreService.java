@@ -2,6 +2,7 @@ package com.tourneyhub.backend.service;
 
 import com.tourneyhub.backend.domain.Stage;
 import com.tourneyhub.backend.domain.Team;
+import com.tourneyhub.backend.domain.Tournament;
 import com.tourneyhub.backend.dto.mapScore.MapScoreDto;
 import com.tourneyhub.backend.mapper.MapScoreMapper;
 import com.tourneyhub.backend.repository.MapRepository;
@@ -42,7 +43,12 @@ public class MapScoreService {
                 .findById(stageId)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
-        return stage.getTournament().getMinTeamSize() > 1
+        Tournament tournament = stage.getTournament();
+
+        if (!tournament.isPublished() || !stage.isStatsPublished()) {
+            return new ArrayList<>();
+        }
+        return tournament.getMinTeamSize() > 1
                 ? getTeamScores(stageId, stage.getTournamentId())
                 : getPlayerScores(stageId);
     }
