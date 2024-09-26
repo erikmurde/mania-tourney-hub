@@ -1,9 +1,9 @@
 import { TableContainer, Table, TableHead, TableRow, TableBody } from '@mui/material';
 import { SchedTableCell } from '../../../styled/SchedTableCell';
 import MapStatsTableRowPlayer from './MapStatsTableRowPlayer';
-import { TeamScoreDto } from '../../../../dto/score/TeamScoreDto';
-import { PlayerScoreDto } from '../../../../dto/score/PlayerScoreDto';
 import MapStatsTableRowTeam from './MapStatsTableRowTeam';
+import { TeamScoreDto } from '../../../../dto/statistics/TeamScoreDto';
+import { PlayerScoreDto } from '../../../../dto/statistics/PlayerScoreDto';
 
 interface IProps {
     showTeams: boolean,

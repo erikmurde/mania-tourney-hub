@@ -1,7 +1,7 @@
 import { Grid, TableRow } from '@mui/material';
-import { PlayerScoreDto } from '../../../../dto/score/PlayerScoreDto';
 import { SchedTableCell } from '../../../styled/SchedTableCell';
 import Flag from '../../../Flag';
+import { PlayerScoreDto } from '../../../../dto/statistics/PlayerScoreDto';
 
 interface IProps {
     index: number,

@@ -3,7 +3,6 @@ import NoItems from '../NoItems';
 import TeamPlayerCard from './TeamPlayerCard';
 import { UserDto } from '../../../dto/user/UserDto';
 import { TeamDto } from '../../../dto/team/TeamDto';
-import { Fragment } from 'react';
 
 const TeamPlayerList = ({teams}: {teams: TeamDto[]}) => {
 
@@ -13,19 +12,23 @@ const TeamPlayerList = ({teams}: {teams: TeamDto[]}) => {
         ) !== undefined;
     }
 
+    const data = teams
+        .map(team => 
+            team.players.map(player => 
+                ({ player: player, isCaptain: playerIsCaptain(team.name, player) })
+            )
+        )
+        .flat();
+
     return (  
         <Grid container spacing={2} justifyContent='center'>
             {teams.length === 0 && <NoItems name='players'/>}
-            {teams.map(team => 
-                <Fragment key={team.id}>
-                {team.players
-                    .sort((a, b) => a.rank - b.rank)
-                    .map(player => 
-                    <Grid item key={player.id}>
-                        <TeamPlayerCard player={player} isCaptain={playerIsCaptain(team.name, player)} isSeparate/>
-                    </Grid>
-                )}
-                </Fragment>
+            {data
+            .sort((a, b) => a.player.rank - b.player.rank)
+            .map(({player, isCaptain}) => 
+                <Grid item key={player.id}>
+                    <TeamPlayerCard player={player} isCaptain={isCaptain} isSeparate/>
+                </Grid>
             )}
         </Grid>
     );

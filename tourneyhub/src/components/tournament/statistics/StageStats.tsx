@@ -32,10 +32,10 @@ const StageStats = ({mapStats, tourney}: IProps) => {
                     <Table>
                         <StatsTableHead showTeams={showTeams}/>
                         <TableBody>
-                            {mapStats.map(map => 
+                            {mapStats.map(stats => 
                                 <StatsTableRow 
-                                    key={map.id} 
-                                    map={map}
+                                    key={stats.id} 
+                                    stats={stats}
                                     teamTourney={tourney.minTeamSize > 1}
                                     showTeams={showTeams}/>
                             )}

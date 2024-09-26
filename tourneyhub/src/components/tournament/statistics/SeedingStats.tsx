@@ -1,11 +1,11 @@
 import { Paper, Table, TableBody, TableContainer, TableHead, TableRow } from '@mui/material';
 import { SchedTableCell } from '../../styled/SchedTableCell';
 import { MapStatsDto } from '../../../dto/statistics/MapStatsDto';
-import { PlayerScoreDto } from '../../../dto/score/PlayerScoreDto';
 import { UserDtoSimple } from '../../../dto/user/UserDtoSimple';
 import { MapStatsService } from '../../../services/mapStatsService';
-import { TeamScoreDto } from '../../../dto/score/TeamScoreDto';
 import SeedingStatsTableRow from './table/SeedingStatsTableRow';
+import { PlayerScoreDto } from '../../../dto/statistics/PlayerScoreDto';
+import { TeamScoreDto } from '../../../dto/statistics/TeamScoreDto';
 
 interface Team {
     name: string,
@@ -52,21 +52,19 @@ const SeedingStats = ({mapStats, numAdvancing, teamTourney}: IProps) => {
         }
     }
 
-    const sortScores = (scores: PlayerScoreDto[] | TeamScoreDto[]) => {
+    const sortScores = (mapStats: MapStatsDto) => {
         return teamTourney 
-            ?   (scores as TeamScoreDto[]).sort((a, b) => 
+            ?   mapStats.teamScores.sort((a, b) => 
                     service.getTeamScore(b) - service.getTeamScore(a)
                 )
-            :   (scores as PlayerScoreDto[]).sort((a, b) => 
-                    b.score - a.score
-                );
+            :   mapStats.playerScores.sort((a, b) => b.score - a.score);
     }
 
-    mapStats.forEach(map => {
+    mapStats.forEach(stats => {
         let seen: string[] = [];
         let index = 1;
 
-        sortScores(map.scores)
+        sortScores(stats)
         .forEach(stats => {
             if (teamTourney) {
                 let team = stats as TeamScoreDto;

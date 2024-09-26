@@ -2,11 +2,15 @@ import { Schema } from 'yup';
 import { FastField, Field, Form, Formik } from 'formik';
 import { Checkbox, FormControlLabel, FormGroup, Grid, TextField, Typography } from '@mui/material';
 import { TournamentEdit } from '../../../../domain/TournamentEdit';
-import { ADMIN, COMMENTATOR, COUNTRIES, GFX, HOST, MAPPER, MAPPOOLER, PLAYTESTER, REFEREE, SHEETER, STREAMER } from '../../../../constants';
 import MultiAutocomplete from '../../field/MultiAutocomplete';
 import RoleAutocomplete from '../../field/RoleAutocomplete';
 import TourneyDateField from '../../field/TourneyDateField';
 import TourneyLinks from './TourneyLinks';
+import { ICountryDto } from '../../../../dto/ICountryDto';
+import { useEffect, useState } from 'react';
+import { RoleService } from '../../../../services/roleService';
+import { CountryService } from '../../../../services/countryService';
+import { PLAYER } from '../../../../constants';
 
 interface IProps {
     initialValues: TournamentEdit,
@@ -15,10 +19,25 @@ interface IProps {
 }
 
 const TournamentFormView = ({initialValues, validationSchema, onSubmit}: IProps) => {
-    const roles = [HOST, ADMIN, MAPPOOLER, MAPPER, PLAYTESTER, REFEREE, STREAMER, COMMENTATOR, SHEETER, GFX];
+    const [roles, setRoles] = useState([] as string[]);
+    const [countries, setCountries] = useState([] as ICountryDto[]);
+
+    useEffect(() => {
+        new RoleService()
+            .getAll()
+            .then(roles => setRoles(
+                roles.map(role => role.name).filter(role => role !== PLAYER)
+            ));
+
+        if (!initialValues.published) {
+            new CountryService()
+                .getAll()
+                .then(countries => setCountries(countries));
+        }
+    }, [initialValues.published]);
 
     return (  
-        <Formik 
+        <Formik
             initialValues={initialValues} 
             onSubmit={onSubmit}
             validationSchema={validationSchema}
@@ -69,12 +88,13 @@ const TournamentFormView = ({initialValues, validationSchema, onSubmit}: IProps)
                                 helperText={errors.regMessage} 
                                 fullWidth/>
                         </Grid>
+                        {roles.length > 0 &&
                         <Grid item xs={8}>
                             <FastField component={RoleAutocomplete} name='hostRoles' label='Your roles'
                                 valueId
                                 error={errors.hostRoles}
                                 options={roles}/>
-                        </Grid>
+                        </Grid>}
                         {!values.published &&
                         <>
                           <Grid item xs={12}>
@@ -102,13 +122,14 @@ const TournamentFormView = ({initialValues, validationSchema, onSubmit}: IProps)
                                     control={<Checkbox/>}/>
                             </FormGroup>
                         </Grid>
+                        {countries.length > 0 &&
                         <Grid item xs={6}>
                             <FastField component={MultiAutocomplete} country
                                 name='countries'
                                 label='Country restriction'
                                 error={errors.countries}
-                                options={COUNTRIES}/>
-                        </Grid>
+                                options={countries}/>
+                        </Grid>}
                         <Grid item xs={6}/>
                         {values.restrictRank && 
                         <>

@@ -1,9 +1,9 @@
 import { Grid } from '@mui/material';
 import Flag from '../../../Flag';
 import { SchedTableCell } from '../../../styled/SchedTableCell';
-import { PlayerScoreDto } from '../../../../dto/score/PlayerScoreDto';
-import { TeamScoreDto } from '../../../../dto/score/TeamScoreDto';
 import { MapStatsService } from '../../../../services/mapStatsService';
+import { PlayerScoreDto } from '../../../../dto/statistics/PlayerScoreDto';
+import { TeamScoreDto } from '../../../../dto/statistics/TeamScoreDto';
 
 interface IProps {
     bestPlayer: PlayerScoreDto | null,
@@ -46,7 +46,8 @@ const StatsTableMvp = ({bestPlayer, bestTeam}: IProps) => {
                 <Grid item marginLeft={0.5}>
                     {bestTeam.name}
                 </Grid>
-                </>}   
+                </>}
+                {!bestPlayer && !bestTeam && 'No scores'}   
             </Grid>
         </SchedTableCell>
         <SchedTableCell>{score}</SchedTableCell>

@@ -30,10 +30,11 @@ const Teams = () => {
     useEffect(() => {
         teamService
             .getTeams(tourney.id)
-            .then(teams => setTeams(hasValidRoles 
+            .then(teams => setTeams((hasValidRoles 
                 ? teams 
                 : teams.filter(team => team.status !== DISQUALIFIED))
-            );
+                .sort((a, b) => a.seed - b.seed)
+            ));
     }, [tourney.id, hasValidRoles]);
 
     const publishTeams = async() => {

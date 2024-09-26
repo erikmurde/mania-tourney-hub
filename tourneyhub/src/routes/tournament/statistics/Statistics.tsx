@@ -12,7 +12,7 @@ import StatsTabs from '../../../components/tournament/statistics/tabs/StatsTabs'
 import { MapStatsService } from '../../../services/mapStatsService';
 import { MapStatsDto } from '../../../dto/statistics/MapStatsDto';
 import MapStats from '../../../components/tournament/statistics/MapStats';
-import { QUALIFIER } from '../../../constants';
+import { MAPPOOL, QUALIFIER, SEEDING } from '../../../constants';
 import SeedingStats from '../../../components/tournament/statistics/SeedingStats';
 import { useTourney } from '../TournamentHeader';
 
@@ -22,7 +22,7 @@ const Statistics = () => {
     const [stages, setStages] = useState([] as IStageDto[]);
     const [mapStats, setMapStats] = useState([] as MapStatsDto[]);
     const [stageId, setStageId] = useState(null as string | null);
-    const [mapType, setMapType] = useState('');
+    const [selectedStats, setSelectedStats] = useState('');
 
     useEffect(() => {
         new StageService()
@@ -38,18 +38,18 @@ const Statistics = () => {
     useEffect(() => {
         if (stage) {
             new MapStatsService()
-                .getAllStage(stage.id)
+                .getAllInStage(stage.id)
                 .then(stats => {
                     setMapStats(stats);
-                    setMapType(stage!.stageType.name === QUALIFIER ? QUALIFIER : '');
+                    setSelectedStats(stage!.stageType.name === QUALIFIER ? SEEDING : MAPPOOL);
                 });
         }
     }, [stage]);
 
     const isHost = user && new AuthService().isHost(user, tourney.id);
-    const map = mapStats.find(map => map.type === mapType);
+    const map = mapStats.find(map => map.id === selectedStats);
     
-    const statsVisible = (stage?.statsPublished || isHost) && mapStats.length > 0; 
+    const statsVisible = (stage?.statsPublished || isHost) && mapStats.length > 0;
 
     return (  
         <Paper elevation={2} sx={{ minHeight: 500, paddingBottom: 2 }}>
@@ -58,9 +58,9 @@ const Statistics = () => {
                 {statsVisible && stage &&
                 <StatsTabs
                     maps={mapStats}
-                    mapType={mapType}
                     stageType={stage.stageType.name}
-                    setMapType={setMapType}
+                    selectedStats={selectedStats}
+                    setSelectedStats={setSelectedStats}
                 />}
             </Grid>
             {stage &&
@@ -75,18 +75,18 @@ const Statistics = () => {
                 <Grid item xs
                     marginLeft={map ? 0 : 2} 
                     marginRight={map ? 0 : 2} 
-                    container={map !== undefined || mapType === QUALIFIER} 
+                    container={map !== undefined || selectedStats === SEEDING} 
                     justifyContent='center'
                     >
                     {map && 
-                    <MapStats map={map} teamTourney={tourney.minTeamSize > 1}/>} 
-                    {mapType === QUALIFIER && statsVisible &&
+                    <MapStats stats={map} teamTourney={tourney.minTeamSize > 1}/>} 
+                    {selectedStats === SEEDING && statsVisible &&
                     <SeedingStats 
                         mapStats={mapStats}
                         numAdvancing={stage.numAdvancing}
                         teamTourney={tourney.minTeamSize > 1}
                     />}
-                    {(stage.statsPublished || isHost) && stage.id && mapType === '' && mapStats.length > 0 &&
+                    {(stage.statsPublished || isHost) && stage.id && selectedStats === MAPPOOL && mapStats.length > 0 &&
                     <StageStats mapStats={mapStats} tourney={tourney}
                     />}
                     {!statsVisible && <NoItems name={'statistics'}/>}

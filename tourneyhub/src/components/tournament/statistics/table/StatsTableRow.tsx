@@ -2,19 +2,19 @@ import { TableRow } from '@mui/material';
 import { MapStatsDto } from '../../../../dto/statistics/MapStatsDto';
 import { SchedTableCell } from '../../../styled/SchedTableCell';
 import MapTypeBox from '../../../MapTypeBox';
-import { PlayerScoreDto } from '../../../../dto/score/PlayerScoreDto';
 import { MapStatsService } from '../../../../services/mapStatsService';
-import { TeamScoreDto } from '../../../../dto/score/TeamScoreDto';
 import { useEffect, useState } from 'react';
 import StatsTableMvp from './StatsTableMvp';
+import { TeamScoreDto } from '../../../../dto/statistics/TeamScoreDto';
+import { PlayerScoreDto } from '../../../../dto/statistics/PlayerScoreDto';
 
 interface IProps {
-    map: MapStatsDto,
+    stats: MapStatsDto,
     teamTourney: boolean,
     showTeams: boolean
 }
 
-const StatsTableRow = ({map, teamTourney, showTeams}: IProps) => {
+const StatsTableRow = ({stats, teamTourney, showTeams}: IProps) => {
     const service = new MapStatsService();
 
     const [state, setState] = useState({
@@ -26,19 +26,19 @@ const StatsTableRow = ({map, teamTourney, showTeams}: IProps) => {
 
     const getBestPlayer = (hightestScore: number) => {
         if (teamTourney) {
-            const team = (map.scores as TeamScoreDto[]).find(team => 
+            const team = stats.teamScores.find(team => 
                 service.getPlayerScores(team).includes(hightestScore)
             );
-            return team?.players.find(player => player.score === hightestScore) || null;
+            return team?.playerScores.find(player => player.score === hightestScore) || null;
         } else {
-            return (map.scores as PlayerScoreDto[]).find(
+            return stats.playerScores.find(
                 player => player.score === hightestScore
             ) || null;
         }
     }
 
     const getBestTeam = (hightestScore: number) => {
-        return (map.scores as TeamScoreDto[]).find(team => 
+        return stats.teamScores.find(team => 
             service.getTeamScore(team) === hightestScore
         ) || null;
     }
@@ -49,8 +49,8 @@ const StatsTableRow = ({map, teamTourney, showTeams}: IProps) => {
     }
 
     useEffect(() => {
-        const allScores = service.getAllScores(map, teamTourney, showTeams);
-        const allAccs = service.getAllAccs(map, teamTourney, showTeams);
+        const allScores = service.getAllScores(stats, teamTourney, showTeams);
+        const allAccs = service.getAllAccs(stats, teamTourney, showTeams);
         const hightestScore = Math.max(...allScores);
 
         const isTeam = teamTourney && showTeams;
@@ -66,14 +66,14 @@ const StatsTableRow = ({map, teamTourney, showTeams}: IProps) => {
         <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 }, height: 50 }}>
             <SchedTableCell width={40} sx={{ paddingRight: 1 }}>
                 <MapTypeBox 
-                    mapType={map.type} 
-                    index={map.index} 
+                    mapType={stats.type} 
+                    index={stats.index} 
                     height={25} 
                     width={40}
                     fontSize={14}
                 />
             </SchedTableCell>
-            <SchedTableCell>{map.title}</SchedTableCell>
+            <SchedTableCell>{stats.title}</SchedTableCell>
             <StatsTableMvp 
                 bestPlayer={state.bestPlayer} 
                 bestTeam={state.bestTeam}

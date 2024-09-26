@@ -87,7 +87,9 @@ const TeamCard = ({teamsPublic, team, eliminateTeam}: IProps) => {
                     </>}
                 </Grid>
                 <Grid container direction='column' rowSpacing={1}>
-                    {team.players.map(player => 
+                    {team.players
+                        .sort((a, b) => a.rank - b.rank)
+                        .map(player => 
                         <Grid item key={player.id}>
                             <TeamPlayerCard player={player} isCaptain={playerIsCaptain(player)}/>
                         </Grid>    

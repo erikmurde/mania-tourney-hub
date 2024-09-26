@@ -1,41 +1,40 @@
-import { PlayerScoreDto } from '../dto/score/PlayerScoreDto';
-import { TeamScoreDto } from '../dto/score/TeamScoreDto';
 import { MapStatsDto } from '../dto/statistics/MapStatsDto';
-import { BaseEntityService } from './base/baseEntityService';
+import { TeamScoreDto } from '../dto/statistics/TeamScoreDto';
+import { ApiEntityService } from './base/apiEntityService';
 
-export class MapStatsService extends BaseEntityService<MapStatsDto> {
+export class MapStatsService extends ApiEntityService<MapStatsDto, MapStatsDto, MapStatsDto> {
     constructor() {
-        super('mapStats');
+        super('statistics');
     }
 
-    async getAllStage(stageId: string): Promise<MapStatsDto[]> {
-        const response = await this.axios.get<MapStatsDto[]>(`${this.baseUrl}?stageId=${stageId}`);
+    async getAllInStage(stageId: string): Promise<MapStatsDto[]> {
+        const response = await this.axios.get<MapStatsDto[]>(`${this.baseUrl}/${stageId}`);
 
-        console.log('getAllStage response: ', response);
+        console.log('getAllStatsInStage response: ', response);
         return response.data;
     }
 
     getAllScores(mapStats: MapStatsDto, teamTourney: boolean = false, teamScore: boolean = false): number[] {
         if (teamTourney) {
-            const scores = (mapStats.scores as TeamScoreDto[]);
+            const scores = mapStats.teamScores;
 
             return teamScore 
                 ? scores.map(stats => this.getTeamScore(stats))
                 : scores.map(stats => this.getPlayerScores(stats)).flat()
         }
-        return (mapStats.scores as PlayerScoreDto[])
+        return mapStats.playerScores
             .map(stats => stats.score);
     }
 
     getAllAccs(mapStats: MapStatsDto, teamTourney: boolean = false, teamScore: boolean = false): number[] {
         if (teamTourney) {
-            const scores = (mapStats.scores as TeamScoreDto[]);
+            const scores = mapStats.teamScores;
 
             return teamScore 
                 ? scores.map(stats => this.getTeamAcc(stats))
                 : scores.map(stats => this.getPlayerAccs(stats)).flat()
         }
-        return (mapStats.scores as PlayerScoreDto[])
+        return mapStats.playerScores
             .map(playerScore => playerScore.accuracy);
     }
 
@@ -49,14 +48,14 @@ export class MapStatsService extends BaseEntityService<MapStatsDto> {
         return Math.round(this
             .getPlayerAccs(stats)
             .reduce((acc, sum) => sum + acc, 0) 
-            / stats.players.length * 100) / 100;
+            / stats.playerScores.length * 100) / 100;
     }
 
     getPlayerScores(stats: TeamScoreDto): number[] {
-        return stats.players.map(player => player.score);
+        return stats.playerScores.map(player => player.score);
     }
 
     getPlayerAccs(stats: TeamScoreDto): number[] {
-        return stats.players.map(player => player.accuracy);
+        return stats.playerScores.map(player => player.accuracy);
     }
 }

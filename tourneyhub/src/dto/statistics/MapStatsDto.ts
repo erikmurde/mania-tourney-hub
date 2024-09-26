@@ -1,11 +1,11 @@
-import { PlayerScoreDto } from '../score/PlayerScoreDto';
-import { TeamScoreDto } from '../score/TeamScoreDto';
+import { PlayerScoreDto } from './PlayerScoreDto';
+import { TeamScoreDto } from './TeamScoreDto';
 
 export interface MapStatsDto {
     id: string,
-    stageId: string,
     title: string,
     type: string,
     index: number,
-    scores: TeamScoreDto[] | PlayerScoreDto[]
+    playerScores: PlayerScoreDto[],
+    teamScores: TeamScoreDto[]
 }

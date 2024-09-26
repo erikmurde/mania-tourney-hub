@@ -8,7 +8,7 @@ const StatsTableHead = ({showTeams}: {showTeams: boolean}) => {
                 <SchedTableCell align='center' sx={{ paddingRight: 1 }}>
                     Map
                 </SchedTableCell>
-                <SchedTableCell>Artist and title</SchedTableCell>
+                <SchedTableCell>Title</SchedTableCell>
                 <SchedTableCell>
                     Best {showTeams ? 'team' : 'player'}
                 </SchedTableCell>
