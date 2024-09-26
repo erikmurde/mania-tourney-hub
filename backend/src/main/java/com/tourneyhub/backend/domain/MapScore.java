@@ -1,12 +1,14 @@
 package com.tourneyhub.backend.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Entity
+@Data
+@EqualsAndHashCode(callSuper = true)
 public class MapScore extends BaseEntity {
 
     @Min(0)
@@ -16,11 +18,14 @@ public class MapScore extends BaseEntity {
     @Max(100)
     private Double accuracy;
 
-    @ManyToOne
+    @Column(name = "app_user_id", insertable = false, updatable = false)
+    private Long appUserId;
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn
     private AppUser appUser;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn
     private Map map;
 }

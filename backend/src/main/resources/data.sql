@@ -1304,6 +1304,129 @@ VALUES (51, 14114899, 'Lotex09', 2481, 'test_username', 0, 'https://a.ppy.sh/141
 INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
 VALUES (51, 15806513, 'jkzu123', 422, 'test_username', 0, 'https://a.ppy.sh/15806513');
 
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (29, 13347579, 'LeMarcinho', 779, 'test_username', 0, 'https://a.ppy.sh/13347579');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (29, 2288363, 'SillyFangirl', 40, 'test_username', 0, 'https://a.ppy.sh/2288363');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (29, 20051971, 'vegetagamerbr34', 4277, 'test_username', 0, 'https://a.ppy.sh/20051971');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (29, 13769101, 'Netroo', 569, 'test_username', 0, 'https://a.ppy.sh/13769101');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (29, 18943504, 'fefedk', 550, 'test_username', 0, 'https://a.ppy.sh/18943504');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (29, 3181281, 'Zergh', 3077, 'test_username', 0, 'https://a.ppy.sh/3181281');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (112, 10329095, 'VanillaLatte', 76, 'test_username', 0, 'https://a.ppy.sh/10329095');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (112, 8581031, 'Poca', 266, 'test_username', 0, 'https://a.ppy.sh/8581031');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (112, 14952077, 'yeonho7028', 68, 'test_username', 0, 'https://a.ppy.sh/14952077');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (112, 6912079, 'PocaFanboy', 640, 'test_username', 0, 'https://a.ppy.sh/6912079');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (112, 12452131, 'gaesol', 249, 'test_username', 0, 'https://a.ppy.sh/12452131');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (167, 10083439, 'bojii', 6, 'test_username', 0, 'https://a.ppy.sh/10083439');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (167, 20496815, '4Kenn', 604, 'test_username', 0, 'https://a.ppy.sh/20496815');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (167, 18466725, 'Apol-', 1265, 'test_username', 0, 'https://a.ppy.sh/18466725');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (167, 12584420, 'Vulpsi', 681, 'test_username', 0, 'https://a.ppy.sh/12584420');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (167, 18560307, 'Silicosis 2', 1678, 'test_username', 0, 'https://a.ppy.sh/18560307');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (35, 6701738, 'Stability', 5852, 'test_username', 0, 'https://a.ppy.sh/6701738');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (35, 5390121, 'Piggy', 1682, 'test_username', 0, 'https://a.ppy.sh/5390121');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (35, 10804091, 'GDMem', 842, 'test_username', 0, 'https://a.ppy.sh/10804091');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (35, 9188975, 'mae0149', 437, 'test_username', 0, 'https://a.ppy.sh/9188975');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (35, 16468962, 'ERA Sunny', 858, 'test_username', 0, 'https://a.ppy.sh/16468962');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (35, 13847951, 'Dale940', 151, 'test_username', 0, 'https://a.ppy.sh/13847951');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (188, 13390529, '-Aishiteru-', 944, 'test_username', 0, 'https://a.ppy.sh/13390529');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (188, 21207265, 'oyama mahiro', 3226, 'test_username', 0, 'https://a.ppy.sh/21207265');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (188, 24058560, 'Neon-Hooray', 718, 'test_username', 0, 'https://a.ppy.sh/24058560');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (188, 18018708, 'McButt', 2745, 'test_username', 0, 'https://a.ppy.sh/18018708');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (206, 12046267, '--Pavin--', 334, 'test_username', 0, 'https://a.ppy.sh/12046267');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (206, 28098890, 'parponger', 419, 'test_username', 0, 'https://a.ppy.sh/28098890');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (206, 23299675, 'Monpluk', 1667, 'test_username', 0, 'https://a.ppy.sh/23299675');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (206, 21072569, 'AomDCO', 2878, 'test_username', 0, 'https://a.ppy.sh/21072569');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (206, 6535376, 'HowToBeIntel', 2500, 'test_username', 0, 'https://a.ppy.sh/6535376');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (43, 10702235, '[Crz]Caicium', 1176, 'test_username', 0, 'https://a.ppy.sh/10702235');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (43, 10817494, '[Crz]Nickname', 344, 'test_username', 0, 'https://a.ppy.sh/10817494');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (43, 10884561, '[GB]Mafufu', 1898, 'test_username', 0, 'https://a.ppy.sh/10884561');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (43, 16277321, '[GB]nyasun', 424, 'test_username', 0, 'https://a.ppy.sh/16277321');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (227, 26233321, '[LS]Vixile', 2258, 'test_username', 0, 'https://a.ppy.sh/26233321');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (227, 13821222, 'Lott', 2455, 'test_username', 0, 'https://a.ppy.sh/13821222');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (227, 12562107, 'CPT_Sivelia', 581, 'test_username', 0, 'https://a.ppy.sh/12562107');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (227, 22725724, 'magnifestio', 674, 'test_username', 0, 'https://a.ppy.sh/22725724');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (227, 13219309, '[LS]Tokiyume', 2716, 'test_username', 0, 'https://a.ppy.sh/13219309');
+
+INSERT INTO app_user (country_id, player_id, name, rank, discord_username, timezone, avatar)
+VALUES (227, 14009758, 'TriDoanGaming', 485, 'test_username', 0, 'https://a.ppy.sh/14009758');
+
 -- TEAMS --------------------------------------------------------------------------------------------------------------
 
 INSERT INTO team (name, logo, availability)
@@ -1323,6 +1446,30 @@ VALUES ('Netherlands', 'https://assets.ppy.sh/old-flags/NL.png', 'We are availab
 
 INSERT INTO team (name, logo, availability)
 VALUES ('Germany', 'https://assets.ppy.sh/old-flags/DE.png', 'We are available whenever.');
+
+INSERT INTO team (name, logo, availability)
+VALUES ('Brazil', 'https://assets.ppy.sh/old-flags/BR.png', 'We are available whenever.');
+
+INSERT INTO team (name, logo, availability)
+VALUES ('South Korea', 'https://assets.ppy.sh/old-flags/KR.png', 'We are available whenever.');
+
+INSERT INTO team (name, logo, availability)
+VALUES ('Philippines', 'https://assets.ppy.sh/old-flags/PH.png', 'We are available whenever.');
+
+INSERT INTO team (name, logo, availability)
+VALUES ('Canada', 'https://assets.ppy.sh/old-flags/CA.png', 'We are available whenever.');
+
+INSERT INTO team (name, logo, availability)
+VALUES ('Singapore', 'https://assets.ppy.sh/old-flags/SG.png', 'We are available whenever.');
+
+INSERT INTO team (name, logo, availability)
+VALUES ('Thailand', 'https://assets.ppy.sh/old-flags/TH.png', 'We are available whenever.');
+
+INSERT INTO team (name, logo, availability)
+VALUES ('China', 'https://assets.ppy.sh/old-flags/CN.png', 'We are available whenever.');
+
+INSERT INTO team (name, logo, availability)
+VALUES ('Vietnam', 'https://assets.ppy.sh/old-flags/VN.png', 'We are available whenever.');
 
 -- TOURNAMENT ROLES ---------------------------------------------------------------------------------------------------
 
@@ -1351,6 +1498,7 @@ INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_r
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 8, 10, false);
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 9, 4, false);
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 10, 4, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 10, 1, false);
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 11, 4, false);
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 11, 5, false);
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 12, 4, false);
@@ -1370,6 +1518,7 @@ INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_r
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 23, 5, false);
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 24, 5, false);
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 25, 5, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 25, 1, false);
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 26, 5, false);
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 27, 6, false);
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 28, 6, false);
@@ -1392,13 +1541,16 @@ INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_r
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 43, 7, false);
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 43, 9, true);
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 44, 8, true);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 44, 1, true);
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 45, 8, true);
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 45, 9, true);
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 46, 9, true);
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 47, 9, true);
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 48, 9, true);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 48, 1, true);
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 49, 9, true);
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 50, 9, true);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 50, 1, true);
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 51, 9, true);
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 51, 7, true);
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 52, 10, false);
@@ -1407,6 +1559,7 @@ INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_r
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 54, 11, false);
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 55, 11, false);
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 56, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 56, 1, false);
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 57, 1, false);
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 58, 1, false);
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 59, 1, false);
@@ -1435,6 +1588,7 @@ INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_r
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 82, 1, false);
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 83, 1, false);
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 84, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 84, 1, false);
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 85, 1, false);
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 86, 1, false);
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 87, 1, false);
@@ -1474,6 +1628,47 @@ INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_r
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 120, 1, false);
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 121, 1, false);
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 122, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 123, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 124, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 125, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 126, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 127, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 128, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 129, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 130, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 131, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 132, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 133, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 134, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 135, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 136, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 137, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 138, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 139, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 140, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 141, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 142, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 143, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 144, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 145, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 146, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 147, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 148, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 149, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 150, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 151, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 152, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 153, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 154, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 155, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 156, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 157, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 158, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 159, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 160, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 161, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 162, 1, false);
+INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 163, 1, false);
 
 -- TOURNAMENT STATS ---------------------------------------------------------------------------------------------------
 
@@ -1680,6 +1875,150 @@ VALUES (2, 121, 6, 6, 26, 0, false);
 
 INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
 VALUES (2, 122, 6, 6, 26, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
+VALUES (2, 123, 7, 6, 5, 0, true);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
+VALUES (2, 124, 7, 6, 5, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
+VALUES (2, 125, 7, 6, 5, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
+VALUES (2, 126, 7, 6, 5, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
+VALUES (2, 127, 7, 6, 5, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
+VALUES (2, 128, 7, 6, 5, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
+VALUES (2, 129, 8, 6, 1, 0, true);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
+VALUES (2, 56, 8, 6, 1, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
+VALUES (2, 130, 8, 6, 1, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
+VALUES (2, 131, 8, 6, 1, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
+VALUES (2, 132, 8, 6, 1, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
+VALUES (2, 133, 8, 6, 1, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
+VALUES (2, 50, 9, 6, 4, 0, true);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
+VALUES (2, 134, 9, 6, 4, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
+VALUES (2, 135, 9, 6, 4, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
+VALUES (2, 136, 9, 6, 4, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
+VALUES (2, 137, 9, 6, 4, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
+VALUES (2, 138, 9, 6, 4, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
+VALUES (2, 139, 10, 6, 11, 0, true);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
+VALUES (2, 140, 10, 6, 11, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
+VALUES (2, 141, 10, 6, 11, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
+VALUES (2, 142, 10, 6, 11, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
+VALUES (2, 143, 10, 6, 11, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
+VALUES (2, 144, 10, 6, 11, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
+VALUES (2, 84, 11, 6, 14, 0, true);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
+VALUES (2, 145, 11, 6, 14, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
+VALUES (2, 146, 11, 6, 14, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
+VALUES (2, 147, 11, 6, 14, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
+VALUES (2, 148, 11, 6, 14, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
+VALUES (2, 48, 11, 6, 14, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
+VALUES (2, 44, 12, 6, 9, 0, true);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
+VALUES (2, 149, 12, 6, 9, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
+VALUES (2, 150, 12, 6, 9, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
+VALUES (2, 151, 12, 6, 9, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
+VALUES (2, 152, 12, 6, 9, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
+VALUES (2, 153, 12, 6, 9, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
+VALUES (2, 154, 13, 6, 10, 0, true);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
+VALUES (2, 155, 13, 6, 10, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
+VALUES (2, 10, 13, 6, 10, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
+VALUES (2, 156, 13, 6, 10, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
+VALUES (2, 157, 13, 6, 10, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
+VALUES (2, 25, 13, 6, 10, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
+VALUES (2, 158, 14, 6, 8, 0, true);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
+VALUES (2, 159, 14, 6, 8, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
+VALUES (2, 160, 14, 6, 8, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
+VALUES (2, 161, 14, 6, 8, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
+VALUES (2, 162, 14, 6, 8, 0, false);
+
+INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
+VALUES (2, 163, 14, 6, 8, 0, false);
 
 -- STAFF REQUESTS -----------------------------------------------------------------------------------------------------
 
@@ -1994,3 +2333,422 @@ INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) V
 INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (null, 2, 43, 1, 0);
 INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (null, 4, 43, 1, 0);
 INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) VALUES (6, null, 43, 7, 0);
+
+-- MAP SCORES ---------------------------------------------------------------------------------------------------------
+
+-- solo QF RC1
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (1, 57, 980550, 99.4);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (1, 56, 969947, 99.07);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (1, 62, 966766, 99.02);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (1, 62, 950918, 98.91);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (1, 63, 961370, 98.81);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (1, 71, 959448, 99.04);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (1, 73, 953015, 99);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (1, 65, 944850, 98.67);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (1, 78, 942653, 98.65);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (1, 1, 925070, 98.43);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (1, 72, 914393, 97.95);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (1, 86, 846379, 96.35);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (1, 82, 827828, 95.97);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (1, 70, 824988, 95.4);
+-- solo QF RC2
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (2, 57, 988424, 99.64);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (2, 72, 987396, 99.61);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (2, 72, 962068, 99.19);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (2, 58, 987219, 99.6);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (2, 61, 979503, 99.5);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (2, 62, 971391, 99.26);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (2, 63, 963518, 99.02);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (2, 78, 946504, 98.98);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (2, 65, 935543, 98.62);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (2, 73, 930899, 98.58);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (2, 64, 910477, 98.16);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (2, 70, 808966, 95.2);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (2, 86, 681620, 91.41);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (2, 67, 429394, 75.58);
+-- solo QF RC3
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (3, 58, 974769, 99.53);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (3, 72, 971713, 99.28);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (3, 72, 862868, 96.28);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (3, 61, 968715, 99.05);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (3, 73, 968516, 99.34);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (3, 62, 964862, 99.14);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (3, 78, 956929, 99.05);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (3, 71, 956785, 98.84);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (3, 64, 943884, 98.79);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (3, 67, 942508, 98.79);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (3, 69, 940964, 98.75);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (3, 86, 864853, 97.05);
+-- solo QF RC4
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (4, 56, 981803, 99.44);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (4, 73, 952558, 99.09);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (4, 62, 934180, 98.17);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (4, 71, 933735, 98.84);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (4, 64, 933426, 98.66);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (4, 72, 932958, 98.26);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (4, 86, 839049, 96.79);
+-- solo QF RC5
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (6, 72, 968094, 99.02);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (6, 62, 967188, 99.09);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (6, 62, 964319, 99.1);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (6, 67, 963664, 99.09);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (6, 73, 963019, 99.23);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (6, 78, 950667, 98.75);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (6, 64, 945596, 98.63);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (6, 71, 940193, 98.82);
+-- solo QF RC6
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (7, 57, 986511, 99.75);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (7, 72, 983207, 99.63);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (7, 72, 958737, 99.24);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (7, 56, 980226, 99.69);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (7, 73, 980072, 99.68);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (7, 64, 958897, 99.4);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (7, 62, 954816, 98.92);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (7, 62, 952576, 98.78);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (7, 65, 931541, 98.46);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (7, 71, 926948, 98.32);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (7, 78, 912766, 98.03);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (7, 86, 889851, 97.67);
+-- solo QF LN1
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (8, 57, 982556, 99.58);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (8, 58, 980953, 99.51);
+-- solo QF LN2
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (9, 57, 983241, 99.58);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (9, 63, 981649, 99.43);
+-- solo QF LN3
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (10, 61, 987255, 99.61);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (10, 63, 987157, 99.6);
+-- solo QF LN4
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (11, 61, 985713, 99.56);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (11, 58, 983446, 99.62);
+-- solo QF HB1
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (12, 56, 979305, 99.51);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (12, 62, 969934, 99.07);
+-- solo QF HB2
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (13, 56, 984088, 99.51);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (13, 57, 983512, 99.49);
+-- solo QF HB3
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (14, 63, 974426, 99.31);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (14, 71, 967498, 99.1);
+-- solo QF TB
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (15, 57, 979203, 99.53);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (15, 65, 922116, 98.29);
+-- solo qualifier S1
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (18, 56, 992423, 99.76);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (18, 56, 991779, 99.74);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (18, 58, 984720, 99.53);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (18, 57, 982333, 99.45);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (18, 57, 972103, 99.14);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (18, 67, 981437, 99.43);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (18, 67, 974036, 99.34);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (18, 62, 976519, 99.27);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (18, 62, 967029, 99.18);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (18, 64, 971678, 99.12);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (18, 64, 960001, 98.99);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (18, 60, 967566, 99.41);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (18, 60, 965167, 99.33);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (18, 59, 963863, 99.34);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (18, 61, 957826, 98.91);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (18, 61, 950854, 98.8);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (18, 75, 950003, 98.84);
+-- solo qualifier S2
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (19, 56, 995395, 99.86);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (19, 60, 992181, 99.76);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (19, 57, 988398, 99.64);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (19, 62, 987914, 99.62);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (19, 58, 981810, 99.62);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (19, 62, 981482, 99.43);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (19, 60, 981058, 99.56);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (19, 59, 976521, 99.46);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (19, 57, 976239, 99.57);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (19, 67, 974559, 99.4);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (19, 61, 974053, 99.2);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (19, 67, 972687, 99.34);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (19, 64, 972507, 99.15);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (19, 75, 970216, 99.27);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (19, 61, 939546, 98.31);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (19, 64, 965488, 98.94);
+-- solo qualifier S3
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (20, 56, 989814, 99.69);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (20, 58, 989046, 99.66);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (20, 59, 988896, 99.66);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (20, 57, 987616, 99.62);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (20, 62, 974642, 99.22);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (20, 60, 973538, 99.19);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (20, 61, 972487, 99.19);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (20, 64, 967148, 99.11);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (20, 75, 958449, 98.96);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (20, 67, 953603, 98.96);
+-- solo qualifier S4
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (21, 60, 990648, 99.71);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (21, 58, 990124, 99.7);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (21, 57, 989531, 99.68);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (21, 56, 985627, 99.56);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (21, 59, 985344, 99.54);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (21, 61, 972186, 99.32);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (21, 64, 943923, 98.5);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (21, 75, 898330, 98.16);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (21, 67, 886232, 97.66);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (21, 62, 900014, 97.47);
+-- solo qualifier S5
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (22, 56, 995291, 99.85);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (22, 58, 990709, 99.71);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (22, 57, 987045, 99.6);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (22, 60, 984623, 99.7);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (22, 59, 983787, 99.67);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (22, 62, 982557, 99.46);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (22, 67, 970918, 99.28);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (22, 61, 958449, 98.96);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (22, 64, 959597, 99.09);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (22, 75, 926515, 98.49);
+-- solo qualifier S6
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (23, 56, 996824, 99.9);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (23, 59, 994783, 99.84);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (23, 58, 993288, 99.79);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (23, 57, 993182, 99.79);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (23, 60, 992839, 99.78);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (23, 62, 988471, 99.64);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (23, 61, 983330, 99.48);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (23, 75, 975857, 99.44);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (23, 64, 970611, 99.28);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (23, 67, 966979, 99.17);
+-- solo qualifier S8
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (24, 56, 985583, 99.59);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (24, 58, 983950, 99.5);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (24, 59, 981740, 99.44);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (24, 57, 981703, 99.55);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (24, 60, 968086, 99.31);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (24, 61, 963593, 98.88);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (24, 62, 933597, 98.5);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (24, 67, 932628, 98.47);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (24, 64, 921581, 98.44);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (24, 75, 908553, 97.87);
+-- team QF RC1
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (33, 87, 997880, 99.93);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (33, 89, 997315, 99.92);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (33, 88, 996097, 99.88);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (33, 123, 996075, 99.88);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (33, 125, 995821, 99.87);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (33, 124, 994583, 99.83);
+-- team QF RC2
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (34, 142, 997415, 99.92);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (34, 141, 995233, 99.85);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (34, 140, 993594, 99.8);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (34, 147, 987191, 99.6);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (34, 84, 984698, 99.74);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (34, 145, 983788, 99.67);
+-- team QF RC3
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (35, 87, 999339, 99.98);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (35, 89, 998938, 99.97);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (35, 91, 997241, 99.91);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (35, 163, 998930, 99.97);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (35, 158, 994727, 99.83);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (35, 159, 993649, 99.8);
+-- team QF RC4
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (36, 99, 996155, 99.88);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (36, 102, 995431, 99.86);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (36, 100, 993412, 99.79);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (36, 44, 997246, 99.91);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (36, 149, 995355, 99.85);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (36, 150, 990561, 99.71);
+-- team QF RC5
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (37, 130, 995713, 99.87);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (37, 133, 994519, 99.83);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (37, 131, 994383, 99.82);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (37, 44, 997193, 99.91);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (37, 149, 996936, 99.9);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (37, 150, 990414, 99.7);
+-- team QF RC6
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (38, 87, 997522, 99.92);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (38, 92, 991805, 99.75);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (38, 89, 987243, 99.77);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (38, 44, 997769, 99.93);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (38, 149, 978546, 99.78);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (38, 150, 988286, 99.64);
+-- team QF HB1
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (39, 123, 993693, 99.8);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (39, 125, 993687, 99.81);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (39, 124, 991845, 99.75);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (39, 89, 995618, 99.86);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (39, 88, 993740, 99.81);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (39, 91, 985843, 99.57);
+-- team QF HB2
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (40, 123, 994925, 99.84);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (40, 125, 993144, 99.79);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (40, 124, 993103, 99.79);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (40, 95, 993555, 99.8);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (40, 94, 991535, 99.74);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (40, 97, 987916, 99.73);
+-- team QF HB3
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (41, 123, 993463, 99.8);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (41, 125, 995264, 99.85);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (41, 124, 985994, 99.62);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (41, 130, 993783, 99.81);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (41, 133, 989843, 99.69);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (41, 56, 990959, 99.72);
+-- team QF LN1
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (42, 130, 993443, 99.79);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (42, 133, 990532, 99.7);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (42, 129, 986343, 99.57);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (42, 136, 993569, 99.8);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (42, 50, 993133, 99.78);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (42, 138, 981855, 99.57);
+-- team QF LN2
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (43, 123, 993873, 99.81);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (43, 125, 995394, 99.86);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (43, 124, 989929, 99.69);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (43, 95, 990529, 99.8);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (43, 94, 992575, 99.77);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (43, 97, 990096, 99.69);
+-- team QF LN3
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (44, 95, 989926, 99.69);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (44, 94, 989839, 99.68);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (44, 96, 987115, 99.63);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (44, 163, 985237, 99.65);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (44, 160, 987015, 99.6);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (44, 159, 987103, 99.71);
+-- team QF SV1
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (45, 95, 995737, 99.87);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (45, 94, 995724, 99.87);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (45, 98, 982414, 99.76);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (45, 156, 979790, 99.38);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (45, 10, 963191, 99.19);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (45, 154, 932402, 98.48);
+-- team QF SV2
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (46, 136, 991438, 99.74);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (46, 50, 990486, 99.71);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (46, 138, 993116, 99.79);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (46, 142, 990903, 99.72);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (46, 144, 988767, 99.66);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (46, 140, 994348, 99.83);
+-- team qualifier S1
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (25, 95, 994823, 99.84);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (25, 94, 995604, 99.86);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (25, 98, 995272, 99.85);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (25, 95, 992418, 99.76);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (25, 94, 994149, 99.82);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (25, 98, 996545, 99.89);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (25, 136, 993734, 99.8);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (25, 50, 988496, 99.64);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (25, 138, 995856, 99.87);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (25, 123, 985469, 99.55);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (25, 125, 989481, 99.67);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (25, 128, 955699, 98.63);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (25, 130, 995145, 99.85);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (25, 133, 974320, 99.21);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (25, 132, 991654, 99.74);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (25, 87, 982288, 99.46);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (25, 92, 988007, 99.62);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (25, 91, 993791, 99.81);
+-- team qualifier S2
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (26, 87, 998019, 99.94);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (26, 88, 997264, 99.91);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (26, 89, 997264, 99.91);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (26, 130, 997508, 99.92);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (26, 131, 996043, 99.88);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (26, 133, 994404, 99.82);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (26, 123, 993755, 99.81);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (26, 125, 997841, 99.93);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (26, 124, 995666, 99.86);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (26, 134, 998130, 99.94);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (26, 137, 994736, 99.83);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (26, 135, 993011, 99.78);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (26, 95, 990384, 99.7);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (26, 93, 995792, 99.87);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (26, 97, 992582, 99.77);
+-- team qualifier S3
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (27, 90, 991590, 99.74);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (27, 88, 990634, 99.85);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (27, 89, 997774, 99.93);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (27, 130, 997637, 99.93);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (27, 129, 993789, 99.81);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (27, 133, 994707, 99.84);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (27, 126, 986884, 99.73);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (27, 125, 997988, 99.94);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (27, 124, 989226, 99.8);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (27, 136, 996787, 99.9);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (27, 50, 995488, 99.86);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (27, 138, 994138, 99.82);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (27, 95, 997214, 99.91);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (27, 94, 994816, 99.84);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (27, 97, 996162, 99.88);
+-- team qualifier S4
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (28, 90, 983178, 99.48);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (28, 88, 990644, 99.71);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (28, 89, 994384, 99.83);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (28, 130, 994534, 99.83);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (28, 56, 979550, 99.37);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (28, 133, 986007, 99.57);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (28, 123, 988083, 99.63);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (28, 125, 996072, 99.88);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (28, 124, 988944, 99.63);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (28, 136, 981035, 99.64);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (28, 50, 985127, 99.65);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (28, 138, 982042, 99.55);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (28, 95, 983119, 99.59);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (28, 94, 990366, 99.7);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (28, 97, 987641, 99.62);
+-- team qualifier S5
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (29, 90, 991602, 99.74);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (29, 88, 993015, 99.78);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (29, 89, 997134, 99.91);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (29, 130, 997293, 99.92);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (29, 56, 995247, 99.85);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (29, 133, 994335, 99.82);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (29, 123, 990817, 99.72);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (29, 125, 998603, 99.96);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (29, 124, 994231, 99.82);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (29, 136, 981730, 99.67);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (29, 50, 994475, 99.83);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (29, 138, 993360, 99.79);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (29, 95, 995354, 99.85);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (29, 94, 995396, 99.86);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (29, 97, 991903, 99.75);
+-- team qualifier S6
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (30, 91, 993255, 99.79);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (30, 88, 993683, 99.8);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (30, 89, 996490, 99.89);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (30, 130, 994762, 99.84);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (30, 129, 989222, 99.67);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (30, 56, 991663, 99.74);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (30, 123, 991035, 99.72);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (30, 125, 989523, 99.83);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (30, 124, 993123, 99.79);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (30, 134, 995639, 99.87);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (30, 50, 991269, 99.73);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (30, 135, 965908, 99.34);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (30, 96, 991444, 99.73);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (30, 94, 992162, 99.76);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (30, 97, 984186, 99.66);
+-- team qualifier S7
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (31, 87, 997147, 99.91);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (31, 91, 995443, 99.86);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (31, 89, 991493, 99.86);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (31, 130, 997092, 99.91);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (31, 131, 996763, 99.9);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (31, 133, 993227, 99.79);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (31, 123, 983565, 99.61);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (31, 125, 997328, 99.92);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (31, 124, 993976, 99.81);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (31, 134, 998245, 99.95);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (31, 135, 998245, 99.82);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (31, 137, 993564, 99.8);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (31, 93, 994813, 99.84);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (31, 94, 995328, 99.85);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (31, 96, 989035, 99.78);
+-- team qualifier S8
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (32, 87, 997480, 99.92);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (32, 92, 991767, 99.74);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (32, 89, 997955, 99.94);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (32, 130, 993308, 99.79);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (32, 56, 993163, 99.79);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (32, 131, 996056, 99.88);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (32, 123, 986068, 99.66);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (32, 125, 985987, 99.64);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (32, 124, 993908, 99.81);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (32, 134, 992568, 99.9);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (32, 137, 991961, 99.75);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (32, 135, 982808, 99.6);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (32, 93, 993929, 99.81);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (32, 94, 987637, 99.75);
+INSERT INTO map_score (map_id, app_user_id, score, accuracy) VALUES (32, 96, 986722, 99.72);

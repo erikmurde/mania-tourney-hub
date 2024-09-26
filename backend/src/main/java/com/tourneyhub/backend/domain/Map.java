@@ -70,10 +70,10 @@ public class Map extends BaseEntity {
     @JoinColumn
     private MapType mapType;
 
-    @OneToMany(mappedBy = "map")
-    private List<MapScore> scores = new ArrayList<>();
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn
     private Stage stage;
+
+    @OneToMany(mappedBy = "map")
+    private List<MapScore> scores = new ArrayList<>();
 }

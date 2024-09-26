@@ -18,6 +18,9 @@ public interface MapRepository extends JpaRepository<Map, Long> {
     @Query("FROM Map m WHERE  m.stage.id=:stageId AND m.inMappool = true")
     List<Map> findAllInMappoolByStageId(@Param("stageId") Long stageId);
 
+    @Query("FROM Map m JOIN FETCH m.scores WHERE m.stage.id=:stageId")
+    List<Map> findAllByStageIdWithScores(@Param("stageId") Long stageId);
+
     @Query(
             "FROM Map m WHERE m.stage.id=:stageId " +
             "AND m.mapType.id=:mapTypeId AND m.index=:index AND m.inMappool = true"

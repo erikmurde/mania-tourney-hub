@@ -84,6 +84,7 @@ public class SecurityConfig {
                 )
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
+                                "/api/countries/**",
                                 "/api/roles/**",
                                 "/api/statuses/**",
                                 "/api/mapTypes/**",
@@ -91,7 +92,8 @@ public class SecurityConfig {
                                 "/api/maps/stage/{stageId}/inMappool",
                                 "/api/users/{tournamentId}/**",
                                 "/api/tournaments/**",
-                                "/api/teams/**"
+                                "/api/teams/**",
+                                "/api/statistics/**"
                         ).permitAll()
                         .requestMatchers(
                                 HttpMethod.GET,
