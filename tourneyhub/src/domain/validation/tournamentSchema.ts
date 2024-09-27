@@ -23,16 +23,16 @@ export const tournamentSchema: Schema = object({
         .max(18, 'Must be 18 or less'),
     banner: string()
         .required(REQUIRED),
-    minRank: number()
+    minPlayerRank: number()
         .when('restrictRank', ([restrictRank], schema) => {
             return restrictRank 
                 ? schema.required(REQUIRED).min(1, MIN1) 
                 : schema.notRequired()
         }),
-    maxRank: number()
-        .when(['restrictRank', 'minRank'], ([restrictRank, minRank], schema) => {
+    maxPlayerRank: number()
+        .when(['restrictRank', 'minPlayerRank'], ([restrictRank, minPlayerRank], schema) => {
             return restrictRank 
-                ? schema.required(REQUIRED).min(minRank, 'Must be min rank or higher') 
+                ? schema.required(REQUIRED).min(minPlayerRank, 'Must be min rank or higher') 
                 : schema.notRequired()
         }),
     minTeamSize: number()

@@ -1,10 +1,11 @@
 import { SimpleTournamentDto } from '../dto/tournament/SimpleTournamentDto';
+import { TournamentCreateDto } from '../dto/tournament/TournamentCreateDto';
 import { TournamentDto } from '../dto/tournament/TournamentDto';
 import { TournamentPublishDto } from '../dto/tournament/TournamentPublishDto';
 import { UserDto } from '../dto/user/UserDto';
 import { ApiEntityService } from './base/apiEntityService';
 
-export class TournamentService extends ApiEntityService<TournamentDto, TournamentDto, TournamentDto> {
+export class TournamentService extends ApiEntityService<TournamentDto, TournamentCreateDto, TournamentCreateDto> {
     constructor() {
         super('tournaments');
     }
@@ -35,6 +36,10 @@ export class TournamentService extends ApiEntityService<TournamentDto, Tournamen
 
         console.log('makeTournamentPrivate response: ', response);
         return response.data;
+    }
+
+    async registerPlayer(tournamentId: string) {
+        await this.axios.put(`${this.baseUrl}/${tournamentId}/register`);
     }
 
     isValidUser(user: UserDto, tourney: TournamentDto): boolean {

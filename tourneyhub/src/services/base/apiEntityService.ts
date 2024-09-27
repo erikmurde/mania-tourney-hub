@@ -23,7 +23,7 @@ export abstract class ApiEntityService<TEntityDto, TEntityCreateDto, TEntityEdit
         return response.data;
     }
 
-    async create(entity: TEntityCreateDto): Promise<TEntityCreateDto> {
+    async create(entity: TEntityCreateDto): Promise<string> {
         const response = await this.axios.post(this.baseUrl, entity);
 
         console.log('create response: ', response);

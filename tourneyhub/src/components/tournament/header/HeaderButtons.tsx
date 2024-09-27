@@ -59,7 +59,7 @@ const HeaderButtons = ({tourney, updateTourney}: IProps) => {
             placement: 0,
             teamCaptain: false
         });
-        await authService.edit(user.id, user);
+        await tourneyService.registerPlayer(tourney.id);
         setSuccessOpen(true);
     }
 

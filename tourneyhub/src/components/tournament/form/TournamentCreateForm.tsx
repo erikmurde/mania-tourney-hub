@@ -5,7 +5,6 @@ import { TournamentEdit } from '../../../domain/TournamentEdit';
 import { HOST, ROLE_REG } from '../../../constants';
 import { useNavigate } from 'react-router-dom';
 import { TournamentService } from '../../../services/tournamentService';
-import { AuthService } from '../../../services/authService';
 import TournamentFormView from './views/TournamentFormView';
 import { tournamentSchema } from '../../../domain/validation/tournamentSchema';
 
@@ -24,18 +23,18 @@ const TournamentCreateForm = () => {
         code: '',
         description: '',
         banner: '',
-        published: false,
-        playersPublished: false,
-        concluded: false,
         keyCount: 4,
         minTeamSize: 1,
         maxTeamSize: 1,
         minPlayerRank: 0,
         maxPlayerRank: 0,
-        protects: false,
-        warmups: false,
+        concluded: false,
+        published: false,
+        playersPublished: false,
         regsOpen: false,
         applicationsOpen: false,
+        protects: false,
+        warmups: false,
         regDeadline: null,
         applicationDeadline: null,
         links: [],
@@ -48,7 +47,7 @@ const TournamentCreateForm = () => {
     };
 
     const onSubmit = async(values: TournamentEdit) => {  
-        const {hostRoles, teamTourney, restrictRank, ...tourney} = values;
+        const {teamTourney, restrictRank, ...tourney} = values;
 
         if (!values.teamTourney) {
             tourney.minTeamSize = 1;
@@ -58,19 +57,20 @@ const TournamentCreateForm = () => {
             tourney.minPlayerRank = 0;
             tourney.maxPlayerRank = 0;
         }
-        const created = await new TournamentService().create(tourney);
+        const createdId = await new TournamentService().create(tourney);
 
-        for (const role of values.hostRoles) {
-            user.roles.push({
-                tournamentId: created.id,
-                tournament: values.name,
-                role: role, 
-                canRegWithRole: ROLE_REG.get(role)!,
-                concluded: values.concluded
-            });
-        }
-        await new AuthService().edit(user.id, user);
-        navigate(`/tournaments/${created.id}/information`);
+        updatePlayerRoles(tourney.hostRoles, tourney.name, createdId);
+        navigate(`/tournaments/${createdId}/information`);
+    }
+
+    const updatePlayerRoles = (roles: string[], tourneyName: string, tourneyId: string) => {
+        roles.forEach(role => user.roles.push({
+            role: role,
+            tournament: tourneyName,
+            tournamentId: tourneyId,
+            canRegWithRole: ROLE_REG.get(role)!,
+            concluded: false
+        }));
     }
 
     return (  

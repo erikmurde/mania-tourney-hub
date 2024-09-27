@@ -24,7 +24,7 @@ const TourneyLinks = ({links, errors}: IProps) => {
             </Grid>
             <Grid item xs={10}>
                 {links.length < MAX_LINKS &&
-                <Button variant='contained' color='success' onClick={() => push({ name: '', link: '' })}>
+                <Button variant='contained' color='success' onClick={() => push({ name: '', url: '' })}>
                     Add link
                 </Button>}
             </Grid>

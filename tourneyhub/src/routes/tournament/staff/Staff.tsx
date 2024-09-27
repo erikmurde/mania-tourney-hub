@@ -57,7 +57,7 @@ const Staff = () => {
 
         if (role) {
             member.roles.splice(member.roles.indexOf(role), 1);
-            await authService.edit(member.id, member);
+            await authService.removeUserRole(member.id, tourney.id, role.role);
 
             setStaff(staff.map(existing => 
                 existing.id === member.id ? member : existing
@@ -86,9 +86,6 @@ const Staff = () => {
     }
 
     const acceptApplication = async(application: StaffApplicationDto) => {
-
-        //TODO fetch updated user from backend and replace in staff list
-
         const userId = application.sender.playerId;
         const role = {
             userId: userId,

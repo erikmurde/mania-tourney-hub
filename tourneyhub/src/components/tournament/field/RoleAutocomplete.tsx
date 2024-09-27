@@ -16,8 +16,6 @@ const RoleAutocomplete = ({field, form, label, error, options}: IProps) => {
         form.values[field.name].includes(option)
     );
 
-    console.log(options);
-
     return (  
         <Autocomplete
             multiple

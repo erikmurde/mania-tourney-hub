@@ -52,6 +52,12 @@ export class AuthService extends ApiEntityService<UserDto, UserDto, UserDto> {
         return response.data;
     }
 
+    async removeUserRole(userId: string, tournamentId: string, role: string) {
+        await this.axios.delete(`${this.baseUrl}/${tournamentId}/${role}`, { 
+            params: { userId: userId } 
+        });
+    }
+
     isHost(user: UserDto, tournamentId: string) {
         return this.getTournamentRoles(user, tournamentId).includes(HOST);
     }

@@ -8,7 +8,6 @@ import { tournamentSchema } from '../../../domain/validation/tournamentSchema';
 import { TournamentEdit } from '../../../domain/TournamentEdit';
 import { TournamentService } from '../../../services/tournamentService';
 import { ROLE_REG } from '../../../constants';
-import { AuthService } from '../../../services/authService';
 
 interface IProps {
     tourney: TournamentDto,
@@ -20,7 +19,7 @@ const TournamentEditForm = ({tourney, user, updateTourney}: IProps) => {
     const [open, setOpen] = useState(false);
 
     const onSubmit = async(values: TournamentEdit) => {
-        const {hostRoles, teamTourney, restrictRank, ...tourneyEdit} = values;
+        const {teamTourney, restrictRank, ...tourneyEdit} = values;
 
         if (!values.teamTourney) {
             tourneyEdit.minTeamSize = 1;
@@ -30,22 +29,26 @@ const TournamentEditForm = ({tourney, user, updateTourney}: IProps) => {
             tourneyEdit.minPlayerRank = 0;
             tourneyEdit.maxPlayerRank = 0;
         }
+        console.log(tourneyEdit);
+
         await new TournamentService().edit(tourney.id, tourneyEdit);
 
-        user.roles = user.roles.filter(role => role.tournamentId !== tourney.id);
-
-        for (const role of values.hostRoles) {
-            user.roles.push({
-                tournamentId: tourney.id,
-                tournament: tourney.name,
-                role: role, 
-                canRegWithRole: ROLE_REG.get(role)!,
-                concluded: tourney.concluded
-            });
-        }
-        await new AuthService().edit(user.id, user);
+        updatePlayerRoles(tourneyEdit.hostRoles);
         updateTourney();
         setOpen(false);
+    }
+
+    
+    const updatePlayerRoles = (roles: string[]) => {
+        user.roles = [];
+
+        roles.forEach(role => user.roles.push({
+            role: role,
+            tournament: tourney.name,
+            tournamentId: tourney.id,
+            canRegWithRole: ROLE_REG.get(role)!,
+            concluded: false
+        }));
     }
 
     return (  
