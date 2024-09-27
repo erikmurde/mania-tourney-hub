@@ -27,4 +27,14 @@ public interface TournamentRoleRepository extends CrudRepository<TournamentRole,
             @Param("tournamentId") Long tournamentId,
             @Param("roleId") Long roleId
     );
+
+    @Query(
+            "FROM TournamentRole r " +
+            "WHERE r.appUser.id=:playerId AND r.tournament.id=:tournamentId AND r.role.name=:role"
+    )
+    Optional<TournamentRole> findRoleToRemove(
+            @Param("playerId") Long playerId,
+            @Param("tournamentId") Long tournamentId,
+            @Param("role") String role
+    );
 }

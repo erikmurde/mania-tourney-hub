@@ -393,8 +393,8 @@ INSERT INTO tournament (
     banner, reg_message, information
 )
 VALUES (
-    false, false, 0, 1, 0, 1, false, true, false, false, false, 4,
-    null, null, '4KMT', '4K Korean Mania Tournament', 'Test tournament',
+    false, false, 0, 1, 0, 1, false, true, true, true, false, 4,
+    null, '2024-11-21T08:00:00.000Z', '4KMT', '4K Korean Mania Tournament', 'Test tournament',
     'https://i.ppy.sh/b92ca1365e6f5bead5afbc24e26c6447ee8e0d9a/68747470733a2f2f696d6775722d617263686976652e7070' ||
     '792e73682f646973636f72642f313038383433323930333939313539313032342d313130393731303236393737303337313133322d' ||
     '344b4d545f666f72756d2e706e67', 'Test message', ''
@@ -1477,7 +1477,7 @@ INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_r
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 1, 7, false);
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 1, 1, false);
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 1, 2, false);
-INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (3, 1, 2, false);
+-- INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (3, 1, 2, false);
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 2, 7, false);
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 2, 8, true);
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 2, 9, true);

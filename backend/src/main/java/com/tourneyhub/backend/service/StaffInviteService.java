@@ -6,7 +6,6 @@ import com.tourneyhub.backend.dto.staffInvite.StaffInviteCreateDto;
 import com.tourneyhub.backend.dto.staffInvite.StaffInviteDto;
 import com.tourneyhub.backend.mapper.StaffInviteMapper;
 import com.tourneyhub.backend.repository.StaffRequestRepository;
-import com.tourneyhub.backend.repository.StatusRepository;
 import com.tourneyhub.backend.repository.TournamentRoleRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.oauth2.core.user.OAuth2User;
@@ -16,35 +15,36 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.List;
 import java.util.Objects;
 
-import static com.tourneyhub.backend.helper.Constants.ROLE_CAN_REG;
-
 @Service
 public class StaffInviteService {
 
-    private final StaffRequestRepository staffRequestRepository;
+    private final TournamentRoleService tournamentRoleService;
+
+    private final StatusService statusService;
 
     private final TournamentRoleRepository tournamentRoleRepository;
 
-    private final StatusRepository statusRepository;
+    private final StaffRequestRepository staffRequestRepository;
 
     private final StaffInviteMapper mapper;
 
     public StaffInviteService(
-            StaffRequestRepository staffRequestRepository,
+            TournamentRoleService tournamentRoleService,
+            StatusService statusService,
             TournamentRoleRepository tournamentRoleRepository,
-            StatusRepository statusRepository,
+            StaffRequestRepository staffRequestRepository,
             StaffInviteMapper mapper)
     {
-        this.staffRequestRepository = staffRequestRepository;
+        this.tournamentRoleService = tournamentRoleService;
+        this.statusService = statusService;
         this.tournamentRoleRepository = tournamentRoleRepository;
-        this.statusRepository = statusRepository;
+        this.staffRequestRepository = staffRequestRepository;
         this.mapper = mapper;
     }
 
     public List<StaffInviteDto> getAllOfUser(OAuth2User principal) {
         return staffRequestRepository
-                .getAllInvitesOfUser(principal.getAttribute("id"))
-                .stream()
+                .getAllInvitesOfUser(principal.getAttribute("id")).stream()
                 .map(mapper::mapToDto)
                 .toList();
     }
@@ -56,24 +56,18 @@ public class StaffInviteService {
         if (recipientAlreadyHasRole(dto) || isDuplicateRequest(dto)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
-        Status status = statusRepository
-                .findByName("pending")
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        Status status = statusService.getEntityByName("pending");
 
         return staffRequestRepository.save(mapper.mapToEntity(dto, status)).getId();
     }
 
     public Long updateStatus(Long staffInviteId, StaffInviteEditDto dto) {
-        StaffRequest staffInvite = staffRequestRepository
-                .findById(staffInviteId)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-
-        Status status = statusRepository
-                .findByName(dto.getStatus())
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        StaffRequest staffInvite = getInvite(staffInviteId);
+        Status status = statusService.getEntityByName(dto.getStatus());
 
         if (status.getName().equals("accepted")) {
-            addTournamentRole(staffInvite.getRole(), staffInvite.getTournament(), staffInvite.getRecipient());
+            tournamentRoleService
+                    .create(staffInvite.getRole(), staffInvite.getTournament(), staffInvite.getRecipient());
         }
         staffInvite.setStatus(status);
         return staffRequestRepository.save(staffInvite).getId();
@@ -97,9 +91,9 @@ public class StaffInviteService {
         return hasInvite || hasApplication;
     }
 
-    private void addTournamentRole(Role role, Tournament tournament, AppUser user) {
-        tournamentRoleRepository.save(
-                new TournamentRole(ROLE_CAN_REG.get(role.getName()), tournament, user, role)
-        );
+    private StaffRequest getInvite(Long id) {
+        return staffRequestRepository
+                .findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 }

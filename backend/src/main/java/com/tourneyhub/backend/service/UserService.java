@@ -1,6 +1,7 @@
 package com.tourneyhub.backend.service;
 
 import com.tourneyhub.backend.domain.AppUser;
+import com.tourneyhub.backend.domain.TournamentRole;
 import com.tourneyhub.backend.dto.user.SimpleUserDto;
 import com.tourneyhub.backend.dto.user.UserDto;
 import com.tourneyhub.backend.helper.Constants;
@@ -42,6 +43,12 @@ public class UserService {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
         return mapper.mapToDto(user);
+    }
+
+    public AppUser getAppUser(OAuth2User principal) {
+        return userRepository
+                .findByPlayerId(principal.getAttribute("id"))
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
     public List<UserDto> getAll() {
@@ -88,6 +95,17 @@ public class UserService {
                         : mapper.mapToSimpleDto(user)
                 )
                 .toList();
+    }
+
+    public void removeUserRole(Long userId, Long tournamentId, String role) {
+        if (List.of("host", "player").contains(role)) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
+        TournamentRole tournamentRole = tournamentRoleRepository
+                .findRoleToRemove(userId, tournamentId, role)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+
+        tournamentRoleRepository.delete(tournamentRole);
     }
 
     public boolean isOwner(Integer playerId, OAuth2User principal) {

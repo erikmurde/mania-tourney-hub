@@ -24,8 +24,8 @@ public class Tournament extends BaseEntityWithName {
     private String description;
 
     @Pattern(regexp = URL_REGEX)
-    @Size(max = 512)
-    @Column(length = 512)
+    @Size(max = 1024)
+    @Column(length = 1024)
     private String banner;
 
     @Min(1)
@@ -70,6 +70,7 @@ public class Tournament extends BaseEntityWithName {
     private Date applicationDeadline;
 
     @NotNull
+    @Size(max = 1000000)
     @Column(length = 1000000)
     private String information;
 

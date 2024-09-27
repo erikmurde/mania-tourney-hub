@@ -1,7 +1,6 @@
 package com.tourneyhub.backend.mapper;
 
-import com.tourneyhub.backend.domain.Team;
-import com.tourneyhub.backend.domain.TournamentPlayer;
+import com.tourneyhub.backend.domain.*;
 import com.tourneyhub.backend.dto.TournamentStatsDto;
 import com.tourneyhub.backend.dto.team.SimpleTeamPlayerDto;
 import org.springframework.stereotype.Component;
@@ -26,6 +25,12 @@ public class TournamentPlayerMapper {
         return new SimpleTeamPlayerDto(
                 stats.getAppUser().getName(),
                 stats.isTeamCaptain()
+        );
+    }
+
+    public TournamentPlayer mapToEntityWithoutTeam(AppUser user, Tournament tournament, Status status) {
+        return new TournamentPlayer(
+                0, 0, false, status, user.getId(), user, null, tournament
         );
     }
 }
