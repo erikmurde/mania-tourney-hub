@@ -6,6 +6,7 @@ import com.tourneyhub.backend.repository.UserRepository;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
 import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
+import org.springframework.security.oauth2.core.user.DefaultOAuth2User;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 
@@ -29,12 +30,13 @@ public class OAuth2UserService extends DefaultOAuth2UserService {
     }
 
     private OAuth2User processUser(OAuth2User principal) {
-        userRepository
+        AppUser appUser = userRepository
                 .findByPlayerId(principal.getAttribute("id"))
                 .map(user -> updateExistingUser(user, principal))
                 .orElseGet(() -> createNewUser(principal));
 
-        return principal;
+        Map<String, Object> attributes = Map.of("id", appUser.getId());
+        return new DefaultOAuth2User(principal.getAuthorities(), attributes, "id");
     }
 
     private AppUser updateExistingUser(AppUser user, OAuth2User principal) {
@@ -43,6 +45,7 @@ public class OAuth2UserService extends DefaultOAuth2UserService {
         if (statistics == null) {
             throw new OAuth2AuthenticationException("Invalid user details!");
         }
+        user.setName(principal.getAttribute("username"));
         user.setRank(statistics.get("global_rank"));
         return userRepository.save(user);
     }

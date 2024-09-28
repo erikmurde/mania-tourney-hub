@@ -5,7 +5,8 @@ import com.tourneyhub.backend.dto.staffApplication.StaffApplicationCreateDto;
 import com.tourneyhub.backend.dto.staffApplication.StaffApplicationDto;
 import com.tourneyhub.backend.dto.staffApplication.StaffApplicationEditDto;
 import com.tourneyhub.backend.mapper.StaffApplicationMapper;
-import com.tourneyhub.backend.repository.StaffRequestRepository;
+import com.tourneyhub.backend.mapper.TournamentRoleMapper;
+import com.tourneyhub.backend.repository.RepositoryUow;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -17,61 +18,55 @@ import java.util.Objects;
 @Service
 public class StaffApplicationService {
 
-    private final TournamentService tournamentService;
+    private final RepositoryUow uow;
 
-    private final StatusService statusService;
+    private final TournamentRoleMapper tournamentRoleMapper;
 
-    private final TournamentRoleService tournamentRoleService;
-
-    private final StaffRequestRepository staffRequestRepository;
-
-    private final StaffApplicationMapper mapper;
+    private final StaffApplicationMapper staffApplicationMapper;
 
     public StaffApplicationService(
-            TournamentService tournamentService,
-            StatusService statusService,
-            TournamentRoleService tournamentRoleService,
-            StaffRequestRepository staffRequestRepository,
-            StaffApplicationMapper mapper)
+            RepositoryUow uow,
+            TournamentRoleMapper tournamentRoleMapper,
+            StaffApplicationMapper staffApplicationMapper)
     {
-        this.tournamentService = tournamentService;
-        this.statusService = statusService;
-        this.tournamentRoleService = tournamentRoleService;
-        this.staffRequestRepository = staffRequestRepository;
-        this.mapper = mapper;
+        this.uow = uow;
+        this.tournamentRoleMapper = tournamentRoleMapper;
+        this.staffApplicationMapper = staffApplicationMapper;
     }
 
-    public List<StaffApplicationDto> getAllOfUser(Integer playerId) {
-        return staffRequestRepository
+    public List<StaffApplicationDto> getAllOfUser(Long playerId) {
+        return uow.staffRequestRepository
                 .getAllApplicationsOfUser(playerId).stream()
-                .map(mapper::mapToDto)
+                .map(staffApplicationMapper::mapToDto)
                 .toList();
     }
 
     public List<StaffApplicationDto> getAllPending(Long tournamentId) {
-        return staffRequestRepository
+        return uow.staffRequestRepository
                 .getAllApplicationsPendingInTournament(tournamentId).stream()
-                .map(mapper::mapToDto)
+                .map(staffApplicationMapper::mapToDto)
                 .toList();
     }
 
     public void create(StaffApplicationCreateDto dto) {
-        Tournament tournament = tournamentService.getTournament(dto.getTournamentId());
+        Tournament tournament = uow.tournamentRepository
+                .findById(dto.getTournamentId())
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
         if (!tournament.isApplicationsOpen() || new Date().after(tournament.getApplicationDeadline())) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
-        Status status = statusService.getEntityById(dto.getStatusId());
+        Status status = getStatus(dto.getStatusId());
 
         if (!status.getName().equals("pending")) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
-        staffRequestRepository.save(mapper.mapToEntity(dto, status));
+        uow.staffRequestRepository.save(staffApplicationMapper.mapToEntity(dto, status));
     }
 
     public void updateStatus(Long staffApplicationId, StaffApplicationEditDto dto, Integer playerId) {
         StaffRequest application = getApplication(staffApplicationId);
-        Status status = statusService.getEntityById(dto.getStatusId());
+        Status status = getStatus(dto.getStatusId());
 
         boolean isOwner = Objects.equals(playerId, dto.getSenderPlayerId());
         boolean retracting = status.getName().equals("retracted");
@@ -83,16 +78,23 @@ public class StaffApplicationService {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
         if (status.getName().equals("accepted")) {
-            tournamentRoleService
-                    .create(application.getRole(), application.getTournament(), application.getSender());
+            uow.tournamentRoleRepository
+                    .save(tournamentRoleMapper
+                            .mapToEntity(application.getRole(), application.getTournament(), application.getSender()));
         }
         application.setStatus(status);
-        staffRequestRepository.save(application);
+        uow.staffRequestRepository.save(application);
     }
 
     private StaffRequest getApplication(Long id) {
-        return staffRequestRepository
+        return uow.staffRequestRepository
                 .findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+    }
+
+    private Status getStatus(Long statusId) {
+        return uow.statusRepository
+                .findById(statusId)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 }

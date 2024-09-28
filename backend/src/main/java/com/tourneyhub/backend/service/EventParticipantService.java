@@ -2,9 +2,8 @@ package com.tourneyhub.backend.service;
 
 import com.tourneyhub.backend.domain.Event;
 import com.tourneyhub.backend.domain.EventParticipant;
-import com.tourneyhub.backend.repository.RoleRepository;
-import com.tourneyhub.backend.repository.TeamRepository;
-import com.tourneyhub.backend.repository.UserRepository;
+import com.tourneyhub.backend.mapper.EventParticipantMapper;
+import com.tourneyhub.backend.repository.RepositoryUow;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,18 +12,13 @@ import java.util.Objects;
 @Service
 public class EventParticipantService {
 
-    private final UserRepository userRepository;
+    private final RepositoryUow uow;
 
-    private final TeamRepository teamRepository;
+    private final EventParticipantMapper mapper;
 
-    private final RoleRepository roleRepository;
-
-    public EventParticipantService(
-            UserRepository userRepository, TeamRepository teamRepository, RoleRepository roleRepository)
-    {
-        this.userRepository = userRepository;
-        this.teamRepository = teamRepository;
-        this.roleRepository = roleRepository;
+    public EventParticipantService(RepositoryUow uow, EventParticipantMapper mapper) {
+        this.uow = uow;
+        this.mapper = mapper;
     }
 
     public List<EventParticipant> getParticipants(Event event, String role) {
@@ -53,13 +47,11 @@ public class EventParticipantService {
     }
 
     public void addParticipant(Event event, Long participantId, String role, boolean team) {
-        var participant = new EventParticipant();
-
-        participant.setScore(0);
-        participant.setAppUser(team ? null : userRepository.getReferenceById(participantId));
-        participant.setTeam(team ? teamRepository.getReferenceById(participantId) : null);
-        participant.setRole(roleRepository.findByName(role).orElseThrow(IllegalArgumentException::new));
-        participant.setEvent(event);
+        EventParticipant participant = mapper.mapToEntity(
+                event,
+                team ? null : uow.userRepository.getReferenceById(participantId),
+                team ? uow.teamRepository.getReferenceById(participantId) : null,
+                uow.roleRepository.findByName(role).orElseThrow(IllegalArgumentException::new));
 
         event.getParticipants().add(participant);
     }

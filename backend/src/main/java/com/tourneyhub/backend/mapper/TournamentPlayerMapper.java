@@ -28,9 +28,15 @@ public class TournamentPlayerMapper {
         );
     }
 
-    public TournamentPlayer mapToEntityWithoutTeam(AppUser user, Tournament tournament, Status status) {
+    public TournamentPlayer mapToEntity(AppUser user, Tournament tournament, Status status) {
+        return mapToEntity(user, tournament, status, null, false);
+    }
+
+    public TournamentPlayer mapToEntity(
+            AppUser user, Tournament tournament, Status status, Team team, boolean teamCaptain)
+    {
         return new TournamentPlayer(
-                0, 0, false, status, user.getId(), user, null, tournament
+                0, 0, teamCaptain, status, user.getId(), user, team, tournament
         );
     }
 }

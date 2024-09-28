@@ -5,9 +5,7 @@ import com.tourneyhub.backend.domain.Team;
 import com.tourneyhub.backend.domain.Tournament;
 import com.tourneyhub.backend.dto.mapScore.MapScoreDto;
 import com.tourneyhub.backend.mapper.MapScoreMapper;
-import com.tourneyhub.backend.repository.MapRepository;
-import com.tourneyhub.backend.repository.StageRepository;
-import com.tourneyhub.backend.repository.TeamRepository;
+import com.tourneyhub.backend.repository.RepositoryUow;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -18,28 +16,17 @@ import java.util.List;
 @Service
 public class MapScoreService {
 
-    private final StageRepository stageRepository;
-
-    private final TeamRepository teamRepository;
-
-    private final MapRepository mapRepository;
+    private final RepositoryUow uow;
 
     private final MapScoreMapper mapper;
 
-    public MapScoreService(
-            StageRepository stageRepository,
-            TeamRepository teamRepository,
-            MapRepository mapRepository,
-            MapScoreMapper mapper)
-    {
-        this.stageRepository = stageRepository;
-        this.teamRepository = teamRepository;
-        this.mapRepository = mapRepository;
+    public MapScoreService(RepositoryUow uow, MapScoreMapper mapper) {
+        this.uow = uow;
         this.mapper = mapper;
     }
 
     public List<MapScoreDto> getAll(Long stageId) {
-        Stage stage = stageRepository
+        Stage stage = uow.stageRepository
                 .findById(stageId)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
@@ -54,16 +41,16 @@ public class MapScoreService {
     }
 
     private List<MapScoreDto> getTeamScores(Long stageId, Long tournamentId) {
-        List<Team> teams = teamRepository.findAllInTournament(tournamentId);
+        List<Team> teams = uow.teamRepository.findAllInTournament(tournamentId);
 
-        return mapRepository
+        return uow.mapRepository
                 .findAllByStageId(stageId).stream()
                 .map(m -> mapper.mapToDto(m, teams))
                 .toList();
     }
 
     private List<MapScoreDto> getPlayerScores(Long stageId) {
-        return mapRepository
+        return uow.mapRepository
                 .findAllByStageIdWithScores(stageId).stream()
                 .map(m -> mapper.mapToDto(m, new ArrayList<>()))
                 .toList();

@@ -8,7 +8,7 @@ import lombok.EqualsAndHashCode;
 
 @MappedSuperclass
 @Data
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(callSuper = true)
 public class BaseEntityWithName extends BaseEntity {
 
     @NotNull

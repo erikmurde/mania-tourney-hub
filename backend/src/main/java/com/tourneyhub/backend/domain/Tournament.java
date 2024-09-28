@@ -92,6 +92,6 @@ public class Tournament extends BaseEntityWithName {
     @OneToMany(mappedBy = "tournament")
     private List<Stage> stages = new ArrayList<>();
 
-    @OneToMany(mappedBy = "tournament")
+    @OneToMany(mappedBy = "tournament", cascade = CascadeType.MERGE)
     private List<TournamentPlayer> players = new ArrayList<>();
 }

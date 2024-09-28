@@ -18,39 +18,27 @@ import java.util.List;
 @Service
 public class LobbyService {
 
+    private final RepositoryUow uow;
+
     private final EventService eventService;
 
     private final EventParticipantService participantService;
 
     private final UserService userService;
 
-    private final EventRepository eventRepository;
-
-    private final StageRepository stageRepository;
-
-    private final UserRepository userRepository;
-
-    private final TeamRepository teamRepository;
-
     private final LobbyMapper mapper;
 
     public LobbyService(
+            RepositoryUow uow,
             EventService eventService,
             EventParticipantService eventParticipantService,
             UserService userService,
-            EventRepository eventRepository,
-            StageRepository stageRepository,
-            UserRepository userRepository,
-            TeamRepository teamRepository,
             LobbyMapper mapper)
     {
+        this.uow = uow;
         this.eventService = eventService;
         this.userService = userService;
-        this.eventRepository = eventRepository;
-        this.stageRepository = stageRepository;
         this.participantService = eventParticipantService;
-        this.userRepository = userRepository;
-        this.teamRepository = teamRepository;
         this.mapper = mapper;
     }
 
@@ -62,7 +50,7 @@ public class LobbyService {
                 && !userService.hasAnyRole(tournament.getId(), principal, "host", "admin", "referee")) {
             return new ArrayList<>();
         }
-        return eventRepository
+        return uow.eventRepository
                 .getAllByStageId(stageId)
                 .stream()
                 .map(mapper::mapToDto)
@@ -82,7 +70,7 @@ public class LobbyService {
         Event lobby = mapper.mapToEntity(dto, stage);
         participantService.addReferee(lobby, refereeId);
 
-        return eventRepository.save(lobby).getId();
+        return uow.eventRepository.save(lobby).getId();
     }
 
     public Long update(Long lobbyId, LobbyEditDto dto, OAuth2User principal) {
@@ -107,7 +95,7 @@ public class LobbyService {
         }
         lobby.setMatchId(dto.getMatchId());
         lobby.setConcluded(dto.isConcluded());
-        return eventRepository.save(lobby).getId();
+        return uow.eventRepository.save(lobby).getId();
     }
 
     public Long registerParticipant(Long lobbyId, LobbyRegisterDto dto, OAuth2User principal) {
@@ -130,7 +118,7 @@ public class LobbyService {
         participantService.addParticipant(
                 lobby, participantId, dto.isReferee() ? "referee" : "player", dto.isTeam()
         );
-        return eventRepository.save(lobby).getId();
+        return uow.eventRepository.save(lobby).getId();
     }
 
     public Long unregisterParticipant(Long lobbyId, LobbyRegisterDto dto, OAuth2User principal) {
@@ -149,17 +137,17 @@ public class LobbyService {
         participantService.removeParticipant(
                 lobby, participantId, dto.isReferee() ? "referee" : "player", !dto.isReferee() && dto.isTeam()
         );
-        return eventRepository.save(lobby).getId();
+        return uow.eventRepository.save(lobby).getId();
     }
 
     private Long getId(String participant, boolean team) {
         if (team) {
-            return teamRepository
+            return uow.teamRepository
                     .findByName(participant)
                     .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND))
                     .getId();
         } else {
-            return userRepository
+            return uow.userRepository
                     .findByName(participant)
                     .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND))
                     .getId();
@@ -167,7 +155,7 @@ public class LobbyService {
     }
 
     private Stage fetchStage(Long stageId) {
-        return stageRepository
+        return uow.stageRepository
                 .findById(stageId)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }

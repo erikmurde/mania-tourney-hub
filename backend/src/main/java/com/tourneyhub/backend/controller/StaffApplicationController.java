@@ -30,8 +30,7 @@ public class StaffApplicationController {
 
     @GetMapping("/api/staffApplications/user")
     public List<StaffApplicationDto> getAllOfUser(@AuthenticationPrincipal OAuth2User principal) {
-        return staffApplicationService
-                .getAllOfUser(principal.getAttribute("id"));
+        return staffApplicationService.getAllOfUser(principal.getAttribute("id"));
     }
 
     @GetMapping("/api/staffApplications/pending/{tournamentId}")

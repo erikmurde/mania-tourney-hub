@@ -1,16 +1,15 @@
 package com.tourneyhub.backend.service;
 
-import com.tourneyhub.backend.domain.AppUser;
-import com.tourneyhub.backend.domain.Tournament;
-import com.tourneyhub.backend.domain.TournamentRole;
+import com.tourneyhub.backend.domain.*;
 import com.tourneyhub.backend.dto.tournament.SimpleTournamentDto;
 import com.tourneyhub.backend.dto.tournament.TournamentCreateDto;
 import com.tourneyhub.backend.dto.tournament.TournamentDto;
 import com.tourneyhub.backend.dto.tournament.TournamentPublishDto;
 import com.tourneyhub.backend.mapper.TournamentMapper;
-import com.tourneyhub.backend.repository.TournamentRepository;
+import com.tourneyhub.backend.mapper.TournamentPlayerMapper;
+import com.tourneyhub.backend.mapper.TournamentRoleMapper;
+import com.tourneyhub.backend.repository.RepositoryUow;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -20,69 +19,60 @@ import java.util.List;
 @Service
 public class TournamentService {
 
-    private final RoleService roleService;
+    private final RepositoryUow uow;
 
-    private final UserService userService;
+    private final TournamentRoleMapper tournamentRoleMapper;
 
-    private final TournamentRoleService tournamentRoleService;
-
-    private final TournamentPlayerService tournamentPlayerService;
-
-    private final TournamentRepository tournamentRepository;
+    private final TournamentPlayerMapper statsMapper;
 
     private final TournamentMapper tournamentMapper;
 
     public TournamentService(
-            RoleService roleService,
-            UserService userService,
-            TournamentPlayerService tournamentPlayerService,
-            TournamentRepository tournamentRepository,
-            TournamentRoleService tournamentRoleService,
+            RepositoryUow uow,
+            TournamentRoleMapper tournamentRoleMapper,
+            TournamentPlayerMapper statsMapper,
             TournamentMapper tournamentMapper)
     {
-        this.roleService = roleService;
-        this.userService = userService;
-        this.tournamentPlayerService = tournamentPlayerService;
-        this.tournamentRepository = tournamentRepository;
-        this.tournamentRoleService = tournamentRoleService;
+        this.uow = uow;
+        this.tournamentRoleMapper = tournamentRoleMapper;
+        this.statsMapper = statsMapper;
         this.tournamentMapper = tournamentMapper;
     }
 
     public List<SimpleTournamentDto> getAll() {
-        return tournamentRepository
+        return uow.tournamentRepository
                 .findAll()
                 .stream()
                 .map(tournamentMapper::mapToSimpleDto).toList();
     }
 
     public TournamentDto getById(Long tournamentId) {
-        return tournamentRepository
+        return uow.tournamentRepository
                 .findById(tournamentId)
                 .map(tournamentMapper::mapToDto)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
-    public Long create(TournamentCreateDto dto, OAuth2User principal) {
+    public Long create(TournamentCreateDto dto, Long currentUserId) {
         dto.setRegsOpen(false);
         dto.setApplicationsOpen(false);
         validateTournament(dto);
 
         Tournament tournament = tournamentMapper.mapCreateToEntity(dto);
-        tournamentRepository.save(tournament);
+        uow.tournamentRepository.save(tournament);
 
-        updateHostRoles(dto.getHostRoles(), tournament, principal);
+        updateHostRoles(dto.getHostRoles(), tournament, currentUserId);
         return tournament.getId();
     }
 
-    public Long update(Long tournamentId, TournamentCreateDto dto, OAuth2User principal) {
+    public Long update(Long tournamentId, TournamentCreateDto dto, Long currentUserId) {
         validateTournament(dto);
-
         Tournament tournament = getTournament(tournamentId);
 
         tournamentMapper.mapUpdateToEntity(tournament, dto);
-        tournamentRepository.save(tournament);
+        uow.tournamentRepository.save(tournament);
 
-        updateHostRoles(dto.getHostRoles(), tournament, principal);
+        updateHostRoles(dto.getHostRoles(), tournament, currentUserId);
         return tournamentId;
     }
 
@@ -92,7 +82,7 @@ public class TournamentService {
         tournament.setInformation(
                 information.substring(1, information.length() - 1).replace("\\", "")
         );
-        return tournamentRepository.save(tournament).getId();
+        return uow.tournamentRepository.save(tournament).getId();
     }
 
     public Long publish(Long tournamentId, TournamentPublishDto dto) {
@@ -107,7 +97,7 @@ public class TournamentService {
         tournament.setApplicationDeadline(dto.getApplicationDeadline());
         tournament.setPublished(true);
 
-        return tournamentRepository.save(tournament).getId();
+        return uow.tournamentRepository.save(tournament).getId();
     }
 
     public Long makePrivate(Long tournamentId) {
@@ -120,24 +110,60 @@ public class TournamentService {
         tournament.setApplicationsOpen(false);
         tournament.setPublished(false);
 
-        return tournamentRepository.save(tournament).getId();
+        return uow.tournamentRepository.save(tournament).getId();
     }
 
-    public void registerPlayer(Long tournamentId, OAuth2User principal) {
+    public void publishPlayers(Long tournamentId) {
         Tournament tournament = getTournament(tournamentId);
-        AppUser user = userService.getAppUser(principal);
+        Status status = getStatus("active");
+
+        tournament.getPlayers().forEach(player -> {
+            if (player.getStatus().getName().equals("registered")) {
+                player.setStatus(status);
+            }
+        });
+        tournament.setPlayersPublished(true);
+        uow.tournamentRepository.save(tournament);
+    }
+
+    public void registerPlayer(Long tournamentId, Long currentUserId) {
+        Tournament tournament = getTournament(tournamentId);
+        AppUser user = getLoggedInUser(currentUserId);
 
         if (!tournament.isRegsOpen() || new Date().after(tournament.getRegDeadline())) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
-        tournamentRoleService.create(roleService.getEntityByName("player"), tournament, user);
-        tournamentPlayerService.createWithoutTeam(user, tournament, "registered");
+        uow.tournamentRoleRepository
+                .save(tournamentRoleMapper.mapToEntity(getRole("player"), tournament, user));
+        uow.statsRepository
+                .save(statsMapper.mapToEntity(user, tournament, getStatus("registered")));
     }
 
-    public Tournament getTournament(Long tournamentId) {
-        return tournamentRepository
-                .findById(tournamentId)
+    public void eliminateTeam(Long tournamentId, Long teamId) {
+        Team team = uow.teamRepository
+                .findById(teamId)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+
+        Tournament tournament = getTournament(tournamentId);
+        Integer placement = uow.statsRepository.getNumOfActiveTeams(tournamentId);
+        team.getPlayers().forEach(player -> updatePlayerStats(tournament, player.getAppUserId(), placement));
+    }
+
+    public void eliminatePlayer(Long tournamentId, Long playerId) {
+        Tournament tournament = getTournament(tournamentId);
+        updatePlayerStats(tournament, playerId, uow.statsRepository.getNumOfActivePlayers(tournamentId));
+    }
+
+    private void updatePlayerStats(Tournament tournament, Long playerId, Integer placement) {
+        TournamentPlayer stats = uow.statsRepository
+                .getPlayerStatsInTournament(tournament.getId(), playerId)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+
+        if (tournament.isPlayersPublished() && stats.getPlacement() == 0) {
+            stats.setPlacement(placement);
+        }
+        stats.setStatus(getStatus(tournament.isPlayersPublished() ? "eliminated" : "disqualified"));
+        uow.statsRepository.save(stats);
     }
 
     private void validateTournament(TournamentCreateDto dto) {
@@ -155,21 +181,45 @@ public class TournamentService {
         }
     }
 
-    private void updateHostRoles(List<String> roles, Tournament tournament, OAuth2User principal) {
-        AppUser user = userService.getAppUser(principal);
+    private void updateHostRoles(List<String> roles, Tournament tournament, Long currentUserId) {
+        AppUser user = getLoggedInUser(currentUserId);
 
         for (TournamentRole role : user.getRoles()) {
             if (role.getTournamentId().equals(tournament.getId())) {
-                tournamentRoleService.delete(role);
+                uow.tournamentRoleRepository.delete(role);
             }
         }
         for (String roleName : roles) {
-            tournamentRoleService.create(roleService.getEntityByName(roleName), tournament, user);
+            uow.tournamentRoleRepository.save(tournamentRoleMapper.mapToEntity(getRole(roleName), tournament, user));
         }
     }
 
     private boolean isMissingDeadlines(TournamentPublishDto dto) {
         return (dto.isRegsOpen() && dto.getRegDeadline() == null
                 || dto.isApplicationsOpen() && dto.getApplicationDeadline() == null);
+    }
+
+    private Tournament getTournament(Long tournamentId) {
+        return uow.tournamentRepository
+                .findById(tournamentId)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+    }
+
+    private AppUser getLoggedInUser(Long currentUserId) {
+        return uow.userRepository
+                .findById(currentUserId)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+    }
+
+    private Status getStatus(String name) {
+        return uow.statusRepository
+                .findByName(name)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+    }
+
+    private Role getRole(String name) {
+        return uow.roleRepository
+                .findByName(name)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 }

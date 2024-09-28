@@ -1,13 +1,14 @@
 package com.tourneyhub.backend.service;
 
 import com.tourneyhub.backend.domain.AppUser;
+import com.tourneyhub.backend.domain.Tournament;
 import com.tourneyhub.backend.domain.TournamentRole;
 import com.tourneyhub.backend.dto.user.SimpleUserDto;
 import com.tourneyhub.backend.dto.user.UserDto;
+import com.tourneyhub.backend.dto.user.UserEditDto;
 import com.tourneyhub.backend.helper.Constants;
 import com.tourneyhub.backend.mapper.UserMapper;
-import com.tourneyhub.backend.repository.TournamentRoleRepository;
-import com.tourneyhub.backend.repository.UserRepository;
+import com.tourneyhub.backend.repository.RepositoryUow;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
@@ -16,21 +17,17 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class UserService {
 
-    private final UserRepository userRepository;
-
-    private final TournamentRoleRepository tournamentRoleRepository;
+    private final RepositoryUow uow;
 
     private final UserMapper mapper;
 
-    public UserService(
-            UserRepository userRepository, TournamentRoleRepository tournamentRoleRepository, UserMapper mapper)
-    {
-        this.userRepository = userRepository;
-        this.tournamentRoleRepository = tournamentRoleRepository;
+    public UserService(RepositoryUow uow, UserMapper mapper) {
+        this.uow = uow;
         this.mapper = mapper;
     }
 
@@ -38,47 +35,44 @@ public class UserService {
         if (principal == null) {
             return null;
         }
-        AppUser user = userRepository
-                .findByPlayerId(principal.getAttribute("id"))
+        AppUser user = uow.userRepository
+                .findById(Objects.requireNonNull(principal.getAttribute("id")))
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
         return mapper.mapToDto(user);
     }
 
-    public AppUser getAppUser(OAuth2User principal) {
-        return userRepository
-                .findByPlayerId(principal.getAttribute("id"))
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-    }
-
     public List<UserDto> getAll() {
-        return userRepository
-                .findAll()
-                .stream()
+        return uow.userRepository
+                .findAll().stream()
                 .map(mapper::mapToDto)
                 .toList();
     }
 
     public List<SimpleUserDto> getAllSimple() {
-        return userRepository
-                .findAll()
-                .stream()
+        return uow.userRepository
+                .findAll().stream()
                 .map(mapper::mapToSimpleDto)
                 .toList();
     }
 
-    public List<UserDto> getAllStaff(Long tournamentId) {
-        return userRepository
-                .findAllStaffInTournament(tournamentId)
-                .stream()
+    public List<UserDto> getTournamentStaff(Long tournamentId) {
+        return uow.userRepository
+                .findAllStaffInTournament(tournamentId).stream()
                 .map(mapper::mapToDto)
                 .toList();
     }
 
-    public List<UserDto> getAllPlayers(Long tournamentId) {
-        return userRepository
-                .findAllPlayersInTournament(tournamentId)
-                .stream()
+    public List<UserDto> getTournamentPlayers(Long tournamentId, OAuth2User principal) {
+        Tournament tournament = uow.tournamentRepository
+                .findById(tournamentId)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+
+        if (!tournament.isPlayersPublished() && !hasAnyRole(tournamentId, principal, "host", "admin")) {
+            return new ArrayList<>();
+        }
+        return uow.userRepository
+                .findAllPlayersInTournament(tournamentId).stream()
                 .map(mapper::mapToDto)
                 .toList();
     }
@@ -86,9 +80,8 @@ public class UserService {
     public List<SimpleUserDto> getAllUsersWithRoles(
             Long tournamentId, List<String> roles, Boolean includeUserRoles)
     {
-        return userRepository
-                .findAllUsersInTournamentWithRoles(tournamentId, roles)
-                .stream()
+        return uow.userRepository
+                .findUsersInTournamentWithRoles(tournamentId, roles).stream()
                 .map(user ->
                         includeUserRoles
                         ? mapper.mapToSimpleDto(user, tournamentId)
@@ -97,18 +90,28 @@ public class UserService {
                 .toList();
     }
 
+    public void updateMe(UserEditDto dto, OAuth2User principal) {
+        AppUser user = uow.userRepository
+                .findById(Objects.requireNonNull(principal.getAttribute("id")))
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+
+        user.setDiscordUsername(dto.getDiscordUsername());
+        user.setTimezone(dto.getTimezone());
+        uow.userRepository.save(user);
+    }
+
     public void removeUserRole(Long userId, Long tournamentId, String role) {
         if (List.of("host", "player").contains(role)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
-        TournamentRole tournamentRole = tournamentRoleRepository
+        TournamentRole tournamentRole = uow.tournamentRoleRepository
                 .findRoleToRemove(userId, tournamentId, role)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
-        tournamentRoleRepository.delete(tournamentRole);
+        uow.tournamentRoleRepository.delete(tournamentRole);
     }
 
-    public boolean isOwner(Integer playerId, OAuth2User principal) {
+    public boolean isOwner(Long playerId, OAuth2User principal) {
         return playerId.equals(principal.getAttribute("id"));
     }
 
@@ -126,9 +129,10 @@ public class UserService {
         if (principal == null) {
             return new ArrayList<>();
         }
-        return tournamentRoleRepository
-                .getUserRolesInTournament(principal.getAttribute("id"), tournamentId)
-                .stream()
+        Long userId = principal.getAttribute("id");
+
+        return uow.tournamentRoleRepository
+                .getUserRolesInTournament(userId, tournamentId).stream()
                 .map(role -> role.getRole().getName())
                 .toList();
     }

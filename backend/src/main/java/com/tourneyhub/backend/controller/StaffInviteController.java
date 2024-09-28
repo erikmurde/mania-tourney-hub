@@ -23,7 +23,7 @@ public class StaffInviteController {
 
     @GetMapping("/api/staffInvites/user")
     public List<StaffInviteDto> getAllOfUser(@AuthenticationPrincipal OAuth2User principal) {
-        return service.getAllOfUser(principal);
+        return service.getAllOfUser(principal.getAttribute("id"));
     }
 
     @PostMapping("/api/staffInvites")
@@ -31,7 +31,7 @@ public class StaffInviteController {
     public Long create(
             @RequestBody @Valid StaffInviteCreateDto dto, @AuthenticationPrincipal OAuth2User principal)
     {
-        return service.create(dto, principal);
+        return service.create(dto, principal.getAttribute("id"));
     }
 
     @PutMapping("/api/staffInvites/{staffInviteId}")

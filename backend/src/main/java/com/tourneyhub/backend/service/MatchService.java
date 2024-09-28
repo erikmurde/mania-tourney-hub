@@ -8,8 +8,7 @@ import com.tourneyhub.backend.dto.match.MatchDto;
 import com.tourneyhub.backend.dto.match.MatchEditDto;
 import com.tourneyhub.backend.dto.match.MatchResultDto;
 import com.tourneyhub.backend.mapper.MatchMapper;
-import com.tourneyhub.backend.repository.EventRepository;
-import com.tourneyhub.backend.repository.StageRepository;
+import com.tourneyhub.backend.repository.RepositoryUow;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
@@ -20,43 +19,39 @@ import java.util.List;
 @Service
 public class MatchService {
 
+    private final RepositoryUow uow;
+
     private final EventService eventService;
 
     private final EventParticipantService participantService;
 
     private final UserService userService;
 
-    private final EventRepository eventRepository;
-
-    private final StageRepository stageRepository;
-
     private final MatchMapper mapper;
 
     public MatchService(
+            RepositoryUow uow,
             EventService eventService,
             EventParticipantService participantService,
             UserService userService,
-            EventRepository eventRepository,
-            StageRepository stageRepository,
             MatchMapper mapper)
     {
+        this.uow = uow;
         this.eventService = eventService;
         this.participantService = participantService;
         this.userService = userService;
-        this.eventRepository = eventRepository;
-        this.stageRepository = stageRepository;
         this.mapper = mapper;
     }
 
     public List<MatchDto> getAllByStageId(Long stageId) {
-        return eventRepository
+        return uow.eventRepository
                 .getAllByStageId(stageId).stream()
                 .map(mapper::mapToDto)
                 .toList();
     }
 
     public Long create(MatchCreateDto dto, OAuth2User principal) {
-        Stage stage = stageRepository
+        Stage stage = uow.stageRepository
                 .findById(dto.getStageId())
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
@@ -74,7 +69,7 @@ public class MatchService {
         participantService.addStreamer(match, dto.getStreamerId());
         participantService.addCommentators(match, dto.getCommentatorIds());
 
-        return eventRepository.save(match).getId();
+        return uow.eventRepository.save(match).getId();
     }
 
     public Long update(Long id, MatchEditDto dto, OAuth2User principal) {
@@ -90,7 +85,7 @@ public class MatchService {
 
         match.setCode(dto.getCode());
         match.setTime(dto.getTime());
-        return eventRepository.save(match).getId();
+        return uow.eventRepository.save(match).getId();
     }
 
     public Long registerStaff(Long id, Long userId, String role, OAuth2User principal) {
@@ -104,7 +99,7 @@ public class MatchService {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
         participantService.addParticipant(match, userId, role, false);
-        return eventRepository.save(match).getId();
+        return uow.eventRepository.save(match).getId();
     }
 
     public Long unregisterStaff(Long id, Long userId, String role, OAuth2User principal) {
@@ -113,7 +108,7 @@ public class MatchService {
         // TODO check if participant is same as logged in user
 
         participantService.removeParticipant(match, userId, role, false);
-        return eventRepository.save(match).getId();
+        return uow.eventRepository.save(match).getId();
     }
 
     public Long conclude(Long id, MatchResultDto dto, OAuth2User principal) {
@@ -134,7 +129,7 @@ public class MatchService {
 
         match.setMatchId(dto.getMatchId());
         match.setConcluded(true);
-        return eventRepository.save(match).getId();
+        return uow.eventRepository.save(match).getId();
     }
 
     private Event getMatchAndValidateRights(Long matchId, OAuth2User principal, String... roles) {

@@ -12,11 +12,11 @@ import java.util.Optional;
 @Repository
 public interface StaffRequestRepository extends CrudRepository<StaffRequest, Long> {
 
-    @Query("FROM StaffRequest r WHERE r.recipient.id IS NULL AND r.sender.playerId=:playerId")
-    List<StaffRequest> getAllApplicationsOfUser(@Param("playerId") Integer playerId);
+    @Query("FROM StaffRequest r WHERE r.recipient.id IS NULL AND r.sender.id=:playerId")
+    List<StaffRequest> getAllApplicationsOfUser(@Param("playerId") Long playerId);
 
-    @Query("FROM StaffRequest r WHERE r.recipient.playerId=:playerId")
-    List<StaffRequest> getAllInvitesOfUser(@Param("playerId") Integer playerId);
+    @Query("FROM StaffRequest r WHERE r.recipient.id=:playerId")
+    List<StaffRequest> getAllInvitesOfUser(@Param("playerId") Long playerId);
 
     @Query(
             "FROM StaffRequest r " +

@@ -21,8 +21,7 @@ public class MapTypeService {
 
     public List<MapTypeDto> getAll() {
         return repository
-                .findAll()
-                .stream()
+                .findAll().stream()
                 .map(mapper::mapToDto)
                 .toList();
     }

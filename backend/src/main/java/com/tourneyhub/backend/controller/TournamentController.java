@@ -36,7 +36,7 @@ public class TournamentController {
 
     @PostMapping("/api/tournaments")
     public Long create(@RequestBody @Valid TournamentCreateDto dto, @AuthenticationPrincipal OAuth2User principal) {
-        return service.create(dto, principal);
+        return service.create(dto, principal.getAttribute("id"));
     }
 
     @PutMapping("/api/tournaments/{tournamentId}")
@@ -46,7 +46,7 @@ public class TournamentController {
             @RequestBody @Valid TournamentCreateDto dto,
             @AuthenticationPrincipal OAuth2User principal)
     {
-        return service.update(tournamentId, dto, principal);
+        return service.update(tournamentId, dto, principal.getAttribute("id"));
     }
 
     @PutMapping("/api/tournaments/{tournamentId}/information")
@@ -69,8 +69,21 @@ public class TournamentController {
         return service.makePrivate(tournamentId);
     }
 
-    @PutMapping("/api/tournaments/{tournamentId}/register")
-    public void registerPlayer(@PathVariable Long tournamentId, @AuthenticationPrincipal OAuth2User principal) {
-        service.registerPlayer(tournamentId, principal);
+    @PutMapping("/api/tournaments/{tournamentId}/publish-players")
+    @PreAuthorize("@userService.isHost(#tournamentId, principal)")
+    public void publishPlayers(@PathVariable Long tournamentId) {
+        service.publishPlayers(tournamentId);
+    }
+
+    @PutMapping("/api/tournaments/{tournamentId}/eliminate/{participantId}")
+    @PreAuthorize("@userService.isHost(#tournamentId, principal)")
+    public void eliminateParticipant(
+            @PathVariable Long tournamentId, @PathVariable Long participantId, @RequestParam boolean team)
+    {
+        if (team) {
+            service.eliminateTeam(tournamentId, participantId);
+        } else {
+            service.eliminatePlayer(tournamentId, participantId);
+        }
     }
 }

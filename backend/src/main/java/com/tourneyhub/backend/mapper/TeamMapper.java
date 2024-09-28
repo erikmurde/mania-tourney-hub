@@ -3,6 +3,7 @@ package com.tourneyhub.backend.mapper;
 import com.tourneyhub.backend.domain.Team;
 import com.tourneyhub.backend.dto.TournamentStatsDto;
 import com.tourneyhub.backend.dto.team.SimpleTeamDto;
+import com.tourneyhub.backend.dto.team.TeamCreateDto;
 import com.tourneyhub.backend.dto.team.TeamDto;
 import com.tourneyhub.backend.dto.user.UserDto;
 import org.springframework.stereotype.Component;
@@ -48,6 +49,16 @@ public class TeamMapper {
                 team.getLogo(),
                 team.getPlayers().stream().map(tournamentPlayerMapper::mapToSimpleTeamPlayerDto).toList()
         );
+    }
+
+    public Team mapToEntity(TeamCreateDto dto) {
+        var team = new Team();
+
+        team.setName(dto.getName());
+        team.setLogo(dto.getLogo());
+        team.setAvailability(dto.getAvailability());
+
+        return team;
     }
 
     private TournamentStatsDto getStats(UserDto player, String name, Long tournamentId) {

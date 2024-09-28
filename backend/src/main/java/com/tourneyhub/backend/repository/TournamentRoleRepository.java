@@ -12,9 +12,9 @@ import java.util.Optional;
 @Repository
 public interface TournamentRoleRepository extends CrudRepository<TournamentRole, Long> {
 
-    @Query("FROM TournamentRole r WHERE r.appUser.playerId=:playerId AND r.tournament.id=:tournamentId")
+    @Query("FROM TournamentRole r WHERE r.appUser.id=:playerId AND r.tournament.id=:tournamentId")
     List<TournamentRole> getUserRolesInTournament(
-            @Param("playerId") Integer playerId,
+            @Param("playerId") Long playerId,
             @Param("tournamentId") Long tournamentId
     );
 
