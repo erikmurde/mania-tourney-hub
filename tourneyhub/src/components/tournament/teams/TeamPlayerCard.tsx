@@ -40,7 +40,7 @@ const TeamPlayerCard = ({player, isCaptain, isSeparate}: IProps) => {
                 <Grid container columnSpacing={1} alignItems='center'>
                     <Grid item xs={isCaptain ? 10 : 12}>
                         <Typography>
-                            {player.name} #{player.rank}
+                            {player.name} {player.rank > 0 ? `#${player.rank}` : ''}
                         </Typography>
                     </Grid>
                     {isCaptain && 

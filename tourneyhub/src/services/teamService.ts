@@ -1,8 +1,9 @@
+import { TeamCreateDto } from '../dto/team/TeamCreateDto';
 import { TeamDto } from '../dto/team/TeamDto';
 import { TeamDtoSimple } from '../dto/team/TeamDtoSimple';
 import { ApiEntityService } from './base/apiEntityService';
 
-export class TeamService extends ApiEntityService<TeamDto, TeamDto, TeamDto> {
+export class TeamService extends ApiEntityService<TeamDto, TeamCreateDto, TeamDto> {
     constructor() {
         super('teams');
     }
@@ -19,7 +20,6 @@ export class TeamService extends ApiEntityService<TeamDto, TeamDto, TeamDto> {
             params: { names: names },
             paramsSerializer: { indexes: null }
         });
-
         console.log('getSimpleTeams response: ', response);
         return response.data;
     }

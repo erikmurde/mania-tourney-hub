@@ -22,10 +22,10 @@ const PlayerCard = ({playersPublic, player, eliminatePlayer}: IProps) => {
     const { tourney } = useTourney();
     const [open, setOpen] = useState(false);
     const theme = useTheme();
-    const stats = player.stats[0];
+    const stats = player.stats.find(stats => stats.tournamentId === tourney.id)!;
 
     const isHost = user && new AuthService().isHost(user, tourney.id);
-    const disqualified = player.stats[0].status === DISQUALIFIED;
+    const disqualified = stats.status === DISQUALIFIED;
 
     const colorMap = new Map<string, string>([
         [ACTIVE, theme.palette.success.main],

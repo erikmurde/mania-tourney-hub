@@ -88,6 +88,7 @@ const TeamRegisterFormView = ({tourney, initialValues, selectValues, validationS
                                 <Fragment key={index}>
                                 <Grid item xs={6}>
                                     <Field component={PlayerAutocomplete}
+                                        valueId
                                         name={`players[${index}]`}
                                         label={index > 0 ? `Player ${index + 1}` : 'Captain'}
                                         error={error}

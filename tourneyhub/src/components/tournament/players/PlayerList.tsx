@@ -1,9 +1,10 @@
 import { Grid } from '@mui/material';
 import { UserDto } from '../../../dto/user/UserDto';
 import PlayerCard from './PlayerCard';
-import { AuthService } from '../../../services/authService';
 import { ACTIVE, DISQUALIFIED, ELIMINATED } from '../../../constants';
 import NoItems from '../NoItems';
+import { TournamentService } from '../../../services/tournamentService';
+import { useTourney } from '../../../routes/tournament/TournamentHeader';
 
 interface IProps {
     playersPublic: boolean,
@@ -12,17 +13,22 @@ interface IProps {
 }
 
 const PlayerList = ({playersPublic, players, setPlayers}: IProps) => {
+    const { tourney } = useTourney();
 
     const eliminatePlayer = async(player: UserDto) => {
-        const activePlayers = players
-            .filter(player => player.stats[0].status === ACTIVE);
+        await new TournamentService().eliminatePlayer(tourney.id, player.id, false);
+        updateState(player);
+    }
 
-        const stats = player.stats[0];
+    const getStats = (player: UserDto) => player.stats.find(stats => stats.tournamentId === tourney.id)!;
+
+    const updateState = (player: UserDto) => {
+        const activePlayers = players.filter(player => getStats(player).status === ACTIVE);
+        const stats = getStats(player);
         
         stats.status = playersPublic ? ELIMINATED : DISQUALIFIED;
-        stats.placement = playersPublic ? activePlayers.length + 1 : 0;
+        stats.placement = playersPublic ? activePlayers.length : 0;
 
-        await new AuthService().edit(player.id, player);
         setPlayers(players.map(existing => 
             existing.id === player.id ? player : existing
         ));

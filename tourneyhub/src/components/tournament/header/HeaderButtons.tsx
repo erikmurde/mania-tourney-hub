@@ -14,6 +14,7 @@ import { TournamentService } from '../../../services/tournamentService';
 import TeamRegisterForm from './form/TeamRegisterForm';
 import LinkMenu from './LinkMenu';
 import { UserDto } from '../../../dto/user/UserDto';
+import { TournamentParticipantService } from '../../../services/tournamentParticipantService';
 
 interface IProps {
     tourney: TournamentDto,
@@ -27,12 +28,12 @@ const HeaderButtons = ({tourney, updateTourney}: IProps) => {
     const [canMakePrivate, setCanMakePrivate] = useState(false);
     const [isRegistered, setIsRegistered] = useState(false);
 
-    const authService = new AuthService();
+    const participantsService = new TournamentParticipantService();
     const tourneyService = new TournamentService();
 
     useEffect(() => {
         if (tourney.published && user) {
-            authService
+            participantsService
                 .getPlayers(tourney.id)
                 .then(players => {
                     setCanMakePrivate(players.length === 0);
@@ -59,7 +60,7 @@ const HeaderButtons = ({tourney, updateTourney}: IProps) => {
             placement: 0,
             teamCaptain: false
         });
-        await tourneyService.registerPlayer(tourney.id);
+        await participantsService.registerPlayer(tourney.id);
         setSuccessOpen(true);
     }
 
@@ -69,10 +70,10 @@ const HeaderButtons = ({tourney, updateTourney}: IProps) => {
     }
 
     const onConclude = async() => {
-        tourney.concluded = true;
+        // tourney.concluded = true;
 
-        await tourneyService.edit(tourney.id, tourney);
-        updateTourney();
+        // await tourneyService.edit(tourney.id, tourney);
+        // updateTourney();
     }
 
     const getRoles = (user: UserDto) => user.roles.filter(role => role.tournamentId === tourney.id);

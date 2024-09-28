@@ -38,8 +38,14 @@ export class TournamentService extends ApiEntityService<TournamentDto, Tournamen
         return response.data;
     }
 
-    async registerPlayer(tournamentId: string) {
-        await this.axios.put(`${this.baseUrl}/${tournamentId}/register`);
+    async publishPlayers(tournamentId: string) {
+        await this.axios.put(`${this.baseUrl}/${tournamentId}/publish-players`);
+    }
+
+    async eliminatePlayer(tournamentId: string, playerId: string, team: boolean) {
+        await this.axios.put(`${this.baseUrl}/${tournamentId}/eliminate/${playerId}`, null, {
+            params: { team: team }
+        });
     }
 
     isValidUser(user: UserDto, tourney: TournamentDto): boolean {

@@ -16,6 +16,7 @@ import { REQUIRED } from '../../constants';
 import { AuthService } from '../../services/authService';
 import { useNavigate } from 'react-router-dom';
 import ForeignProfileInfo from '../../components/profile/ForeignProfileInfo';
+import { UserEditDto } from '../../dto/user/UserEditDto';
 
 interface IProps {
     owner: UserDto,
@@ -30,12 +31,14 @@ const Profile = ({owner, open, setOpen}: IProps) => {
 
     const isOwner = user && user.id === owner.id;
 
-    const onSubmit = async(values: UserDto) => {
-        if (!isOwner) {
-            return;
+    const onSubmit = async(values: UserEditDto) => {
+        if (isOwner) {
+            owner.discordUsername = values.discordUsername;
+            owner.timezone = values.timezone;
+
+            await new AuthService().updateMe(values);
+            setOpen(false);
         }
-        await new AuthService().edit(user.id, values);
-        setOpen(false);
     }
 
     const validationSchema: Schema = object({

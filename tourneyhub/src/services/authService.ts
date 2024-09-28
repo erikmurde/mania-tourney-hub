@@ -2,6 +2,7 @@ import { ADMIN, COMMENTATOR, GFX, HOST, MAPPER, MAPPOOLER, PLAYTESTER, REFEREE, 
 import { ICountryDto } from '../dto/ICountryDto';
 import { UserDto } from '../dto/user/UserDto';
 import { UserDtoSimple } from '../dto/user/UserDtoSimple';
+import { UserEditDto } from '../dto/user/UserEditDto';
 import { ApiEntityService } from './base/apiEntityService';
 
 export class AuthService extends ApiEntityService<UserDto, UserDto, UserDto> {
@@ -26,20 +27,6 @@ export class AuthService extends ApiEntityService<UserDto, UserDto, UserDto> {
         return response.data;
     }
 
-    async getPlayers(tournamentId: string): Promise<UserDto[]> {
-        const response = await this.axios.get<UserDto[]>(`${this.baseUrl}/${tournamentId}/players`);
-
-        console.log('getPlayers response: ', response);
-        return response.data;
-    }
-
-    async getStaff(tournamentId: string): Promise<UserDto[]> {
-        const response = await this.axios.get<UserDto[]>(`${this.baseUrl}/${tournamentId}/staff`);
-
-        console.log('getStaff response: ', response);
-        return response.data;
-    }
-
     async getUsersWithRoles(tournamentId: string, roles: string[], includeUserRoles: boolean = false): Promise<UserDtoSimple[]> {
         const response = await this.axios.get<UserDtoSimple[]>(`${this.baseUrl}/${tournamentId}`, { 
             params: { 
@@ -50,6 +37,10 @@ export class AuthService extends ApiEntityService<UserDto, UserDto, UserDto> {
         });
         console.log('getUsersWithRoles response: ', response);
         return response.data;
+    }
+
+    async updateMe(data: UserEditDto) {
+        await this.axios.put(`${this.baseUrl}/me`, data);
     }
 
     async removeUserRole(userId: string, tournamentId: string, role: string) {

@@ -2,14 +2,14 @@ import { Grid, Paper } from '@mui/material';
 import PlayerList from '../../../components/tournament/players/PlayerList';
 import { UserDto } from '../../../dto/user/UserDto';
 import { useContext, useEffect, useState } from 'react';
-import { AuthService } from '../../../services/authService';
 import SectionTitle from '../../../components/tournament/SectionTitle';
 import ConfirmationDialog from '../../../components/tournament/dialog/ConfirmationDialog';
 import { Publish } from '@mui/icons-material';
-import { TournamentService } from '../../../services/tournamentService';
-import { DISQUALIFIED, ACTIVE, ADMIN, HOST } from '../../../constants';
+import { DISQUALIFIED, ADMIN, HOST, ACTIVE } from '../../../constants';
 import { AuthContext } from '../../Root';
 import { useTourney } from '../TournamentHeader';
+import { TournamentParticipantService } from '../../../services/tournamentParticipantService';
+import { TournamentService } from '../../../services/tournamentService';
 
 const Players = () => {
     const { tourney } = useTourney();
@@ -17,34 +17,39 @@ const Players = () => {
     const [players, setPlayers] = useState([] as UserDto[]);
     const validRoles = [HOST, ADMIN];
     const tourneyService = new TournamentService();
-    const authService = new AuthService();
+    const participantService = new TournamentParticipantService();
 
     const isValid = user && user.roles
         .filter(tourneyRole => tourneyRole.tournamentId === tourney.id)
         .some(tourneyRole => validRoles.includes(tourneyRole.role));
 
+    const getStats = (player: UserDto) => player.stats.find(stats => stats.tournamentId === tourney.id)!;
+
     useEffect(() => {
-        authService
+        participantService
             .getPlayers(tourney.id)
             .then(players => setPlayers(isValid 
                 ? players 
-                : players.filter(player => player.stats[0].status !== DISQUALIFIED))
+                : players.filter(player => getStats(player).status !== DISQUALIFIED))
             );
     }, [tourney.id]);
 
     const publishPlayers = async() => {
+        await tourneyService.publishPlayers(tourney.id);
+        updateState();
+    }
+
+    const updateState = () => {
         const newPlayers = [...players];
         tourney.playersPublished = true;
 
         for (const player of newPlayers) {
-            let stats = player.stats[0];
+            let stats = player.stats.find(stats => stats.tournamentId === tourney.id)!;
 
             if (stats.status !== DISQUALIFIED) {
                 stats.status = ACTIVE;
-                await authService.edit(player.id, player);
             }
         }
-        await tourneyService.edit(tourney.id, tourney);
         setPlayers(newPlayers);
     }
 
@@ -68,7 +73,7 @@ const Players = () => {
                     <PlayerList 
                         playersPublic={tourney.playersPublished}
                         players={players.sort((a, b) => 
-                            a.stats[0].seed - b.stats[0].seed
+                            getStats(a).seed - getStats(b).seed
                         )}
                         setPlayers={setPlayers}/>
                 </Grid>

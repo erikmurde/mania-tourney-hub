@@ -2,13 +2,6 @@ import { ApiService } from './apiService';
 
 export abstract class ApiEntityService<TEntityDto, TEntityCreateDto, TEntityEditDto> extends ApiService {
 
-    protected baseUrl: string;
-
-    constructor(baseUrl: string) {
-        super();
-        this.baseUrl = baseUrl;
-    }
-
     async getAll(): Promise<TEntityDto[]> {
         const response = await this.axios.get<TEntityDto[]>(this.baseUrl);
 

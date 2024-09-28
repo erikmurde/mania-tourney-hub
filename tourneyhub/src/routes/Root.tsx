@@ -9,7 +9,7 @@ import { AuthService } from '../services/authService';
 
 interface IAuthContext {
     user: UserDto | null,
-    setUser: (user: UserDto | null) => void
+    updateUser: () => void
 }
 
 interface IUpdateContext {
@@ -23,7 +23,7 @@ interface IUpdateContext {
 
 export const AuthContext = createContext<IAuthContext>({
     user: null,
-    setUser: () => {}
+    updateUser: () => {}
 });
 
 export const UpdateContext = createContext<IUpdateContext>({
@@ -43,13 +43,17 @@ const Root = () => {
     const [scheduleUpdate, setScheduleUpdate] = useState(0);
 
     useEffect(() => {
+        updateUser();
+    }, []);
+
+    const updateUser = () => {
         new AuthService()
             .getMe()
             .then(user => setUser(user === '' ? null : user));
-    }, []);
+    }
 
     return (
-        <AuthContext.Provider value={{ user, setUser }}>
+        <AuthContext.Provider value={{ user, updateUser }}>
             <UpdateContext.Provider value={{ 
                 stageUpdate, setStageUpdate, mapPoolUpdate, setMapPoolUpdate, scheduleUpdate, setScheduleUpdate 
             }}>

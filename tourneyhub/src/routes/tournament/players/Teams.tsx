@@ -11,6 +11,7 @@ import { ACTIVE, ADMIN, DISQUALIFIED, HOST } from '../../../constants';
 import ConfirmationDialog from '../../../components/tournament/dialog/ConfirmationDialog';
 import TeamPlayerList from '../../../components/tournament/teams/TeamPlayerList';
 import { useTourney } from '../TournamentHeader';
+import { UserDto } from '../../../dto/user/UserDto';
 
 const Teams = () => {
     const { tourney } = useTourney();
@@ -38,16 +39,19 @@ const Teams = () => {
     }, [tourney.id, hasValidRoles]);
 
     const publishTeams = async() => {
+        await tourneyService.publishPlayers(tourney.id);
+        updateState();
+    }
+
+    const updateState = () => {
         const newTeams = [...teams];
         tourney.playersPublished = true;
 
         for (const team of newTeams) {
             if (team.status !== DISQUALIFIED) {
                 team.status = ACTIVE;
-                await teamService.edit(team.id, team);
             }
         }
-        await tourneyService.edit(tourney.id, tourney);
         setTeams(newTeams);
     }
 

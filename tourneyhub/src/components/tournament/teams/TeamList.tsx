@@ -1,8 +1,9 @@
 import { Grid } from '@mui/material';
 import { TeamDto } from '../../../dto/team/TeamDto';
 import TeamCard from './TeamCard';
-import { TeamService } from '../../../services/teamService';
 import NoItems from '../NoItems';
+import { TournamentService } from '../../../services/tournamentService';
+import { useTourney } from '../../../routes/tournament/TournamentHeader';
 
 interface IProps {
     teamsPublic: boolean,
@@ -11,15 +12,20 @@ interface IProps {
 }
 
 const TeamList = ({teamsPublic, teams, setTeams}: IProps) => {
+    const { tourney } = useTourney();
 
     const eliminateTeam = async(team: TeamDto) => {
+        await new TournamentService().eliminatePlayer(tourney.id, team.id, true);
+        updateState(team);
+    }
+
+    const updateState = (team: TeamDto) => {
         const activeTeams = teams
             .filter(team => team.status === 'active');
 
         team.status = teamsPublic ? 'eliminated' : 'disqualified';
         team.placement = teamsPublic ? activeTeams.length : 0;
 
-        await new TeamService().edit(team.id, team);
         setTeams(teams.map(existing => 
             existing.id === team.id ? team : existing
         ));

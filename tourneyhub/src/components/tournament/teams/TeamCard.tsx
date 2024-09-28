@@ -80,7 +80,7 @@ const TeamCard = ({teamsPublic, team, eliminateTeam}: IProps) => {
                     </Grid>}
                     {eliminated &&
                     <Grid item xs textAlign='end'>
-                        <Typography>
+                        <Typography color='secondary'>
                             {team.placement}{SUFFIX_MAP.get(team.placement % 10) ?? 'th'} place
                         </Typography>
                     </Grid>}
