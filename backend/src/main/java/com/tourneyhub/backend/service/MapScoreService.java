@@ -7,6 +7,7 @@ import com.tourneyhub.backend.dto.mapScore.MapScoreDto;
 import com.tourneyhub.backend.mapper.MapScoreMapper;
 import com.tourneyhub.backend.repository.RepositoryUow;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -18,21 +19,25 @@ public class MapScoreService {
 
     private final RepositoryUow uow;
 
+    private final UserService userService;
+
     private final MapScoreMapper mapper;
 
-    public MapScoreService(RepositoryUow uow, MapScoreMapper mapper) {
+    public MapScoreService(RepositoryUow uow, UserService userService, MapScoreMapper mapper) {
         this.uow = uow;
+        this.userService = userService;
         this.mapper = mapper;
     }
 
-    public List<MapScoreDto> getAll(Long stageId) {
+    public List<MapScoreDto> getAll(Long stageId, OAuth2User principal) {
         Stage stage = uow.stageRepository
                 .findById(stageId)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
         Tournament tournament = stage.getTournament();
 
-        if (!tournament.isPublished() || !stage.isStatsPublished()) {
+        if (!userService.isHost(tournament.getId(), principal)
+                && (!tournament.isPublished() || !stage.isStatsPublished())) {
             return new ArrayList<>();
         }
         return tournament.getMinTeamSize() > 1
