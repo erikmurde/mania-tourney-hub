@@ -1,4 +1,4 @@
-import { Breakpoint, Button, ButtonProps, Dialog } from '@mui/material';
+import { Breakpoint, Button, ButtonProps, Dialog, Tooltip } from '@mui/material';
 import TourneyDialogTitle from './TourneyDialogTitle';
 import { StyledDialogActions } from '../../styled/StyledDialogActions';
 import { useState } from 'react';
@@ -6,26 +6,29 @@ import { StyledDialogContent } from '../../styled/styledDialogContent';
 import { StyledIconButton } from '../../styled/StyledIconButton';
 
 interface IProps {
+    title: string,
+    actionTitle: string,
     btnProps?: ButtonProps,
     btnIcon?: JSX.Element,
-    title: string,
+    tooltip?: string,
     description?: string,
-    actionTitle: string,
     size?: Breakpoint,
     action: () => void
 }
 
-const ConfirmationDialog = ({btnProps, btnIcon, title, description, actionTitle, size, action}: IProps) => {
+const ConfirmationDialog = ({btnProps, btnIcon, title, tooltip, description, actionTitle, size, action}: IProps) => {
     const [open, setOpen] = useState(false);
 
     return ( 
         <>
             {btnIcon
-                ?   <StyledIconButton
-                        onClick={() => setOpen(true)}
-                        {...btnProps}>
-                        {btnIcon}
-                    </StyledIconButton>
+                ?   <Tooltip title={tooltip ?? ''}>
+                        <StyledIconButton
+                            onClick={() => setOpen(true)}
+                            {...btnProps}>
+                            {btnIcon}
+                        </StyledIconButton>
+                    </Tooltip>
                 :   <Button variant='contained' onClick={() => setOpen(true)} {...btnProps}>
                         {btnProps?.title ?? actionTitle}
                     </Button>}

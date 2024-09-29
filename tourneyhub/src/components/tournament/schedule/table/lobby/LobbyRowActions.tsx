@@ -74,21 +74,23 @@ const LobbyRowActions = ({lobby, teamName, isHost, canReg, hasRefRole, onRef}: I
             {lobby.concluded && lobby.matchId && 
             <MpLink title='Lobby link' matchId={lobby.matchId}/>}
             {(isHost || isReferee) && !lobby.concluded && 
-            <Tooltip title='Conduct lobby'>
-                {lobby.players.length > 0 
-                ?   <StyledIconButton color='primary' onClick={onRef}>
+            <>
+            {lobby.players.length > 0 
+            ?   <Tooltip title='Conduct lobby'>
+                    <StyledIconButton color='primary' onClick={onRef}>
                         <PlayArrow/>
                     </StyledIconButton>
-                :   <span>
-                        <ConfirmationDialog
-                            size='xs'
-                            title='This lobby has no registered players. Do you wish to close it?'
-                            actionTitle='Yes'
-                            action={closeEmptyLobby}
-                            btnIcon={<PlayArrow/>}
-                            btnProps={{ color: 'primary' }}/>
-                    </span>}
-            </Tooltip>}
+                </Tooltip>
+            :   <ConfirmationDialog
+                    size='xs'
+                    title='This lobby has no registered players. Do you wish to close it?'
+                    actionTitle='Yes'
+                    tooltip='Conduct lobby'
+                    action={closeEmptyLobby}
+                    btnIcon={<PlayArrow/>}
+                    btnProps={{ color: 'primary' }}
+                />}
+            </>}
             {!isHost && (canReg || canAddRef) && !lobby.concluded &&
             <Tooltip title={hasRefRole ? 'Set as referee' : 'Register for lobby'}>
                 <StyledIconButton 

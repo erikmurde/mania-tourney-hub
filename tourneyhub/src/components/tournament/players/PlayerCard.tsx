@@ -86,13 +86,14 @@ const PlayerCard = ({playersPublic, player, eliminatePlayer}: IProps) => {
                             {stats.placement}{SUFFIX_MAP.get(stats.placement % 10) ?? 'th'} place
                         </Typography>}
                         {stats.placement === 0 && isHost && !disqualified &&
-                        <ConfirmationDialog 
-                            btnIcon={<PersonRemove/>}
-                            btnProps={{ color: 'error', sx: { padding: 0.5, marginTop: 0.3 }}}
-                            title={`Are you sure you wish to ${playersPublic ? 'eliminate' : 'disqualify'} this player?`} 
-                            actionTitle={playersPublic ? 'Eliminate' : 'Disqualify'} 
-                            action={() => eliminatePlayer(player)}
-                        />}
+                            <ConfirmationDialog 
+                                btnIcon={<PersonRemove/>}
+                                btnProps={{ color: 'error', sx: { padding: 0.5, marginTop: 0.3 }}}
+                                tooltip={playersPublic ? 'eliminate' : 'disqualify'}
+                                title={`Are you sure you wish to ${playersPublic ? 'eliminate' : 'disqualify'} this player?`} 
+                                actionTitle={playersPublic ? 'Eliminate' : 'Disqualify'} 
+                                action={() => eliminatePlayer(player)}
+                            />}
                     </Grid>
                 </Grid>
             </UserCardContent>
