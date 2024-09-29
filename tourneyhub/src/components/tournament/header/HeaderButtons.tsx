@@ -33,7 +33,7 @@ const HeaderButtons = ({tourney, updateTourney}: IProps) => {
     useEffect(() => {
         if (tourney.published && user) {
             authService
-                .getTournamentPlayers(tourney.id)
+                .getUsersWithRoles(tourney.id, [PLAYER], false)
                 .then(players => {
                     setCanMakePrivate(players.length === 0);
                     setIsRegistered(players.some(player => player.id === user.id));
@@ -69,10 +69,8 @@ const HeaderButtons = ({tourney, updateTourney}: IProps) => {
     }
 
     const onConclude = async() => {
-        // tourney.concluded = true;
-
-        // await tourneyService.edit(tourney.id, tourney);
-        // updateTourney();
+        await tourneyService.conclude(tourney.id);
+        updateTourney();
     }
 
     const getRoles = (user: UserDto) => user.roles.filter(role => role.tournamentId === tourney.id);

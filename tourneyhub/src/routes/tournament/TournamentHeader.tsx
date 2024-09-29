@@ -1,5 +1,5 @@
 import { Box, Grid, Paper } from '@mui/material';
-import { Outlet, useOutletContext, useParams } from 'react-router-dom';
+import { Outlet, useNavigate, useOutletContext, useParams } from 'react-router-dom';
 import { TournamentDto } from '../../dto/tournament/TournamentDto';
 import { useEffect, useState } from 'react';
 import { TournamentService } from '../../services/tournamentService';
@@ -16,6 +16,7 @@ const TournamentHeader = () => {
     const [tourney, setTourney] = useState(null as TournamentDto | null);
     const [tourneyUpdate, setTourneyUpdate] = useState(0);
     const { id } = useParams();
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (!id || !id.match(NUM_REGEX)) {
@@ -30,6 +31,7 @@ const TournamentHeader = () => {
 
     const updateTourney = () => {
         setTourneyUpdate(tourneyUpdate + 1);
+        navigate(`/tournaments/${id}/information`);
     }
 
     if (!tourney) {

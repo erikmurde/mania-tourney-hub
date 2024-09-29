@@ -104,7 +104,7 @@ const Staff = () => {
 
     return (
         <Grid container direction='column' rowSpacing={2}>
-            {user && authService.isHost(user, tourney.id) && 
+            {user && authService.isHost(user, tourney.id) && !tourney.concluded &&
             <Grid item>
                 <Paper elevation={2} sx={{ paddingBottom: 2, paddingLeft: 5 }}>
                     <Typography variant='h3' fontSize={36} height={80} lineHeight={2}>

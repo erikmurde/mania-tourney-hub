@@ -37,21 +37,21 @@ const StaffCard = ({staff, removeStaff}: IProps) => {
             <Profile owner={staff} open={open} setOpen={setOpen}/>
             <UserCardContent>
                 <Grid container columnSpacing={1}>
-                    <Grid item xs={isStaffHost || !isHost ? 12 : 9}>
+                    <Grid item xs={9}>
                         <Typography fontSize={18}>
                             {staff.name}
                         </Typography>
                     </Grid>
-                    {!isStaffHost && isHost &&
                     <Grid item xs={3} textAlign='end'>
+                        {!isStaffHost && isHost && !tourney.concluded &&
                         <ConfirmationDialog 
                             btnIcon={<PersonRemove/>}
                             btnProps={{ color: 'error', sx: { padding: 0.5 }}}
                             title={'Are you sure you wish to remove this staff member?'} 
                             actionTitle={'Remove'} 
                             action={() => removeStaff(staff)}
-                        />
-                    </Grid>}
+                        />}
+                    </Grid>
                     <Flag country={staff.country} props={{ marginTop: 0.5 }}/>
                     <Grid item marginTop={0.5}>
                         <Typography lineHeight={1.7} fontSize={12} color={theme.palette.text.secondary}>
