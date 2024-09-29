@@ -83,7 +83,7 @@ public class LobbyService {
         {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
-        if (isHost) {
+        if (isHost && dto.getReferee() != null) {
             participantService.removeParticipants(lobby, "referee");
             participantService.addReferee(lobby, getId(dto.getReferee(), false));
         }
