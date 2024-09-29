@@ -14,7 +14,6 @@ import { TournamentService } from '../../../services/tournamentService';
 import TeamRegisterForm from './form/TeamRegisterForm';
 import LinkMenu from './LinkMenu';
 import { UserDto } from '../../../dto/user/UserDto';
-import { TournamentParticipantService } from '../../../services/tournamentParticipantService';
 
 interface IProps {
     tourney: TournamentDto,
@@ -28,13 +27,13 @@ const HeaderButtons = ({tourney, updateTourney}: IProps) => {
     const [canMakePrivate, setCanMakePrivate] = useState(false);
     const [isRegistered, setIsRegistered] = useState(false);
 
-    const participantsService = new TournamentParticipantService();
+    const authService = new AuthService();
     const tourneyService = new TournamentService();
 
     useEffect(() => {
         if (tourney.published && user) {
-            participantsService
-                .getPlayers(tourney.id)
+            authService
+                .getTournamentPlayers(tourney.id)
                 .then(players => {
                     setCanMakePrivate(players.length === 0);
                     setIsRegistered(players.some(player => player.id === user.id));
@@ -60,7 +59,7 @@ const HeaderButtons = ({tourney, updateTourney}: IProps) => {
             placement: 0,
             teamCaptain: false
         });
-        await participantsService.registerPlayer(tourney.id);
+        await tourneyService.registerPlayer(tourney.id);
         setSuccessOpen(true);
     }
 

@@ -14,7 +14,6 @@ import { StatusService } from '../../../services/statusService';
 import { RoleService } from '../../../services/roleService';
 import { RoleDto } from '../../../dto/RoleDto';
 import { useTourney } from '../TournamentHeader';
-import { TournamentParticipantService } from '../../../services/tournamentParticipantService';
 
 const Staff = () => {
     const { tourney } = useTourney();
@@ -26,12 +25,11 @@ const Staff = () => {
     const [applications, setApplications] = useState([] as StaffApplicationDto[]);
     
     const authService = new AuthService();
-    const participantService = new TournamentParticipantService();
     const staffApplicationService = new StaffApplicationService();
 
     useEffect(() => {
-        participantService
-            .getStaff(tourney.id)
+        authService
+            .getTournamentStaff(tourney.id)
             .then(staff => setStaff(staff));
 
         new RoleService()

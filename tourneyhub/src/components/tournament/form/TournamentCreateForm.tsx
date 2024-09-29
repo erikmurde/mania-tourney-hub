@@ -18,7 +18,6 @@ const TournamentCreateForm = () => {
     }
 
     const initialValues: TournamentEdit = {
-        id: '',
         name: '',
         code: '',
         description: '',
@@ -28,11 +27,6 @@ const TournamentCreateForm = () => {
         maxTeamSize: 1,
         minPlayerRank: 0,
         maxPlayerRank: 0,
-        concluded: false,
-        published: false,
-        playersPublished: false,
-        regsOpen: false,
-        applicationsOpen: false,
         protects: false,
         warmups: false,
         regDeadline: null,
@@ -43,7 +37,8 @@ const TournamentCreateForm = () => {
         regMessage: '',
         hostRoles: [HOST],
         teamTourney: false,
-        restrictRank: false
+        restrictRank: false,
+        published: false
     };
 
     const onSubmit = async(values: TournamentEdit) => {  

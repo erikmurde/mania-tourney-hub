@@ -17,11 +17,8 @@ export class TournamentService extends ApiEntityService<TournamentDto, Tournamen
         return response.data;
     }
 
-    async updateInformation(tournamentId: string, information: string) {
-        const response = await this.axios.put<string>(`${this.baseUrl}/${tournamentId}/information`, information);
-
-        console.log('updateTournamentInformation response: ', response);
-        return response.data;
+    async registerPlayer(tournamentId: string) {
+        await this.axios.post(`${this.baseUrl}/${tournamentId}/register`);
     }
 
     async publish(tournamentId: string, tournament: TournamentPublishDto) {

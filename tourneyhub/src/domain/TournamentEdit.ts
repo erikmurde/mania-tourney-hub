@@ -1,7 +1,7 @@
-import { TournamentDto } from '../dto/tournament/TournamentDto';
+import { TournamentCreateDto } from '../dto/tournament/TournamentCreateDto';
 
-export interface TournamentEdit extends TournamentDto {
+export interface TournamentEdit extends TournamentCreateDto {
     teamTourney: boolean,
     restrictRank: boolean,
-    hostRoles: string[]
+    published: boolean
 }

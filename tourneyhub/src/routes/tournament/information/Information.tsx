@@ -68,7 +68,16 @@ const Information = () => {
     const hasNoContent = () => value.replace(/<(.|\n)*?>/g, '').trim().length === 0;
 
     const editInfo = async() => {
-        await service.updateInformation(tourney.id, value);
+        if (!user) {
+            return;
+        }
+        await service.edit(tourney.id, {
+            ...tourney, 
+            information: value, 
+            hostRoles: user.roles
+                .filter(role => role.tournamentId === tourney.id)
+                .map(role => role.role)
+        });
         setEdit(false);
     }
 

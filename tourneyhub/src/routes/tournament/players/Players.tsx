@@ -8,8 +8,8 @@ import { Publish } from '@mui/icons-material';
 import { DISQUALIFIED, ADMIN, HOST, ACTIVE } from '../../../constants';
 import { AuthContext } from '../../Root';
 import { useTourney } from '../TournamentHeader';
-import { TournamentParticipantService } from '../../../services/tournamentParticipantService';
 import { TournamentService } from '../../../services/tournamentService';
+import { AuthService } from '../../../services/authService';
 
 const Players = () => {
     const { tourney } = useTourney();
@@ -17,7 +17,7 @@ const Players = () => {
     const [players, setPlayers] = useState([] as UserDto[]);
     const validRoles = [HOST, ADMIN];
     const tourneyService = new TournamentService();
-    const participantService = new TournamentParticipantService();
+    const authService = new AuthService();
 
     const isValid = user && user.roles
         .filter(tourneyRole => tourneyRole.tournamentId === tourney.id)
@@ -26,8 +26,8 @@ const Players = () => {
     const getStats = (player: UserDto) => player.stats.find(stats => stats.tournamentId === tourney.id)!;
 
     useEffect(() => {
-        participantService
-            .getPlayers(tourney.id)
+        authService
+            .getTournamentPlayers(tourney.id)
             .then(players => setPlayers(isValid 
                 ? players 
                 : players.filter(player => getStats(player).status !== DISQUALIFIED))

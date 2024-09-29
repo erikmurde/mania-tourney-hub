@@ -27,6 +27,20 @@ export class AuthService extends ApiEntityService<UserDto, UserDto, UserDto> {
         return response.data;
     }
 
+    async getTournamentPlayers(tournamentId: string): Promise<UserDto[]> {
+        const response = await this.axios.get<UserDto[]>(`${this.baseUrl}/${tournamentId}/players`);
+
+        console.log('getTournamentPlayers response: ', response);
+        return response.data;
+    }
+
+    async getTournamentStaff(tournamentId: string): Promise<UserDto[]> {
+        const response = await this.axios.get<UserDto[]>(`${this.baseUrl}/${tournamentId}/staff`);
+
+        console.log('getTournamentStaff response: ', response);
+        return response.data;
+    }
+
     async getUsersWithRoles(tournamentId: string, roles: string[], includeUserRoles: boolean = false): Promise<UserDtoSimple[]> {
         const response = await this.axios.get<UserDtoSimple[]>(`${this.baseUrl}/${tournamentId}`, { 
             params: { 

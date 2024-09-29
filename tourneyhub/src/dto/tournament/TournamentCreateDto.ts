@@ -15,7 +15,9 @@ export interface TournamentCreateDto {
     warmups: boolean,
     regDeadline: Dayjs | null,
     applicationDeadline: Dayjs | null,
+    information: string,
     regMessage: string,
     countries: string[],
-    links: TourneyLinkDto[]
+    links: TourneyLinkDto[],
+    hostRoles: string[]
 }
