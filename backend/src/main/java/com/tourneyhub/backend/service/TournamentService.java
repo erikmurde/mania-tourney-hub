@@ -76,15 +76,6 @@ public class TournamentService {
         return tournamentId;
     }
 
-    public Long updateInformation(Long tournamentId, String information) {
-        Tournament tournament = getTournament(tournamentId);
-
-        tournament.setInformation(
-                information.substring(1, information.length() - 1).replace("\\", "")
-        );
-        return uow.tournamentRepository.save(tournament).getId();
-    }
-
     public Long publish(Long tournamentId, TournamentPublishDto dto) {
         Tournament tournament = getTournament(tournamentId);
 

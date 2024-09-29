@@ -45,6 +45,18 @@ public class UserController {
         return service.getAllUsersWithRoles(tournamentId, roles, includeUserRoles);
     }
 
+    @GetMapping("/api/users/{tournamentId}/staff")
+    public List<UserDto> getTournamentStaff(@PathVariable Long tournamentId) {
+        return service.getTournamentStaff(tournamentId);
+    }
+
+    @GetMapping("/api/users/{tournamentId}/players")
+    public List<UserDto> getTournamentPlayers(
+            @PathVariable Long tournamentId, @AuthenticationPrincipal OAuth2User principal)
+    {
+        return service.getTournamentPlayers(tournamentId, principal);
+    }
+
     @PutMapping("/api/users/me")
     public void updateMe(@RequestBody @Valid UserEditDto dto, @AuthenticationPrincipal OAuth2User principal) {
         service.updateMe(dto, principal);

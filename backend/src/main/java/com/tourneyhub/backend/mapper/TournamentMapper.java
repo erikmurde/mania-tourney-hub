@@ -94,6 +94,11 @@ public class TournamentMapper {
     }
 
     private void setGeneral(Tournament tournament, TournamentCreateDto dto) {
+        String info = dto.getInformation();
+
+        if (info.length() > 1) {
+            tournament.setInformation(info.substring(1, info.length() - 1).replace("\\", ""));
+        }
         tournament.setName(dto.getName());
         tournament.setCode(dto.getCode());
         tournament.setDescription(dto.getDescription());

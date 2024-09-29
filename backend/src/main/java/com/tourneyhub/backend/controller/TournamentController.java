@@ -6,8 +6,6 @@ import com.tourneyhub.backend.dto.tournament.TournamentDto;
 import com.tourneyhub.backend.dto.tournament.TournamentPublishDto;
 import com.tourneyhub.backend.service.TournamentService;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.user.OAuth2User;
@@ -39,6 +37,11 @@ public class TournamentController {
         return service.create(dto, principal.getAttribute("id"));
     }
 
+    @PostMapping("/api/tournaments/{tournamentId}/register")
+    public void registerPlayer(@PathVariable Long tournamentId, @AuthenticationPrincipal OAuth2User principal) {
+        service.registerPlayer(tournamentId, principal.getAttribute("id"));
+    }
+
     @PutMapping("/api/tournaments/{tournamentId}")
     @PreAuthorize("@userService.isHost(#tournamentId, principal)")
     public Long update(
@@ -47,14 +50,6 @@ public class TournamentController {
             @AuthenticationPrincipal OAuth2User principal)
     {
         return service.update(tournamentId, dto, principal.getAttribute("id"));
-    }
-
-    @PutMapping("/api/tournaments/{tournamentId}/information")
-    @PreAuthorize("@userService.isHost(#tournamentId, principal)")
-    public Long updateInformation(
-            @PathVariable Long tournamentId, @RequestBody @NotNull @Size(max = 1000000) String information)
-    {
-        return service.updateInformation(tournamentId, information);
     }
 
     @PutMapping("/api/tournaments/{tournamentId}/publish")

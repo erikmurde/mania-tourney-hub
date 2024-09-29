@@ -69,6 +69,10 @@ public class TournamentCreateDto {
     @Future
     private Date applicationDeadline;
 
+    @NotNull
+    @Size(max = 1000000)
+    private String information;
+
     private String regMessage;
 
     @NotNull

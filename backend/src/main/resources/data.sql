@@ -380,7 +380,7 @@ INSERT INTO tournament (
     banner, reg_message, information
 )
 VALUES (
-    true, false, 0, 4, 0, 6, true, false, true, true, false, 4,
+    true, false, 0, 6, 0, 4, true, false, true, true, false, 4,
     '2024-10-16T07:00:00.000Z', '2024-11-21T08:00:00.000Z', '4KMWC2023', 'osu!mania 4K World Cup 2023',
     'The osu!mania 4K World Cup 2023 (MWC 4K 2023) was a country-based osu!mania tournament hosted by the osu! ' ||
     'team. It was the seventh installment of the osu!mania 4K World Cup.',
