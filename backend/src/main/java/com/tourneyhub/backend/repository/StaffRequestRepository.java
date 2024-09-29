@@ -18,13 +18,16 @@ public interface StaffRequestRepository extends CrudRepository<StaffRequest, Lon
     @Query("FROM StaffRequest r WHERE r.recipient.id=:playerId")
     List<StaffRequest> getAllInvitesOfUser(@Param("playerId") Long playerId);
 
+    @Query("FROM StaffRequest r WHERE r.tournament.id=:tournamentId AND r.status.name = 'pending'")
+    List<StaffRequest> getAllPendingRequestsInTournament(@Param("tournamentId") Long tournamentId);
+
     @Query(
             "FROM StaffRequest r " +
             "WHERE r.tournament.id=:tournamentId " +
             "AND r.recipient.id IS NULL " +
             "AND r.status.name = 'pending'"
     )
-    List<StaffRequest> getAllApplicationsPendingInTournament(@Param("tournamentId") Long tournamentId);
+    List<StaffRequest> getAllPendingApplicationsInTournament(@Param("tournamentId") Long tournamentId);
 
     @Query(
             "FROM StaffRequest r " +

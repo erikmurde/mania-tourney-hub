@@ -43,7 +43,7 @@ public class StaffApplicationService {
 
     public List<StaffApplicationDto> getAllPending(Long tournamentId) {
         return uow.staffRequestRepository
-                .getAllApplicationsPendingInTournament(tournamentId).stream()
+                .getAllPendingApplicationsInTournament(tournamentId).stream()
                 .map(staffApplicationMapper::mapToDto)
                 .toList();
     }

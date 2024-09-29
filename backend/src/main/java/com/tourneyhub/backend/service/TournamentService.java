@@ -76,6 +76,18 @@ public class TournamentService {
         return tournamentId;
     }
 
+    public void conclude(Long tournamentId) {
+        Tournament tournament = getTournament(tournamentId);
+
+        tournament.setConcluded(true);
+        tournament.setRegsOpen(false);
+        tournament.setApplicationsOpen(false);
+
+        uow.tournamentRepository.save(tournament);
+        uow.staffRequestRepository
+                .deleteAll(uow.staffRequestRepository.getAllPendingRequestsInTournament(tournamentId));
+    }
+
     public Long publish(Long tournamentId, TournamentPublishDto dto) {
         Tournament tournament = getTournament(tournamentId);
 

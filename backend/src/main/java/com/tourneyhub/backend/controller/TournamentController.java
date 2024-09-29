@@ -52,6 +52,12 @@ public class TournamentController {
         return service.update(tournamentId, dto, principal.getAttribute("id"));
     }
 
+    @PutMapping("/api/tournaments/{tournamentId}/conclude")
+    @PreAuthorize("@userService.isHost(#tournamentId, principal)")
+    public void conclude(@PathVariable Long tournamentId) {
+        service.conclude(tournamentId);
+    }
+
     @PutMapping("/api/tournaments/{tournamentId}/publish")
     @PreAuthorize("@userService.isHost(#tournamentId, principal)")
     public Long publish(@PathVariable Long tournamentId, @RequestBody @Valid TournamentPublishDto dto) {
