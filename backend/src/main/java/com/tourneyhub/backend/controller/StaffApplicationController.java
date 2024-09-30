@@ -41,7 +41,7 @@ public class StaffApplicationController {
     }
 
     @PostMapping("/api/staffApplications")
-    @PreAuthorize("@userService.isOwner(#dto.senderPlayerId, #principal)")
+    @PreAuthorize("@userService.isOwner(#dto.senderId, #principal)")
     public void create(
             @RequestBody @Valid StaffApplicationCreateDto dto,
             @AuthenticationPrincipal OAuth2User principal)
@@ -55,7 +55,7 @@ public class StaffApplicationController {
     @PutMapping("/api/staffApplications/{staffApplicationId}")
     @PreAuthorize(
             "@userService.isHost(#dto.tournamentId, principal) || " +
-            "@userService.isOwner(#dto.senderPlayerId, principal)"
+            "@userService.isOwner(#dto.senderId, principal)"
     )
     public void updateStatus(
             @PathVariable Long staffApplicationId,

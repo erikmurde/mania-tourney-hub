@@ -64,11 +64,11 @@ public class StaffApplicationService {
         uow.staffRequestRepository.save(staffApplicationMapper.mapToEntity(dto, status));
     }
 
-    public void updateStatus(Long staffApplicationId, StaffApplicationEditDto dto, Integer playerId) {
+    public void updateStatus(Long staffApplicationId, StaffApplicationEditDto dto, Long currentPlayerId) {
         StaffRequest application = getApplication(staffApplicationId);
         Status status = getStatus(dto.getStatusId());
 
-        boolean isOwner = Objects.equals(playerId, dto.getSenderPlayerId());
+        boolean isOwner = Objects.equals(currentPlayerId, dto.getSenderId());
         boolean retracting = status.getName().equals("retracted");
 
         if (!application.getStatus().getName().equals("pending")) {

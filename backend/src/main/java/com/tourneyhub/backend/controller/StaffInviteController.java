@@ -35,7 +35,7 @@ public class StaffInviteController {
     }
 
     @PutMapping("/api/staffInvites/{staffInviteId}")
-    @PreAuthorize("@userService.isOwner(#dto.recipientPlayerId, principal)")
+    @PreAuthorize("@userService.isOwner(#dto.recipientId, principal)")
     public Long updateStatus(@PathVariable Long staffInviteId, @RequestBody @Valid StaffInviteEditDto dto) {
         return service.updateStatus(staffInviteId, dto);
     }

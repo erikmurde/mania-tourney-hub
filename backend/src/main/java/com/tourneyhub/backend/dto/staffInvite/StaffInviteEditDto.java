@@ -10,10 +10,6 @@ public class StaffInviteEditDto {
 
     @NotNull
     @Min(1)
-    public Integer recipientPlayerId;
-
-    @NotNull
-    @Min(1)
     public Long recipientId;
 
     @NotNull
