@@ -53,7 +53,7 @@ const MatchCreateForm = ({stageId}: {stageId: string}) => {
 
     const initSelection = async(participants: UserDtoSimple[] | TeamDtoSimple[]) => {
         const staff = await service
-            .getUsersWithRoles(tourney.id, [HOST, ADMIN, REFEREE, STREAMER, COMMENTATOR, PLAYER], true);
+            .getUsersWithRoles(tourney.id, [HOST, ADMIN, REFEREE, STREAMER, COMMENTATOR], true);
   
         setSelectValues({
             players: participants,

@@ -1,4 +1,4 @@
-import { Dialog, Button } from '@mui/material';
+import { Dialog } from '@mui/material';
 import { DialogProps } from '../../../../props/DialogProps';
 import TourneyDialogTitle from '../../dialog/TourneyDialogTitle';
 import { Add } from '@mui/icons-material';
@@ -12,6 +12,7 @@ import { unsubmittedMapSchema } from '../../../../domain/validation/unsubmittedM
 import { MapService } from '../../../../services/mapService';
 import { MapTypeDto } from '../../../../dto/map/MapTypeDto';
 import { MapTypeService } from '../../../../services/mapTypeService';
+import LoadingButton from '../../../LoadingButton';
 
 interface IProps {
     dialogProps: DialogProps,
@@ -22,6 +23,7 @@ interface IProps {
 const UnsubmittedMapCreateForm = ({dialogProps, hasTb, stageId}: IProps) => {
     const { mapPoolUpdate, setMapPoolUpdate } = useContext(UpdateContext);
     const { user } = useContext(AuthContext);
+    const [loading, setLoading] = useState(false);
     const [mapTypes, setMapTypes] = useState([] as MapTypeDto[]);
     const { open, onClose } = dialogProps;
 
@@ -76,12 +78,18 @@ const UnsubmittedMapCreateForm = ({dialogProps, hasTb, stageId}: IProps) => {
                     initialValues={initialValues}
                     mapTypes={mapTypes}
                     validationSchema={unsubmittedMapSchema(hasTb)}
-                    onSubmit={onSubmit}/>
+                    onSubmit={async(values) => {
+                        setLoading(true);
+                        await onSubmit(values);
+                        setLoading(false);
+                    }}/>
             </StyledDialogContent>
             <StyledDialogActions>
-                <Button variant='contained' type='submit' form='unsubmitted-map-form' startIcon={<Add/>}>
+                <LoadingButton loading={loading} variant='contained' type='submit' form='unsubmitted-map-form' 
+                    startIcon={<Add/>}
+                    sx={{ width: 110 }}>
                     Create
-                </Button>
+                </LoadingButton>
             </StyledDialogActions>
         </Dialog>
     );

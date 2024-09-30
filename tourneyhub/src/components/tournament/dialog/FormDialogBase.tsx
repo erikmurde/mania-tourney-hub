@@ -25,22 +25,21 @@ const FormDialogBase = ({
 
     return (  
         <>
-        {btnIcon &&
-        <StyledIconButton
-            onClick={() => {
-                btnProps.onClick ?? setOpen(true);
-            }}
-            {...btnProps}>
-            {btnIcon}
-        </StyledIconButton>}
-        {!btnIcon && 
-        <Button variant='contained'
-            onClick={() => {
-                btnProps.onClick ?? setOpen(true);
-            }}
-            {...btnProps}>
-            {btnProps.title}
-        </Button>}
+        {btnIcon 
+        ?   <StyledIconButton
+                onClick={() => {
+                    btnProps.onClick ?? setOpen(true);
+                }}
+                {...btnProps}>
+                {btnIcon}
+            </StyledIconButton>
+        :   <Button variant='contained'
+                onClick={() => {
+                    btnProps.onClick ?? setOpen(true);
+                }}
+                {...btnProps}>
+                {btnProps.title}
+            </Button>}
         {open &&
         <Dialog open={open} onClose={() => setOpen(false)} fullWidth maxWidth={size ?? 'sm'}>
             <TourneyDialogTitle title={title} onClose={() => setOpen(false)}/>

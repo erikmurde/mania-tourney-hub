@@ -6,7 +6,7 @@ interface IProps {
     name: string,
     groupRole: string,
     staff: UserDto[],
-    removeStaffRole: (member: UserDto, groupRole: string) => void
+    removeStaffRole: (member: UserDto, groupRole: string) => Promise<void>
 }
 
 const StaffGroup = ({name, groupRole, staff, removeStaffRole}: IProps) => {

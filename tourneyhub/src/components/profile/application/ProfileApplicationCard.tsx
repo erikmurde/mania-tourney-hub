@@ -8,7 +8,7 @@ import { ACCEPTED, GFX, PENDING, REJECTED } from '../../../constants';
 interface IProps {
     application: StaffApplicationDto,
     navLink: JSX.Element,
-    retractApplication: (application: StaffApplicationDto) => void
+    retractApplication: (application: StaffApplicationDto) => Promise<void>
 }
 
 const ProfileApplicationCard = ({application, navLink, retractApplication}: IProps) => {

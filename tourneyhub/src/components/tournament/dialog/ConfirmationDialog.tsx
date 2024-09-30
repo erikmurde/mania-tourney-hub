@@ -4,6 +4,7 @@ import { StyledDialogActions } from '../../styled/StyledDialogActions';
 import { useState } from 'react';
 import { StyledDialogContent } from '../../styled/styledDialogContent';
 import { StyledIconButton } from '../../styled/StyledIconButton';
+import LoadingButton from '../../LoadingButton';
 
 interface IProps {
     title: string,
@@ -13,11 +14,22 @@ interface IProps {
     tooltip?: string,
     description?: string,
     size?: Breakpoint,
-    action: () => void
+    action: () => Promise<void>
 }
 
 const ConfirmationDialog = ({btnProps, btnIcon, title, tooltip, description, actionTitle, size, action}: IProps) => {
+    const [loading, setLoading] = useState(false);
     const [open, setOpen] = useState(false);
+
+    const onAction = async() => {
+        setLoading(true);
+        await action();
+    }
+
+    const onClose = () => {
+        setOpen(false);
+        setLoading(false);
+    }
 
     return ( 
         <>
@@ -48,14 +60,14 @@ const ConfirmationDialog = ({btnProps, btnIcon, title, tooltip, description, act
                         sx={{ minWidth: 90 }}>
                         Cancel
                     </Button>
-                    <Button variant='contained' color='success' 
-                        onClick={() => {
-                            action();
-                            setOpen(false);
+                    <LoadingButton loading={loading} variant='contained' color='success'
+                        onClick={async() => {
+                            await onAction();
+                            onClose();
                         }}
-                        sx={{ minWidth: 90 }}>
+                        sx={{ width: 100 }}>
                         {actionTitle}
-                    </Button>
+                    </LoadingButton>
                 </StyledDialogActions>
             </Dialog>}
         </>

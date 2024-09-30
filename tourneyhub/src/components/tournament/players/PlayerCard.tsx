@@ -14,7 +14,7 @@ import { useTourney } from '../../../routes/tournament/TournamentHeader';
 interface IProps {
     playersPublic: boolean,
     player: UserDto,
-    eliminatePlayer: (player: UserDto) => void
+    eliminatePlayer: (player: UserDto) => Promise<void>
 }
 
 const PlayerCard = ({playersPublic, player, eliminatePlayer}: IProps) => {

@@ -1,4 +1,4 @@
-import { Button, Dialog } from '@mui/material';
+import { Dialog } from '@mui/material';
 import { DialogProps } from '../../../../props/DialogProps';
 import TourneyDialogTitle from '../../dialog/TourneyDialogTitle';
 import { Add } from '@mui/icons-material';
@@ -14,6 +14,7 @@ import { useContext, useEffect, useState } from 'react';
 import { UpdateContext } from '../../../../routes/Root';
 import { MapTypeDto } from '../../../../dto/map/MapTypeDto';
 import { MapTypeService } from '../../../../services/mapTypeService';
+import LoadingButton from '../../../LoadingButton';
 
 interface IProps {
     dialogProps: DialogProps,
@@ -24,6 +25,7 @@ interface IProps {
 
 const SubmittedCreateMapForm = ({dialogProps, stageId, hasTb, isDuplicateId}: IProps) => {
     const { mapPoolUpdate, setMapPoolUpdate } = useContext(UpdateContext);
+    const [loading, setLoading] = useState(false);
     const [mapTypes, setMapTypes] = useState([] as MapTypeDto[]);
     const { open, onClose } = dialogProps;
 
@@ -71,13 +73,19 @@ const SubmittedCreateMapForm = ({dialogProps, stageId, hasTb, isDuplicateId}: IP
                     initialValues={initialValues}
                     mapTypes={mapTypes}
                     validationSchema={validationSchema}
-                    onSubmit={onSubmit}
+                    onSubmit={async(values) => {
+                        setLoading(true);
+                        await onSubmit(values);
+                        setLoading(false);
+                    }}
                 />
             </StyledDialogContent>
             <StyledDialogActions>
-                <Button variant='contained' type='submit' form='submitted-map-form' startIcon={<Add/>}>
+                <LoadingButton loading={loading} variant='contained' type='submit' form='submitted-map-form' 
+                    startIcon={<Add/>}
+                    sx={{ width: 110 }}>
                     Create
-                </Button>
+                </LoadingButton>
             </StyledDialogActions>
         </Dialog>
     );

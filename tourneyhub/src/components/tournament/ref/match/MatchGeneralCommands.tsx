@@ -25,7 +25,7 @@ const MatchGeneralCommands = ({match}: {match: MatchDto}) => {
                 { name: 'Invite player 2', command: `!mp invite ${match.player2.name}` }
             ]);
         }  
-        if (match.streamer !== '') {
+        if (match.streamer) {
             generalCommands.push(
                 { name: 'Add streamer', command: `!mp addref ${match.streamer}` }
             );

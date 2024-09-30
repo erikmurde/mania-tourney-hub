@@ -35,7 +35,7 @@ const MatchMain = ({match, stageName, maxScore, onClose}: IProps) => {
         const score1 = winner === match.player1.name ? -1 : 0;
         const score2 = winner === match.player2.name ? -1 : 0;
 
-        editMatch(null, score1, score2);
+        await editMatch(null, score1, score2);
     }
 
     const onConclude = async() => {
@@ -43,7 +43,7 @@ const MatchMain = ({match, stageName, maxScore, onClose}: IProps) => {
             setError(NOT_NEGATIVE);
             return;
         }
-        editMatch(matchId, match.score1, match.score2);
+        await editMatch(matchId, match.score1, match.score2);
     }
 
     const roomCommand = `!mp make ${tourney.code}: ${match.player1.name} vs ${match.player2.name}`;

@@ -16,6 +16,7 @@ import { number, Schema } from 'yup';
 import { baseMapSchema } from '../../../../domain/validation/baseMapSchema';
 import { MapService } from '../../../../services/mapService';
 import { UpdateContext } from '../../../../routes/Root';
+import LoadingButton from '../../../LoadingButton';
 
 interface IProps {
     mappool: IMapDto[],
@@ -24,6 +25,7 @@ interface IProps {
 
 const MapEditForm = ({mappool, map}: IProps) => {
     const { mapPoolUpdate, setMapPoolUpdate } = useContext(UpdateContext);
+    const [loading, setLoading] = useState(false);
     const [open, setOpen] = useState(false);
     const [openManual, setOpenManual] = useState(false);
     const [mapTypes, setMapTypes] = useState([] as MapTypeDto[]);
@@ -79,15 +81,21 @@ const MapEditForm = ({mappool, map}: IProps) => {
                     initialValues={map} 
                     mapTypes={mapTypes}
                     validationSchema={validationSchema}
-                    onSubmit={onSubmit}
+                    onSubmit={async(values) => {
+                        setLoading(true);
+                        await onSubmit(values);
+                        setLoading(false);
+                    }}
                 />}
             </StyledDialogContent>
             <StyledDialogActions>
-                <Button variant='contained' type='submit' form='submitted-map-form'>
+                <LoadingButton loading={loading} variant='contained' type='submit' form='submitted-map-form' 
+                    sx={{ width: 130 }}>
                     Auto-update
-                </Button>
+                </LoadingButton>
                 <Button variant='contained' color='secondary' 
-                    onClick={() => {setOpenManual(true); setOpen(false)}}>
+                    onClick={() => {setOpenManual(true); setOpen(false)}}
+                    sx={{ width: 130 }}>
                     Manual edit
                 </Button>
             </StyledDialogActions>

@@ -7,7 +7,7 @@ import { ACCEPTED, GFX, REJECTED } from '../../../constants';
 
 interface IProps {
     application: StaffApplicationDto,
-    updateStatus: (application: StaffApplicationDto, status: string) => void
+    updateStatus: (application: StaffApplicationDto, status: string) => Promise<void>
 }
 
 const StaffApplicationCard = ({application, updateStatus}: IProps) => {

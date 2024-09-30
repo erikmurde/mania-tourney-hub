@@ -12,7 +12,7 @@ import { useTourney } from '../../../routes/tournament/TournamentHeader';
 
 interface IProps {
     staff: UserDto,
-    removeStaff: (staff: UserDto) => void
+    removeStaff: (staff: UserDto) => Promise<void>
 }
 
 const StaffCard = ({staff, removeStaff}: IProps) => {

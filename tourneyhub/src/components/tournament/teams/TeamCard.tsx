@@ -13,7 +13,7 @@ import { UserDto } from '../../../dto/user/UserDto';
 interface IProps {
     teamsPublic: boolean,
     team: TeamDto,
-    eliminateTeam: (team: TeamDto) => void
+    eliminateTeam: (team: TeamDto) => Promise<void>
 }
 
 const TeamCard = ({teamsPublic, team, eliminateTeam}: IProps) => {

@@ -1,18 +1,19 @@
 import { Edit } from '@mui/icons-material';
-import { Button, Dialog } from '@mui/material';
+import { Dialog } from '@mui/material';
 import { StyledDialogActions } from '../../../styled/StyledDialogActions';
 import { StyledDialogContent } from '../../../styled/styledDialogContent';
 import TourneyDialogTitle from '../../dialog/TourneyDialogTitle';
 import { DialogProps } from '../../../../props/DialogProps';
 import UnsubmittedMapFormView from './views/UnsubmittedMapFormView';
 import { IMapDto } from '../../../../dto/map/IMapDto';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { UpdateContext } from '../../../../routes/Root';
 import { MapService } from '../../../../services/mapService';
 import { DUPLICATE_BEATMAP_ID, INTEGER, NOT_NEGATIVE } from '../../../../constants';
 import { unsubmittedMapSchema } from '../../../../domain/validation/unsubmittedMapSchema';
 import { number, Schema } from 'yup';
 import { MapTypeDto } from '../../../../dto/map/MapTypeDto';
+import LoadingButton from '../../../LoadingButton';
 
 interface IProps {
     dialogProps: DialogProps,
@@ -24,6 +25,7 @@ interface IProps {
 
 const ManualMapEditForm = ({dialogProps, initialValues, mapTypes, hasTb, isDuplicateId}: IProps) => {
     const { mapPoolUpdate, setMapPoolUpdate } = useContext(UpdateContext);
+    const [loading, setLoading] = useState(false);
     const { open, onClose } = dialogProps;
 
     const onSubmit = async(values: IMapDto) => {
@@ -56,13 +58,19 @@ const ManualMapEditForm = ({dialogProps, initialValues, mapTypes, hasTb, isDupli
                     }}
                     mapTypes={mapTypes}
                     validationSchema={validationSchema}
-                    onSubmit={onSubmit}
+                    onSubmit={async(values) => {
+                        setLoading(true);
+                        await onSubmit(values);
+                        setLoading(false);
+                    }}
                 />
             </StyledDialogContent>
             <StyledDialogActions>
-                <Button variant='contained' type='submit' form='unsubmitted-map-form' startIcon={<Edit/>}>
+                <LoadingButton loading={loading} variant='contained' type='submit' form='unsubmitted-map-form' 
+                    startIcon={<Edit/>}
+                    sx={{ width: 100 }}>
                     Edit
-                </Button>
+                </LoadingButton>
             </StyledDialogActions>
         </Dialog>
     );

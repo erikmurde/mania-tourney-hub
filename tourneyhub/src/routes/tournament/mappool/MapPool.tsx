@@ -22,12 +22,12 @@ const MapPool = () => {
     const [maps, setMaps] = useState([] as IMapDto[]);
 
     const [audio] = useState(new Audio());
-    const [paused, setPaused] = useState(true);
+    const [isPlaying, setIsPlaying] = useState(false);
     const [activeAudioId, setActiveAudioId] = useState('');
 
-    audio.onpause = () => setPaused(true);
-    audio.onplay = () => setPaused(false);
-    audio.onended = () => setPaused(true);
+    audio.onplay = () => setIsPlaying(true);
+    audio.onpause = () => setIsPlaying(false);
+    audio.onended = () => setIsPlaying(false);
     audio.volume = 0.04;
 
     useEffect(() => {
@@ -74,11 +74,13 @@ const MapPool = () => {
             return;
         }
         if (mapId === activeAudioId) {
-            paused ? audio.play(): audio.pause();
+            !audio.paused ? audio.pause(): audio.play().catch(() => {});
         } else {
             setActiveAudioId(mapId);
             audio.src = src;
-            audio.play();
+            if (audio.paused) {
+                audio.play().catch(() => {});
+            }
         }
     }
 
@@ -102,13 +104,13 @@ const MapPool = () => {
                     ?   <MapManageList 
                             mappool={maps} 
                             activeAudioId={activeAudioId} 
-                            paused={paused} 
+                            audioPlaying={isPlaying} 
                             handleAudio={handleAudio}
                         />
                     :   <MapList 
                             mappool={maps.filter(map => map.inMappool)} 
                             activeAudioId={activeAudioId} 
-                            paused={paused} 
+                            audioPlaying={isPlaying} 
                             handleAudio={handleAudio}/>}
                 </Grid>
             </Grid>

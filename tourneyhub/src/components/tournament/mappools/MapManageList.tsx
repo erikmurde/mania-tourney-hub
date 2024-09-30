@@ -11,11 +11,11 @@ import NoItems from '../NoItems';
 interface IProps {
     mappool: IMapDto[],
     activeAudioId: string,
-    paused: boolean,
+    audioPlaying: boolean,
     handleAudio: (mapId: string, src: string | undefined) => void
 }
 
-const MapManageList = ({mappool, activeAudioId, paused, handleAudio}: IProps) => {
+const MapManageList = ({mappool, activeAudioId, audioPlaying, handleAudio}: IProps) => {
     const { mapPoolUpdate, setMapPoolUpdate } = useContext(UpdateContext);
 
     let data = new Map<string, IMapDto[]>();
@@ -52,7 +52,7 @@ const MapManageList = ({mappool, activeAudioId, paused, handleAudio}: IProps) =>
                                     <MapManageCard 
                                         map={map} 
                                         mappool={mappool}
-                                        audioPlaying={map.id === activeAudioId && !paused} 
+                                        audioPlaying={map.id === activeAudioId && audioPlaying} 
                                         handleAudio={handleAudio}
                                         updateInMappool={updateInMappool}/>
                                 </Grid>
