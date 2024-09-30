@@ -1,6 +1,7 @@
 package com.tourneyhub.backend.mapper;
 
 import com.tourneyhub.backend.domain.AppUser;
+import com.tourneyhub.backend.domain.TournamentPlayer;
 import com.tourneyhub.backend.dto.user.SimpleUserDto;
 import com.tourneyhub.backend.dto.user.UserDto;
 import org.springframework.stereotype.Component;
@@ -26,6 +27,12 @@ public class UserMapper {
     }
 
     public UserDto mapToDto(AppUser user) {
+        return mapToDto(user, new ArrayList<>());
+    }
+
+    public UserDto mapToDto(AppUser user, List<TournamentPlayer> stats) {
+        List<TournamentPlayer> userStats = stats.isEmpty() ? user.getStats() : stats;
+
         return new UserDto(
                 user.getId(),
                 user.getPlayerId(),
@@ -36,7 +43,7 @@ public class UserMapper {
                 user.getAvatar(),
                 countryMapper.mapToDto(user.getCountry()),
                 user.getRoles().stream().map(roleMapper::mapToDto).toList(),
-                user.getStats().stream().map(statsMapper::mapToDto).toList()
+                userStats.stream().map(statsMapper::mapToDto).toList()
         );
     }
 

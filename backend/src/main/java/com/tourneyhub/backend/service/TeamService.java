@@ -49,21 +49,21 @@ public class TeamService {
                 ? new ArrayList<>()
                 : uow.teamRepository
                 .findAllInTournament(tournamentId).stream()
-                .map(team -> teamMapper.mapToDto(team, tournamentId))
+                .map(team -> teamMapper.mapToDto(team, uow.userRepository.findTeamPlayers(team.getId())))
                 .toList();
     }
 
     public List<SimpleTeamDto> getAllSimple(Long tournamentId) {
         return uow.teamRepository
                 .findAllInTournament(tournamentId).stream()
-                .map(teamMapper::mapToSimpleDto)
+                .map(t -> teamMapper.mapToSimpleDto(t, false))
                 .toList();
     }
 
     public List<SimpleTeamDto> getAllSimpleWithNames(Long tournamentId, List<String> names) {
         return uow.teamRepository
                 .findAllInTournamentWithNames(tournamentId, names).stream()
-                .map(teamMapper::mapToSimpleDto)
+                .map(t -> teamMapper.mapToSimpleDto(t, true))
                 .toList();
     }
 

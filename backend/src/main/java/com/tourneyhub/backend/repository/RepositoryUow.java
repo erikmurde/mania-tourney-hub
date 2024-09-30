@@ -21,6 +21,8 @@ public class RepositoryUow {
 
     public final MapTypeRepository mapTypeRepository;
 
+    public final MapScoreRepository mapScoreRepository;
+
     public final TournamentRepository tournamentRepository;
 
     public final TournamentRoleRepository tournamentRoleRepository;
@@ -38,6 +40,7 @@ public class RepositoryUow {
             StageRepository stageRepository,
             MapRepository mapRepository,
             MapTypeRepository mapTypeRepository,
+            MapScoreRepository mapScoreRepository,
             TournamentRepository tournamentRepository,
             TournamentRoleRepository tournamentRoleRepository,
             TournamentPlayerRepository statsRepository,
@@ -51,6 +54,7 @@ public class RepositoryUow {
         this.stageRepository = stageRepository;
         this.mapRepository = mapRepository;
         this.mapTypeRepository = mapTypeRepository;
+        this.mapScoreRepository = mapScoreRepository;
         this.tournamentRepository = tournamentRepository;
         this.tournamentRoleRepository = tournamentRoleRepository;
         this.statsRepository = statsRepository;

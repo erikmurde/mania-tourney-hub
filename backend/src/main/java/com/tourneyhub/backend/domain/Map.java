@@ -74,6 +74,6 @@ public class Map extends BaseEntity {
     @JoinColumn
     private Stage stage;
 
-    @OneToMany(mappedBy = "map")
+    @OneToMany(mappedBy = "map", cascade = CascadeType.REMOVE)
     private List<MapScore> scores = new ArrayList<>();
 }

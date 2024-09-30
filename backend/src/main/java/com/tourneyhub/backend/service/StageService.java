@@ -1,7 +1,7 @@
 package com.tourneyhub.backend.service;
 
 import com.tourneyhub.backend.domain.Stage;
-import com.tourneyhub.backend.dto.stage.StageDto;
+import com.tourneyhub.backend.dto.StageDto;
 import com.tourneyhub.backend.mapper.StageMapper;
 import com.tourneyhub.backend.repository.StageRepository;
 import org.springframework.http.HttpStatus;

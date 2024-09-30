@@ -3,17 +3,14 @@ package com.tourneyhub.backend.domain;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 @Entity
 @Data
-@EqualsAndHashCode(callSuper = true)
-public class AppUser extends BaseEntityWithName implements UserDetails {
+@EqualsAndHashCode(callSuper = false)
+public class AppUser extends BaseEntityWithName {
 
     private Integer playerId;
 
@@ -34,19 +31,4 @@ public class AppUser extends BaseEntityWithName implements UserDetails {
 
     @OneToMany(mappedBy = "appUser", fetch = FetchType.LAZY)
     private List<TournamentPlayer> stats = new ArrayList<>();
-
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
-    }
-
-    @Override
-    public String getPassword() {
-        return null;
-    }
-
-    @Override
-    public String getUsername() {
-        return null;
-    }
 }

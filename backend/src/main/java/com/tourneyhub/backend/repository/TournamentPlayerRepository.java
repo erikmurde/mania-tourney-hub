@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -16,6 +17,9 @@ public interface TournamentPlayerRepository extends JpaRepository<TournamentPlay
             @Param("tournamentId") Long tournamentId,
             @Param("playerId") Long playerId
     );
+
+    @Query("FROM TournamentPlayer p WHERE p.team.id=:teamId")
+    List<TournamentPlayer> getTeamPlayerStats(@Param("teamId") Long teamId);
 
     @Query("SELECT count(p) FROM TournamentPlayer p WHERE p.tournament.id=:tournamentId AND p.status.name='active'")
     Integer getNumOfActivePlayers(@Param("tournamentId") Long tournamentId);

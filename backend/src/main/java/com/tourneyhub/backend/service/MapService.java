@@ -166,9 +166,12 @@ public class MapService {
     }
 
     private void validateDuplicateBeatmapId(Long mapId, Long stageId, Integer beatmapId) {
+        if (beatmapId == null || beatmapId == 0) {
+            return;
+        }
         Optional<Map> duplicate = uow.mapRepository.findInStageByBeatmapId(stageId, beatmapId);
 
-        if (beatmapId > 0 && duplicate.isPresent() && !duplicate.get().getId().equals(mapId)) {
+        if (duplicate.isPresent() && !duplicate.get().getId().equals(mapId)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
     }

@@ -35,8 +35,11 @@ public class OAuth2UserService extends DefaultOAuth2UserService {
                 .map(user -> updateExistingUser(user, principal))
                 .orElseGet(() -> createNewUser(principal));
 
-        Map<String, Object> attributes = Map.of("id", appUser.getId());
-        return new DefaultOAuth2User(principal.getAuthorities(), attributes, "id");
+        Map<String, Object> attributes = Map.of(
+                "id", appUser.getId(),
+                "username", appUser.getName()
+        );
+        return new DefaultOAuth2User(principal.getAuthorities(), attributes, "username");
     }
 
     private AppUser updateExistingUser(AppUser user, OAuth2User principal) {

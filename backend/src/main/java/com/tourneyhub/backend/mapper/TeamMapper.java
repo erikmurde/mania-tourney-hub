@@ -1,53 +1,62 @@
 package com.tourneyhub.backend.mapper;
 
+import com.tourneyhub.backend.domain.AppUser;
 import com.tourneyhub.backend.domain.Team;
+import com.tourneyhub.backend.domain.TournamentPlayer;
 import com.tourneyhub.backend.dto.TournamentStatsDto;
 import com.tourneyhub.backend.dto.team.SimpleTeamDto;
 import com.tourneyhub.backend.dto.team.TeamCreateDto;
 import com.tourneyhub.backend.dto.team.TeamDto;
 import com.tourneyhub.backend.dto.user.UserDto;
+import com.tourneyhub.backend.repository.RepositoryUow;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
 public class TeamMapper {
 
-    private final TournamentPlayerMapper tournamentPlayerMapper;
+    private final RepositoryUow uow;
+
+    private final TournamentPlayerMapper statsMapper;
 
     private final UserMapper userMapper;
 
-    public TeamMapper(TournamentPlayerMapper tournamentPlayerMapper, UserMapper userMapper) {
-        this.tournamentPlayerMapper = tournamentPlayerMapper;
+    public TeamMapper(RepositoryUow uow, TournamentPlayerMapper statsMapper, UserMapper userMapper) {
+        this.uow = uow;
+        this.statsMapper = statsMapper;
         this.userMapper = userMapper;
     }
 
-    public TeamDto mapToDto(Team team, Long tournamentId) {
-        List<UserDto> players = team
-                .getPlayers().stream()
-                .map(player -> userMapper.mapToDto(player.getAppUser()))
-                .toList();
+    public TeamDto mapToDto(Team team, List<AppUser> players) {
+        List<TournamentPlayer> stats = uow.statsRepository.getTeamPlayerStats(team.getId());
+        TournamentStatsDto teamStats = statsMapper.mapToDto(stats.get(0));
 
-        TournamentStatsDto stats = getStats(players.get(0), team.getName(), tournamentId);
+        List<UserDto> mappedPlayers = players.stream()
+                .map(p -> userMapper.mapToDto(p, getUserStats(p.getId(), stats)))
+                .toList();
 
         return new TeamDto(
                 team.getId(),
                 team.getName(),
                 team.getLogo(),
                 team.getAvailability(),
-                stats.getStatus(),
-                stats.getSeed(),
-                stats.getPlacement(),
-                players
+                teamStats.getStatus(),
+                teamStats.getSeed(),
+                teamStats.getPlacement(),
+                mappedPlayers
         );
     }
 
-    public SimpleTeamDto mapToSimpleDto(Team team) {
+    public SimpleTeamDto mapToSimpleDto(Team team, boolean includePlayers) {
         return new SimpleTeamDto(
                 team.getId(),
                 team.getName(),
                 team.getLogo(),
-                team.getPlayers().stream().map(tournamentPlayerMapper::mapToSimpleTeamPlayerDto).toList()
+                includePlayers
+                        ? team.getPlayers().stream().map(statsMapper::mapToSimpleTeamPlayerDto).toList()
+                        : new ArrayList<>()
         );
     }
 
@@ -61,11 +70,9 @@ public class TeamMapper {
         return team;
     }
 
-    private TournamentStatsDto getStats(UserDto player, String name, Long tournamentId) {
-        return player
-                .getStats().stream()
-                .filter(stat -> stat.getTournamentId().equals(tournamentId) && stat.getTeam().equals(name))
-                .findFirst()
-                .orElseThrow(IllegalArgumentException::new);
+    private List<TournamentPlayer> getUserStats(Long playerId, List<TournamentPlayer> stats) {
+        return stats.stream()
+                .filter(s -> s.getAppUserId().equals(playerId))
+                .toList();
     }
 }

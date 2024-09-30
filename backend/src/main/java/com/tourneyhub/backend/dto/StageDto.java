@@ -1,6 +1,5 @@
-package com.tourneyhub.backend.dto.stage;
+package com.tourneyhub.backend.dto;
 
-import com.tourneyhub.backend.dto.StageTypeDto;
 import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;

@@ -1,6 +1,6 @@
 package com.tourneyhub.backend.controller;
 
-import com.tourneyhub.backend.dto.stage.StageDto;
+import com.tourneyhub.backend.dto.StageDto;
 import com.tourneyhub.backend.service.StageService;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;

@@ -5,6 +5,7 @@ import com.tourneyhub.backend.dto.team.TeamCreateDto;
 import com.tourneyhub.backend.dto.team.TeamDto;
 import com.tourneyhub.backend.service.TeamService;
 import com.tourneyhub.backend.service.UserService;
+import jakarta.annotation.Nullable;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.web.bind.annotation.*;
@@ -31,7 +32,7 @@ public class TeamController {
     }
 
     @GetMapping("/api/teams/{tournamentId}/simple")
-    public List<SimpleTeamDto> getAllSimple(@PathVariable Long tournamentId, @RequestParam List<String> names) {
+    public List<SimpleTeamDto> getAllSimple(@PathVariable Long tournamentId, @RequestParam @Nullable List<String> names) {
         return names != null
                 ? teamService.getAllSimpleWithNames(tournamentId, names)
                 : teamService.getAllSimple(tournamentId);

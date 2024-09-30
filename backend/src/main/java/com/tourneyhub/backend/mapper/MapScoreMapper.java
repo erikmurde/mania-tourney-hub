@@ -1,9 +1,6 @@
 package com.tourneyhub.backend.mapper;
 
-import com.tourneyhub.backend.domain.Map;
-import com.tourneyhub.backend.domain.MapScore;
-import com.tourneyhub.backend.domain.Team;
-import com.tourneyhub.backend.domain.TournamentPlayer;
+import com.tourneyhub.backend.domain.*;
 import com.tourneyhub.backend.dto.mapScore.MapScoreDto;
 import com.tourneyhub.backend.dto.mapScore.PlayerScoreDto;
 import com.tourneyhub.backend.dto.mapScore.TeamScoreDto;
@@ -43,6 +40,10 @@ public class MapScoreMapper {
                 score.getScore(),
                 score.getAccuracy()
         );
+    }
+
+    public MapScore mapToEntity(Integer score, Double accuracy, AppUser user, Map map) {
+        return new MapScore(score, Math.round(accuracy * 10000) / 100D, user.getId(), user, map);
     }
 
     private MapScoreDto mapWithTeams(Map map, MapScoreDto dto, List<Team> teams) {

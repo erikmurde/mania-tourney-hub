@@ -1,7 +1,7 @@
 package com.tourneyhub.backend.mapper;
 
 import com.tourneyhub.backend.domain.Stage;
-import com.tourneyhub.backend.dto.stage.StageDto;
+import com.tourneyhub.backend.dto.StageDto;
 import com.tourneyhub.backend.repository.TournamentRepository;
 import org.springframework.stereotype.Component;
 

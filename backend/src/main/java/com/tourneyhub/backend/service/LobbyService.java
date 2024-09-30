@@ -20,6 +20,8 @@ public class LobbyService {
 
     private final RepositoryUow uow;
 
+    private final MapScoreService mapScoreService;
+
     private final EventService eventService;
 
     private final EventParticipantService participantService;
@@ -30,12 +32,14 @@ public class LobbyService {
 
     public LobbyService(
             RepositoryUow uow,
+            MapScoreService mapScoreService,
             EventService eventService,
             EventParticipantService eventParticipantService,
             UserService userService,
             LobbyMapper mapper)
     {
         this.uow = uow;
+        this.mapScoreService = mapScoreService;
         this.eventService = eventService;
         this.userService = userService;
         this.participantService = eventParticipantService;
@@ -75,21 +79,19 @@ public class LobbyService {
 
     public Long update(Long lobbyId, LobbyEditDto dto, OAuth2User principal) {
         Event lobby = eventService.getEvent(lobbyId);
+        List<EventParticipant> players = participantService.getParticipants(lobby, "player");
         boolean isHost = userService.isHost(lobby.getStage().getTournamentId(), principal);
 
-        if (lobby.isConcluded() || dto.isConcluded()
-                && dto.getMatchId() == null
-                && !participantService.getParticipants(lobby, "player").isEmpty())
-        {
+        if (lobby.isConcluded() || dto.isConcluded() && dto.getMatchId() == null && !players.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
         if (isHost && dto.getReferee() != null) {
             participantService.removeParticipants(lobby, "referee");
             participantService.addReferee(lobby, getId(dto.getReferee(), false));
         }
-
-        // TODO create map scores
-
+        if (!players.isEmpty()) {
+            mapScoreService.createScores(lobby.getStage().getId(), dto.getMatchId());
+        }
         if (isHost) {
             lobby.setTime(dto.getTime());
         }
