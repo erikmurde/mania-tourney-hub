@@ -56,7 +56,6 @@ const StaffApplicationForm = ({tourney}: {tourney: TournamentDto}) => {
     })
 
     const initialValues: StaffApplicationCreateDto = {
-        senderPlayerId: user.playerId,
         senderId: user.id,
         tournamentId: tourney.id,
         roleId: '',

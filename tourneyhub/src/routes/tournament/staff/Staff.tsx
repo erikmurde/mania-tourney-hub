@@ -76,7 +76,7 @@ const Staff = () => {
             await acceptApplication(application);
         }
         await staffApplicationService.edit(application.id, {
-            senderPlayerId: application.sender.playerId,
+            senderId: application.sender.id,
             tournamentId: application.tournamentId,
             statusId: updatedStatus.id
         });

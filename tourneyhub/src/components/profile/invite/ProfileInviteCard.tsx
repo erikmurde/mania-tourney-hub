@@ -34,7 +34,6 @@ const ProfileInviteCard = ({invite, navLink, updateState}: IProps) => {
 
     const editStatus = async(status: string) => {
         await new StaffInviteService().edit(invite.id, {
-            recipientPlayerId: user.playerId,
             recipientId: user.id,
             status: status
         });

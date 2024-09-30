@@ -22,7 +22,7 @@ const ProfileApplications = ({onNavigate}: {onNavigate: (tournamentId: string) =
 
         if (status) {
             await new StaffApplicationService().edit(application.id, {
-                senderPlayerId: application.sender.playerId,
+                senderId: application.sender.id,
                 tournamentId: application.tournamentId,
                 statusId: status.id
             });
