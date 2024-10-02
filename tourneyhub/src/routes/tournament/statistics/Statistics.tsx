@@ -15,14 +15,19 @@ import MapStats from '../../../components/tournament/statistics/MapStats';
 import { MAPPOOL, QUALIFIER, SEEDING } from '../../../constants';
 import SeedingStats from '../../../components/tournament/statistics/SeedingStats';
 import { useTourney } from '../TournamentHeader';
+import ConfirmationDialog from '../../../components/tournament/dialog/ConfirmationDialog';
+import SuccessDialog from '../../../components/tournament/dialog/SuccessDialog';
 
 const Statistics = () => {
     const { tourney } = useTourney();
     const { user } = useContext(AuthContext);
+    const [successOpen, setSuccessOpen] = useState(false);
     const [stages, setStages] = useState([] as IStageDto[]);
     const [mapStats, setMapStats] = useState([] as MapStatsDto[]);
     const [stageId, setStageId] = useState(null as string | null);
     const [selectedStats, setSelectedStats] = useState('');
+
+    const service = new MapStatsService();
 
     useEffect(() => {
         new StageService()
@@ -37,7 +42,7 @@ const Statistics = () => {
 
     useEffect(() => {
         if (stage) {
-            new MapStatsService()
+            service
                 .getAllInStage(stage.id)
                 .then(stats => {
                     setMapStats(stats);
@@ -46,6 +51,12 @@ const Statistics = () => {
         }
     }, [stage]);
 
+    const updateSeeding = async(stageId: string) => {
+        await service.seedParticipants(stageId);
+        setSuccessOpen(true);
+    }
+
+    const teams = tourney.minTeamSize > 1;
     const isHost = user && new AuthService().isHost(user, tourney.id);
     const map = mapStats.find(map => map.id === selectedStats);
     
@@ -70,7 +81,18 @@ const Statistics = () => {
                     stageId={stageId} 
                     setStageId={setStageId}
                     buttons={
-                        <></>
+                        isHost && stage.stageType.name === QUALIFIER
+                        ?   <ConfirmationDialog 
+                                title={`Update ${teams ? 'team' : 'player'} seeding?`}
+                                description={`
+                                    This will assign a seed to every ${teams ? 'team' : 'player'} based on current qualifier results.
+                                    ${teams ? 'Teams' : 'Players'} with no qualifer scores will be marked as "DNP".
+                                `}
+                                actionTitle='Update'
+                                btnProps={{ title: 'Update seeding' }}
+                                action={() => updateSeeding(stage!.id)}
+                            />
+                        :   <></>
                     }/>
                 <Grid item xs
                     marginLeft={map ? 0 : 2} 
@@ -79,9 +101,9 @@ const Statistics = () => {
                     justifyContent='center'
                     >
                     {map && 
-                    <MapStats stats={map} teamTourney={tourney.minTeamSize > 1}/>} 
+                    <MapStats stats={map} stageType={stage.stageType.name} teamTourney={tourney.minTeamSize > 1}/>} 
                     {selectedStats === SEEDING && statsVisible &&
-                    <SeedingStats 
+                    <SeedingStats
                         mapStats={mapStats}
                         numAdvancing={stage.numAdvancing}
                         teamTourney={tourney.minTeamSize > 1}
@@ -92,6 +114,10 @@ const Statistics = () => {
                     {!statsVisible && <NoItems name={'statistics'}/>}
                 </Grid>
             </Grid>}
+            <SuccessDialog 
+                title='Seeding updated successfully!'
+                open={successOpen} 
+                setOpen={setSuccessOpen}/>
         </Paper>
     );
 }

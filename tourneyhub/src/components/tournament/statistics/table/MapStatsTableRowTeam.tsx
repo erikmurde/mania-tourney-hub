@@ -5,10 +5,11 @@ import { TeamScoreDto } from '../../../../dto/statistics/TeamScoreDto';
 
 interface IProps {
     index: number,
-    stats: TeamScoreDto
+    stats: TeamScoreDto,
+    showRun: boolean
 }
 
-const MapStatsTableRowTeam = ({index, stats}: IProps) => {
+const MapStatsTableRowTeam = ({index, stats, showRun}: IProps) => {
     const service = new MapStatsService();
 
     return (  
@@ -33,6 +34,10 @@ const MapStatsTableRowTeam = ({index, stats}: IProps) => {
             <SchedTableCell>
                 {service.getTeamAcc(stats).toFixed(2)}%
             </SchedTableCell>
+            {showRun && 
+            <SchedTableCell align='center'>
+                {stats.playerScores[0].run}
+            </SchedTableCell>}
         </TableRow>
     );
 }

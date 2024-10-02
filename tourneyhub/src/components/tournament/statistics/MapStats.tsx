@@ -5,13 +5,15 @@ import { useState } from 'react';
 import StatTypeTabs from './tabs/StatTypeTabs';
 import MapStatsTable from './table/MapStatsTable';
 import NoItems from '../NoItems';
+import { QUALIFIER } from '../../../constants';
 
 interface IProps {
     stats: MapStatsDto,
+    stageType: string,
     teamTourney: boolean
 }
 
-const MapStats = ({stats, teamTourney}: IProps) => {
+const MapStats = ({stats, stageType, teamTourney}: IProps) => {
     const service = new MapStatsService();
     const [showTeams, setShowTeams] = useState(teamTourney);
 
@@ -69,7 +71,8 @@ const MapStats = ({stats, teamTourney}: IProps) => {
                         </Grid>
                         <Grid item xs={11} marginTop={2}>
                             <MapStatsTable 
-                                showTeams={showTeams} 
+                                showTeams={showTeams}
+                                showRun={stageType === QUALIFIER}
                                 scores={scores}/>
                         </Grid>
                     </Grid>

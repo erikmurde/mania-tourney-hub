@@ -5,10 +5,11 @@ import { PlayerScoreDto } from '../../../../dto/statistics/PlayerScoreDto';
 
 interface IProps {
     index: number,
-    stats: PlayerScoreDto
+    stats: PlayerScoreDto,
+    showRun: boolean
 }
 
-const MapStatsTableRowPlayer = ({index, stats}: IProps) => {
+const MapStatsTableRowPlayer = ({index, stats, showRun}: IProps) => {
     const player = stats.player;
 
     return (  
@@ -24,6 +25,8 @@ const MapStatsTableRowPlayer = ({index, stats}: IProps) => {
             </SchedTableCell>
             <SchedTableCell>{stats.score.toLocaleString()}</SchedTableCell>
             <SchedTableCell>{stats.accuracy.toFixed(2)}%</SchedTableCell>
+            {showRun && 
+            <SchedTableCell align='center'>{stats.run}</SchedTableCell>}
         </TableRow>
     );
 }

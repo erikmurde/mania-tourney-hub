@@ -63,48 +63,48 @@ const SeedingStats = ({mapStats, numAdvancing, teamTourney}: IProps) => {
     mapStats.forEach(stats => {
         let seen: string[] = [];
         let index = 1;
-
+    
         sortScores(stats)
-        .forEach(stats => {
+        .forEach(scores => {
             if (teamTourney) {
-                let team = stats as TeamScoreDto;
+                let team = scores as TeamScoreDto;
 
                 if (!seen.includes(team.name)) {
                     updateTeamList({name: team.name, logo: team.logo});
-                    updateRankSum(team.name, index);
+                    updateRankSum(team.name, index++);
+                    updateScore(team.name, service.getBestTeamScore(stats.teamScores, team.name));
                 
-                    index++;
                     seen.push(team.name);
                 }
-                updateScore(team.name, service.getTeamScore(team));
             } else {
-                let player = stats as PlayerScoreDto
-                let name = player.player.name;
+                let playerScores = scores as PlayerScoreDto
+                let name = playerScores.player.name;
 
                 if (!seen.includes(name)) {
-                    updatePlayerList(player.player);
-                    updateRankSum(name, index);
+                    updatePlayerList(playerScores.player);
+                    updateRankSum(name, index++);
+                    updateScore(name, service.getBestPlayerScore(stats.playerScores, name));
 
-                    index++;
                     seen.push(name);
                 }
-                updateScore(name, player.score);
             }
         });
     });
-    
+
+    console.log(scores);
+
     const result = teamTourney 
     ?   teams.map(team => ({
             team: team,
             rankSum: rankSums.get(team.name)!, 
-            avgScore: Math.round(
+            avgScore: Math.floor(
                 scores.get(team.name)!.reduce((elem, sum) => sum + elem, 0) / scores.get(team.name)!.length
             )
         }))
     :   players.map(player => ({ 
             player: player, 
             rankSum: rankSums.get(player.name)!, 
-            avgScore: Math.round(
+            avgScore: Math.floor(
                 scores.get(player.name)!.reduce((elem, sum) => sum + elem, 0) / scores.get(player.name)!.length
             )
         }));

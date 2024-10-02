@@ -73,7 +73,7 @@ const Players = () => {
                     <PlayerList 
                         playersPublic={tourney.playersPublished}
                         players={players.sort((a, b) => 
-                            getStats(a).seed - getStats(b).seed
+                            tourneyService.compareSeeds(getStats(a).seed, getStats(b).seed)
                         )}
                         setPlayers={setPlayers}/>
                 </Grid>

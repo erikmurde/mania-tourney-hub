@@ -79,7 +79,7 @@ const TouramentPublishForm = ({tourney, updateTourney}: IProps) => {
             open={successOpen} 
             setOpen={setSuccessOpen} 
             onClose={updateTourney}
-            title='The tournament has been successfully published.'/>
+            title='The tournament has been successfully published!'/>
         </>
     );
 }

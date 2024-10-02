@@ -1,4 +1,5 @@
 import { MapStatsDto } from '../dto/statistics/MapStatsDto';
+import { PlayerScoreDto } from '../dto/statistics/PlayerScoreDto';
 import { TeamScoreDto } from '../dto/statistics/TeamScoreDto';
 import { ApiEntityService } from './base/apiEntityService';
 
@@ -12,6 +13,10 @@ export class MapStatsService extends ApiEntityService<MapStatsDto, MapStatsDto, 
 
         console.log('getAllStatsInStage response: ', response);
         return response.data;
+    }
+
+    async seedParticipants(stageId: string) {
+        await this.axios.put(`${this.baseUrl}/${stageId}/seed`);
     }
 
     getAllScores(mapStats: MapStatsDto, teamTourney: boolean = false, teamScore: boolean = false): number[] {
@@ -38,7 +43,23 @@ export class MapStatsService extends ApiEntityService<MapStatsDto, MapStatsDto, 
             .map(playerScore => playerScore.accuracy);
     }
 
-    getTeamScore(stats: TeamScoreDto): number {
+    getBestPlayerScore(stats: PlayerScoreDto[], player: string): number {
+        const playerScores = stats
+            .filter(score => score.player.name === player)
+            .map(score => score.score);
+        
+        return Math.max(...playerScores);
+    }
+
+    getBestTeamScore(stats: TeamScoreDto[], team: string): number {
+        const teamScores = stats
+            .filter(score => score.name === team)
+            .map(scores => this.getTeamScore(scores));
+
+        return Math.max(...teamScores);
+    }
+    
+    getTeamScore(stats: TeamScoreDto) {
         return this
             .getPlayerScores(stats)
             .reduce((score, sum) => sum + score, 0);

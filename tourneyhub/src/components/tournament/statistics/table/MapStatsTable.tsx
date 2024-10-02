@@ -7,10 +7,11 @@ import { PlayerScoreDto } from '../../../../dto/statistics/PlayerScoreDto';
 
 interface IProps {
     showTeams: boolean,
+    showRun: boolean,
     scores: TeamScoreDto[] | PlayerScoreDto[]
 }
 
-const MapStatsTable = ({showTeams, scores}: IProps) => {
+const MapStatsTable = ({showTeams, showRun, scores}: IProps) => {
     return (  
         <TableContainer>
             <Table>
@@ -20,6 +21,8 @@ const MapStatsTable = ({showTeams, scores}: IProps) => {
                         <SchedTableCell>{showTeams ? 'team' : 'player'}</SchedTableCell>
                         <SchedTableCell width={70}>Score</SchedTableCell>
                         <SchedTableCell width={70}>{showTeams ? 'Avg. acc' : 'Acc'}</SchedTableCell>
+                        {showRun && 
+                        <SchedTableCell width={30} align='center'>Run</SchedTableCell>}
                     </TableRow>
                 </TableHead>
                 {showTeams 
@@ -29,6 +32,7 @@ const MapStatsTable = ({showTeams, scores}: IProps) => {
                                 key={index}
                                 index={index + 1}
                                 stats={stats}
+                                showRun={showRun}
                             />
                         )}
                     </TableBody>
@@ -38,6 +42,7 @@ const MapStatsTable = ({showTeams, scores}: IProps) => {
                                 key={index}
                                 index={index + 1}
                                 stats={stats}
+                                showRun={showRun}
                             />
                         )}
                     </TableBody>}

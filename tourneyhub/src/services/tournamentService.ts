@@ -60,4 +60,14 @@ export class TournamentService extends ApiEntityService<TournamentDto, Tournamen
         );
         return validRank && validCountry;
     }
+
+    compareSeeds(seed1: number, seed2: number): number {
+        if (seed1 === 0) {
+            return seed2 === 0 ? 0 : 1;
+        }
+        if (seed2 === 0) {
+            return -1;
+        }
+        return seed1 > seed2 ? 1 : -1;
+    }
 }

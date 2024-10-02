@@ -11,7 +11,6 @@ import { ACTIVE, ADMIN, DISQUALIFIED, HOST } from '../../../constants';
 import ConfirmationDialog from '../../../components/tournament/dialog/ConfirmationDialog';
 import TeamPlayerList from '../../../components/tournament/teams/TeamPlayerList';
 import { useTourney } from '../TournamentHeader';
-import { UserDto } from '../../../dto/user/UserDto';
 
 const Teams = () => {
     const { tourney } = useTourney();
@@ -34,7 +33,7 @@ const Teams = () => {
             .then(teams => setTeams((hasValidRoles 
                 ? teams 
                 : teams.filter(team => team.status !== DISQUALIFIED))
-                .sort((a, b) => a.seed - b.seed)
+                .sort((a, b) => tourneyService.compareSeeds(a.seed, b.seed))
             ));
     }, [tourney.id, hasValidRoles]);
 
