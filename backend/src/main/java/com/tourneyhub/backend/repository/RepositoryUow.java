@@ -17,7 +17,7 @@ public class RepositoryUow {
 
     public final StageRepository stageRepository;
 
-    public final MapRepository mapRepository;
+    public final BeatmapRepository mapRepository;
 
     public final MapTypeRepository mapTypeRepository;
 
@@ -38,7 +38,7 @@ public class RepositoryUow {
             TeamRepository teamRepository,
             EventRepository eventRepository,
             StageRepository stageRepository,
-            MapRepository mapRepository,
+            BeatmapRepository mapRepository,
             MapTypeRepository mapTypeRepository,
             MapScoreRepository mapScoreRepository,
             TournamentRepository tournamentRepository,

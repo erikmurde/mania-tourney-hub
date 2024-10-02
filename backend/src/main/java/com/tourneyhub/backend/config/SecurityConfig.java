@@ -92,14 +92,14 @@ public class SecurityConfig {
                                 "/api/maps/stage/{stageId}/inMappool",
                                 "/api/users/{tournamentId}/**",
                                 "/api/tournaments/**",
-                                "/api/teams/**",
-                                "/api/statistics/**"
+                                "/api/teams/**"
                         ).permitAll()
                         .requestMatchers(
                                 HttpMethod.GET,
                                 "/api/lobbies/**",
                                 "/api/matches/**",
-                                "/api/tournamentParticipants/**"
+                                "/api/tournamentParticipants/**",
+                                "/api/statistics/**"
                         ).permitAll()
                         .anyRequest().authenticated()
                 )

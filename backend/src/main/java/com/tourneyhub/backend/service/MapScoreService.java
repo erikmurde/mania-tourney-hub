@@ -1,7 +1,7 @@
 package com.tourneyhub.backend.service;
 
 import com.tourneyhub.backend.domain.*;
-import com.tourneyhub.backend.domain.Map;
+import com.tourneyhub.backend.domain.Beatmap;
 import com.tourneyhub.backend.dto.mapScore.MapScoreDto;
 import com.tourneyhub.backend.dto.mapScore.osuApi.OsuMatchDto;
 import com.tourneyhub.backend.dto.mapScore.osuApi.OsuMatchEventDetailsDto;
@@ -48,58 +48,61 @@ public class MapScoreService {
                 && (!tournament.isPublished() || !stage.isStatsPublished())) {
             return new ArrayList<>();
         }
-        return tournament.getMinTeamSize() > 1
-                ? getTeamScores(stageId, stage.getTournamentId())
-                : getPlayerScores(stageId);
+        return tournament.getMinTeamSize() > 1 ? getTeamScores(stage) : getPlayerScores(stage);
     }
 
-    public void createScores(Long stageId, Integer matchId) {
+    public void createScores(Long stageId, Integer matchId, Event event) {
         List<OsuMatchEventDto> events = fetchMatchFromOsu(matchId)
                 .getEvents().stream()
                 .filter(e -> e.getGame() != null)
                 .toList();
 
-        List<Map> maps = uow.mapRepository.findAllInMappoolByStageId(stageId);
-        List<MapScore> scores = new ArrayList<>();
+        List<Beatmap> beatmaps = uow.mapRepository.findAllInMappoolByStageId(stageId);
         Set<AppUser> users = new HashSet<>();
+        List<Long> seenMaps = new ArrayList<>();
 
-        for (OsuMatchEventDto event : events) {
-            createScoresForMap(event.getGame(), maps, scores, users);
+        for (OsuMatchEventDto matchEvent : events) {
+            createScoresForMap(matchEvent.getGame(), beatmaps, users, seenMaps, event);
         }
-        uow.mapScoreRepository.saveAll(scores);
     }
 
-    private List<MapScoreDto> getTeamScores(Long stageId, Long tournamentId) {
-        List<Team> teams = uow.teamRepository.findAllInTournament(tournamentId);
+    private List<MapScoreDto> getTeamScores(Stage stage) {
+        List<Team> teams = uow.teamRepository.findAllInTournament(stage.getTournamentId());
 
         return uow.mapRepository
-                .findAllByStageId(stageId).stream()
+                .findAllInMappoolByStageId(stage.getId()).stream()
                 .map(m -> mapper.mapToDto(m, teams))
                 .toList();
     }
 
-    private List<MapScoreDto> getPlayerScores(Long stageId) {
+    private List<MapScoreDto> getPlayerScores(Stage stage) {
         return uow.mapRepository
-                .findAllByStageIdWithScores(stageId).stream()
+                .findAllInMappoolByStageIdWithScores(stage.getId()).stream()
                 .map(m -> mapper.mapToDto(m, new ArrayList<>()))
                 .toList();
     }
 
     private void createScoresForMap(
-            OsuMatchEventDetailsDto event, List<Map> maps, List<MapScore> scores, Set<AppUser> users)
+            OsuMatchEventDetailsDto details,
+            List<Beatmap> beatmaps, Set<AppUser> users, List<Long> seenMaps, Event event)
     {
-        Optional<Map> map = maps.stream()
-                .filter(m -> m.getBeatmapId().equals(event.getBeatmap_id()))
+        Optional<Beatmap> map = beatmaps.stream()
+                .filter(m -> m.getBeatmapId().equals(details.getBeatmap_id()))
                 .findFirst();
 
         if (map.isEmpty()) {
             return;
         }
-        for (OsuMatchScoreDto score : event.getScores()) {
+        Long mapId = map.get().getId();
+        seenMaps.add(mapId);
+
+        for (OsuMatchScoreDto score : details.getScores()) {
             AppUser user = getUser(users, score.getUser_id());
+            int run = Collections.frequency(seenMaps, mapId);
 
             users.add(user);
-            scores.add(mapper.mapToEntity(score.getScore(), score.getAccuracy(), user, map.get()));
+            uow.mapScoreRepository.save(
+                    mapper.mapToEntity(score.getScore(), score.getAccuracy(), run, user, map.get(), event));
         }
     }
 

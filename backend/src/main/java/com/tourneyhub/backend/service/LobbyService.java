@@ -90,7 +90,7 @@ public class LobbyService {
             participantService.addReferee(lobby, getId(dto.getReferee(), false));
         }
         if (!players.isEmpty()) {
-            mapScoreService.createScores(lobby.getStage().getId(), dto.getMatchId());
+            mapScoreService.createScores(lobby.getStage().getId(), dto.getMatchId(), lobby);
         }
         if (isHost) {
             lobby.setTime(dto.getTime());

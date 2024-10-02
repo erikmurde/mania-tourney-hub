@@ -48,7 +48,7 @@ public class Stage extends BaseEntityWithName {
     private StageType stageType;
 
     @OneToMany(mappedBy = "stage")
-    private List<Map> maps = new ArrayList<>();
+    private List<Beatmap> beatmaps = new ArrayList<>();
 
     @OneToMany(mappedBy = "stage")
     private List<Event> events = new ArrayList<>();

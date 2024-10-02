@@ -13,4 +13,6 @@ public class PlayerScoreDto {
     private Integer score;
 
     private Double accuracy;
+
+    private int run;
 }

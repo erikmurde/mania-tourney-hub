@@ -22,6 +22,9 @@ public class MapScore extends BaseEntity {
     @Max(100)
     private Double accuracy;
 
+    @Min(1)
+    private int run;
+
     @Column(name = "app_user_id", insertable = false, updatable = false)
     private Long appUserId;
 
@@ -31,5 +34,9 @@ public class MapScore extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn
-    private Map map;
+    private Beatmap map;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn
+    private Event event;
 }

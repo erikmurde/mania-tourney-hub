@@ -1,8 +1,8 @@
 package com.tourneyhub.backend.mapper;
 
-import com.tourneyhub.backend.domain.Map;
+import com.tourneyhub.backend.domain.Beatmap;
 import com.tourneyhub.backend.domain.MapType;
-import com.tourneyhub.backend.dto.map.MapDto;
+import com.tourneyhub.backend.dto.map.BeatmapDto;
 import com.tourneyhub.backend.dto.map.osuApi.OsuBeatmapDto;
 import com.tourneyhub.backend.dto.map.osuApi.OsuBeatmapSetDto;
 import com.tourneyhub.backend.repository.MapTypeRepository;
@@ -21,78 +21,78 @@ public class MapMapper {
         this.stageRepository = stageRepository;
     }
 
-    public MapDto mapToDto(Map map) {
-        MapType mapType = map.getMapType();
+    public BeatmapDto mapToDto(Beatmap beatmap) {
+        MapType mapType = beatmap.getMapType();
 
-        return new MapDto(
-                map.getId(),
-                map.getStage().getId(),
+        return new BeatmapDto(
+                beatmap.getId(),
+                beatmap.getStage().getId(),
                 mapType.getId(),
-                map.getBeatmapId(),
-                map.getTitle(),
-                map.getDiff(),
-                map.getArtist(),
-                map.getMapper(),
-                map.getSuggestor(),
-                map.getCover(),
-                map.getDownload(),
-                map.getSr(),
-                map.getBpm(),
-                map.getHp(),
-                map.getOd(),
-                map.getDrainTime(),
-                map.isInMappool(),
+                beatmap.getBeatmapId(),
+                beatmap.getTitle(),
+                beatmap.getDiff(),
+                beatmap.getArtist(),
+                beatmap.getMapper(),
+                beatmap.getSuggestor(),
+                beatmap.getCover(),
+                beatmap.getDownload(),
+                beatmap.getSr(),
+                beatmap.getBpm(),
+                beatmap.getHp(),
+                beatmap.getOd(),
+                beatmap.getDrainTime(),
+                beatmap.isInMappool(),
                 mapType.getName(),
-                map.getIndex(),
-                map.getComment(),
-                map.getSongPreview()
+                beatmap.getIndex(),
+                beatmap.getComment(),
+                beatmap.getSongPreview()
         );
     }
 
-    public Map mapToEntity(MapDto mapDto) {
-        Map map = new Map();
+    public Beatmap mapToEntity(BeatmapDto mapDto) {
+        Beatmap beatmap = new Beatmap();
 
-        map.setBeatmapId(mapDto.getBeatmapId());
-        map.setTitle(mapDto.getTitle());
-        map.setDiff(mapDto.getDiff());
-        map.setArtist(mapDto.getArtist());
-        map.setMapper(mapDto.getMapper());
-        map.setSuggestor(mapDto.getSuggestor());
-        map.setCover(mapDto.getCover());
-        map.setDownload(mapDto.getDownload());
-        map.setSr(mapDto.getSr());
-        map.setBpm(mapDto.getBpm());
-        map.setHp(mapDto.getHp());
-        map.setOd(mapDto.getOd());
-        map.setDrainTime(mapDto.getDrainTime());
-        map.setInMappool(mapDto.isInMappool());
-        map.setIndex(mapDto.getIndex());
-        map.setComment(mapDto.getComment());
-        map.setSongPreview(mapDto.getSongPreview());
-        map.setMapType(mapTypeRepository.getReferenceById(mapDto.getMapTypeId()));
-        map.setStage(stageRepository.getReferenceById(mapDto.getStageId()));
+        beatmap.setBeatmapId(mapDto.getBeatmapId());
+        beatmap.setTitle(mapDto.getTitle());
+        beatmap.setDiff(mapDto.getDiff());
+        beatmap.setArtist(mapDto.getArtist());
+        beatmap.setMapper(mapDto.getMapper());
+        beatmap.setSuggestor(mapDto.getSuggestor());
+        beatmap.setCover(mapDto.getCover());
+        beatmap.setDownload(mapDto.getDownload());
+        beatmap.setSr(mapDto.getSr());
+        beatmap.setBpm(mapDto.getBpm());
+        beatmap.setHp(mapDto.getHp());
+        beatmap.setOd(mapDto.getOd());
+        beatmap.setDrainTime(mapDto.getDrainTime());
+        beatmap.setInMappool(mapDto.isInMappool());
+        beatmap.setIndex(mapDto.getIndex());
+        beatmap.setComment(mapDto.getComment());
+        beatmap.setSongPreview(mapDto.getSongPreview());
+        beatmap.setMapType(mapTypeRepository.getReferenceById(mapDto.getMapTypeId()));
+        beatmap.setStage(stageRepository.getReferenceById(mapDto.getStageId()));
 
-        return map;
+        return beatmap;
     }
 
-    public Map mapOsuDtoToEntity(OsuBeatmapDto mapDto) {
+    public Beatmap mapOsuDtoToEntity(OsuBeatmapDto mapDto) {
         OsuBeatmapSetDto beatmapSet = mapDto.getBeatmapset();
-        Map map = new Map();
+        Beatmap beatmap = new Beatmap();
 
-        map.setBeatmapId(mapDto.getId());
-        map.setTitle(beatmapSet.getTitle());
-        map.setDiff(mapDto.getVersion().replaceAll("\\[\\dK] ", ""));
-        map.setArtist(beatmapSet.getArtist());
-        map.setMapper(beatmapSet.getCreator());
-        map.setCover(beatmapSet.getCovers().getCard());
-        map.setDownload(mapDto.getUrl());
-        map.setSr(mapDto.getDifficulty_rating());
-        map.setBpm(mapDto.getBpm());
-        map.setHp(mapDto.getDrain());
-        map.setOd(mapDto.getAccuracy());
-        map.setDrainTime(mapDto.getTotal_length());
-        map.setSongPreview(beatmapSet.getPreview_url());
+        beatmap.setBeatmapId(mapDto.getId());
+        beatmap.setTitle(beatmapSet.getTitle());
+        beatmap.setDiff(mapDto.getVersion().replaceAll("\\[\\dK] ", ""));
+        beatmap.setArtist(beatmapSet.getArtist());
+        beatmap.setMapper(beatmapSet.getCreator());
+        beatmap.setCover(beatmapSet.getCovers().getCard());
+        beatmap.setDownload(mapDto.getUrl());
+        beatmap.setSr(mapDto.getDifficulty_rating());
+        beatmap.setBpm(mapDto.getBpm());
+        beatmap.setHp(mapDto.getDrain());
+        beatmap.setOd(mapDto.getAccuracy());
+        beatmap.setDrainTime(mapDto.getTotal_length());
+        beatmap.setSongPreview(beatmapSet.getPreview_url());
 
-        return map;
+        return beatmap;
     }
 }

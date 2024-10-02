@@ -9,7 +9,7 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class SubmittedMapDto {
+public class SubmittedBeatmapDto {
 
     @NotNull
     private Long stageId;

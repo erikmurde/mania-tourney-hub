@@ -130,7 +130,7 @@ public class MatchService {
         players.get(1).setScore(s2);
 
         if (!isWbd) {
-            mapScoreService.createScores(match.getStage().getId(), dto.getMatchId());
+            mapScoreService.createScores(match.getStage().getId(), dto.getMatchId(), match);
         }
         match.setMatchId(dto.getMatchId());
         match.setConcluded(true);

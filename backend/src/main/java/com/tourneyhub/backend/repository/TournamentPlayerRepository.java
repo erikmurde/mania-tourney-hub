@@ -12,6 +12,9 @@ import java.util.Optional;
 @Repository
 public interface TournamentPlayerRepository extends JpaRepository<TournamentPlayer, Long> {
 
+    @Query("FROM TournamentPlayer p WHERE p.tournament.id=:tournamentId AND p.status.name!='disqualified'")
+    List<TournamentPlayer> getAllValidTournamentStats(@Param("tournamentId") Long tournamentId);
+
     @Query("FROM TournamentPlayer p WHERE p.tournament.id=:tournamentId AND p.appUserId=:playerId")
     Optional<TournamentPlayer> getPlayerStatsInTournament(
             @Param("tournamentId") Long tournamentId,
