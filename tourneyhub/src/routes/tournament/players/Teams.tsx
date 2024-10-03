@@ -33,7 +33,7 @@ const Teams = () => {
             .then(teams => setTeams((hasValidRoles 
                 ? teams 
                 : teams.filter(team => team.status !== DISQUALIFIED))
-                .sort((a, b) => tourneyService.compareSeeds(a.seed, b.seed))
+                .sort((a, b) => tourneyService.compareSeeds(a.seed, b.seed) || (a.name > b.name ? 1 : -1))
             ));
     }, [tourney.id, hasValidRoles]);
 
