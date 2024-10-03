@@ -10,10 +10,12 @@ import { RoleDto } from '../../../../dto/RoleDto';
 import { RoleService } from '../../../../services/roleService';
 import { StatusService } from '../../../../services/statusService';
 import { TournamentDto } from '../../../../dto/tournament/TournamentDto';
+import LoadingButton from '../../../LoadingButton';
 
 const StaffApplicationForm = ({tourney}: {tourney: TournamentDto}) => {
     const { user } = useContext(AuthContext);
     const [open, setOpen] = useState(false);
+    const [loading, setLoading] = useState(false);
     const [roles, setRoles] = useState([] as RoleDto[]);
 
     useEffect(() => {
@@ -65,9 +67,7 @@ const StaffApplicationForm = ({tourney}: {tourney: TournamentDto}) => {
 
     return (  
         <FormDialogBase 
-            title={'Apply for staff'} 
-            submitActionName={'Apply'}
-            formName={'staff-application-form'} 
+            title={'Apply for staff'}
             open={open}
             setOpen={setOpen}
             btnProps={{
@@ -80,7 +80,17 @@ const StaffApplicationForm = ({tourney}: {tourney: TournamentDto}) => {
                     initialValues={initialValues} 
                     roles={filterRoles()} 
                     validationSchema={validationSchema}
-                    onSubmit={onSubmit}/>
+                    onSubmit={async(values) => {
+                        setLoading(true);
+                        await onSubmit(values);
+                        setLoading(false);
+                }}/>
+            }
+            submitBtn={
+                <LoadingButton loading={loading} type='submit' form='staff-application-form'
+                    sx={{ width: 90 }}>
+                    Apply
+                </LoadingButton>
             }/>
     );
 }

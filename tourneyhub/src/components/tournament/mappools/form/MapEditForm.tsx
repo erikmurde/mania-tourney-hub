@@ -89,7 +89,7 @@ const MapEditForm = ({mappool, map}: IProps) => {
                 />}
             </StyledDialogContent>
             <StyledDialogActions>
-                <LoadingButton loading={loading} variant='contained' type='submit' form='submitted-map-form' 
+                <LoadingButton loading={loading} type='submit' form='submitted-map-form' 
                     sx={{ width: 130 }}>
                     Auto-update
                 </LoadingButton>

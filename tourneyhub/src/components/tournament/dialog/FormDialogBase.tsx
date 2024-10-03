@@ -6,10 +6,9 @@ import { StyledIconButton } from '../../styled/StyledIconButton';
 
 interface IProps {
     title: string,
-    formName: string,
     form: JSX.Element,
+    submitBtn: JSX.Element,
     btnProps: ButtonProps,
-    submitActionName: string,
     btnIcon?: JSX.Element,
     size?: Breakpoint,
     description?: string,
@@ -19,8 +18,7 @@ interface IProps {
 }
 
 const FormDialogBase = ({
-    title, formName, btnIcon, submitActionName, btnProps, form, size, description, 
-    open, setOpen
+    title, btnIcon, btnProps, form, submitBtn, size, description, open, setOpen
     }: IProps) => {
 
     return (  
@@ -48,9 +46,7 @@ const FormDialogBase = ({
                 {form}
             </StyledDialogContent>
             <StyledDialogActions>
-                <Button variant='contained' type='submit' form={formName}>
-                    {submitActionName}
-                </Button>
+                {submitBtn}
             </StyledDialogActions>
         </Dialog>}
         </>

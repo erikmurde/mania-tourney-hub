@@ -10,6 +10,7 @@ import { REQUIRED } from '../../../constants';
 import { TournamentService } from '../../../services/tournamentService';
 import SuccessDialog from '../dialog/SuccessDialog';
 import { TournamentPublishDto } from '../../../dto/tournament/TournamentPublishDto';
+import LoadingButton from '../../LoadingButton';
 
 interface IProps {
     tourney: TournamentDto,
@@ -18,6 +19,7 @@ interface IProps {
 
 const TouramentPublishForm = ({tourney, updateTourney}: IProps) => {
     const [open, setOpen] = useState(false);
+    const [loading, setLoading] = useState(false);
     const [successOpen, setSuccessOpen] = useState(false);
     dayjs.extend(utc);
 
@@ -65,15 +67,23 @@ const TouramentPublishForm = ({tourney, updateTourney}: IProps) => {
                 The tournament can be made private again as long as no players have registered.
                 Mappools, schedules and ${tourney.minTeamSize > 1 ? 'teams' : 'players'} will retain their current visibility.
             `}
-            formName='tourney-publish-form'
-            submitActionName='Make public'
             open={open}
             setOpen={setOpen}
             form={
                 <TournamentPublishFormView
                     initialValues={initialValues}
                     validationSchema={validationSchema}
-                    onSubmit={onSubmit}/>
+                    onSubmit={async(values) => {
+                        setLoading(true);
+                        await onSubmit(values);
+                        setLoading(false);
+                }}/>
+            }
+            submitBtn={
+                <LoadingButton loading={loading} type='submit' form='tourney-publish-form'
+                    sx={{ width: 130 }}>
+                    Make public
+                </LoadingButton>
             }/>
         <SuccessDialog 
             open={successOpen} 

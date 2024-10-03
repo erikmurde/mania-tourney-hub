@@ -22,7 +22,7 @@ const StaffApplicationFormView = ({initialValues, roles, validationSchema, onSub
             {({ errors }) => (
                 <Form id='staff-application-form'>
                     <Grid container rowSpacing={2} marginTop={1}>
-                        <Grid item xs={6}>
+                        <Grid item xs>
                             <TourneySelectField name='roleId' label='Desired role' error={errors.roleId}
                                 options={roles.map(role => 
                                     <MenuItem key={role.id} value={role.id}>{role.name}</MenuItem>

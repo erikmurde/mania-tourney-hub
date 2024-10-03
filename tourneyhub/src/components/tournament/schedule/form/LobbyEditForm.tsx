@@ -12,12 +12,14 @@ import { UpdateContext } from '../../../../routes/Root';
 import { useTourney } from '../../../../routes/tournament/TournamentHeader';
 import { UserDtoSimple } from '../../../../dto/user/UserDtoSimple';
 import { LobbyCreateDto } from '../../../../dto/schedule/lobby/LobbyCreateDto';
+import LoadingButton from '../../../LoadingButton';
 
 const LobbyEditForm = ({lobby}: {lobby: LobbyDto}) => {
     const { tourney } = useTourney();
     const { scheduleUpdate, setScheduleUpdate } = useContext(UpdateContext);
-    const [open, setOpen] = useState(false);
     const [selectValues, setSelectValues] = useState([] as UserDtoSimple[]);
+    const [open, setOpen] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         if (open) {
@@ -54,10 +56,8 @@ const LobbyEditForm = ({lobby}: {lobby: LobbyDto}) => {
     return (  
         <FormDialogBase 
             title={'Edit lobby'} 
-            formName={'lobby-create-form'} 
             btnIcon={<Edit/>}
             btnProps={{ color: 'primary' }}
-            submitActionName={'Edit'}
             size='xs'
             open={open} 
             setOpen={setOpen}
@@ -66,7 +66,17 @@ const LobbyEditForm = ({lobby}: {lobby: LobbyDto}) => {
                     initialValues={initialValues} 
                     selectValues={selectValues} 
                     validationSchema={validationSchema} 
-                    onSubmit={onSubmit}/>
+                    onSubmit={async(values) => {
+                        setLoading(true);
+                        await onSubmit(values);
+                        setLoading(false);
+                }}/>
+            }
+            submitBtn={
+                <LoadingButton loading={loading} type='submit' form='lobby-create-form'
+                    sx={{ width: 80 }}>
+                    Edit
+                </LoadingButton>
             }/>
     );
 }

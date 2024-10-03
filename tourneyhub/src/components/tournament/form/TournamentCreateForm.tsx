@@ -7,10 +7,12 @@ import { useNavigate } from 'react-router-dom';
 import { TournamentService } from '../../../services/tournamentService';
 import TournamentFormView from './views/TournamentFormView';
 import { tournamentSchema } from '../../../domain/validation/tournamentSchema';
+import LoadingButton from '../../LoadingButton';
 
 const TournamentCreateForm = () => {
     const { user } = useContext(AuthContext);
     const [open, setOpen] = useState(false);
+    const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
     if (!user) {
@@ -75,16 +77,24 @@ const TournamentCreateForm = () => {
                 sx: { boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)' }
             }}
             size='md'
-            title='Create a new tournament' 
-            formName='tourney-form'
-            submitActionName='Create'
+            title='Create a new tournament'
             open={open}
             setOpen={setOpen}
             form={
                 <TournamentFormView
                     initialValues={initialValues}
                     validationSchema={tournamentSchema}
-                    onSubmit={onSubmit}/>
+                    onSubmit={async(values) => {
+                        setLoading(true);
+                        await onSubmit(values);
+                        setLoading(false);
+                }}/>
+            }
+            submitBtn={
+                <LoadingButton loading={loading} type='submit' form='tourney-form'
+                    sx={{ width: 100 }}>
+                    Create
+                </LoadingButton>
             }/>
     );
 }

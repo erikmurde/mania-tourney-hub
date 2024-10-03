@@ -81,7 +81,7 @@ const SubmittedCreateMapForm = ({dialogProps, stageId, hasTb, isDuplicateId}: IP
                 />
             </StyledDialogContent>
             <StyledDialogActions>
-                <LoadingButton loading={loading} variant='contained' type='submit' form='submitted-map-form' 
+                <LoadingButton loading={loading} type='submit' form='submitted-map-form' 
                     startIcon={<Add/>}
                     sx={{ width: 110 }}>
                     Create

@@ -11,6 +11,7 @@ import { INVALID_URL, REQUIRED, URL_REGEX } from '../../../../constants';
 import { TeamService } from '../../../../services/teamService';
 import { TournamentService } from '../../../../services/tournamentService';
 import { AuthContext } from '../../../../routes/Root';
+import LoadingButton from '../../../LoadingButton';
 
 interface IProps {
     user: UserDto,
@@ -21,6 +22,7 @@ interface IProps {
 const TeamRegisterForm = ({user, tourney, openSuccess}: IProps) => {
     const { updateUser } = useContext(AuthContext);
     const [open, setOpen] = useState(false);
+    const [loading, setLoading] = useState(false);
     const [players, setPlayers] = useState([] as UserDto[]);
     const [teams, setTeams] = useState([] as TeamDto[]);
 
@@ -98,19 +100,27 @@ const TeamRegisterForm = ({user, tourney, openSuccess}: IProps) => {
     return (  
         <FormDialogBase 
             title={`Register for ${tourney.code}`} 
-            formName='team-register-form' 
+            btnProps={{ title: 'Register' }}
+            open={open} 
+            setOpen={setOpen}
             form={
                 <TeamRegisterFormView
                     tourney={tourney}
                     initialValues={initialValues} 
                     selectValues={players}
                     validationShcema={validationSchema} 
-                    onSubmit={registerTeam}/>
+                    onSubmit={async(values) => {
+                        setLoading(true);
+                        await registerTeam(values);
+                        setLoading(false);
+                }}/>
             } 
-            btnProps={{ title: 'Register' }}
-            submitActionName='Register'
-            open={open} 
-            setOpen={setOpen}/>
+            submitBtn={
+                <LoadingButton loading={loading} type='submit' form='team-register-form'
+                    sx={{ width: 100 }}>
+                    Register
+                </LoadingButton>
+            }/>
     );
 }
  

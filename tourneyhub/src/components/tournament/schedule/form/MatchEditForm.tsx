@@ -13,6 +13,7 @@ import { MatchDto } from '../../../../dto/schedule/match/MatchDto';
 import { MatchService } from '../../../../services/matchService';
 import { useTourney } from '../../../../routes/tournament/TournamentHeader';
 import { MatchEditDto } from '../../../../dto/schedule/match/MatchEditDto';
+import LoadingButton from '../../../LoadingButton';
 
 const MatchEditForm = ({match}: {match: MatchDto}) => {
     const { tourney } = useTourney();
@@ -23,6 +24,8 @@ const MatchEditForm = ({match}: {match: MatchDto}) => {
         referees: [] as UserDtoSimple[]
     });
     const [open, setOpen] = useState(false);
+    const [loading, setLoading] = useState(false);
+
     const authService = new AuthService();
     dayjs.extend(utc);
 
@@ -79,10 +82,8 @@ const MatchEditForm = ({match}: {match: MatchDto}) => {
     return (  
         <FormDialogBase 
             title={'Edit match'} 
-            formName={'match-edit-form'} 
             btnIcon={<Edit/>}
-            btnProps={{ color: 'primary' }} 
-            submitActionName={'Edit'}
+            btnProps={{ color: 'primary' }}
             open={open} 
             setOpen={setOpen}
             form={
@@ -90,7 +91,17 @@ const MatchEditForm = ({match}: {match: MatchDto}) => {
                     initialValues={initialValues} 
                     selectValues={selectValues}
                     validationSchema={validationSchema}
-                    onSubmit={onSubmit}/>
+                    onSubmit={async(values) => {
+                        setLoading(true);
+                        await onSubmit(values);
+                        setLoading(false);
+                }}/>
+            }
+            submitBtn={
+                <LoadingButton loading={loading} type='submit' form='match-edit-form'
+                    sx={{ width: 80 }}>
+                    Edit
+                </LoadingButton>
             }/>
     );
 }

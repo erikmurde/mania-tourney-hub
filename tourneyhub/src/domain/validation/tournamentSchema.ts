@@ -22,7 +22,8 @@ export const tournamentSchema: Schema = object({
         .min(1, MIN1)
         .max(18, 'Must be 18 or less'),
     banner: string()
-        .required(REQUIRED),
+        .required(REQUIRED)
+        .matches(URL_REGEX, INVALID_URL),
     minPlayerRank: number()
         .when('restrictRank', ([restrictRank], schema) => {
             return restrictRank 

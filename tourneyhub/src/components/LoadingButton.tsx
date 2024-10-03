@@ -10,10 +10,13 @@ const LoadingButton = ({loading, children, ...btnProps}: IProps) => {
     const theme = useTheme();
 
     return (  
-        <Button {...btnProps} 
+        <Button variant='contained' {...btnProps}
+            sx={{ lineHeight: 0, ...btnProps.sx }}
             disabled={loading || btnProps.disabled} 
-            startIcon={loading ? <></> : btnProps.startIcon}
-            >
+            startIcon={loading 
+                ? <></> 
+                : btnProps.startIcon
+            }>
             {loading 
             ? <CircularProgress sx={{ color: theme.palette.text.disabled }} size={25}/>
             : children}

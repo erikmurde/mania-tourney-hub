@@ -85,7 +85,7 @@ const UnsubmittedMapCreateForm = ({dialogProps, hasTb, stageId}: IProps) => {
                     }}/>
             </StyledDialogContent>
             <StyledDialogActions>
-                <LoadingButton loading={loading} variant='contained' type='submit' form='unsubmitted-map-form' 
+                <LoadingButton loading={loading} type='submit' form='unsubmitted-map-form' 
                     startIcon={<Add/>}
                     sx={{ width: 110 }}>
                     Create

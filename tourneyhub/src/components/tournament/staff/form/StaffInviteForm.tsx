@@ -14,6 +14,7 @@ import { UserDtoSimple } from '../../../../dto/user/UserDtoSimple';
 import { RoleDto } from '../../../../dto/RoleDto';
 import { UserDto } from '../../../../dto/user/UserDto';
 import { StaffInviteCreateDto } from '../../../../dto/staff/invite/StaffInviteCreateDto';
+import LoadingButton from '../../../LoadingButton';
 
 interface IProps {
     roles: RoleDto[],
@@ -24,6 +25,7 @@ const StaffInviteForm = ({roles, user}: IProps) => {
     const { tourney } = useTourney();
 
     const [open, setOpen] = useState(false);
+    const [loading, setLoading] = useState(false);
     const [users, setUsers] = useState([] as UserDtoSimple[]);
 
     useEffect(() => {
@@ -69,12 +71,17 @@ const StaffInviteForm = ({roles, user}: IProps) => {
                     initialValues={initialValues} 
                     selectValues={{ users: users, roles: roles }}
                     validationSchema={validationSchema}
-                    onSubmit={onSubmit}/>
+                    onSubmit={async(values) => {
+                        setLoading(true);
+                        await onSubmit(values);
+                        setLoading(false);
+                    }}/>
             </StyledDialogContent>
             <StyledDialogActions>
-                <Button variant='contained' type='submit' form='staff-invite-form'>
+                <LoadingButton loading={loading} type='submit' form='staff-invite-form'
+                    sx={{ width: 80 }}>
                     Send
-                </Button>
+                </LoadingButton>
             </StyledDialogActions>
         </Dialog>}
         </>

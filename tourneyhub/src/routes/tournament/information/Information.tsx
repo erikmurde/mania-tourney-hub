@@ -9,6 +9,7 @@ import 'react-quill/dist/quill.snow.css';
 import { AuthService } from '../../../services/authService';
 import NoItems from '../../../components/tournament/NoItems';
 import { useTourney } from '../TournamentHeader';
+import LoadingButton from '../../../components/LoadingButton';
 
 const COLORS = [
     "#000000", "#e60000", "#ff9900", "#ffff00", "#008a00", "#0066cc", "#9933ff",
@@ -23,6 +24,7 @@ const Information = () => {
     const { user } = useContext(AuthContext);
     const [value, setValue] = useState('');
     const [edit, setEdit] = useState(false);
+    const [loading, setLoading] = useState(false);
     const service = new TournamentService();
 
     useEffect(() => {
@@ -71,6 +73,7 @@ const Information = () => {
         if (!user) {
             return;
         }
+        setLoading(true);
         await service.edit(tourney.id, {
             ...tourney, 
             information: value, 
@@ -79,6 +82,7 @@ const Information = () => {
                 .map(role => role.role)
         });
         setEdit(false);
+        setLoading(false);
     }
 
     const goBack = () => {
@@ -103,14 +107,14 @@ const Information = () => {
                         {edit ? 'Back' : 'Edit'}
                     </Button>}
                     {edit && 
-                    <Button 
+                    <LoadingButton
+                        loading={loading}
                         sx={{ marginLeft: 1, width: 100 }} 
-                        variant='contained' 
                         color='success' 
                         onClick={() => editInfo()}
                         >
                         Save
-                    </Button>}
+                    </LoadingButton>}
                 </Grid>
                 <Grid item xs={12} marginLeft={5} marginRight={5}>
                     <ReactQuill

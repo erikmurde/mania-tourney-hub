@@ -17,6 +17,7 @@ import { AuthService } from '../../services/authService';
 import { useNavigate } from 'react-router-dom';
 import ForeignProfileInfo from '../../components/profile/ForeignProfileInfo';
 import { UserEditDto } from '../../dto/user/UserEditDto';
+import LoadingButton from '../../components/LoadingButton';
 
 interface IProps {
     owner: UserDto,
@@ -27,17 +28,20 @@ interface IProps {
 const Profile = ({owner, open, setOpen}: IProps) => {
     const { user } = useContext(AuthContext);
     const [tabId, setTabId] = useState(0);
+    const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
     const isOwner = user && user.id === owner.id;
 
     const onSubmit = async(values: UserEditDto) => {
         if (isOwner) {
+            setLoading(true);
             owner.discordUsername = values.discordUsername;
             owner.timezone = values.timezone;
 
             await new AuthService().updateMe(values);
             setOpen(false);
+            setLoading(false);
         }
     }
 
@@ -83,9 +87,11 @@ const Profile = ({owner, open, setOpen}: IProps) => {
             </StyledDialogContent>
             <StyledDialogActions>
                 {tabId === 0 && isOwner &&
-                <Button variant='contained' type='submit' form='user-edit-form' startIcon={<Edit/>}>
+                <LoadingButton loading={loading} type='submit' form='user-edit-form' 
+                    startIcon={<Edit/>}
+                    sx={{ width: 100 }}>
                     Save
-                </Button>}
+                </LoadingButton>}
             </StyledDialogActions>
         </Dialog>
     );

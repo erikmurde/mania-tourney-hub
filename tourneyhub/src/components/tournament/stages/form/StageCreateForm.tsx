@@ -1,5 +1,5 @@
 import { Add } from '@mui/icons-material';
-import { Button, Dialog } from '@mui/material';
+import { Dialog } from '@mui/material';
 import { StyledDialogActions } from '../../../styled/StyledDialogActions';
 import { StyledDialogContent } from '../../../styled/styledDialogContent';
 import TourneyDialogTitle from '../../dialog/TourneyDialogTitle';
@@ -7,13 +7,14 @@ import { IStageDto } from '../../../../dto/stage/IStageDto';
 import StageCreateFormView from './views/StageCreateFormView';
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { UpdateContext } from '../../../../routes/Root';
 import { StageService } from '../../../../services/stageService';
 import { Schema, date, number, object, string } from 'yup';
 import { QUALIFIER, REQUIRED, STANDARD } from '../../../../constants';
 import { StageTypeService } from '../../../../services/stageTypeService';
 import { useTourney } from '../../../../routes/tournament/TournamentHeader';
+import LoadingButton from '../../../LoadingButton';
 
 interface IProps {
     type: string,
@@ -24,6 +25,7 @@ interface IProps {
 const StageCreateForm = ({type, open, onClose}: IProps) => {
     const { stageUpdate, setStageUpdate } = useContext(UpdateContext);
     const { tourney } = useTourney();
+    const [loading, setLoading] = useState(false);
     dayjs.extend(utc);
 
     const onSubmit = async(values: IStageDto) => {
@@ -83,13 +85,19 @@ const StageCreateForm = ({type, open, onClose}: IProps) => {
                 <StageCreateFormView 
                     initialValues={initialValues} 
                     validationSchema={validationSchema}
-                    onSubmit={onSubmit}
+                    onSubmit={async(values) => {
+                        setLoading(true);
+                        await onSubmit(values);
+                        setLoading(false);
+                    }}
                 />
             </StyledDialogContent>
             <StyledDialogActions>
-                <Button variant='contained' type='submit' form='stage-create-form' startIcon={<Add/>}>
+                <LoadingButton loading={loading} type='submit' form='stage-create-form' 
+                    startIcon={<Add/>}
+                    sx={{ width: 110 }}>
                     Create
-                </Button>
+                </LoadingButton>
             </StyledDialogActions>
         </Dialog>
     );

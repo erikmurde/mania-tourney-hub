@@ -12,12 +12,14 @@ import utc from 'dayjs/plugin/utc';
 import { useTourney } from '../../../../routes/tournament/TournamentHeader';
 import { UserDtoSimple } from '../../../../dto/user/UserDtoSimple';
 import { LobbyCreateDto } from '../../../../dto/schedule/lobby/LobbyCreateDto';
+import LoadingButton from '../../../LoadingButton';
 
 const LobbyCreateForm = ({stageId}: {stageId: string}) => {
     const { tourney } = useTourney();
     const { scheduleUpdate, setScheduleUpdate } = useContext(UpdateContext);
     const [selectValues, setSelectValues] = useState([] as UserDtoSimple[]);
     const [open, setOpen] = useState(false);
+    const [loading, setLoading] = useState(false);
     dayjs.extend(utc);
 
     useEffect(() => {
@@ -49,14 +51,12 @@ const LobbyCreateForm = ({stageId}: {stageId: string}) => {
 
     return (  
         <FormDialogBase 
-            title={'Schedule new lobby'} 
-            formName={'lobby-create-form'} 
+            title={'Schedule new lobby'}
             btnProps={{ 
                 title: 'Add lobby', 
                 startIcon: <PlaylistAdd/>, 
                 sx: { width: 150 }
             }} 
-            submitActionName={'Schedule'}
             size='xs'
             open={open} 
             setOpen={setOpen}
@@ -65,7 +65,17 @@ const LobbyCreateForm = ({stageId}: {stageId: string}) => {
                     initialValues={initialValues} 
                     selectValues={selectValues} 
                     validationSchema={validationSchema} 
-                    onSubmit={onSubmit}/>
+                    onSubmit={async(values) => {
+                        setLoading(true);
+                        await onSubmit(values);
+                        setLoading(false);
+                }}/>
+            }
+            submitBtn={
+                <LoadingButton loading={loading} type='submit' form='lobby-create-form'
+                    sx={{ width: 110 }}>
+                    Schedule
+                </LoadingButton>
             }/>
     );
 }

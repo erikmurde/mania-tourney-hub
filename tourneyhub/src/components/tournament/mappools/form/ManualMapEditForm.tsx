@@ -66,7 +66,7 @@ const ManualMapEditForm = ({dialogProps, initialValues, mapTypes, hasTb, isDupli
                 />
             </StyledDialogContent>
             <StyledDialogActions>
-                <LoadingButton loading={loading} variant='contained' type='submit' form='unsubmitted-map-form' 
+                <LoadingButton loading={loading} type='submit' form='unsubmitted-map-form' 
                     startIcon={<Edit/>}
                     sx={{ width: 100 }}>
                     Edit

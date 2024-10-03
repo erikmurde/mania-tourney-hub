@@ -8,6 +8,7 @@ import { tournamentSchema } from '../../../domain/validation/tournamentSchema';
 import { TournamentEdit } from '../../../domain/TournamentEdit';
 import { TournamentService } from '../../../services/tournamentService';
 import { ROLE_REG } from '../../../constants';
+import LoadingButton from '../../LoadingButton';
 
 interface IProps {
     tourney: TournamentDto,
@@ -17,6 +18,7 @@ interface IProps {
 
 const TournamentEditForm = ({tourney, user, updateTourney}: IProps) => {
     const [open, setOpen] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     const onSubmit = async(values: TournamentEdit) => {
         const {teamTourney, restrictRank, ...tourneyEdit} = values;
@@ -29,8 +31,6 @@ const TournamentEditForm = ({tourney, user, updateTourney}: IProps) => {
             tourneyEdit.minPlayerRank = 0;
             tourneyEdit.maxPlayerRank = 0;
         }
-        console.log(tourneyEdit);
-
         await new TournamentService().edit(tourney.id, tourneyEdit);
 
         updatePlayerRoles(tourneyEdit.hostRoles);
@@ -40,7 +40,8 @@ const TournamentEditForm = ({tourney, user, updateTourney}: IProps) => {
 
     
     const updatePlayerRoles = (roles: string[]) => {
-        user.roles = [];
+        user.roles = user.roles
+            .filter(role => role.tournamentId !== tourney.id);
 
         roles.forEach(role => user.roles.push({
             role: role,
@@ -55,9 +56,7 @@ const TournamentEditForm = ({tourney, user, updateTourney}: IProps) => {
         <FormDialogBase
             btnProps={{ title: 'Edit', startIcon: <Edit/> }}
             size='md'
-            title='Edit tournament' 
-            formName='tourney-form'
-            submitActionName='Edit'
+            title='Edit tournament'
             open={open}
             setOpen={setOpen}
             form={
@@ -71,7 +70,17 @@ const TournamentEditForm = ({tourney, user, updateTourney}: IProps) => {
                             .map(tourneyRole => tourneyRole.role)
                     }} 
                     validationSchema={tournamentSchema} 
-                    onSubmit={onSubmit}/>
+                    onSubmit={async(values) => {
+                        setLoading(true);
+                        await onSubmit(values);
+                        setLoading(false);
+                }}/>
+            }
+            submitBtn={
+                <LoadingButton loading={loading} type='submit' form='tourney-form'
+                    sx={{ width: 80 }}>
+                    Edit
+                </LoadingButton>
             }/>
     );
 }

@@ -14,6 +14,7 @@ import { useTourney } from '../../../../routes/tournament/TournamentHeader';
 import FormDialogBase from '../../dialog/FormDialogBase';
 import MatchCreateFormView from './views/MatchCreateFormView';
 import { TeamService } from '../../../../services/teamService';
+import LoadingButton from '../../../LoadingButton';
 
 const MatchCreateForm = ({stageId}: {stageId: string}) => {
     const { tourney } = useTourney();
@@ -26,6 +27,7 @@ const MatchCreateForm = ({stageId}: {stageId: string}) => {
         commentators: [] as UserDtoSimple[]
     });
     const [open, setOpen] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     const isTeam = tourney.minTeamSize > 1;
     const service = new AuthService();
@@ -106,13 +108,11 @@ const MatchCreateForm = ({stageId}: {stageId: string}) => {
     return (  
         <FormDialogBase 
             title={'Schedule new match'} 
-            formName={'match-create-form'} 
             btnProps={{ 
                 title: 'Add match', 
                 startIcon: <PlaylistAdd/>, 
                 sx: { width: 150 }
-            }} 
-            submitActionName={'Schedule'}
+            }}
             open={open} 
             setOpen={setOpen}
             form={
@@ -120,7 +120,17 @@ const MatchCreateForm = ({stageId}: {stageId: string}) => {
                     initialValues={initialValues}
                     selectValues={selectValues}
                     validationSchema={validationSchema}
-                    onSubmit={onSubmit}/>
+                    onSubmit={async(values) => {
+                        setLoading(true);
+                        await onSubmit(values);
+                        setLoading(false);
+                }}/>
+            }
+            submitBtn={
+                <LoadingButton loading={loading} type='submit' form='match-create-form'
+                    sx={{ width: 120 }}>
+                    Add match
+                </LoadingButton>
             }/>
     );
 }

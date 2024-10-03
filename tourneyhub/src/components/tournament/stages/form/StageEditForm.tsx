@@ -1,5 +1,5 @@
 import { Edit } from '@mui/icons-material';
-import { IconButton, Dialog, Button } from '@mui/material';
+import { IconButton, Dialog } from '@mui/material';
 import { StyledDialogActions } from '../../../styled/StyledDialogActions';
 import { StyledDialogContent } from '../../../styled/styledDialogContent';
 import TourneyDialogTitle from '../../dialog/TourneyDialogTitle';
@@ -12,10 +12,12 @@ import { UpdateContext } from '../../../../routes/Root';
 import { StageService } from '../../../../services/stageService';
 import { Schema, object, string, number, date } from 'yup';
 import { QUALIFIER, REQUIRED, STANDARD } from '../../../../constants';
+import LoadingButton from '../../../LoadingButton';
 
 const StageEditForm = ({initialValues}: {initialValues: IStageDto}) => {
     const { stageUpdate, setStageUpdate } = useContext(UpdateContext);
     const [open, setOpen] = useState(false);
+    const [loading, setLoading] = useState(false);
     dayjs.extend(utc);
 
     const onSubmit = async(values: IStageDto) => {
@@ -62,13 +64,19 @@ const StageEditForm = ({initialValues}: {initialValues: IStageDto}) => {
                     <StageEditFormView
                         initialValues={{...initialValues, schedulingDeadline: dayjs.utc(initialValues.schedulingDeadline)}}
                         validationSchema={validationSchema}
-                        onSubmit={onSubmit}
+                        onSubmit={async(values) => {
+                            setLoading(true);
+                            await onSubmit(values);
+                            setLoading(false);
+                        }}
                     />
                 </StyledDialogContent>
                 <StyledDialogActions>
-                    <Button variant='contained' type='submit' form='stage-edit-form' startIcon={<Edit/>}>
+                    <LoadingButton loading={loading} type='submit' form='stage-edit-form' 
+                        startIcon={<Edit/>}
+                        sx={{ width: 100 }}>
                         Edit
-                    </Button>
+                    </LoadingButton>
                 </StyledDialogActions>
             </Dialog>}
         </>
