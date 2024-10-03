@@ -133,7 +133,7 @@ public class SecurityConfig {
 
     private ClientRegistration osuWebClientRegistration() {
         return ClientRegistration
-                .withRegistrationId("osu-web")
+                .withRegistrationId("osu-client-credentials")
                 .clientId("29436")
                 .clientSecret("nVPI68rYhCUAVFSf0Y0yOPRyPw1r2PgV8ulAkPfU")
                 .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)

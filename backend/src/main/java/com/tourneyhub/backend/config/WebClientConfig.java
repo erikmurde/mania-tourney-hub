@@ -18,7 +18,7 @@ public class WebClientConfig {
         var oauth = new ServletOAuth2AuthorizedClientExchangeFilterFunction(clientRegistrations, authorizedClients);
 
         oauth.setDefaultOAuth2AuthorizedClient(true);
-        oauth.setDefaultClientRegistrationId("osu-web");
+        oauth.setDefaultClientRegistrationId("osu-client-credentials");
 
         return WebClient.builder()
                 .baseUrl("https://osu.ppy.sh/api/v2")
