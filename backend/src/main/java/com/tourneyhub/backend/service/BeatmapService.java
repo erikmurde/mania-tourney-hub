@@ -1,11 +1,12 @@
 package com.tourneyhub.backend.service;
 
 import com.tourneyhub.backend.domain.Beatmap;
-import com.tourneyhub.backend.domain.MapType;
+import com.tourneyhub.backend.domain.BeatmapType;
 import com.tourneyhub.backend.dto.map.BeatmapDto;
 import com.tourneyhub.backend.dto.map.osuApi.OsuBeatmapDto;
 import com.tourneyhub.backend.dto.map.SubmittedBeatmapDto;
-import com.tourneyhub.backend.mapper.MapMapper;
+import com.tourneyhub.backend.helper.Constants;
+import com.tourneyhub.backend.mapper.BeatmapMapper;
 import com.tourneyhub.backend.repository.RepositoryUow;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -24,9 +25,9 @@ public class BeatmapService {
 
     private final RepositoryUow uow;
 
-    private final MapMapper mapper;
+    private final BeatmapMapper mapper;
 
-    public BeatmapService(WebClient webClient, RepositoryUow uow, MapMapper mapper) {
+    public BeatmapService(WebClient webClient, RepositoryUow uow, BeatmapMapper mapper) {
         this.webClient = webClient;
         this.uow = uow;
         this.mapper = mapper;
@@ -47,17 +48,17 @@ public class BeatmapService {
     }
 
     public void createSubmitted(SubmittedBeatmapDto mapDto, String suggestor) {
-        MapType mapType = fetchMapType(mapDto.getMapTypeId());
+        BeatmapType mapType = fetchMapType(mapDto.getMapTypeId());
         Beatmap beatmap = mapper.mapOsuDtoToEntity(fetchBeatmapFromOsu(mapDto.getBeatmapId()));
 
         Long stageId = mapDto.getStageId();
-        boolean isTb = mapType.getName().equals("TB");
+        boolean isTb = mapType.getName().equals(Constants.TB);
 
         validateDuplicateTb(isTb, stageId);
         validateDuplicateBeatmapId(0L, stageId, beatmap.getBeatmapId());
 
         beatmap.setStage(uow.stageRepository.getReferenceById(stageId));
-        beatmap.setMapType(mapType);
+        beatmap.setBeatmapType(mapType);
         beatmap.setIndex(isTb ? 0 : mapDto.getIndex());
         beatmap.setComment(mapDto.getComment());
         beatmap.setSuggestor(suggestor);
@@ -66,8 +67,8 @@ public class BeatmapService {
     }
 
     public void createUnsubmitted(BeatmapDto mapDto, String suggestor) {
-        MapType mapType = fetchMapType(mapDto.getMapTypeId());
-        boolean isTb = mapType.getName().equals("TB");
+        BeatmapType mapType = fetchMapType(mapDto.getMapTypeId());
+        boolean isTb = mapType.getName().equals(Constants.TB);
 
         validateDuplicateTb(isTb, mapDto.getStageId());
 
@@ -79,12 +80,12 @@ public class BeatmapService {
     }
 
     public void updateSubmitted(Long mapId, SubmittedBeatmapDto mapDto) {
-        MapType mapType = fetchMapType(mapDto.getMapTypeId());
+        BeatmapType mapType = fetchMapType(mapDto.getMapTypeId());
         Beatmap beatmapFromOsu = mapper.mapOsuDtoToEntity(fetchBeatmapFromOsu(mapDto.getBeatmapId()));
         Beatmap beatmap = fetchMap(mapId);
 
         Long stageId = beatmap.getStage().getId();
-        boolean isTb = mapType.getName().equals("TB");
+        boolean isTb = mapType.getName().equals(Constants.TB);
 
         validateDuplicateTb(isTb, stageId);
         validateDuplicateBeatmapId(mapId, stageId, mapDto.getBeatmapId());
@@ -93,7 +94,7 @@ public class BeatmapService {
         beatmapFromOsu.setStage(uow.stageRepository.getReferenceById(stageId));
         beatmapFromOsu.setSuggestor(beatmap.getSuggestor());
         beatmapFromOsu.setIndex(isTb ? 0 : mapDto.getIndex());
-        beatmapFromOsu.setMapType(mapType);
+        beatmapFromOsu.setBeatmapType(mapType);
         beatmapFromOsu.setComment(mapDto.getComment());
         beatmapFromOsu.setInMappool(false);
         uow.mapRepository.save(beatmapFromOsu);
@@ -103,9 +104,9 @@ public class BeatmapService {
         if (mapDto.isInMappool()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
-        MapType mapType = fetchMapType(mapDto.getMapTypeId());
+        BeatmapType mapType = fetchMapType(mapDto.getMapTypeId());
         Long stageId = fetchMap(mapId).getStage().getId();
-        boolean isTb = mapType.getName().equals("TB");
+        boolean isTb = mapType.getName().equals(Constants.TB);
 
         validateDuplicateTb(isTb, stageId);
         validateDuplicateBeatmapId(mapId, stageId, mapDto.getBeatmapId());
@@ -125,7 +126,7 @@ public class BeatmapService {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
         Optional<Beatmap> mapInMappool = uow.mapRepository.findCurrentMapInMappool(
-                beatmap.getStage().getId(), beatmap.getMapType().getId(), beatmap.getIndex()
+                beatmap.getStage().getId(), beatmap.getBeatmapType().getId(), beatmap.getIndex()
         );
         mapInMappool.ifPresent(toRemove -> {
             toRemove.setInMappool(false);
@@ -182,7 +183,7 @@ public class BeatmapService {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
-    private MapType fetchMapType(Long id) {
+    private BeatmapType fetchMapType(Long id) {
         return uow.mapTypeRepository
                 .findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));

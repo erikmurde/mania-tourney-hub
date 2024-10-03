@@ -1,28 +1,28 @@
 package com.tourneyhub.backend.mapper;
 
 import com.tourneyhub.backend.domain.Beatmap;
-import com.tourneyhub.backend.domain.MapType;
+import com.tourneyhub.backend.domain.BeatmapType;
 import com.tourneyhub.backend.dto.map.BeatmapDto;
 import com.tourneyhub.backend.dto.map.osuApi.OsuBeatmapDto;
 import com.tourneyhub.backend.dto.map.osuApi.OsuBeatmapSetDto;
-import com.tourneyhub.backend.repository.MapTypeRepository;
+import com.tourneyhub.backend.repository.BeatmapTypeRepository;
 import com.tourneyhub.backend.repository.StageRepository;
 import org.springframework.stereotype.Component;
 
 @Component
-public class MapMapper {
+public class BeatmapMapper {
 
-    private final MapTypeRepository mapTypeRepository;
+    private final BeatmapTypeRepository mapTypeRepository;
 
     private final StageRepository stageRepository;
 
-    public MapMapper(MapTypeRepository mapTypeRepository, StageRepository stageRepository) {
+    public BeatmapMapper(BeatmapTypeRepository mapTypeRepository, StageRepository stageRepository) {
         this.mapTypeRepository = mapTypeRepository;
         this.stageRepository = stageRepository;
     }
 
     public BeatmapDto mapToDto(Beatmap beatmap) {
-        MapType mapType = beatmap.getMapType();
+        BeatmapType mapType = beatmap.getBeatmapType();
 
         return new BeatmapDto(
                 beatmap.getId(),
@@ -69,7 +69,7 @@ public class MapMapper {
         beatmap.setIndex(mapDto.getIndex());
         beatmap.setComment(mapDto.getComment());
         beatmap.setSongPreview(mapDto.getSongPreview());
-        beatmap.setMapType(mapTypeRepository.getReferenceById(mapDto.getMapTypeId()));
+        beatmap.setBeatmapType(mapTypeRepository.getReferenceById(mapDto.getMapTypeId()));
         beatmap.setStage(stageRepository.getReferenceById(mapDto.getStageId()));
 
         return beatmap;

@@ -68,7 +68,8 @@ public class UserService {
                 .findById(tournamentId)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
-        if (!tournament.isPlayersPublished() && !hasAnyRole(tournamentId, principal, "host", "admin")) {
+        if (!tournament.isPlayersPublished() &&
+                !hasAnyRole(tournamentId, principal, Constants.HOST, Constants.ADMIN)) {
             return new ArrayList<>();
         }
         return uow.userRepository

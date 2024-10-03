@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 @AllArgsConstructor
-public class MapScore extends BaseEntity {
+public class Score extends BaseEntity {
 
     @Min(0)
     private int score;
@@ -34,7 +34,7 @@ public class MapScore extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn
-    private Beatmap map;
+    private Beatmap beatmap;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn

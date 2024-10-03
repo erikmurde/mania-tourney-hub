@@ -68,12 +68,12 @@ public class Beatmap extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn
-    private MapType mapType;
+    private BeatmapType beatmapType;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn
     private Stage stage;
 
-    @OneToMany(mappedBy = "map", cascade = CascadeType.REMOVE)
-    private List<MapScore> scores = new ArrayList<>();
+    @OneToMany(mappedBy = "beatmap", cascade = CascadeType.REMOVE)
+    private List<Score> scores = new ArrayList<>();
 }

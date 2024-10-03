@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class MapTypeDto {
+public class BeatmapTypeDto {
 
     private Long id;
 

@@ -1,7 +1,15 @@
+buildscript {
+    dependencies {
+        classpath 'org.postgresql:postgresql:42.7.4'
+        classpath 'org.flywaydb:flyway-database-postgresql:10.18.2'
+    }
+}
+
 plugins {
     id 'java'
     id 'org.springframework.boot' version '3.3.3'
     id 'io.spring.dependency-management' version '1.1.6'
+    id 'org.flywaydb.flyway' version '10.18.2'
 }
 
 group = 'com.tourneyhub'
@@ -31,15 +39,24 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework:spring-webflux'
+    implementation 'org.postgresql:postgresql:42.7.4'
     implementation 'io.projectreactor.netty:reactor-netty'
+    compileOnly 'org.flywaydb:flyway-core:10.18.2'
     compileOnly 'org.projectlombok:lombok'
+    runtimeOnly 'org.flywaydb:flyway-database-postgresql:10.18.2'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
-    runtimeOnly 'org.postgresql:postgresql'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
-tasks.named('test') {
-    useJUnitPlatform()
+flyway {
+    def props = new Properties()
+
+    file('src/main/resources/application.properties').withInputStream { props.load(it) }
+
+    url = props.getProperty('spring.datasource.url')
+    driver = props.getProperty('spring.datasource.driver-class-name')
+    user = props.getProperty('spring.datasource.username')
+    password = props.getProperty('spring.datasource.password')
 }

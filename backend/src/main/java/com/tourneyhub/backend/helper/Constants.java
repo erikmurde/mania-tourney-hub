@@ -4,6 +4,15 @@ import java.util.HashMap;
 
 public class Constants {
 
+    // Statuses
+    public static final String PENDING = "pending";
+    public static final String ACCEPTED = "accepted";
+    public static final String RETRACTED = "retracted";
+    public static final String REGISTERED = "registered";
+    public static final String ACTIVE = "active";
+    public static final String ELIMINATED = "eliminated";
+    public static final String DISQUALIFIED = "disqualified";
+
     // Roles
     public static final String PLAYER = "player";
     public static final String HOST = "host";
@@ -32,6 +41,9 @@ public class Constants {
         ROLE_CAN_REG.put(SHEETER, false);
         ROLE_CAN_REG.put(GFX, false);
     }
+
+    // Beatmap types
+    public static final String TB = "TB";
 
     // Regex
     public static final String URL_REGEX = (

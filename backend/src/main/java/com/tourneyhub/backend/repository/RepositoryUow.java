@@ -19,9 +19,9 @@ public class RepositoryUow {
 
     public final BeatmapRepository mapRepository;
 
-    public final MapTypeRepository mapTypeRepository;
+    public final BeatmapTypeRepository mapTypeRepository;
 
-    public final MapScoreRepository mapScoreRepository;
+    public final ScoreRepository scoreRepository;
 
     public final TournamentRepository tournamentRepository;
 
@@ -39,8 +39,8 @@ public class RepositoryUow {
             EventRepository eventRepository,
             StageRepository stageRepository,
             BeatmapRepository mapRepository,
-            MapTypeRepository mapTypeRepository,
-            MapScoreRepository mapScoreRepository,
+            BeatmapTypeRepository mapTypeRepository,
+            ScoreRepository scoreRepository,
             TournamentRepository tournamentRepository,
             TournamentRoleRepository tournamentRoleRepository,
             TournamentPlayerRepository statsRepository,
@@ -54,7 +54,7 @@ public class RepositoryUow {
         this.stageRepository = stageRepository;
         this.mapRepository = mapRepository;
         this.mapTypeRepository = mapTypeRepository;
-        this.mapScoreRepository = mapScoreRepository;
+        this.scoreRepository = scoreRepository;
         this.tournamentRepository = tournamentRepository;
         this.tournamentRoleRepository = tournamentRoleRepository;
         this.statsRepository = statsRepository;

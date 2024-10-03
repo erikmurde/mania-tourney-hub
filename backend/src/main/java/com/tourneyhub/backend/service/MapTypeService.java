@@ -1,8 +1,8 @@
 package com.tourneyhub.backend.service;
 
-import com.tourneyhub.backend.dto.MapTypeDto;
-import com.tourneyhub.backend.mapper.MapTypeMapper;
-import com.tourneyhub.backend.repository.MapTypeRepository;
+import com.tourneyhub.backend.dto.BeatmapTypeDto;
+import com.tourneyhub.backend.mapper.BeatmapTypeMapper;
+import com.tourneyhub.backend.repository.BeatmapTypeRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,16 +10,16 @@ import java.util.List;
 @Service
 public class MapTypeService {
 
-    private final MapTypeRepository repository;
+    private final BeatmapTypeRepository repository;
 
-    private final MapTypeMapper mapper;
+    private final BeatmapTypeMapper mapper;
 
-    public MapTypeService(MapTypeRepository repository, MapTypeMapper mapper) {
+    public MapTypeService(BeatmapTypeRepository repository, BeatmapTypeMapper mapper) {
         this.repository = repository;
         this.mapper = mapper;
     }
 
-    public List<MapTypeDto> getAll() {
+    public List<BeatmapTypeDto> getAll() {
         return repository
                 .findAll().stream()
                 .map(mapper::mapToDto)

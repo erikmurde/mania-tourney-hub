@@ -3,4 +3,4 @@ package com.tourneyhub.backend.domain;
 import jakarta.persistence.Entity;
 
 @Entity
-public class MapType extends BaseEntityWithName {}
+public class BeatmapType extends BaseEntityWithName {}

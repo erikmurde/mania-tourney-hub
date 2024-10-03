@@ -23,7 +23,7 @@ public interface BeatmapRepository extends JpaRepository<Beatmap, Long> {
 
     @Query(
             "FROM Beatmap m WHERE m.stage.id=:stageId " +
-            "AND m.mapType.id=:mapTypeId AND m.index=:index AND m.inMappool = true"
+            "AND m.beatmapType.id=:mapTypeId AND m.index=:index AND m.inMappool = true"
     )
     Optional<Beatmap> findCurrentMapInMappool(
             @Param("stageId") Long stageId,
@@ -34,6 +34,6 @@ public interface BeatmapRepository extends JpaRepository<Beatmap, Long> {
     @Query("FROM Beatmap m WHERE m.stage.id=:stageId AND m.beatmapId=:beatmapId")
     Optional<Beatmap> findInStageByBeatmapId(@Param("stageId") Long stageId, @Param("beatmapId") Integer beatmapId);
 
-    @Query("FROM Beatmap m WHERE m.stage.id=:stageId AND m.mapType.name='TB'")
+    @Query("FROM Beatmap m WHERE m.stage.id=:stageId AND m.beatmapType.name='TB'")
     Optional<Beatmap> findTiebreakerInStage(@Param("stageId") Long stageId);
 }

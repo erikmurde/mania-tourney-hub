@@ -4,6 +4,7 @@ import com.tourneyhub.backend.domain.*;
 import com.tourneyhub.backend.dto.team.SimpleTeamDto;
 import com.tourneyhub.backend.dto.team.TeamCreateDto;
 import com.tourneyhub.backend.dto.team.TeamDto;
+import com.tourneyhub.backend.helper.Constants;
 import com.tourneyhub.backend.mapper.TeamMapper;
 import com.tourneyhub.backend.mapper.TournamentPlayerMapper;
 import com.tourneyhub.backend.mapper.TournamentRoleMapper;
@@ -82,10 +83,10 @@ public class TeamService {
 
     private void createUserRoles(TeamCreateDto dto, Tournament tournament, Team team, Long currentUserId) {
         Role role = uow.roleRepository
-                .findByName("player")
+                .findByName(Constants.PLAYER)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         Status status = uow.statusRepository
-                .findByName("registered")
+                .findByName(Constants.REGISTERED)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
         for (Long playerId : dto.getPlayers()) {

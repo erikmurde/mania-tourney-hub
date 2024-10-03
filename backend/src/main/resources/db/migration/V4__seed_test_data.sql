@@ -1,279 +1,3 @@
--- STATUSES -----------------------------------------------------------------------------------------------------------
-
-INSERT INTO status (name) VALUES ('pending');
-INSERT INTO status (name) VALUES ('accepted');
-INSERT INTO status (name) VALUES ('rejected');
-INSERT INTO status (name) VALUES ('retracted');
-INSERT INTO status (name) VALUES ('registered');
-INSERT INTO status (name) VALUES ('active');
-INSERT INTO status (name) VALUES ('eliminated');
-INSERT INTO status (name) VALUES ('disqualified');
-
--- STAGE TYPES --------------------------------------------------------------------------------------------------------
-
-INSERT INTO stage_type (name) VALUES ('standard');
-INSERT INTO stage_type (name) VALUES ('qualifier');
-
--- MAP TYPES ----------------------------------------------------------------------------------------------------------
-
-INSERT INTO map_type (name) VALUES ('RC');
-INSERT INTO map_type (name) VALUES ('LN');
-INSERT INTO map_type (name) VALUES ('HB');
-INSERT INTO map_type (name) VALUES ('SV');
-INSERT INTO map_type (name) VALUES ('TB');
-
--- ROLES --------------------------------------------------------------------------------------------------------------
-
-INSERT INTO role (name) VALUES ('player');
-INSERT INTO role (name) VALUES ('host');
-INSERT INTO role (name) VALUES ('admin');
-INSERT INTO role (name) VALUES ('mappooler');
-INSERT INTO role (name) VALUES ('mapper');
-INSERT INTO role (name) VALUES ('playtester');
-INSERT INTO role (name) VALUES ('referee');
-INSERT INTO role (name) VALUES ('streamer');
-INSERT INTO role (name) VALUES ('commentator');
-INSERT INTO role (name) VALUES ('sheeter');
-INSERT INTO role (name) VALUES ('gfx');
-
--- COUNTRIES ----------------------------------------------------------------------------------------------------------
-
-INSERT INTO country (name, iso2) VALUES ('Andorra', 'AD');
-INSERT INTO country (name, iso2) VALUES ('United Arab Emirates', 'AE');
-INSERT INTO country (name, iso2) VALUES ('Afghanistan', 'AF');
-INSERT INTO country (name, iso2) VALUES ('Antigua and Barbuda', 'AG');
-INSERT INTO country (name, iso2) VALUES ('Anguilla', 'AI');
-INSERT INTO country (name, iso2) VALUES ('Albania', 'AL');
-INSERT INTO country (name, iso2) VALUES ('Armenia', 'AM');
-INSERT INTO country (name, iso2) VALUES ('Angola', 'AO');
-INSERT INTO country (name, iso2) VALUES ('Argentina', 'AR');
-INSERT INTO country (name, iso2) VALUES ('American Samoa', 'AS');
-INSERT INTO country (name, iso2) VALUES ('Austria', 'AT');
-INSERT INTO country (name, iso2) VALUES ('Australia', 'AU');
-INSERT INTO country (name, iso2) VALUES ('Aruba', 'AW');
-INSERT INTO country (name, iso2) VALUES ('Allard Islands', 'AX');
-INSERT INTO country (name, iso2) VALUES ('Azerbaijan', 'AZ');
-INSERT INTO country (name, iso2) VALUES ('Bosnia and Herzegovina', 'BA');
-INSERT INTO country (name, iso2) VALUES ('Barbados', 'BB');
-INSERT INTO country (name, iso2) VALUES ('Bangladesh', 'BD');
-INSERT INTO country (name, iso2) VALUES ('Belgium', 'BE');
-INSERT INTO country (name, iso2) VALUES ('Burkina Faso', 'BF');
-INSERT INTO country (name, iso2) VALUES ('Bulgaria', 'BG');
-INSERT INTO country (name, iso2) VALUES ('Bahrain', 'BH');
-INSERT INTO country (name, iso2) VALUES ('Burundi', 'BI');
-INSERT INTO country (name, iso2) VALUES ('Benin', 'BJ');
-INSERT INTO country (name, iso2) VALUES ('Saint Barthelemy', 'BL');
-INSERT INTO country (name, iso2) VALUES ('Bermuda', 'BM');
-INSERT INTO country (name, iso2) VALUES ('Brunei Darussalam', 'BN');
-INSERT INTO country (name, iso2) VALUES ('Bolivia', 'BO');
-INSERT INTO country (name, iso2) VALUES ('Brazil', 'BR');
-INSERT INTO country (name, iso2) VALUES ('Bahamas', 'BS');
-INSERT INTO country (name, iso2) VALUES ('Bhutan', 'BT');
-INSERT INTO country (name, iso2) VALUES ('Botswana', 'BW');
-INSERT INTO country (name, iso2) VALUES ('Belarus', 'BY');
-INSERT INTO country (name, iso2) VALUES ('Belize', 'BZ');
-INSERT INTO country (name, iso2) VALUES ('Canada', 'CA');
-INSERT INTO country (name, iso2) VALUES ('Democratic Republic of the Congo', 'CD');
-INSERT INTO country (name, iso2) VALUES ('Central African Republic', 'CF');
-INSERT INTO country (name, iso2) VALUES ('Republic of the Congo', 'CG');
-INSERT INTO country (name, iso2) VALUES ('Switzerland', 'CH');
-INSERT INTO country (name, iso2) VALUES ('Cote d''Ivoire', 'CI');
-INSERT INTO country (name, iso2) VALUES ('Chile', 'CL');
-INSERT INTO country (name, iso2) VALUES ('Cameroon', 'CM');
-INSERT INTO country (name, iso2) VALUES ('China', 'CN');
-INSERT INTO country (name, iso2) VALUES ('Colombia', 'CO');
-INSERT INTO country (name, iso2) VALUES ('Costa Rica', 'CR');
-INSERT INTO country (name, iso2) VALUES ('Cuba', 'CU');
-INSERT INTO country (name, iso2) VALUES ('Cape Verde', 'CV');
-INSERT INTO country (name, iso2) VALUES ('Christmas Island', 'CX');
-INSERT INTO country (name, iso2) VALUES ('Cyprus', 'CY');
-INSERT INTO country (name, iso2) VALUES ('Czech Republic', 'CZ');
-INSERT INTO country (name, iso2) VALUES ('Germany', 'DE');
-INSERT INTO country (name, iso2) VALUES ('Djibouti', 'DJ');
-INSERT INTO country (name, iso2) VALUES ('Denmark', 'DK');
-INSERT INTO country (name, iso2) VALUES ('Dominica', 'DM');
-INSERT INTO country (name, iso2) VALUES ('Dominican Republic', 'DO');
-INSERT INTO country (name, iso2) VALUES ('Algeria', 'DZ');
-INSERT INTO country (name, iso2) VALUES ('Ecuador', 'EC');
-INSERT INTO country (name, iso2) VALUES ('Estonia', 'EE');
-INSERT INTO country (name, iso2) VALUES ('Egypt', 'EG');
-INSERT INTO country (name, iso2) VALUES ('Eritrea', 'ER');
-INSERT INTO country (name, iso2) VALUES ('Spain', 'ES');
-INSERT INTO country (name, iso2) VALUES ('Ethiopia', 'ET');
-INSERT INTO country (name, iso2) VALUES ('Finland', 'FI');
-INSERT INTO country (name, iso2) VALUES ('Fiji', 'FJ');
-INSERT INTO country (name, iso2) VALUES ('Falkland Islands (Malvinas)', 'FK');
-INSERT INTO country (name, iso2) VALUES ('Micronesia', 'FM');
-INSERT INTO country (name, iso2) VALUES ('Faroe Islands', 'FO');
-INSERT INTO country (name, iso2) VALUES ('France', 'FR');
-INSERT INTO country (name, iso2) VALUES ('Gabon', 'GA');
-INSERT INTO country (name, iso2) VALUES ('United Kingdom', 'GB');
-INSERT INTO country (name, iso2) VALUES ('Grenada', 'GD');
-INSERT INTO country (name, iso2) VALUES ('Georgia', 'GE');
-INSERT INTO country (name, iso2) VALUES ('French Guiana', 'GF');
-INSERT INTO country (name, iso2) VALUES ('Guernsey', 'GG');
-INSERT INTO country (name, iso2) VALUES ('Ghana', 'GH');
-INSERT INTO country (name, iso2) VALUES ('Gibraltar', 'GI');
-INSERT INTO country (name, iso2) VALUES ('Greenland', 'GL');
-INSERT INTO country (name, iso2) VALUES ('Gambia', 'GM');
-INSERT INTO country (name, iso2) VALUES ('Guinea', 'GN');
-INSERT INTO country (name, iso2) VALUES ('Guadeloupe', 'GP');
-INSERT INTO country (name, iso2) VALUES ('Equatorial Guinea', 'GQ');
-INSERT INTO country (name, iso2) VALUES ('Greece', 'GR');
-INSERT INTO country (name, iso2) VALUES ('Guatemala', 'GT');
-INSERT INTO country (name, iso2) VALUES ('Guam', 'GU');
-INSERT INTO country (name, iso2) VALUES ('Guinea-Bissau', 'GW');
-INSERT INTO country (name, iso2) VALUES ('Guyana', 'GY');
-INSERT INTO country (name, iso2) VALUES ('Hong Kong', 'HK');
-INSERT INTO country (name, iso2) VALUES ('Heard Island and McDonald Islands', 'HM');
-INSERT INTO country (name, iso2) VALUES ('Honduras', 'HN');
-INSERT INTO country (name, iso2) VALUES ('Croatia', 'HR');
-INSERT INTO country (name, iso2) VALUES ('Haiti', 'HT');
-INSERT INTO country (name, iso2) VALUES ('Hungary', 'HU');
-INSERT INTO country (name, iso2) VALUES ('Indonesia', 'ID');
-INSERT INTO country (name, iso2) VALUES ('Ireland', 'IE');
-INSERT INTO country (name, iso2) VALUES ('Israel', 'IL');
-INSERT INTO country (name, iso2) VALUES ('Isle of Man', 'IM');
-INSERT INTO country (name, iso2) VALUES ('India', 'IN');
-INSERT INTO country (name, iso2) VALUES ('Iraq', 'IQ');
-INSERT INTO country (name, iso2) VALUES ('Iran', 'IR');
-INSERT INTO country (name, iso2) VALUES ('Iceland', 'IS');
-INSERT INTO country (name, iso2) VALUES ('Italy', 'IT');
-INSERT INTO country (name, iso2) VALUES ('Jersey', 'JE');
-INSERT INTO country (name, iso2) VALUES ('Jamaica', 'JM');
-INSERT INTO country (name, iso2) VALUES ('Jordan', 'JO');
-INSERT INTO country (name, iso2) VALUES ('Japan', 'JP');
-INSERT INTO country (name, iso2) VALUES ('Kenya', 'KE');
-INSERT INTO country (name, iso2) VALUES ('Kyrgyzstan', 'KG');
-INSERT INTO country (name, iso2) VALUES ('Cambodia', 'KH');
-INSERT INTO country (name, iso2) VALUES ('Kiribati', 'KI');
-INSERT INTO country (name, iso2) VALUES ('Comoros', 'KM');
-INSERT INTO country (name, iso2) VALUES ('Saint Kitts and Nevis', 'KN');
-INSERT INTO country (name, iso2) VALUES ('South Korea', 'KR');
-INSERT INTO country (name, iso2) VALUES ('Kuwait', 'KW');
-INSERT INTO country (name, iso2) VALUES ('Cayman Islands', 'KY');
-INSERT INTO country (name, iso2) VALUES ('Kazakhstan', 'KZ');
-INSERT INTO country (name, iso2) VALUES ('Lao', 'LA');
-INSERT INTO country (name, iso2) VALUES ('Lebanon', 'LB');
-INSERT INTO country (name, iso2) VALUES ('Saint Lucia', 'LC');
-INSERT INTO country (name, iso2) VALUES ('Liechtenstein', 'LI');
-INSERT INTO country (name, iso2) VALUES ('Sri Lanka', 'LK');
-INSERT INTO country (name, iso2) VALUES ('Liberia', 'LR');
-INSERT INTO country (name, iso2) VALUES ('Lesotho', 'LS');
-INSERT INTO country (name, iso2) VALUES ('Lithuania', 'LT');
-INSERT INTO country (name, iso2) VALUES ('Luxembourg', 'LU');
-INSERT INTO country (name, iso2) VALUES ('Latvia', 'LV');
-INSERT INTO country (name, iso2) VALUES ('Libya', 'LY');
-INSERT INTO country (name, iso2) VALUES ('Morocco', 'MA');
-INSERT INTO country (name, iso2) VALUES ('Monaco', 'MC');
-INSERT INTO country (name, iso2) VALUES ('Moldova', 'MD');
-INSERT INTO country (name, iso2) VALUES ('Montenegro', 'ME');
-INSERT INTO country (name, iso2) VALUES ('Saint Martin (French part)', 'MF');
-INSERT INTO country (name, iso2) VALUES ('Madagascar', 'MG');
-INSERT INTO country (name, iso2) VALUES ('Marshall Islands', 'MH');
-INSERT INTO country (name, iso2) VALUES ('Macedonia', 'MK');
-INSERT INTO country (name, iso2) VALUES ('Mali', 'ML');
-INSERT INTO country (name, iso2) VALUES ('Myanmar', 'MM');
-INSERT INTO country (name, iso2) VALUES ('Mongolia', 'MN');
-INSERT INTO country (name, iso2) VALUES ('Macao', 'MO');
-INSERT INTO country (name, iso2) VALUES ('Northern Mariana Islands', 'MP');
-INSERT INTO country (name, iso2) VALUES ('Martinique', 'MQ');
-INSERT INTO country (name, iso2) VALUES ('Mauritania', 'MR');
-INSERT INTO country (name, iso2) VALUES ('Montserrat', 'MS');
-INSERT INTO country (name, iso2) VALUES ('Malta', 'MT');
-INSERT INTO country (name, iso2) VALUES ('Mauritius', 'MU');
-INSERT INTO country (name, iso2) VALUES ('Maldives', 'MV');
-INSERT INTO country (name, iso2) VALUES ('Malawi', 'MW');
-INSERT INTO country (name, iso2) VALUES ('Mexico', 'MX');
-INSERT INTO country (name, iso2) VALUES ('Malaysia', 'MY');
-INSERT INTO country (name, iso2) VALUES ('Mozambique', 'MZ');
-INSERT INTO country (name, iso2) VALUES ('Namibia', 'NA');
-INSERT INTO country (name, iso2) VALUES ('New Caledonia', 'NC');
-INSERT INTO country (name, iso2) VALUES ('Niger', 'NE');
-INSERT INTO country (name, iso2) VALUES ('Norfolk Island', 'NF');
-INSERT INTO country (name, iso2) VALUES ('Nigeria', 'NG');
-INSERT INTO country (name, iso2) VALUES ('Nicaragua', 'NI');
-INSERT INTO country (name, iso2) VALUES ('Netherlands', 'NL');
-INSERT INTO country (name, iso2) VALUES ('Norway', 'NO');
-INSERT INTO country (name, iso2) VALUES ('Nepal', 'NP');
-INSERT INTO country (name, iso2) VALUES ('Nauru', 'NR');
-INSERT INTO country (name, iso2) VALUES ('Niue', 'NU');
-INSERT INTO country (name, iso2) VALUES ('New Zealand', 'NZ');
-INSERT INTO country (name, iso2) VALUES ('Oman', 'OM');
-INSERT INTO country (name, iso2) VALUES ('Panama', 'PA');
-INSERT INTO country (name, iso2) VALUES ('Peru', 'PE');
-INSERT INTO country (name, iso2) VALUES ('French Polynesia', 'PF');
-INSERT INTO country (name, iso2) VALUES ('Papua New Guinea', 'PG');
-INSERT INTO country (name, iso2) VALUES ('Philippines', 'PH');
-INSERT INTO country (name, iso2) VALUES ('Pakistan', 'PK');
-INSERT INTO country (name, iso2) VALUES ('Poland', 'PL');
-INSERT INTO country (name, iso2) VALUES ('Saint Pierre and Miquelon', 'PM');
-INSERT INTO country (name, iso2) VALUES ('Pitcairn', 'PN');
-INSERT INTO country (name, iso2) VALUES ('Puerto Rico', 'PR');
-INSERT INTO country (name, iso2) VALUES ('Palestine', 'PS');
-INSERT INTO country (name, iso2) VALUES ('Portugal', 'PT');
-INSERT INTO country (name, iso2) VALUES ('Palau', 'PW');
-INSERT INTO country (name, iso2) VALUES ('Paraguay', 'PY');
-INSERT INTO country (name, iso2) VALUES ('Qatar', 'QA');
-INSERT INTO country (name, iso2) VALUES ('Reunion', 'RE');
-INSERT INTO country (name, iso2) VALUES ('Romania', 'RO');
-INSERT INTO country (name, iso2) VALUES ('Serbia', 'RS');
-INSERT INTO country (name, iso2) VALUES ('Russian Federation', 'RU');
-INSERT INTO country (name, iso2) VALUES ('Rwanda', 'RW');
-INSERT INTO country (name, iso2) VALUES ('Saudi Arabia', 'SA');
-INSERT INTO country (name, iso2) VALUES ('Solomon Islands', 'SB');
-INSERT INTO country (name, iso2) VALUES ('Seychelles', 'SC');
-INSERT INTO country (name, iso2) VALUES ('Sudan', 'SD');
-INSERT INTO country (name, iso2) VALUES ('Sweden', 'SE');
-INSERT INTO country (name, iso2) VALUES ('Singapore', 'SG');
-INSERT INTO country (name, iso2) VALUES ('Saint Helena', 'SH');
-INSERT INTO country (name, iso2) VALUES ('Slovenia', 'SI');
-INSERT INTO country (name, iso2) VALUES ('Svalbard and Jan Mayen', 'SJ');
-INSERT INTO country (name, iso2) VALUES ('Slovakia', 'SK');
-INSERT INTO country (name, iso2) VALUES ('Sierra Leone', 'SL');
-INSERT INTO country (name, iso2) VALUES ('San Marino', 'SM');
-INSERT INTO country (name, iso2) VALUES ('Senegal', 'SN');
-INSERT INTO country (name, iso2) VALUES ('Somalia', 'SO');
-INSERT INTO country (name, iso2) VALUES ('Suriname', 'SR');
-INSERT INTO country (name, iso2) VALUES ('South Sudan', 'SS');
-INSERT INTO country (name, iso2) VALUES ('Sao Tome and Principe', 'ST');
-INSERT INTO country (name, iso2) VALUES ('El Salvador', 'SV');
-INSERT INTO country (name, iso2) VALUES ('Syrian Arab Republic', 'SY');
-INSERT INTO country (name, iso2) VALUES ('Swaziland', 'SZ');
-INSERT INTO country (name, iso2) VALUES ('Turks and Caicos Islands', 'TC');
-INSERT INTO country (name, iso2) VALUES ('Chad', 'TD');
-INSERT INTO country (name, iso2) VALUES ('Togo', 'TG');
-INSERT INTO country (name, iso2) VALUES ('Thailand', 'TH');
-INSERT INTO country (name, iso2) VALUES ('Tajikistan', 'TJ');
-INSERT INTO country (name, iso2) VALUES ('Timor-Leste', 'TL');
-INSERT INTO country (name, iso2) VALUES ('Turkmenistan', 'TM');
-INSERT INTO country (name, iso2) VALUES ('Tunisia', 'TN');
-INSERT INTO country (name, iso2) VALUES ('Tonga', 'TO');
-INSERT INTO country (name, iso2) VALUES ('Turkey', 'TR');
-INSERT INTO country (name, iso2) VALUES ('Trinidad and Tobago', 'TT');
-INSERT INTO country (name, iso2) VALUES ('Tuvalu', 'TV');
-INSERT INTO country (name, iso2) VALUES ('Taiwan', 'TW');
-INSERT INTO country (name, iso2) VALUES ('United Republic of Tanzania', 'TZ');
-INSERT INTO country (name, iso2) VALUES ('Ukraine', 'UA');
-INSERT INTO country (name, iso2) VALUES ('Uganda', 'UG');
-INSERT INTO country (name, iso2) VALUES ('United States', 'US');
-INSERT INTO country (name, iso2) VALUES ('Uruguay', 'UY');
-INSERT INTO country (name, iso2) VALUES ('Uzbekistan', 'UZ');
-INSERT INTO country (name, iso2) VALUES ('Holy See (Vatican City State)', 'VA');
-INSERT INTO country (name, iso2) VALUES ('Saint Vincent and the Grenadines', 'VC');
-INSERT INTO country (name, iso2) VALUES ('Venezuela', 'VE');
-INSERT INTO country (name, iso2) VALUES ('British Virgin Islands', 'VG');
-INSERT INTO country (name, iso2) VALUES ('US Virgin Islands', 'VI');
-INSERT INTO country (name, iso2) VALUES ('Vietnam', 'VN');
-INSERT INTO country (name, iso2) VALUES ('Vanuatu', 'VU');
-INSERT INTO country (name, iso2) VALUES ('Samoa', 'WS');
-INSERT INTO country (name, iso2) VALUES ('Kosovo', 'XK');
-INSERT INTO country (name, iso2) VALUES ('Yemen', 'YE');
-INSERT INTO country (name, iso2) VALUES ('Mayotte', 'YT');
-INSERT INTO country (name, iso2) VALUES ('South Africa', 'ZA');
-INSERT INTO country (name, iso2) VALUES ('Zambia', 'ZM');
-INSERT INTO country (name, iso2) VALUES ('Zimbabwe', 'ZW');
-
 -- TOURNAMENTS -------------------------------------------------------------------------------------------------------
 
 INSERT INTO tournament (
@@ -291,88 +15,92 @@ VALUES (
     '775722d617263686976652e7070792e73682f646973636f72642f31313134393431383635363136' ||
     '3232303137312d313131363635313138383330323133353330382d415354364b5f42616e6e65725f52656374616e676c652e706e67',
     'Please join our discord server before registering.',
-    '<p><span class="ql-size-huge">Schedule</span></p><ul><li><strong>Registration Phase</strong> - ' ||
-    '8 September to 22 September</li><li><strong>Screening Phase</strong> - 22 September to 7 October</li><li>' ||
-    '<strong>Qualifiers Showcase</strong> - October 8/9</li><li><strong>Qualifiers + Qualifiers Result + RO64 ' ||
-    'Showcase</strong> - October 14 to 16</li><li><strong>RO64 + RO32 Showcase</strong> - October 21 to 23</li>' ||
-    '<li><strong>RO32 + RO16 Showcase</strong> - October 28 to 30</li><li><strong>RO16 + Quaterfinals Showcase' ||
-    '</strong> - November 4 to 6</li><li><strong>Quarterfinals + Semifinals Showcase</strong> - November 11 to 13' ||
-    '</li><li><strong>Semifinals + Finals Showcase</strong> - November 18 to 20</li><li><strong>Finals + Grand ' ||
-    'Finals Showcase</strong> - November 25 to 26</li><li><strong>Grand Finals + Conclusion</strong> - December ' ||
-    '2 to 3</li></ul><p><br></p><p><br></p><p><span class="ql-size-huge">Registrations</span></p><p><br></p><p>' ||
-    '<span class="ql-size-large" style="color: rgb(246, 166, 100);">To play in the tournament, you must follow ' ||
-    'these rules:</span></p><ol><li>You must be in the 6K Autumn Showdown Tournament Discord Server</li>' ||
-    '<li>Registered for the tournament by clicking the register button on the home page.</li><li>Have not violated ' ||
-    'the community guidelines over the past 12 months.</li></ol><p><br></p><p><span class="ql-size-large" ' ||
-    'style="color: rgb(246, 166, 100);">To staff for the tournament:</span></p><ol><li>You must be in ' ||
-    'the 6K Autumn Showdown Tournament Discord Server</li><li>Completed and submitted a staff application with the ' ||
-    'requested role(s).</li><li>You may not play in the tournament unless you''re exclusively going to help as a ' ||
-    'streamer and/or commentator.</li><li>Once eliminated, you may apply as a playtester or referee.</li></ol><p>' ||
-    '<br></p><p><br></p><p><span class="ql-size-huge">Rules</span></p><p><br></p><p><span class="ql-size-large" ' ||
-    'style="color: rgb(246, 166, 100);">During the match:</span></p><p><br></p><p>- In advance, players will send ' ||
-    'their warmups (if they have) to the referees in-charge of their match. Warmups must be 6K and be below the ' ||
-    '4:00 drain time.</p><p>- After warmup has concluded, both players will run the !roll command in the lobby ' ||
-    'chat. The player with the higher roll will be able to choose whether to go first or second.</p><p>- The ' ||
-    'protect/ban phase will be as followed:As an example, if Player A goes first...</p><p>Player A: Protect -&gt; ' ||
-    'Player B: Protect -&gt; Player B: Ban -&gt; Player A: Ban -&gt; Player A: Pick</p><p>- During the match, both ' ||
-    'the players will alternate in picks depending on who picked first, and play the picked beatmap together. The ' ||
-    'player with the higher score will obtain a point.</p><p><br></p><p><span class="ql-size-large" ' ||
-    'style="color: rgb(246, 166, 100);">Additional Rules:</span></p><p><br></p><p><span style="color: ' ||
-    'rgb(237, 143, 94);">Mod settings:</span></p><p><br></p><p>- The score system on all matches will be on Score ' ||
-    'V2</p><p>- All beatmaps are played with FreeMod turned ON. Visual mods such as Mirror, Hidden, Fade-In, ' ||
-    'Flashlight, and any combination of these mods are allowed. NoFail is allowed too.</p><p><br></p><p><span ' ||
-    'style="color: rgb(237, 143, 94);">Punctuality:</span></p><p><br></p><p><span style="color: ' ||
-    'rgb(255, 255, 255);">- Players are required to be present before their match time. If one player isn''t ' ||
-    'present during the match time, a 10 minute grace period will start by the referee.</span></p><p>- If the ' ||
-    'player fails to arrive before the 10 minute grace period, the match will be considered as a Win By ' ||
-    'Default to the present player.</p><p><br></p><p><span style="color: rgb(237, 143, 94);">Protect/Ban/Pick ' ||
-    'Procedures:</span></p><p><br></p><p><span style="color: rgb(255, 255, 255);">- Players will be given 2 ' ||
-    'minutes to protect and ban a beatmap from their choosing. Later on, players will have 2 minutes to pick a beatmap ' ||
-    'and get ready for the beatmap.</span></p><p>- Any player that fails to Protect/Ban/Pick during the given time, ' ||
-    'the referee will choose a beatmap at random to be picked in behalf of the player by using the !roll command.' ||
-    '</p><p><br></p><p><span style="color: rgb(237, 143, 94);">Disconnection:</span></p><p><br></p><p>- If any ' ||
-    'player gets disconnected from a beatmap during the first 30 seconds of the gameplay, they can ask for the beatmap to ' ||
-    'be aborted and replayed.</p><p>This is only available once per match for each player, any subsequent ' ||
-    'disconnects will award the other player a point.</p><p>- If any player gets disconnected from a beatmap after the ' ||
-    'first 30 seconds of the gameplay, the point will be awarded to the other player.</p><p>- If any player is ' ||
-    'unable to return to the lobby within 10 minutes, the match will be considered a win for the other player.' ||
-    '</p><p>- If both players are disconnected, the player that comes back will be saved from losing. If the other ' ||
-    'player comes back before their grace period ends, the match will continue.</p><p>This will only be available ' ||
-    'once. If subsequent cases happen, the player that joins back will be considered the winner of the match.' ||
-    '</p><p>- If both players are unable to reconnect to the lobby in time, the current standing will determine the ' ||
-    'winner of the match.</p><p>In the case of a tie, the higher seeded player will be awarded the win.</p><p>- The ' ||
-    'hosts reserve the right to be more or less lenient at their sole discretion.</p><p><br></p><p><br></p><p><span ' ||
-    'class="ql-size-huge">Structure</span></p><p><br></p><p><span class="ql-size-large" style="color: rgb(246, ' ||
-    '166, 100);">Qualifiers</span></p><p><br></p><p>The <strong>Qualifiers Stage</strong> will happen in the first ' ||
-    'week of the tournament play. All of the registered players who were not screened out during screening are ' ||
-    'eligible to</p><p>participate in the Qualifiers. Each player can play the Qualifiers in sequence up to 2 times ' ||
-    '(Players may choose to not play a 2nd time).</p><p><br></p><p>The <strong>Qualifiers Pool format</strong> ' ||
-    'will have <strong>8 stages</strong>, and they are as followed:</p><p>Stage 1: Accuracy/Tech</p><p>Stage 2: ' ||
-    'Speed/Delay</p><p>Stage 3: Early Mixed Hybrid</p><p>Stage 4: LN Release</p><p>Stage 5: Mixed Rice</p><p>' ||
-    'Stage 6: Chordstream</p><p>Stage 7: LN Density</p><p>Stage 8: Complex Mixed Hybrid</p><p><br></p><p><strong>' ||
-    'The Seeding Calculation</strong> will start after Qualifiers concluded. If you played the Qualifiers twice, ' ||
-    'the higher score for each beatmap will be taken.</p><p>This will determine the player''s seed and decide whether ' ||
-    'they will proceed on to the next stage.</p><p>Each player''s seed is determined by how well they perform at ' ||
-    'each beatmap. The 8 beatmaps will be averaged out and any players that performed well for all of the beatmaps</p><p>will ' ||
-    'get a higher seeding. Only the Top 64 seed will proceed on to the bracket stage, while the lower seeds will ' ||
-    'be eliminated.</p><p><br></p><p><span class="ql-size-large" style="color: rgb(246, 166, 100);">Bracket ' ||
-    'Stages</span></p><p><br></p><p><strong>Bracket Matches</strong> will arrange all the players into a standard ' ||
-    'Double Elimination Bracket, where 1st seed will face against 64th seed, 2nd seed will face against 63rd seed,' ||
-    '</p><p>and so on.</p><p><br></p><p><strong>The Mappool format</strong> for the bracket stages will be as ' ||
-    'followed:</p><p>Round of 64: 10 Maps (Best of 7)</p><p>Round of 32: 12 Maps (Best of 9)</p><p>Round of 16: ' ||
-    '12 Maps (Best of 9)</p><p>Quarterfinals: 14 Maps (Best of 11)</p><p>Semifinals: 14 Maps (Best of 11)</p><p>' ||
-    'Finals: 16 Maps (Best of 13)</p><p>Grand Finals: 16 Maps (Best of 13)</p><p><br></p><p><br></p><p><span ' ||
-    'class="ql-size-huge">Prizes</span></p><p><br></p><p class="ql-align-center"><strong ' ||
-    'class="ql-size-large">1st Place</strong><span class="ql-size-large"> - Six Month osu! Supporter ' ||
-    '[First Place Badge]</span></p><p class="ql-align-center"><strong class="ql-size-large">2nd Place' ||
-    '</strong><span class="ql-size-large"> - Four Month osu! Supporter</span></p><p class="ql-align-center">' ||
-    '<strong class="ql-size-large">3rd Place </strong><span class="ql-size-large">- Two Month osu! Supporter' ||
-    '</span></p><p class="ql-align-center"><strong class="ql-size-large">4th to 6th</strong><span ' ||
-    'class="ql-size-large"> - One Month osu! Supporter</span></p><p class="ql-align-center"><br></p><p ' ||
-    'class="ql-align-center">To submit a formal complaint to the Official Tournament Committee about 6KAST,' ||
-    '</p><p class="ql-align-center">please access the link below: <a ' ||
-    'href="https://pif.ephemeral.ink/tournament-reports" rel="noopener noreferrer" target="_blank" ' ||
-    'style="color: rgb(100, 181, 246);"><u>https://pif.ephemeral.ink/tournament-reports</u></a></p>'
+    '<p><span class="ql-size-huge">Schedule</span></p><ul><li><strong>Registration Phase</strong> - 8 September ' ||
+    'to 22 September</li><li><strong>Screening Phase</strong> - 22 September to 7 October</li><li><strong>' ||
+    'Qualifiers Showcase</strong> - October 8/9</li><li><strong>Qualifiers + Qualifiers Result + RO64 Showcase' ||
+    '</strong> - October 14 to 16</li><li><strong>RO64 + RO32 Showcase</strong> - October 21 to 23</li><li>' ||
+    '<strong>RO32 + RO16 Showcase</strong> - October 28 to 30</li><li><strong>RO16 + Quaterfinals Showcase' ||
+    '</strong> - November 4 to 6</li><li><strong>Quarterfinals + Semifinals Showcase</strong> - November 11 ' ||
+    'to 13</li><li><strong>Semifinals + Finals Showcase</strong> - November 18 to 20</li><li><strong>' ||
+    'Finals + Grand Finals Showcase</strong> - November 25 to 26</li><li><strong>Grand Finals + Conclusion' ||
+    '</strong> - December 2 to 3</li></ul><p><br></p><p><br></p><p><span class="ql-size-huge">Registrations' ||
+    '</span></p><p><br></p><p><span class="ql-size-large" style="color: rgb(246, 166, 100);">To play in the ' ||
+    'tournament, you must follow these rules:</span></p><ol><li>You must be in the 6K Autumn Showdown ' ||
+    'Tournament Discord Server</li><li>Registered for the tournament by clicking the register button on ' ||
+    'the home page.</li><li>Have not violated the community guidelines over the past 12 months.</li></ol>' ||
+    '<p><br></p><p><span class="ql-size-large" style="color: rgb(246, 166, 100);">To staff for the ' ||
+    'tournament:</span></p><ol><li>You must be in the 6K Autumn Showdown Tournament Discord Server</li>' ||
+    '<li>Completed and submitted a staff application with the requested role(s).</li><li>You may not play ' ||
+    'in the tournament unless you''re exclusively going to help as a streamer and/or commentator.</li><li>' ||
+    'Once eliminated, you may apply as a playtester or referee.</li></ol><p><br></p><p><br></p><p><span ' ||
+    'class="ql-size-huge">Rules</span></p><p><br></p><p><span class="ql-size-large" style="color: ' ||
+    'rgb(246, 166, 100);">During the match:</span></p><p><br></p><p>- In advance, players will send their ' ||
+    'warmups (if they have) to the referees in-charge of their match. Warmups must be 6K and be below the ' ||
+    '4:00 drain time.</p><p>- After warmup has concluded, both players will run the !roll command in the ' ||
+    'lobby chat. The player with the higher roll will be able to choose whether to go first or second.' ||
+    '</p><p>- The protect/ban phase will be as followed:As an example, if Player A goes first...</p><p>' ||
+    'Player A: Protect -&gt; Player B: Protect -&gt; Player B: Ban -&gt; Player A: Ban -&gt; Player A: ' ||
+    'Pick</p><p>- During the match, both the players will alternate in picks depending on who picked ' ||
+    'first, and play the picked beatmap together. The player with the higher score will obtain a point.' ||
+    '</p><p><br></p><p><span class="ql-size-large" style="color: rgb(246, 166, 100);">Additional ' ||
+    'Rules:</span></p><p><br></p><p><span style="color: rgb(237, 143, 94);">Mod settings:</span></p><p>' ||
+    '<br></p><p>- The score system on all matches will be on Score V2</p><p>- All beatmaps are played ' ||
+    'with FreeMod turned ON. Visual mods such as Mirror, Hidden, Fade-In, Flashlight, and any combination' ||
+    ' of these mods are allowed. NoFail is allowed too.</p><p><br></p><p><span style="color: ' ||
+    'rgb(237, 143, 94);">Punctuality:</span></p><p><br></p><p><span style="color: rgb(255, 255, 255);">- ' ||
+    'Players are required to be present before their match time. If one player isn''t present during the ' ||
+    'match time, a 10 minute grace period will start by the referee.</span></p><p>- If the player fails to ' ||
+    'arrive before the 10 minute grace period, the match will be considered as a Win By Default to the ' ||
+    'present player.</p><p><br></p><p><span style="color: rgb(237, 143, 94);">Protect/Ban/Pick ' ||
+    'Procedures:</span></p><p><br></p><p><span style="color: rgb(255, 255, 255);">- Players will be given ' ||
+    '2 minutes to protect and ban a beatmap from their choosing. Later on, players will have 2 minutes to ' ||
+    'pick a beatmap and get ready for the beatmap.</span></p><p>- Any player that fails to Protect/Ban/Pick ' ||
+    'during the given time, the referee will choose a beatmap at random to be picked in behalf of the ' ||
+    'player by using the !roll command.</p><p><br></p><p><span style="color: rgb(237, 143, 94);">' ||
+    'Disconnection:</span></p><p><br></p><p>- If any player gets disconnected from a beatmap during the ' ||
+    'first 30 seconds of the gameplay, they can ask for the beatmap to be aborted and replayed.</p><p>This ' ||
+    'is only available once per match for each player, any subsequent disconnects will award the other ' ||
+    'player a point.</p><p>- If any player gets disconnected from a beatmap after the first 30 seconds of ' ||
+    'the gameplay, the point will be awarded to the other player.</p><p>- If any player is unable to return ' ||
+    'to the lobby within 10 minutes, the match will be considered a win for the other player.</p><p>- If ' ||
+    'both players are disconnected, the player that comes back will be saved from losing. If the other ' ||
+    'player comes back before their grace period ends, the match will continue.</p><p>This will only be ' ||
+    'available once. If subsequent cases happen, the player that joins back will be considered the winner ' ||
+    'of the match.</p><p>- If both players are unable to reconnect to the lobby in time, the current ' ||
+    'standing will determine the winner of the match.</p><p>In the case of a tie, the higher seeded player ' ||
+    'will be awarded the win.</p><p>- The hosts reserve the right to be more or less lenient at their sole ' ||
+    'discretion.</p><p><br></p><p><br></p><p><span class="ql-size-huge">Structure</span></p><p><br></p><p>' ||
+    '<span class="ql-size-large" style="color: rgb(246, 166, 100);">Qualifiers</span></p><p><br></p><p>The ' ||
+    '<strong>Qualifiers Stage</strong> will happen in the first week of the tournament play. All of the ' ||
+    'registered players who were not screened out during screening are eligible to</p><p>participate in the ' ||
+    'Qualifiers. Each player can play the Qualifiers in sequence up to 2 times (Players may choose to not ' ||
+    'play a 2nd time).</p><p><br></p><p>The <strong>Qualifiers Pool format</strong> will have <strong>8 stages' ||
+    '</strong>, and they are as followed:</p><p>Stage 1: Accuracy/Tech</p><p>Stage 2: Speed/Delay</p><p>Stage ' ||
+    '3: Early Mixed Hybrid</p><p>Stage 4: LN Release</p><p>Stage 5: Mixed Rice</p><p>Stage 6: Chordstream' ||
+    '</p><p>Stage 7: LN Density</p><p>Stage 8: Complex Mixed Hybrid</p><p><br></p><p><strong>The Seeding ' ||
+    'Calculation</strong> will start after Qualifiers concluded. If you played the Qualifiers twice, the ' ||
+    'higher score for each beatmap will be taken.</p><p>This will determine the player''s seed and decide ' ||
+    'whether they will proceed on to the next stage.</p><p>Each player''s seed is determined by how well ' ||
+    'they perform at each beatmap. The 8 beatmaps will be averaged out and any players that performed well ' ||
+    'for all of the beatmaps</p><p>will get a higher seeding. Only the Top 64 seed will proceed on to the ' ||
+    'bracket stage, while the lower seeds will be eliminated.</p><p><br></p><p><span class="ql-size-large" ' ||
+    'style="color: rgb(246, 166, 100);">Bracket Stages</span></p><p><br></p><p><strong>Bracket Matches</strong> ' ||
+    'will arrange all the players into a standard Double Elimination Bracket, where 1st seed will face against ' ||
+    '64th seed, 2nd seed will face against 63rd seed,</p><p>and so on.</p><p><br></p><p><strong>The Mappool ' ||
+    'format</strong> for the bracket stages will be as followed:</p><p>Round of 64: 10 Maps (Best of 7)' ||
+    '</p><p>Round of 32: 12 Maps (Best of 9)</p><p>Round of 16: 12 Maps (Best of 9)</p><p>Quarterfinals: ' ||
+    '14 Maps (Best of 11)</p><p>Semifinals: 14 Maps (Best of 11)</p><p>Finals: 16 Maps (Best of 13)</p><p>' ||
+    'Grand Finals: 16 Maps (Best of 13)</p><p><br></p><p><br></p><p><span class="ql-size-huge">Prizes</span>' ||
+    '</p><p><br></p><p class="ql-align-center"><strong class="ql-size-large">1st Place</strong><span ' ||
+    'class="ql-size-large"> - Six Month osu! Supporter [First Place Badge]</span></p><p ' ||
+    'class="ql-align-center"><strong class="ql-size-large">2nd Place</strong><span class="ql-size-large"> - ' ||
+    'Four Month osu! Supporter</span></p><p class="ql-align-center"><strong class="ql-size-large">3rd Place ' ||
+    '</strong><span class="ql-size-large">- Two Month osu! Supporter</span></p><p class="ql-align-center">' ||
+    '<strong class="ql-size-large">4th to 6th</strong><span class="ql-size-large"> - One Month osu! ' ||
+    'Supporter</span></p><p class="ql-align-center"><br></p><p class="ql-align-center">To submit a formal ' ||
+    'complaint to the Official Tournament Committee about 6KAST,</p><p class="ql-align-center">please ' ||
+    'access the link below: <a href="https://pif.ephemeral.ink/tournament-reports" rel="noopener noreferrer" ' ||
+    'target="_blank" style="color: rgb(100, 181, 246);"><u>https://pif.ephemeral.ink/tournament-reports</u></a></p>'
 );
 INSERT INTO tournament (
     applications_open, concluded, max_player_rank, max_team_size, min_player_rank, min_team_size, players_published,
@@ -465,476 +193,476 @@ VALUES (2, 2, 'Qualifiers', 0, 10, 3, '2024-07-17T07:00:00.000Z', true, true, tr
 -- MAPS ---------------------------------------------------------------------------------------------------------------
 
 INSERT INTO beatmap (
-    stage_id, map_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
+    stage_id, beatmap_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
     sr, bpm, drain_time, hp, od, index, comment, song_preview
 )
 VALUES (
-           5, 1, true, 4368325, 'world devoid of you (fairydust radio edit)', 'Silent Sky', 'void feat. Hiroko',
-           'YuzakiTsukasa', 'YuzakiTsukasa', 'https://assets.ppy.sh/beatmaps/2085230/covers/card.jpg',
-           'https://osu.ppy.sh/beatmapsets/2085230/download', 5.42, 140, 152, 8, 8, 1, '',
-           '//b.ppy.sh/preview/2085230.mp3'
-       );
+    5, 1, true, 4368325, 'world devoid of you (fairydust radio edit)', 'Silent Sky', 'void feat. Hiroko',
+    'YuzakiTsukasa', 'YuzakiTsukasa', 'https://assets.ppy.sh/beatmaps/2085230/covers/card.jpg',
+    'https://osu.ppy.sh/beatmapsets/2085230/download', 5.42, 140, 152, 8, 8, 1, '',
+    '//b.ppy.sh/preview/2085230.mp3'
+);
 INSERT INTO beatmap (
-    stage_id, map_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
+    stage_id, beatmap_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
     sr, bpm, drain_time, hp, od, index, comment, song_preview
 )
 VALUES (
-           5, 1, true, 4368161, 'Decoy', 'Yoced', 'Yooh',
-           '_IceRain', 'Tastydumpl1ng', 'https://assets.ppy.sh/beatmaps/2085155/covers/card.jpg',
-           'https://osu.ppy.sh/beatmapsets/2085155/download', 5.84, 180, 132, 8, 8, 2, '',
-           '//b.ppy.sh/preview/2085155.mp3'
-       );
+    5, 1, true, 4368161, 'Decoy', 'Yoced', 'Yooh',
+    '_IceRain', 'Tastydumpl1ng', 'https://assets.ppy.sh/beatmaps/2085155/covers/card.jpg',
+    'https://osu.ppy.sh/beatmapsets/2085155/download', 5.84, 180, 132, 8, 8, 2, '',
+    '//b.ppy.sh/preview/2085155.mp3'
+);
 INSERT INTO beatmap (
-    stage_id, map_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
+    stage_id, beatmap_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
     sr, bpm, drain_time, hp, od, index, comment, song_preview
 )
 VALUES (
-           5, 1, true, 4368407, '9876734123 ("Hyperprime" Full Version)', '1.05x For AST', 'Silentroom',
-           '553343477', 'Phukiir', 'https://assets.ppy.sh/beatmaps/2085258/covers/card.jpg',
-           'https://osu.ppy.sh/beatmapsets/2085258/download', 5.71, 165, 232, 8, 8, 3, '',
-           '//b.ppy.sh/preview/2085258.mp3'
-       );
+    5, 1, true, 4368407, '9876734123 ("Hyperprime" Full Version)', '1.05x For AST', 'Silentroom',
+    '553343477', 'Phukiir', 'https://assets.ppy.sh/beatmaps/2085258/covers/card.jpg',
+    'https://osu.ppy.sh/beatmapsets/2085258/download', 5.71, 165, 232, 8, 8, 3, '',
+    '//b.ppy.sh/preview/2085258.mp3'
+);
 INSERT INTO beatmap (
-    stage_id, map_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
+    stage_id, beatmap_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
     sr, bpm, drain_time, hp, od, index, comment, song_preview
 )
 VALUES (
-           5, 1, false, 4368168, 'A Dichroic Glass Snafu', 'Broken', 'Blitz Lunar',
-           '_IceRain', '_IceRain', 'https://assets.ppy.sh/beatmaps/2085157/covers/card.jpg',
-           'https://osu.ppy.sh/beatmapsets/2085157/download', 5.23, 180, 117, 8, 8, 4, '',
-           '//b.ppy.sh/preview/2085157.mp3'
-       );
+    5, 1, false, 4368168, 'A Dichroic Glass Snafu', 'Broken', 'Blitz Lunar',
+    '_IceRain', '_IceRain', 'https://assets.ppy.sh/beatmaps/2085157/covers/card.jpg',
+    'https://osu.ppy.sh/beatmapsets/2085157/download', 5.23, 180, 117, 8, 8, 4, '',
+    '//b.ppy.sh/preview/2085157.mp3'
+);
 INSERT INTO beatmap (
-    stage_id, map_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
+    stage_id, beatmap_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
     sr, bpm, drain_time, hp, od, index, comment, song_preview
 )
 VALUES (
-           5, 1, true, 2999060, 'fffff op.2', 'Evening''s Extreme', 'Five Hammer',
-           'Evening', 'U1d', 'https://assets.ppy.sh/beatmaps/1452883/covers/card.jpg',
-           'https://osu.ppy.sh/beatmapsets/1452883/download', 6.13, 266, 114, 8.5, 8.5, 4, '',
-           '//b.ppy.sh/preview/1452883.mp3'
-       );
+    5, 1, true, 2999060, 'fffff op.2', 'Evening''s Extreme', 'Five Hammer',
+    'Evening', 'U1d', 'https://assets.ppy.sh/beatmaps/1452883/covers/card.jpg',
+    'https://osu.ppy.sh/beatmapsets/1452883/download', 6.13, 266, 114, 8.5, 8.5, 4, '',
+    '//b.ppy.sh/preview/1452883.mp3'
+);
 INSERT INTO beatmap (
-    stage_id, map_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
+    stage_id, beatmap_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
     sr, bpm, drain_time, hp, od, index, comment, song_preview
 )
 VALUES (
-           5, 1, true, 4368123, 'Hiroari Shoots a Strange Bird ~ Till When', 'Perfect Cherry Blossom', 'ZUN',
-           '_IceRain', '_IceRain', 'https://assets.ppy.sh/beatmaps/2085144/covers/card.jpg',
-           'https://osu.ppy.sh/beatmapsets/2085144/download', 5.67, 155, 212, 8, 8, 5, '',
-           '//b.ppy.sh/preview/2085144.mp3'
-       );
+    5, 1, true, 4368123, 'Hiroari Shoots a Strange Bird ~ Till When', 'Perfect Cherry Blossom', 'ZUN',
+    '_IceRain', '_IceRain', 'https://assets.ppy.sh/beatmaps/2085144/covers/card.jpg',
+    'https://osu.ppy.sh/beatmapsets/2085144/download', 5.67, 155, 212, 8, 8, 5, '',
+    '//b.ppy.sh/preview/2085144.mp3'
+);
 INSERT INTO beatmap (
-    stage_id, map_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
+    stage_id, beatmap_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
     sr, bpm, drain_time, hp, od, index, comment, song_preview
 )
 VALUES (
-           5, 1, true, 4368323, 'Light Colors', 'The Color of Oblivion', 'Lia',
-           'YuzakiTsukasa', 'YuzakiTsukasa', 'https://assets.ppy.sh/beatmaps/2085228/covers/card.jpg',
-           'https://osu.ppy.sh/beatmapsets/2085228/download', 5.85, 131, 147, 8, 8, 6, '',
-           '//b.ppy.sh/preview/2085228.mp3'
-       );
+    5, 1, true, 4368323, 'Light Colors', 'The Color of Oblivion', 'Lia',
+    'YuzakiTsukasa', 'YuzakiTsukasa', 'https://assets.ppy.sh/beatmaps/2085228/covers/card.jpg',
+    'https://osu.ppy.sh/beatmapsets/2085228/download', 5.85, 131, 147, 8, 8, 6, '',
+    '//b.ppy.sh/preview/2085228.mp3'
+);
 INSERT INTO beatmap (
-    stage_id, map_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
+    stage_id, beatmap_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
     sr, bpm, drain_time, hp, od, index, comment, song_preview
 )
 VALUES (
-           5, 2, true, 4368724, 'phony', 'Master', 'Hoshimachi Suisei',
-           '[Crz]sunnyxxy', '[Crz]sunnyxxy', 'https://assets.ppy.sh/beatmaps/2085404/covers/card.jpg',
-           'https://osu.ppy.sh/beatmapsets/2085404/download', 6.28, 170, 186, 7, 6, 1, '',
-           '//b.ppy.sh/preview/2085404.mp3'
-       );
+    5, 2, true, 4368724, 'phony', 'Master', 'Hoshimachi Suisei',
+    '[Crz]sunnyxxy', '[Crz]sunnyxxy', 'https://assets.ppy.sh/beatmaps/2085404/covers/card.jpg',
+    'https://osu.ppy.sh/beatmapsets/2085404/download', 6.28, 170, 186, 7, 6, 1, '',
+    '//b.ppy.sh/preview/2085404.mp3'
+);
 INSERT INTO beatmap (
-    stage_id, map_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
+    stage_id, beatmap_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
     sr, bpm, drain_time, hp, od, index, comment, song_preview
 )
 VALUES (
-           5, 2, true, 4368231, 'Tiferet', 'MeLady', 'Xi feat. Sta',
-           'Benson_', 'TheFunk', 'https://assets.ppy.sh/beatmaps/2085191/covers/card.jpg',
-           'https://osu.ppy.sh/beatmapsets/2085191/download', 6.33, 280, 168, 7, 6, 2, '',
-           '//b.ppy.sh/preview/2085191.mp3'
-       );
+    5, 2, true, 4368231, 'Tiferet', 'MeLady', 'Xi feat. Sta',
+    'Benson_', 'TheFunk', 'https://assets.ppy.sh/beatmaps/2085191/covers/card.jpg',
+    'https://osu.ppy.sh/beatmapsets/2085191/download', 6.33, 280, 168, 7, 6, 2, '',
+    '//b.ppy.sh/preview/2085191.mp3'
+);
 INSERT INTO beatmap (
-    stage_id, map_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
+    stage_id, beatmap_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
     sr, bpm, drain_time, hp, od, index, comment, song_preview
 )
 VALUES (
-           5, 2, true, 4368365, 'G e n g a o z o', 'void (AST Edit)', '-45',
-           'tyrcs', 'U1d', 'https://assets.ppy.sh/beatmaps/2085240/covers/card.jpg',
-           'https://osu.ppy.sh/beatmapsets/2085240/download', 6.37, 153, 177, 7, 6, 3, '',
-           '//b.ppy.sh/preview/2085240.mp3'
-       );
+    5, 2, true, 4368365, 'G e n g a o z o', 'void (AST Edit)', '-45',
+    'tyrcs', 'U1d', 'https://assets.ppy.sh/beatmaps/2085240/covers/card.jpg',
+    'https://osu.ppy.sh/beatmapsets/2085240/download', 6.37, 153, 177, 7, 6, 3, '',
+    '//b.ppy.sh/preview/2085240.mp3'
+);
 INSERT INTO beatmap (
-    stage_id, map_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
+    stage_id, beatmap_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
     sr, bpm, drain_time, hp, od, index, comment, song_preview
 )
 VALUES (
-           5, 2, true, 4368924, 'Cerebrite', 'iya', 'Mili',
-           'U1d', 'Albionthegreat', 'https://assets.ppy.sh/beatmaps/2085486/covers/card.jpg',
-           'https://osu.ppy.sh/beatmapsets/2085486/download', 5.26, 148, 155, 7, 6.5, 4, '',
-           '//b.ppy.sh/preview/2085486.mp3'
-       );
+    5, 2, true, 4368924, 'Cerebrite', 'iya', 'Mili',
+    'U1d', 'Albionthegreat', 'https://assets.ppy.sh/beatmaps/2085486/covers/card.jpg',
+    'https://osu.ppy.sh/beatmapsets/2085486/download', 5.26, 148, 155, 7, 6.5, 4, '',
+    '//b.ppy.sh/preview/2085486.mp3'
+);
 INSERT INTO beatmap (
-    stage_id, map_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
+    stage_id, beatmap_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
     sr, bpm, drain_time, hp, od, index, comment, song_preview
 )
 VALUES (
-           5, 3, true, 4368406, 'BREaK! BREaK! BREaK!', 'Break it all up', 'HiTECH NINJA vs Cranky',
-           '553343477', '_IceRain', 'https://assets.ppy.sh/beatmaps/1616398/covers/card.jpg',
-           'https://osu.ppy.sh/beatmapsets/1616398/download', 7.51, 165, 143, 7, 7, 1, '',
-           '//b.ppy.sh/preview/1616398.mp3'
-       );
+    5, 3, true, 4368406, 'BREaK! BREaK! BREaK!', 'Break it all up', 'HiTECH NINJA vs Cranky',
+    '553343477', '_IceRain', 'https://assets.ppy.sh/beatmaps/1616398/covers/card.jpg',
+    'https://osu.ppy.sh/beatmapsets/1616398/download', 7.51, 165, 143, 7, 7, 1, '',
+    '//b.ppy.sh/preview/1616398.mp3'
+);
 INSERT INTO beatmap (
-    stage_id, map_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
+    stage_id, beatmap_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
     sr, bpm, drain_time, hp, od, index, comment, song_preview
 )
 VALUES (
-           5, 3, true, 4368284, 'PhantasmalWar', 'Blood moon', 'SunsetRay',
-           'AhoUsagi', 'AhoUsagi', 'https://assets.ppy.sh/beatmaps/2085211/covers/card.jpg',
-           'https://osu.ppy.sh/beatmapsets/2085211/download', 6.75, 125, 138, 6, 6, 2, '',
-           '//b.ppy.sh/preview/2085211.mp3'
-       );
+    5, 3, true, 4368284, 'PhantasmalWar', 'Blood moon', 'SunsetRay',
+    'AhoUsagi', 'AhoUsagi', 'https://assets.ppy.sh/beatmaps/2085211/covers/card.jpg',
+    'https://osu.ppy.sh/beatmapsets/2085211/download', 6.75, 125, 138, 6, 6, 2, '',
+    '//b.ppy.sh/preview/2085211.mp3'
+);
 INSERT INTO beatmap (
-    stage_id, map_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
+    stage_id, beatmap_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
     sr, bpm, drain_time, hp, od, index, comment, song_preview
 )
 VALUES (
-           5, 3, true, 4368711, 'Catastrophe', 'Apocalypse', 'Juggernaut.',
-           'Alptraum', 'Alptraum', 'https://assets.ppy.sh/beatmaps/2085392/covers/card.jpg',
-           'https://osu.ppy.sh/beatmapsets/2085392/download', 6.24, 180, 179, 7.6, 7.6, 3, '',
-           '//b.ppy.sh/preview/2085392.mp3'
-       );
+    5, 3, true, 4368711, 'Catastrophe', 'Apocalypse', 'Juggernaut.',
+    'Alptraum', 'Alptraum', 'https://assets.ppy.sh/beatmaps/2085392/covers/card.jpg',
+    'https://osu.ppy.sh/beatmapsets/2085392/download', 6.24, 180, 179, 7.6, 7.6, 3, '',
+    '//b.ppy.sh/preview/2085392.mp3'
+);
 INSERT INTO beatmap (
-    stage_id, map_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
+    stage_id, beatmap_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
     sr, bpm, drain_time, hp, od, index, comment, song_preview
 )
 VALUES (
-           5, 5, true, 4368401, 'Heroes of our time', 'The Epic', 'Dragonforce',
-           'Imperial Wolf', 'Tastydumpl1ng', 'https://assets.ppy.sh/beatmaps/2085254/covers/card.jpg',
-           'https://osu.ppy.sh/beatmapsets/2085254/download', 7.14, 200, 422, 8, 7, 0, '',
-           '//b.ppy.sh/preview/2085254.mp3'
-       );
+    5, 5, true, 4368401, 'Heroes of our time', 'The Epic', 'Dragonforce',
+    'Imperial Wolf', 'Tastydumpl1ng', 'https://assets.ppy.sh/beatmaps/2085254/covers/card.jpg',
+    'https://osu.ppy.sh/beatmapsets/2085254/download', 7.14, 200, 422, 8, 7, 0, '',
+    '//b.ppy.sh/preview/2085254.mp3'
+);
 INSERT INTO beatmap (
-    stage_id, map_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
+    stage_id, beatmap_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
     sr, bpm, drain_time, hp, od, index, comment, song_preview
 )
 VALUES (
-           5, 1, false, 4455483, 'Clinozoisite', 'Epidosis', 'Ludicin',
-           'BKwind', 'Arcaxio', 'https://assets.ppy.sh/beatmaps/2120625/covers/card.jpg',
-           'https://osu.ppy.sh/beatmapsets/2120625/download', 6.31, 175, 329, 8, 8, 4, '',
-           '//b.ppy.sh/preview/2120625.mp3'
-       );
+    5, 1, false, 4455483, 'Clinozoisite', 'Epidosis', 'Ludicin',
+    'BKwind', 'Arcaxio', 'https://assets.ppy.sh/beatmaps/2120625/covers/card.jpg',
+    'https://osu.ppy.sh/beatmapsets/2120625/download', 6.31, 175, 329, 8, 8, 4, '',
+    '//b.ppy.sh/preview/2120625.mp3'
+);
 INSERT INTO beatmap (
-    stage_id, map_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
+    stage_id, beatmap_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
     sr, bpm, drain_time, hp, od, index, comment, song_preview
 )
 VALUES (
-           5, 3, false, 4256390, 'oddloop', 'Oddities', 'Frederic',
-           'White Hare', 'Arcaxio', 'https://assets.ppy.sh/beatmaps/2034766/covers/card.jpg',
-           'https://osu.ppy.sh/beatmapsets/2034766/download', 3.9, 172, 243, 8, 7.5, 2, '',
-           '//b.ppy.sh/preview/2034766.mp3'
-       );
+    5, 3, false, 4256390, 'oddloop', 'Oddities', 'Frederic',
+    'White Hare', 'Arcaxio', 'https://assets.ppy.sh/beatmaps/2034766/covers/card.jpg',
+    'https://osu.ppy.sh/beatmapsets/2034766/download', 3.9, 172, 243, 8, 7.5, 2, '',
+    '//b.ppy.sh/preview/2034766.mp3'
+);
 INSERT INTO beatmap (
-    stage_id, map_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
+    stage_id, beatmap_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
     sr, bpm, drain_time, hp, od, index, comment, song_preview
 )
 VALUES (
-           1, 1, true, 4334158, 'HiTECH Bass Loops Vol.1', 'Stage 1: Erraticity', 'lapix',
-           'Phukiir', 'Arcaxio', 'https://assets.ppy.sh/beatmaps/2071342/covers/card.jpg',
-           'https://osu.ppy.sh/beatmapsets/2071342/download', 4.37, 150, 139, 8, 8.5, 1, '',
-           '//b.ppy.sh/preview/2071342.mp3'
-       );
+    1, 1, true, 4334158, 'HiTECH Bass Loops Vol.1', 'Stage 1: Erraticity', 'lapix',
+    'Phukiir', 'Arcaxio', 'https://assets.ppy.sh/beatmaps/2071342/covers/card.jpg',
+    'https://osu.ppy.sh/beatmapsets/2071342/download', 4.37, 150, 139, 8, 8.5, 1, '',
+    '//b.ppy.sh/preview/2071342.mp3'
+);
 INSERT INTO beatmap (
-    stage_id, map_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
+    stage_id, beatmap_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
     sr, bpm, drain_time, hp, od, index, comment, song_preview
 )
 VALUES (
-           1, 1, true, 4334134, 'Firmament Castle "Velier"', 'Stage 2: Welkin', 'Uetsu Shi',
-           'HMillion', 'Arcaxio', 'https://assets.ppy.sh/beatmaps/2071330/covers/card.jpg',
-           'https://osu.ppy.sh/beatmapsets/2071330/download', 4.75, 222, 122, 8, 8, 2, '',
-           '//b.ppy.sh/preview/2071330.mp3'
-       );
+    1, 1, true, 4334134, 'Firmament Castle "Velier"', 'Stage 2: Welkin', 'Uetsu Shi',
+    'HMillion', 'Arcaxio', 'https://assets.ppy.sh/beatmaps/2071330/covers/card.jpg',
+    'https://osu.ppy.sh/beatmapsets/2071330/download', 4.75, 222, 122, 8, 8, 2, '',
+    '//b.ppy.sh/preview/2071330.mp3'
+);
 INSERT INTO beatmap (
-    stage_id, map_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
+    stage_id, beatmap_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
     sr, bpm, drain_time, hp, od, index, comment, song_preview
 )
 VALUES (
-           1, 3, true, 4334121, 'Jikai ~ Paganelope', 'Stage 3: Lust', 'Warak',
-           'Alptraum', 'Arcaxio', 'https://assets.ppy.sh/beatmaps/2071323/covers/card.jpg',
-           'https://osu.ppy.sh/beatmapsets/2071323/download', 5.36, 128, 161, 8, 8, 1, '',
-           '//b.ppy.sh/preview/2071323.mp3'
-       );
+    1, 3, true, 4334121, 'Jikai ~ Paganelope', 'Stage 3: Lust', 'Warak',
+    'Alptraum', 'Arcaxio', 'https://assets.ppy.sh/beatmaps/2071323/covers/card.jpg',
+    'https://osu.ppy.sh/beatmapsets/2071323/download', 5.36, 128, 161, 8, 8, 1, '',
+    '//b.ppy.sh/preview/2071323.mp3'
+);
 INSERT INTO beatmap (
-    stage_id, map_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
+    stage_id, beatmap_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
     sr, bpm, drain_time, hp, od, index, comment, song_preview
 )
 VALUES (
-           1, 2, true, 4334124, 'Woodfairies', 'Stage 4: Yearning', 'Aethoro',
-           'tastydumpl1ng', 'Arcaxio', 'https://assets.ppy.sh/beatmaps/2071325/covers/card.jpg',
-           'https://osu.ppy.sh/beatmapsets/2071325/download', 4.49, 174, 147, 7, 7.2, 1, '',
-           '//b.ppy.sh/preview/2071325.mp3'
-       );
+    1, 2, true, 4334124, 'Woodfairies', 'Stage 4: Yearning', 'Aethoro',
+    'tastydumpl1ng', 'Arcaxio', 'https://assets.ppy.sh/beatmaps/2071325/covers/card.jpg',
+    'https://osu.ppy.sh/beatmapsets/2071325/download', 4.49, 174, 147, 7, 7.2, 1, '',
+    '//b.ppy.sh/preview/2071325.mp3'
+);
 INSERT INTO beatmap (
-    stage_id, map_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
+    stage_id, beatmap_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
     sr, bpm, drain_time, hp, od, index, comment, song_preview
 )
 VALUES (
-           1, 1, true, 4334151, 'Nhelv', 'Stage 5: NERVE', 'Silentroom',
-           'YuzakiTsukasa', 'Arcaxio', 'https://assets.ppy.sh/beatmaps/2071339/covers/card.jpg',
-           'https://osu.ppy.sh/beatmapsets/2071339/download', 5.08, 175, 155, 8, 8, 3, '',
-           '//b.ppy.sh/preview/2071339.mp3'
-       );
+    1, 1, true, 4334151, 'Nhelv', 'Stage 5: NERVE', 'Silentroom',
+    'YuzakiTsukasa', 'Arcaxio', 'https://assets.ppy.sh/beatmaps/2071339/covers/card.jpg',
+    'https://osu.ppy.sh/beatmapsets/2071339/download', 5.08, 175, 155, 8, 8, 3, '',
+    '//b.ppy.sh/preview/2071339.mp3'
+);
 INSERT INTO beatmap (
-    stage_id, map_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
+    stage_id, beatmap_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
     sr, bpm, drain_time, hp, od, index, comment, song_preview
 )
 VALUES (
-           1, 1, true, 4334143, 'ELPIS', 'Stage 6: Hope', 'dj TAKA',
-           '_IceRain', 'Arcaxio', 'https://assets.ppy.sh/beatmaps/2071335/covers/card.jpg',
-           'https://osu.ppy.sh/beatmapsets/2071335/download', 5.77, 175, 112, 8, 8, 4, '',
-           '//b.ppy.sh/preview/2071335.mp3'
-       );
+    1, 1, true, 4334143, 'ELPIS', 'Stage 6: Hope', 'dj TAKA',
+    '_IceRain', 'Arcaxio', 'https://assets.ppy.sh/beatmaps/2071335/covers/card.jpg',
+    'https://osu.ppy.sh/beatmapsets/2071335/download', 5.77, 175, 112, 8, 8, 4, '',
+    '//b.ppy.sh/preview/2071335.mp3'
+);
 INSERT INTO beatmap (
-    stage_id, map_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
+    stage_id, beatmap_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
     sr, bpm, drain_time, hp, od, index, comment, song_preview
 )
 VALUES (
-           1, 3, true, 4334110, 'Strange Love', 'Stage 8: Affliction', 'Sakuzyo',
-           'BKwind', 'Arcaxio', 'https://assets.ppy.sh/beatmaps/2071316/covers/card.jpg',
-           'https://osu.ppy.sh/beatmapsets/2071316/download', 6.84, 190, 165, 8, 7, 2, '',
-           '//b.ppy.sh/preview/2071316.mp3'
-       );
+    1, 3, true, 4334110, 'Strange Love', 'Stage 8: Affliction', 'Sakuzyo',
+    'BKwind', 'Arcaxio', 'https://assets.ppy.sh/beatmaps/2071316/covers/card.jpg',
+    'https://osu.ppy.sh/beatmapsets/2071316/download', 6.84, 190, 165, 8, 7, 2, '',
+    '//b.ppy.sh/preview/2071316.mp3'
+);
 INSERT INTO beatmap (
-    stage_id, map_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
+    stage_id, beatmap_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
     sr, bpm, drain_time, hp, od, index, comment, song_preview
 )
 VALUES (
-           10, 4, true, 4253502, 'sha (Cut Ver.)', 'Stage 1: blake', 'sakuraburst',
-           'Paturages', 'Arcaxio', 'https://assets.ppy.sh/beatmaps/2039247/covers/card.jpg',
-           'https://osu.ppy.sh/beatmapsets/2039247/download', 3.02, 170, 114, 7, 7, 1, '',
-           '//b.ppy.sh/preview/2039247.mp3'
-       );
+    10, 4, true, 4253502, 'sha (Cut Ver.)', 'Stage 1: blake', 'sakuraburst',
+    'Paturages', 'Arcaxio', 'https://assets.ppy.sh/beatmaps/2039247/covers/card.jpg',
+    'https://osu.ppy.sh/beatmapsets/2039247/download', 3.02, 170, 114, 7, 7, 1, '',
+    '//b.ppy.sh/preview/2039247.mp3'
+);
 INSERT INTO beatmap (
-    stage_id, map_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
+    stage_id, beatmap_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
     sr, bpm, drain_time, hp, od, index, comment, song_preview
 )
 VALUES (
-           10, 1, true, 4253751, 'ultra-blazures (Cut Ver.)', 'Stage 2: amalgam', 'Frums',
-           'aeoliancarp', 'Arcaxio', 'https://assets.ppy.sh/beatmaps/2039339/covers/card.jpg',
-           'https://osu.ppy.sh/beatmapsets/2039339/download', 4.7, 174, 177, 8.3, 8.3, 1, '',
-           '//b.ppy.sh/preview/2039339.mp3'
-       );
+    10, 1, true, 4253751, 'ultra-blazures (Cut Ver.)', 'Stage 2: amalgam', 'Frums',
+    'aeoliancarp', 'Arcaxio', 'https://assets.ppy.sh/beatmaps/2039339/covers/card.jpg',
+    'https://osu.ppy.sh/beatmapsets/2039339/download', 4.7, 174, 177, 8.3, 8.3, 1, '',
+    '//b.ppy.sh/preview/2039339.mp3'
+);
 INSERT INTO beatmap (
-    stage_id, map_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
+    stage_id, beatmap_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
     sr, bpm, drain_time, hp, od, index, comment, song_preview
 )
 VALUES (
-           10, 3, true, 4266621, 'Ten''imuhou', 'Absolute', 'xi',
-           'elexire', 'Arcaxio', 'https://assets.ppy.sh/beatmaps/2039240/covers/card.jpg',
-           'https://osu.ppy.sh/beatmapsets/2039240/download', 4.63, 148, 249, 8, 7.4, 1, '',
-           '//b.ppy.sh/preview/2039240.mp3'
-       );
+    10, 3, true, 4266621, 'Ten''imuhou', 'Absolute', 'xi',
+    'elexire', 'Arcaxio', 'https://assets.ppy.sh/beatmaps/2039240/covers/card.jpg',
+    'https://osu.ppy.sh/beatmapsets/2039240/download', 4.63, 148, 249, 8, 7.4, 1, '',
+    '//b.ppy.sh/preview/2039240.mp3'
+);
 INSERT INTO beatmap (
-    stage_id, map_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
+    stage_id, beatmap_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
     sr, bpm, drain_time, hp, od, index, comment, song_preview
 )
 VALUES (
-           10, 2, true, 4253496, 'End of Fairytale', 'Stage 4: Parable', 'technoplanet feat. Haruno',
-           'Raveille', 'Arcaxio', 'https://assets.ppy.sh/beatmaps/2039243/covers/card.jpg',
-           'https://osu.ppy.sh/beatmapsets/2039243/download', 5.53, 250, 142, 8, 7, 1, '',
-           '//b.ppy.sh/preview/2039243.mp3'
-       );
+    10, 2, true, 4253496, 'End of Fairytale', 'Stage 4: Parable', 'technoplanet feat. Haruno',
+    'Raveille', 'Arcaxio', 'https://assets.ppy.sh/beatmaps/2039243/covers/card.jpg',
+    'https://osu.ppy.sh/beatmapsets/2039243/download', 5.53, 250, 142, 8, 7, 1, '',
+    '//b.ppy.sh/preview/2039243.mp3'
+);
 INSERT INTO beatmap (
-    stage_id, map_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
+    stage_id, beatmap_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
     sr, bpm, drain_time, hp, od, index, comment, song_preview
 )
 VALUES (
-           10, 2, true, 4253649, 'Ultra Happy Miracle Bazoooooka!!', 'Stage 5: Overjoy',
-           'Hino Isuka vs. Umeboshi Chazuke',
-           'Toaph Daddy', 'Arcaxio', 'https://assets.ppy.sh/beatmaps/2039298/covers/card.jpg',
-           'https://osu.ppy.sh/beatmapsets/2039298/download', 6.06, 200, 122, 7.7, 7.7, 2, '',
-           '//b.ppy.sh/preview/2039298.mp3'
-       );
+    10, 2, true, 4253649, 'Ultra Happy Miracle Bazoooooka!!', 'Stage 5: Overjoy',
+    'Hino Isuka vs. Umeboshi Chazuke',
+    'Toaph Daddy', 'Arcaxio', 'https://assets.ppy.sh/beatmaps/2039298/covers/card.jpg',
+    'https://osu.ppy.sh/beatmapsets/2039298/download', 6.06, 200, 122, 7.7, 7.7, 2, '',
+    '//b.ppy.sh/preview/2039298.mp3'
+);
 INSERT INTO beatmap (
-    stage_id, map_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
+    stage_id, beatmap_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
     sr, bpm, drain_time, hp, od, index, comment, song_preview
 )
 VALUES (
-           10, 3, true, 4253513, 'onslaught -Retaliation of Bahamut-', 'Stage 6: Massacre', 'Camellia',
-           'guden', 'Arcaxio', 'https://assets.ppy.sh/beatmaps/2039253/covers/card.jpg',
-           'https://osu.ppy.sh/beatmapsets/2039253/download', 5.74, 238, 116, 8.1, 7.8, 2, '',
-           '//b.ppy.sh/preview/2039253.mp3'
-       );
+    10, 3, true, 4253513, 'onslaught -Retaliation of Bahamut-', 'Stage 6: Massacre', 'Camellia',
+    'guden', 'Arcaxio', 'https://assets.ppy.sh/beatmaps/2039253/covers/card.jpg',
+    'https://osu.ppy.sh/beatmapsets/2039253/download', 5.74, 238, 116, 8.1, 7.8, 2, '',
+    '//b.ppy.sh/preview/2039253.mp3'
+);
 INSERT INTO beatmap (
-    stage_id, map_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
+    stage_id, beatmap_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
     sr, bpm, drain_time, hp, od, index, comment, song_preview
 )
 VALUES (
-           10, 1, true, 4253489, 'AMEN KATAGIRI GENERATION', 'Stage 7: Revival', 'katagiri',
-           '-mint-', 'Arcaxio', 'https://assets.ppy.sh/beatmaps/2039237/covers/card.jpg',
-           'https://osu.ppy.sh/beatmapsets/2039237/download', 5.75, 250, 168, 8.5, 8.5, 2, '',
-           '//b.ppy.sh/preview/2039237.mp3'
-       );
+    10, 1, true, 4253489, 'AMEN KATAGIRI GENERATION', 'Stage 7: Revival', 'katagiri',
+    '-mint-', 'Arcaxio', 'https://assets.ppy.sh/beatmaps/2039237/covers/card.jpg',
+    'https://osu.ppy.sh/beatmapsets/2039237/download', 5.75, 250, 168, 8.5, 8.5, 2, '',
+    '//b.ppy.sh/preview/2039237.mp3'
+);
 INSERT INTO beatmap (
-    stage_id, map_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
+    stage_id, beatmap_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
     sr, bpm, drain_time, hp, od, index, comment, song_preview
 )
 VALUES (
-           10, 1, true, 4253740, 'Xuasar Charge', 'A Sea of Stars', 'Kou!',
-           '0DZ0', 'Arcaxio', 'https://assets.ppy.sh/beatmaps/2039336/covers/card.jpg',
-           'https://osu.ppy.sh/beatmapsets/2039336/download', 5.07, 150, 211, 8, 8, 3, '',
-           '//b.ppy.sh/preview/2039336.mp3'
-       );
+    10, 1, true, 4253740, 'Xuasar Charge', 'A Sea of Stars', 'Kou!',
+    '0DZ0', 'Arcaxio', 'https://assets.ppy.sh/beatmaps/2039336/covers/card.jpg',
+    'https://osu.ppy.sh/beatmapsets/2039336/download', 5.07, 150, 211, 8, 8, 3, '',
+    '//b.ppy.sh/preview/2039336.mp3'
+);
 INSERT INTO beatmap (
-    stage_id, map_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
+    stage_id, beatmap_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
     sr, bpm, drain_time, hp, od, index, comment, song_preview
 )
 VALUES (
-           9, 1, true, 4283526, 'Gypsophila', 'blossom 1.1x (166bpm)', 'linear ring with RNAcid',
-           'MyZterioN-', 'Arcaxio', 'https://assets.ppy.sh/beatmaps/1805950/covers/card.jpg',
-           'https://osu.ppy.sh/beatmapsets/1805950/download', 4.82, 166, 147, 8, 8, 1, '',
-           '//b.ppy.sh/preview/1805950.mp3'
-       );
+    9, 1, true, 4283526, 'Gypsophila', 'blossom 1.1x (166bpm)', 'linear ring with RNAcid',
+    'MyZterioN-', 'Arcaxio', 'https://assets.ppy.sh/beatmaps/1805950/covers/card.jpg',
+    'https://osu.ppy.sh/beatmapsets/1805950/download', 4.82, 166, 147, 8, 8, 1, '',
+    '//b.ppy.sh/preview/1805950.mp3'
+);
 INSERT INTO beatmap (
-    stage_id, map_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
+    stage_id, beatmap_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
     sr, bpm, drain_time, hp, od, index, comment, song_preview
 )
 VALUES (
-           9, 1, true, 4272125, 'Cosmo Station', 'Orbis x1.1', 'seatrus',
-           'Blessia', 'Arcaxio', 'https://assets.ppy.sh/beatmaps/2046586/covers/card.jpg',
-           'https://osu.ppy.sh/beatmapsets/2046586/download', 5.59, 247, 198, 8, 8, 2, '',
-           '//b.ppy.sh/preview/2046586.mp3'
-       );
+    9, 1, true, 4272125, 'Cosmo Station', 'Orbis x1.1', 'seatrus',
+    'Blessia', 'Arcaxio', 'https://assets.ppy.sh/beatmaps/2046586/covers/card.jpg',
+    'https://osu.ppy.sh/beatmapsets/2046586/download', 5.59, 247, 198, 8, 8, 2, '',
+    '//b.ppy.sh/preview/2046586.mp3'
+);
 INSERT INTO beatmap (
-    stage_id, map_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
+    stage_id, beatmap_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
     sr, bpm, drain_time, hp, od, index, comment, song_preview
 )
 VALUES (
-           9, 1, true, 4281865, 'Edison', 'Challenge (Edit) 1.1x (146bpm)', 'EvOke',
-           'Miaurichesu', 'Arcaxio', 'https://assets.ppy.sh/beatmaps/2050560/covers/card.jpg',
-           'https://osu.ppy.sh/beatmapsets/2050560/download', 5.18, 146, 157, 8, 8.5, 3, '',
-           '//b.ppy.sh/preview/2050560.mp3'
-       );
+    9, 1, true, 4281865, 'Edison', 'Challenge (Edit) 1.1x (146bpm)', 'EvOke',
+    'Miaurichesu', 'Arcaxio', 'https://assets.ppy.sh/beatmaps/2050560/covers/card.jpg',
+    'https://osu.ppy.sh/beatmapsets/2050560/download', 5.18, 146, 157, 8, 8.5, 3, '',
+    '//b.ppy.sh/preview/2050560.mp3'
+);
 INSERT INTO beatmap (
-    stage_id, map_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
+    stage_id, beatmap_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
     sr, bpm, drain_time, hp, od, index, comment, song_preview
 )
 VALUES (
-           9, 1, true, 4284901, 'Break The Silence', 'Challenge', 'Camellia',
-           '0DZ0', 'Arcaxio', 'https://assets.ppy.sh/beatmaps/2051831/covers/card.jpg',
-           'https://osu.ppy.sh/beatmapsets/2051831/download', 4.96, 220, 224, 8.5, 8.3, 4, '',
-           '//b.ppy.sh/preview/2051831.mp3'
-       );
+    9, 1, true, 4284901, 'Break The Silence', 'Challenge', 'Camellia',
+    '0DZ0', 'Arcaxio', 'https://assets.ppy.sh/beatmaps/2051831/covers/card.jpg',
+    'https://osu.ppy.sh/beatmapsets/2051831/download', 4.96, 220, 224, 8.5, 8.3, 4, '',
+    '//b.ppy.sh/preview/2051831.mp3'
+);
 INSERT INTO beatmap (
-    stage_id, map_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
+    stage_id, beatmap_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
     sr, bpm, drain_time, hp, od, index, comment, song_preview
 )
 VALUES (
-           9, 1, true, 4284906, 'Baka Mitai (Cut Ver.)', 'Ska''s n no. .', 'Kazuma Kiryu (CV: Takaya Kuroda)',
-           'elexire', 'Arcaxio', 'https://assets.ppy.sh/beatmaps/2051835/covers/card.jpg',
-           'https://osu.ppy.sh/beatmapsets/2051835/download', 4.89, 148, 110, 8, 8, 5, '',
-           '//b.ppy.sh/preview/2051835.mp3'
-       );
+    9, 1, true, 4284906, 'Baka Mitai (Cut Ver.)', 'Ska''s n no. .', 'Kazuma Kiryu (CV: Takaya Kuroda)',
+    'elexire', 'Arcaxio', 'https://assets.ppy.sh/beatmaps/2051835/covers/card.jpg',
+    'https://osu.ppy.sh/beatmapsets/2051835/download', 4.89, 148, 110, 8, 8, 5, '',
+    '//b.ppy.sh/preview/2051835.mp3'
+);
 INSERT INTO beatmap (
-    stage_id, map_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
+    stage_id, beatmap_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
     sr, bpm, drain_time, hp, od, index, comment, song_preview
 )
 VALUES (
-           9, 1, true, 4284888, 'Nisemono', 'Impostor (cut 1.05x)', 'Frums',
-           'Pizza69', 'Arcaxio', 'https://assets.ppy.sh/beatmaps/2051825/covers/card.jpg',
-           'https://osu.ppy.sh/beatmapsets/2051825/download', 5.2, 315, 153, 8, 8, 6, '',
-           '//b.ppy.sh/preview/2051825.mp3'
-       );
+    9, 1, true, 4284888, 'Nisemono', 'Impostor (cut 1.05x)', 'Frums',
+    'Pizza69', 'Arcaxio', 'https://assets.ppy.sh/beatmaps/2051825/covers/card.jpg',
+    'https://osu.ppy.sh/beatmapsets/2051825/download', 5.2, 315, 153, 8, 8, 6, '',
+    '//b.ppy.sh/preview/2051825.mp3'
+);
 INSERT INTO beatmap (
-    stage_id, map_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
+    stage_id, beatmap_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
     sr, bpm, drain_time, hp, od, index, comment, song_preview
 )
 VALUES (
-           9, 3, true, 4284664, 'Bloomin''', 'Flowerin''', 'MisoilePunch -Forever-',
-           'guden', 'Arcaxio', 'https://assets.ppy.sh/beatmaps/2051734/covers/card.jpg',
-           'https://osu.ppy.sh/beatmapsets/2051734/download', 5.49, 234, 138, 8, 7.5, 1, '',
-           '//b.ppy.sh/preview/2051734.mp3'
-       );
+    9, 3, true, 4284664, 'Bloomin''', 'Flowerin''', 'MisoilePunch -Forever-',
+    'guden', 'Arcaxio', 'https://assets.ppy.sh/beatmaps/2051734/covers/card.jpg',
+    'https://osu.ppy.sh/beatmapsets/2051734/download', 5.49, 234, 138, 8, 7.5, 1, '',
+    '//b.ppy.sh/preview/2051734.mp3'
+);
 INSERT INTO beatmap (
-    stage_id, map_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
+    stage_id, beatmap_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
     sr, bpm, drain_time, hp, od, index, comment, song_preview
 )
 VALUES (
-           9, 3, true, 4284920, 'Upload Your Mind :: Download My Soul', 'Multidimensional', 'Camellia',
-           '-mint-', 'Arcaxio', 'https://assets.ppy.sh/beatmaps/2051840/covers/card.jpg',
-           'https://osu.ppy.sh/beatmapsets/2051840/download', 5.22, 166, 271, 8, 7.3, 2, '',
-           '//b.ppy.sh/preview/2051840.mp3'
-       );
+    9, 3, true, 4284920, 'Upload Your Mind :: Download My Soul', 'Multidimensional', 'Camellia',
+    '-mint-', 'Arcaxio', 'https://assets.ppy.sh/beatmaps/2051840/covers/card.jpg',
+    'https://osu.ppy.sh/beatmapsets/2051840/download', 5.22, 166, 271, 8, 7.3, 2, '',
+    '//b.ppy.sh/preview/2051840.mp3'
+);
 INSERT INTO beatmap (
-    stage_id, map_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
+    stage_id, beatmap_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
     sr, bpm, drain_time, hp, od, index, comment, song_preview
 )
 VALUES (
-           9, 3, true, 4284700, 'Calculator', '.857142', 'M-O-T-U',
-           '[Crz]FolAH1217', 'Arcaxio', 'https://assets.ppy.sh/beatmaps/2051746/covers/card.jpg',
-           'https://osu.ppy.sh/beatmapsets/2051746/download', 4.95, 166, 109, 7.5, 7.3, 3, '',
-           '//b.ppy.sh/preview/2051746.mp3'
-       );
+    9, 3, true, 4284700, 'Calculator', '.857142', 'M-O-T-U',
+    '[Crz]FolAH1217', 'Arcaxio', 'https://assets.ppy.sh/beatmaps/2051746/covers/card.jpg',
+    'https://osu.ppy.sh/beatmapsets/2051746/download', 4.95, 166, 109, 7.5, 7.3, 3, '',
+    '//b.ppy.sh/preview/2051746.mp3'
+);
 INSERT INTO beatmap (
-    stage_id, map_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
+    stage_id, beatmap_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
     sr, bpm, drain_time, hp, od, index, comment, song_preview
 )
 VALUES (
-           9, 2, true, 4284564, 'Astra Walkthrough', 'Faded Stars', 'paraoka',
-           '[Crz]Crysarlene', 'Arcaxio', 'https://assets.ppy.sh/beatmaps/2051679/covers/card.jpg',
-           'https://osu.ppy.sh/beatmapsets/2051679/download', 5.27, 225, 136, 9, 7.3, 1, '',
-           '//b.ppy.sh/preview/2051679.mp3'
-       );
+    9, 2, true, 4284564, 'Astra Walkthrough', 'Faded Stars', 'paraoka',
+    '[Crz]Crysarlene', 'Arcaxio', 'https://assets.ppy.sh/beatmaps/2051679/covers/card.jpg',
+    'https://osu.ppy.sh/beatmapsets/2051679/download', 5.27, 225, 136, 9, 7.3, 1, '',
+    '//b.ppy.sh/preview/2051679.mp3'
+);
 INSERT INTO beatmap (
-    stage_id, map_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
+    stage_id, beatmap_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
     sr, bpm, drain_time, hp, od, index, comment, song_preview
 )
 VALUES (
-           9, 2, true, 4284669, 'Heaven''s Fall', 'Firmaments', 'Helblinde',
-           'guden', 'Arcaxio', 'https://assets.ppy.sh/beatmaps/2051737/covers/card.jpg',
-           'https://osu.ppy.sh/beatmapsets/2051737/download', 5.71, 200, 167, 8.6, 7.5, 2, '',
-           '//b.ppy.sh/preview/2051737.mp3'
-       );
+    9, 2, true, 4284669, 'Heaven''s Fall', 'Firmaments', 'Helblinde',
+    'guden', 'Arcaxio', 'https://assets.ppy.sh/beatmaps/2051737/covers/card.jpg',
+    'https://osu.ppy.sh/beatmapsets/2051737/download', 5.71, 200, 167, 8.6, 7.5, 2, '',
+    '//b.ppy.sh/preview/2051737.mp3'
+);
 INSERT INTO beatmap (
-    stage_id, map_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
+    stage_id, beatmap_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
     sr, bpm, drain_time, hp, od, index, comment, song_preview
 )
 VALUES (
-           9, 2, true, 4284918, 'Erinyes', 'Enigma', 'Toromaru',
-           'Toaph Daddy', 'Arcaxio', 'https://assets.ppy.sh/beatmaps/2051839/covers/card.jpg',
-           'https://osu.ppy.sh/beatmapsets/2051839/download', 6.2, 195, 138, 8, 7.5, 3, '',
-           '//b.ppy.sh/preview/2051839.mp3'
-       );
+    9, 2, true, 4284918, 'Erinyes', 'Enigma', 'Toromaru',
+    'Toaph Daddy', 'Arcaxio', 'https://assets.ppy.sh/beatmaps/2051839/covers/card.jpg',
+    'https://osu.ppy.sh/beatmapsets/2051839/download', 6.2, 195, 138, 8, 7.5, 3, '',
+    '//b.ppy.sh/preview/2051839.mp3'
+);
 INSERT INTO beatmap (
-    stage_id, map_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
+    stage_id, beatmap_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
     sr, bpm, drain_time, hp, od, index, comment, song_preview
 )
 VALUES (
-           9, 4, true, 4284932, 'Sample enSemble', 'SV asSemble', 'AltVoid',
-           'Tidek', 'Arcaxio', 'https://assets.ppy.sh/beatmaps/2051846/covers/card.jpg',
-           'https://osu.ppy.sh/beatmapsets/2051846/download', 3.2, 141, 139, 7, 7, 1, '',
-           '//b.ppy.sh/preview/2051846.mp3'
-       );
+    9, 4, true, 4284932, 'Sample enSemble', 'SV asSemble', 'AltVoid',
+    'Tidek', 'Arcaxio', 'https://assets.ppy.sh/beatmaps/2051846/covers/card.jpg',
+    'https://osu.ppy.sh/beatmapsets/2051846/download', 3.2, 141, 139, 7, 7, 1, '',
+    '//b.ppy.sh/preview/2051846.mp3'
+);
 INSERT INTO beatmap (
-    stage_id, map_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
+    stage_id, beatmap_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
     sr, bpm, drain_time, hp, od, index, comment, song_preview
 )
 VALUES (
-           9, 4, true, 4284940, 'Cyber Thunder Cider', '??', 'EZFG',
-           'zero2snow', 'Arcaxio', 'https://assets.ppy.sh/beatmaps/2051849/covers/card.jpg',
-           'https://osu.ppy.sh/beatmapsets/2051849/download', 3.34, 145, 183, 5, 7, 2, '',
-           '//b.ppy.sh/preview/2051849.mp3'
-       );
+    9, 4, true, 4284940, 'Cyber Thunder Cider', '??', 'EZFG',
+    'zero2snow', 'Arcaxio', 'https://assets.ppy.sh/beatmaps/2051849/covers/card.jpg',
+    'https://osu.ppy.sh/beatmapsets/2051849/download', 3.34, 145, 183, 5, 7, 2, '',
+    '//b.ppy.sh/preview/2051849.mp3'
+);
 INSERT INTO beatmap (
-    stage_id, map_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
+    stage_id, beatmap_type_id, in_mappool, beatmap_id, title, diff, artist, mapper, suggestor, cover, download,
     sr, bpm, drain_time, hp, od, index, comment, song_preview
 )
 VALUES (
-           9, 5, true, 4284926, 'Drenched in Air', 'Submerge', 'Camellia feat. Ninomae Ina''nis',
-           'elexire', 'Arcaxio', 'https://assets.ppy.sh/beatmaps/2051843/covers/card.jpg',
-           'https://osu.ppy.sh/beatmapsets/2051843/download', 6.92, 189, 288, 8, 7.3, 0, '',
-           '//b.ppy.sh/preview/2051843.mp3'
-       );
+    9, 5, true, 4284926, 'Drenched in Air', 'Submerge', 'Camellia feat. Ninomae Ina''nis',
+    'elexire', 'Arcaxio', 'https://assets.ppy.sh/beatmaps/2051843/covers/card.jpg',
+    'https://osu.ppy.sh/beatmapsets/2051843/download', 6.92, 189, 288, 8, 7.3, 0, '',
+    '//b.ppy.sh/preview/2051843.mp3'
+);
 
 -- USERS --------------------------------------------------------------------------------------------------------------
 
@@ -2095,53 +1823,53 @@ VALUES (1, 170, null, 6, 39, 0, false);
 
 INSERT INTO staff_request (recipient_id, role_id, sender_id, status_id, tournament_id, description)
 VALUES (
-           null, 9, 2, 1, 1,
-           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et ' ||
-           'dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut ' ||
-           'aliquip ex ea commodo consequat.'
-       );
+    null, 9, 2, 1, 1,
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et ' ||
+    'dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut ' ||
+    'aliquip ex ea commodo consequat.'
+);
 INSERT INTO staff_request (recipient_id, role_id, sender_id, status_id, tournament_id, description)
 VALUES (
-           null, 5, 3, 1, 1,
-           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et ' ||
-           'dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut ' ||
-           'aliquip ex ea commodo consequat.'
-       );
+    null, 5, 3, 1, 1,
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et ' ||
+    'dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut ' ||
+    'aliquip ex ea commodo consequat.'
+);
 INSERT INTO staff_request (recipient_id, role_id, sender_id, status_id, tournament_id, description)
 VALUES (
-           null, 7, 4, 1, 1,
-           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et ' ||
-           'dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut ' ||
-           'aliquip ex ea commodo consequat.'
-       );
+    null, 7, 4, 1, 1,
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et ' ||
+    'dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut ' ||
+    'aliquip ex ea commodo consequat.'
+);
 INSERT INTO staff_request (recipient_id, role_id, sender_id, status_id, tournament_id, description)
 VALUES (
-           null, 5, 5, 1, 1,
-           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et ' ||
-           'dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut ' ||
-           'aliquip ex ea commodo consequat.'
-       );
+    null, 5, 5, 1, 1,
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et ' ||
+    'dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut ' ||
+    'aliquip ex ea commodo consequat.'
+);
 INSERT INTO staff_request (recipient_id, role_id, sender_id, status_id, tournament_id, description)
 VALUES (
-           null, 5, 1, 1, 1,
-           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et ' ||
-           'dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut ' ||
-           'aliquip ex ea commodo consequat.'
-       );
+    null, 5, 1, 1, 1,
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et ' ||
+    'dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut ' ||
+    'aliquip ex ea commodo consequat.'
+);
 INSERT INTO staff_request (recipient_id, role_id, sender_id, status_id, tournament_id, description)
 VALUES (
-           null, 11, 1, 2, 1,
-           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et ' ||
-           'dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut ' ||
-           'aliquip ex ea commodo consequat.'
-       );
+    null, 11, 1, 2, 1,
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et ' ||
+    'dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut ' ||
+    'aliquip ex ea commodo consequat.'
+);
 INSERT INTO staff_request (recipient_id, role_id, sender_id, status_id, tournament_id, description)
 VALUES (
-           null, 10, 1, 3, 1,
-           'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et ' ||
-           'dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut ' ||
-           'aliquip ex ea commodo consequat.'
-       );
+    null, 10, 1, 3, 1,
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et ' ||
+    'dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut ' ||
+    'aliquip ex ea commodo consequat.'
+);
 INSERT INTO staff_request (recipient_id, role_id, sender_id, status_id, tournament_id, description)
 VALUES (1, 9, 2, 1, 1, 'Come join my tournament as a commentator because of reasons.');
 
@@ -2418,418 +2146,418 @@ INSERT INTO event_participant (app_user_id, team_id, event_id, role_id, score) V
 -- MAP SCORES ---------------------------------------------------------------------------------------------------------
 
 -- solo QF RC1
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (1, null, 57, 1, 980550, 99.4);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (1, null, 56, 1, 969947, 99.07);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (1, null, 62, 1, 966766, 99.02);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (1, null, 62, 2, 950918, 98.91);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (1, null, 63, 1, 961370, 98.81);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (1, null, 71, 1, 959448, 99.04);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (1, null, 73, 1, 953015, 99);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (1, null, 65, 1, 944850, 98.67);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (1, null, 78, 1, 942653, 98.65);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (1, null, 1, 1, 925070, 98.43);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (1, null, 72, 1, 914393, 97.95);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (1, null, 86, 1, 846379, 96.35);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (1, null, 82, 1, 827828, 95.97);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (1, null, 70, 1, 824988, 95.4);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (1, null, 57, 1, 980550, 99.4);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (1, null, 56, 1, 969947, 99.07);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (1, null, 62, 1, 966766, 99.02);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (1, null, 62, 2, 950918, 98.91);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (1, null, 63, 1, 961370, 98.81);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (1, null, 71, 1, 959448, 99.04);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (1, null, 73, 1, 953015, 99);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (1, null, 65, 1, 944850, 98.67);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (1, null, 78, 1, 942653, 98.65);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (1, null, 1, 1, 925070, 98.43);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (1, null, 72, 1, 914393, 97.95);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (1, null, 86, 1, 846379, 96.35);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (1, null, 82, 1, 827828, 95.97);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (1, null, 70, 1, 824988, 95.4);
 -- solo QF RC2
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (2, null, 57, 1, 988424, 99.64);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (2, null, 72, 1, 987396, 99.61);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (2, null, 72, 2, 962068, 99.19);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (2, null, 58, 1, 987219, 99.6);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (2, null, 61, 1, 979503, 99.5);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (2, null, 62, 1, 971391, 99.26);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (2, null, 63, 1, 963518, 99.02);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (2, null, 78, 1, 946504, 98.98);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (2, null, 65, 1, 935543, 98.62);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (2, null, 73, 1, 930899, 98.58);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (2, null, 64, 1, 910477, 98.16);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (2, null, 70, 1, 808966, 95.2);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (2, null, 86, 1, 681620, 91.41);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (2, null, 67, 1, 429394, 75.58);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (2, null, 57, 1, 988424, 99.64);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (2, null, 72, 1, 987396, 99.61);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (2, null, 72, 2, 962068, 99.19);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (2, null, 58, 1, 987219, 99.6);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (2, null, 61, 1, 979503, 99.5);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (2, null, 62, 1, 971391, 99.26);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (2, null, 63, 1, 963518, 99.02);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (2, null, 78, 1, 946504, 98.98);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (2, null, 65, 1, 935543, 98.62);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (2, null, 73, 1, 930899, 98.58);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (2, null, 64, 1, 910477, 98.16);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (2, null, 70, 1, 808966, 95.2);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (2, null, 86, 1, 681620, 91.41);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (2, null, 67, 1, 429394, 75.58);
 -- solo QF RC3
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (3, null, 58, 1, 974769, 99.53);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (3, null, 72, 1, 971713, 99.28);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (3, null, 72, 2, 862868, 96.28);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (3, null, 61, 1, 968715, 99.05);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (3, null, 73, 1, 968516, 99.34);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (3, null, 62, 1, 964862, 99.14);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (3, null, 78, 1, 956929, 99.05);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (3, null, 71, 1, 956785, 98.84);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (3, null, 64, 1, 943884, 98.79);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (3, null, 67, 1, 942508, 98.79);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (3, null, 69, 1, 940964, 98.75);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (3, null, 86, 1, 864853, 97.05);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (3, null, 58, 1, 974769, 99.53);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (3, null, 72, 1, 971713, 99.28);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (3, null, 72, 2, 862868, 96.28);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (3, null, 61, 1, 968715, 99.05);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (3, null, 73, 1, 968516, 99.34);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (3, null, 62, 1, 964862, 99.14);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (3, null, 78, 1, 956929, 99.05);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (3, null, 71, 1, 956785, 98.84);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (3, null, 64, 1, 943884, 98.79);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (3, null, 67, 1, 942508, 98.79);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (3, null, 69, 1, 940964, 98.75);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (3, null, 86, 1, 864853, 97.05);
 -- solo QF RC4
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (4, null, 56, 1, 981803, 99.44);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (4, null, 73, 1, 952558, 99.09);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (4, null, 62, 1, 934180, 98.17);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (4, null, 71, 1, 933735, 98.84);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (4, null, 64, 1, 933426, 98.66);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (4, null, 72, 1, 932958, 98.26);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (4, null, 86, 1, 839049, 96.79);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (4, null, 56, 1, 981803, 99.44);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (4, null, 73, 1, 952558, 99.09);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (4, null, 62, 1, 934180, 98.17);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (4, null, 71, 1, 933735, 98.84);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (4, null, 64, 1, 933426, 98.66);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (4, null, 72, 1, 932958, 98.26);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (4, null, 86, 1, 839049, 96.79);
 -- solo QF RC5
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (6, null, 72, 1, 968094, 99.02);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (6, null, 62, 1, 967188, 99.09);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (6, null, 62, 2, 964319, 99.1);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (6, null, 67, 1, 963664, 99.09);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (6, null, 73, 1, 963019, 99.23);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (6, null, 78, 1, 950667, 98.75);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (6, null, 64, 1, 945596, 98.63);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (6, null, 71, 1, 940193, 98.82);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (6, null, 72, 1, 968094, 99.02);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (6, null, 62, 1, 967188, 99.09);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (6, null, 62, 2, 964319, 99.1);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (6, null, 67, 1, 963664, 99.09);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (6, null, 73, 1, 963019, 99.23);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (6, null, 78, 1, 950667, 98.75);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (6, null, 64, 1, 945596, 98.63);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (6, null, 71, 1, 940193, 98.82);
 -- solo QF RC6
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (7, null, 57, 1, 986511, 99.75);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (7, null, 72, 1, 983207, 99.63);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (7, null, 72, 2, 958737, 99.24);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (7, null, 56, 1, 980226, 99.69);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (7, null, 73, 1, 980072, 99.68);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (7, null, 64, 1, 958897, 99.4);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (7, null, 62, 1, 954816, 98.92);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (7, null, 62, 2, 952576, 98.78);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (7, null, 65, 1, 931541, 98.46);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (7, null, 71, 1, 926948, 98.32);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (7, null, 78, 1, 912766, 98.03);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (7, null, 86, 1, 889851, 97.67);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (7, null, 57, 1, 986511, 99.75);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (7, null, 72, 1, 983207, 99.63);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (7, null, 72, 2, 958737, 99.24);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (7, null, 56, 1, 980226, 99.69);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (7, null, 73, 1, 980072, 99.68);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (7, null, 64, 1, 958897, 99.4);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (7, null, 62, 1, 954816, 98.92);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (7, null, 62, 2, 952576, 98.78);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (7, null, 65, 1, 931541, 98.46);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (7, null, 71, 1, 926948, 98.32);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (7, null, 78, 1, 912766, 98.03);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (7, null, 86, 1, 889851, 97.67);
 -- solo QF LN1
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (8, null, 57, 1, 982556, 99.58);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (8, null, 58, 1, 980953, 99.51);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (8, null, 57, 1, 982556, 99.58);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (8, null, 58, 1, 980953, 99.51);
 -- solo QF LN2
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (9, null, 57, 1, 983241, 99.58);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (9, null, 63, 1, 981649, 99.43);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (9, null, 57, 1, 983241, 99.58);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (9, null, 63, 1, 981649, 99.43);
 -- solo QF LN3
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (10, null, 61, 1, 987255, 99.61);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (10, null, 63, 1, 987157, 99.6);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (10, null, 61, 1, 987255, 99.61);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (10, null, 63, 1, 987157, 99.6);
 -- solo QF LN4
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (11, null, 61, 1, 985713, 99.56);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (11, null, 58, 1, 983446, 99.62);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (11, null, 61, 1, 985713, 99.56);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (11, null, 58, 1, 983446, 99.62);
 -- solo QF HB1
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (12, null, 56, 1, 979305, 99.51);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (12, null, 62, 1, 969934, 99.07);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (12, null, 56, 1, 979305, 99.51);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (12, null, 62, 1, 969934, 99.07);
 -- solo QF HB2
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (13, null, 56, 1, 984088, 99.51);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (13, null, 57, 1, 983512, 99.49);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (13, null, 56, 1, 984088, 99.51);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (13, null, 57, 1, 983512, 99.49);
 -- solo QF HB3
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (14, null, 63, 1, 974426, 99.31);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (14, null, 71, 1, 967498, 99.1);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (14, null, 63, 1, 974426, 99.31);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (14, null, 71, 1, 967498, 99.1);
 -- solo QF TB
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (15, null, 57, 1, 979203, 99.53);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (15, null, 65, 1, 922116, 98.29);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (15, null, 57, 1, 979203, 99.53);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (15, null, 65, 1, 922116, 98.29);
 -- solo qualifier S1
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (18, null, 56, 1, 992423, 99.76);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (18, null, 56, 2, 991779, 99.74);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (18, null, 58, 1, 984720, 99.53);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (18, null, 57, 1, 982333, 99.45);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (18, null, 57, 2, 972103, 99.14);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (18, null, 67, 1, 981437, 99.43);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (18, null, 67, 2, 974036, 99.34);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (18, null, 62, 1, 976519, 99.27);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (18, null, 62, 2, 967029, 99.18);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (18, null, 64, 1, 971678, 99.12);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (18, null, 64, 2, 960001, 98.99);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (18, null, 60, 1, 967566, 99.41);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (18, null, 60, 2, 965167, 99.33);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (18, null, 59, 1, 963863, 99.34);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (18, null, 61, 1, 957826, 98.91);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (18, null, 61, 2, 950854, 98.8);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (18, null, 75, 1, 950003, 98.84);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (18, null, 56, 1, 992423, 99.76);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (18, null, 56, 2, 991779, 99.74);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (18, null, 58, 1, 984720, 99.53);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (18, null, 57, 1, 982333, 99.45);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (18, null, 57, 2, 972103, 99.14);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (18, null, 67, 1, 981437, 99.43);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (18, null, 67, 2, 974036, 99.34);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (18, null, 62, 1, 976519, 99.27);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (18, null, 62, 2, 967029, 99.18);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (18, null, 64, 1, 971678, 99.12);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (18, null, 64, 2, 960001, 98.99);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (18, null, 60, 1, 967566, 99.41);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (18, null, 60, 2, 965167, 99.33);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (18, null, 59, 1, 963863, 99.34);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (18, null, 61, 1, 957826, 98.91);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (18, null, 61, 2, 950854, 98.8);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (18, null, 75, 1, 950003, 98.84);
 -- solo qualifier S2
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (19, null, 56, 1, 995395, 99.86);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (19, null, 60, 1, 992181, 99.76);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (19, null, 57, 1, 988398, 99.64);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (19, null, 62, 1, 987914, 99.62);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (19, null, 58, 1, 981810, 99.62);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (19, null, 62, 2, 981482, 99.43);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (19, null, 60, 2, 981058, 99.56);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (19, null, 59, 1, 976521, 99.46);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (19, null, 57, 2, 976239, 99.57);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (19, null, 67, 1, 974559, 99.4);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (19, null, 61, 1, 974053, 99.2);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (19, null, 67, 2, 972687, 99.34);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (19, null, 64, 1, 972507, 99.15);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (19, null, 75, 1, 970216, 99.27);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (19, null, 61, 2, 939546, 98.31);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (19, null, 64, 2, 965488, 98.94);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (19, null, 56, 1, 995395, 99.86);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (19, null, 60, 1, 992181, 99.76);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (19, null, 57, 1, 988398, 99.64);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (19, null, 62, 1, 987914, 99.62);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (19, null, 58, 1, 981810, 99.62);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (19, null, 62, 2, 981482, 99.43);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (19, null, 60, 2, 981058, 99.56);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (19, null, 59, 1, 976521, 99.46);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (19, null, 57, 2, 976239, 99.57);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (19, null, 67, 1, 974559, 99.4);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (19, null, 61, 1, 974053, 99.2);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (19, null, 67, 2, 972687, 99.34);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (19, null, 64, 1, 972507, 99.15);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (19, null, 75, 1, 970216, 99.27);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (19, null, 61, 2, 939546, 98.31);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (19, null, 64, 2, 965488, 98.94);
 -- solo qualifier S3
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (20, null, 56, 1, 989814, 99.69);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (20, null, 58, 1, 989046, 99.66);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (20, null, 59, 1, 988896, 99.66);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (20, null, 57, 1, 987616, 99.62);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (20, null, 62, 1, 974642, 99.22);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (20, null, 60, 1, 973538, 99.19);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (20, null, 61, 1, 972487, 99.19);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (20, null, 64, 1, 967148, 99.11);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (20, null, 75, 1, 958449, 98.96);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (20, null, 67, 1, 953603, 98.96);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (20, null, 56, 1, 989814, 99.69);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (20, null, 58, 1, 989046, 99.66);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (20, null, 59, 1, 988896, 99.66);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (20, null, 57, 1, 987616, 99.62);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (20, null, 62, 1, 974642, 99.22);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (20, null, 60, 1, 973538, 99.19);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (20, null, 61, 1, 972487, 99.19);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (20, null, 64, 1, 967148, 99.11);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (20, null, 75, 1, 958449, 98.96);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (20, null, 67, 1, 953603, 98.96);
 -- solo qualifier S4
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (21, null, 60, 1, 990648, 99.71);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (21, null, 58, 1, 990124, 99.7);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (21, null, 57, 1, 989531, 99.68);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (21, null, 56, 1, 985627, 99.56);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (21, null, 59, 1, 985344, 99.54);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (21, null, 61, 1, 972186, 99.32);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (21, null, 64, 1, 943923, 98.5);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (21, null, 75, 1, 898330, 98.16);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (21, null, 67, 1, 886232, 97.66);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (21, null, 62, 1, 900014, 97.47);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (21, null, 60, 1, 990648, 99.71);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (21, null, 58, 1, 990124, 99.7);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (21, null, 57, 1, 989531, 99.68);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (21, null, 56, 1, 985627, 99.56);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (21, null, 59, 1, 985344, 99.54);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (21, null, 61, 1, 972186, 99.32);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (21, null, 64, 1, 943923, 98.5);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (21, null, 75, 1, 898330, 98.16);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (21, null, 67, 1, 886232, 97.66);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (21, null, 62, 1, 900014, 97.47);
 -- solo qualifier S5
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (22, null, 56, 1, 995291, 99.85);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (22, null, 58, 1, 990709, 99.71);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (22, null, 57, 1, 987045, 99.6);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (22, null, 60, 1, 984623, 99.7);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (22, null, 59, 1, 983787, 99.67);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (22, null, 62, 1, 982557, 99.46);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (22, null, 67, 1, 970918, 99.28);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (22, null, 61, 1, 958449, 98.96);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (22, null, 64, 1, 959597, 99.09);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (22, null, 75, 1, 926515, 98.49);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (22, null, 56, 1, 995291, 99.85);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (22, null, 58, 1, 990709, 99.71);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (22, null, 57, 1, 987045, 99.6);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (22, null, 60, 1, 984623, 99.7);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (22, null, 59, 1, 983787, 99.67);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (22, null, 62, 1, 982557, 99.46);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (22, null, 67, 1, 970918, 99.28);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (22, null, 61, 1, 958449, 98.96);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (22, null, 64, 1, 959597, 99.09);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (22, null, 75, 1, 926515, 98.49);
 -- solo qualifier S6
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (23, null, 56, 1, 996824, 99.9);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (23, null, 59, 1, 994783, 99.84);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (23, null, 58, 1, 993288, 99.79);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (23, null, 57, 1, 993182, 99.79);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (23, null, 60, 1, 992839, 99.78);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (23, null, 62, 1, 988471, 99.64);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (23, null, 61, 1, 983330, 99.48);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (23, null, 75, 1, 975857, 99.44);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (23, null, 64, 1, 970611, 99.28);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (23, null, 67, 1, 966979, 99.17);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (23, null, 56, 1, 996824, 99.9);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (23, null, 59, 1, 994783, 99.84);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (23, null, 58, 1, 993288, 99.79);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (23, null, 57, 1, 993182, 99.79);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (23, null, 60, 1, 992839, 99.78);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (23, null, 62, 1, 988471, 99.64);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (23, null, 61, 1, 983330, 99.48);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (23, null, 75, 1, 975857, 99.44);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (23, null, 64, 1, 970611, 99.28);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (23, null, 67, 1, 966979, 99.17);
 -- solo qualifier S8
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (24, null, 56, 1, 985583, 99.59);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (24, null, 58, 1, 983950, 99.5);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (24, null, 59, 1, 981740, 99.44);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (24, null, 57, 1, 981703, 99.55);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (24, null, 60, 1, 968086, 99.31);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (24, null, 61, 1, 963593, 98.88);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (24, null, 62, 1, 933597, 98.5);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (24, null, 67, 1, 932628, 98.47);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (24, null, 64, 1, 921581, 98.44);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (24, null, 75, 1, 908553, 97.87);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (24, null, 56, 1, 985583, 99.59);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (24, null, 58, 1, 983950, 99.5);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (24, null, 59, 1, 981740, 99.44);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (24, null, 57, 1, 981703, 99.55);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (24, null, 60, 1, 968086, 99.31);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (24, null, 61, 1, 963593, 98.88);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (24, null, 62, 1, 933597, 98.5);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (24, null, 67, 1, 932628, 98.47);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (24, null, 64, 1, 921581, 98.44);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (24, null, 75, 1, 908553, 97.87);
 -- team QF RC1
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (33, null, 87, 1, 997880, 99.93);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (33, null, 89, 1, 997315, 99.92);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (33, null, 88, 1, 996097, 99.88);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (33, null, 123, 1, 996075, 99.88);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (33, null, 125, 1, 995821, 99.87);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (33, null, 124, 1, 994583, 99.83);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (33, null, 87, 1, 997880, 99.93);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (33, null, 89, 1, 997315, 99.92);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (33, null, 88, 1, 996097, 99.88);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (33, null, 123, 1, 996075, 99.88);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (33, null, 125, 1, 995821, 99.87);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (33, null, 124, 1, 994583, 99.83);
 -- team QF RC2
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (34, null, 142, 1, 997415, 99.92);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (34, null, 141, 1, 995233, 99.85);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (34, null, 140, 1, 993594, 99.8);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (34, null, 147, 1, 987191, 99.6);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (34, null, 84, 1, 984698, 99.74);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (34, null, 145, 1, 983788, 99.67);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (34, null, 142, 1, 997415, 99.92);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (34, null, 141, 1, 995233, 99.85);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (34, null, 140, 1, 993594, 99.8);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (34, null, 147, 1, 987191, 99.6);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (34, null, 84, 1, 984698, 99.74);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (34, null, 145, 1, 983788, 99.67);
 -- team QF RC3
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (35, null, 87, 1, 999339, 99.98);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (35, null, 89, 1, 998938, 99.97);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (35, null, 91, 1, 997241, 99.91);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (35, null, 163, 1, 998930, 99.97);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (35, null, 158, 1, 994727, 99.83);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (35, null, 159, 1, 993649, 99.8);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (35, null, 87, 1, 999339, 99.98);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (35, null, 89, 1, 998938, 99.97);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (35, null, 91, 1, 997241, 99.91);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (35, null, 163, 1, 998930, 99.97);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (35, null, 158, 1, 994727, 99.83);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (35, null, 159, 1, 993649, 99.8);
 -- team QF RC4
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (36, null, 99, 1, 996155, 99.88);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (36, null, 102, 1, 995431, 99.86);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (36, null, 100, 1, 993412, 99.79);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (36, null, 44, 1, 997246, 99.91);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (36, null, 149, 1, 995355, 99.85);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (36, null, 150, 1, 990561, 99.71);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (36, null, 99, 1, 996155, 99.88);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (36, null, 102, 1, 995431, 99.86);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (36, null, 100, 1, 993412, 99.79);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (36, null, 44, 1, 997246, 99.91);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (36, null, 149, 1, 995355, 99.85);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (36, null, 150, 1, 990561, 99.71);
 -- team QF RC5
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (37, null, 130, 1, 995713, 99.87);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (37, null, 133, 1, 994519, 99.83);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (37, null, 131, 1, 994383, 99.82);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (37, null, 44, 1, 997193, 99.91);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (37, null, 149, 1, 996936, 99.9);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (37, null, 150, 1, 990414, 99.7);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (37, null, 130, 1, 995713, 99.87);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (37, null, 133, 1, 994519, 99.83);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (37, null, 131, 1, 994383, 99.82);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (37, null, 44, 1, 997193, 99.91);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (37, null, 149, 1, 996936, 99.9);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (37, null, 150, 1, 990414, 99.7);
 -- team QF RC6
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (38, null, 87, 1, 997522, 99.92);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (38, null, 92, 1, 991805, 99.75);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (38, null, 89, 1, 987243, 99.77);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (38, null, 44, 1, 997769, 99.93);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (38, null, 149, 1, 978546, 99.78);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (38, null, 150, 1, 988286, 99.64);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (38, null, 87, 1, 997522, 99.92);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (38, null, 92, 1, 991805, 99.75);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (38, null, 89, 1, 987243, 99.77);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (38, null, 44, 1, 997769, 99.93);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (38, null, 149, 1, 978546, 99.78);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (38, null, 150, 1, 988286, 99.64);
 -- team QF HB1
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (39, null, 123, 1, 993693, 99.8);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (39, null, 125, 1, 993687, 99.81);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (39, null, 124, 1, 991845, 99.75);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (39, null, 89, 1, 995618, 99.86);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (39, null, 88, 1, 993740, 99.81);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (39, null, 91, 1, 985843, 99.57);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (39, null, 123, 1, 993693, 99.8);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (39, null, 125, 1, 993687, 99.81);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (39, null, 124, 1, 991845, 99.75);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (39, null, 89, 1, 995618, 99.86);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (39, null, 88, 1, 993740, 99.81);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (39, null, 91, 1, 985843, 99.57);
 -- team QF HB2
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (40, null, 123, 1, 994925, 99.84);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (40, null, 125, 1, 993144, 99.79);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (40, null, 124, 1, 993103, 99.79);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (40, null, 95, 1, 993555, 99.8);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (40, null, 94, 1, 991535, 99.74);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (40, null, 97, 1, 987916, 99.73);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (40, null, 123, 1, 994925, 99.84);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (40, null, 125, 1, 993144, 99.79);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (40, null, 124, 1, 993103, 99.79);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (40, null, 95, 1, 993555, 99.8);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (40, null, 94, 1, 991535, 99.74);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (40, null, 97, 1, 987916, 99.73);
 -- team QF HB3
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (41, null, 123, 1, 993463, 99.8);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (41, null, 125, 1, 995264, 99.85);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (41, null, 124, 1, 985994, 99.62);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (41, null, 130, 1, 993783, 99.81);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (41, null, 133, 1, 989843, 99.69);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (41, null, 56, 1, 990959, 99.72);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (41, null, 123, 1, 993463, 99.8);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (41, null, 125, 1, 995264, 99.85);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (41, null, 124, 1, 985994, 99.62);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (41, null, 130, 1, 993783, 99.81);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (41, null, 133, 1, 989843, 99.69);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (41, null, 56, 1, 990959, 99.72);
 -- team QF LN1
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (42, null, 130, 1, 993443, 99.79);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (42, null, 133, 1, 990532, 99.7);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (42, null, 129, 1, 986343, 99.57);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (42, null, 136, 1, 993569, 99.8);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (42, null, 50, 1, 993133, 99.78);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (42, null, 138, 1, 981855, 99.57);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (42, null, 130, 1, 993443, 99.79);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (42, null, 133, 1, 990532, 99.7);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (42, null, 129, 1, 986343, 99.57);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (42, null, 136, 1, 993569, 99.8);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (42, null, 50, 1, 993133, 99.78);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (42, null, 138, 1, 981855, 99.57);
 -- team QF LN2
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (43, null, 123, 1, 993873, 99.81);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (43, null, 125, 1, 995394, 99.86);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (43, null, 124, 1, 989929, 99.69);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (43, null, 95, 1, 990529, 99.8);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (43, null, 94, 1, 992575, 99.77);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (43, null, 97, 1, 990096, 99.69);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (43, null, 123, 1, 993873, 99.81);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (43, null, 125, 1, 995394, 99.86);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (43, null, 124, 1, 989929, 99.69);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (43, null, 95, 1, 990529, 99.8);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (43, null, 94, 1, 992575, 99.77);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (43, null, 97, 1, 990096, 99.69);
 -- team QF LN3
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (44, null, 95, 1, 989926, 99.69);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (44, null, 94, 1, 989839, 99.68);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (44, null, 96, 1, 987115, 99.63);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (44, null, 163, 1, 985237, 99.65);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (44, null, 160, 1, 987015, 99.6);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (44, null, 159, 1, 987103, 99.71);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (44, null, 95, 1, 989926, 99.69);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (44, null, 94, 1, 989839, 99.68);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (44, null, 96, 1, 987115, 99.63);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (44, null, 163, 1, 985237, 99.65);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (44, null, 160, 1, 987015, 99.6);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (44, null, 159, 1, 987103, 99.71);
 -- team QF SV1
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (45, null, 95, 1, 995737, 99.87);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (45, null, 94, 1, 995724, 99.87);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (45, null, 98, 1, 982414, 99.76);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (45, null, 156, 1, 979790, 99.38);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (45, null, 10, 1, 963191, 99.19);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (45, null, 154, 1, 932402, 98.48);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (45, null, 95, 1, 995737, 99.87);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (45, null, 94, 1, 995724, 99.87);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (45, null, 98, 1, 982414, 99.76);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (45, null, 156, 1, 979790, 99.38);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (45, null, 10, 1, 963191, 99.19);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (45, null, 154, 1, 932402, 98.48);
 -- team QF SV2
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (46, null, 136, 1, 991438, 99.74);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (46, null, 50, 1, 990486, 99.71);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (46, null, 138, 1, 993116, 99.79);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (46, null, 142, 1, 990903, 99.72);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (46, null, 144, 1, 988767, 99.66);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (46, null, 140, 1, 994348, 99.83);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (46, null, 136, 1, 991438, 99.74);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (46, null, 50, 1, 990486, 99.71);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (46, null, 138, 1, 993116, 99.79);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (46, null, 142, 1, 990903, 99.72);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (46, null, 144, 1, 988767, 99.66);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (46, null, 140, 1, 994348, 99.83);
 -- team qualifier S1
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (25, 44, 95, 1, 994823, 99.84);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (25, 44, 94, 1, 995604, 99.86);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (25, 44, 98, 1, 995272, 99.85);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (25, 44, 95, 2, 992418, 99.76);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (25, 44, 94, 2, 994149, 99.82);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (25, 44, 98, 2, 996545, 99.89);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (25, 44, 136, 1, 993734, 99.8);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (25, 44, 50, 1, 988496, 99.64);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (25, 44, 138, 1, 995856, 99.87);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (25, 44, 123, 1, 985469, 99.55);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (25, 44, 125, 1, 989481, 99.67);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (25, 44, 128, 1, 955699, 98.63);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (25, 44, 130, 1, 995145, 99.85);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (25, 44, 133, 1, 974320, 99.21);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (25, 44, 132, 1, 991654, 99.74);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (25, 44, 87, 1, 982288, 99.46);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (25, 44, 92, 1, 988007, 99.62);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (25, 44, 91, 1, 993791, 99.81);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (25, 44, 95, 1, 994823, 99.84);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (25, 44, 94, 1, 995604, 99.86);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (25, 44, 98, 1, 995272, 99.85);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (25, 44, 95, 2, 992418, 99.76);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (25, 44, 94, 2, 994149, 99.82);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (25, 44, 98, 2, 996545, 99.89);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (25, 44, 136, 1, 993734, 99.8);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (25, 44, 50, 1, 988496, 99.64);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (25, 44, 138, 1, 995856, 99.87);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (25, 44, 123, 1, 985469, 99.55);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (25, 44, 125, 1, 989481, 99.67);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (25, 44, 128, 1, 955699, 98.63);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (25, 44, 130, 1, 995145, 99.85);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (25, 44, 133, 1, 974320, 99.21);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (25, 44, 132, 1, 991654, 99.74);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (25, 44, 87, 1, 982288, 99.46);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (25, 44, 92, 1, 988007, 99.62);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (25, 44, 91, 1, 993791, 99.81);
 -- team qualifier S2
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (26, 44, 87, 1, 998019, 99.94);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (26, 44, 88, 1, 997264, 99.91);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (26, 44, 89, 1, 997264, 99.91);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (26, 44, 130, 1, 997508, 99.92);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (26, 44, 131, 1, 996043, 99.88);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (26, 44, 133, 1, 994404, 99.82);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (26, 44, 123, 1, 993755, 99.81);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (26, 44, 125, 1, 997841, 99.93);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (26, 44, 124, 1, 995666, 99.86);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (26, 44, 134, 1, 998130, 99.94);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (26, 44, 137, 1, 994736, 99.83);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (26, 44, 135, 1, 993011, 99.78);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (26, 44, 95, 1, 990384, 99.7);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (26, 44, 93, 1, 995792, 99.87);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (26, 44, 97, 1, 992582, 99.77);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (26, 44, 87, 1, 998019, 99.94);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (26, 44, 88, 1, 997264, 99.91);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (26, 44, 89, 1, 997264, 99.91);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (26, 44, 130, 1, 997508, 99.92);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (26, 44, 131, 1, 996043, 99.88);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (26, 44, 133, 1, 994404, 99.82);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (26, 44, 123, 1, 993755, 99.81);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (26, 44, 125, 1, 997841, 99.93);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (26, 44, 124, 1, 995666, 99.86);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (26, 44, 134, 1, 998130, 99.94);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (26, 44, 137, 1, 994736, 99.83);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (26, 44, 135, 1, 993011, 99.78);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (26, 44, 95, 1, 990384, 99.7);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (26, 44, 93, 1, 995792, 99.87);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (26, 44, 97, 1, 992582, 99.77);
 -- team qualifier S3
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (27, 44, 90, 1, 991590, 99.74);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (27, 44, 88, 1, 990634, 99.85);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (27, 44, 89, 1, 997774, 99.93);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (27, 44, 130, 1, 997637, 99.93);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (27, 44, 129, 1, 993789, 99.81);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (27, 44, 133, 1, 994707, 99.84);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (27, 44, 126, 1, 986884, 99.73);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (27, 44, 125, 1, 997988, 99.94);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (27, 44, 124, 1, 989226, 99.8);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (27, 44, 136, 1, 996787, 99.9);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (27, 44, 50, 1, 995488, 99.86);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (27, 44, 138, 1, 994138, 99.82);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (27, 44, 95, 1, 997214, 99.91);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (27, 44, 94, 1, 994816, 99.84);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (27, 44, 97, 1, 996162, 99.88);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (27, 44, 90, 1, 991590, 99.74);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (27, 44, 88, 1, 990634, 99.85);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (27, 44, 89, 1, 997774, 99.93);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (27, 44, 130, 1, 997637, 99.93);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (27, 44, 129, 1, 993789, 99.81);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (27, 44, 133, 1, 994707, 99.84);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (27, 44, 126, 1, 986884, 99.73);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (27, 44, 125, 1, 997988, 99.94);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (27, 44, 124, 1, 989226, 99.8);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (27, 44, 136, 1, 996787, 99.9);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (27, 44, 50, 1, 995488, 99.86);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (27, 44, 138, 1, 994138, 99.82);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (27, 44, 95, 1, 997214, 99.91);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (27, 44, 94, 1, 994816, 99.84);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (27, 44, 97, 1, 996162, 99.88);
 -- team qualifier S4
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (28, 44, 90, 1, 983178, 99.48);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (28, 44, 88, 1, 990644, 99.71);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (28, 44, 89, 1, 994384, 99.83);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (28, 44, 130, 1, 994534, 99.83);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (28, 44, 56, 1, 979550, 99.37);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (28, 44, 133, 1, 986007, 99.57);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (28, 44, 123, 1, 988083, 99.63);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (28, 44, 125, 1, 996072, 99.88);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (28, 44, 124, 1, 988944, 99.63);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (28, 44, 136, 1, 981035, 99.64);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (28, 44, 50, 1, 985127, 99.65);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (28, 44, 138, 1, 982042, 99.55);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (28, 44, 95, 1, 983119, 99.59);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (28, 44, 94, 1, 990366, 99.7);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (28, 44, 97, 1, 987641, 99.62);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (28, 44, 90, 1, 983178, 99.48);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (28, 44, 88, 1, 990644, 99.71);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (28, 44, 89, 1, 994384, 99.83);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (28, 44, 130, 1, 994534, 99.83);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (28, 44, 56, 1, 979550, 99.37);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (28, 44, 133, 1, 986007, 99.57);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (28, 44, 123, 1, 988083, 99.63);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (28, 44, 125, 1, 996072, 99.88);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (28, 44, 124, 1, 988944, 99.63);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (28, 44, 136, 1, 981035, 99.64);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (28, 44, 50, 1, 985127, 99.65);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (28, 44, 138, 1, 982042, 99.55);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (28, 44, 95, 1, 983119, 99.59);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (28, 44, 94, 1, 990366, 99.7);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (28, 44, 97, 1, 987641, 99.62);
 -- team qualifier S5
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (29, 44, 90, 1, 991602, 99.74);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (29, 44, 88, 1, 993015, 99.78);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (29, 44, 89, 1, 997134, 99.91);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (29, 44, 130, 1, 997293, 99.92);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (29, 44, 56, 1, 995247, 99.85);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (29, 44, 133, 1, 994335, 99.82);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (29, 44, 123, 1, 990817, 99.72);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (29, 44, 125, 1, 998603, 99.96);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (29, 44, 124, 1, 994231, 99.82);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (29, 44, 136, 1, 981730, 99.67);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (29, 44, 50, 1, 994475, 99.83);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (29, 44, 138, 1, 993360, 99.79);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (29, 44, 95, 1, 995354, 99.85);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (29, 44, 94, 1, 995396, 99.86);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (29, 44, 97, 1, 991903, 99.75);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (29, 44, 90, 1, 991602, 99.74);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (29, 44, 88, 1, 993015, 99.78);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (29, 44, 89, 1, 997134, 99.91);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (29, 44, 130, 1, 997293, 99.92);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (29, 44, 56, 1, 995247, 99.85);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (29, 44, 133, 1, 994335, 99.82);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (29, 44, 123, 1, 990817, 99.72);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (29, 44, 125, 1, 998603, 99.96);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (29, 44, 124, 1, 994231, 99.82);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (29, 44, 136, 1, 981730, 99.67);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (29, 44, 50, 1, 994475, 99.83);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (29, 44, 138, 1, 993360, 99.79);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (29, 44, 95, 1, 995354, 99.85);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (29, 44, 94, 1, 995396, 99.86);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (29, 44, 97, 1, 991903, 99.75);
 -- team qualifier S6
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (30, 44, 91, 1, 993255, 99.79);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (30, 44, 88, 1, 993683, 99.8);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (30, 44, 89, 1, 996490, 99.89);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (30, 44, 130, 1, 994762, 99.84);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (30, 44, 129, 1, 989222, 99.67);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (30, 44, 56, 1, 991663, 99.74);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (30, 44, 123, 1, 991035, 99.72);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (30, 44, 125, 1, 989523, 99.83);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (30, 44, 124, 1, 993123, 99.79);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (30, 44, 134, 1, 995639, 99.87);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (30, 44, 50, 1, 991269, 99.73);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (30, 44, 135, 1, 965908, 99.34);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (30, 44, 96, 1, 991444, 99.73);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (30, 44, 94, 1, 992162, 99.76);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (30, 44, 97, 1, 984186, 99.66);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (30, 44, 91, 1, 993255, 99.79);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (30, 44, 88, 1, 993683, 99.8);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (30, 44, 89, 1, 996490, 99.89);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (30, 44, 130, 1, 994762, 99.84);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (30, 44, 129, 1, 989222, 99.67);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (30, 44, 56, 1, 991663, 99.74);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (30, 44, 123, 1, 991035, 99.72);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (30, 44, 125, 1, 989523, 99.83);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (30, 44, 124, 1, 993123, 99.79);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (30, 44, 134, 1, 995639, 99.87);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (30, 44, 50, 1, 991269, 99.73);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (30, 44, 135, 1, 965908, 99.34);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (30, 44, 96, 1, 991444, 99.73);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (30, 44, 94, 1, 992162, 99.76);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (30, 44, 97, 1, 984186, 99.66);
 -- team qualifier S7
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (31, 44, 87, 1, 997147, 99.91);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (31, 44, 91, 1, 995443, 99.86);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (31, 44, 89, 1, 991493, 99.86);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (31, 44, 130, 1, 997092, 99.91);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (31, 44, 131, 1, 996763, 99.9);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (31, 44, 133, 1, 993227, 99.79);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (31, 44, 123, 1, 983565, 99.61);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (31, 44, 125, 1, 997328, 99.92);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (31, 44, 124, 1, 993976, 99.81);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (31, 44, 134, 1, 998245, 99.95);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (31, 44, 135, 1, 998245, 99.82);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (31, 44, 137, 1, 993564, 99.8);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (31, 44, 93, 1, 994813, 99.84);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (31, 44, 94, 1, 995328, 99.85);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (31, 44, 96, 1, 989035, 99.78);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (31, 44, 87, 1, 997147, 99.91);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (31, 44, 91, 1, 995443, 99.86);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (31, 44, 89, 1, 991493, 99.86);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (31, 44, 130, 1, 997092, 99.91);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (31, 44, 131, 1, 996763, 99.9);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (31, 44, 133, 1, 993227, 99.79);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (31, 44, 123, 1, 983565, 99.61);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (31, 44, 125, 1, 997328, 99.92);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (31, 44, 124, 1, 993976, 99.81);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (31, 44, 134, 1, 998245, 99.95);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (31, 44, 135, 1, 998245, 99.82);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (31, 44, 137, 1, 993564, 99.8);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (31, 44, 93, 1, 994813, 99.84);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (31, 44, 94, 1, 995328, 99.85);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (31, 44, 96, 1, 989035, 99.78);
 -- team qualifier S8
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (32, 44, 87, 1, 997480, 99.92);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (32, 44, 92, 1, 991767, 99.74);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (32, 44, 89, 1, 997955, 99.94);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (32, 44, 130, 1, 993308, 99.79);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (32, 44, 56, 1, 993163, 99.79);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (32, 44, 131, 1, 996056, 99.88);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (32, 44, 123, 1, 986068, 99.66);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (32, 44, 125, 1, 985987, 99.64);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (32, 44, 124, 1, 993908, 99.81);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (32, 44, 134, 1, 992568, 99.9);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (32, 44, 137, 1, 991961, 99.75);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (32, 44, 135, 1, 982808, 99.6);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (32, 44, 93, 1, 993929, 99.81);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (32, 44, 94, 1, 987637, 99.75);
-INSERT INTO map_score (map_id, event_id, app_user_id, run, score, accuracy) VALUES (32, 44, 96, 1, 986722, 99.72);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (32, 44, 87, 1, 997480, 99.92);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (32, 44, 92, 1, 991767, 99.74);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (32, 44, 89, 1, 997955, 99.94);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (32, 44, 130, 1, 993308, 99.79);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (32, 44, 56, 1, 993163, 99.79);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (32, 44, 131, 1, 996056, 99.88);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (32, 44, 123, 1, 986068, 99.66);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (32, 44, 125, 1, 985987, 99.64);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (32, 44, 124, 1, 993908, 99.81);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (32, 44, 134, 1, 992568, 99.9);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (32, 44, 137, 1, 991961, 99.75);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (32, 44, 135, 1, 982808, 99.6);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (32, 44, 93, 1, 993929, 99.81);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (32, 44, 94, 1, 987637, 99.75);
+INSERT INTO score (beatmap_id, event_id, app_user_id, run, score, accuracy) VALUES (32, 44, 96, 1, 986722, 99.72);

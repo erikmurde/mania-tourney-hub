@@ -11,5 +11,5 @@ public class MatchScores {
 
     private Integer beatmapId;
 
-    private List<MapScore> scores;
+    private List<Score> scores;
 }

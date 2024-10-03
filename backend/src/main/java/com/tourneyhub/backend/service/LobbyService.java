@@ -20,7 +20,7 @@ public class LobbyService {
 
     private final RepositoryUow uow;
 
-    private final MapScoreService mapScoreService;
+    private final ScoreService scoreService;
 
     private final EventService eventService;
 
@@ -32,14 +32,14 @@ public class LobbyService {
 
     public LobbyService(
             RepositoryUow uow,
-            MapScoreService mapScoreService,
+            ScoreService scoreService,
             EventService eventService,
             EventParticipantService eventParticipantService,
             UserService userService,
             LobbyMapper mapper)
     {
         this.uow = uow;
-        this.mapScoreService = mapScoreService;
+        this.scoreService = scoreService;
         this.eventService = eventService;
         this.userService = userService;
         this.participantService = eventParticipantService;
@@ -90,7 +90,7 @@ public class LobbyService {
             participantService.addReferee(lobby, getId(dto.getReferee(), false));
         }
         if (!players.isEmpty()) {
-            mapScoreService.createScores(lobby.getStage().getId(), dto.getMatchId(), lobby);
+            scoreService.createScores(lobby.getStage().getId(), dto.getMatchId(), lobby);
         }
         if (isHost) {
             lobby.setTime(dto.getTime());

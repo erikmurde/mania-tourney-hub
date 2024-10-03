@@ -1,4 +1,4 @@
-package com.tourneyhub.backend.dto.mapScore.osuApi;
+package com.tourneyhub.backend.dto.score.osuApi;
 
 import lombok.Data;
 

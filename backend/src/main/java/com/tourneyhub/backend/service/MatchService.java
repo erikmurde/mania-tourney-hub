@@ -25,7 +25,7 @@ public class MatchService {
 
     private final EventParticipantService participantService;
 
-    private final MapScoreService mapScoreService;
+    private final ScoreService scoreService;
 
     private final UserService userService;
 
@@ -35,14 +35,14 @@ public class MatchService {
             RepositoryUow uow,
             EventService eventService,
             EventParticipantService participantService,
-            MapScoreService mapScoreService,
+            ScoreService scoreService,
             UserService userService,
             MatchMapper mapper)
     {
         this.uow = uow;
         this.eventService = eventService;
         this.participantService = participantService;
-        this.mapScoreService = mapScoreService;
+        this.scoreService = scoreService;
         this.userService = userService;
         this.mapper = mapper;
     }
@@ -130,7 +130,7 @@ public class MatchService {
         players.get(1).setScore(s2);
 
         if (!isWbd) {
-            mapScoreService.createScores(match.getStage().getId(), dto.getMatchId(), match);
+            scoreService.createScores(match.getStage().getId(), dto.getMatchId(), match);
         }
         match.setMatchId(dto.getMatchId());
         match.setConcluded(true);

@@ -4,6 +4,7 @@ import com.tourneyhub.backend.domain.*;
 import com.tourneyhub.backend.dto.staffInvite.StaffInviteEditDto;
 import com.tourneyhub.backend.dto.staffInvite.StaffInviteCreateDto;
 import com.tourneyhub.backend.dto.staffInvite.StaffInviteDto;
+import com.tourneyhub.backend.helper.Constants;
 import com.tourneyhub.backend.mapper.StaffInviteMapper;
 import com.tourneyhub.backend.mapper.TournamentRoleMapper;
 import com.tourneyhub.backend.repository.RepositoryUow;
@@ -45,7 +46,7 @@ public class StaffInviteService {
         if (recipientAlreadyHasRole(dto) || isDuplicateRequest(dto)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
-        Status status = getStatus("pending");
+        Status status = getStatus(Constants.PENDING);
         return uow.staffRequestRepository.save(staffInviteMapper.mapToEntity(dto, status)).getId();
     }
 
@@ -53,7 +54,7 @@ public class StaffInviteService {
         StaffRequest invite = getInvite(staffInviteId);
         Status status = getStatus(dto.getStatus());
 
-        if (status.getName().equals("accepted")) {
+        if (status.getName().equals(Constants.ACCEPTED)) {
             uow.tournamentRoleRepository.save(
                     tournamentRoleMapper.mapToEntity(invite.getRole(), invite.getTournament(), invite.getRecipient())
             );

@@ -4,6 +4,7 @@ import com.tourneyhub.backend.domain.*;
 import com.tourneyhub.backend.dto.staffApplication.StaffApplicationCreateDto;
 import com.tourneyhub.backend.dto.staffApplication.StaffApplicationDto;
 import com.tourneyhub.backend.dto.staffApplication.StaffApplicationEditDto;
+import com.tourneyhub.backend.helper.Constants;
 import com.tourneyhub.backend.mapper.StaffApplicationMapper;
 import com.tourneyhub.backend.mapper.TournamentRoleMapper;
 import com.tourneyhub.backend.repository.RepositoryUow;
@@ -58,7 +59,7 @@ public class StaffApplicationService {
         }
         Status status = getStatus(dto.getStatusId());
 
-        if (!status.getName().equals("pending")) {
+        if (!status.getName().equals(Constants.PENDING)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
         uow.staffRequestRepository.save(staffApplicationMapper.mapToEntity(dto, status));
@@ -69,15 +70,15 @@ public class StaffApplicationService {
         Status status = getStatus(dto.getStatusId());
 
         boolean isOwner = Objects.equals(currentPlayerId, dto.getSenderId());
-        boolean retracting = status.getName().equals("retracted");
+        boolean retracting = status.getName().equals(Constants.RETRACTED);
 
-        if (!application.getStatus().getName().equals("pending")) {
+        if (!application.getStatus().getName().equals(Constants.PENDING)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
         if (isOwner && !retracting || !isOwner && retracting) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
-        if (status.getName().equals("accepted")) {
+        if (status.getName().equals(Constants.ACCEPTED)) {
             uow.tournamentRoleRepository
                     .save(tournamentRoleMapper
                             .mapToEntity(application.getRole(), application.getTournament(), application.getSender()));

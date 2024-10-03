@@ -2,6 +2,7 @@ package com.tourneyhub.backend.service;
 
 import com.tourneyhub.backend.domain.Event;
 import com.tourneyhub.backend.domain.Tournament;
+import com.tourneyhub.backend.helper.Constants;
 import com.tourneyhub.backend.repository.EventRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.oauth2.core.user.OAuth2User;
@@ -24,7 +25,7 @@ public class EventService {
         Event event = getEvent(eventId);
         Tournament tournament = event.getStage().getTournament();
 
-        if (!userService.hasAnyRole(tournament.getId(), principal, "host", "admin")) {
+        if (!userService.hasAnyRole(tournament.getId(), principal, Constants.HOST, Constants.ADMIN)) {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED);
         }
         if (event.isConcluded() || tournament.isConcluded()) {

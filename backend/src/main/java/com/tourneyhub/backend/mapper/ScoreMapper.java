@@ -1,9 +1,9 @@
 package com.tourneyhub.backend.mapper;
 
 import com.tourneyhub.backend.domain.*;
-import com.tourneyhub.backend.dto.mapScore.MapScoreDto;
-import com.tourneyhub.backend.dto.mapScore.PlayerScoreDto;
-import com.tourneyhub.backend.dto.mapScore.TeamScoreDto;
+import com.tourneyhub.backend.dto.score.ScoreDto;
+import com.tourneyhub.backend.dto.score.PlayerScoreDto;
+import com.tourneyhub.backend.dto.score.TeamScoreDto;
 import com.tourneyhub.backend.repository.RepositoryUow;
 import org.springframework.stereotype.Component;
 
@@ -12,23 +12,23 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @Component
-public class MapScoreMapper {
+public class ScoreMapper {
 
     private final RepositoryUow uow;
 
     private final UserMapper userMapper;
 
-    public MapScoreMapper(RepositoryUow uow, UserMapper userMapper) {
+    public ScoreMapper(RepositoryUow uow, UserMapper userMapper) {
         this.uow = uow;
         this.userMapper = userMapper;
     }
 
-    public MapScoreDto mapToDto(Beatmap beatmap, List<Team> teams) {
-        var dto = new MapScoreDto();
+    public ScoreDto mapToDto(Beatmap beatmap, List<Team> teams) {
+        var dto = new ScoreDto();
 
         dto.setId(beatmap.getId());
         dto.setTitle(beatmap.getTitle());
-        dto.setType(beatmap.getMapType().getName());
+        dto.setType(beatmap.getBeatmapType().getName());
         dto.setIndex(beatmap.getIndex());
 
         return teams.isEmpty()
@@ -36,7 +36,7 @@ public class MapScoreMapper {
                 : mapWithTeams(beatmap, dto, teams);
     }
 
-    public PlayerScoreDto mapToPlayerScoreDto(MapScore score) {
+    public PlayerScoreDto mapToPlayerScoreDto(Score score) {
         return new PlayerScoreDto(
                 userMapper.mapToSimpleDto(score.getAppUser()),
                 score.getScore(),
@@ -45,16 +45,16 @@ public class MapScoreMapper {
         );
     }
 
-    public MapScore mapToEntity(int score, double accuracy, int run, AppUser user, Beatmap beatmap, Event event) {
+    public Score mapToEntity(int score, double accuracy, int run, AppUser user, Beatmap beatmap, Event event) {
         double acc = Math.round(accuracy * 10000) / 100D;
-        return new MapScore(score, acc, run, user.getId(), user, beatmap, event);
+        return new Score(score, acc, run, user.getId(), user, beatmap, event);
     }
 
-    private MapScoreDto mapWithTeams(Beatmap beatmap, MapScoreDto dto, List<Team> teams) {
+    private ScoreDto mapWithTeams(Beatmap beatmap, ScoreDto dto, List<Team> teams) {
         List<Event> events = uow.eventRepository.getAllByStageId(beatmap.getStage().getId());
 
         for (Team team : teams) {
-            List<MapScore> playerScores = uow.mapScoreRepository
+            List<Score> playerScores = uow.scoreRepository
                     .getTeamPlayerScoresOnMap(getPlayerIds(team), beatmap.getId()).stream()
                     .toList();
 
@@ -65,15 +65,15 @@ public class MapScoreMapper {
         return dto;
     }
 
-    private MapScoreDto mapWithoutTeams(Beatmap beatmap, MapScoreDto dto) {
+    private ScoreDto mapWithoutTeams(Beatmap beatmap, ScoreDto dto) {
         dto.setPlayerScores(
                 beatmap.getScores().stream().map(this::mapToPlayerScoreDto).toList()
         );
         return dto;
     }
 
-    private void addTeamScores(Team team, Event event, List<MapScore> playerScores, MapScoreDto dto) {
-        for (List<MapScore> scores : getEventScoresByRun(playerScores, event.getId()).values()) {
+    private void addTeamScores(Team team, Event event, List<Score> playerScores, ScoreDto dto) {
+        for (List<Score> scores : getEventScoresByRun(playerScores, event.getId()).values()) {
             var teamScore = new TeamScoreDto();
             teamScore.setName(team.getName());
             teamScore.setLogo(team.getLogo());
@@ -85,10 +85,10 @@ public class MapScoreMapper {
         }
     }
 
-    private Map<Integer, List<MapScore>> getEventScoresByRun(List<MapScore> scores, Long eventId) {
+    private Map<Integer, List<Score>> getEventScoresByRun(List<Score> scores, Long eventId) {
         return scores.stream()
                 .filter(s -> s.getEvent() == null || s.getEvent().getId().equals(eventId))
-                .collect(Collectors.groupingBy(MapScore::getRun));
+                .collect(Collectors.groupingBy(Score::getRun));
     }
 
     private List<Long> getPlayerIds(Team team) {

@@ -2,12 +2,12 @@ package com.tourneyhub.backend.service;
 
 import com.tourneyhub.backend.domain.*;
 import com.tourneyhub.backend.domain.Beatmap;
-import com.tourneyhub.backend.dto.mapScore.MapScoreDto;
-import com.tourneyhub.backend.dto.mapScore.osuApi.OsuMatchDto;
-import com.tourneyhub.backend.dto.mapScore.osuApi.OsuMatchEventDetailsDto;
-import com.tourneyhub.backend.dto.mapScore.osuApi.OsuMatchEventDto;
-import com.tourneyhub.backend.dto.mapScore.osuApi.OsuMatchScoreDto;
-import com.tourneyhub.backend.mapper.MapScoreMapper;
+import com.tourneyhub.backend.dto.score.ScoreDto;
+import com.tourneyhub.backend.dto.score.osuApi.OsuMatchDto;
+import com.tourneyhub.backend.dto.score.osuApi.OsuMatchEventDetailsDto;
+import com.tourneyhub.backend.dto.score.osuApi.OsuMatchEventDto;
+import com.tourneyhub.backend.dto.score.osuApi.OsuMatchScoreDto;
+import com.tourneyhub.backend.mapper.ScoreMapper;
 import com.tourneyhub.backend.repository.RepositoryUow;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.oauth2.core.user.OAuth2User;
@@ -20,7 +20,7 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.*;
 
 @Service
-public class MapScoreService {
+public class ScoreService {
 
     private final WebClient webClient;
 
@@ -28,16 +28,16 @@ public class MapScoreService {
 
     private final UserService userService;
 
-    private final MapScoreMapper mapper;
+    private final ScoreMapper mapper;
 
-    public MapScoreService(WebClient webClient, RepositoryUow uow, UserService userService, MapScoreMapper mapper) {
+    public ScoreService(WebClient webClient, RepositoryUow uow, UserService userService, ScoreMapper mapper) {
         this.webClient = webClient;
         this.uow = uow;
         this.userService = userService;
         this.mapper = mapper;
     }
 
-    public List<MapScoreDto> getAll(Long stageId, OAuth2User principal) {
+    public List<ScoreDto> getAll(Long stageId, OAuth2User principal) {
         Stage stage = uow.stageRepository
                 .findById(stageId)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
@@ -66,7 +66,7 @@ public class MapScoreService {
         }
     }
 
-    private List<MapScoreDto> getTeamScores(Stage stage) {
+    private List<ScoreDto> getTeamScores(Stage stage) {
         List<Team> teams = uow.teamRepository.findAllInTournament(stage.getTournamentId());
 
         return uow.mapRepository
@@ -75,7 +75,7 @@ public class MapScoreService {
                 .toList();
     }
 
-    private List<MapScoreDto> getPlayerScores(Stage stage) {
+    private List<ScoreDto> getPlayerScores(Stage stage) {
         return uow.mapRepository
                 .findAllInMappoolByStageIdWithScores(stage.getId()).stream()
                 .map(m -> mapper.mapToDto(m, new ArrayList<>()))
@@ -101,7 +101,7 @@ public class MapScoreService {
             int run = Collections.frequency(seenMaps, mapId);
 
             users.add(user);
-            uow.mapScoreRepository.save(
+            uow.scoreRepository.save(
                     mapper.mapToEntity(score.getScore(), score.getAccuracy(), run, user, map.get(), event));
         }
     }

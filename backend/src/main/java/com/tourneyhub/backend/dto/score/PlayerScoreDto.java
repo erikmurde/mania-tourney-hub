@@ -1,4 +1,4 @@
-package com.tourneyhub.backend.dto.mapScore;
+package com.tourneyhub.backend.dto.score;
 
 import com.tourneyhub.backend.dto.user.SimpleUserDto;
 import lombok.AllArgsConstructor;

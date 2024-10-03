@@ -1,8 +1,8 @@
 package com.tourneyhub.backend.service;
 
 import com.tourneyhub.backend.domain.*;
-import com.tourneyhub.backend.dto.mapScore.SeedingDto;
-import com.tourneyhub.backend.dto.mapScore.SeedingScoreDto;
+import com.tourneyhub.backend.dto.score.SeedingDto;
+import com.tourneyhub.backend.dto.score.SeedingScoreDto;
 import com.tourneyhub.backend.repository.RepositoryUow;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.oauth2.core.user.OAuth2User;
@@ -86,13 +86,13 @@ public class SeedingService {
                 .toList();
     }
 
-    private List<SeedingScoreDto> getPlayerScores(List<MapScore> scores) {
+    private List<SeedingScoreDto> getPlayerScores(List<Score> scores) {
         List<SeedingScoreDto> seedingScores = new ArrayList<>();
         List<Long> seenUsers = new ArrayList<>();
 
-        scores.sort(Comparator.comparingInt(MapScore::getScore).reversed());
+        scores.sort(Comparator.comparingInt(Score::getScore).reversed());
 
-        for (MapScore score : scores) {
+        for (Score score : scores) {
             Long userId = score.getAppUserId();
 
             if (!seenUsers.contains(userId)) {
@@ -103,13 +103,13 @@ public class SeedingService {
         return seedingScores;
     }
 
-    private List<SeedingScoreDto> getTeamScores(List<MapScore> scores, List<Team> teams) {
+    private List<SeedingScoreDto> getTeamScores(List<Score> scores, List<Team> teams) {
         List<SeedingScoreDto> seedingScores = new ArrayList<>();
 
         for (Team team : teams) {
             Long teamId = team.getId();
 
-            List<MapScore> playerScores = scores.stream().filter(s -> getTeamId(s, teams).equals(teamId)).toList();
+            List<Score> playerScores = scores.stream().filter(s -> getTeamId(s, teams).equals(teamId)).toList();
             Integer teamScore = getBestTeamScore(playerScores);
 
             if (teamScore != null) {
@@ -133,10 +133,10 @@ public class SeedingService {
         }
     }
 
-    private Integer getBestTeamScore(List<MapScore> scores) {
+    private Integer getBestTeamScore(List<Score> scores) {
         Map<Integer, Integer> teamScores = new HashMap<>();
 
-        for (MapScore mapScore : scores) {
+        for (Score mapScore : scores) {
             int score = mapScore.getScore();
             int run = mapScore.getRun();
 
@@ -147,7 +147,7 @@ public class SeedingService {
                 : null;
     }
 
-    private Long getTeamId(MapScore score, List<Team> teams) {
+    private Long getTeamId(Score score, List<Team> teams) {
         Optional<Team> team = teams.stream()
                 .filter(t -> mapPlayers(t.getPlayers()).contains(score.getAppUserId()))
                 .findFirst();

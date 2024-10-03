@@ -5,6 +5,7 @@ import com.tourneyhub.backend.dto.tournament.SimpleTournamentDto;
 import com.tourneyhub.backend.dto.tournament.TournamentCreateDto;
 import com.tourneyhub.backend.dto.tournament.TournamentDto;
 import com.tourneyhub.backend.dto.tournament.TournamentPublishDto;
+import com.tourneyhub.backend.helper.Constants;
 import com.tourneyhub.backend.mapper.TournamentMapper;
 import com.tourneyhub.backend.mapper.TournamentPlayerMapper;
 import com.tourneyhub.backend.mapper.TournamentRoleMapper;
@@ -118,10 +119,10 @@ public class TournamentService {
 
     public void publishPlayers(Long tournamentId) {
         Tournament tournament = getTournament(tournamentId);
-        Status status = getStatus("active");
+        Status status = getStatus(Constants.ACTIVE);
 
         tournament.getPlayers().forEach(player -> {
-            if (player.getStatus().getName().equals("registered")) {
+            if (player.getStatus().getName().equals(Constants.REGISTERED)) {
                 player.setStatus(status);
             }
         });
@@ -137,9 +138,9 @@ public class TournamentService {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
         uow.tournamentRoleRepository
-                .save(tournamentRoleMapper.mapToEntity(getRole("player"), tournament, user));
+                .save(tournamentRoleMapper.mapToEntity(getRole(Constants.PLAYER), tournament, user));
         uow.statsRepository
-                .save(statsMapper.mapToEntity(user, tournament, getStatus("registered")));
+                .save(statsMapper.mapToEntity(user, tournament, getStatus(Constants.REGISTERED)));
     }
 
     public void eliminateTeam(Long tournamentId, Long teamId) {
@@ -165,7 +166,7 @@ public class TournamentService {
         if (tournament.isPlayersPublished() && stats.getPlacement() == 0) {
             stats.setPlacement(placement);
         }
-        stats.setStatus(getStatus(tournament.isPlayersPublished() ? "eliminated" : "disqualified"));
+        stats.setStatus(getStatus(tournament.isPlayersPublished() ? Constants.ELIMINATED : Constants.DISQUALIFIED));
         uow.statsRepository.save(stats);
     }
 
@@ -176,7 +177,7 @@ public class TournamentService {
                 || dto.isApplicationsOpen() && dto.getApplicationDeadline() == null) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
-        if (!roles.contains("host") || roles.contains("player")) {
+        if (!roles.contains(Constants.HOST) || roles.contains(Constants.PLAYER)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
         if (dto.getMaxPlayerRank() < dto.getMinPlayerRank() || dto.getMaxTeamSize() < dto.getMinTeamSize()) {
