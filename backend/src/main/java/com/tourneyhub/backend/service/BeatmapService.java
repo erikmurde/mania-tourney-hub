@@ -2,6 +2,7 @@ package com.tourneyhub.backend.service;
 
 import com.tourneyhub.backend.domain.Beatmap;
 import com.tourneyhub.backend.domain.BeatmapType;
+import com.tourneyhub.backend.domain.Stage;
 import com.tourneyhub.backend.dto.map.BeatmapDto;
 import com.tourneyhub.backend.dto.map.osuApi.OsuBeatmapDto;
 import com.tourneyhub.backend.dto.map.SubmittedBeatmapDto;
@@ -15,6 +16,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.reactive.function.client.WebClientResponseException;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -41,10 +43,16 @@ public class BeatmapService {
     }
 
     public List<BeatmapDto> getAllInMappoolByStageId(Long stageId) {
-        return uow.mapRepository
-                .findAllInMappoolByStageId(stageId).stream()
-                .map(mapper::mapToDto)
-                .toList();
+        Stage stage = uow.stageRepository
+                .findById(stageId)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+
+        return !stage.isMappoolPublished()
+                ? new ArrayList<>()
+                : uow.mapRepository
+                    .findAllInMappoolByStageId(stageId).stream()
+                    .map(mapper::mapToDto)
+                    .toList();
     }
 
     public void createSubmitted(SubmittedBeatmapDto mapDto, String suggestor) {
