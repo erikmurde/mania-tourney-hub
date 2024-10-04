@@ -4,7 +4,6 @@ import { MapStatsService } from '../../../services/mapStatsService';
 import { useState } from 'react';
 import StatTypeTabs from './tabs/StatTypeTabs';
 import MapStatsTable from './table/MapStatsTable';
-import NoItems from '../NoItems';
 import { QUALIFIER } from '../../../constants';
 
 interface IProps {
@@ -77,8 +76,6 @@ const MapStats = ({stats, stageType, teamTourney}: IProps) => {
                         </Grid>
                     </Grid>
                 </Paper>}
-                {scores.length === 0 && 
-                <NoItems name={showTeams ? 'team scores' : 'player scores'}/>}
             </Grid>
         </Grid>
     );

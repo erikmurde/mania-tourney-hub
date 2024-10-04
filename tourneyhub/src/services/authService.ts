@@ -67,13 +67,16 @@ export class AuthService extends ApiEntityService<UserDto, UserDto, UserDto> {
         return this.getTournamentRoles(user, tournamentId).includes(HOST);
     }
 
-    hasRoles(user: UserDto, tournamentId: string, ...roles: string[]) {
+    hasRoles(user: UserDto | null, tournamentId: string, ...roles: string[]) {
+        if (!user) {
+            return false;
+        }
         return this
             .getTournamentRoles(user, tournamentId)
             .some(role => roles.includes(role));
     }
 
-    isStaff(user: UserDto, tournamentId: string) {
+    isStaff(user: UserDto | null, tournamentId: string) {
         const staffRoles = [HOST, ADMIN, MAPPOOLER, MAPPER, PLAYTESTER, REFEREE, STREAMER, COMMENTATOR, SHEETER, GFX];
         return this.hasRoles(user, tournamentId, ...staffRoles);
     }

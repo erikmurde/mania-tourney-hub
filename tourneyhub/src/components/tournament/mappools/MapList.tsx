@@ -1,7 +1,6 @@
 import { Grid } from '@mui/material';
 import { IMapDto } from '../../../dto/map/IMapDto';
 import MapCard from './card/MapCard';
-import NoItems from '../NoItems';
 
 interface IProps {
     mappool: IMapDto[],
@@ -21,7 +20,6 @@ const MapList = ({mappool, activeAudioId, audioPlaying, handleAudio}: IProps) =>
                         handleAudio={handleAudio}/>
                 </Grid>
             )}
-            {mappool.length === 0 && <NoItems name='maps'/>}
         </Grid>
     );
 }

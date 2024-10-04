@@ -67,7 +67,7 @@ const Information = () => {
         }
     };
 
-    const hasNoContent = () => value.replace(/<(.|\n)*?>/g, '').trim().length === 0;
+    const hasNoContent = () => tourney.information.replace(/<(.|\n)*?>/g, '').trim().length === 0;
 
     const editInfo = async() => {
         if (!user) {
@@ -93,7 +93,7 @@ const Information = () => {
     const isHost = user && new AuthService().isHost(user, tourney.id);
 
     return (  
-        <Paper elevation={2} sx={{ minHeight: 500, paddingBottom: 2 }}>
+        <Paper elevation={2} sx={{ minHeight: 800, paddingBottom: 2 }}>
             <Grid container alignItems='center'>
                 <SectionTitle title={edit ? 'Edit information' : 'Information'} xsAuto/>
                 <Grid item xs textAlign='end' marginRight={5}>
@@ -117,10 +117,10 @@ const Information = () => {
                     </LoadingButton>}
                 </Grid>
                 <Grid item xs={12} marginLeft={5} marginRight={5}>
+                    <NoItems name='information' display={!edit && hasNoContent()}/>
                     <ReactQuill
                         className={edit ? 'quill-edit' : 'quill-view'}
                         theme='snow'
-                        placeholder={edit ? 'Write about your tournament here...' : ''}
                         readOnly={!edit}
                         formats={formats}
                         modules={modules}
@@ -128,7 +128,6 @@ const Information = () => {
                         onChange={(content) => setValue(content)}/>
                 </Grid>
             </Grid>
-            {!edit && hasNoContent() && <NoItems name='information'/>}
         </Paper>
     );
 }

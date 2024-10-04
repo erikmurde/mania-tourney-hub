@@ -8,7 +8,6 @@ import ScheduleButtons from '../../../components/tournament/schedule/ScheduleBut
 import { ADMIN, HOST, QUALIFIER, REFEREE } from '../../../constants';
 import LobbyTable from '../../../components/tournament/schedule/table/lobby/LobbyTable';
 import MatchTable from '../../../components/tournament/schedule/table/match/MatchTable';
-import NoItems from '../../../components/tournament/NoItems';
 import { AuthContext } from '../../Root';
 import { AuthService } from '../../../services/authService';
 import { useTourney } from '../TournamentHeader';
@@ -32,11 +31,12 @@ const Schedule = () => {
 
     let stage = stages.find(stage => stage.id === stageId);
 
-    const hasViewRights = user && service.hasRoles(user, tourney.id, HOST, ADMIN, REFEREE);
-    const hasEditRights = user && service.hasRoles(user, tourney.id, HOST, ADMIN);
+    const hasViewRights = service.hasRoles(user, tourney.id, HOST, ADMIN, REFEREE);
+    const hasEditRights = service.hasRoles(user, tourney.id, HOST, ADMIN);
+    const canView = stage !== undefined && (stage.schedulePublished || hasViewRights);
 
     return (  
-        <Paper elevation={2} sx={{ minHeight: 500, paddingBottom: 2 }}>
+        <Paper elevation={2} sx={{ minHeight: 800, paddingBottom: 2 }}>
             <Grid container>
                 <SectionTitle title='Schedule'/>
                 {stage &&
@@ -48,13 +48,9 @@ const Schedule = () => {
                     buttons={hasEditRights && !tourney.concluded ? <ScheduleButtons stage={stage}/> : <></>}
                 />
                 <Grid item xs marginLeft={2} marginRight={2}>
-                    {stage.schedulePublished || hasViewRights
-                    ?   <>
-                        {stage.stageType.name === QUALIFIER 
-                        ?   <LobbyTable stage={stage} showTeams={tourney.minTeamSize > 1}/> 
-                        :   <MatchTable stage={stage}/>}
-                        </>
-                    :   <NoItems name={stage.stageType.name === QUALIFIER ? 'lobbies' : 'matches'}/>}
+                    {stage.stageType.name === QUALIFIER 
+                    ?   <LobbyTable stage={stage} showTeams={tourney.minTeamSize > 1} canView={canView}/> 
+                    :   <MatchTable stage={stage} canView={canView}/>}
                 </Grid>
                 </>}
             </Grid>

@@ -12,6 +12,8 @@ import LobbyInviteCommands from '../../ref/lobby/LobbyInviteCommands';
 import LobbyMapCommands from '../../ref/lobby/LobbyMapCommands';
 import LobbyMain from '../../ref/lobby/LobbyMain';
 import LobbyMapPool from '../../ref/lobby/LobbyMapPool';
+import { RefSheetPaper } from '../../../styled/RefSheetPaper';
+import NoItems from '../../NoItems';
 
 interface IProps {
     lobby: LobbyDto,
@@ -25,11 +27,13 @@ const LobbyRefSheet = ({lobby, stageName, lobbySize, onClose}: IProps) => {
 
     const [maps, setMaps] = useState([] as IMapDto[]);
     const [selectedId, setSelectedId] = useState(null as number | null);
-
+    const [loading, setLoading] = useState(true);
+    
     useEffect(() => {
         new MapService()
             .getAllInMappoolByStageId(lobby.stageId)
-            .then(maps => setMaps(maps));
+            .then(maps => setMaps(maps ?? []))
+            .finally(() => setLoading(false));
     }, [lobby.stageId]);
 
     return (  
@@ -51,7 +55,11 @@ const LobbyRefSheet = ({lobby, stageName, lobbySize, onClose}: IProps) => {
                         <LobbyGeneralCommands lobbySize={lobbySize}/>
                     </Grid>
                     <Grid item xs={7}>
-                        <LobbyMapPool maps={maps} selectedId={selectedId} setSelectedId={setSelectedId}/>
+                        <RefSheetPaper elevation={8} sx={{ height: 1 }}>
+                            <NoItems name='maps' loading={loading} display={maps.length === 0}/>
+                            {!loading &&
+                            <LobbyMapPool maps={maps} selectedId={selectedId} setSelectedId={setSelectedId}/>}
+                        </RefSheetPaper>
                     </Grid>
                     <Grid item xs>
                         {tourney.minTeamSize > 1 

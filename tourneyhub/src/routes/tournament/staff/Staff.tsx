@@ -7,22 +7,24 @@ import { ACCEPTED, GFX, PLAYER, ROLE_REG } from '../../../constants';
 import { Description, List } from '@mui/icons-material';
 import { StaffApplicationService } from '../../../services/staffApplicationService';
 import { StaffApplicationDto } from '../../../dto/staff/application/StaffApplicationDto';
-import StaffApplicationCard from '../../../components/tournament/staff/StaffApplicationCard';
 import StaffInviteForm from '../../../components/tournament/staff/form/StaffInviteForm';
 import { AuthContext } from '../../Root';
 import { StatusService } from '../../../services/statusService';
 import { RoleService } from '../../../services/roleService';
 import { RoleDto } from '../../../dto/RoleDto';
 import { useTourney } from '../TournamentHeader';
+import NoItems from '../../../components/tournament/NoItems';
+import StaffApplications from '../../../components/tournament/staff/StaffApplications';
 
 const Staff = () => {
     const { tourney } = useTourney();
     const { user } = useContext(AuthContext);
 
-    const [listView, setListView] = useState(true);
     const [staff, setStaff] = useState([] as UserDto[]);
     const [roles, setRoles] = useState([] as RoleDto[]);
     const [applications, setApplications] = useState([] as StaffApplicationDto[]);
+    const [listView, setListView] = useState(true);
+    const [loading, setLoading] = useState(true);
     
     const authService = new AuthService();
     const staffApplicationService = new StaffApplicationService();
@@ -30,7 +32,8 @@ const Staff = () => {
     useEffect(() => {
         authService
             .getTournamentStaff(tourney.id)
-            .then(staff => setStaff(staff));
+            .then(staff => setStaff(staff))
+            .finally(() => setLoading(false));
 
         new RoleService()
             .getAll()
@@ -119,45 +122,27 @@ const Staff = () => {
                     <StaffInviteForm roles={roles} user={user}/>
                 </Paper>
             </Grid>}
-            {!listView && 
-            <Grid item>
-                <Paper elevation={2} sx={{ paddingBottom: 2 }}>
-                    <Typography 
-                        variant='h3' 
-                        fontSize={36} 
-                        height={80} 
-                        lineHeight={2} 
-                        marginLeft={5} 
-                        marginBottom={2}
-                        >
-                        Staff applications
-                    </Typography>
-                    <Grid container spacing={2} justifyContent='center'>
-                        {applications.map(application => 
-                            <Grid item key={application.id}>
-                                <StaffApplicationCard
-                                    application={application} 
-                                    updateStatus={updateApplicationStatus}/>
-                            </Grid>
-                        )}
-                    </Grid>
-                </Paper>
-            </Grid>}
-            {listView &&
-            <>
-            {roles.map(role => {
-                const filteredStaff = filterStaff(role.name);
-                return <StaffGroup 
+            {listView 
+            ?   roles.map(role => 
+                <StaffGroup 
                     key={role.id}
                     name={role.name === GFX 
                         ? 'Graphic Designers' 
                         : `${role.name[0].toUpperCase()}${role.name.slice(1)}s`
                     }
                     groupRole={role.name} 
-                    staff={filteredStaff}
-                    removeStaffRole={removeStaffRole}/>
-            })}
-            </>}
+                    staff={filterStaff(role.name)}
+                    removeStaffRole={removeStaffRole}
+                />)
+            :   <StaffApplications
+                    loading={loading}
+                    applications={applications} 
+                    updateStatus={updateApplicationStatus}
+                />}
+            {(loading || staff.length === 0) && listView &&
+            <Paper elevation={2} sx={{ height: 600, marginTop: 2 }}>
+                <NoItems name='staff' loading={loading} display={staff.length === 0}/>
+            </Paper>}
         </Grid>
     );
 }

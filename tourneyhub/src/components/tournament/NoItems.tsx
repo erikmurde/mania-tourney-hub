@@ -1,11 +1,26 @@
-import { Grid, Typography } from '@mui/material';
+import { CircularProgress, Grid, Typography } from '@mui/material';
 
-const NoItems = ({name}: {name: string}) => {
+interface IProps {
+    name: string,
+    display: boolean,
+    loading?: boolean
+}
+
+const NoItems = ({name, display, loading = false}: IProps) => {
+
+    if (!loading && !display) {
+        return <></>;
+    }
+
     return (  
-        <Grid container justifyContent='center' alignItems='center' flexGrow={1}>
-            <Typography variant='h3' fontSize={30}>
-                No {name} here yet
-            </Typography>
+        <Grid container minHeight={400} height={1} justifyContent='center' alignItems='center'>
+            <Grid item>
+                {loading 
+                ?   <CircularProgress size={50}/> 
+                :   <Typography variant='h3' fontSize={30}>
+                        No {name} found
+                    </Typography>}
+            </Grid>
         </Grid>
     );
 }

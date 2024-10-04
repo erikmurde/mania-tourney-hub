@@ -1,7 +1,6 @@
 import { Grid } from '@mui/material';
 import { TeamDto } from '../../../dto/team/TeamDto';
 import TeamCard from './TeamCard';
-import NoItems from '../NoItems';
 import { TournamentService } from '../../../services/tournamentService';
 import { useTourney } from '../../../routes/tournament/TournamentHeader';
 
@@ -33,7 +32,6 @@ const TeamList = ({teamsPublic, teams, setTeams}: IProps) => {
 
     return (  
         <Grid container spacing={2} justifyContent='center'>
-            {teams.length === 0 && <NoItems name='teams'/>}
             {teams.map(team => 
                 <Grid item key={team.id}>
                     <TeamCard teamsPublic={teamsPublic} team={team} eliminateTeam={eliminateTeam}/>

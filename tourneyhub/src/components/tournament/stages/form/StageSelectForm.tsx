@@ -19,7 +19,7 @@ const StageSelectForm = ({hasQualifier}: {hasQualifier: boolean}) => {
     }
 
     return (  
-        <Grid item marginTop={2}>
+        <Grid item>
             <Button sx={{ width: 150 }} variant='contained' startIcon={<NoteAdd/>} 
                 onClick={() => setOpen(true)}>
                 New stage

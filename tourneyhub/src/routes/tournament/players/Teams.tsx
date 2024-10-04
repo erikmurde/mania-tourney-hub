@@ -11,6 +11,7 @@ import { ACTIVE, ADMIN, DISQUALIFIED, HOST } from '../../../constants';
 import ConfirmationDialog from '../../../components/tournament/dialog/ConfirmationDialog';
 import TeamPlayerList from '../../../components/tournament/teams/TeamPlayerList';
 import { useTourney } from '../TournamentHeader';
+import NoItems from '../../../components/tournament/NoItems';
 
 const Teams = () => {
     const { tourney } = useTourney();
@@ -18,6 +19,7 @@ const Teams = () => {
 
     const [teams, setTeams] = useState([] as TeamDto[]);
     const [showTeams, setShowTeams] = useState(1);
+    const [loading, setLoading] = useState(true);
 
     const validRoles = [HOST, ADMIN];
     const tourneyService = new TournamentService();
@@ -34,7 +36,8 @@ const Teams = () => {
                 ? teams 
                 : teams.filter(team => team.status !== DISQUALIFIED))
                 .sort((a, b) => tourneyService.compareSeeds(a.seed, b.seed) || (a.name > b.name ? 1 : -1))
-            ));
+            ))
+            .finally(() => setLoading(false));
     }, [tourney.id, hasValidRoles]);
 
     const publishTeams = async() => {
@@ -55,7 +58,7 @@ const Teams = () => {
     }
 
     return (  
-        <Paper elevation={2} sx={{ minHeight: 500, paddingBottom: 2 }}>
+        <Paper elevation={2} sx={{ minHeight: 800, paddingBottom: 2 }}>
             <Grid container marginBottom={5}>
                 <SectionTitle title='Teams' xsAuto/>
                 <Grid item xs margin='auto' container justifyContent='center'>
@@ -83,6 +86,7 @@ const Teams = () => {
                 </Grid>}
                 {(hasValidRoles || tourney.playersPublished) &&
                 <Grid item xs={12}>
+                    <NoItems name={showTeams ? 'teams' : 'players'} loading={loading} display={teams.length === 0}/>
                     {showTeams 
                     ?   <TeamList 
                             teamsPublic={tourney.playersPublished} 

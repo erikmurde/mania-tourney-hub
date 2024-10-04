@@ -1,4 +1,4 @@
-import { Grid, Paper, Typography } from '@mui/material';
+import { Grid, Paper } from '@mui/material';
 import StageList from '../../../components/tournament/stages/StageList';
 import { IStageDto } from '../../../dto/stage/IStageDto';
 import { useContext, useEffect, useState } from 'react';
@@ -9,12 +9,16 @@ import StageSelectForm from '../../../components/tournament/stages/form/StageSel
 import NoPermission from '../../NoPermission';
 import { useTourney } from '../TournamentHeader';
 import { QUALIFIER } from '../../../constants';
+import NoItems from '../../../components/tournament/NoItems';
+import SectionTitle from '../../../components/tournament/SectionTitle';
 
 const Stages = () => {
     const { stageUpdate } = useContext(UpdateContext);
     const { user } = useContext(AuthContext);
     const { tourney } = useTourney();
+
     const [stages, setStages] = useState([] as IStageDto[]);
+    const [loading, setLoading] = useState(true);
 
     const valid = user && new AuthService().isHost(user, tourney.id);
 
@@ -22,7 +26,8 @@ const Stages = () => {
         if (valid) {
             new StageService()
                 .getByTournamentId(tourney.id)
-                .then(stages => setStages(stages));
+                .then(stages => setStages(stages))
+                .finally(() => setLoading(false));
         }
     }, [valid, stageUpdate]);
 
@@ -31,22 +36,17 @@ const Stages = () => {
     }
 
     return (  
-        <Paper elevation={2} sx={{ minHeight: 500, paddingBottom: 2 }}>
-            <Grid container marginLeft={5} marginBottom={5}>
-                <Grid item xs={12}>
-                    <Typography variant='h2' 
-                        height={100} 
-                        fontSize={46} 
-                        fontWeight={400} 
-                        lineHeight={2}>
-                        Stages
-                    </Typography>
+        <Paper elevation={2} sx={{ minHeight: 800, paddingBottom: 2 }}>
+            <Grid container alignItems='center'>
+                <SectionTitle title='Stages' xsAuto/>
+                <Grid item xs textAlign='end' marginRight={5}>
+                    {!tourney.concluded && 
+                    <StageSelectForm 
+                        hasQualifier={stages.some(stage => stage.stageType.name === QUALIFIER)}
+                    />}
                 </Grid>
-                {!tourney.concluded && 
-                <StageSelectForm 
-                    hasQualifier={stages.some(stage => stage.stageType.name === QUALIFIER)}
-                />}
             </Grid>
+            <NoItems name='stages' loading={loading} display={stages.length === 0}/>
             <StageList stages={stages}/>
         </Paper>
     );

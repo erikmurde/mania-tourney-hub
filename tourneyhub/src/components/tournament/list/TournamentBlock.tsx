@@ -1,6 +1,7 @@
 import { Paper, Typography, Grid } from '@mui/material';
 import TournamentCard from './TournamentCard';
 import { SimpleTournamentDto } from '../../../dto/tournament/SimpleTournamentDto';
+import NoItems from '../NoItems';
 
 interface IProps {
     name: string,
@@ -20,6 +21,7 @@ const TournamentBlock = ({name, tourneys}: IProps) => {
                     </Grid>
                 )}
             </Grid>
+            <NoItems name='tournaments' display={tourneys.length === 0}/>
         </Paper>
     );
 }

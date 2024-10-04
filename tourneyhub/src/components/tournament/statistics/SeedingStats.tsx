@@ -91,8 +91,6 @@ const SeedingStats = ({mapStats, numAdvancing, teamTourney}: IProps) => {
         });
     });
 
-    console.log(scores);
-
     const result = teamTourney 
     ?   teams.map(team => ({
             team: team,

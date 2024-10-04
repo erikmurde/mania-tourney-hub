@@ -45,10 +45,11 @@ const StaffCard = ({staff, removeStaff}: IProps) => {
                     <Grid item xs={3} textAlign='end'>
                         {!isStaffHost && isHost && !tourney.concluded &&
                         <ConfirmationDialog 
+                            title='Are you sure you wish to remove this staff member?'
+                            actionTitle='Remove'
+                            tooltip='Remove'
                             btnIcon={<PersonRemove/>}
                             btnProps={{ color: 'error', sx: { padding: 0.5 }}}
-                            title={'Are you sure you wish to remove this staff member?'} 
-                            actionTitle={'Remove'} 
                             action={() => removeStaff(staff)}
                         />}
                     </Grid>

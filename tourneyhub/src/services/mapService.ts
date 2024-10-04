@@ -1,3 +1,4 @@
+import { CanceledError } from 'axios';
 import { HB, LN, RC, SV, TB } from '../constants';
 import { IMapDto } from '../dto/map/IMapDto';
 import { ISubmittedMapDto } from '../dto/map/ISubmittedMapDto';
@@ -22,18 +23,26 @@ export class MapService extends ApiEntityService<IMapDto, IMapDto, IMapDto> {
         );
     }
 
-    async getAllByStageId(stageId: string): Promise<IMapDto[]> {
-        const response = await this.axios.get<IMapDto[]>(`${this.baseUrl}/stage/${stageId}`);
+    async getAllByStageId(stageId: string, signal?: AbortSignal): Promise<IMapDto[] | undefined> {
+        try {
+            const response = await this.axios.get<IMapDto[]>(`${this.baseUrl}/stage/${stageId}`, {
+                signal: signal
+            });
+            console.log('getAllMapsByStageId response: ', response);
+            return this.sortMaps(response.data);
 
-        console.log('getAllMapsByStageId response: ', response);
-        return this.sortMaps(response.data);
+        } catch (error) {}
     }
 
-    async getAllInMappoolByStageId(stageId: string): Promise<IMapDto[]> {
-        const response = await this.axios.get<IMapDto[]>(`${this.baseUrl}/stage/${stageId}/inMappool`);
+    async getAllInMappoolByStageId(stageId: string, signal?: AbortSignal): Promise<IMapDto[] | undefined> {
+        try {
+            const response = await this.axios.get<IMapDto[]>(`${this.baseUrl}/stage/${stageId}/inMappool`, {
+                signal: signal
+            });
+            console.log('getAllMapsInMappoolByStageId response: ', response);
+            return this.sortMaps(response.data);
 
-        console.log('getAllMapsInMappoolByStageId response: ', response);
-        return this.sortMaps(response.data);
+        } catch (error) {}
     }
 
     async createSubmitted(map: ISubmittedMapDto) {

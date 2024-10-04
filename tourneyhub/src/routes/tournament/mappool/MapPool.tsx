@@ -11,6 +11,7 @@ import { IStageDto } from '../../../dto/stage/IStageDto';
 import SectionTitle from '../../../components/tournament/SectionTitle';
 import StageTabs from '../../../components/tournament/StageTabs';
 import { useTourney } from '../TournamentHeader';
+import NoItems from '../../../components/tournament/NoItems';
 
 const MapPool = () => {
     const { tourney } = useTourney();
@@ -20,6 +21,7 @@ const MapPool = () => {
     const [stages, setStages] = useState([] as IStageDto[]);
     const [stageId, setStageId] = useState(null as string | null);
     const [maps, setMaps] = useState([] as IMapDto[]);
+    const [loading, setLoading] = useState(true);
 
     const [audio] = useState(new Audio());
     const [isPlaying, setIsPlaying] = useState(false);
@@ -53,21 +55,25 @@ const MapPool = () => {
             return;
         }
         const service = new MapService();
+        const controller = new AbortController();
+        setLoading(true);
 
         if (isManage) {
-            service.getAllByStageId(stageId)
-                .then(maps => setMaps(maps));
+            service
+                .getAllByStageId(stageId, controller.signal)
+                .then(maps => updateMaps(maps));
         } else {
-            const stage = stages.find(stage => stage.id === stageId);
-
-            if (!stage || !stage.mappoolPublished) {
-                setMaps([]);
-                return;
-            }
-            service.getAllInMappoolByStageId(stageId)
-                .then(maps => setMaps(maps));
+            service
+                .getAllInMappoolByStageId(stageId, controller.signal)
+                .then(maps => updateMaps(maps));
         }
+        return () => controller.abort();
     }, [stageId, isManage, mapPoolUpdate, stages]);
+
+    const updateMaps = (maps: IMapDto[] | undefined) => {
+        setMaps(maps ?? []);
+        setLoading(maps === undefined);
+    }
 
     const handleAudio = (mapId: string, src: string | undefined) => {       
         if (!src) {
@@ -85,9 +91,11 @@ const MapPool = () => {
     }
 
     return (  
-        <Paper elevation={2} sx={{ minHeight: 500, paddingBottom: 2 }}>
+        <Paper elevation={2} sx={{ minHeight: 800, paddingBottom: 2 }}>
             <Grid container>
                 <SectionTitle title={isManage ? 'Manage mappools' : 'Mappools'}/>
+                {stageId && 
+                <>                
                 <StageTabs 
                     stages={stages} 
                     stageId={stageId} 
@@ -98,8 +106,12 @@ const MapPool = () => {
                         setManage={setIsManage}
                         stage={stages.find(stage => stage.id === stageId) ?? null}
                         mappool={maps}
-                    />}/>
+                    />}
+                />
                 <Grid item xs>
+                    <NoItems name='maps' loading={loading} display={maps.length === 0}/>
+                    {!loading &&
+                    <>
                     {isManage 
                     ?   <MapManageList 
                             mappool={maps} 
@@ -112,7 +124,9 @@ const MapPool = () => {
                             activeAudioId={activeAudioId} 
                             audioPlaying={isPlaying} 
                             handleAudio={handleAudio}/>}
+                    </>}
                 </Grid>
+                </>}
             </Grid>
         </Paper>
     );

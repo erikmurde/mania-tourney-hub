@@ -17,6 +17,8 @@ import MatchStatusCommands from '../../ref/match/MatchStatusCommands';
 import MatchGeneralCommands from '../../ref/match/MatchGeneralCommands';
 import TeamInviteCommands from '../../ref/commands/TeamInviteCommands';
 import { useTourney } from '../../../../routes/tournament/TournamentHeader';
+import { RefSheetPaper } from '../../../styled/RefSheetPaper';
+import NoItems from '../../NoItems';
 
 interface IProps {
     match: MatchDto,
@@ -27,6 +29,7 @@ interface IProps {
 const MatchRefsheet = ({match, stage, onClose}: IProps) => {
     const { tourney } = useTourney();
     const [maps, setMaps] = useState([] as IMapDto[]);
+    const [loading, setLoading] = useState(true);
 
     const initialValues: MatchStatus = {
         match: match,
@@ -38,8 +41,9 @@ const MatchRefsheet = ({match, stage, onClose}: IProps) => {
 
     useEffect(() => {
         new MapService()
-            .getAllInMappoolByStageId(stage.id)
-            .then(maps => setMaps(maps));
+            .getAllInMappoolByStageId(match.stageId)
+            .then(maps => setMaps(maps ?? []))
+            .finally(() => setLoading(false));
     }, [stage.id]);
 
     return (  
@@ -100,11 +104,15 @@ const MatchRefsheet = ({match, stage, onClose}: IProps) => {
                                 </Grid>
                             </Grid>
                             <Grid item width={500}>
-                                <RefMapPool 
-                                    maps={maps} 
-                                    picks={values.picks.map(pick => pick.beatmapId)}
-                                    bans={values.bans}
-                                    protects={values.protects}/>
+                                <RefSheetPaper elevation={8} sx={{ height: 1 }}>
+                                    <NoItems name='maps' loading={loading} display={maps.length === 0}/>
+                                    {!loading &&
+                                    <RefMapPool 
+                                        maps={maps} 
+                                        picks={values.picks.map(pick => pick.beatmapId)}
+                                        bans={values.bans}
+                                        protects={values.protects}/>}
+                                </RefSheetPaper>
                             </Grid>
                             {tourney.minTeamSize > 1 && 
                             <Grid item width={1400}>

@@ -38,13 +38,16 @@ const StaffApplicationCard = ({application, updateStatus}: IProps) => {
             <StyledCardActions>
                 <ConfirmationDialog 
                     btnProps={{ color: 'success', title: 'Accept', sx: { height: 30 }}}
-                    title={'Are you sure you wish to accept this application?'} 
-                    actionTitle={'Accept'} 
+                    title='Are you sure you wish to accept this application?'
+                    description={
+                        `This will give ${application.sender.name} a ${application.role} role in this tournament.`
+                    }
+                    actionTitle='Accept'
                     action={() => updateStatus(application, ACCEPTED)}/>
                 <ConfirmationDialog 
                     btnProps={{ color: 'error', title: 'Reject', sx: { height: 30 }}}
-                    title={'Are you sure you wish to reject this application?'} 
-                    actionTitle={'Reject'} 
+                    title='Are you sure you wish to reject this application?'
+                    actionTitle='Reject'
                     action={() => updateStatus(application, REJECTED)}/>
             </StyledCardActions>
         </Card>

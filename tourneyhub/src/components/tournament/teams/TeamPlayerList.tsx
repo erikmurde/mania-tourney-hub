@@ -1,5 +1,4 @@
 import { Grid } from '@mui/material';
-import NoItems from '../NoItems';
 import TeamPlayerCard from './TeamPlayerCard';
 import { UserDto } from '../../../dto/user/UserDto';
 import { TeamDto } from '../../../dto/team/TeamDto';
@@ -22,7 +21,6 @@ const TeamPlayerList = ({teams}: {teams: TeamDto[]}) => {
 
     return (  
         <Grid container spacing={2} justifyContent='center'>
-            {teams.length === 0 && <NoItems name='players'/>}
             {data
             .sort((a, b) => a.player.rank - b.player.rank)
             .map(({player, isCaptain}) => 

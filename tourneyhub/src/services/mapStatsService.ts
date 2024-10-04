@@ -8,11 +8,15 @@ export class MapStatsService extends ApiEntityService<MapStatsDto, MapStatsDto, 
         super('statistics');
     }
 
-    async getAllInStage(stageId: string): Promise<MapStatsDto[]> {
-        const response = await this.axios.get<MapStatsDto[]>(`${this.baseUrl}/${stageId}`);
-
-        console.log('getAllStatsInStage response: ', response);
-        return response.data;
+    async getAllInStage(stageId: string, signal?: AbortSignal): Promise<MapStatsDto[] | undefined> {
+        try {
+            const response = await this.axios.get<MapStatsDto[]>(`${this.baseUrl}/${stageId}`, {
+                signal: signal
+            });
+            console.log('getAllStatsInStage response: ', response);
+            return response.data;
+    
+        } catch (error) {}
     }
 
     async seedParticipants(stageId: string) {

@@ -10,11 +10,15 @@ import { AuthContext } from '../../Root';
 import { useTourney } from '../TournamentHeader';
 import { TournamentService } from '../../../services/tournamentService';
 import { AuthService } from '../../../services/authService';
+import NoItems from '../../../components/tournament/NoItems';
 
 const Players = () => {
     const { tourney } = useTourney();
     const { user } = useContext(AuthContext);
+
     const [players, setPlayers] = useState([] as UserDto[]);
+    const [loading, setLoading] = useState(true);
+
     const validRoles = [HOST, ADMIN];
     const tourneyService = new TournamentService();
     const authService = new AuthService();
@@ -31,7 +35,8 @@ const Players = () => {
             .then(players => setPlayers(isValid 
                 ? players 
                 : players.filter(player => getStats(player).status !== DISQUALIFIED))
-            );
+            )
+            .finally(() => setLoading(false));
     }, [tourney.id]);
 
     const publishPlayers = async() => {
@@ -54,7 +59,7 @@ const Players = () => {
     }
 
     return (  
-        <Paper elevation={2} sx={{ minHeight: 500, paddingBottom: 2 }}>
+        <Paper elevation={2} sx={{ minHeight: 800, paddingBottom: 2 }}>
             <Grid container marginBottom={5}>
                 <SectionTitle title='Players'/>
                 {isValid && !tourney.playersPublished && 
@@ -69,7 +74,8 @@ const Players = () => {
                         actionTitle={'Publish'} 
                         action={() => publishPlayers()}/>
                 </Grid>}
-                <Grid item xs={12}>
+                <Grid item xs={12} minHeight={400}>
+                    <NoItems name='players' loading={loading} display={players.length === 0}/>
                     <PlayerList 
                         playersPublic={tourney.playersPublished}
                         players={players.sort((a, b) => 

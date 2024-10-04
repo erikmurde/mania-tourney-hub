@@ -36,7 +36,7 @@ const MapManageCard = ({map, mappool, audioPlaying, handleAudio, updateInMappool
                 display: 'flex'
             }}>
             <CardMedia
-                sx={{ minWidth: 300, borderRadius: 0.5, objectFit: 'cover' }}
+                sx={{ minWidth: 300, borderRadius: 0.4, objectFit: 'cover' }}
                 image={map.cover}
                 title={`cover of ${map.title}`}/>
             <CardContent sx={{ padding: 1, paddingBottom: 0 }}>

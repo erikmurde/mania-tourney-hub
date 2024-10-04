@@ -8,11 +8,15 @@ export class MatchService extends ApiEntityService<MatchDto, MatchCreateDto, Mat
         super('matches');
     }
 
-    async getAllByStageId(stageId: string): Promise<MatchDto[]> {
-        const response =  await this.axios.get<MatchDto[]>(`${this.baseUrl}/${stageId}`);
+    async getAllByStageId(stageId: string, signal?: AbortSignal): Promise<MatchDto[] | undefined> {
+        try {
+            const response =  await this.axios.get<MatchDto[]>(`${this.baseUrl}/${stageId}`, {
+                signal: signal
+            });
+            console.log('getAllMatchesByStageId response: ', response);
+            return response.data;
 
-        console.log('getAllMatchesByStageId response: ', response);
-        return response.data;
+        } catch (error) {}
     }
 
     async registerStaff(id: string, userId: string, role: string) {

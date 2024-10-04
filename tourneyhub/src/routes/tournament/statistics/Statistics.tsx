@@ -21,11 +21,13 @@ import SuccessDialog from '../../../components/tournament/dialog/SuccessDialog';
 const Statistics = () => {
     const { tourney } = useTourney();
     const { user } = useContext(AuthContext);
-    const [successOpen, setSuccessOpen] = useState(false);
+
     const [stages, setStages] = useState([] as IStageDto[]);
     const [mapStats, setMapStats] = useState([] as MapStatsDto[]);
     const [stageId, setStageId] = useState(null as string | null);
     const [selectedStats, setSelectedStats] = useState('');
+    const [successOpen, setSuccessOpen] = useState(false);
+    const [loading, setLoading] = useState(true);
 
     const service = new MapStatsService();
 
@@ -41,14 +43,21 @@ const Statistics = () => {
     let stage = stages.find(stage => stage.id === stageId);
 
     useEffect(() => {
-        if (stage) {
-            service
-                .getAllInStage(stage.id)
-                .then(stats => {
-                    setMapStats(stats);
-                    setSelectedStats(stage!.stageType.name === QUALIFIER ? SEEDING : MAPPOOL);
-                });
+        if (!stage) {
+            return;
         }
+        const controller = new AbortController();
+        setLoading(true);
+
+        service
+            .getAllInStage(stage.id, controller.signal)
+            .then(stats => {
+                setMapStats(stats ?? []);
+                setSelectedStats(stage!.stageType.name === QUALIFIER ? SEEDING : MAPPOOL);
+                setLoading(stats === undefined);
+            });
+
+        return () => controller.abort();
     }, [stage]);
 
     const updateSeeding = async(stageId: string) => {
@@ -63,10 +72,10 @@ const Statistics = () => {
     const statsVisible = (stage?.statsPublished || isHost) && mapStats.length > 0;
 
     return (  
-        <Paper elevation={2} sx={{ minHeight: 500, paddingBottom: 2 }}>
+        <Paper elevation={2} sx={{ minHeight: 800, paddingBottom: 2 }}>
             <Grid container>
                 <SectionTitle title='Statistics' xsAuto/>
-                {statsVisible && stage &&
+                {statsVisible && stage && !loading &&
                 <StatsTabs
                     maps={mapStats}
                     stageType={stage.stageType.name}
@@ -98,9 +107,10 @@ const Statistics = () => {
                     marginLeft={map ? 0 : 2} 
                     marginRight={map ? 0 : 2} 
                     container={map !== undefined || selectedStats === SEEDING} 
-                    justifyContent='center'
-                    >
-                    {map && 
+                    justifyContent='center'>
+                    {!loading && 
+                    <>
+                    {map &&
                     <MapStats stats={map} stageType={stage.stageType.name} teamTourney={tourney.minTeamSize > 1}/>} 
                     {selectedStats === SEEDING && statsVisible &&
                     <SeedingStats
@@ -109,9 +119,9 @@ const Statistics = () => {
                         teamTourney={tourney.minTeamSize > 1}
                     />}
                     {(stage.statsPublished || isHost) && stage.id && selectedStats === MAPPOOL && mapStats.length > 0 &&
-                    <StageStats mapStats={mapStats} tourney={tourney}
-                    />}
-                    {!statsVisible && <NoItems name={'statistics'}/>}
+                    <StageStats mapStats={mapStats} tourney={tourney}/>}
+                    </>}
+                    <NoItems name={'statistics'} loading={loading} display={!statsVisible}/>
                 </Grid>
             </Grid>}
             <SuccessDialog 
