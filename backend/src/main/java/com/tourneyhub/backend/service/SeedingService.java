@@ -1,13 +1,14 @@
 package com.tourneyhub.backend.service;
 
 import com.tourneyhub.backend.domain.*;
+import com.tourneyhub.backend.domain.exception.AppException;
 import com.tourneyhub.backend.dto.score.SeedingDto;
 import com.tourneyhub.backend.dto.score.SeedingScoreDto;
+import com.tourneyhub.backend.helper.Constants;
 import com.tourneyhub.backend.repository.RepositoryUow;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.*;
 
@@ -29,10 +30,10 @@ public class SeedingService {
         String stageType = stage.getStageType().getName();
 
         if (!userService.isHost(tournament.getId(), principal)) {
-            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED);
+            throw new AppException(Constants.NO_PERMISSION, HttpStatus.FORBIDDEN);
         }
         if (tournament.isConcluded() || !tournament.isPlayersPublished() || !stageType.equals("qualifier")) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+            throw new AppException("Invalid tournament state or stage type!", HttpStatus.BAD_REQUEST);
         }
         List<Beatmap> maps = uow.mapRepository.findAllInMappoolByStageIdWithScores(stageId);
         boolean isTeam = tournament.getMinTeamSize() > 1;
@@ -196,9 +197,10 @@ public class SeedingService {
                 .toList();
     }
 
-    private Stage getStage(Long stageId) {
+    private Stage getStage(Long id) {
         return uow.stageRepository
-                .findById(stageId)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+                .findById(id)
+                .orElseThrow(() -> new AppException(
+                        String.format("No stage with id %d", id), HttpStatus.NOT_FOUND));
     }
 }

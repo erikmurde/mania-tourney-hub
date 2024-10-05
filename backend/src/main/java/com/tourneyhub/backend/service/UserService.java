@@ -3,6 +3,7 @@ package com.tourneyhub.backend.service;
 import com.tourneyhub.backend.domain.AppUser;
 import com.tourneyhub.backend.domain.Tournament;
 import com.tourneyhub.backend.domain.TournamentRole;
+import com.tourneyhub.backend.domain.exception.AppException;
 import com.tourneyhub.backend.dto.user.SimpleUserDto;
 import com.tourneyhub.backend.dto.user.UserDto;
 import com.tourneyhub.backend.dto.user.UserEditDto;
@@ -35,11 +36,7 @@ public class UserService {
         if (principal == null) {
             return null;
         }
-        AppUser user = uow.userRepository
-                .findById(Objects.requireNonNull(principal.getAttribute("id")))
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-
-        return mapper.mapToDto(user);
+        return mapper.mapToDto(getUser(principal));
     }
 
     public List<UserDto> getAll() {
@@ -66,7 +63,8 @@ public class UserService {
     public List<UserDto> getTournamentPlayers(Long tournamentId, OAuth2User principal) {
         Tournament tournament = uow.tournamentRepository
                 .findById(tournamentId)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new AppException(
+                        String.format("No tournament with id %d!", tournamentId), HttpStatus.NOT_FOUND));
 
         if (!tournament.isPlayersPublished() &&
                 !hasAnyRole(tournamentId, principal, Constants.HOST, Constants.ADMIN)) {
@@ -92,9 +90,7 @@ public class UserService {
     }
 
     public void updateMe(UserEditDto dto, OAuth2User principal) {
-        AppUser user = uow.userRepository
-                .findById(Objects.requireNonNull(principal.getAttribute("id")))
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        AppUser user = getUser(principal);
 
         user.setDiscordUsername(dto.getDiscordUsername());
         user.setTimezone(dto.getTimezone());
@@ -103,7 +99,7 @@ public class UserService {
 
     public void removeUserRole(Long userId, Long tournamentId, String role) {
         if (List.of("host", "player").contains(role)) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+            throw new AppException(String.format("Invalid role: %s!", role), HttpStatus.BAD_REQUEST);
         }
         TournamentRole tournamentRole = uow.tournamentRoleRepository
                 .findRoleToRemove(userId, tournamentId, role)
@@ -136,5 +132,14 @@ public class UserService {
                 .getUserRolesInTournament(userId, tournamentId).stream()
                 .map(role -> role.getRole().getName())
                 .toList();
+    }
+
+    private AppUser getUser(OAuth2User principal) {
+        Long id = principal.getAttribute("id");
+
+        return uow.userRepository
+                .findById(Objects.requireNonNull(id))
+                .orElseThrow(() -> new AppException(
+                        String.format("No user with id %d!", id), HttpStatus.NOT_FOUND));
     }
 }

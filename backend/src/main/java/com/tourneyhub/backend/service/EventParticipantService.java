@@ -52,7 +52,7 @@ public class EventParticipantService {
                 event,
                 team ? null : uow.userRepository.getReferenceById(participantId),
                 team ? uow.teamRepository.getReferenceById(participantId) : null,
-                uow.roleRepository.findByName(role).orElseThrow(IllegalArgumentException::new));
+                uow.roleRepository.findByName(role).orElseThrow(RuntimeException::new));
 
         event.getParticipants().add(participant);
     }

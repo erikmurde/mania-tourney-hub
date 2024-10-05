@@ -3,16 +3,17 @@ package com.tourneyhub.backend.service;
 import com.tourneyhub.backend.domain.Event;
 import com.tourneyhub.backend.domain.EventParticipant;
 import com.tourneyhub.backend.domain.Stage;
+import com.tourneyhub.backend.domain.exception.AppException;
 import com.tourneyhub.backend.dto.match.MatchCreateDto;
 import com.tourneyhub.backend.dto.match.MatchDto;
 import com.tourneyhub.backend.dto.match.MatchEditDto;
 import com.tourneyhub.backend.dto.match.MatchResultDto;
+import com.tourneyhub.backend.helper.Constants;
 import com.tourneyhub.backend.mapper.MatchMapper;
 import com.tourneyhub.backend.repository.RepositoryUow;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -57,13 +58,14 @@ public class MatchService {
     public Long create(MatchCreateDto dto, OAuth2User principal) {
         Stage stage = uow.stageRepository
                 .findById(dto.getStageId())
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new AppException(
+                        String.format("No stage with id %d", dto.getStageId()), HttpStatus.NOT_FOUND));
 
         if (!userService.hasAnyRole(stage.getTournamentId(), principal, "host", "admin")) {
-            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED);
+            throw new AppException(Constants.NO_PERMISSION, HttpStatus.FORBIDDEN);
         }
         if (!stage.getStageType().getName().equals("standard") || dto.getCommentatorIds().size() > 2) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+            throw new AppException("Invalid stage type or too many commentators!", HttpStatus.BAD_REQUEST);
         }
         Event match = mapper.mapToEntity(dto, stage);
 
@@ -100,7 +102,7 @@ public class MatchService {
         // TODO check if participant is same as logged in user
 
         if (!commentator && !participants.isEmpty() || commentator && participants.size() == 2) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+            throw new AppException("Staff already present!", HttpStatus.BAD_REQUEST);
         }
         participantService.addParticipant(match, userId, role, false);
         return uow.eventRepository.save(match).getId();
@@ -124,7 +126,7 @@ public class MatchService {
         Integer s2 = dto.getScore2();
 
         if (!isWbd && (s1 < 0 || s2 < 0) || isWbd && (s1 >= 0 && s2 >= 0 || s1 < 0 && s2 < 0)) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+            throw new AppException("Invalid scores!", HttpStatus.BAD_REQUEST);
         }
         players.get(0).setScore(s1);
         players.get(1).setScore(s2);
@@ -142,7 +144,7 @@ public class MatchService {
         Long tournamentId = match.getStage().getTournamentId();
 
         if (!userService.hasAnyRole(tournamentId, principal, roles)) {
-            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED);
+            throw new AppException(Constants.NO_PERMISSION, HttpStatus.FORBIDDEN);
         }
         return match;
     }

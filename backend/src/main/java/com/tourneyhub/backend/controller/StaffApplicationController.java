@@ -1,5 +1,6 @@
 package com.tourneyhub.backend.controller;
 
+import com.tourneyhub.backend.domain.exception.AppException;
 import com.tourneyhub.backend.dto.staffApplication.StaffApplicationCreateDto;
 import com.tourneyhub.backend.dto.staffApplication.StaffApplicationDto;
 import com.tourneyhub.backend.dto.staffApplication.StaffApplicationEditDto;
@@ -11,7 +12,6 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -47,7 +47,7 @@ public class StaffApplicationController {
             @AuthenticationPrincipal OAuth2User principal)
     {
         if (userService.isHost(dto.getTournamentId(), principal)) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+            throw new AppException("Cannot create application for own tournament!", HttpStatus.BAD_REQUEST);
         }
         staffApplicationService.create(dto);
     }

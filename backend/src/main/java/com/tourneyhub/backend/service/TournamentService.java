@@ -1,6 +1,7 @@
 package com.tourneyhub.backend.service;
 
 import com.tourneyhub.backend.domain.*;
+import com.tourneyhub.backend.domain.exception.AppException;
 import com.tourneyhub.backend.dto.tournament.SimpleTournamentDto;
 import com.tourneyhub.backend.dto.tournament.TournamentCreateDto;
 import com.tourneyhub.backend.dto.tournament.TournamentDto;
@@ -12,7 +13,6 @@ import com.tourneyhub.backend.mapper.TournamentRoleMapper;
 import com.tourneyhub.backend.repository.RepositoryUow;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Date;
 import java.util.List;
@@ -48,10 +48,7 @@ public class TournamentService {
     }
 
     public TournamentDto getById(Long tournamentId) {
-        return uow.tournamentRepository
-                .findById(tournamentId)
-                .map(tournamentMapper::mapToDto)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        return tournamentMapper.mapToDto(getTournament(tournamentId));
     }
 
     public Long create(TournamentCreateDto dto, Long currentUserId) {
@@ -92,8 +89,9 @@ public class TournamentService {
     public Long publish(Long tournamentId, TournamentPublishDto dto) {
         Tournament tournament = getTournament(tournamentId);
 
-        if (isMissingDeadlines(dto)) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        if (dto.isRegsOpen() && dto.getRegDeadline() == null
+                || dto.isApplicationsOpen() && dto.getApplicationDeadline() == null) {
+            throw new AppException("Tournament has missing deadlines!", HttpStatus.BAD_REQUEST);
         }
         tournament.setRegsOpen(dto.isRegsOpen());
         tournament.setApplicationsOpen(dto.isApplicationsOpen());
@@ -108,7 +106,7 @@ public class TournamentService {
         Tournament tournament = getTournament(tournamentId);
 
         if (!tournament.getPlayers().isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+            throw new AppException("Tournament has registered players!", HttpStatus.BAD_REQUEST);
         }
         tournament.setRegsOpen(false);
         tournament.setApplicationsOpen(false);
@@ -135,7 +133,7 @@ public class TournamentService {
         AppUser user = getLoggedInUser(currentUserId);
 
         if (!tournament.isRegsOpen() || new Date().after(tournament.getRegDeadline())) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+            throw new AppException("Registrations are not open!", HttpStatus.BAD_REQUEST);
         }
         uow.tournamentRoleRepository
                 .save(tournamentRoleMapper.mapToEntity(getRole(Constants.PLAYER), tournament, user));
@@ -146,7 +144,8 @@ public class TournamentService {
     public void eliminateTeam(Long tournamentId, Long teamId) {
         Team team = uow.teamRepository
                 .findById(teamId)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new AppException(
+                        String.format("No team with id %d!", teamId), HttpStatus.NOT_FOUND));
 
         Tournament tournament = getTournament(tournamentId);
         Integer placement = uow.statsRepository.getNumOfActiveTeams(tournamentId);
@@ -161,7 +160,8 @@ public class TournamentService {
     private void updatePlayerStats(Tournament tournament, Long playerId, Integer placement) {
         TournamentPlayer stats = uow.statsRepository
                 .getPlayerStatsInTournament(tournament.getId(), playerId)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new AppException(
+                        String.format("No stats for player with id %d!", playerId), HttpStatus.NOT_FOUND));
 
         if (tournament.isPlayersPublished() && stats.getPlacement() == 0) {
             stats.setPlacement(placement);
@@ -171,17 +171,21 @@ public class TournamentService {
     }
 
     private void validateTournament(TournamentCreateDto dto) {
+        String error = null;
         List<String> roles = dto.getHostRoles();
 
         if (dto.isRegsOpen() && dto.getRegDeadline() == null
                 || dto.isApplicationsOpen() && dto.getApplicationDeadline() == null) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+            error = "Tournament is missing deadlines!";
         }
         if (!roles.contains(Constants.HOST) || roles.contains(Constants.PLAYER)) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+            error = "Tournament host roles are invalid!";
         }
         if (dto.getMaxPlayerRank() < dto.getMinPlayerRank() || dto.getMaxTeamSize() < dto.getMinTeamSize()) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+            error = "Tournament has invalid restrictions!";
+        }
+        if (error != null) {
+            throw new AppException(error, HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -198,32 +202,31 @@ public class TournamentService {
         }
     }
 
-    private boolean isMissingDeadlines(TournamentPublishDto dto) {
-        return (dto.isRegsOpen() && dto.getRegDeadline() == null
-                || dto.isApplicationsOpen() && dto.getApplicationDeadline() == null);
-    }
-
     private Tournament getTournament(Long tournamentId) {
         return uow.tournamentRepository
                 .findById(tournamentId)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new AppException(
+                        String.format("No tournament with id %d!", tournamentId), HttpStatus.NOT_FOUND));
     }
 
     private AppUser getLoggedInUser(Long currentUserId) {
         return uow.userRepository
                 .findById(currentUserId)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new AppException(
+                        String.format("No user with id %d!", currentUserId), HttpStatus.NOT_FOUND));
     }
 
     private Status getStatus(String name) {
         return uow.statusRepository
                 .findByName(name)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new AppException(
+                        String.format("No status with name %s!", name), HttpStatus.NOT_FOUND));
     }
 
     private Role getRole(String name) {
         return uow.roleRepository
                 .findByName(name)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new AppException(
+                        String.format("No role with name %s!", name), HttpStatus.NOT_FOUND));
     }
 }

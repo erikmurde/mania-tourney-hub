@@ -1,6 +1,7 @@
 package com.tourneyhub.backend.service;
 
 import com.tourneyhub.backend.domain.*;
+import com.tourneyhub.backend.domain.exception.AppException;
 import com.tourneyhub.backend.dto.team.SimpleTeamDto;
 import com.tourneyhub.backend.dto.team.TeamCreateDto;
 import com.tourneyhub.backend.dto.team.TeamDto;
@@ -11,7 +12,6 @@ import com.tourneyhub.backend.mapper.TournamentRoleMapper;
 import com.tourneyhub.backend.repository.RepositoryUow;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -42,11 +42,7 @@ public class TeamService {
     }
 
     public List<TeamDto> getAll(Long tournamentId, boolean isHost) {
-        Tournament tournament = uow.tournamentRepository
-                .findById(tournamentId)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-
-        return !tournament.isPlayersPublished() && !isHost
+        return !getTournament(tournamentId).isPlayersPublished() && !isHost
                 ? new ArrayList<>()
                 : uow.teamRepository
                 .findAllInTournament(tournamentId).stream()
@@ -69,10 +65,7 @@ public class TeamService {
     }
 
     public void create(TeamCreateDto dto, Long currentUserId) {
-        Tournament tournament = uow.tournamentRepository
-                .findById(dto.getTournamentId())
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-
+        Tournament tournament = getTournament(dto.getTournamentId());
         validateTeamRegistration(dto, tournament, currentUserId);
 
         Team team = teamMapper.mapToEntity(dto);
@@ -84,15 +77,16 @@ public class TeamService {
     private void createUserRoles(TeamCreateDto dto, Tournament tournament, Team team, Long currentUserId) {
         Role role = uow.roleRepository
                 .findByName(Constants.PLAYER)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new RuntimeException("Constant role not found!"));
         Status status = uow.statusRepository
                 .findByName(Constants.REGISTERED)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new RuntimeException("Constant status not found!"));
 
         for (Long playerId : dto.getPlayers()) {
             AppUser user = uow.userRepository
                     .findById(playerId)
-                    .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+                    .orElseThrow(() -> new AppException(
+                            String.format("No user with id %d", playerId), HttpStatus.NOT_FOUND));
 
             boolean teamCaptain = user.getId().equals(currentUserId);
             uow.tournamentRoleRepository.save(tournamentRoleMapper.mapToEntity(role, tournament, user));
@@ -101,19 +95,23 @@ public class TeamService {
     }
 
     private void validateTeamRegistration(TeamCreateDto dto, Tournament tournament, Long currentUserId) {
+        String error = null;
         List<Long> players = dto.getPlayers();
 
         if (uow.teamRepository.findByName(dto.getName()).isPresent()) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+            error = String.format("Team with name %s already exists!", dto.getName());
         }
         if (!players.contains(currentUserId) || Set.of(players).size() != players.size()) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+            error = "Players contain duplicates or logged in user not present!";
         }
         if (players.stream().anyMatch(id -> hasInvalidRole(tournament.getId(), id))) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+            error = "Players contain users with invalid roles!";
         }
         if (!tournament.isRegsOpen() || new Date().after(tournament.getRegDeadline())) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+            error = "Registrations are not open!";
+        }
+        if (error != null) {
+            throw new AppException(error, HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -121,5 +119,12 @@ public class TeamService {
         return uow.tournamentRoleRepository
                 .getUserRolesInTournament(tournamentId, userId).stream()
                 .anyMatch(r -> !r.isCanRegWithRole());
+    }
+
+    private Tournament getTournament(Long id) {
+        return uow.tournamentRepository
+                .findById(id)
+                .orElseThrow(() -> new AppException(
+                        String.format("No tournament with id %d!", id), HttpStatus.NOT_FOUND));
     }
 }

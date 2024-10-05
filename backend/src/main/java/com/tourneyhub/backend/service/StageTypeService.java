@@ -1,11 +1,11 @@
 package com.tourneyhub.backend.service;
 
+import com.tourneyhub.backend.domain.exception.AppException;
 import com.tourneyhub.backend.dto.StageTypeDto;
 import com.tourneyhub.backend.mapper.StageTypeMapper;
 import com.tourneyhub.backend.repository.StageTypeRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
 @Service
 public class StageTypeService {
@@ -23,6 +23,7 @@ public class StageTypeService {
         return repository
                 .findByName(name)
                 .map(mapper::mapToDto)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new AppException(
+                        String.format("No stage type with name %s", name), HttpStatus.NOT_FOUND));
     }
 }

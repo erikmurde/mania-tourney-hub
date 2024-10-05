@@ -1,6 +1,7 @@
 package com.tourneyhub.backend.service;
 
 import com.tourneyhub.backend.domain.*;
+import com.tourneyhub.backend.domain.exception.AppException;
 import com.tourneyhub.backend.dto.staffApplication.StaffApplicationCreateDto;
 import com.tourneyhub.backend.dto.staffApplication.StaffApplicationDto;
 import com.tourneyhub.backend.dto.staffApplication.StaffApplicationEditDto;
@@ -10,7 +11,6 @@ import com.tourneyhub.backend.mapper.TournamentRoleMapper;
 import com.tourneyhub.backend.repository.RepositoryUow;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Date;
 import java.util.List;
@@ -52,15 +52,16 @@ public class StaffApplicationService {
     public void create(StaffApplicationCreateDto dto) {
         Tournament tournament = uow.tournamentRepository
                 .findById(dto.getTournamentId())
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new AppException(
+                        String.format("No tournament with id %d", dto.getTournamentId()), HttpStatus.NOT_FOUND));
 
         if (!tournament.isApplicationsOpen() || new Date().after(tournament.getApplicationDeadline())) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+            throw new AppException("Staff applications are closed!", HttpStatus.BAD_REQUEST);
         }
         Status status = getStatus(dto.getStatusId());
 
         if (!status.getName().equals(Constants.PENDING)) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+            throw new AppException("Invalid status!", HttpStatus.BAD_REQUEST);
         }
         uow.staffRequestRepository.save(staffApplicationMapper.mapToEntity(dto, status));
     }
@@ -73,10 +74,10 @@ public class StaffApplicationService {
         boolean retracting = status.getName().equals(Constants.RETRACTED);
 
         if (!application.getStatus().getName().equals(Constants.PENDING)) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+            throw new AppException("Invalid status!", HttpStatus.BAD_REQUEST);
         }
         if (isOwner && !retracting || !isOwner && retracting) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+            throw new AppException(Constants.NO_PERMISSION, HttpStatus.FORBIDDEN);
         }
         if (status.getName().equals(Constants.ACCEPTED)) {
             uow.tournamentRoleRepository
@@ -90,12 +91,14 @@ public class StaffApplicationService {
     private StaffRequest getApplication(Long id) {
         return uow.staffRequestRepository
                 .findById(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new AppException(
+                        String.format("No staff request with id %d", id), HttpStatus.NOT_FOUND));
     }
 
-    private Status getStatus(Long statusId) {
+    private Status getStatus(Long id) {
         return uow.statusRepository
-                .findById(statusId)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+                .findById(id)
+                .orElseThrow(() -> new AppException(
+                        String.format("No status with id %d", id), HttpStatus.NOT_FOUND));
     }
 }

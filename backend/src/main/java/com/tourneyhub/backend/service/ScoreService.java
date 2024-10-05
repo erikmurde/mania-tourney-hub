@@ -2,6 +2,7 @@ package com.tourneyhub.backend.service;
 
 import com.tourneyhub.backend.domain.*;
 import com.tourneyhub.backend.domain.Beatmap;
+import com.tourneyhub.backend.domain.exception.AppException;
 import com.tourneyhub.backend.dto.score.ScoreDto;
 import com.tourneyhub.backend.dto.score.osuApi.OsuMatchDto;
 import com.tourneyhub.backend.dto.score.osuApi.OsuMatchEventDetailsDto;
@@ -15,7 +16,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.reactive.function.client.WebClientResponseException;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.*;
 
@@ -40,7 +40,8 @@ public class ScoreService {
     public List<ScoreDto> getAll(Long stageId, OAuth2User principal) {
         Stage stage = uow.stageRepository
                 .findById(stageId)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new AppException(
+                        String.format("No stage with id %d", stageId), HttpStatus.NOT_FOUND));
 
         Tournament tournament = stage.getTournament();
 
@@ -113,7 +114,8 @@ public class ScoreService {
 
         return existing.orElseGet(() -> uow.userRepository
                 .findByPlayerId(playerId)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND)));
+                .orElseThrow(() -> new AppException(
+                        String.format("No user with playerId %d", playerId), HttpStatus.NOT_FOUND)));
     }
 
     private OsuMatchDto fetchMatchFromOsu(@PathVariable("matchId") Integer matchId) {
@@ -129,7 +131,8 @@ public class ScoreService {
                     .block();
 
         } catch (WebClientResponseException e) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+            throw new AppException(
+                    String.format("Could not find match with id %d", matchId), HttpStatus.NOT_FOUND);
         }
     }
 }

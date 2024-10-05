@@ -3,6 +3,7 @@ package com.tourneyhub.backend.service;
 import com.tourneyhub.backend.domain.Beatmap;
 import com.tourneyhub.backend.domain.BeatmapType;
 import com.tourneyhub.backend.domain.Stage;
+import com.tourneyhub.backend.domain.exception.AppException;
 import com.tourneyhub.backend.dto.map.BeatmapDto;
 import com.tourneyhub.backend.dto.map.osuApi.OsuBeatmapDto;
 import com.tourneyhub.backend.dto.map.SubmittedBeatmapDto;
@@ -14,7 +15,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.reactive.function.client.WebClientResponseException;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,7 +45,8 @@ public class BeatmapService {
     public List<BeatmapDto> getAllInMappoolByStageId(Long stageId) {
         Stage stage = uow.stageRepository
                 .findById(stageId)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new AppException(
+                        String.format("No stage with id %d", stageId), HttpStatus.NOT_FOUND));
 
         return !stage.isMappoolPublished()
                 ? new ArrayList<>()
@@ -110,7 +111,7 @@ public class BeatmapService {
 
     public void updateUnsubmitted(Long mapId, BeatmapDto mapDto) {
         if (mapDto.isInMappool()) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+            throw new AppException("Beatmap is in the mappool!", HttpStatus.BAD_REQUEST);
         }
         BeatmapType mapType = fetchMapType(mapDto.getMapTypeId());
         Long stageId = fetchMap(mapId).getStage().getId();
@@ -131,7 +132,7 @@ public class BeatmapService {
         Beatmap beatmap = fetchMap(mapId);
 
         if (beatmap.getBeatmapId() == 0 && inMappool) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+            throw new AppException("Beatmap id is missing!", HttpStatus.BAD_REQUEST);
         }
         Optional<Beatmap> mapInMappool = uow.mapRepository.findCurrentMapInMappool(
                 beatmap.getStage().getId(), beatmap.getBeatmapType().getId(), beatmap.getIndex()
@@ -146,7 +147,7 @@ public class BeatmapService {
 
     public void delete(Long mapId) {
         if (fetchMap(mapId).isInMappool()) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+            throw new AppException("Beatmap is in the mappool!", HttpStatus.BAD_REQUEST);
         }
         uow.mapRepository.deleteById(mapId);
     }
@@ -164,13 +165,14 @@ public class BeatmapService {
                     .block();
 
         } catch (WebClientResponseException e) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+            throw new AppException(
+                    String.format("Could not find beatmap with id %d", beatmapId), HttpStatus.NOT_FOUND);
         }
     }
 
     private void validateDuplicateTb(boolean isTb, Long stageId) {
         if (isTb && uow.mapRepository.findTiebreakerInStage(stageId).isPresent()) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+            throw new AppException("Stage already has a tiebreaker!", HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -181,19 +183,21 @@ public class BeatmapService {
         Optional<Beatmap> duplicate = uow.mapRepository.findInStageByBeatmapId(stageId, beatmapId);
 
         if (duplicate.isPresent() && !duplicate.get().getId().equals(mapId)) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+            throw new AppException("Stage already has beatmap with same id!", HttpStatus.BAD_REQUEST);
         }
     }
 
     private Beatmap fetchMap(Long id) {
         return uow.mapRepository
                 .findById(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new AppException(
+                        String.format("No beatmap with id %d", id), HttpStatus.NOT_FOUND));
     }
 
     private BeatmapType fetchMapType(Long id) {
         return uow.mapTypeRepository
                 .findById(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new AppException(
+                        String.format("No beatmap type with id %d", id), HttpStatus.NOT_FOUND));
     }
 }

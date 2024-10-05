@@ -1,6 +1,7 @@
 package com.tourneyhub.backend.service;
 
 import com.tourneyhub.backend.domain.*;
+import com.tourneyhub.backend.domain.exception.AppException;
 import com.tourneyhub.backend.dto.staffInvite.StaffInviteEditDto;
 import com.tourneyhub.backend.dto.staffInvite.StaffInviteCreateDto;
 import com.tourneyhub.backend.dto.staffInvite.StaffInviteDto;
@@ -10,7 +11,6 @@ import com.tourneyhub.backend.mapper.TournamentRoleMapper;
 import com.tourneyhub.backend.repository.RepositoryUow;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Objects;
@@ -41,10 +41,10 @@ public class StaffInviteService {
 
     public Long create(StaffInviteCreateDto dto, Long currentUserId) {
         if (Objects.equals(currentUserId, dto.getRecipientId())) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+            throw new AppException("Invalid recipient!", HttpStatus.BAD_REQUEST);
         }
         if (recipientAlreadyHasRole(dto) || isDuplicateRequest(dto)) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+            throw new AppException("Duplicate request or recipient already has role!", HttpStatus.BAD_REQUEST);
         }
         Status status = getStatus(Constants.PENDING);
         return uow.staffRequestRepository.save(staffInviteMapper.mapToEntity(dto, status)).getId();
@@ -84,12 +84,14 @@ public class StaffInviteService {
     private StaffRequest getInvite(Long id) {
         return uow.staffRequestRepository
                 .findById(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new AppException(
+                        String.format("No staff request with id %d", id), HttpStatus.NOT_FOUND));
     }
 
     private Status getStatus(String name) {
         return uow.statusRepository
                 .findByName(name)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new AppException(
+                        String.format("No status with name %s", name), HttpStatus.NOT_FOUND));
     }
 }
