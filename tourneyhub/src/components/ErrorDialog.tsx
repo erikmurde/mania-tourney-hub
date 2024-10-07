@@ -1,4 +1,4 @@
-import { Button, Dialog, DialogContent, DialogTitle, Typography } from '@mui/material';
+import { Button, Dialog, DialogContent, DialogTitle, Divider, Typography } from '@mui/material';
 import { StyledDialogActions } from './styled/StyledDialogActions';
 import { ApiErrorResponse } from '../dto/ApiErrorResponse';
 import { Error } from '@mui/icons-material';
@@ -21,12 +21,13 @@ const ErrorDialog = ({error, setError}: IProps) => {
                 <Typography fontSize={24}>
                     Oops! Something went wrong.
                 </Typography>
+                <Divider sx={{ marginTop: 1 }}/>
             </DialogTitle>
             <DialogContent sx={{ textAlign: 'center' }}>
                 {error.message}
             </DialogContent>
             <StyledDialogActions sx={{ justifyContent: 'center' }}>
-                <Button variant='contained' onClick={onClose}>
+                <Button variant='contained' onClick={onClose} sx={{ width: 100 }}>
                     Close
                 </Button>
             </StyledDialogActions>
