@@ -4,7 +4,8 @@ import TeamCard from './TeamCard';
 import { TournamentService } from '../../../services/tournamentService';
 import { useTourney } from '../../../routes/tournament/TournamentHeader';
 import { useContext } from 'react';
-import { ErrorContext } from '../../../routes/Root';
+import { AuthContext, ErrorContext } from '../../../routes/Root';
+import { ACTIVE, ELIMINATED } from '../../../constants';
 
 interface IProps {
     teamsPublic: boolean,
@@ -13,6 +14,7 @@ interface IProps {
 }
 
 const TeamList = ({teamsPublic, teams, setTeams}: IProps) => {
+    const { updateUser } = useContext(AuthContext);
     const { setError } = useContext(ErrorContext);
     const { tourney } = useTourney();
 
@@ -26,11 +28,14 @@ const TeamList = ({teamsPublic, teams, setTeams}: IProps) => {
     }
 
     const updateState = (team: TeamDto) => {
-        const activeTeams = teams
-            .filter(team => team.status === 'active');
+        if (!teamsPublic) {
+            updateUser();
+            return setTeams(teams.filter(existing => existing.id !== team.id));
+        }
+        const activeTeams = teams.filter(team => team.status === ACTIVE);
 
-        team.status = teamsPublic ? 'eliminated' : 'disqualified';
-        team.placement = teamsPublic ? activeTeams.length : 0;
+        team.status = ELIMINATED;
+        team.placement = activeTeams.length;
 
         setTeams(teams.map(existing => 
             existing.id === team.id ? team : existing

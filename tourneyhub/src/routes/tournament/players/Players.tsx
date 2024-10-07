@@ -5,7 +5,7 @@ import { useContext, useEffect, useState } from 'react';
 import SectionTitle from '../../../components/tournament/SectionTitle';
 import ConfirmationDialog from '../../../components/tournament/dialog/ConfirmationDialog';
 import { Publish } from '@mui/icons-material';
-import { DISQUALIFIED, ADMIN, HOST, ACTIVE } from '../../../constants';
+import { ADMIN, HOST, ACTIVE } from '../../../constants';
 import { AuthContext, ErrorContext } from '../../Root';
 import { useTourney } from '../TournamentHeader';
 import { TournamentService } from '../../../services/tournamentService';
@@ -24,7 +24,7 @@ const Players = () => {
     const tourneyService = new TournamentService();
     const authService = new AuthService();
 
-    const isValid = user && user.roles
+    const hasEditRights = user && user.roles
         .filter(tourneyRole => tourneyRole.tournamentId === tourney.id)
         .some(tourneyRole => validRoles.includes(tourneyRole.role));
 
@@ -33,10 +33,7 @@ const Players = () => {
     useEffect(() => {
         authService
             .getTournamentPlayers(tourney.id)
-            .then(players => setPlayers(isValid 
-                ? players 
-                : players.filter(player => getStats(player).status !== DISQUALIFIED))
-            )
+            .then(players => setPlayers(players))
             .finally(() => setLoading(false));
     }, [tourney.id]);
 
@@ -55,10 +52,7 @@ const Players = () => {
 
         for (const player of newPlayers) {
             let stats = player.stats.find(stats => stats.tournamentId === tourney.id)!;
-
-            if (stats.status !== DISQUALIFIED) {
-                stats.status = ACTIVE;
-            }
+            stats.status = ACTIVE;
         }
         setPlayers(newPlayers);
     }
@@ -67,7 +61,7 @@ const Players = () => {
         <Paper elevation={2} sx={{ minHeight: 800, paddingBottom: 2 }}>
             <Grid container marginBottom={5}>
                 <SectionTitle title='Players'/>
-                {isValid && !tourney.playersPublished && 
+                {hasEditRights && !tourney.playersPublished && 
                 <Grid item xs={12} margin={5} marginTop={2}>
                     <ConfirmationDialog
                         btnProps={{ 

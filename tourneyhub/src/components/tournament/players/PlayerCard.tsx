@@ -7,7 +7,7 @@ import { UserCardContent } from '../../styled/UserCardContent';
 import { AuthService } from '../../../services/authService';
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../../routes/Root';
-import { ACTIVE, DISQUALIFIED, ELIMINATED, REGISTERED, SUFFIX_MAP } from '../../../constants';
+import { ACTIVE, ELIMINATED, REGISTERED, SUFFIX_MAP } from '../../../constants';
 import Profile from '../../../routes/profile/Profile';
 import { useTourney } from '../../../routes/tournament/TournamentHeader';
 
@@ -25,12 +25,10 @@ const PlayerCard = ({playersPublic, player, eliminatePlayer}: IProps) => {
     const stats = player.stats.find(stats => stats.tournamentId === tourney.id)!;
 
     const isHost = user && new AuthService().isHost(user, tourney.id);
-    const disqualified = stats.status === DISQUALIFIED;
 
     const colorMap = new Map<string, string>([
         [ACTIVE, theme.palette.success.main],
         [ELIMINATED, theme.palette.error.main],
-        [DISQUALIFIED, theme.palette.error.main],
         [REGISTERED, theme.palette.primary.main]
     ]);
 
@@ -85,13 +83,13 @@ const PlayerCard = ({playersPublic, player, eliminatePlayer}: IProps) => {
                             >
                             {stats.placement}{SUFFIX_MAP.get(stats.placement % 10) ?? 'th'} place
                         </Typography>}
-                        {stats.placement === 0 && isHost && !disqualified &&
+                        {stats.placement === 0 && isHost &&
                             <ConfirmationDialog 
                                 btnIcon={<PersonRemove/>}
                                 btnProps={{ color: 'error', sx: { padding: 0.5, marginTop: 0.3 }}}
-                                tooltip={playersPublic ? 'eliminate' : 'disqualify'}
-                                title={`Are you sure you wish to ${playersPublic ? 'eliminate' : 'disqualify'} this player?`} 
-                                actionTitle={playersPublic ? 'Eliminate' : 'Disqualify'} 
+                                tooltip={playersPublic ? 'eliminate' : 'remove'}
+                                title={`Are you sure you wish to ${playersPublic ? 'eliminate' : 'remove'} this player?`} 
+                                actionTitle={playersPublic ? 'Eliminate' : 'Remove'} 
                                 action={() => eliminatePlayer(player)}
                             />}
                     </Grid>

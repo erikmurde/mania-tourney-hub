@@ -11,7 +11,6 @@ public class Constants {
     public static final String REGISTERED = "registered";
     public static final String ACTIVE = "active";
     public static final String ELIMINATED = "eliminated";
-    public static final String DISQUALIFIED = "disqualified";
 
     // Roles
     public static final String PLAYER = "player";

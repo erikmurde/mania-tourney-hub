@@ -7,7 +7,7 @@ import { TeamService } from '../../../services/teamService';
 import { Publish } from '@mui/icons-material';
 import { AuthContext, ErrorContext } from '../../Root';
 import { TournamentService } from '../../../services/tournamentService';
-import { ACTIVE, ADMIN, DISQUALIFIED, HOST } from '../../../constants';
+import { ACTIVE, ADMIN, HOST } from '../../../constants';
 import ConfirmationDialog from '../../../components/tournament/dialog/ConfirmationDialog';
 import TeamPlayerList from '../../../components/tournament/teams/TeamPlayerList';
 import { useTourney } from '../TournamentHeader';
@@ -33,10 +33,8 @@ const Teams = () => {
     useEffect(() => {
         teamService
             .getTeams(tourney.id)
-            .then(teams => setTeams((hasValidRoles 
-                ? teams 
-                : teams.filter(team => team.status !== DISQUALIFIED))
-                .sort((a, b) => tourneyService.compareSeeds(a.seed, b.seed) || (a.name > b.name ? 1 : -1))
+            .then(teams => setTeams(
+                teams.sort((a, b) => tourneyService.compareSeeds(a.seed, b.seed) || (a.name > b.name ? 1 : -1))
             ))
             .finally(() => setLoading(false));
     }, [tourney.id, hasValidRoles]);
@@ -55,9 +53,7 @@ const Teams = () => {
         tourney.playersPublished = true;
 
         for (const team of newTeams) {
-            if (team.status !== DISQUALIFIED) {
-                team.status = ACTIVE;
-            }
+            team.status = ACTIVE;
         }
         setTeams(newTeams);
     }

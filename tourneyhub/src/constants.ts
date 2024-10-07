@@ -67,7 +67,6 @@ export const SUFFIX_MAP = new Map<number, string>([
 // STATUSES
 export const ACTIVE = 'active';
 export const ELIMINATED = 'eliminated';
-export const DISQUALIFIED = 'disqualified';
 export const REGISTERED = 'registered';
 
 export const PENDING = 'pending';

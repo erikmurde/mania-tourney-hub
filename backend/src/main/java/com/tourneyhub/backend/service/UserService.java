@@ -98,7 +98,7 @@ public class UserService {
     }
 
     public void removeUserRole(Long userId, Long tournamentId, String role) {
-        if (List.of(HOST, PLAYER).contains(role)) {
+        if (role.equals(HOST)) {
             throw new AppException(String.format("Invalid role: %s!", role), HttpStatus.BAD_REQUEST);
         }
         TournamentRole tournamentRole = uow.tournamentRoleRepository

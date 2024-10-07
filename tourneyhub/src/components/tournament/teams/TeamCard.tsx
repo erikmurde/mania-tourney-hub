@@ -5,7 +5,7 @@ import { GroupRemove } from '@mui/icons-material';
 import { useContext } from 'react';
 import { AuthContext } from '../../../routes/Root';
 import TeamPlayerCard from './TeamPlayerCard';
-import { ACTIVE, ADMIN, DISQUALIFIED, ELIMINATED, HOST, REGISTERED, SUFFIX_MAP } from '../../../constants';
+import { ACTIVE, ADMIN, ELIMINATED, HOST, REGISTERED, SUFFIX_MAP } from '../../../constants';
 import ConfirmationDialog from '../dialog/ConfirmationDialog';
 import { useTourney } from '../../../routes/tournament/TournamentHeader';
 import { UserDto } from '../../../dto/user/UserDto';
@@ -31,7 +31,6 @@ const TeamCard = ({teamsPublic, team, eliminateTeam}: IProps) => {
     const colorMap = new Map<string, string>([
         [ACTIVE, theme.palette.success.main],
         [ELIMINATED, theme.palette.error.main],
-        [DISQUALIFIED, theme.palette.error.main],
         [REGISTERED, theme.palette.primary.main]
     ])
 
@@ -40,7 +39,6 @@ const TeamCard = ({teamsPublic, team, eliminateTeam}: IProps) => {
         .some(tourneyRole => validRoles.includes(tourneyRole.role));
 
     const eliminated = team.status === ELIMINATED;
-    const disqualified = team.status === DISQUALIFIED;
 
     return (  
         <Card elevation={6} sx={{ width: 400 }}>
@@ -69,13 +67,14 @@ const TeamCard = ({teamsPublic, team, eliminateTeam}: IProps) => {
                             {team.status.toUpperCase()}
                         </Typography>
                     </Grid>
-                    {!eliminated && !disqualified &&
+                    {!eliminated &&
                     <Grid item xs={3} textAlign='end'>
                         <ConfirmationDialog 
                             btnIcon={<GroupRemove/>}
                             btnProps={{ color: 'error' }}
-                            title={`Are you sure you wish to ${teamsPublic ? 'eliminate' : 'disqualify'} this team?`}
-                            actionTitle={teamsPublic ? 'Eliminate' : 'Disqualify'} 
+                            title={`Are you sure you wish to ${teamsPublic ? 'eliminate' : 'remove'} this team?`}
+                            actionTitle={teamsPublic ? 'Eliminate' : 'Remove'} 
+                            tooltip={teamsPublic ? 'Eliminate' : 'Remove'}
                             action={() => eliminateTeam(team)}/>
                     </Grid>}
                     {eliminated &&

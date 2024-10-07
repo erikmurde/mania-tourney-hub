@@ -1,11 +1,11 @@
 import { Grid } from '@mui/material';
 import { UserDto } from '../../../dto/user/UserDto';
 import PlayerCard from './PlayerCard';
-import { ACTIVE, DISQUALIFIED, ELIMINATED } from '../../../constants';
+import { ACTIVE, ELIMINATED } from '../../../constants';
 import { TournamentService } from '../../../services/tournamentService';
 import { useTourney } from '../../../routes/tournament/TournamentHeader';
 import { useContext } from 'react';
-import { ErrorContext } from '../../../routes/Root';
+import { AuthContext, ErrorContext } from '../../../routes/Root';
 
 interface IProps {
     playersPublic: boolean,
@@ -14,6 +14,7 @@ interface IProps {
 }
 
 const PlayerList = ({playersPublic, players, setPlayers}: IProps) => {
+    const { updateUser } = useContext(AuthContext)
     const { setError } = useContext(ErrorContext);
     const { tourney } = useTourney();
 
@@ -29,11 +30,14 @@ const PlayerList = ({playersPublic, players, setPlayers}: IProps) => {
     const getStats = (player: UserDto) => player.stats.find(stats => stats.tournamentId === tourney.id)!;
 
     const updateState = (player: UserDto) => {
-        const activePlayers = players.filter(player => getStats(player).status === ACTIVE);
+        if (!playersPublic) {
+            updateUser();
+            return setPlayers(players.filter(existing => existing.id !== player.id));
+        }
         const stats = getStats(player);
         
-        stats.status = playersPublic ? ELIMINATED : DISQUALIFIED;
-        stats.placement = playersPublic ? activePlayers.length : 0;
+        stats.status = ELIMINATED;
+        stats.placement = players.filter(player => getStats(player).status === ACTIVE).length;
 
         setPlayers(players.map(existing => 
             existing.id === player.id ? player : existing

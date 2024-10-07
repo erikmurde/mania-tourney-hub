@@ -23,6 +23,8 @@ public class TournamentService {
 
     private final RepositoryUow uow;
 
+    private final UserService userService;
+
     private final TournamentRoleMapper tournamentRoleMapper;
 
     private final TournamentPlayerMapper statsMapper;
@@ -31,11 +33,13 @@ public class TournamentService {
 
     public TournamentService(
             RepositoryUow uow,
+            UserService userService,
             TournamentRoleMapper tournamentRoleMapper,
             TournamentPlayerMapper statsMapper,
             TournamentMapper tournamentMapper)
     {
         this.uow = uow;
+        this.userService = userService;
         this.tournamentRoleMapper = tournamentRoleMapper;
         this.statsMapper = statsMapper;
         this.tournamentMapper = tournamentMapper;
@@ -149,6 +153,10 @@ public class TournamentService {
         Tournament tournament = getTournament(tournamentId);
         Integer placement = uow.statsRepository.getNumOfActiveTeams(tournamentId);
         team.getPlayers().forEach(player -> updatePlayerStats(tournament, player.getAppUserId(), placement));
+
+        if (!tournament.isPlayersPublished()) {
+            uow.teamRepository.delete(team);
+        }
     }
 
     public void eliminatePlayer(Long tournamentId, Long playerId) {
@@ -162,10 +170,13 @@ public class TournamentService {
                 .orElseThrow(() -> new AppException(
                         String.format("No stats for player with ID %d.", playerId), HttpStatus.NOT_FOUND));
 
-        if (tournament.isPlayersPublished() && stats.getPlacement() == 0) {
-            stats.setPlacement(placement);
+        if (!tournament.isPlayersPublished()) {
+            uow.statsRepository.delete(stats);
+            userService.removeUserRole(playerId, tournament.getId(), PLAYER);
+            return;
         }
-        stats.setStatus(getStatus(tournament.isPlayersPublished() ? ELIMINATED : DISQUALIFIED));
+        stats.setPlacement(stats.getPlacement() == 0 ? placement : stats.getPlacement());
+        stats.setStatus(getStatus(ELIMINATED));
         uow.statsRepository.save(stats);
     }
 

@@ -7,7 +7,6 @@ INSERT INTO status (name) VALUES ('retracted');
 INSERT INTO status (name) VALUES ('registered');
 INSERT INTO status (name) VALUES ('active');
 INSERT INTO status (name) VALUES ('eliminated');
-INSERT INTO status (name) VALUES ('disqualified');
 
 -- STAGE TYPES --------------------------------------------------------------------------------------------------------
 
