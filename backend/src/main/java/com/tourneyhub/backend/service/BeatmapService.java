@@ -113,14 +113,15 @@ public class BeatmapService {
         if (mapDto.isInMappool()) {
             throw new AppException("Beatmap is in the mappool!", HttpStatus.BAD_REQUEST);
         }
+        Beatmap map = fetchMap(mapId);
         BeatmapType mapType = fetchMapType(mapDto.getMapTypeId());
-        Long stageId = fetchMap(mapId).getStage().getId();
+        Long stageId = map.getStage().getId();
         boolean isTb = mapType.getName().equals(Constants.TB);
 
         validateDuplicateTb(isTb, stageId);
         validateDuplicateBeatmapId(mapId, stageId, mapDto.getBeatmapId());
 
-        mapDto.setBeatmapId(0);
+        mapDto.setBeatmapId(map.getBeatmapId());
         mapDto.setStageId(stageId);
         mapDto.setIndex(isTb ? 0 : mapDto.getIndex());
 
