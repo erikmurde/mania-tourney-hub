@@ -34,6 +34,6 @@ public class StatusService {
                 .findByName(name)
                 .map(mapper::mapToDto)
                 .orElseThrow(() -> new AppException(
-                        String.format("No status with name %s", name), HttpStatus.NOT_FOUND));
+                        String.format("No status with name: %s.", name), HttpStatus.NOT_FOUND));
     }
 }

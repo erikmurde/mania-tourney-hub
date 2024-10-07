@@ -6,7 +6,6 @@ import com.tourneyhub.backend.dto.tournament.SimpleTournamentDto;
 import com.tourneyhub.backend.dto.tournament.TournamentCreateDto;
 import com.tourneyhub.backend.dto.tournament.TournamentDto;
 import com.tourneyhub.backend.dto.tournament.TournamentPublishDto;
-import com.tourneyhub.backend.helper.Constants;
 import com.tourneyhub.backend.mapper.TournamentMapper;
 import com.tourneyhub.backend.mapper.TournamentPlayerMapper;
 import com.tourneyhub.backend.mapper.TournamentRoleMapper;
@@ -16,6 +15,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
+
+import static com.tourneyhub.backend.helper.Constants.*;
 
 @Service
 public class TournamentService {
@@ -117,10 +118,10 @@ public class TournamentService {
 
     public void publishPlayers(Long tournamentId) {
         Tournament tournament = getTournament(tournamentId);
-        Status status = getStatus(Constants.ACTIVE);
+        Status status = getStatus(ACTIVE);
 
         tournament.getPlayers().forEach(player -> {
-            if (player.getStatus().getName().equals(Constants.REGISTERED)) {
+            if (player.getStatus().getName().equals(REGISTERED)) {
                 player.setStatus(status);
             }
         });
@@ -135,17 +136,15 @@ public class TournamentService {
         if (!tournament.isRegsOpen() || new Date().after(tournament.getRegDeadline())) {
             throw new AppException("Registrations are not open!", HttpStatus.BAD_REQUEST);
         }
-        uow.tournamentRoleRepository
-                .save(tournamentRoleMapper.mapToEntity(getRole(Constants.PLAYER), tournament, user));
-        uow.statsRepository
-                .save(statsMapper.mapToEntity(user, tournament, getStatus(Constants.REGISTERED)));
+        uow.tournamentRoleRepository.save(tournamentRoleMapper.mapToEntity(getRole(PLAYER), tournament, user));
+        uow.statsRepository.save(statsMapper.mapToEntity(user, tournament, getStatus(REGISTERED)));
     }
 
     public void eliminateTeam(Long tournamentId, Long teamId) {
         Team team = uow.teamRepository
                 .findById(teamId)
                 .orElseThrow(() -> new AppException(
-                        String.format("No team with id %d!", teamId), HttpStatus.NOT_FOUND));
+                        String.format("No team with ID: %d.", teamId), HttpStatus.NOT_FOUND));
 
         Tournament tournament = getTournament(tournamentId);
         Integer placement = uow.statsRepository.getNumOfActiveTeams(tournamentId);
@@ -161,12 +160,12 @@ public class TournamentService {
         TournamentPlayer stats = uow.statsRepository
                 .getPlayerStatsInTournament(tournament.getId(), playerId)
                 .orElseThrow(() -> new AppException(
-                        String.format("No stats for player with id %d!", playerId), HttpStatus.NOT_FOUND));
+                        String.format("No stats for player with ID: %d.", playerId), HttpStatus.NOT_FOUND));
 
         if (tournament.isPlayersPublished() && stats.getPlacement() == 0) {
             stats.setPlacement(placement);
         }
-        stats.setStatus(getStatus(tournament.isPlayersPublished() ? Constants.ELIMINATED : Constants.DISQUALIFIED));
+        stats.setStatus(getStatus(tournament.isPlayersPublished() ? ELIMINATED : DISQUALIFIED));
         uow.statsRepository.save(stats);
     }
 
@@ -178,7 +177,7 @@ public class TournamentService {
                 || dto.isApplicationsOpen() && dto.getApplicationDeadline() == null) {
             error = "Tournament is missing deadlines!";
         }
-        if (!roles.contains(Constants.HOST) || roles.contains(Constants.PLAYER)) {
+        if (!roles.contains(HOST) || roles.contains(PLAYER)) {
             error = "Tournament host roles are invalid!";
         }
         if (dto.getMaxPlayerRank() < dto.getMinPlayerRank() || dto.getMaxTeamSize() < dto.getMinTeamSize()) {
@@ -206,27 +205,27 @@ public class TournamentService {
         return uow.tournamentRepository
                 .findById(tournamentId)
                 .orElseThrow(() -> new AppException(
-                        String.format("No tournament with id %d!", tournamentId), HttpStatus.NOT_FOUND));
+                        String.format("No tournament with ID: %d.", tournamentId), HttpStatus.NOT_FOUND));
     }
 
     private AppUser getLoggedInUser(Long currentUserId) {
         return uow.userRepository
                 .findById(currentUserId)
                 .orElseThrow(() -> new AppException(
-                        String.format("No user with id %d!", currentUserId), HttpStatus.NOT_FOUND));
+                        String.format("No user with ID: %d.", currentUserId), HttpStatus.NOT_FOUND));
     }
 
     private Status getStatus(String name) {
         return uow.statusRepository
                 .findByName(name)
                 .orElseThrow(() -> new AppException(
-                        String.format("No status with name %s!", name), HttpStatus.NOT_FOUND));
+                        String.format("No status with name: %s.", name), HttpStatus.NOT_FOUND));
     }
 
     private Role getRole(String name) {
         return uow.roleRepository
                 .findByName(name)
                 .orElseThrow(() -> new AppException(
-                        String.format("No role with name %s!", name), HttpStatus.NOT_FOUND));
+                        String.format("No role with name: %s.", name), HttpStatus.NOT_FOUND));
     }
 }

@@ -83,6 +83,6 @@ public class StageService {
         return repository
                 .findById(id)
                 .orElseThrow(() -> new AppException(
-                        String.format("No stage with id %d", id), HttpStatus.NOT_FOUND));
+                        String.format("No stage with ID: %d.", id), HttpStatus.NOT_FOUND));
     }
 }

@@ -24,6 +24,6 @@ public class StageTypeService {
                 .findByName(name)
                 .map(mapper::mapToDto)
                 .orElseThrow(() -> new AppException(
-                        String.format("No stage type with name %s", name), HttpStatus.NOT_FOUND));
+                        String.format("No stage type with name: %s.", name), HttpStatus.NOT_FOUND));
     }
 }

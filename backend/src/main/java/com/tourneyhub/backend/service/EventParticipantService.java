@@ -2,13 +2,14 @@ package com.tourneyhub.backend.service;
 
 import com.tourneyhub.backend.domain.Event;
 import com.tourneyhub.backend.domain.EventParticipant;
-import com.tourneyhub.backend.helper.Constants;
 import com.tourneyhub.backend.mapper.EventParticipantMapper;
 import com.tourneyhub.backend.repository.RepositoryUow;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
+
+import static com.tourneyhub.backend.helper.Constants.*;
 
 @Service
 public class EventParticipantService {
@@ -31,19 +32,19 @@ public class EventParticipantService {
 
     public void addReferee(Event lobby, Long refereeId) {
         if (refereeId != null) {
-            addParticipant(lobby, refereeId, Constants.REFEREE, false);
+            addParticipant(lobby, refereeId, REFEREE, false);
         }
     }
 
     public void addStreamer(Event lobby, Long streamerId) {
         if (streamerId != null) {
-            addParticipant(lobby, streamerId, Constants.STREAMER, false);
+            addParticipant(lobby, streamerId, STREAMER, false);
         }
     }
 
     public void addCommentators(Event lobby, List<Long> commentatorIds) {
         for (Long id : commentatorIds) {
-            addParticipant(lobby, id, Constants.COMMENTATOR, false);
+            addParticipant(lobby, id, COMMENTATOR, false);
         }
     }
 

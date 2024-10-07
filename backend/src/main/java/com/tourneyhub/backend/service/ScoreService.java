@@ -41,7 +41,7 @@ public class ScoreService {
         Stage stage = uow.stageRepository
                 .findById(stageId)
                 .orElseThrow(() -> new AppException(
-                        String.format("No stage with id %d", stageId), HttpStatus.NOT_FOUND));
+                        String.format("No stage with ID: %d.", stageId), HttpStatus.NOT_FOUND));
 
         Tournament tournament = stage.getTournament();
 
@@ -115,7 +115,7 @@ public class ScoreService {
         return existing.orElseGet(() -> uow.userRepository
                 .findByPlayerId(playerId)
                 .orElseThrow(() -> new AppException(
-                        String.format("No user with playerId %d", playerId), HttpStatus.NOT_FOUND)));
+                        String.format("No user with player ID: %d.", playerId), HttpStatus.NOT_FOUND)));
     }
 
     private OsuMatchDto fetchMatchFromOsu(@PathVariable("matchId") Integer matchId) {
@@ -132,7 +132,7 @@ public class ScoreService {
 
         } catch (WebClientResponseException e) {
             throw new AppException(
-                    String.format("Could not find match with id %d", matchId), HttpStatus.NOT_FOUND);
+                    String.format("Could not find match with ID: %d.", matchId), HttpStatus.NOT_FOUND);
         }
     }
 }

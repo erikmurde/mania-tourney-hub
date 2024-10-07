@@ -7,7 +7,6 @@ import com.tourneyhub.backend.domain.exception.AppException;
 import com.tourneyhub.backend.dto.user.SimpleUserDto;
 import com.tourneyhub.backend.dto.user.UserDto;
 import com.tourneyhub.backend.dto.user.UserEditDto;
-import com.tourneyhub.backend.helper.Constants;
 import com.tourneyhub.backend.mapper.UserMapper;
 import com.tourneyhub.backend.repository.RepositoryUow;
 import org.springframework.http.HttpStatus;
@@ -19,6 +18,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+
+import static com.tourneyhub.backend.helper.Constants.*;
 
 @Service
 public class UserService {
@@ -64,10 +65,9 @@ public class UserService {
         Tournament tournament = uow.tournamentRepository
                 .findById(tournamentId)
                 .orElseThrow(() -> new AppException(
-                        String.format("No tournament with id %d!", tournamentId), HttpStatus.NOT_FOUND));
+                        String.format("No tournament with ID: %d.", tournamentId), HttpStatus.NOT_FOUND));
 
-        if (!tournament.isPlayersPublished() &&
-                !hasAnyRole(tournamentId, principal, Constants.HOST, Constants.ADMIN)) {
+        if (!tournament.isPlayersPublished() && !hasAnyRole(tournamentId, principal, HOST, ADMIN)) {
             return new ArrayList<>();
         }
         return uow.userRepository
@@ -98,7 +98,7 @@ public class UserService {
     }
 
     public void removeUserRole(Long userId, Long tournamentId, String role) {
-        if (List.of("host", "player").contains(role)) {
+        if (List.of(HOST, PLAYER).contains(role)) {
             throw new AppException(String.format("Invalid role: %s!", role), HttpStatus.BAD_REQUEST);
         }
         TournamentRole tournamentRole = uow.tournamentRoleRepository
@@ -113,7 +113,7 @@ public class UserService {
     }
 
     public boolean isHost(Long tournamentId, OAuth2User principal) {
-        return getTournamentRoles(tournamentId, principal).contains(Constants.HOST);
+        return getTournamentRoles(tournamentId, principal).contains(HOST);
     }
 
     public boolean hasAnyRole(Long tournamentId, OAuth2User principal, String... roles) {
@@ -140,6 +140,6 @@ public class UserService {
         return uow.userRepository
                 .findById(Objects.requireNonNull(id))
                 .orElseThrow(() -> new AppException(
-                        String.format("No user with id %d!", id), HttpStatus.NOT_FOUND));
+                        String.format("No user with ID: %d.", id), HttpStatus.NOT_FOUND));
     }
 }

@@ -8,7 +8,6 @@ import com.tourneyhub.backend.dto.match.MatchCreateDto;
 import com.tourneyhub.backend.dto.match.MatchDto;
 import com.tourneyhub.backend.dto.match.MatchEditDto;
 import com.tourneyhub.backend.dto.match.MatchResultDto;
-import com.tourneyhub.backend.helper.Constants;
 import com.tourneyhub.backend.mapper.MatchMapper;
 import com.tourneyhub.backend.repository.RepositoryUow;
 import org.springframework.http.HttpStatus;
@@ -16,6 +15,8 @@ import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
+import static com.tourneyhub.backend.helper.Constants.*;
 
 @Service
 public class MatchService {
@@ -59,18 +60,18 @@ public class MatchService {
         Stage stage = uow.stageRepository
                 .findById(dto.getStageId())
                 .orElseThrow(() -> new AppException(
-                        String.format("No stage with id %d", dto.getStageId()), HttpStatus.NOT_FOUND));
+                        String.format("No stage with ID: %d.", dto.getStageId()), HttpStatus.NOT_FOUND));
 
-        if (!userService.hasAnyRole(stage.getTournamentId(), principal, "host", "admin")) {
-            throw new AppException(Constants.NO_PERMISSION, HttpStatus.FORBIDDEN);
+        if (!userService.hasAnyRole(stage.getTournamentId(), principal, HOST, ADMIN)) {
+            throw new AppException(NO_PERMISSION, HttpStatus.FORBIDDEN);
         }
         if (!stage.getStageType().getName().equals("standard") || dto.getCommentatorIds().size() > 2) {
             throw new AppException("Invalid stage type or too many commentators!", HttpStatus.BAD_REQUEST);
         }
         Event match = mapper.mapToEntity(dto, stage);
 
-        participantService.addParticipant(match, dto.getPlayer1Id(), "player", dto.isTeams());
-        participantService.addParticipant(match, dto.getPlayer2Id(), "player", dto.isTeams());
+        participantService.addParticipant(match, dto.getPlayer1Id(), PLAYER, dto.isTeams());
+        participantService.addParticipant(match, dto.getPlayer2Id(), PLAYER, dto.isTeams());
         participantService.addReferee(match, dto.getRefereeId());
         participantService.addStreamer(match, dto.getStreamerId());
         participantService.addCommentators(match, dto.getCommentatorIds());
@@ -79,11 +80,11 @@ public class MatchService {
     }
 
     public Long update(Long id, MatchEditDto dto, OAuth2User principal) {
-        Event match = getMatchAndValidateRights(id, principal, "host", "admin");
+        Event match = getMatchAndValidateRights(id, principal, HOST, ADMIN);
 
-        participantService.removeParticipants(match, "referee");
-        participantService.removeParticipants(match, "streamer");
-        participantService.removeParticipants(match, "commentator");
+        participantService.removeParticipants(match, REFEREE);
+        participantService.removeParticipants(match, STREAMER);
+        participantService.removeParticipants(match, COMMENTATOR);
 
         participantService.addReferee(match, dto.getRefereeId());
         participantService.addStreamer(match, dto.getStreamerId());
@@ -95,9 +96,9 @@ public class MatchService {
     }
 
     public Long registerStaff(Long id, Long userId, String role, OAuth2User principal) {
-        Event match = getMatchAndValidateRights(id, principal, "referee", "streamer", "commentator");
+        Event match = getMatchAndValidateRights(id, principal, REFEREE, STREAMER, COMMENTATOR);
         List<EventParticipant> participants = participantService.getParticipants(match, role);
-        boolean commentator = role.equals("commentator");
+        boolean commentator = role.equals(COMMENTATOR);
 
         // TODO check if participant is same as logged in user
 
@@ -109,7 +110,7 @@ public class MatchService {
     }
 
     public Long unregisterStaff(Long id, Long userId, String role, OAuth2User principal) {
-        Event match = getMatchAndValidateRights(id, principal, "referee", "streamer", "commentator");
+        Event match = getMatchAndValidateRights(id, principal, REFEREE, STREAMER, COMMENTATOR);
 
         // TODO check if participant is same as logged in user
 
@@ -118,8 +119,8 @@ public class MatchService {
     }
 
     public Long conclude(Long id, MatchResultDto dto, OAuth2User principal) {
-        Event match = getMatchAndValidateRights(id, principal, "host", "admin", "referee");
-        List<EventParticipant> players = participantService.getParticipants(match, "player");
+        Event match = getMatchAndValidateRights(id, principal, HOST, ADMIN, REFEREE);
+        List<EventParticipant> players = participantService.getParticipants(match, PLAYER);
 
         boolean isWbd = dto.getMatchId() == null;
         Integer s1 = dto.getScore1();
@@ -144,7 +145,7 @@ public class MatchService {
         Long tournamentId = match.getStage().getTournamentId();
 
         if (!userService.hasAnyRole(tournamentId, principal, roles)) {
-            throw new AppException(Constants.NO_PERMISSION, HttpStatus.FORBIDDEN);
+            throw new AppException(NO_PERMISSION, HttpStatus.FORBIDDEN);
         }
         return match;
     }

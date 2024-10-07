@@ -201,6 +201,6 @@ public class SeedingService {
         return uow.stageRepository
                 .findById(id)
                 .orElseThrow(() -> new AppException(
-                        String.format("No stage with id %d", id), HttpStatus.NOT_FOUND));
+                        String.format("No stage with ID: %d.", id), HttpStatus.NOT_FOUND));
     }
 }

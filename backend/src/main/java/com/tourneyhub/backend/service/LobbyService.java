@@ -6,7 +6,6 @@ import com.tourneyhub.backend.dto.lobby.LobbyCreateDto;
 import com.tourneyhub.backend.dto.lobby.LobbyDto;
 import com.tourneyhub.backend.dto.lobby.LobbyEditDto;
 import com.tourneyhub.backend.dto.lobby.LobbyRegisterDto;
-import com.tourneyhub.backend.helper.Constants;
 import com.tourneyhub.backend.mapper.LobbyMapper;
 import com.tourneyhub.backend.repository.*;
 import org.springframework.http.HttpStatus;
@@ -15,6 +14,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.tourneyhub.backend.helper.Constants.*;
 
 @Service
 public class LobbyService {
@@ -52,7 +53,7 @@ public class LobbyService {
         Tournament tournament = stage.getTournament();
 
         if ((!stage.isSchedulePublished() || !tournament.isPublished())
-                && !userService.hasAnyRole(tournament.getId(), principal, "host", "admin", "referee")) {
+                && !userService.hasAnyRole(tournament.getId(), principal, HOST, ADMIN, REFEREE)) {
             return new ArrayList<>();
         }
         return uow.eventRepository
@@ -67,7 +68,7 @@ public class LobbyService {
         Long refereeId = getId(dto.getReferee(), false);
 
         if (!userService.isHost(stage.getTournamentId(), principal)) {
-            throw new AppException(Constants.NO_PERMISSION, HttpStatus.FORBIDDEN);
+            throw new AppException(NO_PERMISSION, HttpStatus.FORBIDDEN);
         }
         if (!stage.getStageType().getName().equals("qualifier")) {
             throw new AppException("Invalid stage type!", HttpStatus.BAD_REQUEST);
@@ -80,14 +81,14 @@ public class LobbyService {
 
     public Long update(Long lobbyId, LobbyEditDto dto, OAuth2User principal) {
         Event lobby = eventService.getEvent(lobbyId);
-        List<EventParticipant> players = participantService.getParticipants(lobby, "player");
+        List<EventParticipant> players = participantService.getParticipants(lobby, PLAYER);
         boolean isHost = userService.isHost(lobby.getStage().getTournamentId(), principal);
 
         if (lobby.isConcluded() || dto.isConcluded() && dto.getMatchId() == null && !players.isEmpty()) {
-            throw new AppException("Lobby already concluded or match id missing!", HttpStatus.BAD_REQUEST);
+            throw new AppException("Lobby already concluded or match ID missing!", HttpStatus.BAD_REQUEST);
         }
         if (isHost && dto.getReferee() != null) {
-            participantService.removeParticipants(lobby, "referee");
+            participantService.removeParticipants(lobby, REFEREE);
             participantService.addReferee(lobby, getId(dto.getReferee(), false));
         }
         if (!players.isEmpty()) {
@@ -112,14 +113,14 @@ public class LobbyService {
 
         validateUserRoles(stage.getTournamentId(), principal);
 
-        boolean full = participantService.getParticipants(lobby, "player").size() == stage.getLobbySize();
+        boolean full = participantService.getParticipants(lobby, PLAYER).size() == stage.getLobbySize();
 
-        if (full || dto.isReferee() && !participantService.getParticipants(lobby, "referee").isEmpty()) {
+        if (full || dto.isReferee() && !participantService.getParticipants(lobby, REFEREE).isEmpty()) {
             throw new AppException("Players list full or referee already present!", HttpStatus.BAD_REQUEST);
         }
         participantService.addParticipant(
-                lobby, participantId, dto.isReferee() ? "referee" : "player", dto.isTeam()
-        );
+                lobby, participantId, dto.isReferee() ? REFEREE : PLAYER, dto.isTeam());
+
         return uow.eventRepository.save(lobby).getId();
     }
 
@@ -136,14 +137,14 @@ public class LobbyService {
         // TODO check if participant is same as logged in user or captain of the team
 
         participantService.removeParticipant(
-                lobby, participantId, dto.isReferee() ? "referee" : "player", !dto.isReferee() && dto.isTeam()
-        );
+                lobby, participantId, dto.isReferee() ? REFEREE : PLAYER, !dto.isReferee() && dto.isTeam());
+
         return uow.eventRepository.save(lobby).getId();
     }
 
     private void validateUserRoles(Long tournamentId, OAuth2User principal) {
-        if (!userService.hasAnyRole(tournamentId, principal, "player", "referee")) {
-            throw new AppException(Constants.NO_PERMISSION, HttpStatus.FORBIDDEN);
+        if (!userService.hasAnyRole(tournamentId, principal, PLAYER, REFEREE)) {
+            throw new AppException(NO_PERMISSION, HttpStatus.FORBIDDEN);
         }
     }
 
@@ -152,14 +153,14 @@ public class LobbyService {
             return uow.teamRepository
                     .findByName(participant)
                     .orElseThrow(() -> new AppException(
-                            String.format("No team with name %s", participant), HttpStatus.NOT_FOUND)
+                            String.format("No team with name: %s.", participant), HttpStatus.NOT_FOUND)
                     )
                     .getId();
         } else {
             return uow.userRepository
                     .findByName(participant)
                     .orElseThrow(() ->new AppException(
-                            String.format("No user with name %s", participant), HttpStatus.NOT_FOUND)
+                            String.format("No user with name: %s.", participant), HttpStatus.NOT_FOUND)
                     )
                     .getId();
         }
@@ -169,6 +170,6 @@ public class LobbyService {
         return uow.stageRepository
                 .findById(id)
                 .orElseThrow(() -> new AppException(
-                        String.format("No stage with id %d", id), HttpStatus.NOT_FOUND));
+                        String.format("No stage with ID: %d.", id), HttpStatus.NOT_FOUND));
     }
 }

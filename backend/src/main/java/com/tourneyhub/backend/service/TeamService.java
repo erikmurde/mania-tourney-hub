@@ -86,7 +86,7 @@ public class TeamService {
             AppUser user = uow.userRepository
                     .findById(playerId)
                     .orElseThrow(() -> new AppException(
-                            String.format("No user with id %d", playerId), HttpStatus.NOT_FOUND));
+                            String.format("No user with ID: %d.", playerId), HttpStatus.NOT_FOUND));
 
             boolean teamCaptain = user.getId().equals(currentUserId);
             uow.tournamentRoleRepository.save(tournamentRoleMapper.mapToEntity(role, tournament, user));
@@ -99,7 +99,7 @@ public class TeamService {
         List<Long> players = dto.getPlayers();
 
         if (uow.teamRepository.findByName(dto.getName()).isPresent()) {
-            error = String.format("Team with name %s already exists!", dto.getName());
+            error = String.format("Team with same name already exists: %s!", dto.getName());
         }
         if (!players.contains(currentUserId) || Set.of(players).size() != players.size()) {
             error = "Players contain duplicates or logged in user not present!";
@@ -125,6 +125,6 @@ public class TeamService {
         return uow.tournamentRepository
                 .findById(id)
                 .orElseThrow(() -> new AppException(
-                        String.format("No tournament with id %d!", id), HttpStatus.NOT_FOUND));
+                        String.format("No tournament with ID: %d.", id), HttpStatus.NOT_FOUND));
     }
 }
