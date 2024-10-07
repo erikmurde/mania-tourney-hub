@@ -1,9 +1,9 @@
 package com.tourneyhub.backend.mapper;
 
 import com.tourneyhub.backend.domain.AppUser;
+import com.tourneyhub.backend.domain.BaseEntity;
 import com.tourneyhub.backend.domain.Team;
 import com.tourneyhub.backend.domain.TournamentPlayer;
-import com.tourneyhub.backend.dto.TournamentStatsDto;
 import com.tourneyhub.backend.dto.team.SimpleTeamDto;
 import com.tourneyhub.backend.dto.team.TeamCreateDto;
 import com.tourneyhub.backend.dto.team.TeamDto;
@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Component
 public class TeamMapper {
@@ -30,19 +31,21 @@ public class TeamMapper {
     }
 
     public TeamDto mapToDto(Team team, List<AppUser> players) {
-        List<TournamentPlayer> stats = uow.statsRepository.getTeamPlayerStats(team.getId());
-        TournamentStatsDto teamStats = statsMapper.mapToDto(stats.get(0));
+        List<TournamentPlayer> stats = uow.statsRepository
+                .getTeamPlayerStats(players.stream().map(BaseEntity::getId).toList());
 
         List<UserDto> mappedPlayers = players.stream()
                 .map(p -> userMapper.mapToDto(p, getUserStats(p.getId(), stats)))
                 .toList();
+
+        TournamentPlayer teamStats = getTeamStats(stats, team.getId());
 
         return new TeamDto(
                 team.getId(),
                 team.getName(),
                 team.getLogo(),
                 team.getAvailability(),
-                teamStats.getStatus(),
+                teamStats.getStatus().getName(),
                 teamStats.getSeed(),
                 teamStats.getPlacement(),
                 mappedPlayers
@@ -74,5 +77,12 @@ public class TeamMapper {
         return stats.stream()
                 .filter(s -> s.getAppUserId().equals(playerId))
                 .toList();
+    }
+
+    private TournamentPlayer getTeamStats(List<TournamentPlayer> stats, Long teamId) {
+        return stats.stream()
+                .filter(s -> Objects.equals(s.getTeamId(), teamId))
+                .toList()
+                .get(0);
     }
 }

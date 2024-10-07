@@ -35,6 +35,9 @@ public class TournamentPlayer extends BaseEntity {
     @JoinColumn
     private AppUser appUser;
 
+    @Column(name = "team_id", insertable = false, updatable = false)
+    private Long teamId;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn
     private Team team;

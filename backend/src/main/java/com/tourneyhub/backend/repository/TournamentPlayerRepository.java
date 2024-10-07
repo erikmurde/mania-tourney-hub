@@ -21,8 +21,8 @@ public interface TournamentPlayerRepository extends JpaRepository<TournamentPlay
             @Param("playerId") Long playerId
     );
 
-    @Query("FROM TournamentPlayer p WHERE p.team.id=:teamId")
-    List<TournamentPlayer> getTeamPlayerStats(@Param("teamId") Long teamId);
+    @Query("FROM TournamentPlayer p WHERE p.appUser.id IN :playerIds")
+    List<TournamentPlayer> getTeamPlayerStats(@Param("playerIds") List<Long> playerIds);
 
     @Query("SELECT count(p) FROM TournamentPlayer p WHERE p.tournament.id=:tournamentId AND p.status.name='active'")
     Integer getNumOfActivePlayers(@Param("tournamentId") Long tournamentId);

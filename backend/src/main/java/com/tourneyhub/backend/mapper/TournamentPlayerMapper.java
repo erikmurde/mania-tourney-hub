@@ -35,8 +35,9 @@ public class TournamentPlayerMapper {
     public TournamentPlayer mapToEntity(
             AppUser user, Tournament tournament, Status status, Team team, boolean teamCaptain)
     {
+        Long teamId = team != null ? team.getId() : null;
+
         return new TournamentPlayer(
-                0, 0, teamCaptain, status, user.getId(), user, team, tournament
-        );
+                0, 0, teamCaptain, status, user.getId(), user, teamId, team, tournament);
     }
 }

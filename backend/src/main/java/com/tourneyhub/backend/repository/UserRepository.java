@@ -23,7 +23,7 @@ public interface UserRepository extends JpaRepository<AppUser, Long> {
     List<AppUser> findAllStaffInTournament(@Param("tournamentId") Long tournamentId);
 
     @Query(
-            "FROM AppUser u JOIN FETCH u.country LEFT JOIN FETCH u.stats s " +
+            "FROM AppUser u JOIN FETCH u.country LEFT JOIN FETCH u.roles LEFT JOIN u.stats s " +
             "WHERE s.tournament.id=:tournamentId"
     )
     List<AppUser> findAllPlayersInTournament(@Param("tournamentId") Long tournamentId);
