@@ -1,3 +1,4 @@
+import { ApiErrorResponse } from '../dto/ApiErrorResponse';
 import { MapStatsDto } from '../dto/statistics/MapStatsDto';
 import { PlayerScoreDto } from '../dto/statistics/PlayerScoreDto';
 import { TeamScoreDto } from '../dto/statistics/TeamScoreDto';
@@ -19,8 +20,12 @@ export class MapStatsService extends ApiEntityService<MapStatsDto, MapStatsDto, 
         } catch (error) {}
     }
 
-    async seedParticipants(stageId: string) {
-        await this.axios.put(`${this.baseUrl}/${stageId}/seed`);
+    async seedParticipants(stageId: string): Promise<ApiErrorResponse | undefined> {
+        try {
+            await this.axios.put(`${this.baseUrl}/${stageId}/seed`);
+        } catch (error) {
+            return this.getError(error);
+        }
     }
 
     getAllScores(mapStats: MapStatsDto, teamTourney: boolean = false, teamScore: boolean = false): number[] {

@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { AuthContext } from '../../../routes/Root';
+import { AuthContext, ErrorContext } from '../../../routes/Root';
 import { TournamentDto } from '../../../dto/tournament/TournamentDto';
 import { Grid } from '@mui/material';
 import { Done, Lock } from '@mui/icons-material';
@@ -21,6 +21,7 @@ interface IProps {
 }
 
 const HeaderButtons = ({tourney, updateTourney}: IProps) => {
+    const { setError } = useContext(ErrorContext);
     const { user } = useContext(AuthContext);
 
     const [successOpen, setSuccessOpen] = useState(false);
@@ -45,6 +46,11 @@ const HeaderButtons = ({tourney, updateTourney}: IProps) => {
         if (!user) {
             return;
         }
+        const error = await tourneyService.registerPlayer(tourney.id);
+
+        if (error) {
+            return setError(error);
+        }
         user.roles.push({
             tournamentId: tourney.id,
             tournament: tourney.name,
@@ -59,17 +65,24 @@ const HeaderButtons = ({tourney, updateTourney}: IProps) => {
             placement: 0,
             teamCaptain: false
         });
-        await tourneyService.registerPlayer(tourney.id);
         setSuccessOpen(true);
     }
 
     const onPrivate = async() => {
-        await tourneyService.makePrivate(tourney.id);
+        const error = await tourneyService.makePrivate(tourney.id);
+
+        if (error) {
+            return setError(error);
+        }
         updateTourney();
     }
 
     const onConclude = async() => {
-        await tourneyService.conclude(tourney.id);
+        const error = await tourneyService.conclude(tourney.id);
+
+        if (error) {
+            return setError(error);
+        }
         updateTourney();
     }
 

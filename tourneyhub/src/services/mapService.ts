@@ -3,6 +3,7 @@ import { HB, LN, RC, SV, TB } from '../constants';
 import { IMapDto } from '../dto/map/IMapDto';
 import { ISubmittedMapDto } from '../dto/map/ISubmittedMapDto';
 import { ApiEntityService } from './base/apiEntityService';
+import { ApiErrorResponse } from '../dto/ApiErrorResponse';
 
 export class MapService extends ApiEntityService<IMapDto, IMapDto, IMapDto> {
     constructor() {
@@ -45,40 +46,50 @@ export class MapService extends ApiEntityService<IMapDto, IMapDto, IMapDto> {
         } catch (error) {}
     }
 
-    async createSubmitted(map: ISubmittedMapDto) {
-        const response = await this.axios.post(`${this.baseUrl}/submitted`, map);
-
-        console.log('createSubmittedMap response: ', response);
-        return response.data;
+    async createSubmitted(map: ISubmittedMapDto): Promise<ApiErrorResponse | undefined> {
+        try {
+            const response = await this.axios.post(`${this.baseUrl}/submitted`, map);
+            console.log('createSubmittedMap response: ', response);
+        } catch (error) {
+            return this.getError(error);
+        }
     }
 
-    async createUnsubmitted(map: IMapDto) {
-        const response = await this.axios.post(`${this.baseUrl}/unsubmitted`, map);
-
-        console.log('createUnsubmittedMap response: ', response);
-        return response.data;
+    async createUnsubmitted(map: IMapDto): Promise<ApiErrorResponse | undefined> {
+        try {
+            const response = await this.axios.post(`${this.baseUrl}/unsubmitted`, map);
+            console.log('createUnsubmittedMap response: ', response);
+        } catch (error) {
+            return this.getError(error);
+        }
     }
 
-    async updateSubmitted(mapId: string, map: ISubmittedMapDto) {
-        const response = await this.axios.put(`${this.baseUrl}/submitted/${mapId}`, map);
-
-        console.log('updateSubmittedMap response: ', response);
-        return response.data;
+    async updateSubmitted(mapId: string, map: ISubmittedMapDto): Promise<ApiErrorResponse | undefined> {
+        try {
+            const response = await this.axios.put(`${this.baseUrl}/submitted/${mapId}`, map);
+            console.log('updateSubmittedMap response: ', response);
+        } catch (error) {
+            return this.getError(error);
+        }
     }
 
-    async updateUnsubmitted(mapId: string, map: IMapDto) {
-        const response = await this.axios.put(`${this.baseUrl}/unsubmitted/${mapId}`, map);
-
-        console.log('updateUnsubmittedMap response: ', response);
-        return response.data;
+    async updateUnsubmitted(mapId: string, map: IMapDto): Promise<ApiErrorResponse | undefined> {
+        try {
+            const response = await this.axios.put(`${this.baseUrl}/unsubmitted/${mapId}`, map);
+            console.log('updateUnsubmittedMap response: ', response);
+        } catch (error) {
+            return this.getError(error);
+        }
     }
 
-    async updateInMappool(mapId: string, inMappool: boolean) {
-        const response = await this.axios.put(`${this.baseUrl}/${mapId}/inMappool`, 
-            { inMappool: inMappool }
-        );
-
-        console.log('updateMapInMappool response: ', response);
-        return response.data;
+    async updateInMappool(mapId: string, inMappool: boolean): Promise<ApiErrorResponse | undefined> {
+        try {
+            const response = await this.axios.put(`${this.baseUrl}/${mapId}/inMappool`, 
+                { inMappool: inMappool }
+            );
+            console.log('updateMapInMappool response: ', response);
+        } catch (error) {
+            return this.getError(error);
+        }
     }
 }

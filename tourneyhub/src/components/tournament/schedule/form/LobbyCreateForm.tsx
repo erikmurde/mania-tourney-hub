@@ -3,10 +3,10 @@ import FormDialogBase from '../../dialog/FormDialogBase';
 import { useContext, useEffect, useState } from 'react';
 import LobbyCreateFormView from './views/LobbyCreateFormView';
 import { AuthService } from '../../../../services/authService';
-import { ADMIN, HOST, REFEREE, REQUIRED } from '../../../../constants';
+import { ADMIN, FUTURE_DATE, HOST, INVALID_DATE, REFEREE, REQUIRED } from '../../../../constants';
 import { LobbyService } from '../../../../services/lobbyService';
 import { Schema, date, object } from 'yup';
-import { UpdateContext } from '../../../../routes/Root';
+import { ErrorContext, UpdateContext } from '../../../../routes/Root';
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
 import { useTourney } from '../../../../routes/tournament/TournamentHeader';
@@ -15,11 +15,13 @@ import { LobbyCreateDto } from '../../../../dto/schedule/lobby/LobbyCreateDto';
 import LoadingButton from '../../../LoadingButton';
 
 const LobbyCreateForm = ({stageId}: {stageId: string}) => {
-    const { tourney } = useTourney();
     const { scheduleUpdate, setScheduleUpdate } = useContext(UpdateContext);
+    const { setError } = useContext(ErrorContext);
+    const { tourney } = useTourney();
     const [selectValues, setSelectValues] = useState([] as UserDtoSimple[]);
     const [open, setOpen] = useState(false);
     const [loading, setLoading] = useState(false);
+    const service = new LobbyService();
     dayjs.extend(utc);
 
     useEffect(() => {
@@ -31,16 +33,20 @@ const LobbyCreateForm = ({stageId}: {stageId: string}) => {
     }, [open]);
 
     const onSubmit = async(values: LobbyCreateDto) => {
-        await new LobbyService().create(values);
+        const response = await service.create(values);
+
+        if (service.isErrorResponse(response)) {
+            return setError(response);
+        }
         setScheduleUpdate(scheduleUpdate + 1);
         setOpen(false);
     }
 
     const validationSchema: Schema = object({
         time: date()
-            .typeError('Invalid date format')
+            .typeError(INVALID_DATE)
             .required(REQUIRED)
-            .min(dayjs.utc(), 'Must be in the future')
+            .min(dayjs.utc(), FUTURE_DATE)
     })
 
     const initialValues: LobbyCreateDto = {

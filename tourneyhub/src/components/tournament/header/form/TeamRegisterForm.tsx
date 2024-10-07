@@ -10,7 +10,7 @@ import { TeamDto } from '../../../../dto/team/TeamDto';
 import { INVALID_URL, REQUIRED, URL_REGEX } from '../../../../constants';
 import { TeamService } from '../../../../services/teamService';
 import { TournamentService } from '../../../../services/tournamentService';
-import { AuthContext } from '../../../../routes/Root';
+import { AuthContext, ErrorContext } from '../../../../routes/Root';
 import LoadingButton from '../../../LoadingButton';
 
 interface IProps {
@@ -20,6 +20,7 @@ interface IProps {
 }
 
 const TeamRegisterForm = ({user, tourney, openSuccess}: IProps) => {
+    const { setError } = useContext(ErrorContext);
     const { updateUser } = useContext(AuthContext);
     const [open, setOpen] = useState(false);
     const [loading, setLoading] = useState(false);
@@ -51,9 +52,12 @@ const TeamRegisterForm = ({user, tourney, openSuccess}: IProps) => {
     }
 
     const registerTeam = async(values: TeamCreateDto) => {
-        await teamService.create({
+        const response = await teamService.create({
             ...values, logo: !values.logo ? authService.getLogo(user.country) : values.logo
         });
+        if (teamService.isErrorResponse(response)) {
+            return setError(response);
+        }
         updateUser();
         setOpen(false);
         openSuccess();

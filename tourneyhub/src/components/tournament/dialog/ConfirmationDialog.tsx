@@ -41,9 +41,13 @@ const ConfirmationDialog = ({btnProps, btnIcon, title, tooltip, description, act
                             {btnIcon}
                         </StyledIconButton>
                     </Tooltip>
-                :   <Button variant='contained' onClick={() => setOpen(true)} {...btnProps}>
-                        {btnProps?.title ?? actionTitle}
-                    </Button>}
+                :   <Tooltip title={tooltip ?? ''}>
+                        <span>
+                            <Button variant='contained' onClick={() => setOpen(true)} {...btnProps}>
+                                {btnProps?.title ?? actionTitle}
+                            </Button>
+                        </span>
+                    </Tooltip>}
             {open && 
             <Dialog open={open} onClose={() => setOpen(false)} maxWidth={size ?? 'sm'} fullWidth>
                 <TourneyDialogTitle 

@@ -4,11 +4,11 @@ import { MatchDto } from '../../../../dto/schedule/match/MatchDto';
 import { Check } from '@mui/icons-material';
 import MatchWbdForm from './form/MatchWbdForm';
 import { useContext, useState } from 'react';
-import { UpdateContext } from '../../../../routes/Root';
+import { ErrorContext, UpdateContext } from '../../../../routes/Root';
 import { MatchService } from '../../../../services/matchService';
 import ConfirmationDialog from '../../dialog/ConfirmationDialog';
 import { RefSheetPaper } from '../../../styled/RefSheetPaper';
-import { NOT_NEGATIVE } from '../../../../constants';
+import { NOT_NEGATIVE, TOO_LARGE } from '../../../../constants';
 import RoomTitle from '../RoomTitle';
 import { MatchWbdDto } from '../../../../dto/ref/MatchWbdDto';
 
@@ -21,12 +21,18 @@ interface IProps {
 
 const MatchMain = ({match, stageName, maxScore, onClose}: IProps) => {
     const { scheduleUpdate, setScheduleUpdate } = useContext(UpdateContext);
+    const { setError } = useContext(ErrorContext);
     const { tourney } = useTourney();
     const [matchId, setMatchId] = useState(null as number | null);
-    const [error, setError] = useState('');
+    const [validationError, setValidationError] = useState('');
 
     const editMatch = async(matchId: number | null, score1: number, score2: number) => {
-        await new MatchService().conclude(match.id, matchId, score1, score2);
+        setValidationError('');
+        const error = await new MatchService().conclude(match.id, matchId, score1, score2);
+
+        if (error) {
+            return setError(error);
+        }
         setScheduleUpdate(scheduleUpdate + 1);
         onClose();
     }
@@ -40,13 +46,16 @@ const MatchMain = ({match, stageName, maxScore, onClose}: IProps) => {
 
     const onConclude = async() => {
         if (!matchId || matchId < 0) {
-            setError(NOT_NEGATIVE);
-            return;
+            setValidationError(NOT_NEGATIVE);
+        } else if (matchId > 1000000000) {
+            setValidationError(TOO_LARGE);
+        } else {
+            await editMatch(matchId, match.score1, match.score2);
         }
-        await editMatch(matchId, match.score1, match.score2);
     }
 
     const roomCommand = `!mp make ${tourney.code}: ${match.player1.name} vs ${match.player2.name}`;
+    const disabled = match.score1 < maxScore && match.score2 < maxScore;
 
     return (  
         <RefSheetPaper elevation={8} sx={{ marginBottom: 1 }}>
@@ -58,20 +67,20 @@ const MatchMain = ({match, stageName, maxScore, onClose}: IProps) => {
                 <Grid item xs={12} marginTop={0.5} marginBottom={1} paddingLeft={0.5}>
                     <TextField fullWidth type='number' label='osu! match ID' size='small' 
                         onChange={(e) => setMatchId(Number(e.target.value))}
-                        onBlur={() => setError(matchId && matchId > 0 ? '' : NOT_NEGATIVE)}
-                        error={error !== ''}
-                        helperText={error}/>
+                        error={validationError !== ''}
+                        helperText={validationError}/>
                 </Grid>
                 <Grid item marginTop={1} marginBottom={1} paddingLeft={0.5}>
                     <ConfirmationDialog 
                         title='Are you sure you wish to conclude this match?' 
                         actionTitle='Conclude'
+                        tooltip={disabled ? 'Match needs a winner' : ''}
                         action={() => onConclude()}
                         btnProps={{
                             sx: { marginRight: 1 },
                             color: 'success',
                             startIcon: <Check/>,
-                            disabled: match.score1 < maxScore && match.score2 < maxScore
+                            disabled: disabled
                         }}/>
                     <MatchWbdForm match={match} onWbd={onWbd}/>
                 </Grid>

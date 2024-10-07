@@ -5,7 +5,7 @@ import { TeamDto } from '../../../dto/team/TeamDto';
 import { useContext, useEffect, useState } from 'react';
 import { TeamService } from '../../../services/teamService';
 import { Publish } from '@mui/icons-material';
-import { AuthContext } from '../../Root';
+import { AuthContext, ErrorContext } from '../../Root';
 import { TournamentService } from '../../../services/tournamentService';
 import { ACTIVE, ADMIN, DISQUALIFIED, HOST } from '../../../constants';
 import ConfirmationDialog from '../../../components/tournament/dialog/ConfirmationDialog';
@@ -14,8 +14,9 @@ import { useTourney } from '../TournamentHeader';
 import NoItems from '../../../components/tournament/NoItems';
 
 const Teams = () => {
-    const { tourney } = useTourney();
+    const { setError } = useContext(ErrorContext);
     const { user } = useContext(AuthContext);
+    const { tourney } = useTourney();
 
     const [teams, setTeams] = useState([] as TeamDto[]);
     const [showTeams, setShowTeams] = useState(1);
@@ -41,7 +42,11 @@ const Teams = () => {
     }, [tourney.id, hasValidRoles]);
 
     const publishTeams = async() => {
-        await tourneyService.publishPlayers(tourney.id);
+        const error = await tourneyService.publishPlayers(tourney.id);
+
+        if (error) {
+            return setError(error);
+        }
         updateState();
     }
 

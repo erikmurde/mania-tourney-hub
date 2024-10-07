@@ -7,7 +7,7 @@ import UnsubmittedMapFormView from './views/UnsubmittedMapFormView';
 import { useContext, useEffect, useState } from 'react';
 import { StyledDialogActions } from '../../../styled/StyledDialogActions';
 import { StyledDialogContent } from '../../../styled/styledDialogContent';
-import { AuthContext, UpdateContext } from '../../../../routes/Root';
+import { AuthContext, ErrorContext, UpdateContext } from '../../../../routes/Root';
 import { unsubmittedMapSchema } from '../../../../domain/validation/unsubmittedMapSchema';
 import { MapService } from '../../../../services/mapService';
 import { MapTypeDto } from '../../../../dto/map/MapTypeDto';
@@ -23,6 +23,7 @@ interface IProps {
 const UnsubmittedMapCreateForm = ({dialogProps, hasTb, stageId}: IProps) => {
     const { mapPoolUpdate, setMapPoolUpdate } = useContext(UpdateContext);
     const { user } = useContext(AuthContext);
+    const { setError } = useContext(ErrorContext);
     const [loading, setLoading] = useState(false);
     const [mapTypes, setMapTypes] = useState([] as MapTypeDto[]);
     const { open, onClose } = dialogProps;
@@ -41,8 +42,11 @@ const UnsubmittedMapCreateForm = ({dialogProps, hasTb, stageId}: IProps) => {
 
     const onSubmit = async(values: IMapDto) => {
         values.mapTypeId = mapTypes.find(mapType => mapType.name === values.mapType)!.id;
+        const error = await new MapService().createUnsubmitted(values);
 
-        await new MapService().createUnsubmitted(values);
+        if (error) {
+            return setError(error);
+        }
         setMapPoolUpdate(mapPoolUpdate + 1);
         onClose();
     }

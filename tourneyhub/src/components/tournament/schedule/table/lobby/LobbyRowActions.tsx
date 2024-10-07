@@ -5,7 +5,7 @@ import ConfirmationDialog from '../../../dialog/ConfirmationDialog';
 import { LobbyDto } from '../../../../../dto/schedule/lobby/LobbyDto';
 import { LobbyService } from '../../../../../services/lobbyService';
 import { useContext } from 'react';
-import { AuthContext, UpdateContext } from '../../../../../routes/Root';
+import { AuthContext, ErrorContext, UpdateContext } from '../../../../../routes/Root';
 import { Tooltip } from '@mui/material';
 import LobbyEditForm from '../../form/LobbyEditForm';
 import MpLink from '../../MpLink';
@@ -21,8 +21,9 @@ interface IProps {
 }
 
 const LobbyRowActions = ({lobby, teamName, isHost, canReg, hasRefRole, onRef}: IProps) => {
-    const { user } = useContext(AuthContext);
     const { scheduleUpdate, setScheduleUpdate } = useContext(UpdateContext);
+    const { setError } = useContext(ErrorContext);
+    const { user } = useContext(AuthContext);
     const service = new LobbyService();
 
     const editLobby = async(participant: string, referee: boolean, reg: boolean) => {
@@ -31,17 +32,28 @@ const LobbyRowActions = ({lobby, teamName, isHost, canReg, hasRefRole, onRef}: I
             referee: referee,
             team: teamName !== null && !referee
         }
+        let error;
+
         if (reg) {
-            await service.registerParticipant(lobby.id, data);
+            error = await service.registerParticipant(lobby.id, data);
         } else {
-            await service.unregisterParticipant(lobby.id, data);
+            error = await service.unregisterParticipant(lobby.id, data);
         }
-        setScheduleUpdate(scheduleUpdate + 1);
+        if (error) {
+            setError(error);
+        } else {
+            setScheduleUpdate(scheduleUpdate + 1);
+        }
     }
 
     const deleteLobby = async() => {
-        await service.delete(lobby.id);
-        setScheduleUpdate(scheduleUpdate + 1);
+        const error = await service.delete(lobby.id);
+
+        if (error) {
+            setError(error);
+        } else {
+            setScheduleUpdate(scheduleUpdate + 1);
+        }
     }
 
     const editLobbyPlayer = async(reg: boolean) => {
@@ -57,12 +69,15 @@ const LobbyRowActions = ({lobby, teamName, isHost, canReg, hasRefRole, onRef}: I
     }
 
     const closeEmptyLobby = async() => {
-        await service.edit(lobby.id, {
+        const error = await service.edit(lobby.id, {
             referee: lobby.referee,
             matchId: null,
             time: lobby.time,
             concluded: true
         });
+        if (error) {
+            return setError(error);
+        }
         setScheduleUpdate(scheduleUpdate + 1);
     }
 

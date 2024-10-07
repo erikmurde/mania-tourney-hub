@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import TournamentPublishFormView from './views/TournamentPublishFormView';
 import { Publish } from '@mui/icons-material';
 import FormDialogBase from '../dialog/FormDialogBase';
@@ -6,11 +6,12 @@ import { Schema, boolean, date, object } from 'yup';
 import { TournamentDto } from '../../../dto/tournament/TournamentDto';
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
-import { REQUIRED } from '../../../constants';
+import { FUTURE_DATE, INVALID_DATE, REQUIRED } from '../../../constants';
 import { TournamentService } from '../../../services/tournamentService';
 import SuccessDialog from '../dialog/SuccessDialog';
 import { TournamentPublishDto } from '../../../dto/tournament/TournamentPublishDto';
 import LoadingButton from '../../LoadingButton';
+import { ErrorContext } from '../../../routes/Root';
 
 interface IProps {
     tourney: TournamentDto,
@@ -18,13 +19,18 @@ interface IProps {
 }
 
 const TouramentPublishForm = ({tourney, updateTourney}: IProps) => {
+    const { setError } = useContext(ErrorContext);
     const [open, setOpen] = useState(false);
     const [loading, setLoading] = useState(false);
     const [successOpen, setSuccessOpen] = useState(false);
     dayjs.extend(utc);
 
     const onSubmit = async(values: TournamentPublishDto) => {
-        await new TournamentService().publish(tourney.id, values);
+        const error = await new TournamentService().publish(tourney.id, values);
+
+        if (error) {
+            return setError(error);
+        }
         setOpen(false);
         setSuccessOpen(true);
     }
@@ -45,16 +51,16 @@ const TouramentPublishForm = ({tourney, updateTourney}: IProps) => {
                     ? schema.required(REQUIRED)
                     : schema.notRequired()
             })
-            .typeError('Invalid date format')
-            .min(dayjs.utc(), 'Must be in the future'),
+            .typeError(INVALID_DATE)
+            .min(dayjs.utc(), FUTURE_DATE),
         applicationDeadline: date()
             .when('applicationsOpen', ([applicationsOpen], schema) => {
                 return applicationsOpen 
                     ? schema.required(REQUIRED)
                     : schema.notRequired()
             })
-            .typeError('Invalid date format')
-            .min(dayjs.utc(), 'Must be in the future')
+            .typeError(INVALID_DATE)
+            .min(dayjs.utc(), FUTURE_DATE)
     });
 
     return (  

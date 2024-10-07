@@ -8,20 +8,26 @@ import { IStageDto } from '../../../../dto/stage/IStageDto';
 import StageEditFormView from './views/StageEditFormView';
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
-import { UpdateContext } from '../../../../routes/Root';
+import { ErrorContext, UpdateContext } from '../../../../routes/Root';
 import { StageService } from '../../../../services/stageService';
 import { Schema, object, string, number, date } from 'yup';
-import { QUALIFIER, REQUIRED, STANDARD } from '../../../../constants';
+import { FUTURE_DATE, INVALID_DATE, QUALIFIER, REQUIRED, STANDARD } from '../../../../constants';
 import LoadingButton from '../../../LoadingButton';
+import { POSITIVE } from '../../../../domain/validation/unsubmittedMapSchema';
 
 const StageEditForm = ({initialValues}: {initialValues: IStageDto}) => {
     const { stageUpdate, setStageUpdate } = useContext(UpdateContext);
+    const { setError } = useContext(ErrorContext);
     const [open, setOpen] = useState(false);
     const [loading, setLoading] = useState(false);
     dayjs.extend(utc);
 
     const onSubmit = async(values: IStageDto) => {
-        await new StageService().edit(values.id, values);
+        const error = await new StageService().edit(values.id, values);
+
+        if (error) {
+            return setError(error);
+        }
         setStageUpdate(stageUpdate + 1);
         setOpen(false);
     }
@@ -36,17 +42,17 @@ const StageEditForm = ({initialValues}: {initialValues: IStageDto}) => {
             .min(type === STANDARD ? 3 : 0, 'Must be 3 or higher'),
         lobbySize: number()
             .required(REQUIRED)
-            .min(type === STANDARD ? 0 : 1, 'Must be above 0'),
+            .min(type === STANDARD ? 0 : 1, POSITIVE),
         numAdvancing: number()
             .required(REQUIRED)
-            .min(type === STANDARD ? 0 : 1, 'Must be above 0'),
+            .min(type === STANDARD ? 0 : 1, POSITIVE),
         schedulingDeadline: date()
             .when(([], schema) => {
                 if (type === QUALIFIER) {
                     return schema
-                        .typeError('Invalid date format')
+                        .typeError(INVALID_DATE)
                         .required(REQUIRED)
-                        .min(dayjs.utc(), 'Must be in the future');
+                        .min(dayjs.utc(), FUTURE_DATE);
                 }
                 return schema.notRequired()
             }),

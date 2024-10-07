@@ -1,3 +1,4 @@
+import { ApiErrorResponse } from '../dto/ApiErrorResponse';
 import { LobbyCreateDto } from '../dto/schedule/lobby/LobbyCreateDto';
 import { LobbyDto } from '../dto/schedule/lobby/LobbyDto';
 import { LobbyEditDto } from '../dto/schedule/lobby/LobbyEditDto';
@@ -16,17 +17,21 @@ export class LobbyService extends ApiEntityService<LobbyDto, LobbyCreateDto, Lob
         return response.data;
     }
 
-    async registerParticipant(lobbyId: string, data: LobbyRegisterDto) {
-        const response =  await this.axios.put(`${this.baseUrl}/${lobbyId}/register`, data);
-
-        console.log('registerLobbyParticipant response: ', response);
-        return response.data;
+    async registerParticipant(lobbyId: string, data: LobbyRegisterDto): Promise<ApiErrorResponse | undefined> {
+        try {
+            const response =  await this.axios.put(`${this.baseUrl}/${lobbyId}/register`, data);
+            console.log('registerLobbyParticipant response: ', response);
+        } catch (error) {
+            return this.getError(error);
+        }
     }
 
-    async unregisterParticipant(lobbyId: string, data: LobbyRegisterDto) {
-        const response =  await this.axios.put(`${this.baseUrl}/${lobbyId}/unregister`, data);
-
-        console.log('unregisterLobbyParticipant response: ', response);
-        return response.data;
+    async unregisterParticipant(lobbyId: string, data: LobbyRegisterDto): Promise<ApiErrorResponse | undefined> {
+        try {
+            const response =  await this.axios.put(`${this.baseUrl}/${lobbyId}/unregister`, data);
+            console.log('unregisterLobbyParticipant response: ', response);
+        } catch (error) {
+            return this.getError(error);
+        }
     }
 }

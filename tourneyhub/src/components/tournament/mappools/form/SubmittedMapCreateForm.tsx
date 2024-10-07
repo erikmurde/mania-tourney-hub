@@ -8,10 +8,10 @@ import { ISubmittedMapDto } from '../../../../dto/map/ISubmittedMapDto';
 import SubmittedMapFormView from './views/SubmittedMapFormView';
 import { number, Schema } from 'yup';
 import { baseMapSchema } from '../../../../domain/validation/baseMapSchema';
-import { DUPLICATE_BEATMAP_ID, INTEGER, NOT_NEGATIVE, REQUIRED } from '../../../../constants';
+import { DUPLICATE_BEATMAP_ID, INTEGER, NOT_NEGATIVE, REQUIRED, TOO_LARGE } from '../../../../constants';
 import { MapService } from '../../../../services/mapService';
 import { useContext, useEffect, useState } from 'react';
-import { UpdateContext } from '../../../../routes/Root';
+import { ErrorContext, UpdateContext } from '../../../../routes/Root';
 import { MapTypeDto } from '../../../../dto/map/MapTypeDto';
 import { MapTypeService } from '../../../../services/mapTypeService';
 import LoadingButton from '../../../LoadingButton';
@@ -25,6 +25,7 @@ interface IProps {
 
 const SubmittedCreateMapForm = ({dialogProps, stageId, hasTb, isDuplicateId}: IProps) => {
     const { mapPoolUpdate, setMapPoolUpdate } = useContext(UpdateContext);
+    const { setError } = useContext(ErrorContext);
     const [loading, setLoading] = useState(false);
     const [mapTypes, setMapTypes] = useState([] as MapTypeDto[]);
     const { open, onClose } = dialogProps;
@@ -39,8 +40,11 @@ const SubmittedCreateMapForm = ({dialogProps, stageId, hasTb, isDuplicateId}: IP
 
     const onSubmit = async(values: ISubmittedMapDto) => {
         values.mapTypeId = mapTypes.find(mapType => mapType.name === values.mapType)!.id;
+        const error = await new MapService().createSubmitted(values);
 
-        await new MapService().createSubmitted(values);
+        if (error) {
+            return setError(error);
+        }
         setMapPoolUpdate(mapPoolUpdate + 1);
         onClose();
     }
@@ -59,6 +63,7 @@ const SubmittedCreateMapForm = ({dialogProps, stageId, hasTb, isDuplicateId}: IP
             .required(REQUIRED)
             .integer(INTEGER)
             .min(0, NOT_NEGATIVE)
+            .max(100000000, TOO_LARGE)
             .test('', 
                 DUPLICATE_BEATMAP_ID, 
                 beatmapId => !isDuplicateId(beatmapId)

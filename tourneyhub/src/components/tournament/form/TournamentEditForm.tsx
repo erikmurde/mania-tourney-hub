@@ -1,5 +1,5 @@
 import { Edit } from '@mui/icons-material';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import FormDialogBase from '../dialog/FormDialogBase';
 import { TournamentDto } from '../../../dto/tournament/TournamentDto';
 import { UserDto } from '../../../dto/user/UserDto';
@@ -9,6 +9,7 @@ import { TournamentEdit } from '../../../domain/TournamentEdit';
 import { TournamentService } from '../../../services/tournamentService';
 import { ROLE_REG } from '../../../constants';
 import LoadingButton from '../../LoadingButton';
+import { ErrorContext } from '../../../routes/Root';
 
 interface IProps {
     tourney: TournamentDto,
@@ -17,6 +18,7 @@ interface IProps {
 }
 
 const TournamentEditForm = ({tourney, user, updateTourney}: IProps) => {
+    const { setError } = useContext(ErrorContext);
     const [open, setOpen] = useState(false);
     const [loading, setLoading] = useState(false);
 
@@ -31,14 +33,16 @@ const TournamentEditForm = ({tourney, user, updateTourney}: IProps) => {
             tourneyEdit.minPlayerRank = 0;
             tourneyEdit.maxPlayerRank = 0;
         }
-        await new TournamentService().edit(tourney.id, tourneyEdit);
+        const error = await new TournamentService().edit(tourney.id, tourneyEdit);
 
+        if (error) {
+            return setError(error);
+        }
         updatePlayerRoles(tourneyEdit.hostRoles);
         updateTourney();
         setOpen(false);
     }
 
-    
     const updatePlayerRoles = (roles: string[]) => {
         user.roles = user.roles
             .filter(role => role.tournamentId !== tourney.id);

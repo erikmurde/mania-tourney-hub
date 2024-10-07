@@ -1,3 +1,4 @@
+import { ApiErrorResponse } from '../dto/ApiErrorResponse';
 import { MatchCreateDto } from '../dto/schedule/match/MatchCreateDto';
 import { MatchDto } from '../dto/schedule/match/MatchDto';
 import { MatchEditDto } from '../dto/schedule/match/MatchEditDto';
@@ -19,29 +20,38 @@ export class MatchService extends ApiEntityService<MatchDto, MatchCreateDto, Mat
         } catch (error) {}
     }
 
-    async registerStaff(id: string, userId: string, role: string) {
-        const response =  await this.axios.put(`${this.baseUrl}/${id}/register`, null, {
-            params: { userId: userId, role: role }
-        });
-        console.log('registerStaffToMatch response: ', response);
-        return response.data;
+    async registerStaff(id: string, userId: string, role: string): Promise<ApiErrorResponse | undefined> {
+        try {
+            const response =  await this.axios.put(`${this.baseUrl}/${id}/register`, null, {
+                params: { userId: userId, role: role }
+            });
+            console.log('registerStaffToMatch response: ', response);
+        } catch (error) {
+            return this.getError(error);
+        }
     }
 
-    async unregisterStaff(id: string, userId: string, role: string) {
-        const response =  await this.axios.put(`${this.baseUrl}/${id}/unregister`, null, {
-            params: { userId: userId, role: role }
-        });
-        console.log('unregisterStaffFromMatch response: ', response);
-        return response.data;
+    async unregisterStaff(id: string, userId: string, role: string): Promise<ApiErrorResponse | undefined> {
+        try {
+            const response =  await this.axios.put(`${this.baseUrl}/${id}/unregister`, null, {
+                params: { userId: userId, role: role }
+            });
+            console.log('unregisterStaffFromMatch response: ', response);
+        } catch (error) {
+            return this.getError(error);
+        }
     }
 
-    async conclude(id: string, matchId: number | null, score1: number, score2: number) {
-        const response =  await this.axios.put(`${this.baseUrl}/${id}/conclude`, {
-            matchId: matchId,
-            score1: score1,
-            score2: score2
-        });
-        console.log('concludeMatch response: ', response);
-        return response.data;
+    async conclude(id: string, matchId: number | null, score1: number, score2: number): Promise<ApiErrorResponse | undefined> {
+        try {
+            const response =  await this.axios.put(`${this.baseUrl}/${id}/conclude`, {
+                matchId: matchId,
+                score1: score1,
+                score2: score2
+            });
+            console.log('concludeMatch response: ', response);
+        } catch (error) {
+            return this.getError(error);
+        }
     }
 }

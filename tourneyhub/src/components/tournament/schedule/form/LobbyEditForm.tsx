@@ -4,19 +4,20 @@ import LobbyCreateFormView from './views/LobbyCreateFormView';
 import { useContext, useEffect, useState } from 'react';
 import { LobbyDto } from '../../../../dto/schedule/lobby/LobbyDto';
 import { AuthService } from '../../../../services/authService';
-import { ADMIN, HOST, REFEREE, REQUIRED } from '../../../../constants';
+import { ADMIN, FUTURE_DATE, HOST, INVALID_DATE, REFEREE, REQUIRED } from '../../../../constants';
 import dayjs from 'dayjs';
 import { Schema, object, date } from 'yup';
 import { LobbyService } from '../../../../services/lobbyService';
-import { UpdateContext } from '../../../../routes/Root';
+import { ErrorContext, UpdateContext } from '../../../../routes/Root';
 import { useTourney } from '../../../../routes/tournament/TournamentHeader';
 import { UserDtoSimple } from '../../../../dto/user/UserDtoSimple';
 import { LobbyCreateDto } from '../../../../dto/schedule/lobby/LobbyCreateDto';
 import LoadingButton from '../../../LoadingButton';
 
 const LobbyEditForm = ({lobby}: {lobby: LobbyDto}) => {
-    const { tourney } = useTourney();
     const { scheduleUpdate, setScheduleUpdate } = useContext(UpdateContext);
+    const { setError } = useContext(ErrorContext);
+    const { tourney } = useTourney();
     const [selectValues, setSelectValues] = useState([] as UserDtoSimple[]);
     const [open, setOpen] = useState(false);
     const [loading, setLoading] = useState(false);
@@ -30,12 +31,15 @@ const LobbyEditForm = ({lobby}: {lobby: LobbyDto}) => {
     }, [tourney.id, open]);
 
     const onSubmit = async(values: LobbyCreateDto) => {
-        await new LobbyService().edit(lobby.id, {
+        const error = await new LobbyService().edit(lobby.id, {
             referee: values.referee === '' ? null : values.referee,
             matchId: null,
             time: values.time,
             concluded: false
         });
+        if (error) {
+            return setError(error);
+        }
         setScheduleUpdate(scheduleUpdate + 1);
         setOpen(false);
     }
@@ -48,9 +52,9 @@ const LobbyEditForm = ({lobby}: {lobby: LobbyDto}) => {
 
     const validationSchema: Schema = object({
         time: date()
-            .typeError('Invalid date format')
+            .typeError(INVALID_DATE)
             .required(REQUIRED)
-            .min(dayjs.utc(), 'Must be in the future')
+            .min(dayjs.utc(), FUTURE_DATE)
     })
 
     return (  

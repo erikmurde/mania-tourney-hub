@@ -3,6 +3,8 @@ import { TeamDto } from '../../../dto/team/TeamDto';
 import TeamCard from './TeamCard';
 import { TournamentService } from '../../../services/tournamentService';
 import { useTourney } from '../../../routes/tournament/TournamentHeader';
+import { useContext } from 'react';
+import { ErrorContext } from '../../../routes/Root';
 
 interface IProps {
     teamsPublic: boolean,
@@ -11,10 +13,15 @@ interface IProps {
 }
 
 const TeamList = ({teamsPublic, teams, setTeams}: IProps) => {
+    const { setError } = useContext(ErrorContext);
     const { tourney } = useTourney();
 
     const eliminateTeam = async(team: TeamDto) => {
-        await new TournamentService().eliminatePlayer(tourney.id, team.id, true);
+        const error = await new TournamentService().eliminatePlayer(tourney.id, team.id, true);
+
+        if (error) {
+            return setError(error);
+        }
         updateState(team);
     }
 

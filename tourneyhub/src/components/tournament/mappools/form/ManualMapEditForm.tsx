@@ -7,11 +7,9 @@ import { DialogProps } from '../../../../props/DialogProps';
 import UnsubmittedMapFormView from './views/UnsubmittedMapFormView';
 import { IMapDto } from '../../../../dto/map/IMapDto';
 import { useContext, useState } from 'react';
-import { UpdateContext } from '../../../../routes/Root';
+import { ErrorContext, UpdateContext } from '../../../../routes/Root';
 import { MapService } from '../../../../services/mapService';
-import { DUPLICATE_BEATMAP_ID, INTEGER, NOT_NEGATIVE } from '../../../../constants';
 import { unsubmittedMapSchema } from '../../../../domain/validation/unsubmittedMapSchema';
-import { number, Schema } from 'yup';
 import { MapTypeDto } from '../../../../dto/map/MapTypeDto';
 import LoadingButton from '../../../LoadingButton';
 
@@ -25,27 +23,20 @@ interface IProps {
 
 const ManualMapEditForm = ({dialogProps, initialValues, mapTypes, hasTb, isDuplicateId}: IProps) => {
     const { mapPoolUpdate, setMapPoolUpdate } = useContext(UpdateContext);
+    const { setError } = useContext(ErrorContext);
     const [loading, setLoading] = useState(false);
     const { open, onClose } = dialogProps;
 
     const onSubmit = async(values: IMapDto) => {
         values.mapTypeId = mapTypes.find(mapType => mapType.name === values.mapType)!.id;
+        const error = await new MapService().updateUnsubmitted(values.id, values);
 
-        await new MapService().updateUnsubmitted(values.id, values);
+        if (error) {
+            return setError(error);
+        }
         setMapPoolUpdate(mapPoolUpdate + 1);
         onClose();
     }
-
-    const validationSchema: Schema = unsubmittedMapSchema(hasTb).shape({
-        beatmapId: number()
-            .notRequired()
-            .integer(INTEGER)
-            .min(0, NOT_NEGATIVE)
-            .test('', 
-                DUPLICATE_BEATMAP_ID, 
-                beatmapId => !isDuplicateId(initialValues.id, beatmapId ?? null)
-            )
-    });
 
     return (  
         <Dialog open={open} onClose={onClose} fullWidth maxWidth='md'>
@@ -57,7 +48,7 @@ const ManualMapEditForm = ({dialogProps, initialValues, mapTypes, hasTb, isDupli
                         mapType: mapTypes.length > 0 ? initialValues.mapType : ''
                     }}
                     mapTypes={mapTypes}
-                    validationSchema={validationSchema}
+                    validationSchema={unsubmittedMapSchema(hasTb)}
                     onSubmit={async(values) => {
                         setLoading(true);
                         await onSubmit(values);

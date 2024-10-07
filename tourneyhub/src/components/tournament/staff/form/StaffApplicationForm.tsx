@@ -1,6 +1,6 @@
 import StaffApplicationFormView from './views/StaffApplicationFormView';
 import { useContext, useEffect, useState } from 'react';
-import { AuthContext } from '../../../../routes/Root';
+import { AuthContext, ErrorContext } from '../../../../routes/Root';
 import { REQUIRED, PENDING, LOGIN_URL } from '../../../../constants';
 import { Schema, number, object, string } from 'yup';
 import FormDialogBase from '../../dialog/FormDialogBase';
@@ -13,10 +13,14 @@ import { TournamentDto } from '../../../../dto/tournament/TournamentDto';
 import LoadingButton from '../../../LoadingButton';
 
 const StaffApplicationForm = ({tourney}: {tourney: TournamentDto}) => {
+    const { setError } = useContext(ErrorContext);
     const { user } = useContext(AuthContext);
     const [open, setOpen] = useState(false);
     const [loading, setLoading] = useState(false);
     const [roles, setRoles] = useState([] as RoleDto[]);
+
+    const applicationService = new StaffApplicationService();
+    const statusService = new StatusService();
 
     useEffect(() => {
         if (open && roles.length === 0) {
@@ -39,15 +43,17 @@ const StaffApplicationForm = ({tourney}: {tourney: TournamentDto}) => {
     }
 
     const onSubmit = async(values: StaffApplicationCreateDto) => {
-        const status = await new StatusService()
-            .getByName(PENDING);
+        const status = await statusService.getByName(PENDING);
 
-        if (status) {
-            values.statusId = status.id;
-            await new StaffApplicationService().create(values);
-    
-            setOpen(false);
+        if (statusService.isErrorResponse(status)) {
+            return setError(status);
         }
+        const response = await applicationService.create({...values, statusId: status.id});
+
+        if (applicationService.isErrorResponse(response)) {
+            return setError(response);
+        }
+        setOpen(false);
     }
 
     const validationSchema: Schema = object({

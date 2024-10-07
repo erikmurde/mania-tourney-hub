@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react';
 import FormDialogBase from '../dialog/FormDialogBase';
-import { AuthContext } from '../../../routes/Root';
+import { AuthContext, ErrorContext } from '../../../routes/Root';
 import { TournamentEdit } from '../../../domain/TournamentEdit';
 import { HOST, ROLE_REG } from '../../../constants';
 import { useNavigate } from 'react-router-dom';
@@ -10,9 +10,11 @@ import { tournamentSchema } from '../../../domain/validation/tournamentSchema';
 import LoadingButton from '../../LoadingButton';
 
 const TournamentCreateForm = () => {
+    const { setError } = useContext(ErrorContext);
     const { user } = useContext(AuthContext);
     const [open, setOpen] = useState(false);
     const [loading, setLoading] = useState(false);
+    const service = new TournamentService();
     const navigate = useNavigate();
 
     if (!user) {
@@ -54,8 +56,11 @@ const TournamentCreateForm = () => {
             tourney.minPlayerRank = 0;
             tourney.maxPlayerRank = 0;
         }
-        const createdId = await new TournamentService().create(tourney);
+        const createdId = await service.create(tourney);
 
+        if (service.isErrorResponse(createdId)) {
+            return setError(createdId);
+        }
         updatePlayerRoles(tourney.hostRoles, tourney.name, createdId);
         navigate(`/tournaments/${createdId}/information`);
     }

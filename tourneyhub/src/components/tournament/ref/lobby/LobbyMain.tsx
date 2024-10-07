@@ -5,8 +5,8 @@ import { Grid, TextField } from '@mui/material';
 import { useTourney } from '../../../../routes/tournament/TournamentHeader';
 import { LobbyDto } from '../../../../dto/schedule/lobby/LobbyDto';
 import { useContext, useState } from 'react';
-import { UpdateContext } from '../../../../routes/Root';
-import { NOT_NEGATIVE } from '../../../../constants';
+import { ErrorContext, UpdateContext } from '../../../../routes/Root';
+import { NOT_NEGATIVE, TOO_LARGE } from '../../../../constants';
 import RoomTitle from '../RoomTitle';
 import { LobbyService } from '../../../../services/lobbyService';
 
@@ -17,33 +17,39 @@ interface IProps {
 }
 
 const LobbyMain = ({lobby, stageName, onClose}: IProps) => {
-    const { tourney } = useTourney();
     const { scheduleUpdate, setScheduleUpdate } = useContext(UpdateContext);
+    const { setError } = useContext(ErrorContext);
+    const { tourney } = useTourney();
     const [matchId, setMatchId] = useState(null as number | null);
-    const [error, setError] = useState('');
+    const [validationError, setValidationError] = useState('');
 
     const onConclude = async() => {
         if (!validate()) {
             return;
         }
-        await new LobbyService().edit(lobby.id, {
+        setValidationError('');
+        const error = await new LobbyService().edit(lobby.id, {
             referee: lobby.referee,
             matchId: matchId,
             time: lobby.time,
             concluded: true
         });
+        if (error) {
+            return setError(error);
+        }
         setScheduleUpdate(scheduleUpdate + 1);
         onClose();
     }
 
     const validate = () => {
-        let message = '';
-
         if (!matchId || matchId < 0) {
-            message = NOT_NEGATIVE;
+            setValidationError(NOT_NEGATIVE);
+        } else if (matchId > 1000000000) {
+            setValidationError(TOO_LARGE);
+        } else {
+            return true;
         }
-        setError(message);
-        return message === '';
+        return false;
     }
 
     const roomCommand = `!mp make ${tourney.code}: Lobby ${lobby.code}`;
@@ -58,9 +64,8 @@ const LobbyMain = ({lobby, stageName, onClose}: IProps) => {
                 <Grid item xs={12} marginTop={0.5} marginBottom={1} paddingLeft={0.5}>
                     <TextField fullWidth type='number' label='osu! match ID' size='small'
                         onChange={(e) => setMatchId(Number(e.target.value))}
-                        onBlur={validate}
-                        error={error !== ''}
-                        helperText={error}/>
+                        error={validationError !== ''}
+                        helperText={validationError}/>
                 </Grid>
                 <Grid item marginTop={1} marginBottom={1} paddingLeft={0.5}>
                     <ConfirmationDialog 

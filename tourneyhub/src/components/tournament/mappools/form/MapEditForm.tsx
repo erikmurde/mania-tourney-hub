@@ -7,7 +7,7 @@ import { IMapDto } from '../../../../dto/map/IMapDto';
 import { StyledDialogContent } from '../../../styled/styledDialogContent';
 import { StyledIconButton } from '../../../styled/StyledIconButton';
 import { Edit } from '@mui/icons-material';
-import { DUPLICATE_BEATMAP_ID, INTEGER, NOT_NEGATIVE, REQUIRED, TB } from '../../../../constants';
+import { DUPLICATE_BEATMAP_ID, INTEGER, NOT_NEGATIVE, REQUIRED, TB, TOO_LARGE } from '../../../../constants';
 import { MapTypeDto } from '../../../../dto/map/MapTypeDto';
 import { MapTypeService } from '../../../../services/mapTypeService';
 import SubmittedMapFormView from './views/SubmittedMapFormView';
@@ -15,7 +15,7 @@ import { ISubmittedMapDto } from '../../../../dto/map/ISubmittedMapDto';
 import { number, Schema } from 'yup';
 import { baseMapSchema } from '../../../../domain/validation/baseMapSchema';
 import { MapService } from '../../../../services/mapService';
-import { UpdateContext } from '../../../../routes/Root';
+import { ErrorContext, UpdateContext } from '../../../../routes/Root';
 import LoadingButton from '../../../LoadingButton';
 
 interface IProps {
@@ -25,6 +25,7 @@ interface IProps {
 
 const MapEditForm = ({mappool, map}: IProps) => {
     const { mapPoolUpdate, setMapPoolUpdate } = useContext(UpdateContext);
+    const { setError } = useContext(ErrorContext);
     const [loading, setLoading] = useState(false);
     const [open, setOpen] = useState(false);
     const [openManual, setOpenManual] = useState(false);
@@ -41,8 +42,11 @@ const MapEditForm = ({mappool, map}: IProps) => {
 
     const onSubmit = async(values: ISubmittedMapDto) => {
         values.mapTypeId = mapTypes.find(mapType => mapType.name === values.mapType)!.id;
+        const error = await new MapService().updateSubmitted(map.id, values);
 
-        await new MapService().updateSubmitted(map.id, values);
+        if (error) {
+            return setError(error);
+        }
         setMapPoolUpdate(mapPoolUpdate + 1);
         setOpen(false);
     }
@@ -59,6 +63,7 @@ const MapEditForm = ({mappool, map}: IProps) => {
             .required(REQUIRED)
             .integer(INTEGER)
             .min(0, NOT_NEGATIVE)
+            .max(100000000, TOO_LARGE)
             .test('', 
                 DUPLICATE_BEATMAP_ID, 
                 beatmapId => !isDuplicateId(map.id, beatmapId)

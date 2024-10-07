@@ -6,15 +6,16 @@ import SectionTitle from '../../../components/tournament/SectionTitle';
 import ConfirmationDialog from '../../../components/tournament/dialog/ConfirmationDialog';
 import { Publish } from '@mui/icons-material';
 import { DISQUALIFIED, ADMIN, HOST, ACTIVE } from '../../../constants';
-import { AuthContext } from '../../Root';
+import { AuthContext, ErrorContext } from '../../Root';
 import { useTourney } from '../TournamentHeader';
 import { TournamentService } from '../../../services/tournamentService';
 import { AuthService } from '../../../services/authService';
 import NoItems from '../../../components/tournament/NoItems';
 
 const Players = () => {
-    const { tourney } = useTourney();
+    const { setError } = useContext(ErrorContext);
     const { user } = useContext(AuthContext);
+    const { tourney } = useTourney();
 
     const [players, setPlayers] = useState([] as UserDto[]);
     const [loading, setLoading] = useState(true);
@@ -40,7 +41,11 @@ const Players = () => {
     }, [tourney.id]);
 
     const publishPlayers = async() => {
-        await tourneyService.publishPlayers(tourney.id);
+        const error = await tourneyService.publishPlayers(tourney.id);
+
+        if (error) {
+            return setError(error);
+        }
         updateState();
     }
 

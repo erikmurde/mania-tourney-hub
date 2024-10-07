@@ -1,3 +1,4 @@
+import { ApiErrorResponse } from '../dto/ApiErrorResponse';
 import { SimpleTournamentDto } from '../dto/tournament/SimpleTournamentDto';
 import { TournamentCreateDto } from '../dto/tournament/TournamentCreateDto';
 import { TournamentDto } from '../dto/tournament/TournamentDto';
@@ -17,36 +18,56 @@ export class TournamentService extends ApiEntityService<TournamentDto, Tournamen
         return response.data;
     }
 
-    async registerPlayer(tournamentId: string) {
-        await this.axios.post(`${this.baseUrl}/${tournamentId}/register`);
+    async registerPlayer(tournamentId: string): Promise<ApiErrorResponse | undefined> {
+        try {
+            await this.axios.post(`${this.baseUrl}/${tournamentId}/register`);
+        } catch (error) {
+            return this.getError(error);
+        }
     }
 
-    async conclude(tournamentId: string) {
-        await this.axios.put(`${this.baseUrl}/${tournamentId}/conclude`);
+    async conclude(tournamentId: string): Promise<ApiErrorResponse | undefined> {
+        try {
+            await this.axios.put(`${this.baseUrl}/${tournamentId}/conclude`);
+        } catch (error) {
+            return this.getError(error);
+        }
     }
 
-    async publish(tournamentId: string, tournament: TournamentPublishDto) {
-        const response = await this.axios.put<TournamentPublishDto>(`${this.baseUrl}/${tournamentId}/publish`, tournament);
-
-        console.log('publishTournament response: ', response);
-        return response.data;
+    async publish(tournamentId: string, tournament: TournamentPublishDto): Promise<ApiErrorResponse | undefined> {
+        try {
+            const response = await this.axios.put<TournamentPublishDto>(`${this.baseUrl}/${tournamentId}/publish`, tournament);
+            console.log('publishTournament response: ', response);
+        } catch (error) {
+            return this.getError(error);
+        }
     }
 
-    async makePrivate(tournamentId: string) {
-        const response = await this.axios.put<TournamentPublishDto>(`${this.baseUrl}/${tournamentId}/private`);
-
-        console.log('makeTournamentPrivate response: ', response);
-        return response.data;
+    async makePrivate(tournamentId: string): Promise<ApiErrorResponse | undefined> {
+        try {
+            const response = await this.axios.put<TournamentPublishDto>(`${this.baseUrl}/${tournamentId}/private`);
+            console.log('makeTournamentPrivate response: ', response);
+        } catch (error) {
+            return this.getError(error);
+        }
     }
 
-    async publishPlayers(tournamentId: string) {
-        await this.axios.put(`${this.baseUrl}/${tournamentId}/publish-players`);
+    async publishPlayers(tournamentId: string): Promise<ApiErrorResponse | undefined> {
+        try {
+            await this.axios.put(`${this.baseUrl}/${tournamentId}/publish-players`);
+        } catch (error) {
+            return this.getError(error);
+        }
     }
 
-    async eliminatePlayer(tournamentId: string, playerId: string, team: boolean) {
-        await this.axios.put(`${this.baseUrl}/${tournamentId}/eliminate/${playerId}`, null, {
-            params: { team: team }
-        });
+    async eliminatePlayer(tournamentId: string, playerId: string, team: boolean): Promise<ApiErrorResponse | undefined> {
+        try {
+            await this.axios.put(`${this.baseUrl}/${tournamentId}/eliminate/${playerId}`, null, {
+                params: { team: team }
+            });
+        } catch (error) {
+            return this.getError(error);
+        }
     }
 
     isValidUser(user: UserDto, tourney: TournamentDto): boolean {

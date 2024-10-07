@@ -1,9 +1,9 @@
 import { PlaylistAdd } from '@mui/icons-material';
 import { useContext, useEffect, useState } from 'react';
-import { UpdateContext } from '../../../../routes/Root';
+import { ErrorContext, UpdateContext } from '../../../../routes/Root';
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc'
-import { ADMIN, COMMENTATOR, HOST, PLAYER, REFEREE, REQUIRED, STREAMER } from '../../../../constants';
+import { ADMIN, COMMENTATOR, FUTURE_DATE, HOST, INVALID_DATE, PLAYER, REFEREE, REQUIRED, STREAMER } from '../../../../constants';
 import { Schema, object, date, string, array } from 'yup';
 import { AuthService } from '../../../../services/authService';
 import { UserDtoSimple } from '../../../../dto/user/UserDtoSimple';
@@ -17,8 +17,9 @@ import { TeamService } from '../../../../services/teamService';
 import LoadingButton from '../../../LoadingButton';
 
 const MatchCreateForm = ({stageId}: {stageId: string}) => {
-    const { tourney } = useTourney();
     const { scheduleUpdate, setScheduleUpdate } = useContext(UpdateContext);
+    const { setError } = useContext(ErrorContext);
+    const { tourney } = useTourney();
 
     const [selectValues, setSelectValues] = useState({
         players: [] as UserDtoSimple[] | TeamDtoSimple[],
@@ -30,7 +31,8 @@ const MatchCreateForm = ({stageId}: {stageId: string}) => {
     const [loading, setLoading] = useState(false);
 
     const isTeam = tourney.minTeamSize > 1;
-    const service = new AuthService();
+    const authService = new AuthService();
+    const matchService = new MatchService();
     dayjs.extend(utc);
 
     useEffect(() => {
@@ -40,7 +42,7 @@ const MatchCreateForm = ({stageId}: {stageId: string}) => {
                     .getSimpleTeams(tourney.id)
                     .then(teams => initSelection(teams));
             } else {
-                service
+                authService
                     .getUsersWithRoles(tourney.id, [PLAYER])
                     .then(players => initSelection(players));
             }
@@ -54,7 +56,7 @@ const MatchCreateForm = ({stageId}: {stageId: string}) => {
     }
 
     const initSelection = async(participants: UserDtoSimple[] | TeamDtoSimple[]) => {
-        const staff = await service
+        const staff = await authService
             .getUsersWithRoles(tourney.id, [HOST, ADMIN, REFEREE, STREAMER, COMMENTATOR], true);
   
         setSelectValues({
@@ -66,7 +68,11 @@ const MatchCreateForm = ({stageId}: {stageId: string}) => {
     }
 
     const onSubmit = async(values: MatchCreateDto) => {
-        await new MatchService().create(values);
+        const response = await matchService.create(values);
+
+        if (matchService.isErrorResponse(response)) {
+            return setError(response);
+        }
         setScheduleUpdate(scheduleUpdate + 1);
         setOpen(false);
     }
@@ -85,9 +91,9 @@ const MatchCreateForm = ({stageId}: {stageId: string}) => {
                 })
             }),
         time: date()
-            .typeError('Invalid date format')
+            .typeError(INVALID_DATE)
             .required(REQUIRED)
-            .min(dayjs.utc(), 'Must be in the future'),
+            .min(dayjs.utc(), FUTURE_DATE),
         commentatorIds: array()
             .of(string())
             .max(2, 'Maximum 2 commentators')

@@ -7,16 +7,21 @@ import StageInfo from './StageInfo';
 import ConfirmationDialog from '../../dialog/ConfirmationDialog';
 import StageEditForm from '../form/StageEditForm';
 import { useContext } from 'react';
-import { UpdateContext } from '../../../../routes/Root';
+import { ErrorContext, UpdateContext } from '../../../../routes/Root';
 import { StageService } from '../../../../services/stageService';
 import { useTourney } from '../../../../routes/tournament/TournamentHeader';
 
 const StageCard = ({stage}: {stage: IStageDto}) => {
-    const { tourney } = useTourney();
     const { stageUpdate, setStageUpdate } = useContext(UpdateContext);
+    const { setError } = useContext(ErrorContext);
+    const { tourney } = useTourney();
 
     const onDelete = async() => {
-        await new StageService().delete(stage.id);
+        const error = await new StageService().delete(stage.id);
+
+        if (error) {
+            return setError(error);
+        }
         setStageUpdate(stageUpdate + 1);
     }
 

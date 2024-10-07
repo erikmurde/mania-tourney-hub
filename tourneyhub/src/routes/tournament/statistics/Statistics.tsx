@@ -6,7 +6,7 @@ import { StageService } from '../../../services/stageService';
 import { IStageDto } from '../../../dto/stage/IStageDto';
 import NoItems from '../../../components/tournament/NoItems';
 import StageStats from '../../../components/tournament/statistics/StageStats';
-import { AuthContext } from '../../Root';
+import { AuthContext, ErrorContext } from '../../Root';
 import { AuthService } from '../../../services/authService';
 import StatsTabs from '../../../components/tournament/statistics/tabs/StatsTabs';
 import { MapStatsService } from '../../../services/mapStatsService';
@@ -19,8 +19,9 @@ import ConfirmationDialog from '../../../components/tournament/dialog/Confirmati
 import SuccessDialog from '../../../components/tournament/dialog/SuccessDialog';
 
 const Statistics = () => {
-    const { tourney } = useTourney();
+    const { setError } = useContext(ErrorContext);
     const { user } = useContext(AuthContext);
+    const { tourney } = useTourney();
 
     const [stages, setStages] = useState([] as IStageDto[]);
     const [mapStats, setMapStats] = useState([] as MapStatsDto[]);
@@ -61,7 +62,11 @@ const Statistics = () => {
     }, [stage]);
 
     const updateSeeding = async(stageId: string) => {
-        await service.seedParticipants(stageId);
+        const error = await service.seedParticipants(stageId);
+
+        if (error) {
+            return setError(error);
+        }
         setSuccessOpen(true);
     }
 

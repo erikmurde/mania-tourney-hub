@@ -1,12 +1,14 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { StaffApplicationDto } from '../../../dto/staff/application/StaffApplicationDto';
 import { StaffApplicationService } from '../../../services/staffApplicationService';
 import { Grid, Link } from '@mui/material';
 import ProfileApplicationCard from './ProfileApplicationCard';
 import { StatusService } from '../../../services/statusService';
 import { RETRACTED } from '../../../constants';
+import { ErrorContext } from '../../../routes/Root';
 
 const ProfileApplications = ({onNavigate}: {onNavigate: (tournamentId: string) => void}) => {
+    const { setError } = useContext(ErrorContext);
     const [staffApplications, setStaffApplications] = useState([] as StaffApplicationDto[]);
     const [applicationUpdate, setApplicationUpdate] = useState(0);
 
@@ -17,17 +19,21 @@ const ProfileApplications = ({onNavigate}: {onNavigate: (tournamentId: string) =
     }, [applicationUpdate]);
 
     const retractApplication = async(application: StaffApplicationDto) => {
-        const status = await new StatusService()
-            .getByName(RETRACTED);
+        const service = new StatusService();
+        const status = await service.getByName(RETRACTED);
 
-        if (status) {
-            await new StaffApplicationService().edit(application.id, {
-                senderId: application.sender.id,
-                tournamentId: application.tournamentId,
-                statusId: status.id
-            });
-            setApplicationUpdate(applicationUpdate + 1);
+        if (service.isErrorResponse(status)) {
+            return setError(status);
         }
+        const error = await new StaffApplicationService().edit(application.id, {
+            senderId: application.sender.id,
+            tournamentId: application.tournamentId,
+            statusId: status.id
+        });
+        if (error) {
+            return setError(error);
+        }
+        setApplicationUpdate(applicationUpdate + 1);
     }
 
     return (  

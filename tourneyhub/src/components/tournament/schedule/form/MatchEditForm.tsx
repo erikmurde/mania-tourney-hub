@@ -2,11 +2,11 @@ import { Edit } from '@mui/icons-material';
 import MatchEditFormView from './views/MatchEditFormView';
 import FormDialogBase from '../../dialog/FormDialogBase';
 import { useContext, useEffect, useState } from 'react';
-import { UpdateContext } from '../../../../routes/Root';
+import { ErrorContext, UpdateContext } from '../../../../routes/Root';
 import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc';
 import { Schema, object, string, date, array } from 'yup';
-import { HOST, ADMIN, REFEREE, STREAMER, COMMENTATOR, REQUIRED } from '../../../../constants';
+import { HOST, ADMIN, REFEREE, STREAMER, COMMENTATOR, REQUIRED, INVALID_DATE, FUTURE_DATE } from '../../../../constants';
 import { UserDtoSimple } from '../../../../dto/user/UserDtoSimple';
 import { AuthService } from '../../../../services/authService';
 import { MatchDto } from '../../../../dto/schedule/match/MatchDto';
@@ -16,8 +16,9 @@ import { MatchEditDto } from '../../../../dto/schedule/match/MatchEditDto';
 import LoadingButton from '../../../LoadingButton';
 
 const MatchEditForm = ({match}: {match: MatchDto}) => {
-    const { tourney } = useTourney();
     const { scheduleUpdate, setScheduleUpdate } = useContext(UpdateContext);
+    const { setError } = useContext(ErrorContext);
+    const { tourney } = useTourney();
     const [selectValues, setSelectValues] = useState({
         streamers: [] as UserDtoSimple[],
         commentators: [] as UserDtoSimple[],
@@ -48,7 +49,11 @@ const MatchEditForm = ({match}: {match: MatchDto}) => {
     }
 
     const onSubmit = async(values: MatchEditDto) => {
-        await new  MatchService().edit(match.id, values);
+        const error = await new  MatchService().edit(match.id, values);
+
+        if (error) {
+            return setError(error);
+        }
         setScheduleUpdate(scheduleUpdate + 1);
         setOpen(false);
     }
@@ -57,9 +62,9 @@ const MatchEditForm = ({match}: {match: MatchDto}) => {
         code: string()
             .required(REQUIRED),
         time: date()
-            .typeError('Invalid date format')
+            .typeError(INVALID_DATE)
             .required(REQUIRED)
-            .min(dayjs.utc(), 'Must be in the future'),
+            .min(dayjs.utc(), FUTURE_DATE),
         commentators: array()
             .of(string())
             .max(2, 'Maximum 2 commentators')

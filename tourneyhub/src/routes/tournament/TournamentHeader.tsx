@@ -1,31 +1,40 @@
 import { Box, Grid, Paper } from '@mui/material';
 import { Outlet, useNavigate, useOutletContext, useParams } from 'react-router-dom';
 import { TournamentDto } from '../../dto/tournament/TournamentDto';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { TournamentService } from '../../services/tournamentService';
 import HeaderText from '../../components/tournament/header/HeaderText';
 import HeaderButtons from '../../components/tournament/header/HeaderButtons';
 import HeaderTabs from '../../components/tournament/header/HeaderTabs';
 import { NUM_REGEX } from '../../constants';
+import { ErrorContext } from '../Root';
 
 export function useTourney() {
     return useOutletContext<{ tourney: TournamentDto }>();
 }
 
 const TournamentHeader = () => {
+    const { id } = useParams();
+    const { setError } = useContext(ErrorContext);
     const [tourney, setTourney] = useState(null as TournamentDto | null);
     const [tourneyUpdate, setTourneyUpdate] = useState(0);
-    const { id } = useParams();
     const navigate = useNavigate();
 
     useEffect(() => {
         if (!id || !id.match(NUM_REGEX)) {
             return;
         }
-        new TournamentService()
+        const service = new TournamentService();
+
+        service
             .getEntity(id)
-            .then(tourney => setTourney(tourney));
-    
+            .then(response => {
+                if (service.isErrorResponse(response)) {
+                    setError(response);
+                } else {
+                    setTourney(response);
+                }
+            });
         window.scrollTo(0, 0);
     }, [id, tourneyUpdate]);
 

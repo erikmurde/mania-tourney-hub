@@ -4,6 +4,8 @@ import PlayerCard from './PlayerCard';
 import { ACTIVE, DISQUALIFIED, ELIMINATED } from '../../../constants';
 import { TournamentService } from '../../../services/tournamentService';
 import { useTourney } from '../../../routes/tournament/TournamentHeader';
+import { useContext } from 'react';
+import { ErrorContext } from '../../../routes/Root';
 
 interface IProps {
     playersPublic: boolean,
@@ -12,10 +14,15 @@ interface IProps {
 }
 
 const PlayerList = ({playersPublic, players, setPlayers}: IProps) => {
+    const { setError } = useContext(ErrorContext);
     const { tourney } = useTourney();
 
     const eliminatePlayer = async(player: UserDto) => {
-        await new TournamentService().eliminatePlayer(tourney.id, player.id, false);
+        const error = await new TournamentService().eliminatePlayer(tourney.id, player.id, false);
+
+        if (error) {
+            return setError(error);
+        }
         updateState(player);
     }
 

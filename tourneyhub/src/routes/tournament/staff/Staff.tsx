@@ -8,7 +8,7 @@ import { Description, List } from '@mui/icons-material';
 import { StaffApplicationService } from '../../../services/staffApplicationService';
 import { StaffApplicationDto } from '../../../dto/staff/application/StaffApplicationDto';
 import StaffInviteForm from '../../../components/tournament/staff/form/StaffInviteForm';
-import { AuthContext } from '../../Root';
+import { AuthContext, ErrorContext } from '../../Root';
 import { StatusService } from '../../../services/statusService';
 import { RoleService } from '../../../services/roleService';
 import { RoleDto } from '../../../dto/RoleDto';
@@ -17,8 +17,9 @@ import NoItems from '../../../components/tournament/NoItems';
 import StaffApplications from '../../../components/tournament/staff/StaffApplications';
 
 const Staff = () => {
-    const { tourney } = useTourney();
     const { user } = useContext(AuthContext);
+    const { setError } = useContext(ErrorContext);
+    const { tourney } = useTourney();
 
     const [staff, setStaff] = useState([] as UserDto[]);
     const [roles, setRoles] = useState([] as RoleDto[]);
@@ -60,8 +61,11 @@ const Staff = () => {
 
         if (role) {
             member.roles.splice(member.roles.indexOf(role), 1);
-            await authService.removeUserRole(member.id, tourney.id, role.role);
+            const error = await authService.removeUserRole(member.id, tourney.id, role.role);
 
+            if (error) {
+                return setError(error);
+            }
             setStaff(staff.map(existing => 
                 existing.id === member.id ? member : existing
             ));
@@ -69,23 +73,24 @@ const Staff = () => {
     }
 
     const updateApplicationStatus = async(application: StaffApplicationDto, newStatus: string) => {
-        const updatedStatus = await new StatusService()
-            .getByName(newStatus);
+        const statusService = new StatusService(); 
+        const updatedStatus = await statusService.getByName(newStatus);
 
-        if (!updatedStatus) {
-            return;
+        if (statusService.isErrorResponse(updatedStatus)) {
+            return setError(updatedStatus);
         }
-        if (updatedStatus.name === ACCEPTED) {
-            await acceptApplication(application);
-        }
-        await staffApplicationService.edit(application.id, {
+        const error = await staffApplicationService.edit(application.id, {
             senderId: application.sender.id,
             tournamentId: application.tournamentId,
             statusId: updatedStatus.id
         });
-        setApplications(
-            applications.filter(app => app.id !== application.id)
-        );
+        if (error) {
+            return setError(error);
+        }
+        if (updatedStatus.name === ACCEPTED) {
+            await acceptApplication(application);
+        }
+        setApplications(applications.filter(app => app.id !== application.id));
     }
 
     const acceptApplication = async(application: StaffApplicationDto) => {

@@ -1,9 +1,9 @@
-import { Button, Dialog, Divider, Tab, Tabs } from '@mui/material'
+import { Dialog, Divider, Tab, Tabs } from '@mui/material'
 import { StyledDialogActions } from '../../components/styled/StyledDialogActions';
 import { StyledDialogContent } from '../../components/styled/styledDialogContent';
 import TourneyDialogTitle from '../../components/tournament/dialog/TourneyDialogTitle';
 import { useContext, useState } from 'react';
-import { AuthContext } from '../Root';
+import { AuthContext, ErrorContext } from '../Root';
 import ProfileRoles from '../../components/profile/role/ProfileRoles';
 import ProfileApplications from '../../components/profile/application/ProfileApplications';
 import ProfileInvites from '../../components/profile/invite/ProfileInvites';
@@ -26,6 +26,7 @@ interface IProps {
 }
 
 const Profile = ({owner, open, setOpen}: IProps) => {
+    const { setError } = useContext(ErrorContext);
     const { user } = useContext(AuthContext);
     const [tabId, setTabId] = useState(0);
     const [loading, setLoading] = useState(false);
@@ -34,15 +35,20 @@ const Profile = ({owner, open, setOpen}: IProps) => {
     const isOwner = user && user.id === owner.id;
 
     const onSubmit = async(values: UserEditDto) => {
-        if (isOwner) {
-            setLoading(true);
-            owner.discordUsername = values.discordUsername;
-            owner.timezone = values.timezone;
-
-            await new AuthService().updateMe(values);
-            setOpen(false);
-            setLoading(false);
+        if (!isOwner) {
+            return;
         }
+        setLoading(true);
+        owner.discordUsername = values.discordUsername;
+        owner.timezone = values.timezone;
+        const error = await new AuthService().updateMe(values);
+
+        if (error) {
+            setError(error);
+        } else {
+            setOpen(false);
+        }
+        setLoading(false);
     }
 
     const validationSchema: Schema = object({

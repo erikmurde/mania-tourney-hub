@@ -4,7 +4,7 @@ import { MatchDto } from '../../../../../dto/schedule/match/MatchDto';
 import { SchedTableCell } from '../../../../styled/SchedTableCell';
 import { StyledIconButton } from '../../../../styled/StyledIconButton';
 import { useContext } from 'react';
-import { AuthContext, UpdateContext } from '../../../../../routes/Root';
+import { AuthContext, ErrorContext, UpdateContext } from '../../../../../routes/Root';
 import ConfirmationDialog from '../../../dialog/ConfirmationDialog';
 import { MatchService } from '../../../../../services/matchService';
 import MatchActionMenu from './MatchActionMenu';
@@ -20,9 +20,10 @@ interface IProps {
 }
 
 const MatchRowActions = ({match, onRef}: IProps) => {
+    const { scheduleUpdate, setScheduleUpdate } = useContext(UpdateContext);
+    const { setError } = useContext(ErrorContext);
     const { tourney } = useTourney();
     const { user } = useContext(AuthContext);
-    const { scheduleUpdate, setScheduleUpdate } = useContext(UpdateContext);
     const service = new MatchService();
 
     if (!user) {
@@ -30,17 +31,27 @@ const MatchRowActions = ({match, onRef}: IProps) => {
     }
 
     const deleteMatch = async() => {
-        await service.delete(match.id);
+        const error = await service.delete(match.id);
+
+        if (error) {
+            return setError(error);
+        }
         setScheduleUpdate(scheduleUpdate + 1);
     }
 
     const editMatchRole = async(add: boolean, role: string) => {
+        let error;
+
         if (add) {
-            await service.registerStaff(match.id, user.id, role);
+            error = await service.registerStaff(match.id, user.id, role);
         } else {
-            await service.unregisterStaff(match.id, user.id, role);
+            error = await service.unregisterStaff(match.id, user.id, role);
         }
-        setScheduleUpdate(scheduleUpdate + 1);
+        if (error) {
+            setError(error);
+        } else {
+            setScheduleUpdate(scheduleUpdate + 1);
+        }
     }
 
     const isWbd = match.score1 < 0 || match.score2 < 0;

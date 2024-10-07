@@ -4,7 +4,7 @@ import { useContext, useEffect, useState } from 'react';
 import ReactQuill from 'react-quill';
 import { TournamentService } from '../../../services/tournamentService';
 import { ChevronLeft, Edit } from '@mui/icons-material';
-import { AuthContext } from '../../Root';
+import { AuthContext, ErrorContext } from '../../Root';
 import 'react-quill/dist/quill.snow.css';
 import { AuthService } from '../../../services/authService';
 import NoItems from '../../../components/tournament/NoItems';
@@ -22,6 +22,8 @@ const COLORS = [
 const Information = () => {
     const { tourney } = useTourney();
     const { user } = useContext(AuthContext);
+    const { setError } = useContext(ErrorContext);
+
     const [value, setValue] = useState('');
     const [edit, setEdit] = useState(false);
     const [loading, setLoading] = useState(false);
@@ -74,14 +76,18 @@ const Information = () => {
             return;
         }
         setLoading(true);
-        await service.edit(tourney.id, {
+        const error = await service.edit(tourney.id, {
             ...tourney, 
             information: value, 
             hostRoles: user.roles
                 .filter(role => role.tournamentId === tourney.id)
                 .map(role => role.role)
         });
-        setEdit(false);
+        if (error) {
+            setError(error);
+        } else {
+            setEdit(false);
+        }
         setLoading(false);
     }
 

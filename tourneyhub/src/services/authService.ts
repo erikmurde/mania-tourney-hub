@@ -1,4 +1,5 @@
 import { ADMIN, COMMENTATOR, GFX, HOST, MAPPER, MAPPOOLER, PLAYTESTER, REFEREE, SHEETER, STREAMER } from '../constants';
+import { ApiErrorResponse } from '../dto/ApiErrorResponse';
 import { ICountryDto } from '../dto/ICountryDto';
 import { UserDto } from '../dto/user/UserDto';
 import { UserDtoSimple } from '../dto/user/UserDtoSimple';
@@ -53,21 +54,29 @@ export class AuthService extends ApiEntityService<UserDto, UserDto, UserDto> {
         return response.data;
     }
 
-    async updateMe(data: UserEditDto) {
-        await this.axios.put(`${this.baseUrl}/me`, data);
+    async updateMe(data: UserEditDto): Promise<ApiErrorResponse | undefined> {
+        try {
+            await this.axios.put(`${this.baseUrl}/me`, data);
+        } catch (error) {
+            return this.getError(error);
+        }
     }
 
-    async removeUserRole(userId: string, tournamentId: string, role: string) {
-        await this.axios.delete(`${this.baseUrl}/${tournamentId}/${role}`, { 
-            params: { userId: userId } 
-        });
+    async removeUserRole(userId: string, tournamentId: string, role: string): Promise<ApiErrorResponse | undefined> {
+        try {
+            await this.axios.delete(`${this.baseUrl}/${tournamentId}/${role}`, { 
+                params: { userId: userId } 
+            });
+        } catch (error) {
+            return this.getError(error);
+        }
     }
 
-    isHost(user: UserDto, tournamentId: string) {
+    isHost(user: UserDto, tournamentId: string): boolean {
         return this.getTournamentRoles(user, tournamentId).includes(HOST);
     }
 
-    hasRoles(user: UserDto | null, tournamentId: string, ...roles: string[]) {
+    hasRoles(user: UserDto | null, tournamentId: string, ...roles: string[]): boolean {
         if (!user) {
             return false;
         }
@@ -76,16 +85,16 @@ export class AuthService extends ApiEntityService<UserDto, UserDto, UserDto> {
             .some(role => roles.includes(role));
     }
 
-    isStaff(user: UserDto | null, tournamentId: string) {
+    isStaff(user: UserDto | null, tournamentId: string): boolean {
         const staffRoles = [HOST, ADMIN, MAPPOOLER, MAPPER, PLAYTESTER, REFEREE, STREAMER, COMMENTATOR, SHEETER, GFX];
         return this.hasRoles(user, tournamentId, ...staffRoles);
     }
 
-    getLogo(country: ICountryDto) {
+    getLogo(country: ICountryDto): string {
         return `https://assets.ppy.sh/old-flags/${country.iso2}.png`;
     }
 
-    private getTournamentRoles(user: UserDto, tournamentId: string) {
+    private getTournamentRoles(user: UserDto, tournamentId: string): string[] {
         return user.roles
             .filter(tourneyRole => tourneyRole.tournamentId === tournamentId)
             .map(tourneyRole => tourneyRole.role);

@@ -6,6 +6,8 @@ import { UserDto } from '../dto/user/UserDto';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { AuthService } from '../services/authService';
+import ErrorDialog from '../components/ErrorDialog';
+import { ApiErrorResponse } from '../dto/ApiErrorResponse';
 
 interface IAuthContext {
     user: UserDto | null,
@@ -19,6 +21,10 @@ interface IUpdateContext {
     setMapPoolUpdate: (count: number) => void,
     scheduleUpdate: number,
     setScheduleUpdate: (cound: number) => void
+}
+
+interface IErrorContext {
+    setError: (error: ApiErrorResponse | null) => void
 }
 
 export const AuthContext = createContext<IAuthContext>({
@@ -35,8 +41,13 @@ export const UpdateContext = createContext<IUpdateContext>({
     setScheduleUpdate: () => {}
 })
 
+export const ErrorContext = createContext<IErrorContext>({
+    setError: () => {}
+});
+
 const Root = () => {
     const [user, setUser] = useState(null as UserDto | null);
+    const [error, setError] = useState(null as ApiErrorResponse | null);
 
     const [stageUpdate, setStageUpdate] = useState(0);
     const [mapPoolUpdate, setMapPoolUpdate] = useState(0);
@@ -53,22 +64,26 @@ const Root = () => {
     }
 
     return (
-        <AuthContext.Provider value={{ user, updateUser }}>
-            <UpdateContext.Provider value={{ 
-                stageUpdate, setStageUpdate, mapPoolUpdate, setMapPoolUpdate, scheduleUpdate, setScheduleUpdate 
-            }}>
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                    <Grid container minHeight='100vh' direction='column' alignItems='center'>
-                        <Grid item width={1}>
-                            <Header />
+        <ErrorContext.Provider value={{ setError }}>
+            <AuthContext.Provider value={{ user, updateUser }}>
+                <UpdateContext.Provider value={{ 
+                    stageUpdate, setStageUpdate, mapPoolUpdate, setMapPoolUpdate, scheduleUpdate, setScheduleUpdate 
+                }}>
+                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                        <Grid container minHeight='100vh' direction='column' alignItems='center'>
+                            <Grid item width={1}>
+                                <Header />
+                            </Grid>
+                            <Grid item xs paddingTop={2} paddingBottom={4} width={1} sx={{ maxWidth: '1400px !important' }}>
+                                <Outlet />
+                            </Grid>
                         </Grid>
-                        <Grid item xs paddingTop={2} paddingBottom={4} width={1} sx={{ maxWidth: '1400px !important' }}>
-                            <Outlet />
-                        </Grid>
-                    </Grid>
-                </LocalizationProvider>
-            </UpdateContext.Provider>
-        </AuthContext.Provider>
+                    </LocalizationProvider>
+                </UpdateContext.Provider>
+            </AuthContext.Provider>
+            {error &&
+            <ErrorDialog error={error} setError={setError}/>}
+        </ErrorContext.Provider>
     );
 }
 

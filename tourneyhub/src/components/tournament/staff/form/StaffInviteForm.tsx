@@ -1,5 +1,5 @@
 import { Dialog, Button } from '@mui/material';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { StyledDialogActions } from '../../../styled/StyledDialogActions';
 import { StyledDialogContent } from '../../../styled/styledDialogContent';
 import TourneyDialogTitle from '../../dialog/TourneyDialogTitle';
@@ -15,6 +15,7 @@ import { RoleDto } from '../../../../dto/RoleDto';
 import { UserDto } from '../../../../dto/user/UserDto';
 import { StaffInviteCreateDto } from '../../../../dto/staff/invite/StaffInviteCreateDto';
 import LoadingButton from '../../../LoadingButton';
+import { ErrorContext } from '../../../../routes/Root';
 
 interface IProps {
     roles: RoleDto[],
@@ -22,11 +23,12 @@ interface IProps {
 }
 
 const StaffInviteForm = ({roles, user}: IProps) => {
+    const { setError } = useContext(ErrorContext);
     const { tourney } = useTourney();
-
     const [open, setOpen] = useState(false);
     const [loading, setLoading] = useState(false);
     const [users, setUsers] = useState([] as UserDtoSimple[]);
+    const service = new StaffInviteService();
 
     useEffect(() => {
         if (open) {
@@ -39,7 +41,11 @@ const StaffInviteForm = ({roles, user}: IProps) => {
     }, [open]);
 
     const onSubmit = async(values: StaffInviteCreateDto) => {
-        await new StaffInviteService().create(values);
+        const response = await service.create(values);
+
+        if (service.isErrorResponse(response)) {
+            return setError(response);
+        }
         setOpen(false);
     }
 

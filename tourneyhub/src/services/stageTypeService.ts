@@ -1,3 +1,4 @@
+import { ApiErrorResponse } from '../dto/ApiErrorResponse';
 import { IStageTypeDto } from '../dto/stageType/IStageTypeDto';
 import { ApiEntityService } from './base/apiEntityService';
 
@@ -6,10 +7,14 @@ export class StageTypeService extends ApiEntityService<IStageTypeDto, IStageType
         super('stageTypes');
     }
 
-    async getByName(name: string): Promise<IStageTypeDto> {
-        const response = await this.axios.get(`${this.baseUrl}/name/${name}`);
+    async getByName(name: string): Promise<IStageTypeDto | ApiErrorResponse> {
+        try {
+            const response = await this.axios.get(`${this.baseUrl}/name/${name}`);
+            console.log('getByName response: ', response);
 
-        console.log('getByName response: ', response);
-        return response.data;
+            return response.data;
+        } catch (error) {
+            return this.getError(error);
+        }
     }
 }

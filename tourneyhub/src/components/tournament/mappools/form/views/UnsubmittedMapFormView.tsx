@@ -40,18 +40,12 @@ const UnsubmittedMapFormView = ({initialValues, mapTypes, validationSchema, onSu
                             error={errors.diff !== undefined}
                             helperText={errors.diff}/>
                     </Grid>
-                    {edit && 
-                    <Grid item xs={4}>
-                        <FastField as={TextField} type='number' name='beatmapId' label='Beatmap ID' fullWidth
-                            error={errors.beatmapId !== undefined}
-                            helperText={errors.beatmapId}/>
-                    </Grid>}
-                    <Grid item xs={edit ? 4 : 6}>
+                    <Grid item xs={6}>
                         <FastField as={TextField} name='artist' label='Artist' fullWidth
                             error={errors.artist !== undefined}
                             helperText={errors.artist}/>
                     </Grid>
-                    <Grid item xs={edit ? 4 : 6}>
+                    <Grid item xs={6}>
                         <FastField as={TextField} name='mapper' label='Mapper' fullWidth
                             error={errors.mapper !== undefined}
                             helperText={errors.mapper}/>

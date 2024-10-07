@@ -19,6 +19,7 @@ const SubmittedMapFormView = ({initialValues, mapTypes, validationSchema, onSubm
             initialValues={initialValues}
             validationSchema={validationSchema}
             validateOnChange={false}
+            validateOnBlur={false}
             onSubmit={onSubmit}
             >
             {({ values, errors }) => 
