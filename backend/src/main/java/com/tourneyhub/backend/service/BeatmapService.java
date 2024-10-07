@@ -120,6 +120,7 @@ public class BeatmapService {
         validateDuplicateTb(isTb, stageId);
         validateDuplicateBeatmapId(mapId, stageId, mapDto.getBeatmapId());
 
+        mapDto.setBeatmapId(0);
         mapDto.setStageId(stageId);
         mapDto.setIndex(isTb ? 0 : mapDto.getIndex());
 
