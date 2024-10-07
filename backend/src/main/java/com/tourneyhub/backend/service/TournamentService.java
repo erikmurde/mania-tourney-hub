@@ -144,7 +144,7 @@ public class TournamentService {
         Team team = uow.teamRepository
                 .findById(teamId)
                 .orElseThrow(() -> new AppException(
-                        String.format("No team with ID: %d.", teamId), HttpStatus.NOT_FOUND));
+                        String.format("No team with ID %d.", teamId), HttpStatus.NOT_FOUND));
 
         Tournament tournament = getTournament(tournamentId);
         Integer placement = uow.statsRepository.getNumOfActiveTeams(tournamentId);
@@ -160,7 +160,7 @@ public class TournamentService {
         TournamentPlayer stats = uow.statsRepository
                 .getPlayerStatsInTournament(tournament.getId(), playerId)
                 .orElseThrow(() -> new AppException(
-                        String.format("No stats for player with ID: %d.", playerId), HttpStatus.NOT_FOUND));
+                        String.format("No stats for player with ID %d.", playerId), HttpStatus.NOT_FOUND));
 
         if (tournament.isPlayersPublished() && stats.getPlacement() == 0) {
             stats.setPlacement(placement);
@@ -205,14 +205,14 @@ public class TournamentService {
         return uow.tournamentRepository
                 .findById(tournamentId)
                 .orElseThrow(() -> new AppException(
-                        String.format("No tournament with ID: %d.", tournamentId), HttpStatus.NOT_FOUND));
+                        String.format("No tournament with ID %d.", tournamentId), HttpStatus.NOT_FOUND));
     }
 
     private AppUser getLoggedInUser(Long currentUserId) {
         return uow.userRepository
                 .findById(currentUserId)
                 .orElseThrow(() -> new AppException(
-                        String.format("No user with ID: %d.", currentUserId), HttpStatus.NOT_FOUND));
+                        String.format("No user with ID %d.", currentUserId), HttpStatus.NOT_FOUND));
     }
 
     private Status getStatus(String name) {

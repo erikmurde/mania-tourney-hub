@@ -40,6 +40,6 @@ public class EventService {
         return repository
                 .findById(id)
                 .orElseThrow(() -> new AppException(
-                        String.format("No event with ID: %d.", id), HttpStatus.NOT_FOUND));
+                        String.format("No event with ID %d.", id), HttpStatus.NOT_FOUND));
     }
 }

@@ -60,7 +60,7 @@ public class MatchService {
         Stage stage = uow.stageRepository
                 .findById(dto.getStageId())
                 .orElseThrow(() -> new AppException(
-                        String.format("No stage with ID: %d.", dto.getStageId()), HttpStatus.NOT_FOUND));
+                        String.format("No stage with ID %d.", dto.getStageId()), HttpStatus.NOT_FOUND));
 
         if (!userService.hasAnyRole(stage.getTournamentId(), principal, HOST, ADMIN)) {
             throw new AppException(NO_PERMISSION, HttpStatus.FORBIDDEN);

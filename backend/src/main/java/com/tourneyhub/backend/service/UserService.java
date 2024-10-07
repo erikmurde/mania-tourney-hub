@@ -65,7 +65,7 @@ public class UserService {
         Tournament tournament = uow.tournamentRepository
                 .findById(tournamentId)
                 .orElseThrow(() -> new AppException(
-                        String.format("No tournament with ID: %d.", tournamentId), HttpStatus.NOT_FOUND));
+                        String.format("No tournament with ID %d.", tournamentId), HttpStatus.NOT_FOUND));
 
         if (!tournament.isPlayersPublished() && !hasAnyRole(tournamentId, principal, HOST, ADMIN)) {
             return new ArrayList<>();
@@ -140,6 +140,6 @@ public class UserService {
         return uow.userRepository
                 .findById(Objects.requireNonNull(id))
                 .orElseThrow(() -> new AppException(
-                        String.format("No user with ID: %d.", id), HttpStatus.NOT_FOUND));
+                        String.format("No user with ID %d.", id), HttpStatus.NOT_FOUND));
     }
 }

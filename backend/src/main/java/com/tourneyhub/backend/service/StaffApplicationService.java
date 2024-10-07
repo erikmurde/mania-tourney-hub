@@ -54,7 +54,7 @@ public class StaffApplicationService {
         Tournament tournament = uow.tournamentRepository
                 .findById(dto.getTournamentId())
                 .orElseThrow(() -> new AppException(
-                        String.format("No tournament with ID: %d.", dto.getTournamentId()), HttpStatus.NOT_FOUND));
+                        String.format("No tournament with ID %d.", dto.getTournamentId()), HttpStatus.NOT_FOUND));
 
         if (!tournament.isApplicationsOpen() || new Date().after(tournament.getApplicationDeadline())) {
             throw new AppException("Staff applications are closed!", HttpStatus.BAD_REQUEST);
@@ -93,13 +93,13 @@ public class StaffApplicationService {
         return uow.staffRequestRepository
                 .findById(id)
                 .orElseThrow(() -> new AppException(
-                        String.format("No staff request with ID: %d.", id), HttpStatus.NOT_FOUND));
+                        String.format("No staff request with ID %d.", id), HttpStatus.NOT_FOUND));
     }
 
     private Status getStatus(Long id) {
         return uow.statusRepository
                 .findById(id)
                 .orElseThrow(() -> new AppException(
-                        String.format("No status with ID: %d.", id), HttpStatus.NOT_FOUND));
+                        String.format("No status with ID %d.", id), HttpStatus.NOT_FOUND));
     }
 }

@@ -86,7 +86,7 @@ public class TeamService {
             AppUser user = uow.userRepository
                     .findById(playerId)
                     .orElseThrow(() -> new AppException(
-                            String.format("No user with ID: %d.", playerId), HttpStatus.NOT_FOUND));
+                            String.format("No user with ID %d.", playerId), HttpStatus.NOT_FOUND));
 
             boolean teamCaptain = user.getId().equals(currentUserId);
             uow.tournamentRoleRepository.save(tournamentRoleMapper.mapToEntity(role, tournament, user));
@@ -125,6 +125,6 @@ public class TeamService {
         return uow.tournamentRepository
                 .findById(id)
                 .orElseThrow(() -> new AppException(
-                        String.format("No tournament with ID: %d.", id), HttpStatus.NOT_FOUND));
+                        String.format("No tournament with ID %d.", id), HttpStatus.NOT_FOUND));
     }
 }

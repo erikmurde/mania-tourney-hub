@@ -85,7 +85,7 @@ public class StaffInviteService {
         return uow.staffRequestRepository
                 .findById(id)
                 .orElseThrow(() -> new AppException(
-                        String.format("No staff request with ID: %d.", id), HttpStatus.NOT_FOUND));
+                        String.format("No staff request with ID %d.", id), HttpStatus.NOT_FOUND));
     }
 
     private Status getStatus(String name) {
