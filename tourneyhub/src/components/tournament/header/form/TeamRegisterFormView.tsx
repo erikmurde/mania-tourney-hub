@@ -39,28 +39,31 @@ const TeamRegisterFormView = ({tourney, initialValues, selectValues, validationS
     
                 return (
                 <Form id='team-register-form'>
-                    <Grid container rowSpacing={1.5} columnSpacing={1} marginTop={1} alignItems='center'>
+                    <Grid container rowSpacing={2} columnSpacing={1.5} marginTop={0} alignItems='center'>
                         <Grid item xs={12}>
                             <Typography>General information</Typography>
                         </Grid>
                         <Grid item xs={12}>
                             <Field fullWidth as={TextField}
+                                size='small'
                                 name='name' 
-                                label='Team name *' 
+                                label='Team name' 
                                 error={errors.name !== undefined}
                                 helperText={errors.name}/>
                         </Grid>
                         <Grid item xs={12}>
-                            <Field fullWidth as={TextField} 
+                            <Field fullWidth as={TextField}
+                                size='small'
                                 name='logo' 
                                 label='Team logo link' 
                                 error={errors.logo !== undefined}
                                 helperText={errors.logo}/>
                         </Grid>
                         <Grid item xs={12}>
-                            <Field fullWidth as={TextField} 
+                            <Field fullWidth as={TextField}
+                                size='small'
                                 name='availability' 
-                                label='Availability *' 
+                                label='Availability' 
                                 error={errors.availability !== undefined}
                                 helperText={errors.availability}/>
                         </Grid>

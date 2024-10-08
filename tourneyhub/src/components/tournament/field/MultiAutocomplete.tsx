@@ -28,7 +28,9 @@ const MultiAutocomplete = ({field, form, label, error, options, country, valueId
     return (  
         <Autocomplete
             multiple
+            size='small'
             disableCloseOnSelect
+            limitTags={4}
             options={options}
             getOptionLabel={option => option.name}
             isOptionEqualToValue={(option, value) => option.name === value.name}

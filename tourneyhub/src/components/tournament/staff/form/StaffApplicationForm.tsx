@@ -1,7 +1,7 @@
 import StaffApplicationFormView from './views/StaffApplicationFormView';
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext, ErrorContext } from '../../../../routes/Root';
-import { REQUIRED, PENDING, LOGIN_URL } from '../../../../constants';
+import { REQUIRED, PENDING, LOGIN_URL, HOST, PLAYER } from '../../../../constants';
 import { Schema, number, object, string } from 'yup';
 import FormDialogBase from '../../dialog/FormDialogBase';
 import { StaffApplicationService } from '../../../../services/staffApplicationService';
@@ -26,7 +26,9 @@ const StaffApplicationForm = ({tourney}: {tourney: TournamentDto}) => {
         if (open && roles.length === 0) {
             new RoleService()
                 .getAll()
-                .then(roles => setRoles(roles));
+                .then(roles => setRoles(
+                    roles.filter(role => ![HOST, PLAYER].includes(role.name))
+                ));
         }
     }, [open, roles.length]);
 

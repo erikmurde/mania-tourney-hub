@@ -70,7 +70,7 @@ const Home = () => {
                 <Accordion elevation={2} defaultExpanded>
                     <AccordionSummary expandIcon={<ExpandMore/>} sx={{ paddingLeft: 5 }}>
                         <Typography variant='h3' fontSize={36}>
-                            Filter tournaments
+                            Filters
                         </Typography>
                     </AccordionSummary>
                     <AccordionDetails sx={{ paddingLeft: 5 }}>

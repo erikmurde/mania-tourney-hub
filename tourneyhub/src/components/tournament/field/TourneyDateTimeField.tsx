@@ -24,6 +24,7 @@ const TourneyDateTimeField = ({label, error, field}: IProps) => {
                 onChange={(value) => setFieldValue(field.name, value)}
                 slotProps={{
                     textField: {
+                        size: 'small',
                         error: isInvalid
                     }
                 }}/>

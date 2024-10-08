@@ -19,12 +19,14 @@ const StageCreateFormView = ({initialValues, validationSchema, onSubmit}: IProps
             initialValues={initialValues} 
             onSubmit={onSubmit}
             validationSchema={validationSchema}
-            validateOnChange={false}>
+            validateOnChange={false}
+            validateOnBlur={false}>
             {({ errors }) => (
                 <Form id='stage-create-form'>
-                    <Grid container rowSpacing={2} columnSpacing={1} marginTop={0.5}>
+                    <Grid container rowSpacing={2} columnSpacing={1.5} marginTop={0}>
                         <Grid item xs={12}>
                             <Field fullWidth as={TextField} 
+                                size='small'
                                 name='name' 
                                 label='Name' 
                                 error={errors.name !== undefined} 
@@ -32,7 +34,8 @@ const StageCreateFormView = ({initialValues, validationSchema, onSubmit}: IProps
                         </Grid>
                         {type === STANDARD && 
                         <Grid item>
-                            <Field fullWidth as={TextField} 
+                            <Field fullWidth as={TextField}
+                                size='small'
                                 name='bestOf' 
                                 label='Best of' 
                                 type='number'
@@ -48,7 +51,8 @@ const StageCreateFormView = ({initialValues, validationSchema, onSubmit}: IProps
                                 error={errors.schedulingDeadline}/>
                         </Grid>
                         <Grid item xs={6}>
-                            <Field fullWidth as={TextField} 
+                            <Field fullWidth as={TextField}
+                                size='small'
                                 name='lobbySize' 
                                 label='Lobby size'
                                 type='number'
@@ -56,7 +60,8 @@ const StageCreateFormView = ({initialValues, validationSchema, onSubmit}: IProps
                                 helperText={errors.lobbySize}/>
                         </Grid>
                         <Grid item xs={6}>
-                            <Field fullWidth as={TextField} 
+                            <Field fullWidth as={TextField}
+                                size='small'
                                 name='numAdvancing' 
                                 label='Advancing players' 
                                 type='number'

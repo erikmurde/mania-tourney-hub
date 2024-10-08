@@ -24,10 +24,11 @@ const StaffInviteFormView = ({initialValues, selectValues, validationSchema, onS
             onSubmit={onSubmit}
             validationSchema={validationSchema}
             validateOnChange={false}
+            validateOnBlur={false}
             >
             {({ errors }) => (
                 <Form id='staff-invite-form'>
-                    <Grid container direction='column' rowSpacing={2} marginTop={1}>
+                    <Grid container direction='column' rowSpacing={2} marginTop={0}>
                         <Grid item>
                             <Field component={PlayerAutocomplete} 
                                 valueId
@@ -37,7 +38,8 @@ const StaffInviteFormView = ({initialValues, selectValues, validationSchema, onS
                                 options={selectValues.users}/>
                         </Grid>
                         <Grid item>
-                            <TourneySelectField name='roleId' label='Staff role' error={errors.roleId}
+                            <TourneySelectField name='roleId' label='Staff role' small
+                                error={errors.roleId}
                                 options={selectValues.roles.map(role => 
                                     <MenuItem key={role.id} value={role.id}>{role.name}</MenuItem>
                                 )}/>

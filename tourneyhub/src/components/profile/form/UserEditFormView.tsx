@@ -22,14 +22,15 @@ const UserEditFormView = ({initialValues, validationSchema, onSubmit}: IProps) =
                 <Form id='user-edit-form'>
                     <Grid container spacing={1}>
                         <Grid item xs={8}>
-                            <Field fullWidth as={TextField} 
+                            <Field fullWidth as={TextField}
+                                size='small'
                                 name='discordUsername' 
                                 label='Discord username' 
                                 error={errors.discordUsername !== undefined} 
                                 helperText={errors.discordUsername}/> 
                         </Grid>
                         <Grid item xs={4}>
-                            <TourneySelectField name='timezone' label='Time zone' error={errors.timezone}
+                            <TourneySelectField name='timezone' label='Time zone' error={errors.timezone} small
                                 options={TIMEZONES.map(timezone => 
                                     <MenuItem key={timezone} value={timezone}>
                                         UTC{`${timezone < 0 ? '' : '+'}${timezone}`}

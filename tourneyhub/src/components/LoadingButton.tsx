@@ -11,7 +11,7 @@ const LoadingButton = ({loading, children, ...btnProps}: IProps) => {
 
     return (  
         <Button variant='contained' {...btnProps}
-            sx={{ lineHeight: 0, ...btnProps.sx }}
+            sx={{ ...btnProps.sx }}
             disabled={loading || btnProps.disabled} 
             startIcon={loading 
                 ? <></> 

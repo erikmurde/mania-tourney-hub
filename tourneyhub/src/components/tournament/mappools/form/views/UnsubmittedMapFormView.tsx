@@ -26,37 +26,43 @@ const UnsubmittedMapFormView = ({initialValues, mapTypes, validationSchema, onSu
             >
             {({ values, errors }) => 
             <Form id='unsubmitted-map-form'>
-                <Grid container rowSpacing={1.5} columnSpacing={1}>
+                <Grid container rowSpacing={2} columnSpacing={1.5}>
                     <Grid item xs={12} marginTop={1}>
                         <Typography>General information</Typography>
                     </Grid>
                     <Grid item xs={6}>
-                        <FastField as={TextField} name='title' label='Title' fullWidth
+                        <FastField as={TextField} name='title' label='Title' size='small'
+                            fullWidth
                             error={errors.title !== undefined}
                             helperText={errors.title}/>
                     </Grid>
                     <Grid item xs={6}>
-                        <FastField as={TextField} name='diff' label='Difficulty' fullWidth
+                        <FastField as={TextField} name='diff' label='Difficulty' size='small'
+                            fullWidth
                             error={errors.diff !== undefined}
                             helperText={errors.diff}/>
                     </Grid>
                     <Grid item xs={6}>
-                        <FastField as={TextField} name='artist' label='Artist' fullWidth
+                        <FastField as={TextField} name='artist' label='Artist' size='small'
+                            fullWidth
                             error={errors.artist !== undefined}
                             helperText={errors.artist}/>
                     </Grid>
                     <Grid item xs={6}>
-                        <FastField as={TextField} name='mapper' label='Mapper' fullWidth
+                        <FastField as={TextField} name='mapper' label='Mapper' size='small'
+                            fullWidth
                             error={errors.mapper !== undefined}
                             helperText={errors.mapper}/>
                     </Grid>
                     <Grid item xs={6}>
-                        <FastField as={TextField} name='cover' label='Cover link' fullWidth
+                        <FastField as={TextField} name='cover' label='Cover link' size='small'
+                            fullWidth
                             error={errors.cover !== undefined}
                             helperText={errors.cover}/>
                     </Grid>
                     <Grid item xs={6}>
-                        <FastField as={TextField} name='download' label='Download link' fullWidth
+                        <FastField as={TextField} name='download' label='Download link' size='small'
+                            fullWidth
                             error={errors.download !== undefined}
                             helperText={errors.download}/>
                     </Grid>
@@ -64,27 +70,32 @@ const UnsubmittedMapFormView = ({initialValues, mapTypes, validationSchema, onSu
                         <Typography>Map parameters</Typography>
                     </Grid>
                     <Grid item xs={2.4}>
-                        <FastField as={TextField} type='number' name='sr' label='Star rating' fullWidth
+                        <FastField as={TextField} type='number' name='sr' label='Star rating' size='small'
+                            fullWidth
                             error={errors.sr !== undefined}
                             helperText={errors.sr}/>
                     </Grid>
                     <Grid item xs={2.4}>
-                        <FastField as={TextField} type='number' name='bpm' label='BPM' fullWidth
+                        <FastField as={TextField} type='number' name='bpm' label='BPM' size='small'
+                            fullWidth
                             error={errors.bpm !== undefined}
                             helperText={errors.bpm}/>
                     </Grid>
                     <Grid item xs={2.4}>
-                        <FastField as={TextField} type='number' name='drainTime' label='Drain time (sec)' fullWidth
+                        <FastField as={TextField} type='number' name='drainTime' label='Drain time (sec)' size='small'
+                            fullWidth
                             error={errors.drainTime !== undefined}
                             helperText={errors.drainTime}/>
                     </Grid>
                     <Grid item xs={2.4}>
-                        <FastField as={TextField} type='number' name='hp' label='HP' fullWidth
+                        <FastField as={TextField} type='number' name='hp' label='HP' size='small'
+                            fullWidth
                             error={errors.hp !== undefined}
                             helperText={errors.hp}/>
                     </Grid>
                     <Grid item xs={2.4}>
-                        <FastField as={TextField} type='number' name='od' label='OD' fullWidth
+                        <FastField as={TextField} type='number' name='od' label='OD' size='small'
+                            fullWidth
                             error={errors.od !== undefined}
                             helperText={errors.od}/>
                     </Grid>
@@ -92,7 +103,7 @@ const UnsubmittedMapFormView = ({initialValues, mapTypes, validationSchema, onSu
                         <Typography>Map placement</Typography>
                     </Grid>
                     <Grid item xs={2.4}>
-                        <TourneySelectField name='mapType' label='Map type' 
+                        <TourneySelectField name='mapType' label='Map type' small
                             error={errors.mapType}
                             options={mapTypes.map(mapType => 
                                 <MenuItem key={mapType.id} value={mapType.name}>{mapType.name}</MenuItem>
@@ -100,7 +111,8 @@ const UnsubmittedMapFormView = ({initialValues, mapTypes, validationSchema, onSu
                     </Grid>
                     {values.mapType !== TB &&
                     <Grid item xs={2.4}>
-                        <FastField as={TextField} type='number' name='index' label='Index' fullWidth
+                        <FastField as={TextField} type='number' name='index' label='Index' size='small'
+                            fullWidth
                             error={errors.index !== undefined}
                             helperText={errors.index}/>
                     </Grid>}

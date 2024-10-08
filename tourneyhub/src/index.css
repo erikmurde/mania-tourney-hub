@@ -11,10 +11,6 @@ body {
   background-color: var(--background-default);
 }
 
-button {
-  height: 36px;
-}
-
 .flex-center {
   display: flex;
   justify-content: center;
@@ -22,7 +18,7 @@ button {
 }
 
 .home-banner {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://assets.ppy.sh/beatmaps/1452883/covers/cover.jpg');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://assets.ppy.sh/beatmaps/1452883/covers/cover@2x.jpg?1648902064');
   background-repeat: no-repeat;
   background-size: cover;
   border-radius: 5px;

@@ -148,7 +148,7 @@ const HeaderButtons = ({tourney, updateTourney}: IProps) => {
                     description='This will archive the tournament and remove any ability to edit it. This action cannot be undone!'
                     actionTitle='Conclude' 
                     action={onConclude}
-                    btnProps={{ title: 'Conclude', startIcon: <Done/> }}/>
+                    btnProps={{ title: 'Conclude', startIcon: <Done/>}}/>
             </Grid>}
             {tourney.links.length > 0 && 
             <LinkMenu links={tourney.links}/>}

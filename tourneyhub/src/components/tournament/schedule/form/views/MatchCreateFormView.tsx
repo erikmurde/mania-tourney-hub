@@ -31,15 +31,18 @@ const MatchCreateFormView = ({initialValues, selectValues, validationSchema, onS
             initialValues={initialValues}
             onSubmit={onSubmit}
             validationSchema={validationSchema}
-            validateOnChange={false}>
+            validateOnChange={false}
+            validateOnBlur={false}
+            >
             {({ errors }) => (
                 <Form id='match-create-form'>
-                    <Grid container rowSpacing={2} columnSpacing={1} marginTop={1}>
+                    <Grid container rowSpacing={2} columnSpacing={1.5}>
                         <Grid item xs={12}>
                             <Typography>General information</Typography>
                         </Grid>
                         <Grid item xs={6}>
                             <Field as={TextField} 
+                                size='small'
                                 name='code' 
                                 label='Match code' 
                                 error={errors.code !== undefined}

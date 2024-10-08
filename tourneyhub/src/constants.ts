@@ -49,7 +49,7 @@ export const DUPLICATE_BEATMAP_ID = 'Map already in pool';
 export const TOO_LARGE = 'Value too large';
 
 export const INVALID_DATE = 'Invalid date format';
-export const FUTURE_DATE = 'Must be in the future';
+export const FUTURE_DATE = 'Must be an hour or more in the future';
 
 // STAGE TYPES
 export const STANDARD = 'standard';

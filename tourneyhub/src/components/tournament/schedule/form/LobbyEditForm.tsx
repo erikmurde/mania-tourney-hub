@@ -1,6 +1,5 @@
 import { Edit } from '@mui/icons-material';
 import FormDialogBase from '../../dialog/FormDialogBase';
-import LobbyCreateFormView from './views/LobbyCreateFormView';
 import { useContext, useEffect, useState } from 'react';
 import { LobbyDto } from '../../../../dto/schedule/lobby/LobbyDto';
 import { AuthService } from '../../../../services/authService';
@@ -13,6 +12,7 @@ import { useTourney } from '../../../../routes/tournament/TournamentHeader';
 import { UserDtoSimple } from '../../../../dto/user/UserDtoSimple';
 import { LobbyCreateDto } from '../../../../dto/schedule/lobby/LobbyCreateDto';
 import LoadingButton from '../../../LoadingButton';
+import LobbyFormView from './views/LobbyFormView';
 
 const LobbyEditForm = ({lobby}: {lobby: LobbyDto}) => {
     const { scheduleUpdate, setScheduleUpdate } = useContext(UpdateContext);
@@ -66,7 +66,7 @@ const LobbyEditForm = ({lobby}: {lobby: LobbyDto}) => {
             open={open} 
             setOpen={setOpen}
             form={
-                <LobbyCreateFormView 
+                <LobbyFormView 
                     initialValues={initialValues} 
                     selectValues={selectValues} 
                     validationSchema={validationSchema} 
@@ -77,7 +77,7 @@ const LobbyEditForm = ({lobby}: {lobby: LobbyDto}) => {
                 }}/>
             }
             submitBtn={
-                <LoadingButton loading={loading} type='submit' form='lobby-create-form'
+                <LoadingButton loading={loading} type='submit' form='lobby-form'
                     sx={{ width: 80 }}>
                     Edit
                 </LoadingButton>

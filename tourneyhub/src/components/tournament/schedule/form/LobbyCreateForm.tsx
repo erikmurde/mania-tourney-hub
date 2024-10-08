@@ -1,7 +1,6 @@
 import { PlaylistAdd } from '@mui/icons-material';
 import FormDialogBase from '../../dialog/FormDialogBase';
 import { useContext, useEffect, useState } from 'react';
-import LobbyCreateFormView from './views/LobbyCreateFormView';
 import { AuthService } from '../../../../services/authService';
 import { ADMIN, FUTURE_DATE, HOST, INVALID_DATE, REFEREE, REQUIRED } from '../../../../constants';
 import { LobbyService } from '../../../../services/lobbyService';
@@ -13,6 +12,7 @@ import { useTourney } from '../../../../routes/tournament/TournamentHeader';
 import { UserDtoSimple } from '../../../../dto/user/UserDtoSimple';
 import { LobbyCreateDto } from '../../../../dto/schedule/lobby/LobbyCreateDto';
 import LoadingButton from '../../../LoadingButton';
+import LobbyFormView from './views/LobbyFormView';
 
 const LobbyCreateForm = ({stageId}: {stageId: string}) => {
     const { scheduleUpdate, setScheduleUpdate } = useContext(UpdateContext);
@@ -46,13 +46,13 @@ const LobbyCreateForm = ({stageId}: {stageId: string}) => {
         time: date()
             .typeError(INVALID_DATE)
             .required(REQUIRED)
-            .min(dayjs.utc(), FUTURE_DATE)
+            .min(dayjs.utc().add(1, 'hour'), FUTURE_DATE)
     })
 
     const initialValues: LobbyCreateDto = {
         stageId: stageId,
         referee: '',
-        time: dayjs.utc()
+        time: dayjs.utc().add(2, 'hours')
     }
 
     return (  
@@ -67,7 +67,7 @@ const LobbyCreateForm = ({stageId}: {stageId: string}) => {
             open={open} 
             setOpen={setOpen}
             form={
-                <LobbyCreateFormView 
+                <LobbyFormView 
                     initialValues={initialValues} 
                     selectValues={selectValues} 
                     validationSchema={validationSchema} 
@@ -78,7 +78,7 @@ const LobbyCreateForm = ({stageId}: {stageId: string}) => {
                 }}/>
             }
             submitBtn={
-                <LoadingButton loading={loading} type='submit' form='lobby-create-form'
+                <LoadingButton loading={loading} type='submit' form='lobby-form'
                     sx={{ width: 110 }}>
                     Schedule
                 </LoadingButton>

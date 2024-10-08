@@ -13,7 +13,7 @@ interface IProps {
     onSubmit: (values: LobbyCreateDto) => void
 }
 
-const LobbyCreateFormView = ({initialValues, selectValues, validationSchema, onSubmit}: IProps) => {
+const LobbyFormView = ({initialValues, selectValues, validationSchema, onSubmit}: IProps) => {
     return (  
         <Formik 
             initialValues={initialValues}
@@ -22,8 +22,8 @@ const LobbyCreateFormView = ({initialValues, selectValues, validationSchema, onS
             validateOnChange={false}
             enableReinitialize>
             {({ errors }) => (
-                <Form id='lobby-create-form'>
-                    <Grid container rowSpacing={2} marginTop={1}>
+                <Form id='lobby-form'>
+                    <Grid container rowSpacing={2} marginTop={0}>
                         <Grid item xs={12}>
                             <Field component={TourneyDateTimeField} 
                                 name='time' 
@@ -44,4 +44,4 @@ const LobbyCreateFormView = ({initialValues, selectValues, validationSchema, onS
     );
 }
 
-export default LobbyCreateFormView;
+export default LobbyFormView;

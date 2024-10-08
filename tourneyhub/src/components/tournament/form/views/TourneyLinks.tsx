@@ -1,4 +1,4 @@
-import { Delete } from '@mui/icons-material';
+import { Add, Delete } from '@mui/icons-material';
 import { Grid, Typography, Button, TextField, IconButton } from '@mui/material';
 import { FieldArray, FormikErrors, FastField } from 'formik';
 import { TourneyLinkDto } from '../../../../dto/TourneyLinkDto';
@@ -17,14 +17,16 @@ const TourneyLinks = ({links, errors}: IProps) => {
         <FieldArray name='links'>
         {({ push, remove }) => 
             <>
-            <Grid item xs={2} alignContent='center'>
+            <Grid item xs={6} alignContent='center'>
                 <Typography fontSize={18} fontWeight={500}>
                     Links
                 </Typography>
             </Grid>
-            <Grid item xs={10}>
+            <Grid item xs={6} textAlign='end'>
                 {links.length < MAX_LINKS &&
-                <Button variant='contained' color='success' onClick={() => push({ name: '', url: '' })}>
+                <Button color='success' 
+                    onClick={() => push({ name: '', url: '' })}
+                    startIcon={<Add/>}>
                     Add link
                 </Button>}
             </Grid>
@@ -33,18 +35,18 @@ const TourneyLinks = ({links, errors}: IProps) => {
                 return (
                 <Fragment key={index}>
                 <Grid item xs={4}>  
-                    <FastField as={TextField} name={`links[${index}].name`} label='Name'
+                    <FastField as={TextField} name={`links[${index}].name`} label='Name' size='small'
                         fullWidth
                         error={error?.name}
                         helperText={error?.name}/>                           
                 </Grid>
                 <Grid item xs={4}>
-                    <FastField as={TextField} name={`links[${index}].url`} label='URL'
+                    <FastField as={TextField} name={`links[${index}].url`} label='URL' size='small'
                         fullWidth
                         error={error?.url}
                         helperText={error?.url}/>  
                 </Grid>
-                <Grid item xs={4} marginTop={1}>
+                <Grid item xs={4}>
                     <IconButton color='error' onClick={() => remove(index)}>
                         <Delete/>
                     </IconButton>

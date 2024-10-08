@@ -20,6 +20,7 @@ const TeamAutocomplete = ({field, form, label, error, options, valueId}: IProps)
 
     return (  
         <Autocomplete
+            size='small'
             options={options}
             getOptionLabel={option => option.name}
             onChange={(_, value) => form.setFieldValue(

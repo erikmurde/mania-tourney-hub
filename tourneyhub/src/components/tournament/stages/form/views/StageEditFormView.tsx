@@ -22,9 +22,10 @@ const StageEditFormView = ({initialValues, validationSchema, onSubmit}: IProps) 
             validateOnChange={false}>
             {({ errors }) => (
                 <Form id='stage-edit-form'>
-                    <Grid container rowSpacing={2} columnSpacing={1} marginTop={1}>
+                    <Grid container rowSpacing={2} columnSpacing={1.5} marginTop={0}>
                         <Grid item xs={12}>
-                            <Field fullWidth as={TextField} 
+                            <Field fullWidth as={TextField}
+                                size='small'
                                 name='name' 
                                 label='Name' 
                                 error={errors.name !== undefined} 
@@ -39,7 +40,8 @@ const StageEditFormView = ({initialValues, validationSchema, onSubmit}: IProps) 
                                 error={errors.schedulingDeadline}/>
                         </Grid>
                         <Grid item xs={6}>
-                            <Field fullWidth as={TextField} 
+                            <Field fullWidth as={TextField}
+                                size='small'
                                 name='lobbySize' 
                                 label='Lobby size'
                                 type='number'
@@ -47,7 +49,8 @@ const StageEditFormView = ({initialValues, validationSchema, onSubmit}: IProps) 
                                 helperText={errors.lobbySize}/>
                         </Grid>
                         <Grid item xs>
-                            <Field fullWidth as={TextField} 
+                            <Field fullWidth as={TextField}
+                                size='small'
                                 name='numAdvancing' 
                                 label='Advancing players' 
                                 type='number'
@@ -57,7 +60,8 @@ const StageEditFormView = ({initialValues, validationSchema, onSubmit}: IProps) 
                         </>}
                         {type === STANDARD && 
                         <Grid item xs={6}>
-                            <Field fullWidth as={TextField} 
+                            <Field fullWidth as={TextField}
+                                size='small'
                                 name='bestOf' 
                                 label='Best of' 
                                 type='number'
@@ -69,17 +73,17 @@ const StageEditFormView = ({initialValues, validationSchema, onSubmit}: IProps) 
                         <Grid item xs={12}>
                             <Field name='mappoolPublished' label='Publish mappool' type='checkbox'
                             as={FormControlLabel} 
-                            control={<Checkbox/>}/>
+                            control={<Checkbox size='small'/>}/>
                         </Grid>
                         <Grid item xs={12}>
                             <Field name='schedulePublished' label='Publish schedule' type='checkbox'
                             as={FormControlLabel} 
-                            control={<Checkbox/>}/>
+                            control={<Checkbox size='small'/>}/>
                         </Grid>
                         <Grid item xs={12}>
                             <Field name='statsPublished' label='Publish statistics' type='checkbox'
                             as={FormControlLabel} 
-                            control={<Checkbox/>}/>
+                            control={<Checkbox size='small'/>}/>
                         </Grid>
                     </Grid>
                 </Form>

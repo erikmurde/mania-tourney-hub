@@ -18,12 +18,15 @@ const StaffApplicationFormView = ({initialValues, roles, validationSchema, onSub
             initialValues={initialValues}
             onSubmit={onSubmit}
             validationSchema={validationSchema}
-            validateOnChange={false}>
+            validateOnChange={false}
+            validateOnBlur={false}
+            >
             {({ errors }) => (
                 <Form id='staff-application-form'>
-                    <Grid container rowSpacing={2} marginTop={1}>
+                    <Grid container rowSpacing={2} marginTop={0}>
                         <Grid item xs>
-                            <TourneySelectField name='roleId' label='Desired role' error={errors.roleId}
+                            <TourneySelectField name='roleId' label='Desired role' small
+                                error={errors.roleId}
                                 options={roles.map(role => 
                                     <MenuItem key={role.id} value={role.id}>{role.name}</MenuItem>
                                 )}/>
@@ -35,7 +38,7 @@ const StaffApplicationFormView = ({initialValues, roles, validationSchema, onSub
                                 placeholder='Describe your reason for applying and any relevant experience'
                                 error={errors.description !== undefined}
                                 helperText={errors.description}
-                                rows={3}/>
+                                rows={4}/>
                         </Grid>
                     </Grid>
                 </Form>

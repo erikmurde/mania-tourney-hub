@@ -69,7 +69,7 @@ const ConfirmationDialog = ({btnProps, btnIcon, title, tooltip, description, act
                             await onAction();
                             onClose();
                         }}
-                        sx={{ width: 100 }}>
+                        sx={{ minWidth: 100 }}>
                         {actionTitle}
                     </LoadingButton>
                 </StyledDialogActions>

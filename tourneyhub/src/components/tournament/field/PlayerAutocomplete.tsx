@@ -21,6 +21,7 @@ const PlayerAutocomplete = ({field, form, label, error, options, valueId, disabl
 
     return (  
         <Autocomplete
+            size='small'
             disabled={disabled}
             options={options}
             getOptionLabel={option => option.name}

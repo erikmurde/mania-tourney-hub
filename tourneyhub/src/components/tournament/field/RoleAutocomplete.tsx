@@ -19,6 +19,7 @@ const RoleAutocomplete = ({field, form, label, error, options}: IProps) => {
     return (  
         <Autocomplete
             multiple
+            size='small'
             disableCloseOnSelect
             limitTags={4}
             options={options}
@@ -28,9 +29,12 @@ const RoleAutocomplete = ({field, form, label, error, options}: IProps) => {
             }
             renderTags={(tagValue, getTagProps) =>
                 tagValue.map((option, index) => (
-                    <Chip label={option}
+                    <Chip
+                        size='small'
+                        label={option} 
                         {...getTagProps({ index })}
-                        disabled={option === HOST}/>
+                        disabled={option === HOST}
+                    />
                 ))
             }
             renderInput={params => (

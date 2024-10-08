@@ -79,7 +79,7 @@ const StageCreateForm = ({type, open, onClose}: IProps) => {
         bestOf: 0,
         lobbySize: 0,
         numAdvancing: 0,
-        schedulingDeadline: dayjs.utc(),
+        schedulingDeadline: dayjs.utc().add(1, 'day'),
         mappoolPublished: false,
         schedulePublished: false,
         statsPublished: false

@@ -93,7 +93,7 @@ const MatchCreateForm = ({stageId}: {stageId: string}) => {
         time: date()
             .typeError(INVALID_DATE)
             .required(REQUIRED)
-            .min(dayjs.utc(), FUTURE_DATE),
+            .min(dayjs.utc().add(1, 'hour'), FUTURE_DATE),
         commentatorIds: array()
             .of(string())
             .max(2, 'Maximum 2 commentators')
@@ -103,7 +103,7 @@ const MatchCreateForm = ({stageId}: {stageId: string}) => {
         stageId: stageId,
         teams: tourney.minTeamSize > 1,
         code: '',
-        time: dayjs.utc(),
+        time: dayjs.utc().add(2, 'hours'),
         player1Id: '',
         player2Id: '',
         refereeId: '',

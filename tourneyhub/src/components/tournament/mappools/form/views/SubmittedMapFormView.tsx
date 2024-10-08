@@ -24,14 +24,15 @@ const SubmittedMapFormView = ({initialValues, mapTypes, validationSchema, onSubm
             >
             {({ values, errors }) => 
             <Form id='submitted-map-form'>
-                <Grid container rowSpacing={1.5} columnSpacing={1} marginTop={1}>
+                <Grid container rowSpacing={2} columnSpacing={1.5} marginTop={0}>
                     <Grid item xs={12}>
-                        <Field as={TextField} name='beatmapId' label='Beatmap ID' type='number' fullWidth
+                        <Field as={TextField} name='beatmapId' label='Beatmap ID' type='number' size='small' 
+                            fullWidth
                             error={errors.beatmapId !== undefined}
                             helperText={errors.beatmapId}/>
                     </Grid>
                     <Grid item xs={6}>
-                        <TourneySelectField name='mapType' label='Map type' 
+                        <TourneySelectField name='mapType' label='Map type' small
                             error={errors.mapType}
                             options={mapTypes.map(mapType => 
                                 <MenuItem key={mapType.id} value={mapType.name}>{mapType.name}</MenuItem>
@@ -39,7 +40,8 @@ const SubmittedMapFormView = ({initialValues, mapTypes, validationSchema, onSubm
                     </Grid>
                     {values.mapType !== TB &&
                     <Grid item xs={6}>
-                        <Field as={TextField} name='index' label='Index' type='number' fullWidth
+                        <Field as={TextField} name='index' label='Index' type='number' size='small' 
+                            fullWidth
                             error={errors.index !== undefined}
                             helperText={errors.index}/>
                     </Grid>}

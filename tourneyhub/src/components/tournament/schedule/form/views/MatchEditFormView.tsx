@@ -28,12 +28,13 @@ const MatchEditFormView = ({initialValues, selectValues, validationSchema, onSub
             enableReinitialize>
             {({ errors }) => (
                 <Form id='match-edit-form'>
-                    <Grid container rowSpacing={2} columnSpacing={1} marginTop={1}>
+                    <Grid container rowSpacing={2} columnSpacing={1.5}>
                         <Grid item xs={12}>
                             <Typography>General information</Typography>
                         </Grid>
                         <Grid item xs={6}>
-                            <Field as={TextField} 
+                            <Field as={TextField}
+                                size='small'
                                 name='code' 
                                 label='Match code' 
                                 error={errors.code !== undefined}

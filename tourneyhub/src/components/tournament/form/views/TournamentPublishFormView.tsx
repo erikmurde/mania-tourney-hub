@@ -25,10 +25,10 @@ const TournamentPublishFormView = ({initialValues, validationSchema, onSubmit}: 
                             <FormGroup>
                                 <FastField name='regsOpen' label='Open player registrations' type='checkbox'
                                     as={FormControlLabel} 
-                                    control={<Checkbox/>}/>
+                                    control={<Checkbox size='small'/>}/>
                                 <FastField name='applicationsOpen' label='Open staff applications' type='checkbox'
                                     as={FormControlLabel} 
-                                    control={<Checkbox/>}/>
+                                    control={<Checkbox size='small'/>}/>
                             </FormGroup>
                         </Grid>
                         <Grid item xs={8}>
