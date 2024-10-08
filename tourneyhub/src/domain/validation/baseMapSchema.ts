@@ -5,7 +5,7 @@ export const baseMapSchema = (hasTb: boolean) => object({
     index: number()
         .when('mapType', ([mapType], schema) => {
             return mapType !== TB 
-                ? schema.integer().min(1, MIN1)
+                ? schema.integer().min(1, MIN1).max(99, 'Must be under 100')
                 : schema.notRequired()
         }),
     mapType: string()
