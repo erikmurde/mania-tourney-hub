@@ -1,9 +1,15 @@
 import { Card, CardMedia, CardContent, CardActions, Typography, Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { SimpleTournamentDto } from '../../../dto/tournament/SimpleTournamentDto';
+import { TAB_ID } from '../../../constants';
 
 const TournamentCard = ({tourney}: {tourney: SimpleTournamentDto}) => {
     const navigate = useNavigate();
+
+    const openTourney = () => {
+        localStorage.removeItem(TAB_ID);
+        navigate(`/tournaments/${tourney.id}/information`);
+    }
 
     return (  
         <Card 
@@ -26,7 +32,7 @@ const TournamentCard = ({tourney}: {tourney: SimpleTournamentDto}) => {
             <CardActions sx={{ justifyContent: 'center', paddingBottom: 2 }}>
                 <Button 
                     variant='contained' 
-                    onClick={() => navigate(`/tournaments/${tourney.id}/information`)}>
+                    onClick={openTourney}>
                     Learn more
                 </Button>
             </CardActions>

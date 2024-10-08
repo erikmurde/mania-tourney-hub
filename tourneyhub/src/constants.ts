@@ -1,4 +1,5 @@
-export const STORED_USER = 'user';
+// LOCAL STORAGE
+export const TAB_ID = 'tabId';
 
 export const LOGIN_URL = 'http://localhost:8080/oauth2/authorization/osu';
 export const LOGOUT_URL = 'http://localhost:8080/logout';
