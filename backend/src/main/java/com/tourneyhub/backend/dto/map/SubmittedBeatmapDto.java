@@ -27,7 +27,7 @@ public class SubmittedBeatmapDto {
 
     @NotNull
     @Min(0)
-    @Max(100)
+    @Max(99)
     private Integer index;
 
     @NotNull

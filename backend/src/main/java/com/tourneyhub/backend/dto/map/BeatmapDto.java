@@ -85,7 +85,7 @@ public class BeatmapDto {
 
     @NotNull
     @Min(0)
-    @Max(100)
+    @Max(99)
     private int index;
 
     @NotNull

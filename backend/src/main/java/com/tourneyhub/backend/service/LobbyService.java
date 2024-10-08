@@ -65,7 +65,7 @@ public class LobbyService {
 
     public Long create(LobbyCreateDto dto, OAuth2User principal) {
         Stage stage = fetchStage(dto.getStageId());
-        Long refereeId = getId(dto.getReferee(), false);
+        Long refereeId = dto.getReferee().isEmpty() ? null : getId(dto.getReferee(), false);
 
         if (!userService.isHost(stage.getTournamentId(), principal)) {
             throw new AppException(NO_PERMISSION, HttpStatus.FORBIDDEN);
@@ -74,8 +74,10 @@ public class LobbyService {
             throw new AppException("Invalid stage type!", HttpStatus.BAD_REQUEST);
         }
         Event lobby = mapper.mapToEntity(dto, stage);
-        participantService.addReferee(lobby, refereeId);
 
+        if (refereeId != null) {
+            participantService.addReferee(lobby, refereeId);
+        }
         return uow.eventRepository.save(lobby).getId();
     }
 

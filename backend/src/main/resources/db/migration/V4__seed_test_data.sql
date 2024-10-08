@@ -121,8 +121,8 @@ INSERT INTO tournament (
     banner, reg_message, information
 )
 VALUES (
-    false, false, 0, 4, 0, 2, false, true, true, true, false, 4,
-    null, '2024-11-21T08:00:00.000Z', '4KMT', '4K Korean Mania Tournament', 'Test tournament',
+    true, false, 0, 4, 0, 2, false, true, true, true, false, 4,
+    '2024-11-21T08:00:00.000Z', '2024-11-21T08:00:00.000Z', '4KMT', '4K Korean Mania Tournament', 'Test tournament',
     'https://i.ppy.sh/b92ca1365e6f5bead5afbc24e26c6447ee8e0d9a/68747470733a2f2f696d6775722d617263686976652e7070' ||
     '792e73682f646973636f72642f313038383433323930333939313539313032342d313130393731303236393737303337313133322d' ||
     '344b4d545f666f72756d2e706e67', 'Test message', ''
@@ -1220,29 +1220,19 @@ VALUES ('China', 'https://assets.ppy.sh/old-flags/CN.png', 'We are available whe
 INSERT INTO team (name, logo, availability)
 VALUES ('Vietnam', 'https://assets.ppy.sh/old-flags/VN.png', 'We are available whenever.');
 
-INSERT INTO team (name, logo, availability)
-VALUES ('Test1', 'https://assets.ppy.sh/old-flags/EE.png', 'Test1');
-
-INSERT INTO team (name, logo, availability)
-VALUES ('Test2', 'https://assets.ppy.sh/old-flags/CN.png', 'Test2');
-
 -- TOURNAMENT ROLES ---------------------------------------------------------------------------------------------------
 
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 1, 2, false);
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 1, 7, false);
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 1, 1, false);
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 1, 2, false);
-INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (3, 1, 1, false);
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (3, 1, 2, false);
-INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (3, 2, 1, false);
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 2, 7, false);
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 2, 8, true);
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 2, 9, true);
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (2, 2, 7, false);
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 3, 5, false);
-INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (3, 3, 1, false);
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 4, 7, false);
-INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (3, 4, 1, false);
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 5, 6, false);
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 6, 2, false);
 INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_role) VALUES (1, 6, 10, false);
@@ -1440,18 +1430,6 @@ INSERT INTO tournament_role (tournament_id, app_user_id, role_id, can_reg_with_r
 
 INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
 VALUES (1, 1, null, 6, 11, 0, false);
-
-INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
-VALUES (3, 1, 15, 5, 0, 0, true);
-
-INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
-VALUES (3, 2, 15, 5, 0, 0, false);
-
-INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
-VALUES (3, 3, 16, 5, 0, 0, true);
-
-INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
-VALUES (3, 4, 16, 5, 0, 0, false);
 
 INSERT INTO tournament_player (tournament_id, app_user_id, team_id, status_id, seed, placement, team_captain)
 VALUES (1, 56, null, 6, 1, 0, false);
