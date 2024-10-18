@@ -5,31 +5,25 @@ import com.tourneyhub.backend.domain.Role;
 import com.tourneyhub.backend.domain.Tournament;
 import com.tourneyhub.backend.domain.TournamentRole;
 import com.tourneyhub.backend.dto.tournamentRole.TournamentRoleDto;
-import com.tourneyhub.backend.helper.Constants;
 import org.springframework.stereotype.Component;
 
 @Component
 public class TournamentRoleMapper {
 
-    public TournamentRoleDto mapToDto(TournamentRole role) {
-        Tournament tournament = role.getTournament();
+    public TournamentRoleDto mapToDto(TournamentRole tournamentRole) {
+        Tournament tournament = tournamentRole.getTournament();
+        Role role = tournamentRole.getRole();
 
         return new TournamentRoleDto(
                 tournament.getId(),
                 tournament.getName(),
-                role.getRole().getName(),
-                role.isCanRegWithRole(),
+                role.getName(),
+                role.getCanRegWithRole(),
                 tournament.isConcluded()
         );
     }
 
     public TournamentRole mapToEntity(Role role, Tournament tournament, AppUser user) {
-        return new TournamentRole(
-                Constants.ROLE_CAN_REG.get(role.getName()),
-                tournament.getId(),
-                tournament,
-                user,
-                role
-        );
+        return new TournamentRole(tournament.getId(), tournament, user, role);
     }
 }

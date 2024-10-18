@@ -118,7 +118,7 @@ public class TeamService {
     private boolean hasInvalidRole(Long tournamentId, Long userId) {
         return uow.tournamentRoleRepository
                 .getUserRolesInTournament(tournamentId, userId).stream()
-                .anyMatch(r -> !r.isCanRegWithRole());
+                .anyMatch(r -> !r.getRole().getCanRegWithRole());
     }
 
     private Tournament getTournament(Long id) {

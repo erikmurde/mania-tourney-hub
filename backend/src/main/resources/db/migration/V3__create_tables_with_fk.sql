@@ -114,7 +114,6 @@ CREATE TABLE tournament_role (
     tournament_id BIGINT NOT NULL,
     app_user_id BIGINT NOT NULL,
     role_id BIGINT NOT NULL,
-    can_reg_with_role BOOLEAN NOT NULL,
     FOREIGN KEY (tournament_id) REFERENCES tournament(id),
     FOREIGN KEY (app_user_id) REFERENCES app_user(id),
     FOREIGN KEY (role_id) REFERENCES role(id)

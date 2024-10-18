@@ -23,17 +23,17 @@ INSERT INTO beatmap_type (name) VALUES ('TB');
 
 -- ROLES --------------------------------------------------------------------------------------------------------------
 
-INSERT INTO role (name) VALUES ('player');
-INSERT INTO role (name) VALUES ('host');
-INSERT INTO role (name) VALUES ('admin');
-INSERT INTO role (name) VALUES ('mappooler');
-INSERT INTO role (name) VALUES ('mapper');
-INSERT INTO role (name) VALUES ('playtester');
-INSERT INTO role (name) VALUES ('referee');
-INSERT INTO role (name) VALUES ('streamer');
-INSERT INTO role (name) VALUES ('commentator');
-INSERT INTO role (name) VALUES ('sheeter');
-INSERT INTO role (name) VALUES ('gfx');
+INSERT INTO role (name, can_reg_with_role) VALUES ('player', false);
+INSERT INTO role (name, can_reg_with_role) VALUES ('host', false);
+INSERT INTO role (name, can_reg_with_role) VALUES ('admin', false);
+INSERT INTO role (name, can_reg_with_role) VALUES ('mappooler', false);
+INSERT INTO role (name, can_reg_with_role) VALUES ('mapper', false);
+INSERT INTO role (name, can_reg_with_role) VALUES ('playtester', false);
+INSERT INTO role (name, can_reg_with_role) VALUES ('referee', false);
+INSERT INTO role (name, can_reg_with_role) VALUES ('streamer', true);
+INSERT INTO role (name, can_reg_with_role) VALUES ('commentator', true);
+INSERT INTO role (name, can_reg_with_role) VALUES ('sheeter', false);
+INSERT INTO role (name, can_reg_with_role) VALUES ('gfx', false);
 
 -- COUNTRIES ----------------------------------------------------------------------------------------------------------
 

@@ -15,7 +15,8 @@ CREATE TABLE status (
 
 CREATE TABLE role (
     id BIGSERIAL PRIMARY KEY,
-    name VARCHAR(32)
+    name VARCHAR(32) NOT NULL,
+    can_reg_with_role BOOLEAN NOT NULL
 );
 
 CREATE TABLE country (
