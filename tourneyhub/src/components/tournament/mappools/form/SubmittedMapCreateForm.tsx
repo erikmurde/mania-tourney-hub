@@ -1,5 +1,5 @@
 import { Dialog } from '@mui/material';
-import { DialogProps } from '../../../../props/DialogProps';
+import { DialogProps } from '../../../../domain/DialogProps';
 import TourneyDialogTitle from '../../dialog/TourneyDialogTitle';
 import { Add } from '@mui/icons-material';
 import { StyledDialogContent } from '../../../styled/styledDialogContent';
@@ -8,7 +8,7 @@ import { ISubmittedMapDto } from '../../../../dto/map/ISubmittedMapDto';
 import SubmittedMapFormView from './views/SubmittedMapFormView';
 import { number, Schema } from 'yup';
 import { baseMapSchema } from '../../../../domain/validation/baseMapSchema';
-import { DUPLICATE_BEATMAP_ID, INTEGER, NOT_NEGATIVE, REQUIRED, TOO_LARGE } from '../../../../constants';
+import { DUPLICATE_BEATMAP_ID, INTEGER, LOGIN_URL, NOT_NEGATIVE, REQUIRED, TOO_LARGE } from '../../../../constants';
 import { MapService } from '../../../../services/mapService';
 import { useContext, useEffect, useState } from 'react';
 import { ErrorContext, UpdateContext } from '../../../../routes/Root';
@@ -43,6 +43,9 @@ const SubmittedCreateMapForm = ({dialogProps, stageId, hasTb, isDuplicateId}: IP
         const error = await new MapService().createSubmitted(values);
 
         if (error) {
+            if (error.statusCode === 401) {
+                return window.location.assign(LOGIN_URL);
+            }
             return setError(error);
         }
         setMapPoolUpdate(mapPoolUpdate + 1);

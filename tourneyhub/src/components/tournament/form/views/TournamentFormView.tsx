@@ -181,7 +181,7 @@ const TournamentFormView = ({initialValues, validationSchema, onSubmit}: IProps)
                                     control={<Checkbox size='small'/>}/>
                             </FormGroup>
                         </Grid>}
-                        {values.published && <Grid item xs={10}/>}
+                        {values.published && <Grid item xs={8}/>}
                         <Grid item xs={6}>
                             <FastField component={TourneyDateField} 
                                 name='regDeadline' 

@@ -8,7 +8,7 @@ import { ErrorContext, UpdateContext } from '../../../../routes/Root';
 import { MatchService } from '../../../../services/matchService';
 import ConfirmationDialog from '../../dialog/ConfirmationDialog';
 import { RefSheetPaper } from '../../../styled/RefSheetPaper';
-import { NOT_NEGATIVE, TOO_LARGE } from '../../../../constants';
+import { LOGIN_URL, NOT_NEGATIVE, TOO_LARGE } from '../../../../constants';
 import RoomTitle from '../RoomTitle';
 import { MatchWbdDto } from '../../../../dto/ref/MatchWbdDto';
 
@@ -31,6 +31,9 @@ const MatchMain = ({match, stageName, maxScore, onClose}: IProps) => {
         const error = await new MatchService().conclude(match.id, matchId, score1, score2);
 
         if (error) {
+            if (error.statusCode === 401) {
+                return window.location.assign(LOGIN_URL);
+            }
             return setError(error);
         }
         setScheduleUpdate(scheduleUpdate + 1);

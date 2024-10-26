@@ -6,7 +6,7 @@ import { useTourney } from '../../../../routes/tournament/TournamentHeader';
 import { LobbyDto } from '../../../../dto/schedule/lobby/LobbyDto';
 import { useContext, useState } from 'react';
 import { ErrorContext, UpdateContext } from '../../../../routes/Root';
-import { NOT_NEGATIVE, TOO_LARGE } from '../../../../constants';
+import { LOGIN_URL, NOT_NEGATIVE, TOO_LARGE } from '../../../../constants';
 import RoomTitle from '../RoomTitle';
 import { LobbyService } from '../../../../services/lobbyService';
 
@@ -35,6 +35,9 @@ const LobbyMain = ({lobby, stageName, onClose}: IProps) => {
             concluded: true
         });
         if (error) {
+            if (error.statusCode === 401) {
+                return window.location.assign(LOGIN_URL);
+            }
             return setError(error);
         }
         setScheduleUpdate(scheduleUpdate + 1);

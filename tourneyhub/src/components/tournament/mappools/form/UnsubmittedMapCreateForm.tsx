@@ -1,5 +1,5 @@
 import { Dialog } from '@mui/material';
-import { DialogProps } from '../../../../props/DialogProps';
+import { DialogProps } from '../../../../domain/DialogProps';
 import TourneyDialogTitle from '../../dialog/TourneyDialogTitle';
 import { Add } from '@mui/icons-material';
 import { IMapDto } from '../../../../dto/map/IMapDto';

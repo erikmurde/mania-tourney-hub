@@ -60,7 +60,7 @@ const Home = () => {
 
     const canDisplayTourney = (tourney: SimpleTournamentDto, concluded: boolean) => {
         return tourney.concluded === concluded && 
-        ((user && authService.isStaff(user, tourney.id)) || tourney.published);
+        (authService.isStaff(user, tourney.id) || tourney.published);
     }
 
     return (  

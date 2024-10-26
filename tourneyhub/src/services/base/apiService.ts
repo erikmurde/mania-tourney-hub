@@ -7,7 +7,7 @@ export abstract class ApiService {
     protected axios: AxiosInstance;
     protected baseUrl: string;
 
-    constructor(baseUrl: string) {
+    protected constructor(baseUrl: string) {
         this.axios = apiAxios;
         this.baseUrl = baseUrl;
     }

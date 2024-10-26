@@ -7,7 +7,7 @@ import { IMapDto } from '../../../../dto/map/IMapDto';
 import { StyledDialogContent } from '../../../styled/styledDialogContent';
 import { StyledIconButton } from '../../../styled/StyledIconButton';
 import { Edit } from '@mui/icons-material';
-import { DUPLICATE_BEATMAP_ID, INTEGER, NOT_NEGATIVE, REQUIRED, TB, TOO_LARGE } from '../../../../constants';
+import { DUPLICATE_BEATMAP_ID, INTEGER, LOGIN_URL, NOT_NEGATIVE, REQUIRED, TB, TOO_LARGE } from '../../../../constants';
 import { MapTypeDto } from '../../../../dto/map/MapTypeDto';
 import { MapTypeService } from '../../../../services/mapTypeService';
 import SubmittedMapFormView from './views/SubmittedMapFormView';
@@ -45,6 +45,9 @@ const MapEditForm = ({mappool, map}: IProps) => {
         const error = await new MapService().updateSubmitted(map.id, values);
 
         if (error) {
+            if (error.statusCode === 401) {
+                return window.location.assign(LOGIN_URL);
+            }
             return setError(error);
         }
         setMapPoolUpdate(mapPoolUpdate + 1);

@@ -3,7 +3,7 @@ import { Dialog } from '@mui/material';
 import { StyledDialogActions } from '../../../styled/StyledDialogActions';
 import { StyledDialogContent } from '../../../styled/styledDialogContent';
 import TourneyDialogTitle from '../../dialog/TourneyDialogTitle';
-import { DialogProps } from '../../../../props/DialogProps';
+import { DialogProps } from '../../../../domain/DialogProps';
 import UnsubmittedMapFormView from './views/UnsubmittedMapFormView';
 import { IMapDto } from '../../../../dto/map/IMapDto';
 import { useContext, useState } from 'react';
