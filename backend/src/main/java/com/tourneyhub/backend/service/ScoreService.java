@@ -11,6 +11,7 @@ import com.tourneyhub.backend.dto.score.osuApi.OsuMatchScoreDto;
 import com.tourneyhub.backend.mapper.ScoreMapper;
 import com.tourneyhub.backend.repository.RepositoryUow;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.oauth2.client.ClientAuthorizationException;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -130,6 +131,8 @@ public class ScoreService {
                     .bodyToMono(OsuMatchDto.class)
                     .block();
 
+        } catch (ClientAuthorizationException e) {
+            throw new AppException("Missing or invalid access token!", HttpStatus.UNAUTHORIZED);
         } catch (WebClientResponseException e) {
             throw new AppException(
                     String.format("Could not find match with ID %d.", matchId), HttpStatus.NOT_FOUND);

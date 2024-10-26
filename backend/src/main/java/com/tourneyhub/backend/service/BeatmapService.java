@@ -11,9 +11,11 @@ import com.tourneyhub.backend.helper.Constants;
 import com.tourneyhub.backend.mapper.BeatmapMapper;
 import com.tourneyhub.backend.repository.RepositoryUow;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.oauth2.client.ClientAuthorizationException;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.reactive.function.client.WebClient;
+import org.springframework.web.reactive.function.client.WebClientRequestException;
 import org.springframework.web.reactive.function.client.WebClientResponseException;
 
 import java.util.ArrayList;
@@ -166,6 +168,8 @@ public class BeatmapService {
                     .bodyToMono(OsuBeatmapDto.class)
                     .block();
 
+        } catch (ClientAuthorizationException e) {
+            throw new AppException("Missing or invalid access token!", HttpStatus.UNAUTHORIZED);
         } catch (WebClientResponseException e) {
             throw new AppException(
                     String.format("Could not find beatmap with ID %d.", beatmapId), HttpStatus.NOT_FOUND);
