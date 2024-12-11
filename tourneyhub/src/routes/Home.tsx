@@ -67,7 +67,7 @@ const Home = () => {
         <Grid container direction='column' rowGap={2}>
             <Hero isLoggedIn={user !== null}/>
             <Grid item>
-                <Accordion elevation={2} defaultExpanded>
+                <Accordion elevation={2}>
                     <AccordionSummary expandIcon={<ExpandMore/>} sx={{ paddingLeft: 5 }}>
                         <Typography variant='h3' fontSize={36}>
                             Filters

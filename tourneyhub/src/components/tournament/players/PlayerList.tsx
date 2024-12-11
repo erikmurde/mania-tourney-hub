@@ -36,8 +36,8 @@ const PlayerList = ({playersPublic, players, setPlayers}: IProps) => {
         }
         const stats = getStats(player);
         
-        stats.status = ELIMINATED;
         stats.placement = players.filter(player => getStats(player).status === ACTIVE).length;
+        stats.status = ELIMINATED;
 
         setPlayers(players.map(existing => 
             existing.id === player.id ? player : existing

@@ -50,8 +50,8 @@ const TournamentHeader = () => {
     return (
         <Grid container direction='column' rowSpacing={2}>
             <Grid item>
-                <Paper elevation={2} sx={{ height: 766 }}>
-                    <Box height={400}>
+                <Paper elevation={2}>
+                    <Box height={350}>
                         <img src={tourney.banner} id='tourney-banner' alt='Tournament banner'/>
                     </Box>
                     <HeaderText name={tourney.name} description={tourney.description}/>

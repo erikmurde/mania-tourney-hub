@@ -19,7 +19,7 @@ const HeaderTabs = ({tourney}: {tourney: TournamentDto}) => {
     }
     
     return ( 
-        <Grid container height={100} justifyContent='center' alignItems='center'>
+        <Grid container padding={1} paddingBottom={2} justifyContent='center' alignItems='center'>
             <Grid item>
                 <Tabs sx={{ flexWrap: 'wrap' }} value={value} role='navigation' onChange={(_, value) => updateValue(value)}>
                     <TourneyTab label='information' to='information'/>

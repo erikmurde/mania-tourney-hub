@@ -14,7 +14,7 @@ const TournamentBlock = ({name, tourneys}: IProps) => {
             <Typography variant='h3' fontSize={36} height={80} lineHeight={2}>
                 {name}
             </Typography>
-            <Grid container spacing={2}>
+            <Grid container spacing={2} justifyContent='center'>
                 {tourneys.map(tourney => 
                     <Grid item key={tourney.id}>
                         <TournamentCard tourney={tourney}/>    

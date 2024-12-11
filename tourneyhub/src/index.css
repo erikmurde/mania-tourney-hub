@@ -17,11 +17,20 @@ body {
   align-items: center;
 }
 
-.home-banner {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://assets.ppy.sh/beatmaps/1452883/covers/cover@2x.jpg?1648902064');
-  background-repeat: no-repeat;
-  background-size: cover;
+#hero-container {
+  position: absolute;
+  height: 500px;
+  max-width: 1400px;
   border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+#hero-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+  scale: 1.2;
 }
 
 .map-param {

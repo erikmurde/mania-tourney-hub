@@ -99,7 +99,7 @@ const HeaderButtons = ({tourney, updateTourney}: IProps) => {
 
     return (
         <>
-        <Grid container columnSpacing={1} height={56} justifyContent='center'>
+        <Grid container columnSpacing={1} paddingTop={2} paddingBottom={1} justifyContent='center'>
             {user && canRegister(user) &&
             <Grid item>
                 {tourney.minTeamSize > 1

@@ -100,7 +100,6 @@ const Statistics = () => {
                                 title={`Update ${teams ? 'team' : 'player'} seeding?`}
                                 description={`
                                     This will assign a seed to every ${teams ? 'team' : 'player'} based on current qualifier results.
-                                    ${teams ? 'Teams' : 'Players'} with no qualifer scores will be marked as "DNP".
                                 `}
                                 actionTitle='Update'
                                 btnProps={{ title: 'Update seeding' }}

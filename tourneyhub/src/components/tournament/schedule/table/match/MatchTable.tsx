@@ -37,7 +37,7 @@ const MatchTable = ({stage, canView}: IPpops) => {
 
     return (  
         <>
-        {!loading && matches.length > 0 &&
+        {!loading && matches.length > 0 && canView &&
         <Paper elevation={6} sx={{ height: 1, paddingLeft: 1, paddingRight: 1 }}>
             <TableContainer>
                 <Table>

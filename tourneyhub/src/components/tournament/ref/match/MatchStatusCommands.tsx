@@ -36,7 +36,7 @@ const MatchStatusCommands = ({picks, match, bestOf}: IProps) => {
     }
 
     const nextMap = () => {
-        const filtered = picks.filter(pick => pick.beatmapId !== null);
+        const filtered = picks.filter(pick => pick.beatmapId !== '');
 
         if (filtered.length === 0) {
             return 'none';
